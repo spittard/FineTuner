@@ -9,8 +9,14 @@ try:
     UNSLOTH_AVAILABLE = True
 except (ImportError, NotImplementedError):
     UNSLOTH_AVAILABLE = False
-    from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments, Trainer
+    from transformers import (
+        AutoModelForCausalLM, AutoTokenizer, TrainingArguments, Trainer,
+        DataCollatorForLanguageModeling
+    )
     from datasets import Dataset
+
+# Import CreateDataSet from separate file
+from CreateDataSet import CreateDataSet
 
 class FineTuner:
     def __init__(self,
@@ -39,7 +45,9 @@ class FineTuner:
             self.model.to(self.device)
         else:
             # Fallback to standard transformers
-            print("Unsloth not available, using standard transformers library")
+            print("WARNING: Unsloth not available (requires NVIDIA/Intel GPU)")
+            print("INFO: Falling back to standard transformers library")
+            print("TIP: For better performance, consider using a GPU-enabled system")
             self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
             self.model = AutoModelForCausalLM.from_pretrained(
                 self.model_name,
@@ -53,18 +61,45 @@ class FineTuner:
 
     def prepare_dataset(self, data):
         """
-        Expects a list of dicts: [{"prompt": "...", "completion": "..."}, ...]
+        Expects a list of dicts: [{"Company Name": "Company Name"}, ...]
         """
         if self.using_unsloth:
-            return Dataset.from_list(data)
-        else:
-            # Format data for standard transformers training
+            # For Unsloth, format as instruction-following data
             formatted_data = []
             for item in data:
-                # Combine prompt and completion with separator
-                text = f"{item['prompt']} {item['completion']}"
-                formatted_data.append({"text": text})
+                company_name = item.get("Company Name", "")
+                formatted_data.append({
+                    "prompt": "What is the company name?",
+                    "completion": company_name
+                })
             return Dataset.from_list(formatted_data)
+        else:
+            # Format data for standard transformers language model training
+            formatted_data = []
+            for item in data:
+                company_name = item.get("Company Name", "")
+                # Create a simple text format for training, limit length
+                if len(company_name) > 100:  # Limit very long names
+                    company_name = company_name[:100]
+                text = f"Company Name: {company_name}"
+                formatted_data.append({"text": text})
+            
+            # Create dataset
+            dataset = Dataset.from_list(formatted_data)
+            
+            # Simple tokenization without labels - let the data collator handle everything
+            def tokenize_function(examples):
+                return self.tokenizer(
+                    examples["text"],
+                    truncation=True,
+                    padding=False,
+                    max_length=self.max_seq_length,
+                    return_tensors=None
+                )
+            
+            # Tokenize and remove original text column
+            tokenized_dataset = dataset.map(tokenize_function, batched=True, remove_columns=["text"])
+            return tokenized_dataset
 
     def fine_tune(self,
                   dataset,
@@ -96,18 +131,7 @@ class FineTuner:
             # Standard transformers fine-tuning
             print("Using standard transformers fine-tuning (no LoRA)")
             
-            # Tokenize dataset
-            def tokenize_function(examples):
-                return self.tokenizer(
-                    examples["text"],
-                    truncation=True,
-                    padding=True,
-                    max_length=self.max_seq_length,
-                    return_tensors="pt"
-                )
-            
-            tokenized_dataset = dataset.map(tokenize_function, batched=True)
-            
+            # Dataset is already tokenized from prepare_dataset
             # Training arguments
             training_args = TrainingArguments(
                 output_dir=output_dir,
@@ -119,14 +143,22 @@ class FineTuner:
                 logging_steps=100,
                 gradient_checkpointing=use_gradient_checkpointing,
                 remove_unused_columns=False,
+                dataloader_pin_memory=False,  # Disable for Windows compatibility
+            )
+            
+            # Use proper data collator for language modeling
+            data_collator = DataCollatorForLanguageModeling(
+                tokenizer=self.tokenizer,
+                mlm=False,  # Not masked language modeling
             )
             
             # Initialize trainer
             trainer = Trainer(
                 model=self.model,
                 args=training_args,
-                train_dataset=tokenized_dataset,
+                train_dataset=dataset,  # Use the pre-tokenized dataset
                 tokenizer=self.tokenizer,
+                data_collator=data_collator,
             )
             
             # Train the model
@@ -142,15 +174,29 @@ class FineTuner:
         return self.tokenizer.decode(outputs[0], skip_special_tokens=True)
 
 def load_dataset_from_file(file_path):
-    """Load dataset from JSON file"""
+    """Load dataset from JSON file with Company Name format"""
     with open(file_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
+    
+    # Validate data format
+    if not isinstance(data, list):
+        raise ValueError("Dataset must be a list of dictionaries")
+    
+    for i, item in enumerate(data):
+        if not isinstance(item, dict):
+            raise ValueError(f"Item {i} must be a dictionary")
+        if "Company Name" not in item:
+            raise ValueError(f"Item {i} missing 'Company Name' field")
+        if not isinstance(item["Company Name"], str):
+            raise ValueError(f"Item {i} 'Company Name' must be a string")
+    
+    print(f"OK: Loaded {len(data)} company name entries")
     return data
 
 def main():
-    parser = argparse.ArgumentParser(description='Fine-tune language models using Unsloth or transformers')
-    parser.add_argument('--mode', choices=['train', 'predict'], required=True,
-                       help='Mode: train for fine-tuning, predict for inference')
+    parser = argparse.ArgumentParser(description='Fine-tune language models using Unsloth or transformers, or create datasets from databases')
+    parser.add_argument('--mode', choices=['train', 'predict', 'create-dataset'], required=True,
+                       help='Mode: train for fine-tuning, predict for inference, create-dataset for database extraction')
     
     # Model configuration
     parser.add_argument('--model-name', default='microsoft/DialoGPT-small',
@@ -178,7 +224,102 @@ def main():
     parser.add_argument('--max-new-tokens', type=int, default=10,
                        help='Maximum new tokens to generate (default: 10)')
     
+    # Dataset creation configuration
+    parser.add_argument('--db-type', choices=['sqlite', 'mysql', 'postgresql', 'sqlserver'], default='sqlite',
+                       help='Database type for dataset creation (default: sqlite)')
+    parser.add_argument('--db-host', default='localhost', help='Database host (default: localhost)')
+    parser.add_argument('--db-server', help='SQL Server instance name (for SQL Server connections)')
+    parser.add_argument('--db-user', help='Database username')
+    parser.add_argument('--db-password', help='Database password')
+    parser.add_argument('--db-port', type=int, help='Database port')
+    parser.add_argument('--db-driver', help='ODBC driver for SQL Server (e.g., "ODBC Driver 17 for SQL Server")')
+    parser.add_argument('--trusted-connection', action='store_true', help='Use Windows Authentication for SQL Server (Trusted_Connection=yes)')
+    parser.add_argument('--db-name', help='Database name')
+    parser.add_argument('--table-name', help='Table name to extract from')
+    parser.add_argument('--column-name', help='Column name containing company names')
+    parser.add_argument('--output-file', help='Output JSON file path')
+    
     args = parser.parse_args()
+    
+    if args.mode == 'create-dataset':
+        # Dataset creation mode
+        if not all([args.db_name, args.table_name, args.column_name, args.output_file]):
+            print("Error: --db-name, --table-name, --column-name, and --output-file are required for create-dataset mode")
+            return
+        
+        # Set default ports based on database type
+        if args.db_type == 'mysql' and not args.db_port:
+            args.db_port = 3306
+        elif args.db_type == 'postgresql' and not args.db_port:
+            args.db_port = 5432
+        elif args.db_type == 'sqlserver' and not args.db_port:
+            args.db_port = 1433
+        
+        # Create dataset from database
+        with CreateDataSet(args.db_type) as dataset_creator:
+            # Connect to database
+            if args.db_type == 'sqlite':
+                success = dataset_creator.connect(args.db_name)
+            elif args.db_type == 'sqlserver':
+                # Use server parameter if provided, otherwise fall back to host
+                server = args.db_server if args.db_server else args.db_host
+                driver = args.db_driver if args.db_driver else "ODBC Driver 17 for SQL Server"
+                
+                if args.trusted_connection:
+                    # Windows Authentication - no username/password needed
+                    success = dataset_creator.connect(
+                        args.db_name,
+                        server=server,
+                        port=args.db_port,
+                        driver=driver,
+                        trusted_connection=True
+                    )
+                else:
+                    # SQL Authentication - username and password required
+                    if not all([args.db_user, args.db_password]):
+                        print(f"Error: --db-user and --db-password are required for SQL Authentication")
+                        print("TIP: Use --trusted-connection for Windows Authentication")
+                        return
+                    
+                    success = dataset_creator.connect(
+                        args.db_name,
+                        server=server,
+                        user=args.db_user,
+                        password=args.db_password,
+                        port=args.db_port,
+                        driver=driver,
+                        trusted_connection=False
+                    )
+            else:
+                if not all([args.db_user, args.db_password]):
+                    print(f"Error: --db-user and --db-password are required for {args.db_type}")
+                    return
+                success = dataset_creator.connect(
+                    args.db_name,
+                    host=args.db_host,
+                    user=args.db_user,
+                    password=args.db_password,
+                    port=args.db_port
+                )
+            
+            if not success:
+                print("Failed to connect to database")
+                return
+            
+            # Extract and save data
+            success = dataset_creator.create_dataset(
+                args.table_name,
+                args.column_name,
+                args.output_file
+            )
+            
+            if success:
+                print(f"OK: Dataset created successfully: {args.output_file}")
+                print(f"TIP: You can now use this file for training: python FineTuner.py --mode train --dataset {args.output_file}")
+            else:
+                print("ERROR: Failed to create dataset")
+        
+        return
     
     # Check if Unsloth is available
     if not UNSLOTH_AVAILABLE:
