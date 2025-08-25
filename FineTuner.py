@@ -18,6 +18,9 @@ except (ImportError, NotImplementedError):
 # Import CreateDataSet from separate file
 from CreateDataSet import CreateDataSet
 
+# Import CompanyMatcher for company matching functionality
+from CompanyMatcher import CompanyMatcher
+
 class FineTuner:
     def __init__(self,
                  model_name="microsoft/DialoGPT-small",
@@ -172,6 +175,32 @@ class FineTuner:
         inputs = self.tokenizer(prompt, return_tensors="pt").to(self.device)
         outputs = self.model.generate(**inputs, max_new_tokens=max_new_tokens)
         return self.tokenizer.decode(outputs[0], skip_special_tokens=True)
+    
+    def match_companies(self, query, company_names, top_k=10, matcher_model='all-MiniLM-L6-v2'):
+        """
+        Match a query against a list of company names using CompanyMatcher
+        
+        Args:
+            query: Company name to search for
+            company_names: List of company names to search in
+            top_k: Number of top matches to return
+            matcher_model: Sentence transformer model to use
+            
+        Returns:
+            List of match dictionaries with 'name' and 'score' keys
+        """
+        try:
+            # Initialize CompanyMatcher
+            matcher = CompanyMatcher(model_name=matcher_model)
+            matcher.build_index(company_names)
+            
+            # Perform matching
+            matches = matcher.match(query, top_k=top_k)
+            return matches
+            
+        except Exception as e:
+            print(f"Error in company matching: {e}")
+            return []
 
 def load_dataset_from_file(file_path):
     """Load dataset from JSON file with Company Name format"""
@@ -194,9 +223,9 @@ def load_dataset_from_file(file_path):
     return data
 
 def main():
-    parser = argparse.ArgumentParser(description='Fine-tune language models using Unsloth or transformers, or create datasets from databases')
-    parser.add_argument('--mode', choices=['train', 'predict', 'create-dataset'], required=True,
-                       help='Mode: train for fine-tuning, predict for inference, create-dataset for database extraction')
+    parser = argparse.ArgumentParser(description='Fine-tune language models using Unsloth or transformers, create datasets from databases, or perform company name matching')
+    parser.add_argument('--mode', choices=['train', 'predict', 'create-dataset', 'match', 'cache-info', 'clear-cache'], required=True,
+                       help='Mode: train for fine-tuning, predict for inference, create-dataset for database extraction, match for company matching, cache-info for cache status, clear-cache to clear cache')
     
     # Model configuration
     parser.add_argument('--model-name', default='microsoft/DialoGPT-small',
@@ -239,7 +268,21 @@ def main():
     parser.add_argument('--column-name', help='Column name containing company names')
     parser.add_argument('--output-file', help='Output JSON file path')
     
+    # Company matching configuration
+    parser.add_argument('--query', help='Company name to search for in match mode')
+    parser.add_argument('--top-k', type=int, default=10, help='Number of top matches to return (default: 10)')
+    parser.add_argument('--matcher-model', default='all-MiniLM-L6-v2', help='Sentence transformer model for company matching (default: all-MiniLM-L6-v2)')
+    
     args = parser.parse_args()
+    
+    # Show example usage for match mode
+    if args.mode == 'match' and not args.query:
+        print("Company Matching Mode Examples:")
+        print("  python FineTuner.py --mode match --dataset training_data.json --query 'Microsoft'")
+        print("  python FineTuner.py --mode match --dataset training_data.json --query 'Apple Inc' --top-k 5")
+        print("  python FineTuner.py --mode match --dataset training_data.json --query 'Google' --matcher-model 'all-MiniLM-L6-v2'")
+        print()
+        return
     
     if args.mode == 'create-dataset':
         # Dataset creation mode
@@ -376,6 +419,118 @@ def main():
         print(f"Generating response for prompt: {args.prompt}")
         response = fine_tuner.predict(args.prompt, args.max_new_tokens)
         print(f"Response: {response}")
+    
+    elif args.mode == 'match':
+        if not args.query:
+            print("Error: --query is required for match mode")
+            return
+        
+        if not args.dataset:
+            print("Error: --dataset is required for match mode")
+            return
+        
+        if not os.path.exists(args.dataset):
+            print(f"Error: Dataset file {args.dataset} not found")
+            return
+        
+        print(f"Loading company data from: {args.dataset}")
+        data = load_dataset_from_file(args.dataset)
+        
+        # Extract company names from the dataset
+        company_names = []
+        for item in data:
+            if isinstance(item, dict) and "Company Name" in item:
+                company_names.append(item["Company Name"])
+        
+        if not company_names:
+            print("Error: No company names found in dataset")
+            return
+        
+        print(f"Building company matching index with {len(company_names)} companies...")
+        
+        # Initialize CompanyMatcher
+        matcher = CompanyMatcher(model_name=args.matcher_model)
+        matcher.build_index(company_names)
+        
+        print(f"Searching for companies matching: {args.query}")
+        matches = matcher.match(args.query, top_k=args.top_k)
+        
+        print(f"\nTop {len(matches)} matches for '{args.query}':")
+        print("-" * 60)
+        
+        for i, match in enumerate(matches, 1):
+            score_percent = match['score'] * 100
+            print(f"{i:2d}. {match['name']:<40} {score_percent:5.1f}%")
+        
+        print("-" * 60)
+        
+        # Show explanation for top match if available
+        if matches:
+            top_match = matches[0]
+            explanation = matcher.explain_match(args.query, top_match['name'])
+            print(f"\nExplanation for top match '{top_match['name']}':")
+            print(f"  Query tokens: {', '.join(explanation['query_tokens'])}")
+            print(f"  Match tokens: {', '.join(explanation['match_tokens'])}")
+            print(f"  Overlap: {', '.join(explanation['overlap'])}")
+            print(f"  Overlap score: {explanation['overlap_score']:.3f}")
+    
+    elif args.mode == 'cache-info':
+        print("Company Matching Cache Information:")
+        print("=" * 50)
+        
+        # Initialize CompanyMatcher to check cache
+        matcher = CompanyMatcher(model_name=args.matcher_model)
+        cache_info = matcher.get_cache_info()
+        print(cache_info)
+        
+        if args.dataset and os.path.exists(args.dataset):
+            print(f"\nDataset: {args.dataset}")
+            data = load_dataset_from_file(args.dataset)
+            company_names = []
+            for item in data:
+                if isinstance(item, dict) and "Company Name" in item:
+                    company_names.append(item["Company Name"])
+            
+            if company_names:
+                cache_key = matcher.get_cache_key(company_names)
+                print(f"Cache key for this dataset: {cache_key}")
+                
+                # Check if this specific dataset is cached
+                if matcher.load_from_cache(cache_key):
+                    print("✓ This dataset is cached and ready to use")
+                else:
+                    print("⚠ This dataset is not cached - will build index on first use")
+        else:
+            print("\nNo dataset specified - use --dataset to check specific dataset cache status")
+    
+    elif args.mode == 'clear-cache':
+        print("Company Matching Cache Management:")
+        print("=" * 40)
+        
+        # Initialize CompanyMatcher
+        matcher = CompanyMatcher(model_name=args.matcher_model)
+        
+        if args.dataset and os.path.exists(args.dataset):
+            # Clear specific dataset cache
+            data = load_dataset_from_file(args.dataset)
+            company_names = []
+            for item in data:
+                if isinstance(item, dict) and "Company Name" in item:
+                    company_names.append(item["Company Name"])
+            
+            if company_names:
+                cache_key = matcher.get_cache_key(company_names)
+                print(f"Clearing cache for dataset: {args.dataset}")
+                print(f"Cache key: {cache_key}")
+                matcher.clear_cache(cache_key)
+            else:
+                print("No company names found in dataset")
+        else:
+            # Clear all cache
+            print("Clearing all company matching cache...")
+            matcher.clear_cache()
+        
+        print("Cache cleared successfully!")
 
 if __name__ == "__main__":
     main()
