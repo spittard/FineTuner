@@ -1,2 +1,66 @@
+# Machine Learning Model Files
 company_names_models/
+company_names_model/
 company_matcher_cache/
+
+# Large model files (these are the main culprits causing timeout)
+*.safetensors
+*.pt
+*.pth
+*.bin
+*.ckpt
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+
+# Model checkpoints and training artifacts
+checkpoint-*/
+checkpoint-*/*
+
+# Cache and temporary files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment and dependencies
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swp
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# Large data files
+*.npy
+*.npz
+*.faiss
+*.index
