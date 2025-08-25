@@ -16,6 +16,217 @@ company_data_loaded = False
 last_data_check = 0
 data_check_interval = 5  # Check for data changes every 5 seconds
 
+# Helper functions for enhanced rationale generation
+def is_ordinal_relationship(word1, word2):
+    """Check if two words are ordinal number variations"""
+    ordinals = {
+        "eleventh": "11th", "twelfth": "12th", "thirteenth": "13th", "fourteenth": "14th",
+        "fifteenth": "15th", "sixteenth": "16th", "seventeenth": "17th", "eighteenth": "18th",
+        "nineteenth": "19th", "twentieth": "20th", "twenty-first": "21st", "twenty-second": "22nd"
+    }
+    
+    # Check direct mapping
+    if word1 in ordinals and word2 == ordinals[word1]:
+        return True
+    if word2 in ordinals and word1 == ordinals[word2]:
+        return True
+    
+    # Check numeric patterns
+    if word1.isdigit() and word2.endswith(('st', 'nd', 'rd', 'th')):
+        return True
+    if word2.isdigit() and word1.endswith(('st', 'nd', 'rd', 'th')):
+        return True
+    
+    return False
+
+def get_numeric_ordinal(word):
+    """Convert word ordinal to numeric form"""
+    ordinals = {
+        "eleventh": "11th", "twelfth": "12th", "thirteenth": "13th", "fourteenth": "14th",
+        "fifteenth": "15th", "sixteenth": "16th", "seventeenth": "17th", "eighteenth": "18th",
+        "nineteenth": "19th", "twentieth": "20th"
+    }
+    return ordinals.get(word, word)
+
+def get_word_ordinal(word):
+    """Convert numeric ordinal to word form"""
+    ordinals = {
+        "11th": "eleventh", "12th": "twelfth", "13th": "thirteenth", "14th": "fourteenth",
+        "15th": "fifteenth", "16th": "sixteenth", "17th": "seventeenth", "18th": "eighteenth",
+        "19th": "nineteenth", "20th": "twentieth"
+    }
+    return ordinals.get(word, word)
+
+def is_abbreviation_relationship(word1, word2):
+    """Check if one word is an abbreviation of another"""
+    if len(word1) < len(word2) and word1 in word2:
+        return True
+    if len(word2) < len(word1) and word2 in word1:
+        return True
+    return False
+
+def is_contraction_relationship(word1, word2):
+    """Check if words are contractions of each other"""
+    # Common contractions
+    contractions = {
+        "cant": "cannot", "dont": "do not", "wont": "will not", "isnt": "is not",
+        "arent": "are not", "wasnt": "was not", "werent": "were not", "hasnt": "has not",
+        "havent": "have not", "hadnt": "had not", "doesnt": "does not", "didnt": "did not"
+    }
+    
+    if word1 in contractions and word2 == contractions[word1]:
+        return True
+    if word2 in contractions and word1 == contractions[word2]:
+        return True
+    
+    return False
+
+def is_plural_relationship(word1, word2):
+    """Check if words are plural/singular forms of each other"""
+    if word1.endswith('s') and word1[:-1] == word2:
+        return True
+    if word2.endswith('s') and word2[:-1] == word1:
+        return True
+    return False
+
+def is_word_variation(word1, word2):
+    """Check for common word variations"""
+    # Common variations
+    variations = [
+        ("info", "information"), ("tech", "technical"), ("assoc", "association"),
+        ("corp", "corporation"), ("co", "company"), ("inc", "incorporated"),
+        ("ltd", "limited"), ("intl", "international"), ("mgmt", "management")
+    ]
+    
+    for var1, var2 in variations:
+        if (word1 == var1 and word2 == var2) or (word1 == var2 and word2 == var1):
+            return True
+    
+    return False
+
+def get_variation_type(word1, word2):
+    """Get the type of word variation"""
+    if len(word1) < len(word2):
+        return "abbreviation/expansion pair"
+    elif len(word2) < len(word1):
+        return "abbreviation/expansion pair"
+    else:
+        return "synonym pair"
+
+def analyze_phonetic_similarity(query, company_name):
+    """Analyze phonetic similarity between query and company name"""
+    # Simple phonetic analysis - could be enhanced with more sophisticated algorithms
+    query_sound = get_simple_phonetic(query.lower())
+    company_sound = get_simple_phonetic(company_name.lower())
+    
+    if query_sound == company_sound:
+        return "Identical phonetic representation"
+    elif query_sound in company_sound or company_sound in query_sound:
+        return "Partial phonetic overlap detected"
+    
+    return None
+
+def get_simple_phonetic(text):
+    """Get a simple phonetic representation of text"""
+    # Basic phonetic simplification
+    phonetic = text.replace('ph', 'f').replace('ck', 'k').replace('qu', 'kw')
+    phonetic = ''.join(c for c in phonetic if c.isalpha())
+    return phonetic
+
+def analyze_industry_context(query, company_name):
+    """Analyze industry context and business terminology"""
+    industry_keywords = {
+        'tech': ['technology', 'software', 'hardware', 'digital', 'computer'],
+        'finance': ['bank', 'financial', 'investment', 'insurance', 'credit'],
+        'healthcare': ['medical', 'health', 'hospital', 'clinic', 'pharmaceutical'],
+        'retail': ['store', 'shop', 'market', 'retail', 'commerce'],
+        'manufacturing': ['manufacturing', 'industrial', 'factory', 'production', 'machinery']
+    }
+    
+    query_industry = None
+    company_industry = None
+    
+    for industry, keywords in industry_keywords.items():
+        if any(keyword in query.lower() for keyword in keywords):
+            query_industry = industry
+        if any(keyword in company_name.lower() for keyword in keywords):
+            company_industry = industry
+    
+    if query_industry and company_industry:
+        if query_industry == company_industry:
+            return f"Both in {query_industry} industry - strong industry alignment"
+        else:
+            return f"Different industries: {query_industry} vs {company_industry}"
+    
+    return None
+
+def analyze_geographic_context(query, company_name):
+    """Analyze geographic context and location indicators"""
+    geographic_indicators = [
+        'national', 'international', 'global', 'worldwide', 'regional',
+        'local', 'state', 'city', 'county', 'district'
+    ]
+    
+    query_geo = [word for word in query.lower().split() if word in geographic_indicators]
+    company_geo = [word for word in company_name.lower().split() if word in geographic_indicators]
+    
+    if query_geo and company_geo:
+        if query_geo == company_geo:
+            return f"Same geographic scope: {', '.join(query_geo)}"
+        else:
+            return f"Different geographic scope: {', '.join(query_geo)} vs {', '.join(company_geo)}"
+    
+    return None
+
+def get_score_breakdown(score):
+    """Provide detailed breakdown of the semantic score"""
+    if score > 0.9:
+        return "Exceptional (90%+) - Nearly perfect semantic match"
+    elif score > 0.8:
+        return "Excellent (80-89%) - Very strong semantic relationship"
+    elif score > 0.7:
+        return "Very Good (70-79%) - Strong semantic relationship"
+    elif score > 0.6:
+        return "Good (60-69%) - Moderate semantic relationship"
+    elif score > 0.5:
+        return "Fair (50-59%) - Some semantic relationship"
+    elif score > 0.4:
+        return "Poor (40-49%) - Weak semantic relationship"
+    elif score > 0.3:
+        return "Very Poor (30-39%) - Very weak semantic relationship"
+    elif score > 0.2:
+        return "Minimal (20-29%) - Minimal semantic relationship"
+    else:
+        return "Negligible (<20%) - No meaningful semantic relationship"
+
+def get_search_quality_metrics(query, company_name, score):
+    """Provide search quality metrics and recommendations"""
+    metrics = []
+    
+    # Query length analysis
+    query_length = len(query.split())
+    if query_length < 2:
+        metrics.append("Short query - consider adding more context")
+    elif query_length > 5:
+        metrics.append("Long query - may be too specific")
+    else:
+        metrics.append("Optimal query length")
+    
+    # Company name length analysis
+    company_length = len(company_name.split())
+    if company_length > 8:
+        metrics.append("Long company name - may contain extra details")
+    
+    # Score confidence
+    if score > 0.7:
+        metrics.append("High confidence match")
+    elif score > 0.5:
+        metrics.append("Medium confidence match")
+    else:
+        metrics.append("Low confidence match - consider refining search")
+    
+    return ' | '.join(metrics)
+
 def load_company_data(force_reload=False):
     """Load company data and initialize the matcher"""
     global matcher, company_data_loaded, last_data_check
@@ -307,102 +518,6 @@ def generate_match_rationale(query, company_name, explanation, score):
         rationale += f"   • Overlap score: {explanation.get('overlap_score', 0):.3f}"
     
     return rationale
-
-def is_ordinal_relationship(word1, word2):
-    """Check if two words are ordinal number variations"""
-    ordinals = {
-        "eleventh": "11th", "twelfth": "12th", "thirteenth": "13th", "fourteenth": "14th",
-        "fifteenth": "15th", "sixteenth": "16th", "seventeenth": "17th", "eighteenth": "18th",
-        "nineteenth": "19th", "twentieth": "20th", "twenty-first": "21st", "twenty-second": "22nd"
-    }
-    
-    # Check direct mapping
-    if word1 in ordinals and word2 == ordinals[word1]:
-        return True
-    if word2 in ordinals and word1 == ordinals[word2]:
-        return True
-    
-    # Check numeric patterns
-    if word1.isdigit() and word2.endswith(('st', 'nd', 'rd', 'th')):
-        return True
-    if word2.isdigit() and word1.endswith(('st', 'nd', 'rd', 'th')):
-        return True
-    
-    return False
-
-def get_numeric_ordinal(word):
-    """Convert word ordinal to numeric form"""
-    ordinals = {
-        "eleventh": "11th", "twelfth": "12th", "thirteenth": "13th", "fourteenth": "14th",
-        "fifteenth": "15th", "sixteenth": "16th", "seventeenth": "17th", "eighteenth": "18th",
-        "nineteenth": "19th", "twentieth": "20th"
-    }
-    return ordinals.get(word, word)
-
-def get_word_ordinal(word):
-    """Convert numeric ordinal to word form"""
-    ordinals = {
-        "11th": "eleventh", "12th": "twelfth", "13th": "thirteenth", "14th": "fourteenth",
-        "15th": "fifteenth", "16th": "sixteenth", "17th": "seventeenth", "18th": "eighteenth",
-        "19th": "nineteenth", "20th": "twentieth"
-    }
-    return ordinals.get(word, word)
-
-def is_abbreviation_relationship(word1, word2):
-    """Check if one word is an abbreviation of another"""
-    if len(word1) < len(word2) and word1 in word2:
-        return True
-    if len(word2) < len(word1) and word2 in word1:
-        return True
-    return False
-
-def is_contraction_relationship(word1, word2):
-    """Check if words are contractions of each other"""
-    # Common contractions
-    contractions = {
-        "cant": "cannot", "dont": "do not", "wont": "will not", "isnt": "is not",
-        "arent": "are not", "wasnt": "was not", "werent": "were not", "hasnt": "has not",
-        "havent": "have not", "hadnt": "had not", "doesnt": "does not", "didnt": "did not"
-    }
-    
-    if word1 in contractions and word2 == contractions[word1]:
-        return True
-    if word2 in contractions and word1 == contractions[word2]:
-        return True
-    
-    return False
-
-def is_plural_relationship(word1, word2):
-    """Check if words are plural/singular forms of each other"""
-    if word1.endswith('s') and word1[:-1] == word2:
-        return True
-    if word2.endswith('s') and word2[:-1] == word1:
-        return True
-    return False
-
-def is_word_variation(word1, word2):
-    """Check for common word variations"""
-    # Common variations
-    variations = [
-        ("info", "information"), ("tech", "technical"), ("assoc", "association"),
-        ("corp", "corporation"), ("co", "company"), ("inc", "incorporated"),
-        ("ltd", "limited"), ("intl", "international"), ("mgmt", "management")
-    ]
-    
-    for var1, var2 in variations:
-        if (word1 == var1 and word2 == var2) or (word1 == var2 and word2 == var1):
-            return True
-    
-    return False
-
-def get_variation_type(word1, word2):
-    """Get the type of word variation"""
-    if len(word1) < len(word2):
-        return "abbreviation/expansion pair"
-    elif len(word2) < len(word1):
-        return "abbreviation/expansion pair"
-    else:
-        return "synonym pair"
 
 @app.route('/status')
 def status():
