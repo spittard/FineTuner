@@ -547,7 +547,8 @@ def main():
         
         for i, match in enumerate(matches, 1):
             score_percent = match['score'] * 100
-            print(f"{i:2d}. {match['name']:<40} {score_percent:5.1f}%")
+            match_type = match.get('match_type', 'unknown')
+            print(f"{i:2d}. {match['name']:<40} {score_percent:5.1f}% [{match_type}]")
         
         print("-" * 60)
         
@@ -556,10 +557,15 @@ def main():
             top_match = matches[0]
             explanation = matcher.explain_match(args.query, top_match['name'])
             print(f"\nExplanation for top match '{top_match['name']}':")
+            print(f"  Match type: {explanation.get('match_type', 'unknown')}")
             print(f"  Query tokens: {', '.join(explanation['query_tokens'])}")
             print(f"  Match tokens: {', '.join(explanation['match_tokens'])}")
             print(f"  Overlap: {', '.join(explanation['overlap'])}")
             print(f"  Overlap score: {explanation['overlap_score']:.3f}")
+            
+            # Show additional details for word overlap matches
+            if explanation.get('match_type') == 'word_overlap' and 'overlap_words' in explanation:
+                print(f"  Overlap words: {', '.join(explanation['overlap_words'])}")
     
     elif args.mode == 'cache-info':
         print("Company Matching Cache Information:")

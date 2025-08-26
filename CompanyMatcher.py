@@ -241,22 +241,100 @@ class CompanyMatcher:
         return True
 
     def match(self, query, top_k=10):
-        query_vec = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
-        scores, indices = self.index.search(query_vec, top_k)
-        results = [
-            {"name": self.original_company_names[i], "score": float(scores[0][j])}
-            for j, i in enumerate(indices[0])
-        ]
+        """Improved matching with hybrid approach: exact > word overlap > semantic similarity"""
+        query_lower = query.lower().strip()
+        query_words = set(query_lower.split())
+        
+        # Phase 1: Exact matches (highest priority)
+        exact_matches = []
+        for i, name in enumerate(self.original_company_names):
+            name_lower = name.lower()
+            if query_lower in name_lower or name_lower in query_lower:
+                exact_matches.append({
+                    "name": name,
+                    "score": 1.0,
+                    "match_type": "exact",
+                    "index": i
+                })
+        
+        # Phase 2: Word overlap matches (medium priority)
+        word_overlap_matches = []
+        for i, name in enumerate(self.original_company_names):
+            if i in [m["index"] for m in exact_matches]:  # Skip if already matched
+                continue
+                
+            name_lower = name.lower()
+            name_words = set(name_lower.split())
+            
+            # Calculate word overlap
+            overlap = query_words.intersection(name_words)
+            if len(overlap) > 0:
+                # Score based on overlap percentage
+                overlap_score = len(overlap) / max(len(query_words), len(name_words))
+                if overlap_score >= 0.3:  # Only include if significant overlap
+                    word_overlap_matches.append({
+                        "name": name,
+                        "score": overlap_score,
+                        "match_type": "word_overlap",
+                        "index": i,
+                        "overlap_words": list(overlap)
+                    })
+        
+        # Phase 3: Semantic similarity (lowest priority, only if no good matches)
+        semantic_matches = []
+        if len(exact_matches) == 0 and len(word_overlap_matches) == 0:
+            # Only use semantic similarity if no exact or word overlap matches
+            query_vec = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
+            scores, indices = self.index.search(query_vec, top_k)
+            for j, i in enumerate(indices[0]):
+                semantic_matches.append({
+                    "name": self.original_company_names[i],
+                    "score": float(scores[0][j]),
+                    "match_type": "semantic",
+                    "index": i
+                })
+        
+        # Combine and sort results
+        all_matches = exact_matches + word_overlap_matches + semantic_matches
+        
+        # Sort by score (exact matches will be first due to score=1.0)
+        all_matches.sort(key=lambda x: x["score"], reverse=True)
+        
+        # Return top_k results
+        results = all_matches[:top_k]
+        
+        # Store for explanation function
+        self._last_matches = results
+        
         return results
 
     def explain_match(self, query, match_name):
-        # Optional: show token overlap or keyword match
-        query_tokens = set(query.lower().split())
-        match_tokens = set(match_name.lower().split())
+        """Enhanced explanation with match type and reasoning"""
+        query_lower = query.lower().strip()
+        match_lower = match_name.lower().strip()
+        
+        # Find the match in our results to get match type
+        match_info = None
+        for match in self._last_matches if hasattr(self, '_last_matches') else []:
+            if match['name'] == match_name:
+                match_info = match
+                break
+        
+        # Basic token analysis
+        query_tokens = set(query_lower.split())
+        match_tokens = set(match_lower.split())
         overlap = query_tokens.intersection(match_tokens)
-        return {
-            "query_tokens": query_tokens,
-            "match_tokens": match_tokens,
-            "overlap": overlap,
-            "overlap_score": len(overlap) / max(len(query_tokens), 1)
+        
+        explanation = {
+            "query_tokens": list(query_tokens),
+            "match_tokens": list(match_tokens),
+            "overlap": list(overlap),
+            "overlap_score": len(overlap) / max(len(query_tokens), 1),
+            "match_type": match_info.get("match_type", "unknown") if match_info else "unknown"
         }
+        
+        # Add specific details based on match type
+        if match_info and match_info.get("match_type") == "word_overlap":
+            explanation["overlap_words"] = match_info.get("overlap_words", [])
+        
+        return explanation
