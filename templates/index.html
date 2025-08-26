@@ -260,6 +260,9 @@
                             <button type="button" class="btn btn-outline-secondary btn-sm" onclick="reloadData()" id="reloadBtn" style="display: none;">
                                 <i class="fas fa-sync-alt me-1"></i>Reload Data
                             </button>
+                            <button type="button" class="btn btn-outline-warning btn-sm ms-2" onclick="clearCache()" id="clearCacheBtn" style="display: none;">
+                                <i class="fas fa-broom me-1"></i>Clear Cache
+                            </button>
                             <span id="lastUpdated" class="text-muted small ms-2"></span>
                         </div>
                     </div>
@@ -322,6 +325,10 @@
                         statusText.textContent = `System ready - ${data.companies_loaded} companies loaded`;
                         reloadBtn.style.display = 'inline-block'; // Show reload button
                         
+                        // Show clear cache button
+                        const clearCacheBtn = document.getElementById('clearCacheBtn');
+                        clearCacheBtn.style.display = 'inline-block';
+                        
                         // Format the last updated time
                         if (data.last_updated) {
                             const date = new Date(data.last_updated * 1000);
@@ -333,6 +340,11 @@
                         indicator.className = 'status-indicator status-not-ready';
                         statusText.textContent = 'System not ready - ' + data.error;
                         reloadBtn.style.display = 'none'; // Hide reload button
+                        
+                        // Hide clear cache button
+                        const clearCacheBtn = document.getElementById('clearCacheBtn');
+                        clearCacheBtn.style.display = 'none';
+                        
                         lastUpdated.textContent = ''; // Clear last updated time
                     }
                 })
@@ -344,6 +356,10 @@
                     statusText.textContent = 'Error checking system status';
                     const reloadBtn = document.getElementById('reloadBtn');
                     reloadBtn.style.display = 'none'; // Hide reload button on error
+                    
+                    // Hide clear cache button on error
+                    const clearCacheBtn = document.getElementById('clearCacheBtn');
+                    clearCacheBtn.style.display = 'none';
                 });
         }
 
@@ -471,6 +487,50 @@
                 // Restore button state
                 reloadBtn.disabled = false;
                 reloadBtn.innerHTML = originalText;
+            });
+        }
+
+        function clearCache() {
+            const clearCacheBtn = document.getElementById('clearCacheBtn');
+            const originalText = clearCacheBtn.innerHTML;
+            
+            // Show loading state
+            clearCacheBtn.disabled = true;
+            clearCacheBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Clearing...';
+            
+            // Make clear cache request
+            fetch('/clear-cache', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Show success message
+                    const statusText = document.getElementById('statusText');
+                    statusText.textContent = data.message;
+                    
+                    // Update last updated time
+                    const lastUpdated = document.getElementById('lastUpdated');
+                    const now = new Date();
+                    lastUpdated.textContent = `Last updated: ${now.toLocaleString()}`;
+                    
+                    // Show temporary success message
+                    showSuccess('Cache cleared and data reloaded successfully!');
+                    
+                    // Hide results if any
+                    document.getElementById('resultsSection').style.display = 'none';
+                } else {
+                    showError('Failed to clear cache: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Clear cache error:', error);
+                showError('Cache clear failed. Please try again.');
+            })
+            .finally(() => {
+                // Restore button state
+                clearCacheBtn.disabled = false;
+                clearCacheBtn.innerHTML = originalText;
             });
         }
 

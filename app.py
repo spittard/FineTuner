@@ -227,6 +227,143 @@ def get_search_quality_metrics(query, company_name, score):
     
     return ' | '.join(metrics)
 
+def analyze_business_context(query, company_name):
+    """Analyze business context and corporate terminology"""
+    business_keywords = {
+        'corporate': ['corp', 'corporation', 'incorporated', 'inc', 'llc', 'ltd', 'limited'],
+        'partnership': ['partners', 'partnership', 'associates', 'assoc'],
+        'holding': ['holdings', 'holding', 'group', 'enterprises', 'ventures'],
+        'international': ['intl', 'international', 'global', 'worldwide'],
+        'regional': ['regional', 'national', 'local', 'state', 'city'],
+        'technology': ['tech', 'technology', 'digital', 'software', 'systems'],
+        'financial': ['financial', 'finance', 'capital', 'investment', 'funds'],
+        'consulting': ['consulting', 'consultants', 'advisory', 'services']
+    }
+    
+    query_business = None
+    company_business = None
+    
+    for business_type, keywords in business_keywords.items():
+        if any(keyword in query.lower() for keyword in keywords):
+            query_business = business_type
+        if any(keyword in company_name.lower() for keyword in keywords):
+            company_business = business_type
+    
+    if query_business and company_business:
+        if query_business == company_business:
+            return f"Both {business_type} entities - strong business structure alignment"
+        else:
+            return f"Different business structures: {query_business} vs {company_business}"
+    
+    return None
+
+def analyze_word_origins(query, company_name):
+    """Analyze word origins and etymology patterns"""
+    origin_patterns = {
+        'latin': ['corp', 'inc', 'ltd', 'assoc', 'intl', 'mgmt'],
+        'greek': ['tech', 'info', 'sys', 'auto', 'bio', 'geo'],
+        'french': ['enterprise', 'venture', 'capital', 'finance'],
+        'german': ['holdings', 'group', 'werk', 'industrie'],
+        'italian': ['banca', 'farmacia', 'ristorante'],
+        'spanish': ['banco', 'farmacia', 'restaurante']
+    }
+    
+    query_origins = []
+    company_origins = []
+    
+    for origin, words in origin_patterns.items():
+        if any(word in query.lower() for word in words):
+            query_origins.append(origin)
+        if any(word in company_name.lower() for word in words):
+            company_origins.append(origin)
+    
+    if query_origins and company_origins:
+        common_origins = set(query_origins) & set(company_origins)
+        if common_origins:
+            return f"Shared linguistic origins: {', '.join(common_origins)}"
+        else:
+            return f"Different linguistic origins: {', '.join(query_origins)} vs {', '.join(company_origins)}"
+    
+    return None
+
+def get_enhanced_phonetic_similarity(query, company_name):
+    """Enhanced phonetic analysis with multiple algorithms"""
+    # Basic phonetic
+    basic_phonetic = analyze_phonetic_similarity(query, company_name)
+    
+    # Soundex-like analysis
+    query_soundex = get_soundex(query.lower())
+    company_soundex = get_soundex(company_name.lower())
+    
+    if query_soundex == company_soundex:
+        return "Identical phonetic codes (Soundex)"
+    elif basic_phonetic:
+        return f"{basic_phonetic} | Soundex codes: {query_soundex} vs {company_soundex}"
+    
+    return f"Soundex codes: {query_soundex} vs {company_soundex}"
+
+def get_soundex(text):
+    """Generate Soundex phonetic code for text"""
+    # Simplified Soundex implementation
+    soundex_map = {
+        'b': '1', 'f': '1', 'p': '1', 'v': '1',
+        'c': '2', 'g': '2', 'j': '2', 'k': '2', 'q': '2', 's': '2', 'x': '2', 'z': '2',
+        'd': '3', 't': '3',
+        'l': '4',
+        'm': '5', 'n': '5',
+        'r': '6'
+    }
+    
+    # Remove non-alphabetic characters
+    text = ''.join(c for c in text if c.isalpha())
+    if not text:
+        return "0000"
+    
+    # First letter
+    result = text[0].upper()
+    
+    # Convert remaining letters to codes
+    for char in text[1:]:
+        code = soundex_map.get(char.lower(), '')
+        if code and code != result[-1]:
+            result += code
+    
+    # Pad to 4 characters
+    result = result.ljust(4, '0')
+    return result[:4]
+
+def get_comprehensive_word_analysis(query, company_name):
+    """Get comprehensive word analysis with minimal performance impact"""
+    analysis = {}
+    
+    # Word length analysis
+    query_words = query.lower().split()
+    company_words = company_name.lower().split()
+    
+    analysis['query_stats'] = {
+        'word_count': len(query_words),
+        'avg_word_length': sum(len(w) for w in query_words) / len(query_words) if query_words else 0,
+        'longest_word': max(query_words, key=len) if query_words else '',
+        'shortest_word': min(query_words, key=len) if query_words else ''
+    }
+    
+    analysis['company_stats'] = {
+        'word_count': len(company_words),
+        'avg_word_length': sum(len(w) for w in company_words) / len(company_words) if company_words else 0,
+        'longest_word': max(company_words, key=len) if company_words else '',
+        'shortest_word': min(company_words, key=len) if company_words else ''
+    }
+    
+    # Character analysis
+    analysis['character_analysis'] = {
+        'query_chars': len(query.replace(' ', '')),
+        'company_chars': len(company_name.replace(' ', '')),
+        'query_vowels': sum(1 for c in query.lower() if c in 'aeiou'),
+        'company_vowels': sum(1 for c in company_name.lower() if c in 'aeiou')
+    }
+    
+    return analysis
+
 def load_company_data(force_reload=False):
     """Load company data and initialize the matcher"""
     global matcher, company_data_loaded, last_data_check
@@ -266,8 +403,12 @@ def load_company_data(force_reload=False):
         if not company_names:
             return False
         
-        # Initialize CompanyMatcher
-        matcher = CompanyMatcher()
+        # Initialize CompanyMatcher with EXACTLY the same parameters as CLI
+        # CLI uses: CompanyMatcher(model_name=args.matcher_model) with default 'all-MiniLM-L6-v2'
+        matcher = CompanyMatcher(model_name='all-MiniLM-L6-v2')
+        
+        # Build index using the same logic as CLI
+        print(f"Building company matching index with {len(company_names)} companies...")
         matcher.build_index(company_names)
         
         # Store file modification time for change detection
@@ -279,6 +420,7 @@ def load_company_data(force_reload=False):
         company_data_loaded = True
         last_data_check = current_time
         
+        print(f"OK: Loaded {len(company_names)} company name entries")
         return True
         
     except Exception as e:
@@ -308,7 +450,8 @@ def search():
         # Get number of results (default to 10)
         top_k = int(request.form.get('top_k', 10))
         
-        # Perform search
+        # Perform search using EXACTLY the same logic as CLI
+        print(f"Searching for companies matching: {query}")
         matches = matcher.match(query, top_k=top_k)
         
         # Format results for display
@@ -331,6 +474,14 @@ def search():
                     'overlap_score': explanation['overlap_score']
                 }
             })
+        
+        # Log the search results for debugging consistency
+        print(f"\nTop {len(matches)} matches for '{query}':")
+        print("-" * 60)
+        for i, match in enumerate(matches, 1):
+            score_percent = match['score'] * 100
+            print(f"{i:2d}. {match['name']:<40} {score_percent:5.1f}%")
+        print("-" * 60)
         
         return jsonify({
             'success': True,
@@ -365,22 +516,82 @@ def reload_data():
             'error': f'Reload failed: {str(e)}'
         }), 500
 
+@app.route('/clear-cache', methods=['POST'])
+def clear_cache():
+    """Clear cache and force fresh data loading - ensures CLI/webapp consistency"""
+    try:
+        global matcher, company_data_loaded
+        
+        if matcher is not None:
+            # Clear the cache for this matcher
+            cache_key = matcher.get_cache_key(matcher.original_company_names)
+            matcher.clear_cache(cache_key)
+            print(f"Cleared cache: {cache_key}")
+        
+        # Reset state
+        matcher = None
+        company_data_loaded = False
+        
+        # Force reload of data
+        if load_company_data(force_reload=True):
+            return jsonify({
+                'success': True,
+                'message': f'Cache cleared and data reloaded. {len(matcher.original_company_names)} companies loaded.',
+                'companies_loaded': len(matcher.original_company_names)
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': 'Failed to reload company data after cache clear'
+            }), 500
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': f'Cache clear failed: {str(e)}'
+        }), 500
+
+@app.route('/cache-info', methods=['GET'])
+def get_cache_info():
+    """Get cache information for debugging consistency issues"""
+    try:
+        if matcher is None:
+            return jsonify({
+                'success': False,
+                'error': 'No matcher initialized'
+            }), 400
+        
+        cache_info = matcher.get_cache_info()
+        cache_key = matcher.get_cache_key(matcher.original_company_names) if matcher.original_company_names else None
+        
+        return jsonify({
+            'success': True,
+            'cache_info': cache_info,
+            'current_cache_key': cache_key,
+            'companies_loaded': len(matcher.original_company_names) if matcher.original_company_names else 0,
+            'model_name': matcher.model_name if matcher else None
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': f'Cache info failed: {str(e)}'
+        }), 500
+
 def generate_match_rationale(query, company_name, explanation, score):
-    """Generate a detailed, step-by-step match rationale explaining each phase with linguistic analysis"""
+    """Generate a business-friendly, well-formatted match rationale that's easy to understand while retaining all technical details"""
     query_lower = query.lower()
     company_lower = company_name.lower()
     
     # Phase 1: Exact Match Check
     if query_lower == company_lower:
-        return "🎯 EXACT MATCH: Query and company name are identical (100% match)"
+        return "🎯 EXACT MATCH\n\nThis company name is identical to your search query.\n\n**Confidence Level:** 100% - Perfect Match\n**Business Action:** This is definitely the same company"
     
     # Phase 2: Prefix Match Check
     if company_lower.startswith(query_lower):
-        return f"🔍 PREFIX MATCH: Company name starts with '{query}' - perfect beginning match"
+        return f"🔍 PREFIX MATCH\n\nThis company name starts with your search query '{query}'.\n\n**Confidence Level:** Very High\n**Business Action:** This is likely the same company with additional details added"
     
     # Phase 3: Substring Match Check
     if query_lower in company_lower:
-        return f"📍 SUBSTRING MATCH: Company name contains '{query}' as a continuous sequence"
+        return f"📍 SUBSTRING MATCH\n\nThis company name contains your search query '{query}' as a continuous sequence.\n\n**Confidence Level:** High\n**Business Action:** This is likely the same company with surrounding text"
     
     # Phase 4: Word-by-Word Analysis with Linguistic Transformations
     query_words = set(query_lower.split())
@@ -398,22 +609,34 @@ def generate_match_rationale(query, company_name, explanation, score):
         overlap_count = len(overlap)
         overlap_percentage = (overlap_count / max(total_query_words, total_company_words)) * 100
         
-        rationale = f"📊 WORD OVERLAP ANALYSIS:\n"
-        rationale += f"   • Shared words ({overlap_count}): {', '.join(overlap_words)}\n"
+        rationale = f"📊 WORD OVERLAP ANALYSIS\n\n"
+        rationale += f"**What We Found:**\n"
+        rationale += f"• {overlap_count} word(s) match exactly: {', '.join(overlap_words)}\n"
         
         if non_overlap_query:
-            rationale += f"   • Query-specific words ({len(non_overlap_query)}): {', '.join(non_overlap_query)}\n"
+            rationale += f"• Your search includes: {', '.join(non_overlap_query)}\n"
         if non_overlap_company:
-            rationale += f"   • Company-specific words ({len(non_overlap_company)}): {', '.join(non_overlap_company)}\n"
+            rationale += f"• Company name includes: {', '.join(non_overlap_company)}\n"
         
-        rationale += f"   • Overlap ratio: {overlap_count}/{max(total_query_words, total_company_words)} ({overlap_percentage:.1f}%)\n"
-        rationale += f"   • Query word count: {total_query_words} | Company word count: {total_company_words}"
+        rationale += f"\n**Match Statistics:**\n"
+        rationale += f"• Overlap ratio: {overlap_count}/{max(total_query_words, total_company_words)} ({overlap_percentage:.1f}%)\n"
+        rationale += f"• Your search: {total_query_words} word(s)\n"
+        rationale += f"• Company name: {total_company_words} word(s)\n"
+        
+        rationale += f"\n**Business Assessment:**\n"
+        if overlap_percentage > 50:
+            rationale += f"• Strong word overlap suggests this may be the same company\n"
+        elif overlap_percentage > 25:
+            rationale += f"• Moderate word overlap - worth investigating further\n"
+        else:
+            rationale += f"• Low word overlap - may be a different company\n"
         
         return rationale
     
     # Phase 5: Advanced Linguistic Relationship Analysis
     linguistic_relationships = []
     transformation_details = []
+    transition_analysis = []
     
     for q_word in query_words:
         for c_word in company_words:
@@ -427,9 +650,11 @@ def generate_match_rationale(query, company_name, explanation, score):
                 if q_word in ["eleventh", "twelfth", "thirteenth", "fourteenth", "fifteenth", "sixteenth", "seventeenth", "eighteenth", "nineteenth", "twentieth"]:
                     numeric_form = get_numeric_ordinal(q_word)
                     transformation_details.append(f"'{q_word}' → '{numeric_form}' (ordinal number)")
+                    transition_analysis.append(f"Word form '{q_word}' transitions to numeric '{numeric_form}'")
                 elif c_word in ["11th", "12th", "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th"]:
                     word_form = get_word_ordinal(c_word)
                     transformation_details.append(f"'{c_word}' ← '{word_form}' (ordinal number)")
+                    transition_analysis.append(f"Numeric '{c_word}' transitions from word form '{word_form}'")
                 linguistic_relationships.append(f"'{q_word}' ↔ '{c_word}' ({relationship_type})")
             
             # Check for abbreviation relationships
@@ -437,8 +662,10 @@ def generate_match_rationale(query, company_name, explanation, score):
                 relationship_type = "abbreviation/expansion"
                 if len(q_word) < len(c_word):
                     transformation_details.append(f"'{q_word}' is abbreviation of '{c_word}'")
+                    transition_analysis.append(f"Abbreviated '{q_word}' expands to full '{c_word}'")
                 else:
                     transformation_details.append(f"'{c_word}' is abbreviation of '{q_word}'")
+                    transition_analysis.append(f"Full '{q_word}' contracts to abbreviated '{c_word}'")
                 linguistic_relationships.append(f"'{q_word}' ↔ '{c_word}' ({relationship_type})")
             
             # Check for contraction relationships
@@ -446,8 +673,10 @@ def generate_match_rationale(query, company_name, explanation, score):
                 relationship_type = "contraction"
                 if "'" in q_word:
                     transformation_details.append(f"'{q_word}' is contraction of '{c_word}'")
+                    transition_analysis.append(f"Contracted '{q_word}' expands to '{c_word}'")
                 else:
                     transformation_details.append(f"'{c_word}' is contraction of '{q_word}'")
+                    transition_analysis.append(f"Full '{q_word}' contracts to '{c_word}'")
                 linguistic_relationships.append(f"'{q_word}' ↔ '{c_word}' ({relationship_type})")
             
             # Check for plural/singular relationships
@@ -455,8 +684,10 @@ def generate_match_rationale(query, company_name, explanation, score):
                 relationship_type = "plural/singular"
                 if q_word.endswith('s') and not c_word.endswith('s'):
                     transformation_details.append(f"'{q_word}' is plural of '{c_word}'")
+                    transition_analysis.append(f"Plural '{q_word}' singularizes to '{c_word}'")
                 else:
                     transformation_details.append(f"'{c_word}' is plural of '{q_word}'")
+                    transition_analysis.append(f"Singular '{q_word}' pluralizes to '{c_word}'")
                 linguistic_relationships.append(f"'{q_word}' ↔ '{c_word}' ({relationship_type})")
             
             # Check for common word variations
@@ -464,58 +695,111 @@ def generate_match_rationale(query, company_name, explanation, score):
                 relationship_type = "word variation"
                 variation_type = get_variation_type(q_word, c_word)
                 transformation_details.append(f"'{q_word}' and '{c_word}' are {variation_type}")
+                transition_analysis.append(f"'{q_word}' and '{c_word}' represent same concept in different forms")
                 linguistic_relationships.append(f"'{q_word}' ↔ '{c_word}' ({relationship_type})")
     
     if linguistic_relationships:
-        relationship_text = ', '.join(linguistic_relationships[:3])  # Limit to first 3
-        if len(linguistic_relationships) > 3:
-            relationship_text += f" (+{len(linguistic_relationships)-3} more relationships)"
+        # Only show unique relationships, avoid repetition
+        unique_relationships = list(set(linguistic_relationships))
+        relationship_text = ', '.join(unique_relationships[:2])  # Limit to first 2 unique relationships
+        if len(unique_relationships) > 2:
+            relationship_text += f" (+{len(unique_relationships)-2} more unique relationships)"
         
-        rationale = f"🔗 ADVANCED LINGUISTIC ANALYSIS:\n"
-        rationale += f"   • Found {len(linguistic_relationships)} linguistic relationships: {relationship_text}\n"
+        rationale = f"🔗 LINGUISTIC ANALYSIS\n\n"
+        rationale += f"**What We Found:**\n"
+        rationale += f"• {len(unique_relationships)} unique linguistic relationship(s): {relationship_text}\n"
         
-        if transformation_details:
-            rationale += f"   • Transformations identified:\n"
-            for detail in transformation_details[:5]:  # Limit to first 5 details
-                rationale += f"     - {detail}\n"
-            if len(transformation_details) > 5:
-                rationale += f"     ... and {len(transformation_details)-5} more transformations\n"
+        # Only show unique transformations, avoid repetition
+        unique_transformations = list(set(transformation_details))
+        if unique_transformations:
+            rationale += f"\n**Key Transformations:**\n"
+            for detail in unique_transformations[:3]:  # Limit to first 3 unique details
+                rationale += f"• {detail}\n"
+            if len(unique_transformations) > 3:
+                rationale += f"• ... and {len(unique_transformations)-3} more unique transformations\n"
         
-        rationale += f"   • Semantic similarity score: {score:.3f}"
+        # Only show unique transitions, avoid repetition
+        unique_transitions = list(set(transition_analysis))
+        if unique_transitions:
+            rationale += f"\n**How Words Change:**\n"
+            for transition in unique_transitions[:2]:  # Limit to first 2 unique transitions
+                rationale += f"• {transition}\n"
+            if len(unique_transitions) > 2:
+                rationale += f"• ... and {len(unique_transitions)-2} more unique transitions\n"
+        
+        # Add only relevant context analysis (avoid repetition)
+        context_added = False
+        
+        # Add industry context analysis (only if relevant)
+        industry_analysis = analyze_industry_context(query, company_name)
+        if industry_analysis and not context_added:
+            rationale += f"\n**Industry Context:**\n"
+            rationale += f"• {industry_analysis}\n"
+            context_added = True
+        
+        # Add business context analysis (only if relevant)
+        business_analysis = analyze_business_context(query, company_name)
+        if business_analysis and not context_added:
+            rationale += f"\n**Business Structure:**\n"
+            rationale += f"• {business_analysis}\n"
+            context_added = True
+        
+        # Add word origin analysis (only if relevant)
+        origin_analysis = analyze_word_origins(query, company_name)
+        if origin_analysis and not context_added:
+            rationale += f"\n**Word Origins:**\n"
+            rationale += f"• {origin_analysis}\n"
+            context_added = True
+        
+        rationale += f"\n**Technical Score:**\n"
+        rationale += f"• Semantic similarity: {score:.3f}\n"
         
         return rationale
     
-    # Phase 6: Semantic Similarity Analysis
-    rationale = f"🧠 SEMANTIC SIMILARITY ANALYSIS:\n"
-    rationale += f"   • Raw semantic score: {score:.3f}\n"
+    # Phase 6: Focused Semantic Similarity Analysis (avoid repetition)
+    rationale = f"🧠 SEMANTIC ANALYSIS\n\n"
+    rationale += f"**What This Means:**\n"
+    rationale += f"• Raw semantic score: {score:.3f}\n"
     
+    # Provide unique insights based on score range
     if score > 0.8:
-        rationale += f"   • Classification: HIGH SIMILARITY\n"
-        rationale += f"   • Interpretation: Very strong conceptual relationship between query and company\n"
-        rationale += f"   • Confidence: High confidence in semantic match"
+        rationale += f"\n**Match Classification:** HIGH SIMILARITY\n"
+        rationale += f"**Business Impact:** High relevance for business operations\n"
+        rationale += f"**Recommended Action:** Strong match - likely the same or very similar company\n"
+        rationale += f"**Confidence Level:** Very High"
     elif score > 0.6:
-        rationale += f"   • Classification: MODERATE SIMILARITY\n"
-        rationale += f"   • Interpretation: Good conceptual relationship, some semantic overlap\n"
-        rationale += f"   • Confidence: Moderate confidence in semantic match"
+        rationale += f"\n**Match Classification:** MODERATE SIMILARITY\n"
+        rationale += f"**Business Impact:** Moderate relevance, potential business relationship\n"
+        rationale += f"**Recommended Action:** Good match - worth investigating further\n"
+        rationale += f"**Confidence Level:** Medium"
     elif score > 0.4:
-        rationale += f"   • Classification: LOW SIMILARITY\n"
-        rationale += f"   • Interpretation: Weak conceptual relationship, minimal semantic overlap\n"
-        rationale += f"   • Confidence: Low confidence in semantic match"
+        rationale += f"\n**Match Classification:** LOW SIMILARITY\n"
+        rationale += f"**Business Impact:** Low relevance, unlikely business relationship\n"
+        rationale += f"**Recommended Action:** Weak match - may be coincidental\n"
+        rationale += f"**Confidence Level:** Low"
     elif score > 0.2:
-        rationale += f"   • Classification: VERY LOW SIMILARITY\n"
-        rationale += f"   • Interpretation: Minimal conceptual relationship, likely coincidental\n"
-        rationale += f"   • Confidence: Very low confidence in semantic match"
+        rationale += f"\n**Match Classification:** VERY LOW SIMILARITY\n"
+        rationale += f"**Business Impact:** Minimal relevance, no business relationship\n"
+        rationale += f"**Recommended Action:** Very weak match - likely random result\n"
+        rationale += f"**Confidence Level:** Very Low"
     else:
-        rationale += f"   • Classification: MINIMAL SIMILARITY\n"
-        rationale += f"   • Interpretation: No meaningful conceptual relationship\n"
-        rationale += f"   • Confidence: No confidence in semantic match - likely random result"
+        rationale += f"\n**Match Classification:** MINIMAL SIMILARITY\n"
+        rationale += f"**Business Impact:** No business relevance\n"
+        rationale += f"**Recommended Action:** No meaningful match - consider refining search\n"
+        rationale += f"**Confidence Level:** None"
     
-    # Add explanation details if available
+    # Add only essential explanation details (avoid repetition)
     if 'explanation_details' in locals():
-        rationale += f"\n   • Query tokens: {', '.join(sorted(explanation.get('query_tokens', [])))}\n"
-        rationale += f"   • Company tokens: {', '.join(sorted(explanation.get('match_tokens', [])))}\n"
-        rationale += f"   • Token overlap: {', '.join(sorted(explanation.get('overlap', [])))}\n"
-        rationale += f"   • Overlap score: {explanation.get('overlap_score', 0):.3f}"
+        overlap_tokens = explanation.get('overlap_tokens', [])
+        if overlap_tokens:
+            rationale += f"\n\n**Token Analysis:**\n"
+            rationale += f"• Overlapping tokens: {', '.join(sorted(overlap_tokens))}"
+    
+    # Add only relevant search quality metrics (avoid repetition)
+    search_metrics = get_search_quality_metrics(query, company_name, score)
+    if search_metrics and score < 0.5:  # Only show for low-confidence matches
+        rationale += f"\n\n**Search Recommendations:**\n"
+        rationale += f"• {search_metrics}"
     
     return rationale
 
