@@ -64,3 +64,4 @@ Thumbs.db
 *.npz
 *.faiss
 *.index
+companies.json

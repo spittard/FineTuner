@@ -13,6 +13,7 @@ param(
     [switch]$TrustedConnection = $true,
     [string]$User = "",
     [string]$Password = "",
+    [int]$MaxRows = 0,
     [switch]$Help
 )
 
@@ -34,6 +35,7 @@ PARAMETERS:
     -TrustedConnection         Use Windows Authentication (Trusted_Connection=yes) [DEFAULT]
     -User <string>             SQL Server username (for SQL Authentication)
     -Password <string>         SQL Server password (for SQL Authentication)
+    -MaxRows <int>             Maximum number of rows to extract (default: 0 for all)
     -Help                      Show this help message
 
 EXAMPLES:
@@ -52,10 +54,17 @@ EXAMPLES:
     # Use custom ODBC driver with Windows Authentication
     .\CreateDataset.ps1 -Server "localhost" -Database "CompanyDB" -Table "Companies" -Column "CompanyName" -OutputFile "companies.json" -Driver "ODBC Driver 18 for SQL Server" -TrustedConnection
 
+    # Limit to 1000 rows with Windows Authentication
+    .\CreateDataset.ps1 -Server "localhost" -Database "CompanyDB" -Table "Companies" -Column "CompanyName" -OutputFile "companies.json" -TrustedConnection -MaxRows 1000
+
+    # Limit to 500 rows with SQL Authentication
+    .\CreateDataset.ps1 -Server "localhost" -Database "CompanyDB" -Table "Companies" -Column "CompanyName" -OutputFile "companies.json" -User "sa" -Password "password" -MaxRows 500
+
 NOTES:
     - By default, Windows Authentication (TrustedConnection) is used
     - Use -User and -Password for SQL Authentication
     - Table names can include schemas (e.g., "SchemaName.TableName")
+    - Use -MaxRows to limit the number of rows extracted (0 = all rows)
     - The script will prompt for missing required parameters
     - Connection testing is available to verify database access before extraction
 
@@ -387,7 +396,8 @@ function Build-FineTunerCommand {
         [int]$Port,
         [bool]$TrustedConnection,
         [string]$User,
-        [string]$Password
+        [string]$Password,
+        [int]$MaxRows
     )
     
     $command = "python FineTuner.py --mode create-dataset --db-type sqlserver"
@@ -402,6 +412,7 @@ function Build-FineTunerCommand {
     if ($TrustedConnection) { $command += " --trusted-connection" }
     if ($User) { $command += " --db-user `"$User`"" }
     if ($Password) { $command += " --db-password `"$Password`"" }
+    if ($MaxRows -gt 0) { $command += " --max-rows $MaxRows" }
     
     return $command
 }
@@ -417,7 +428,8 @@ function Show-Summary {
         [int]$Port,
         [bool]$TrustedConnection,
         [string]$User,
-        [string]$Password
+        [string]$Password,
+        [int]$MaxRows
     )
     
     Write-Host "`n[INFO] Configuration Summary:" -ForegroundColor Cyan
@@ -428,6 +440,7 @@ function Show-Summary {
     Write-Host "   Output File: $OutputFile" -ForegroundColor White
     Write-Host "   Driver: $Driver" -ForegroundColor White
     Write-Host "   Port: $Port" -ForegroundColor White
+    Write-Host "   Max Rows: $MaxRows" -ForegroundColor White
     
     if ($TrustedConnection) {
         Write-Host "   Authentication: Windows (Trusted Connection)" -ForegroundColor White
@@ -528,6 +541,7 @@ if (-not $Database) { $Database = Get-UserInput "Enter database name" }
 if (-not $Table) { $Table = Get-UserInput "Enter table name" }
 if (-not $Column) { $Column = Get-UserInput "Enter column name containing company names" }
 if (-not $OutputFile) { $OutputFile = Get-UserInput "Enter output JSON file path" "training_data.json" }
+if ($MaxRows -eq 0) { $MaxRows = Get-UserInput "Enter maximum number of rows to extract (0 for all)" 0 }
 
 # Handle authentication if not specified
 if (-not $TrustedConnection -and -not $User) {
@@ -538,7 +552,7 @@ if (-not $TrustedConnection -and -not $User) {
 }
 
 # Show configuration summary
-Show-Summary -Server $Server -Database $Database -Table $Table -Column $Column -OutputFile $OutputFile -Driver $Driver -Port $Port -TrustedConnection $TrustedConnection -User $User -Password $Password
+Show-Summary -Server $Server -Database $Database -Table $Table -Column $Column -OutputFile $OutputFile -Driver $Driver -Port $Port -TrustedConnection $TrustedConnection -User $User -Password $Password -MaxRows $MaxRows
 
 # Ask for confirmation
 Write-Host "`n[QUESTION] Do you want to proceed with this configuration? (Y/N)" -ForegroundColor Yellow
@@ -565,7 +579,7 @@ if (-not (Test-DatabaseObjects -Server $Server -Database $Database -Table $Table
 }
 
 # Build and execute the FineTuner command
-$fineTunerCommand = Build-FineTunerCommand -Server $Server -Database $Database -Table $Table -Column $Column -OutputFile $OutputFile -Driver $Driver -Port $Port -TrustedConnection $TrustedConnection -User $User -Password $Password
+$fineTunerCommand = Build-FineTunerCommand -Server $Server -Database $Database -Table $Table -Column $Column -OutputFile $OutputFile -Driver $Driver -Port $Port -TrustedConnection $TrustedConnection -User $User -Password $Password -MaxRows $MaxRows
 
 Invoke-FineTunerWithErrorHandling -Command $fineTunerCommand
 

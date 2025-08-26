@@ -1,33 +1,66 @@
 import argparse
 import json
 import os
-import torch
-
-# Try to import Unsloth, fall back to transformers if not available
-try:
-    from unsloth import FastLanguageModel
-    UNSLOTH_AVAILABLE = True
-except (ImportError, NotImplementedError):
-    UNSLOTH_AVAILABLE = False
-    from transformers import (
-        AutoModelForCausalLM, AutoTokenizer, TrainingArguments, Trainer,
-        DataCollatorForLanguageModeling
-    )
-    from datasets import Dataset
+from typing import List, Dict, Any
 
 # Import CreateDataSet from separate file
 from CreateDataSet import CreateDataSet
 
-# Import CompanyMatcher for company matching functionality
-from CompanyMatcher import CompanyMatcher
+# Global flag for ML dependencies
+ML_DEPENDENCIES_AVAILABLE = False
+COMPANY_MATCHER_AVAILABLE = False
+
+def check_ml_dependencies():
+    """Check if ML dependencies are available"""
+    global ML_DEPENDENCIES_AVAILABLE
+    
+    try:
+        import torch
+        from transformers import (
+            AutoModelForCausalLM, AutoTokenizer, TrainingArguments, Trainer,
+            DataCollatorForLanguageModeling
+        )
+        from datasets import Dataset
+        
+        # Try to import Unsloth
+        try:
+            from unsloth import FastLanguageModel
+            UNSLOTH_AVAILABLE = True
+        except (ImportError, NotImplementedError):
+            UNSLOTH_AVAILABLE = False
+        
+        ML_DEPENDENCIES_AVAILABLE = True
+        return UNSLOTH_AVAILABLE
+    except ImportError:
+        ML_DEPENDENCIES_AVAILABLE = False
+        return False
+
+def check_company_matcher():
+    """Check if CompanyMatcher dependencies are available"""
+    global COMPANY_MATCHER_AVAILABLE
+    
+    try:
+        from CompanyMatcher import CompanyMatcher
+        COMPANY_MATCHER_AVAILABLE = True
+        return True
+    except ImportError:
+        COMPANY_MATCHER_AVAILABLE = False
+        return False
 
 class FineTuner:
     def __init__(self,
                  model_name="microsoft/DialoGPT-small",
                  max_seq_length=2048,
-                 dtype=torch.float32,
+                 dtype=None,
                  load_in_4bit=True,
                  device="cpu"):
+        if not ML_DEPENDENCIES_AVAILABLE:
+            raise ImportError("ML dependencies not available. Please install torch, transformers, and datasets.")
+        
+        import torch
+        if dtype is None:
+            dtype = torch.float32
+            
         self.model_name = model_name
         self.max_seq_length = max_seq_length
         self.dtype = dtype
@@ -35,10 +68,20 @@ class FineTuner:
         self.device = device
         self.model = None
         self.tokenizer = None
-        self.using_unsloth = UNSLOTH_AVAILABLE
+        
+        # Check Unsloth availability
+        try:
+            from unsloth import FastLanguageModel
+            self.using_unsloth = True
+        except (ImportError, NotImplementedError):
+            self.using_unsloth = False
 
     def load_model(self):
         if self.using_unsloth:
+            import torch
+            from transformers import AutoTokenizer
+            from unsloth import FastLanguageModel
+            
             self.model, self.tokenizer = FastLanguageModel.from_pretrained(
                 model_name=self.model_name,
                 max_seq_length=self.max_seq_length,
@@ -51,6 +94,9 @@ class FineTuner:
             print("WARNING: Unsloth not available (requires NVIDIA/Intel GPU)")
             print("INFO: Falling back to standard transformers library")
             print("TIP: For better performance, consider using a GPU-enabled system")
+            import torch
+            from transformers import AutoTokenizer, AutoModelForCausalLM
+            
             self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
             self.model = AutoModelForCausalLM.from_pretrained(
                 self.model_name,
@@ -67,6 +113,10 @@ class FineTuner:
         Expects a list of dicts: [{"Company Name": "Company Name"}, ...]
         """
         if self.using_unsloth:
+            import torch
+            from transformers import AutoTokenizer
+            from datasets import Dataset
+            
             # For Unsloth, format as instruction-following data
             formatted_data = []
             for item in data:
@@ -92,7 +142,11 @@ class FineTuner:
             
             # Simple tokenization without labels - let the data collator handle everything
             def tokenize_function(examples):
-                return self.tokenizer(
+                import torch
+                from transformers import AutoTokenizer
+                
+                tokenizer = AutoTokenizer.from_pretrained(self.model_name) # Use self.model_name here
+                return tokenizer(
                     examples["text"],
                     truncation=True,
                     padding=False,
@@ -116,6 +170,10 @@ class FineTuner:
                   output_dir="fine_tuned_model"):
         
         if self.using_unsloth:
+            import torch
+            from transformers import TrainingArguments, Trainer, DataCollatorForLanguageModeling
+            from unsloth import FastLanguageModel
+            
             self.model = FastLanguageModel.finetune(
                 model=self.model,
                 tokenizer=self.tokenizer,
@@ -172,11 +230,14 @@ class FineTuner:
             self.tokenizer.save_pretrained(output_dir)
 
     def predict(self, prompt, max_new_tokens=10):
+        import torch
+        from transformers import AutoTokenizer
+        
         inputs = self.tokenizer(prompt, return_tensors="pt").to(self.device)
         outputs = self.model.generate(**inputs, max_new_tokens=max_new_tokens)
         return self.tokenizer.decode(outputs[0], skip_special_tokens=True)
     
-    def match_companies(self, query, company_names, top_k=10, matcher_model='all-MiniLM-L6-v2'):
+    def match_companies(self, query: str, company_names: List[str], top_k: int = 10, matcher_model: str = 'all-MiniLM-L6-v2') -> List[Dict[str, Any]]:
         """
         Match a query against a list of company names using CompanyMatcher
         
@@ -187,15 +248,21 @@ class FineTuner:
             matcher_model: Sentence transformer model to use
             
         Returns:
-            List of match dictionaries with 'name' and 'score' keys
+            List of dictionaries with match information
         """
+        if not check_company_matcher():
+            print("ERROR: CompanyMatcher not available. Please install sentence-transformers: pip install sentence-transformers")
+            return []
+        
         try:
+            from CompanyMatcher import CompanyMatcher
+            
             # Initialize CompanyMatcher
             matcher = CompanyMatcher(model_name=matcher_model)
-            matcher.build_index(company_names)
             
             # Perform matching
-            matches = matcher.match(query, top_k=top_k)
+            matches = matcher.find_matches(query, company_names, top_k=top_k)
+            
             return matches
             
         except Exception as e:
@@ -267,6 +334,7 @@ def main():
     parser.add_argument('--table-name', help='Table name to extract from')
     parser.add_argument('--column-name', help='Column name containing company names')
     parser.add_argument('--output-file', help='Output JSON file path')
+    parser.add_argument('--max-rows', type=int, help='Maximum number of rows to extract from database (default: all rows)')
     
     # Company matching configuration
     parser.add_argument('--query', help='Company name to search for in match mode')
@@ -353,7 +421,8 @@ def main():
             success = dataset_creator.create_dataset(
                 args.table_name,
                 args.column_name,
-                args.output_file
+                args.output_file,
+                max_rows=args.max_rows
             )
             
             if success:
@@ -364,20 +433,38 @@ def main():
         
         return
     
-    # Check if Unsloth is available
-    if not UNSLOTH_AVAILABLE:
-        print("⚠️  Unsloth not available (requires NVIDIA/Intel GPU)")
-        print("📚 Falling back to standard transformers library")
-        print("💡 For better performance, consider using a GPU-enabled system")
-        print()
+    # For other modes, check ML dependencies
+    if args.mode in ['train', 'predict']:
+        unsloth_available = check_ml_dependencies()
+        
+        if not ML_DEPENDENCIES_AVAILABLE:
+            print("⚠️  ML dependencies not available (requires torch, transformers, and datasets)")
+            print("📚 Cannot proceed with training or prediction")
+            print("💡 For full ML features, please install: pip install torch transformers datasets")
+            return
+        
+        if not unsloth_available:
+            print("⚠️  Unsloth not available (requires NVIDIA/Intel GPU)")
+            print("📚 Falling back to standard transformers library")
+            print("💡 For better performance, consider using a GPU-enabled system")
+            print()
     
-    # Initialize FineTuner
-    fine_tuner = FineTuner(
-        model_name=args.model_name,
-        max_seq_length=args.max_seq_length,
-        device=args.device,
-        load_in_4bit=args.load_in_4bit
-    )
+    # Check CompanyMatcher availability for match mode
+    if args.mode == 'match':
+        if not check_company_matcher():
+            print("⚠️  CompanyMatcher not available (requires sentence-transformers)")
+            print("📚 Cannot proceed with company matching")
+            print("💡 For company matching features, please install: pip install sentence-transformers")
+            return
+    
+    # Initialize FineTuner for training/prediction modes
+    if args.mode in ['train', 'predict']:
+        fine_tuner = FineTuner(
+            model_name=args.model_name,
+            max_seq_length=args.max_seq_length,
+            device=args.device,
+            load_in_4bit=args.load_in_4bit
+        )
     
     if args.mode == 'train':
         if not args.dataset:

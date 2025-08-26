@@ -65,13 +65,14 @@ class CreateDataSet:
             print("TIP: Currently only supports 'sqlserver'")
             return False
     
-    def extract_data(self, table_name: str, column_name: str) -> List[Dict[str, str]]:
+    def extract_data(self, table_name: str, column_name: str, max_rows: Optional[int] = None) -> List[Dict[str, str]]:
         """
         Extract data from database table and format for FineTuner
         
         Args:
             table_name: Name of the table to extract from (can include schema)
             column_name: Name of the column containing company names
+            max_rows: Maximum number of rows to extract (None for all rows)
             
         Returns:
             List of dictionaries in the format [{"Company Name": "value"}, ...]
@@ -89,10 +90,16 @@ class CreateDataSet:
                 schema_name = table_parts[0]
                 actual_table_name = table_parts[1]
                 # SQL Server query with proper bracket notation for schema-qualified tables
-                query = f"SELECT DISTINCT [{column_name}] FROM [{schema_name}].[{actual_table_name}] WHERE [{column_name}] IS NOT NULL AND [{column_name}] != ''"
+                if max_rows:
+                    query = f"SELECT TOP {max_rows} [{column_name}] FROM (SELECT DISTINCT [{column_name}] FROM [{schema_name}].[{actual_table_name}] WHERE [{column_name}] IS NOT NULL AND [{column_name}] != '') AS distinct_data"
+                else:
+                    query = f"SELECT DISTINCT [{column_name}] FROM [{schema_name}].[{actual_table_name}] WHERE [{column_name}] IS NOT NULL AND [{column_name}] != ''"
             else:
                 # SQL Server query with proper bracket notation for default schema tables
-                query = f"SELECT DISTINCT [{column_name}] FROM [{table_name}] WHERE [{column_name}] IS NOT NULL AND [{column_name}] != ''"
+                if max_rows:
+                    query = f"SELECT TOP {max_rows} [{column_name}] FROM (SELECT DISTINCT [{column_name}] FROM [{table_name}] WHERE [{column_name}] IS NOT NULL AND [{column_name}] != '') AS distinct_data"
+                else:
+                    query = f"SELECT DISTINCT [{column_name}] FROM [{table_name}] WHERE [{column_name}] IS NOT NULL AND [{column_name}] != ''"
             
             cursor.execute(query)
             results = cursor.fetchall()
@@ -105,7 +112,8 @@ class CreateDataSet:
                 if company_name:  # Only add non-empty names
                     formatted_data.append({"Company Name": company_name})
             
-            print(f"OK: Extracted {len(formatted_data)} unique company names from {table_name}.{column_name}")
+            limit_info = f" (limited to {max_rows} rows)" if max_rows else ""
+            print(f"OK: Extracted {len(formatted_data)} unique company names from {table_name}.{column_name}{limit_info}")
             return formatted_data
             
         except Exception as e:
@@ -134,7 +142,7 @@ class CreateDataSet:
             print(f"ERROR: Error saving to JSON: {e}")
             return False
     
-    def create_dataset(self, table_name: str, column_name: str, output_file: str) -> bool:
+    def create_dataset(self, table_name: str, column_name: str, output_file: str, max_rows: Optional[int] = None) -> bool:
         """
         Complete workflow: extract data and save to JSON
         
@@ -142,11 +150,12 @@ class CreateDataSet:
             table_name: Name of the table to extract from
             column_name: Name of the column containing company names
             output_file: Path to output JSON file
+            max_rows: Maximum number of rows to extract (None for all rows)
             
         Returns:
             True if successful, False otherwise
         """
-        data = self.extract_data(table_name, column_name)
+        data = self.extract_data(table_name, column_name, max_rows)
         if not data:
             return False
         
@@ -173,11 +182,12 @@ if __name__ == "__main__":
     print("dataset_creator = CreateDataSet('sqlserver')")
     print("dataset_creator.connect('mydb', server='localhost', trusted_connection=True)")
     print("dataset_creator.create_dataset('companies', 'company_name', 'output.json')")
+    print("dataset_creator.create_dataset('companies', 'company_name', 'output.json', max_rows=1000)")
     print("\nSQL Server with Windows Authentication:")
     print("dataset_creator = CreateDataSet('sqlserver')")
     print("dataset_creator.connect('mydb', server='localhost', trusted_connection=True)")
-    print("dataset_creator.create_dataset('companies', 'company_name', 'output.json')")
+    print("dataset_creator.create_dataset('companies', 'company_name', 'output.json', max_rows=500)")
     print("\nSQL Server with SQL Authentication:")
     print("dataset_creator = CreateDataSet('sqlserver')")
     print("dataset_creator.connect('mydb', server='localhost', user='sa', password='password')")
-    print("dataset_creator.create_dataset('companies', 'company_name', 'output.json')")
+    print("dataset_creator.create_dataset('companies', 'company_name', 'output.json', max_rows=2000)")

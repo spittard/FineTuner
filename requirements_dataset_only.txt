@@ -1,0 +1,8 @@
+# Minimal requirements for dataset creation functionality only
+# This excludes heavy ML dependencies like torch, transformers, unsloth
+
+# Database connectivity
+pyodbc==4.0.39
+
+# Basic Python modules (usually included with Python)
+# json, os, argparse, typing - no installation needed
