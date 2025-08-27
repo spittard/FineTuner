@@ -403,9 +403,11 @@ def load_company_data(force_reload=False):
             load_company_data._loading = False
             return False
         
+        filename = 'companies.json'
+        
         # Load company names from the dataset
-        print("📁 Loading company data from companies.json...")
-        with open('companies.json', 'r', encoding='utf-8') as f:
+        print(f"Loading company data from {filename}...")
+        with open(filename, 'r', encoding='utf-8') as f:
             data = json.load(f)
         
         print(f"   Found {len(data):,} total entries in file")
@@ -424,28 +426,28 @@ def load_company_data(force_reload=False):
             load_company_data._loading = False
             return False
         
-        print(f"   ✓ Extracted {len(company_names):,} company names")
+        print(f"   Extracted {len(company_names):,} company names")
         
         # Initialize CompanyMatcher with EXACTLY the same parameters as CLI
         # CLI uses: CompanyMatcher(model_name=args.matcher_model) with default 'all-MiniLM-L6-v2'
-        print("🤖 Initializing CompanyMatcher...")
+        print("Initializing CompanyMatcher...")
         matcher = CompanyMatcher(model_name='all-MiniLM-L6-v2')
         
         # Build index using the same logic as CLI
-        print(f"🔨 Building company matching index with {len(company_names):,} companies...")
+        print(f"Building company matching index with {len(company_names):,} companies...")
         matcher.build_index(company_names)
         
         # Store file modification time for change detection
         try:
-            matcher._last_file_mtime = os.path.getmtime('companies.json')
+            matcher._last_file_mtime = os.path.getmtime(filename)
         except:
             matcher._last_file_mtime = 0
         
         company_data_loaded = True
         last_data_check = current_time
         
-        print(f"🎉 SUCCESS: Loaded {len(company_names):,} company name entries")
-        print(f"🚀 Webapp is now ready for company matching!")
+        print(f"SUCCESS: Loaded {len(company_names):,} company name entries")
+        print(f"Webapp is now ready for company matching!")
         load_company_data._loading = False
         return True
         
@@ -617,15 +619,15 @@ def generate_match_rationale(query, company_name, explanation, score):
     
     # Phase 1: Exact Match Check
     if query_lower == company_lower:
-        return "🎯 PERFECT MATCH\n\n**What This Means:**\nThis is exactly the same company name you're looking for.\n\n**Action Required:**\n• Use this match - no further checking needed\n• This is 100% the same company\n\n**Why This Happens:**\n• Someone entered the company name exactly as it appears in your system\n• This is the ideal scenario for data entry"
+        return "PERFECT MATCH\n\n**What This Means:**\nThis is exactly the same company name you're looking for.\n\n**Action Required:**\n• Use this match - no further checking needed\n• This is 100% the same company\n\n**Why This Happens:**\n• Someone entered the company name name exactly as it appears in your system\n• This is the ideal scenario for data entry"
     
     # Phase 2: Prefix Match Check
     if company_lower.startswith(query_lower):
-        return f"🔍 PREFIX MATCH\n\n**What This Means:**\nThis company name starts with '{query}' and has additional information added.\n\n**Action Required:**\n• This is likely the same company with extra details\n• Check if the additional words are just descriptive (like 'Inc', 'LLC', 'Corp')\n• If yes, use this match\n\n**Why This Happens:**\n• Someone entered just the core company name\n• Your system has the full legal name\n• Common in business databases where legal names include extra terms"
+        return f"PREFIX MATCH\n\n**What This Means:**\nThis company name starts with '{query}' and has additional information added.\n\n**Action Required:**\n• This is likely the same company with extra details\n• Check if the additional words are just descriptive (like 'Inc', 'LLC', 'Corp')\n• If yes, use this match\n\n**Why This Happens:**\n• Someone entered just the core company name\n• Your system has the full legal name\n• Common in business databases where legal names include extra terms"
     
     # Phase 3: Substring Match Check
     if query_lower in company_lower:
-        return f"📍 SUBSTRING MATCH\n\n**What This Means:**\nThis company name contains '{query}' somewhere within it.\n\n**Action Required:**\n• This is likely the same company\n• Check if the surrounding words make sense\n• If yes, use this match\n\n**Why This Happens:**\n• Someone entered a partial company name\n• Your system has the complete name\n• Common when people remember only part of a company name"
+        return f"SUBSTRING MATCH\n\n**What This Means:**\nThis company name contains '{query}' somewhere within it.\n\n**Action Required:**\n• This is likely the same company\n• Check if the surrounding words make sense\n• If yes, use this match\n\n**Why This Happens:**\n• Someone entered a partial company name\n• Your system has the complete name\n• Common when people remember only part of a company name"
     
     # Phase 4: Word-by-Word Analysis
     query_words = set(query_lower.split())
@@ -643,7 +645,7 @@ def generate_match_rationale(query, company_name, explanation, score):
         overlap_count = len(overlap)
         overlap_percentage = (overlap_count / max(total_query_words, total_company_words)) * 100
         
-        rationale = f"📊 WORD OVERLAP MATCH\n\n**What This Means:**\n{overlap_count} word(s) match exactly between your search and this company.\n\n**Matching Words:**\n• {', '.join(overlap_words)}\n"
+        rationale = f"WORD OVERLAP MATCH\n\n**What This Means:**\n{overlap_count} word(s) match exactly between your search and this company.\n\n**Matching Words:**\n• {', '.join(overlap_words)}\n"
         
         if non_overlap_query:
             rationale += f"\n**Your Search Also Includes:**\n• {', '.join(non_overlap_query)}\n"
@@ -735,7 +737,7 @@ def generate_match_rationale(query, company_name, explanation, score):
         unique_transformations = list(set(transformation_details))
         unique_examples = list(set(practical_examples))
         
-        rationale = f"🔗 WORD VARIATION MATCH\n\n**What This Means:**\nThe company names use different forms of the same words.\n\n**Key Differences Found:**\n"
+        rationale = f"WORD VARIATION MATCH\n\n**What This Means:**\nThe company names use different forms of the same words.\n\n**Key Differences Found:**\n"
         for detail in unique_transformations[:3]:
             rationale += f"• {detail}\n"
         
@@ -748,7 +750,7 @@ def generate_match_rationale(query, company_name, explanation, score):
         return rationale
     
     # Phase 6: Semantic Similarity Analysis
-    rationale = f"🧠 MEANING-BASED MATCH\n\n**What This Means:**\nThe system found a match based on the meaning of the words, not exact spelling.\n\n**Match Confidence:**\n"
+    rationale = f"MEANING-BASED MATCH\n\n**What This Means:**\nThe system found a match based on the meaning of the words, not exact spelling.\n\n**Match Confidence:**\n"
     
     if score > 0.8:
         rationale += f"• VERY HIGH confidence ({score:.0%})\n"

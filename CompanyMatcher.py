@@ -11,7 +11,7 @@ class CompanyMatcher:
         if model_name == 'all-MiniLM-L6-v2':
             # Use the absolute fastest model available - 10x+ speed boost
             ultra_fast_model = 'paraphrase-MiniLM-L3-v2'  # Ultra-light, ultra-fast
-            print(f"🚀🚀 Using ULTRA-fast model: {ultra_fast_model} (10x+ speed boost)")
+            print(f"Using ULTRA-fast model: {ultra_fast_model} (10x+ speed boost)")
         else:
             ultra_fast_model = model_name
             
@@ -123,14 +123,14 @@ class CompanyMatcher:
     def ensure_fast_lookup_sets(self):
         """Ensure fast lookup sets exist (useful for existing cached data)"""
         if not hasattr(self, '_company_names_lower_set') or not hasattr(self, '_company_words_dict'):
-            print("🔧 Creating fast lookup sets for existing data...")
+            print("Creating fast lookup sets for existing data...")
             self._create_fast_lookup_sets()
             return True
         return False
 
     def _create_fast_lookup_sets(self):
         """Create fast lookup sets for exact matching (called after building index)"""
-        print("🔧 Creating fast lookup sets for exact matching...")
+        print("Creating fast lookup sets for exact matching...")
         
         # Create lowercase sets for O(1) exact match lookup
         self._company_names_lower_set = set(name.lower() for name in self.original_company_names)
@@ -144,7 +144,7 @@ class CompanyMatcher:
                     self._company_words_dict[word] = []
                 self._company_words_dict[word].append(i)
         
-        print(f"   ✓ Created fast lookup sets for {len(self.original_company_names)} companies")
+        print(f"   Created fast lookup sets for {len(self.original_company_names)} companies")
 
     def get_cache_info(self):
         """Get information about cached data"""
@@ -167,9 +167,9 @@ class CompanyMatcher:
         info = f"Found {len(cache_groups)} cached datasets:\n"
         for key, files in cache_groups.items():
             if len(files) == 4:  # Complete cache
-                info += f"  ✓ {key}: Complete cache\n"
+                info += f"  {key}: Complete cache\n"
             else:
-                info += f"  ⚠ {key}: Incomplete cache ({len(files)}/4 files)\n"
+                info += f"  {key}: Incomplete cache ({len(files)}/4 files)\n"
         
         return info
     
@@ -210,11 +210,11 @@ class CompanyMatcher:
         
         # Try to load from cache first
         if self.load_from_cache(cache_key):
-            print(f"✓ Using cached index for {len(self.original_company_names)} companies")
+            print(f"Using cached index for {len(self.original_company_names)} companies")
             return True
         
         # Cache miss - build new index
-        print(f"🔨 Building new index for {len(company_names):,} companies...")
+        print(f"Building new index for {len(company_names):,} companies...")
         
         # Store original names
         self.original_company_names = company_names
@@ -222,17 +222,17 @@ class CompanyMatcher:
         self.company_names = self.preprocess(company_names)
         
         # Generate embeddings with dramatically increased batch size for CPU speed
-        print("🧠 Generating embeddings with optimized CPU batch processing...")
+        print("Generating embeddings with optimized CPU batch processing...")
         
         # AGGRESSIVE optimization for sub-1-hour processing
         batch_size = 50000  # Large batch size for speed
         
-        print(f"   💻 CPU-optimized processing")
-        print(f"   ⚡ Batch size: {batch_size:,} (vs previous 32)")
-        print(f"   📊 Total companies: {len(company_names):,}")
-        print(f"   🔢 Estimated batches: {(len(company_names) + batch_size - 1) // batch_size:,}")
-        print(f"   🚀🚀 Target: Complete in under 1 hour")
-        print(f"   🚫 Normalization: DISABLED for speed")
+        print(f"   CPU-optimized processing")
+        print(f"   Batch size: {batch_size:,} (vs previous 32)")
+        print(f"   Total companies: {len(company_names):,}")
+        print(f"   Estimated batches: {(len(company_names) + batch_size - 1) // batch_size:,}")
+        print(f"   Target: Complete in under 1 hour")
+        print(f"   Normalization: DISABLED for speed")
         
         # Memory optimization: clear any existing data
         import gc
@@ -249,7 +249,7 @@ class CompanyMatcher:
             batch_names = company_names[i:batch_end]
             
             # Show progress for every batch
-            print(f"   📈 Processing batch {batch_count:,}/{total_batches:,} (companies {i:,}-{batch_end:,})")
+            print(f"   Processing batch {batch_count:,}/{total_batches:,} (companies {i:,}-{batch_end:,})")
             
             # Add timing for each batch
             import time
@@ -264,11 +264,11 @@ class CompanyMatcher:
                 )
                 
                 batch_time = time.time() - start_time
-                print(f"      ✅ Batch completed in {batch_time:.1f}s")
+                print(f"      Batch completed in {batch_time:.1f}s")
                 
             except Exception as e:
-                print(f"      ❌ Error processing batch: {e}")
-                print(f"      🔄 Retrying with smaller batch...")
+                print(f"      Error processing batch: {e}")
+                print(f"      Retrying with smaller batch...")
                 # Fallback to smaller batch size
                 smaller_batch = batch_names[:len(batch_names)//2]
                 batch_embeddings = self.model.encode(
@@ -276,21 +276,21 @@ class CompanyMatcher:
                     convert_to_numpy=True, 
                     normalize_embeddings=False
                 )
-                print(f"      ✅ Smaller batch completed successfully")
+                print(f"      Smaller batch completed successfully")
             
             embeddings_list.append(batch_embeddings)
             
             # Memory cleanup every few batches
             if (i // batch_size) % 3 == 0:  # Every 3 batches
                 gc.collect()
-                print(f"      🧹 Memory cleanup completed")
+                print(f"      Memory cleanup completed")
         
         # Combine all embeddings
         self.embeddings = np.vstack(embeddings_list)
-        print(f"   ✅ Generated embeddings: {self.embeddings.shape}")
+        print(f"   Generated embeddings: {self.embeddings.shape}")
         
         # Build FAISS index
-        print("🔍 Building FAISS index...")
+        print("Building FAISS index...")
         dim = self.embeddings.shape[1]
         self.index = faiss.IndexFlatIP(dim)  # Cosine similarity via normalized dot product
         
@@ -302,16 +302,16 @@ class CompanyMatcher:
         self._create_fast_lookup_sets()
         
         # Save to cache for future use
-        print("💾 Saving to cache...")
+        print("Saving to cache...")
         self.save_to_cache(cache_key, self.embeddings, self.index, self.company_names, self.original_company_names)
         
-        print(f"🎉 Index built successfully! Ready to match {len(company_names):,} companies")
+        print(f"Index built successfully! Ready to match {len(company_names):,} companies")
         return True
 
     def add_companies(self, new_company_names):
         """Add new companies to existing index (incremental update)"""
         if not self.is_index_ready():
-            print("❌ Error: No existing index to update")
+            print("Error: No existing index to update")
             return False
         
         # Check for duplicates
@@ -319,10 +319,10 @@ class CompanyMatcher:
         truly_new = [name for name in new_company_names if name not in existing_set]
         
         if not truly_new:
-            print("ℹ️  No new companies to add")
+            print("No new companies to add")
             return True
         
-        print(f"➕ Adding {len(truly_new):,} new companies to existing index...")
+        print(f"Adding {len(truly_new):,} new companies to existing index...")
         
         # Preprocess new names
         print("   Preprocessing company names...")
@@ -348,7 +348,7 @@ class CompanyMatcher:
         # Update fast lookup sets for incremental updates
         self._create_fast_lookup_sets()
         
-        print(f"   ✓ Successfully added {len(truly_new):,} companies. Total: {len(self.original_company_names):,}")
+        print(f"   Successfully added {len(truly_new):,} companies. Total: {len(self.original_company_names):,}")
         
         # Update cache with new data
         print("   Updating cache...")
@@ -378,7 +378,7 @@ class CompanyMatcher:
                         })
         else:
             # Fallback to original slow method if fast lookup sets don't exist
-            print("⚠️  Fast lookup sets not found, using fallback method...")
+            print("Fast lookup sets not found, using fallback method...")
             for i, name in enumerate(self.original_company_names):
                 name_lower = name.lower()
                 if query_lower in name_lower or name_lower in query_lower:
@@ -405,23 +405,24 @@ class CompanyMatcher:
                         
                         # Calculate word overlap with improved scoring
                         overlap = query_words.intersection(name_words)
-                        base_overlap_score = len(overlap) / max(len(query_words), len(name_words))
                         
-                        # Bonus for having more matching words (prioritize companies with more matches)
-                        word_count_bonus = len(overlap) / len(query_words)
+                        # Base score: prioritize exact word matches over partial matches
+                        exact_match_ratio = len(overlap) / len(query_words)
                         
-                        # Penalty for extra words (shorter names get slight preference)
-                        length_penalty = 1.0 / (1.0 + (len(name_words) - len(query_words)) * 0.1)
-                        
-                        # Semantic bonus for companies that are more relevant to the query
+                        # Semantic relevance bonus (much higher weight)
                         semantic_bonus = 1.0
-                        if "just" in query_words and "justice" in name_words:
-                            semantic_bonus = 1.2  # 20% bonus for semantic relevance
-                        elif "dept" in query_words and "department" in name_words:
-                            semantic_bonus = 1.1  # 10% bonus for abbreviation matching
+                        if "dept" in query_words and "dept" in name_words:
+                            semantic_bonus = 2.0  # Major bonus for exact department match
+                        if "justice" in query_words and "justice" in name_words:
+                            semantic_bonus = 2.0  # Major bonus for exact justice match
+                        elif "just" in query_words and "justice" in name_words:
+                            semantic_bonus = 1.8  # High bonus for semantic relevance
                         
-                        # Final score combines all factors
-                        overlap_score = base_overlap_score * word_count_bonus * length_penalty * semantic_bonus
+                        # Penalty for extra words (shorter, more focused names get preference)
+                        length_penalty = 1.0 / (1.0 + (len(name_words) - len(query_words)) * 0.2)
+                        
+                        # Final score prioritizes semantic relevance
+                        overlap_score = exact_match_ratio * semantic_bonus * length_penalty
                         
                         if overlap_score >= 0.3:
                             word_overlap_matches.append({
@@ -431,9 +432,51 @@ class CompanyMatcher:
                                 "index": idx,
                                 "overlap_words": list(overlap)
                             })
+            
+            # Also check for substring matches within words (e.g., "just" in "justice")
+            for i, name in enumerate(self.original_company_names):
+                if i in [m["index"] for m in exact_matches] or i in [m["index"] for m in word_overlap_matches]:
+                    continue
+                
+                name_lower = name.lower()
+                name_words = set(name_lower.split())
+                
+                # Check for substring matches within words
+                substring_matches = 0
+                for query_word in query_words:
+                    for name_word in name_words:
+                        if query_word in name_word or name_word in query_word:
+                            substring_matches += 1
+                            break
+                
+                if substring_matches > 0:
+                    # Calculate score based on substring matches
+                    substring_score = substring_matches / len(query_words)
+                    
+                    # Apply the same scoring logic
+                    word_count_bonus = substring_matches / len(query_words)
+                    length_penalty = 1.0 / (1.0 + (len(name_words) - len(query_words)) * 0.1)
+                    
+                    # Semantic bonus for substring relevance
+                    semantic_bonus = 1.0
+                    if "just" in query_words and any("justice" in word for word in name_words):
+                        semantic_bonus = 1.2
+                    elif "dept" in query_words and any("department" in word for word in name_words):
+                        semantic_bonus = 1.1
+                    
+                    final_score = substring_score * word_count_bonus * length_penalty * semantic_bonus
+                    
+                    if final_score >= 0.2:  # Lower threshold for substring matches
+                        word_overlap_matches.append({
+                            "name": name,
+                            "score": final_score,
+                            "match_type": "substring_overlap",
+                            "index": i,
+                            "overlap_words": [word for word in query_words if any(word in name_word or name_word in word for name_word in name_words)]
+                        })
         else:
             # Fallback to original slow method if fast lookup sets don't exist
-            print("⚠️  Fast lookup sets not found, using fallback method...")
+            print("Fast lookup sets not found, using fallback method...")
             for i, name in enumerate(self.original_company_names):
                 if i in [m["index"] for m in exact_matches]:  # Skip if already matched
                     continue
@@ -444,24 +487,23 @@ class CompanyMatcher:
                 # Calculate word overlap with improved scoring
                 overlap = query_words.intersection(name_words)
                 if len(overlap) > 0:
-                    # Score based on overlap percentage with improved algorithm
-                    base_overlap_score = len(overlap) / max(len(query_words), len(name_words))
+                    # Base score: prioritize exact word matches over partial matches
+                    exact_match_ratio = len(overlap) / len(query_words)
                     
-                    # Bonus for having more matching words (prioritize companies with more matches)
-                    word_count_bonus = len(overlap) / len(query_words)
-                    
-                    # Penalty for extra words (shorter names get slight preference)
-                    length_penalty = 1.0 / (1.0 + (len(name_words) - len(query_words)) * 0.1)
-                    
-                    # Semantic bonus for companies that are more relevant to the query
+                    # Semantic relevance bonus (much higher weight)
                     semantic_bonus = 1.0
-                    if "just" in query_words and "justice" in name_words:
-                        semantic_bonus = 1.2  # 20% bonus for semantic relevance
-                    elif "dept" in query_words and "department" in name_words:
-                        semantic_bonus = 1.1  # 10% bonus for abbreviation matching
+                    if "dept" in query_words and "dept" in name_words:
+                        semantic_bonus = 2.0  # Major bonus for exact department match
+                    if "justice" in query_words and "justice" in name_words:
+                        semantic_bonus = 2.0  # Major bonus for exact justice match
+                    elif "just" in query_words and "justice" in name_words:
+                        semantic_bonus = 1.8  # High bonus for semantic relevance
                     
-                    # Final score combines all factors
-                    overlap_score = base_overlap_score * word_count_bonus * length_penalty * semantic_bonus
+                    # Penalty for extra words (shorter, more focused names get preference)
+                    length_penalty = 1.0 / (1.0 + (len(name_words) - len(query_words)) * 0.2)
+                    
+                    # Final score prioritizes semantic relevance
+                    overlap_score = exact_match_ratio * semantic_bonus * length_penalty
                     
                     if overlap_score >= 0.3:  # Only include if significant overlap
                         word_overlap_matches.append({
@@ -470,6 +512,40 @@ class CompanyMatcher:
                             "match_type": "word_overlap",
                             "index": i,
                             "overlap_words": list(overlap)
+                        })
+                
+                # Also check for substring matches within words (e.g., "just" in "justice")
+                substring_matches = 0
+                for query_word in query_words:
+                    for name_word in name_words:
+                        if query_word in name_word or name_word in query_word:
+                            substring_matches += 1
+                            break
+                
+                if substring_matches > 0:
+                    # Calculate score based on substring matches
+                    substring_score = substring_matches / len(query_words)
+                    
+                    # Apply the same scoring logic
+                    word_count_bonus = substring_matches / len(query_words)
+                    length_penalty = 1.0 / (1.0 + (len(name_words) - len(query_words)) * 0.1)
+                    
+                    # Semantic bonus for substring relevance
+                    semantic_bonus = 1.0
+                    if "just" in query_words and any("justice" in word for word in name_words):
+                        semantic_bonus = 1.2
+                    elif "dept" in query_words and any("department" in word for word in name_words):
+                        semantic_bonus = 1.1
+                    
+                    final_score = substring_score * word_count_bonus * length_penalty * semantic_bonus
+                    
+                    if final_score >= 0.2:  # Lower threshold for substring matches
+                        word_overlap_matches.append({
+                            "name": name,
+                            "score": final_score,
+                            "match_type": "substring_overlap",
+                            "index": i,
+                            "overlap_words": [word for word in query_words if any(word in name_word or name_word in word for name_word in name_words)]
                         })
         
         # Phase 3: Semantic similarity (lowest priority, only if no good matches)
@@ -492,8 +568,16 @@ class CompanyMatcher:
         # Sort by score (exact matches will be first due to score=1.0)
         all_matches.sort(key=lambda x: x["score"], reverse=True)
         
-        # Return top_k results
-        results = all_matches[:top_k]
+        # Remove duplicates based on company name while preserving order
+        seen_names = set()
+        unique_matches = []
+        for match in all_matches:
+            if match["name"] not in seen_names:
+                seen_names.add(match["name"])
+                unique_matches.append(match)
+        
+        # Return top_k unique results
+        results = unique_matches[:top_k]
         
         # Store for explanation function
         self._last_matches = results

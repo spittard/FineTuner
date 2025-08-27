@@ -1,4 +1,5 @@
 import json
+import os
 import pyodbc
 from typing import List, Dict, Any, Optional
 
@@ -121,7 +122,7 @@ class CreateDataSet:
                     print(f"   Processed {i + 1:,} rows...")
             
             limit_info = f" (limited to {max_rows:,} rows)" if max_rows else ""
-            print(f"   ✓ Extracted {len(formatted_data):,} unique company names from {table_name}.{column_name}{limit_info}")
+            print(f"   Extracted {len(formatted_data):,} unique company names from {table_name}.{column_name}{limit_info}")
             return formatted_data
             
         except Exception as e:
@@ -140,17 +141,17 @@ class CreateDataSet:
             True if successful, False otherwise
         """
         try:
-            print(f"💾 Saving {len(data):,} entries to {output_file}...")
+            print(f"Saving {len(data):,} entries to {output_file}...")
             print("   This may take a while for large datasets...")
             
             with open(output_file, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=2, ensure_ascii=False)
             
-            print(f"   ✓ Successfully saved {len(data):,} entries to {output_file}")
+            print(f"   Successfully saved {len(data):,} entries to {output_file}")
             return True
             
         except Exception as e:
-            print(f"❌ ERROR: Error saving to JSON: {e}")
+            print(f"ERROR: Error saving to JSON: {e}")
             return False
     
     def create_dataset(self, table_name: str, column_name: str, output_file: str, max_rows: Optional[int] = None) -> bool:
@@ -166,7 +167,7 @@ class CreateDataSet:
         Returns:
             True if successful, False otherwise
         """
-        print(f"🚀 Starting dataset creation process...")
+        print(f"Starting dataset creation process...")
         print(f"   Table: {table_name}")
         print(f"   Column: {column_name}")
         print(f"   Output: {output_file}")
@@ -182,7 +183,7 @@ class CreateDataSet:
         
         success = self.save_to_json(data, output_file)
         if success:
-            print(f"🎉 Dataset creation completed successfully!")
+            print(f"Dataset creation completed successfully!")
             print(f"   Total entries: {len(data):,}")
             print(f"   File size: {os.path.getsize(output_file) / (1024*1024):.1f} MB")
         

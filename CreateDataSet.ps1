@@ -7,7 +7,7 @@ param(
     [string]$Database = "SQLWebRefTable",
     [string]$Table = "AcctRef.Master",
     [string]$Column = "Original",
-    [string]$OutputFile = "training_data.json",
+    [string]$OutputFile = "copmanies.json",
     [string]$Driver = "ODBC Driver 17 for SQL Server",
     [int]$Port = 1433,
     [switch]$TrustedConnection = $true,
