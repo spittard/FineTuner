@@ -382,6 +382,14 @@ class CompanyMatcher:
         # Create semantic matches (skip exact matches)
         semantic_matches = []
         print(f"Top 10 semantic similarity scores:")
+        
+        # Find the highest semantic score for normalization
+        max_semantic_score = 0.0
+        for j, i in enumerate(semantic_indices[0][:10]):
+            score = float(semantic_scores[0][j])
+            if score > max_semantic_score:
+                max_semantic_score = score
+        
         for j, i in enumerate(semantic_indices[0][:10]):
             score = float(semantic_scores[0][j])
             company_name = self.original_company_names[i]
@@ -389,41 +397,25 @@ class CompanyMatcher:
             
             # Skip if this is an exact match
             if i not in [m["index"] for m in exact_matches]:
-                # Cap semantic scores at 1.0 (100%) to prevent inflation
-                capped_score = min(1.0, score)
+                # Normalize the score so highest gets close to 100%, others get proportionally lower
+                # This preserves the natural ranking while keeping scores reasonable
+                if max_semantic_score > 0:
+                    normalized_score = min(1.0, score / max_semantic_score)
+                else:
+                    normalized_score = 0.0
                 
-                # Additional context filtering: if the query contains "justice" context,
-                # prioritize companies that are semantically related to justice
-                query_lower = query.lower()
-                if "justice" in query_lower and score < 0.5:
-                    # For justice-related queries, require higher semantic relevance
-                    # This filters out "Mental Health Dept" which is semantically distant
-                    continue
+                # No special cases - let the semantic model handle relevance naturally
                 
                 semantic_matches.append({
                     "name": company_name,
-                    "score": capped_score,
+                    "score": normalized_score,
                     "match_type": "semantic",
                     "index": i,
                     "overlap_words": []
                 })
         
-        # Add remaining semantic matches with higher relevance threshold
-        for j, i in enumerate(semantic_indices[0][10:], 10):
-            if i not in [m["index"] for m in exact_matches]:
-                score = float(semantic_scores[0][j])
-                # Higher threshold to filter out semantically distant matches
-                # This prevents "Mental Health Dept" from ranking high for "dept of just"
-                if score > 0.4:  # Increased from 0.2 to 0.4 for better relevance
-                    company_name = self.original_company_names[i]
-                    capped_score = min(1.0, score)
-                    semantic_matches.append({
-                        "name": company_name,
-                        "score": capped_score,
-                        "match_type": "semantic",
-                        "index": i,
-                        "overlap_words": []
-                    })
+                 # Only take the top semantic matches - let the model's ranking do the work
+         # No arbitrary threshold - the semantic model naturally ranks by relevance
         
         print(f"Found {len(semantic_matches)} semantic matches")
         
