@@ -7,7 +7,7 @@ import time
 app = Flask(__name__)
 
 # Enable auto-reloading for development
-app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.config['TEMPLATES_AUTO_RELOAD'] = False
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 # Global variable to store the matcher instance
@@ -368,63 +368,90 @@ def load_company_data(force_reload=False):
     """Load company data and initialize the matcher"""
     global matcher, company_data_loaded, last_data_check
     
+    # Early return if data is already loaded and we don't need to force reload
+    if not force_reload and company_data_loaded and matcher is not None:
+        return True
+    
     current_time = time.time()
     
-    # Check if we need to reload data (either forced or time-based)
+    # Prevent multiple rapid calls to this function
     if not force_reload and company_data_loaded and matcher is not None:
-        # Check if training_data.json has been modified
+        # Check if companies.json has been modified
         if current_time - last_data_check < data_check_interval:
             return True
         
         try:
             # Check if file modification time has changed
-            if os.path.exists('training_data.json'):
-                file_mtime = os.path.getmtime('training_data.json')
+            if os.path.exists('companies.json'):
+                file_mtime = os.path.getmtime('companies.json')
                 if hasattr(matcher, '_last_file_mtime') and matcher._last_file_mtime == file_mtime:
                     last_data_check = current_time
                     return True
         except:
             pass
     
+    # Add a guard to prevent multiple simultaneous loads
+    if hasattr(load_company_data, '_loading') and load_company_data._loading:
+        print("Already loading company data, skipping...")
+        return company_data_loaded
+    
+    load_company_data._loading = True
+    
     try:
-        # Check if training_data.json exists
-        if not os.path.exists('training_data.json'):
+        # Check if companies.json exists
+        if not os.path.exists('companies.json'):
+            load_company_data._loading = False
             return False
         
         # Load company names from the dataset
-        with open('training_data.json', 'r', encoding='utf-8') as f:
+        print("📁 Loading company data from companies.json...")
+        with open('companies.json', 'r', encoding='utf-8') as f:
             data = json.load(f)
         
+        print(f"   Found {len(data):,} total entries in file")
+        
         company_names = []
-        for item in data:
+        print("   Extracting company names...")
+        for i, item in enumerate(data):
             if isinstance(item, dict) and "Company Name" in item:
                 company_names.append(item["Company Name"])
+            
+            # Show progress every 100,000 entries
+            if (i + 1) % 100000 == 0:
+                print(f"   Processed {i + 1:,} entries...")
         
         if not company_names:
+            load_company_data._loading = False
             return False
+        
+        print(f"   ✓ Extracted {len(company_names):,} company names")
         
         # Initialize CompanyMatcher with EXACTLY the same parameters as CLI
         # CLI uses: CompanyMatcher(model_name=args.matcher_model) with default 'all-MiniLM-L6-v2'
+        print("🤖 Initializing CompanyMatcher...")
         matcher = CompanyMatcher(model_name='all-MiniLM-L6-v2')
         
         # Build index using the same logic as CLI
-        print(f"Building company matching index with {len(company_names)} companies...")
+        print(f"🔨 Building company matching index with {len(company_names):,} companies...")
         matcher.build_index(company_names)
         
         # Store file modification time for change detection
         try:
-            matcher._last_file_mtime = os.path.getmtime('training_data.json')
+            matcher._last_file_mtime = os.path.getmtime('companies.json')
         except:
             matcher._last_file_mtime = 0
         
         company_data_loaded = True
         last_data_check = current_time
         
-        print(f"OK: Loaded {len(company_names)} company name entries")
+        print(f"🎉 SUCCESS: Loaded {len(company_names):,} company name entries")
+        print(f"🚀 Webapp is now ready for company matching!")
+        load_company_data._loading = False
         return True
         
     except Exception as e:
         print(f"Error loading company data: {e}")
+        load_company_data._loading = False
         return False
 
 @app.route('/')
@@ -439,7 +466,7 @@ def search():
         # Load company data if not already loaded
         if not load_company_data():
             return jsonify({
-                'error': 'Company data not available. Please ensure training_data.json exists.'
+                'error': 'Company data not available. Please ensure companies.json exists.'
             }), 500
         
         # Get search query
@@ -453,13 +480,17 @@ def search():
         # Perform search using EXACTLY the same logic as CLI
         print(f"Searching for companies matching: {query}")
         matches = matcher.match(query, top_k=top_k)
+        print(f"Found {len(matches)} matches")
         
         # Format results for display
         results = []
         for i, match in enumerate(matches, 1):
+            print(f"Processing match {i}: {match['name']}")
             # Generate match rationale based on the explanation
             explanation = matcher.explain_match(query, match['name'])
+            print(f"Explanation generated for match {i}")
             rationale = generate_match_rationale(query, match['name'], explanation, match['score'])
+            print(f"Rationale generated for match {i}")
             
             results.append({
                 'rank': i,
@@ -491,6 +522,9 @@ def search():
         })
         
     except Exception as e:
+        import traceback
+        print(f"Search error details: {str(e)}")
+        print(f"Traceback: {traceback.format_exc()}")
         return jsonify({
             'error': f'Search failed: {str(e)}'
         }), 500
@@ -744,16 +778,28 @@ def generate_match_rationale(query, company_name, explanation, score):
 @app.route('/status')
 def status():
     """Check if company data is loaded"""
+    global matcher, company_data_loaded, last_data_check
+    
+    # Check if currently loading
+    if hasattr(load_company_data, '_loading') and load_company_data._loading:
+        return jsonify({
+            'status': 'loading',
+            'message': 'Building company matching index...',
+            'progress': 'indexing'
+        })
+    
     if load_company_data():
         return jsonify({
             'status': 'ready',
             'companies_loaded': len(matcher.original_company_names) if matcher else 0,
-            'last_updated': last_data_check
+            'last_updated': last_data_check,
+            'message': f'Ready with {len(matcher.original_company_names):,} companies' if matcher else 'Ready'
         })
     else:
         return jsonify({
             'status': 'not_ready',
-            'error': 'Company data not available'
+            'error': 'Company data not available',
+            'message': 'Please ensure companies.json exists and is accessible'
         })
 
 if __name__ == '__main__':

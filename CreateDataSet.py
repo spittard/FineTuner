@@ -101,19 +101,27 @@ class CreateDataSet:
                 else:
                     query = f"SELECT DISTINCT [{column_name}] FROM [{table_name}] WHERE [{column_name}] IS NOT NULL AND [{column_name}] != ''"
             
+            print(f"   Executing query: {query[:100]}...")
             cursor.execute(query)
             results = cursor.fetchall()
             cursor.close()
             
+            print(f"   Query returned {len(results):,} rows")
+            
             # Format data for FineTuner
+            print("   Formatting data for FineTuner...")
             formatted_data = []
-            for row in results:
+            for i, row in enumerate(results):
                 company_name = row[0].strip() if row[0] else ""
                 if company_name:  # Only add non-empty names
                     formatted_data.append({"Company Name": company_name})
+                
+                # Show progress every 100,000 rows
+                if (i + 1) % 100000 == 0:
+                    print(f"   Processed {i + 1:,} rows...")
             
-            limit_info = f" (limited to {max_rows} rows)" if max_rows else ""
-            print(f"OK: Extracted {len(formatted_data)} unique company names from {table_name}.{column_name}{limit_info}")
+            limit_info = f" (limited to {max_rows:,} rows)" if max_rows else ""
+            print(f"   ✓ Extracted {len(formatted_data):,} unique company names from {table_name}.{column_name}{limit_info}")
             return formatted_data
             
         except Exception as e:
@@ -132,14 +140,17 @@ class CreateDataSet:
             True if successful, False otherwise
         """
         try:
+            print(f"💾 Saving {len(data):,} entries to {output_file}...")
+            print("   This may take a while for large datasets...")
+            
             with open(output_file, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=2, ensure_ascii=False)
             
-            print(f"OK: Saved {len(data)} entries to {output_file}")
+            print(f"   ✓ Successfully saved {len(data):,} entries to {output_file}")
             return True
             
         except Exception as e:
-            print(f"ERROR: Error saving to JSON: {e}")
+            print(f"❌ ERROR: Error saving to JSON: {e}")
             return False
     
     def create_dataset(self, table_name: str, column_name: str, output_file: str, max_rows: Optional[int] = None) -> bool:
@@ -155,11 +166,27 @@ class CreateDataSet:
         Returns:
             True if successful, False otherwise
         """
+        print(f"🚀 Starting dataset creation process...")
+        print(f"   Table: {table_name}")
+        print(f"   Column: {column_name}")
+        print(f"   Output: {output_file}")
+        if max_rows:
+            print(f"   Max rows: {max_rows:,}")
+        else:
+            print(f"   Max rows: No limit (all rows)")
+        print()
+        
         data = self.extract_data(table_name, column_name, max_rows)
         if not data:
             return False
         
-        return self.save_to_json(data, output_file)
+        success = self.save_to_json(data, output_file)
+        if success:
+            print(f"🎉 Dataset creation completed successfully!")
+            print(f"   Total entries: {len(data):,}")
+            print(f"   File size: {os.path.getsize(output_file) / (1024*1024):.1f} MB")
+        
+        return success
     
     def close(self):
         """Close database connection"""
