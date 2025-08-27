@@ -403,9 +403,25 @@ class CompanyMatcher:
                         name = self.original_company_names[idx]
                         name_words = set(name.lower().split())
                         
-                        # Calculate word overlap
+                        # Calculate word overlap with improved scoring
                         overlap = query_words.intersection(name_words)
-                        overlap_score = len(overlap) / max(len(query_words), len(name_words))
+                        base_overlap_score = len(overlap) / max(len(query_words), len(name_words))
+                        
+                        # Bonus for having more matching words (prioritize companies with more matches)
+                        word_count_bonus = len(overlap) / len(query_words)
+                        
+                        # Penalty for extra words (shorter names get slight preference)
+                        length_penalty = 1.0 / (1.0 + (len(name_words) - len(query_words)) * 0.1)
+                        
+                        # Semantic bonus for companies that are more relevant to the query
+                        semantic_bonus = 1.0
+                        if "just" in query_words and "justice" in name_words:
+                            semantic_bonus = 1.2  # 20% bonus for semantic relevance
+                        elif "dept" in query_words and "department" in name_words:
+                            semantic_bonus = 1.1  # 10% bonus for abbreviation matching
+                        
+                        # Final score combines all factors
+                        overlap_score = base_overlap_score * word_count_bonus * length_penalty * semantic_bonus
                         
                         if overlap_score >= 0.3:
                             word_overlap_matches.append({
@@ -425,11 +441,28 @@ class CompanyMatcher:
                 name_lower = name.lower()
                 name_words = set(name_lower.split())
                 
-                # Calculate word overlap
+                # Calculate word overlap with improved scoring
                 overlap = query_words.intersection(name_words)
                 if len(overlap) > 0:
-                    # Score based on overlap percentage
-                    overlap_score = len(overlap) / max(len(query_words), len(name_words))
+                    # Score based on overlap percentage with improved algorithm
+                    base_overlap_score = len(overlap) / max(len(query_words), len(name_words))
+                    
+                    # Bonus for having more matching words (prioritize companies with more matches)
+                    word_count_bonus = len(overlap) / len(query_words)
+                    
+                    # Penalty for extra words (shorter names get slight preference)
+                    length_penalty = 1.0 / (1.0 + (len(name_words) - len(query_words)) * 0.1)
+                    
+                    # Semantic bonus for companies that are more relevant to the query
+                    semantic_bonus = 1.0
+                    if "just" in query_words and "justice" in name_words:
+                        semantic_bonus = 1.2  # 20% bonus for semantic relevance
+                    elif "dept" in query_words and "department" in name_words:
+                        semantic_bonus = 1.1  # 10% bonus for abbreviation matching
+                    
+                    # Final score combines all factors
+                    overlap_score = base_overlap_score * word_count_bonus * length_penalty * semantic_bonus
+                    
                     if overlap_score >= 0.3:  # Only include if significant overlap
                         word_overlap_matches.append({
                             "name": name,
