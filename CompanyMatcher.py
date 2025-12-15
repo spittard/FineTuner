@@ -135,6 +135,14 @@ class CompanyMatcher:
         # Create lowercase sets for O(1) exact match lookup
         self._company_names_lower_set = set(name.lower() for name in self.original_company_names)
         
+        # Create reverse lookup dictionary: lowercase_name -> index (for O(1) index lookup)
+        self._company_names_lower_to_index = {}
+        for i, name in enumerate(self.original_company_names):
+            name_lower = name.lower()
+            # Store first occurrence (in case of duplicates, which shouldn't happen)
+            if name_lower not in self._company_names_lower_to_index:
+                self._company_names_lower_to_index[name_lower] = i
+        
         # Create word-based lookup for faster partial matching
         self._company_words_dict = {}
         for i, name in enumerate(self.original_company_names):
@@ -357,116 +365,296 @@ class CompanyMatcher:
         
         return True
 
+    def _clean_company_name(self, name):
+        """
+        Removes common business suffixes and stop words for cleaner string comparison.
+        This ensures 'Apple Inc' matches 'Apple' perfectly.
+        """
+        # Common suffixes to ignore during string comparison
+        suffixes = {
+            'inc', 'incorporated', 'corp', 'corporation', 'llc', 'ltd', 'limited',
+            'co', 'company', 'plc', 'group', 'holdings', 'enterprises', 'associates'
+        }
+        # Stop words that add noise
+        stop_words = {'the', 'of', 'and', '&', 'a', 'an'}
+        
+        # Normalize
+        name_lower = name.lower().replace('.', '').replace(',', '')
+        words = name_lower.split()
+        
+        # Filter out suffixes and stop words
+        clean_words = [w for w in words if w not in suffixes and w not in stop_words]
+        
+        # If we stripped everything (e.g. name was just "The Inc"), return original
+        if not clean_words:
+            return name_lower
+            
+        return " ".join(clean_words)
+
+    def _calculate_string_similarity(self, query, target):
+        """
+        Calculates a robust string similarity score (0.0 to 1.0)
+        combining Token Set Ratio and Sequence Matching.
+        """
+        import difflib
+        
+        clean_query = self._clean_company_name(query)
+        clean_target = self._clean_company_name(target)
+        
+        # 1. Jaccard Token Similarity (Handles reordering: "Justice Dept" == "Dept Justice")
+        q_tokens = set(clean_query.split())
+        t_tokens = set(clean_target.split())
+        
+        if not q_tokens or not t_tokens:
+            return 0.0
+            
+        intersection = len(q_tokens.intersection(t_tokens))
+        union = len(q_tokens.union(t_tokens))
+        jaccard_score = intersection / union if union > 0 else 0.0
+        
+        # 2. Sequence Matcher (Handles typos/partial words)
+        seq_score = difflib.SequenceMatcher(None, clean_query, clean_target).ratio()
+        
+        # Return the higher of the two, boosted if one is a substring of the other
+        base_score = max(jaccard_score, seq_score)
+        
+        # Boost if one is a clean substring of the other (e.g. "Google" inside "Google Cloud")
+        if clean_query in clean_target or clean_target in clean_query:
+            base_score = max(base_score, 0.9)
+            
+        return base_score
+
     def match(self, query, top_k=10):
-        """Simplified matching: exact matches + semantic similarity only"""
+        """
+        Hybrid Semantic + Lexical Matching (Retrieve & Re-rank)
+        """
         query_lower = query.lower().strip()
         
-        # Phase 1: Exact matches (highest priority)
-        exact_matches = []
-        if hasattr(self, '_company_names_lower_set'):
-            if query_lower in self._company_names_lower_set:
+        # --- PHASE 1: RETRIEVAL (Semantic Search) ---
+        # Get a larger candidate pool (e.g., top 50) using the fast vector index
+        # We fetch more than top_k because the best string match might be semantically ranked #20
+        candidate_k = min(50, len(self.original_company_names))
+        
+        query_vec = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
+        semantic_scores, semantic_indices = self.index.search(query_vec, candidate_k)
+        
+        candidates = []
+        
+        # Normalize semantic scores to 0-1 range roughly
+        max_sem_score = float(semantic_scores[0][0]) if len(semantic_scores[0]) > 0 else 1.0
+        
+        # --- PHASE 2: RE-RANKING (Weighted Scoring) ---
+        for j, i in enumerate(semantic_indices[0]):
+            idx = int(i)
+            company_name = self.original_company_names[idx]
+            original_semantic_score = float(semantic_scores[0][j])
+            
+            # 1. Normalize Vector Score
+            sem_score_norm = original_semantic_score / max_sem_score if max_sem_score > 0 else 0
+            
+            # 2. Calculate String Similarity (The "Better Solution")
+            string_score = self._calculate_string_similarity(query, company_name)
+            
+            # 3. Exact Match Bonus
+            if query_lower == company_name.lower():
+                string_score = 1.0
+            
+            # 4. Weighted Combination
+            # We trust string similarity MORE than semantic for company names
+            # Weight: 70% String Match, 30% Semantic Meaning
+            final_score = (string_score * 0.7) + (sem_score_norm * 0.3)
+            
+            candidates.append({
+                "name": company_name,
+                "score": final_score,
+                "semantic_score": original_semantic_score,
+                "string_score": string_score,
+                "index": idx,
+                "match_type": "hybrid"
+            })
+
+        # --- PHASE 3: EXACT MATCH OVERRIDE ---
+        # If we have an exact match in our lookup set, ensure it's #1
+        if hasattr(self, '_company_names_lower_set') and query_lower in self._company_names_lower_set:
+            # Use O(1) lookup if available, otherwise fallback to iteration
+            if hasattr(self, '_company_names_lower_to_index'):
+                i = self._company_names_lower_to_index[query_lower]
+                name = self.original_company_names[i]
+            else:
+                # Fallback to iteration if dictionary doesn't exist
                 for i, name in enumerate(self.original_company_names):
                     if name.lower() == query_lower:
-                        exact_matches.append({
-                            "name": name,
-                            "score": 1.0,
-                            "match_type": "exact",
-                            "index": i
-                        })
-        
-        # Phase 2: Semantic similarity (the most accurate method)
-        print("Running semantic similarity for intelligent matching...")
-        query_vec = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
-        semantic_scores, semantic_indices = self.index.search(query_vec, min(top_k * 2, len(self.original_company_names)))
-        
-        # Create semantic matches (skip exact matches)
-        semantic_matches = []
-        print(f"Top 10 semantic similarity scores:")
-        
-        # Find the highest semantic score for normalization
-        max_semantic_score = 0.0
-        for j, i in enumerate(semantic_indices[0][:10]):
-            score = float(semantic_scores[0][j])
-            if score > max_semantic_score:
-                max_semantic_score = score
-        
-        for j, i in enumerate(semantic_indices[0][:10]):
-            score = float(semantic_scores[0][j])
-            company_name = self.original_company_names[i]
-            print(f"  {company_name}: {score:.4f}")
+                        break
             
-            # Skip if this is an exact match
-            if i not in [m["index"] for m in exact_matches]:
-                # Normalize the score so highest gets close to 100%, others get proportionally lower
-                # This preserves the natural ranking while keeping scores reasonable
-                if max_semantic_score > 0:
-                    normalized_score = min(1.0, score / max_semantic_score)
-                else:
-                    normalized_score = 0.0
-                
-                # No special cases - let the semantic model handle relevance naturally
-                
-                semantic_matches.append({
-                    "name": company_name,
-                    "score": normalized_score,
-                    "match_type": "semantic",
+            # Check if already in candidates
+            existing = next((c for c in candidates if c['index'] == i), None)
+            if existing:
+                existing['score'] = 1.0 # Force to top
+                existing['match_type'] = "exact"
+            else:
+                candidates.append({
+                    "name": name,
+                    "score": 1.0,
+                    "semantic_score": 1.0,
+                    "string_score": 1.0,
                     "index": i,
-                    "overlap_words": []
+                    "match_type": "exact"
                 })
+
+        # Sort by Final Score
+        candidates.sort(key=lambda x: x["score"], reverse=True)
         
-                 # Only take the top semantic matches - let the model's ranking do the work
-         # No arbitrary threshold - the semantic model naturally ranks by relevance
+        # Return top_k
+        results = candidates[:top_k]
         
-        print(f"Found {len(semantic_matches)} semantic matches")
+        # Store last matches for explanation
+        self._last_matches = results
+            
+        return results
+
+    def batch_match(self, queries, top_k=10, batch_size=32):
+        """
+        Batch version of match() - processes multiple queries efficiently
+        Encodes all queries in batches for better performance
+        NOTE: All queries go through full semantic search and re-ranking to show all potential matches
         
-        # Combine exact + semantic matches and sort by score
-        all_matches = exact_matches + semantic_matches
+        Args:
+            queries: List of query strings
+            top_k: Number of top matches to return per query
+            batch_size: Number of queries to encode at once
+            
+        Returns:
+            List of results, one per query (same format as match())
+        """
+        if not queries:
+            return []
         
-        # Remove duplicates based on company name
-        seen_names = set()
-        unique_matches = []
-        for match in all_matches:
-            if match["name"] not in seen_names:
-                seen_names.add(match["name"])
-                unique_matches.append(match)
+        all_results = []
         
-        # Sort by score (highest first) and return top_k
-        unique_matches.sort(key=lambda x: x["score"], reverse=True)
+        # Encode all queries in batches (no early termination - we want to see all matches)
+        query_vecs_dict = {}  # query_idx -> query_vec
         
-        # Debug: Show final ranking
-        print(f"Final ranking (top {min(top_k, len(unique_matches))}):")
-        for i, match in enumerate(unique_matches[:top_k]):
-            print(f"  {i+1}. {match['name']}: {match['score']:.3f} ({match['match_type']})")
+        for batch_start in range(0, len(queries), batch_size):
+            batch_end = min(batch_start + batch_size, len(queries))
+            batch_queries = queries[batch_start:batch_end]
+            batch_indices = list(range(batch_start, batch_end))
+            
+            # Encode batch at once
+            batch_vecs = self.model.encode(
+                batch_queries, 
+                convert_to_numpy=True, 
+                normalize_embeddings=True,
+                show_progress_bar=False
+            )
+            
+            # Store vectors with their original query indices
+            for local_idx, orig_idx in enumerate(batch_indices):
+                query_vecs_dict[orig_idx] = batch_vecs[local_idx:local_idx+1]
         
-        return unique_matches[:top_k]
+        # Process all queries with full semantic search and re-ranking
+        candidate_k = min(50, len(self.original_company_names))
+        
+        for query_idx, query in enumerate(queries):
+            query_lower = query.lower().strip()
+            
+            # Semantic search for this query
+            query_vec = query_vecs_dict[query_idx]
+            semantic_scores, semantic_indices = self.index.search(query_vec, candidate_k)
+            
+            candidates = []
+            
+            # Normalize semantic scores
+            max_sem_score = float(semantic_scores[0][0]) if len(semantic_scores[0]) > 0 else 1.0
+            
+            # Re-ranking
+            for j, i in enumerate(semantic_indices[0]):
+                idx = int(i)
+                company_name = self.original_company_names[idx]
+                original_semantic_score = float(semantic_scores[0][j])
+                
+                # Normalize Vector Score
+                sem_score_norm = original_semantic_score / max_sem_score if max_sem_score > 0 else 0
+                
+                # Calculate String Similarity
+                string_score = self._calculate_string_similarity(query, company_name)
+                
+                # Exact Match Bonus
+                if query_lower == company_name.lower():
+                    string_score = 1.0
+                
+                # Weighted Combination
+                final_score = (string_score * 0.7) + (sem_score_norm * 0.3)
+                
+                candidates.append({
+                    "name": company_name,
+                    "score": final_score,
+                    "semantic_score": original_semantic_score,
+                    "string_score": string_score,
+                    "index": idx,
+                    "match_type": "hybrid"
+                })
+            
+            # Exact match override - ensure exact match is marked correctly
+            if hasattr(self, '_company_names_lower_set') and query_lower in self._company_names_lower_set:
+                # Use O(1) lookup if available
+                if hasattr(self, '_company_names_lower_to_index'):
+                    i = self._company_names_lower_to_index[query_lower]
+                    name = self.original_company_names[i]
+                else:
+                    # Fallback to iteration if dictionary doesn't exist
+                    for i, name in enumerate(self.original_company_names):
+                        if name.lower() == query_lower:
+                            break
+                
+                existing = next((c for c in candidates if c['index'] == i), None)
+                if existing:
+                    existing['score'] = 1.0
+                    existing['match_type'] = "exact"
+                else:
+                    candidates.append({
+                        "name": name,
+                        "score": 1.0,
+                        "semantic_score": 1.0,
+                        "string_score": 1.0,
+                        "index": i,
+                        "match_type": "exact"
+                    })
+            
+            # Sort by Final Score
+            candidates.sort(key=lambda x: x["score"], reverse=True)
+            
+            # Return top_k
+            results = candidates[:top_k]
+            all_results.append(results)
+        
+        return all_results
 
     def explain_match(self, query, match_name):
-        """Enhanced explanation with match type and reasoning"""
-        query_lower = query.lower().strip()
-        match_lower = match_name.lower().strip()
+        """Explanation based on the new hybrid logic"""
+        query_clean = self._clean_company_name(query)
+        match_clean = self._clean_company_name(match_name)
         
-        # Find the match in our results to get match type
-        match_info = None
-        for match in self._last_matches if hasattr(self, '_last_matches') else []:
-            if match['name'] == match_name:
-                match_info = match
-                break
+        q_tokens = set(query_clean.split())
+        t_tokens = set(match_clean.split())
+        overlap = q_tokens.intersection(t_tokens)
         
-        # Basic token analysis
-        query_tokens = set(query_lower.split())
-        match_tokens = set(match_lower.split())
-        overlap = query_tokens.intersection(match_tokens)
-        
+        # Find the specific match details from the last run if available
+        match_details = None
+        if hasattr(self, '_last_matches'):
+             match_details = next((m for m in self._last_matches if m['name'] == match_name), None)
+
         explanation = {
-            "query_tokens": list(query_tokens),
-            "match_tokens": list(match_tokens),
+            "query_tokens": list(q_tokens),
+            "match_tokens": list(t_tokens),
             "overlap": list(overlap),
-            "overlap_score": len(overlap) / max(len(query_tokens), 1),
-            "match_type": match_info.get("match_type", "unknown") if match_info else "unknown"
+            "overlap_score": len(overlap) / max(len(q_tokens), 1) if q_tokens else 0,
+            "match_type": match_details['match_type'] if match_details else "hybrid"
         }
         
-        # Add specific details based on match type
-        if match_info and match_info.get("match_type") == "word_overlap":
-            explanation["overlap_words"] = match_info.get("overlap_words", [])
+        # Add hybrid scoring details if available
+        if match_details:
+            explanation["string_score"] = match_details.get("string_score", 0.0)
+            explanation["semantic_score"] = match_details.get("semantic_score", 0.0)
+            explanation["final_score"] = match_details.get("score", 0.0)
         
         return explanation

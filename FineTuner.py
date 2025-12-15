@@ -6,9 +6,16 @@ from typing import List, Dict, Any
 # Import CreateDataSet from separate file
 from CreateDataSet import CreateDataSet
 
+# Try to import CompanyMatcher
+try:
+    from CompanyMatcher import CompanyMatcher
+    COMPANY_MATCHER_AVAILABLE = True
+except ImportError:
+    CompanyMatcher = None
+    COMPANY_MATCHER_AVAILABLE = False
+
 # Global flag for ML dependencies
 ML_DEPENDENCIES_AVAILABLE = False
-COMPANY_MATCHER_AVAILABLE = False
 
 def check_ml_dependencies():
     """Check if ML dependencies are available"""
@@ -340,15 +347,17 @@ def main():
     parser.add_argument('--query', help='Company name to search for in match mode')
     parser.add_argument('--top-k', type=int, default=10, help='Number of top matches to return (default: 10)')
     parser.add_argument('--matcher-model', default='all-MiniLM-L6-v2', help='Sentence transformer model for company matching (default: all-MiniLM-L6-v2)')
+    parser.add_argument('--interactive', '-i', action='store_true', help='Run in interactive mode (keep cache loaded for multiple queries)')
     
     args = parser.parse_args()
     
     # Show example usage for match mode
-    if args.mode == 'match' and not args.query:
+    if args.mode == 'match' and not args.query and not args.interactive:
         print("Company Matching Mode Examples:")
-        print("  python FineTuner.py --mode match --dataset training_data.json --query 'Microsoft'")
-        print("  python FineTuner.py --mode match --dataset training_data.json --query 'Apple Inc' --top-k 5")
-        print("  python FineTuner.py --mode match --dataset training_data.json --query 'Google' --matcher-model 'all-MiniLM-L6-v2'")
+        print("  python FineTuner.py --mode match --dataset companies.json --query 'Microsoft'")
+        print("  python FineTuner.py --mode match --dataset companies.json --query 'Apple Inc' --top-k 5")
+        print("  python FineTuner.py --mode match --dataset companies.json --query 'Google' --matcher-model 'all-MiniLM-L6-v2'")
+        print("  python FineTuner.py --mode match --dataset companies.json --interactive")
         print()
         return
     
@@ -508,8 +517,9 @@ def main():
         print(f"Response: {response}")
     
     elif args.mode == 'match':
-        if not args.query:
-            print("Error: --query is required for match mode")
+        if not COMPANY_MATCHER_AVAILABLE or CompanyMatcher is None:
+            print("Error: CompanyMatcher is not available")
+            print("Please ensure CompanyMatcher.py exists and dependencies are installed")
             return
         
         if not args.dataset:
@@ -533,39 +543,136 @@ def main():
             print("Error: No company names found in dataset")
             return
         
-        print(f"Building company matching index with {len(company_names)} companies...")
+        print(f"Building company matching index with {len(company_names):,} companies...")
+        print("(This will use cache if available - much faster!)")
         
         # Initialize CompanyMatcher
         matcher = CompanyMatcher(model_name=args.matcher_model)
         matcher.build_index(company_names)
         
-        print(f"Searching for companies matching: {args.query}")
-        matches = matcher.match(args.query, top_k=args.top_k)
+        print(f"✓ Index ready! {len(company_names):,} companies loaded.")
         
-        print(f"\nTop {len(matches)} matches for '{args.query}':")
-        print("-" * 60)
-        
-        for i, match in enumerate(matches, 1):
-            score_percent = match['score'] * 100
-            match_type = match.get('match_type', 'unknown')
-            print(f"{i:2d}. {match['name']:<40} {score_percent:5.1f}% [{match_type}]")
-        
-        print("-" * 60)
-        
-        # Show explanation for top match if available
-        if matches:
-            top_match = matches[0]
-            explanation = matcher.explain_match(args.query, top_match['name'])
-            print(f"\nExplanation for top match '{top_match['name']}':")
-            print(f"  Match type: {explanation.get('match_type', 'unknown')}")
-            print(f"  Query tokens: {', '.join(explanation['query_tokens'])}")
-            print(f"  Match tokens: {', '.join(explanation['match_tokens'])}")
-            print(f"  Overlap: {', '.join(explanation['overlap'])}")
-            print(f"  Overlap score: {explanation['overlap_score']:.3f}")
+        # Interactive mode
+        if args.interactive or not args.query:
+            print("\n" + "=" * 60)
+            print("Company Matcher - Interactive Mode")
+            print("=" * 60)
+            print("Commands:")
+            print("  <query>     - Search for company name")
+            print("  help        - Show this help")
+            print("  stats       - Show statistics")
+            print("  quit/exit   - Exit interactive mode")
+            print("=" * 60)
             
-            # Show additional details for word overlap matches
-            if explanation.get('match_type') == 'word_overlap' and 'overlap_words' in explanation:
-                print(f"  Overlap words: {', '.join(explanation['overlap_words'])}")
+            while True:
+                try:
+                    if args.query:
+                        # Use provided query first, then go interactive
+                        query = args.query
+                        args.query = None  # Clear so next iteration is interactive
+                    else:
+                        query = input("\nEnter company name to search: ").strip()
+                    
+                    if not query:
+                        continue
+                    
+                    if query.lower() in ['quit', 'exit', 'q']:
+                        print("\nExiting interactive mode...")
+                        break
+                    elif query.lower() == 'help':
+                        print("\nCommands:")
+                        print("  <query>     - Search for company name")
+                        print("  help        - Show this help")
+                        print("  stats       - Show statistics")
+                        print("  quit/exit/q - Exit interactive mode")
+                        continue
+                    elif query.lower() == 'stats':
+                        print(f"\nStatistics:")
+                        print(f"  Total companies: {len(matcher.original_company_names):,}")
+                        print(f"  Model: {matcher.model_name}")
+                        print(f"  Index ready: {matcher.is_index_ready()}")
+                        continue
+                    
+                    # Perform search
+                    print(f"\nSearching for: '{query}'")
+                    matches = matcher.match(query, top_k=args.top_k)
+                    
+                    if not matches:
+                        print(f"No matches found for '{query}'")
+                        continue
+                    
+                    print(f"\nTop {len(matches)} matches:")
+                    print("-" * 80)
+                    print(f"{'Rank':<6} {'Company Name':<50} {'Score':<8} {'Type':<10}")
+                    print("-" * 80)
+                    
+                    for i, match in enumerate(matches, 1):
+                        score_percent = match['score'] * 100
+                        match_type = match.get('match_type', 'unknown')
+                        company_name = match['name'][:48]  # Truncate if too long
+                        print(f"{i:<6} {company_name:<50} {score_percent:>6.1f}%  {match_type:<10}")
+                    
+                    print("-" * 80)
+                    
+                    # Show explanation for top match
+                    if matches:
+                        top_match = matches[0]
+                        explanation = matcher.explain_match(query, top_match['name'])
+                        print(f"\nTop Match Details: '{top_match['name']}'")
+                        print(f"  Match type: {explanation.get('match_type', 'unknown')}")
+                        if 'string_score' in explanation:
+                            print(f"  String score: {explanation.get('string_score', 0):.3f}")
+                            print(f"  Semantic score: {explanation.get('semantic_score', 0):.3f}")
+                        print(f"  Query tokens: {', '.join(explanation.get('query_tokens', []))}")
+                        print(f"  Match tokens: {', '.join(explanation.get('match_tokens', []))}")
+                        if explanation.get('overlap'):
+                            print(f"  Overlap: {', '.join(explanation['overlap'])}")
+                            print(f"  Overlap score: {explanation.get('overlap_score', 0):.3f}")
+                
+                except KeyboardInterrupt:
+                    print("\n\nExiting interactive mode...")
+                    break
+                except Exception as e:
+                    print(f"\nError during search: {e}")
+                    import traceback
+                    traceback.print_exc()
+        
+        # Single query mode
+        else:
+            if not args.query:
+                print("Error: --query is required for match mode (or use --interactive)")
+                return
+            
+            print(f"Searching for companies matching: {args.query}")
+            matches = matcher.match(args.query, top_k=args.top_k)
+            
+            print(f"\nTop {len(matches)} matches for '{args.query}':")
+            print("-" * 80)
+            print(f"{'Rank':<6} {'Company Name':<50} {'Score':<8} {'Type':<10}")
+            print("-" * 80)
+            
+            for i, match in enumerate(matches, 1):
+                score_percent = match['score'] * 100
+                match_type = match.get('match_type', 'unknown')
+                company_name = match['name'][:48]  # Truncate if too long
+                print(f"{i:<6} {company_name:<50} {score_percent:>6.1f}%  {match_type:<10}")
+            
+            print("-" * 80)
+            
+            # Show explanation for top match if available
+            if matches:
+                top_match = matches[0]
+                explanation = matcher.explain_match(args.query, top_match['name'])
+                print(f"\nExplanation for top match '{top_match['name']}':")
+                print(f"  Match type: {explanation.get('match_type', 'unknown')}")
+                if 'string_score' in explanation:
+                    print(f"  String score: {explanation.get('string_score', 0):.3f}")
+                    print(f"  Semantic score: {explanation.get('semantic_score', 0):.3f}")
+                print(f"  Query tokens: {', '.join(explanation.get('query_tokens', []))}")
+                print(f"  Match tokens: {', '.join(explanation.get('match_tokens', []))}")
+                if explanation.get('overlap'):
+                    print(f"  Overlap: {', '.join(explanation['overlap'])}")
+                    print(f"  Overlap score: {explanation.get('overlap_score', 0):.3f}")
     
     elif args.mode == 'cache-info':
         print("Company Matching Cache Information:")
@@ -597,6 +704,11 @@ def main():
             print("\nNo dataset specified - use --dataset to check specific dataset cache status")
     
     elif args.mode == 'clear-cache':
+        if not COMPANY_MATCHER_AVAILABLE or CompanyMatcher is None:
+            print("Error: CompanyMatcher is not available")
+            print("Please ensure CompanyMatcher.py exists and dependencies are installed")
+            return
+        
         print("Company Matching Cache Management:")
         print("=" * 40)
         
