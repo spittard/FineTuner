@@ -15,6 +15,63 @@ except ImportError:
     def tqdm(iterable, desc=None, total=None, unit=None, ncols=None, **kwargs):
         return iterable
 
+# Generic terms that should be down-weighted in matching
+# These are common organizational/structural words that don't distinguish entities
+GENERIC_TERMS = {
+    # Facility types (weight 0.3)
+    'center': 0.3, 'school': 0.3, 'hospital': 0.3, 'office': 0.3, 
+    'building': 0.3, 'facility': 0.3, 'church': 0.3, 'synagogue': 0.3,
+    # Event types (weight 0.3)
+    'meeting': 0.3, 'breakfast': 0.3, 'lunch': 0.3, 'dinner': 0.3, 
+    'conference': 0.3, 'event': 0.3, 'events': 0.3, 'tournament': 0.3,
+    'wedding': 0.3,
+    # Organization suffixes (weight 0.2) - common corporate terms
+    'group': 0.2, 'association': 0.2, 'coalition': 0.2, 'foundation': 0.2, 
+    'services': 0.2, 'service': 0.2, 'solutions': 0.2, 'partners': 0.2,
+    # Location modifiers (weight 0.5) - somewhat distinctive but common
+    'north': 0.5, 'south': 0.5, 'east': 0.5, 'west': 0.5, 
+    'shore': 0.5, 'bay': 0.5, 'coast': 0.5, 'lake': 0.5,
+    'valley': 0.5, 'mountain': 0.5, 'hill': 0.5, 'river': 0.5,
+    # Common modifiers (weight 0.4)
+    'national': 0.4, 'international': 0.4, 'global': 0.4, 'regional': 0.4,
+    'local': 0.4, 'community': 0.4, 'public': 0.4, 'private': 0.4,
+}
+
+# Category words that define the TYPE of entity - mismatches should be penalized
+CATEGORY_WORDS = {
+    'facility_type': {'center', 'school', 'hospital', 'church', 'synagogue', 'office', 'building'},
+    'event_type': {'meeting', 'conference', 'wedding', 'tournament', 'breakfast', 'lunch', 'dinner', 'event'},
+    'service_type': {'senior', 'medical', 'financial', 'legal', 'technical', 'nursing', 'dental', 'health'},
+}
+
+# Common words that should NOT be treated as proper nouns even if capitalized
+# These are words that commonly appear capitalized at the start of names but are generic
+COMMON_WORDS = {
+    # Articles and prepositions
+    'the', 'a', 'an', 'of', 'and', 'or', 'for', 'to', 'in', 'on', 'at', 'by', 'with',
+    # Generic business terms
+    'inc', 'incorporated', 'corp', 'corporation', 'llc', 'ltd', 'limited', 'co', 'company',
+    'group', 'holdings', 'enterprises', 'associates', 'partners', 'services', 'solutions',
+    # Facility/organization types
+    'center', 'school', 'hospital', 'office', 'building', 'facility', 'church', 'synagogue',
+    'university', 'college', 'institute', 'academy', 'association', 'foundation', 'society',
+    # Event types
+    'meeting', 'conference', 'event', 'events', 'breakfast', 'lunch', 'dinner', 'tournament',
+    'wedding', 'reception', 'ceremony', 'celebration', 'gala', 'banquet',
+    # Descriptors
+    'national', 'international', 'global', 'regional', 'local', 'community', 'public', 'private',
+    'general', 'special', 'annual', 'monthly', 'weekly', 'daily',
+    # Directions/locations
+    'north', 'south', 'east', 'west', 'central', 'upper', 'lower', 'new', 'old',
+    'shore', 'bay', 'coast', 'lake', 'valley', 'mountain', 'hill', 'river', 'island',
+    # Service types
+    'senior', 'medical', 'financial', 'legal', 'technical', 'nursing', 'dental', 'health',
+    'professional', 'executive', 'administrative', 'clinical', 'educational',
+    # Common adjectives
+    'first', 'second', 'third', 'fourth', 'fifth', 'primary', 'secondary',
+    'main', 'major', 'minor', 'grand', 'great', 'big', 'small', 'little',
+}
+
 class CompanyMatcher:
     def __init__(self, model_name='all-MiniLM-L6-v2'):
         # Load the ULTRA-fastest available model for speed
@@ -547,118 +604,263 @@ class CompanyMatcher:
             
         return " ".join(clean_words)
 
+    def _get_term_weight(self, term):
+        """
+        Returns a weight for a term based on how generic/common it is.
+        Generic terms get lower weights (0.2-0.5), distinctive terms get 1.0.
+        """
+        term_lower = term.lower()
+        return GENERIC_TERMS.get(term_lower, 1.0)
+    
+    def _get_category_words(self, tokens):
+        """
+        Extracts category-defining words from a set of tokens.
+        Returns a dict mapping category type to the words found.
+        """
+        found_categories = {}
+        for token in tokens:
+            token_lower = token.lower()
+            for category, words in CATEGORY_WORDS.items():
+                if token_lower in words:
+                    if category not in found_categories:
+                        found_categories[category] = set()
+                    found_categories[category].add(token_lower)
+        return found_categories
+    
+    def _check_category_mismatch(self, query_tokens, target_tokens):
+        """
+        Checks if query and target have mismatched category words.
+        Returns a penalty multiplier (0.0-1.0) where 1.0 means no penalty.
+        """
+        query_categories = self._get_category_words(query_tokens)
+        target_categories = self._get_category_words(target_tokens)
+        
+        penalty = 1.0
+        
+        # Check each category type for mismatches
+        for category in CATEGORY_WORDS.keys():
+            query_words = query_categories.get(category, set())
+            target_words = target_categories.get(category, set())
+            
+            # If both have words in this category but they're different, apply penalty
+            if query_words and target_words and not query_words.intersection(target_words):
+                # Significant penalty for category mismatch (e.g., "Senior" vs "Financial")
+                penalty *= 0.75
+        
+        return penalty
+
+    def _extract_proper_nouns(self, original_name):
+        """
+        Extracts likely proper nouns from a company name.
+        Proper nouns are capitalized words that aren't common generic terms.
+        
+        Args:
+            original_name: The original (non-lowercased) company name
+            
+        Returns:
+            Set of likely proper nouns (in lowercase for comparison)
+        """
+        proper_nouns = set()
+        
+        # Split on common delimiters while preserving original casing
+        import re
+        words = re.split(r'[\s\-/,&]+', original_name)
+        
+        for word in words:
+            # Skip empty strings and very short words
+            if len(word) < 2:
+                continue
+                
+            # Check if word starts with uppercase (likely proper noun)
+            if word[0].isupper():
+                word_lower = word.lower()
+                # Only treat as proper noun if NOT a common generic word
+                if word_lower not in COMMON_WORDS:
+                    proper_nouns.add(word_lower)
+        
+        return proper_nouns
+    
+    def _check_proper_noun_mismatch(self, query_original, target_original, query_tokens, target_tokens):
+        """
+        Checks if the query has proper nouns (identifiers) that are missing from the target.
+        This catches cases like "Hartford Hospital" vs "Jefferson Hospital" where
+        the structure matches but the identifying name differs.
+        
+        Returns a penalty multiplier (0.0-1.0) where 1.0 means no penalty.
+        """
+        # Extract proper nouns from original names (preserves capitalization info)
+        query_proper = self._extract_proper_nouns(query_original)
+        target_proper = self._extract_proper_nouns(target_original)
+        
+        # If query has no identifiable proper nouns, no penalty
+        if not query_proper:
+            return 1.0
+        
+        # Find proper nouns in query that are missing from target
+        missing_proper = query_proper - target_proper
+        
+        # Also check if they're in the target tokens (handles case variations)
+        target_tokens_lower = {t.lower() for t in target_tokens}
+        truly_missing = {p for p in missing_proper if p not in target_tokens_lower}
+        
+        if not truly_missing:
+            return 1.0
+        
+        # Calculate penalty based on how many proper nouns are missing
+        # More missing = bigger penalty
+        missing_ratio = len(truly_missing) / len(query_proper)
+        
+        # Apply penalty: up to 25% reduction for missing proper nouns
+        # This is gentler than the category mismatch because proper nouns
+        # can sometimes be abbreviations or variants
+        penalty = 1.0 - (missing_ratio * 0.25)
+        
+        return penalty
+
     def _calculate_string_similarity(self, query, target):
         """
         Calculates a robust string similarity score (0.0 to 1.0)
-        combining Token Set Ratio and Sequence Matching.
+        combining weighted Token Set Ratio, Sequence Matching, and penalties
+        for generic term over-matching and category mismatches.
         """
         import difflib
         
         clean_query = self._clean_company_name(query)
         clean_target = self._clean_company_name(target)
         
-        # 1. Jaccard Token Similarity (Handles reordering: "Justice Dept" == "Dept Justice")
         q_tokens = set(clean_query.split())
         t_tokens = set(clean_target.split())
         
         if not q_tokens or not t_tokens:
             return 0.0
-            
-        intersection = len(q_tokens.intersection(t_tokens))
-        union = len(q_tokens.union(t_tokens))
-        jaccard_score = intersection / union if union > 0 else 0.0
         
-        # 2. Handle singular/plural variations (e.g., "Lake" vs "Lakes")
-        # Check if tokens are singular/plural variants
-        q_tokens_list = list(q_tokens)
-        t_tokens_list = list(t_tokens)
+        # ============================================================
+        # IMPROVEMENT 1: WEIGHTED JACCARD (Generic term down-weighting)
+        # ============================================================
+        # Instead of counting each token equally, weight by term importance
+        intersection = q_tokens.intersection(t_tokens)
+        union = q_tokens.union(t_tokens)
         
-        # Simple pluralization check: add 's' or 'es' to match
-        adjusted_intersection = intersection
+        # Calculate weighted intersection and union
+        weighted_intersection = sum(self._get_term_weight(t) for t in intersection)
+        weighted_union = sum(self._get_term_weight(t) for t in union)
+        
+        weighted_jaccard = weighted_intersection / weighted_union if weighted_union > 0 else 0.0
+        
+        # Also keep unweighted for comparison
+        unweighted_jaccard = len(intersection) / len(union) if len(union) > 0 else 0.0
+        
+        # Handle singular/plural variations
+        adjusted_intersection = len(intersection)
         for q_token in q_tokens:
             if q_token not in t_tokens:
-                # Check if plural/singular variant exists
                 if q_token + 's' in t_tokens or q_token + 'es' in t_tokens:
                     adjusted_intersection += 1
                 elif (q_token.endswith('s') and q_token[:-1] in t_tokens) or \
                      (q_token.endswith('es') and q_token[:-2] in t_tokens):
                     adjusted_intersection += 1
         
-        # Use adjusted intersection for better scoring
-        adjusted_jaccard = adjusted_intersection / union if union > 0 else 0.0
-        jaccard_score = max(jaccard_score, adjusted_jaccard)
+        adjusted_jaccard = adjusted_intersection / len(union) if len(union) > 0 else 0.0
         
-        # 3. Sequence Matcher (Handles typos/partial words)
-        # Normalize singular/plural before sequence matching
-        seq_query = clean_query
-        seq_target = clean_target
-        # Simple normalization: remove trailing 's' or 'es' for comparison
-        seq_query_normalized = ' '.join([w.rstrip('es').rstrip('s') if len(w) > 3 else w for w in seq_query.split()])
-        seq_target_normalized = ' '.join([w.rstrip('es').rstrip('s') if len(w) > 3 else w for w in seq_target.split()])
+        # Use weighted Jaccard as the primary score
+        jaccard_score = max(weighted_jaccard, adjusted_jaccard * 0.9)  # Slight preference for weighted
+        
+        # Sequence Matcher for typos/partial words
+        seq_query_normalized = ' '.join([w.rstrip('es').rstrip('s') if len(w) > 3 else w for w in clean_query.split()])
+        seq_target_normalized = ' '.join([w.rstrip('es').rstrip('s') if len(w) > 3 else w for w in clean_target.split()])
         seq_score = difflib.SequenceMatcher(None, seq_query_normalized, seq_target_normalized).ratio()
-        
-        # Also calculate original sequence score
         seq_score_original = difflib.SequenceMatcher(None, clean_query, clean_target).ratio()
         seq_score = max(seq_score, seq_score_original)
         
-        # Return the higher of the two, boosted if one is a substring of the other
         base_score = max(jaccard_score, seq_score)
         
-        # Calculate coverage: how many query words are matched in the target
-        query_words_in_target = len(q_tokens.intersection(t_tokens))
+        # ============================================================
+        # IMPROVEMENT 2: DISCRIMINATING WORD PENALTY
+        # ============================================================
+        # If query has distinctive (non-generic) words that are missing from target,
+        # apply a penalty. E.g., "J&J" missing from "AEP Breakfast Meeting"
+        query_distinctive = [t for t in q_tokens if self._get_term_weight(t) >= 0.8]
+        missing_distinctive = [t for t in query_distinctive if t not in t_tokens]
+        
+        if query_distinctive and missing_distinctive:
+            # Penalty based on what fraction of distinctive words are missing
+            missing_ratio = len(missing_distinctive) / len(query_distinctive)
+            # Apply significant penalty (up to 40% reduction) for missing distinctive words
+            distinctive_penalty = 1.0 - (missing_ratio * 0.4)
+            base_score *= distinctive_penalty
+        
+        # ============================================================
+        # IMPROVEMENT 3: SHORT STRING SCORE CAP
+        # ============================================================
+        # Prevent very short matches from getting artificially high scores
+        # This fixes "BOD" matching "Bod Pro" at 80%+
+        matched_chars = sum(len(t) for t in intersection)
+        if matched_chars < 5:
+            base_score = min(base_score, 0.50)  # Cap at 50% for < 5 chars matched
+        elif matched_chars < 8:
+            base_score = min(base_score, 0.65)  # Cap at 65% for 5-7 chars matched
+        
+        # ============================================================
+        # IMPROVEMENT 4: CATEGORY MISMATCH PENALTY
+        # ============================================================
+        # E.g., "Senior Center" vs "Financial Center" should be penalized
+        category_penalty = self._check_category_mismatch(q_tokens, t_tokens)
+        base_score *= category_penalty
+        
+        # ============================================================
+        # IMPROVEMENT 5: PROPER NOUN MISMATCH PENALTY
+        # ============================================================
+        # E.g., "Hartford Hospital" vs "Jefferson Hospital" - same structure,
+        # different identifying proper noun. Uses original names to detect capitalization.
+        proper_noun_penalty = self._check_proper_noun_mismatch(query, target, q_tokens, t_tokens)
+        base_score *= proper_noun_penalty
+        
+        # ============================================================
+        # COVERAGE AND LENGTH ADJUSTMENTS (existing logic, refined)
+        # ============================================================
+        query_words_in_target = len(intersection)
         coverage_ratio = query_words_in_target / len(q_tokens) if q_tokens else 0
         
-        # Calculate length ratio: penalize matches that are too short
-        # This prevents "Catholic" from ranking above "Our Lady of the Lake Catholic Church"
         query_length = len(q_tokens)
         target_length = len(t_tokens)
-        length_ratio = min(target_length, query_length) / max(target_length, query_length) if max(target_length, query_length) > 0 else 0
+        
+        # Combined penalty for boosts (category + proper noun)
+        combined_penalty = category_penalty * proper_noun_penalty
         
         # Boost for perfect substring matches (e.g. "Google" inside "Google Cloud")
         if clean_query in clean_target or clean_target in clean_query:
-            base_score = max(base_score, 0.9)
+            # Only boost if not penalized significantly
+            if combined_penalty >= 0.85:
+                base_score = max(base_score, 0.9 * combined_penalty)
         # Boost for multi-word matches that cover significant portion of query
-        # This ensures "Breakfast Meeting" ranks higher than just "Breakfast"
-        elif coverage_ratio >= 0.5:  # At least 50% of query words matched
-            # Scale boost from 0.7 to 0.9 based on coverage ratio
-            # But also consider length ratio - longer matches get additional boost
+        elif coverage_ratio >= 0.5:
             coverage_boost = 0.7 + (coverage_ratio * 0.2)
-            # Additional boost if length is similar (prevents short matches from ranking too high)
-            if length_ratio >= 0.6:  # Target is at least 60% of query length
-                coverage_boost += 0.05  # Small bonus for appropriate length
+            if target_length >= query_length * 0.6:
+                coverage_boost += 0.05
+            # Apply combined penalty to boost as well
+            coverage_boost *= combined_penalty
             base_score = max(base_score, coverage_boost)
-        # Small boost for partial matches (25-50% coverage)
         elif coverage_ratio >= 0.25:
-            coverage_boost = 0.6 + ((coverage_ratio - 0.25) * 0.4)  # 0.6 to 0.7
-            # Apply length penalty more aggressively for partial matches
+            coverage_boost = 0.6 + ((coverage_ratio - 0.25) * 0.4)
             if target_length < query_length * 0.5:
-                coverage_boost *= 0.8  # Reduce by 20% if too short
+                coverage_boost *= 0.8
+            coverage_boost *= combined_penalty
             base_score = max(base_score, coverage_boost)
         
-        # Apply length-based penalty AFTER coverage boost to ensure it's not overridden
-        # This ensures longer, more complete matches rank higher than very short partial matches
+        # Length-based penalty
         if target_length < query_length:
-            # Calculate how much shorter the target is relative to query
             length_shortfall = 1.0 - (target_length / query_length)
             
-            # Apply penalty based on how much shorter it is
-            # Very short matches (less than 50% of query length) get heavy penalty
-            if length_shortfall > 0.5:  # Target is less than 50% of query length
-                # Penalty scales from 0.4x (for 1 word vs 5 words) to 0.7x (for 2.5 words vs 5 words)
-                # Formula: 0.4 + (0.3 * normalized_position_in_range)
-                normalized_pos = min(1.0, (0.5 - (length_shortfall - 0.5)) / 0.5)  # Maps 0.5-1.0 shortfall to 1.0-0.0
+            if length_shortfall > 0.5:
+                normalized_pos = min(1.0, (0.5 - (length_shortfall - 0.5)) / 0.5)
                 penalty_factor = 0.4 + (0.3 * normalized_pos)
                 base_score = base_score * penalty_factor
-            # Moderate penalty for matches between 50-70% of query length
-            elif length_shortfall > 0.3:  # Target is 50-70% of query length
-                # Penalty scales from 0.7x to 0.85x
-                normalized_pos = (length_shortfall - 0.3) / 0.2  # 0.0 to 1.0
+            elif length_shortfall > 0.3:
+                normalized_pos = (length_shortfall - 0.3) / 0.2
                 penalty_factor = 0.7 + (0.15 * (1.0 - normalized_pos))
                 base_score = base_score * penalty_factor
-            # Small penalty for matches between 70-90% of query length
-            elif length_shortfall > 0.1:  # Target is 70-90% of query length
-                # Penalty scales from 0.85x to 0.95x
-                normalized_pos = (length_shortfall - 0.1) / 0.2  # 0.0 to 1.0
+            elif length_shortfall > 0.1:
+                normalized_pos = (length_shortfall - 0.1) / 0.2
                 penalty_factor = 0.85 + (0.1 * (1.0 - normalized_pos))
                 base_score = base_score * penalty_factor
             

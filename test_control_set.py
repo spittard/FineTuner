@@ -102,13 +102,15 @@ def generate_markdown_report(results, output_file='companies_control_set_results
         if len(all_matches) > 1:
             num_to_show = min(len(all_matches), top_k)
             md_content.append(f"**Top {num_to_show} Matches:**\n\n")
-            md_content.append("| Rank | Company Name | Score | Match Type |\n")
-            md_content.append("|------|--------------|-------|------------|\n")
+            md_content.append("| Rank | Company Name | Score | String | Semantic | Type |\n")
+            md_content.append("|------|--------------|-------|--------|----------|------|\n")
             for j, match in enumerate(all_matches[:num_to_show], 1):
                 name = match['name'].replace('|', '\\|')  # Escape pipes in markdown
                 score_pct = match['score'] * 100
+                string_score = match.get('string_score', 0)
+                semantic_score = match.get('semantic_score', 0)
                 match_type = match.get('match_type', 'unknown')
-                md_content.append(f"| {j} | {name} | {score_pct:.2f}% | {match_type} |\n")
+                md_content.append(f"| {j} | {name} | {score_pct:.2f}% | {string_score:.4f} | {semantic_score:.4f} | {match_type} |\n")
             md_content.append("\n")
         
         md_content.append("---\n\n")
