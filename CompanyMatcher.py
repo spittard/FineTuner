@@ -5,6 +5,16 @@ import os
 import pickle
 import hashlib
 
+# Try to import tqdm for progress bars, fallback if not available
+try:
+    from tqdm import tqdm
+    HAS_TQDM = True
+except ImportError:
+    HAS_TQDM = False
+    # Simple fallback that just returns the iterable unchanged
+    def tqdm(iterable, desc=None, total=None, unit=None, ncols=None, **kwargs):
+        return iterable
+
 class CompanyMatcher:
     def __init__(self, model_name='all-MiniLM-L6-v2'):
         # Load the ULTRA-fastest available model for speed
@@ -31,6 +41,21 @@ class CompanyMatcher:
         if not os.path.exists(self.cache_dir):
             os.makedirs(self.cache_dir)
     
+    def get_cache_key_from_file(self, filepath):
+        """Generate cache key from file metadata (fast - no file loading needed)"""
+        if not os.path.exists(filepath):
+            return None
+        
+        # Get file metadata
+        stat = os.stat(filepath)
+        file_size = stat.st_size
+        file_mtime = stat.st_mtime
+        
+        # Create hash from: filepath + size + mtime + model
+        # This allows cache checking without loading 2.9M+ company names
+        content = f"{os.path.abspath(filepath)}|{file_size}|{file_mtime}|{self.model_name}"
+        return hashlib.md5(content.encode()).hexdigest()
+    
     def get_cache_key(self, company_names):
         """Generate a unique cache key based on company names and model"""
         # Create a hash of the sorted company names and model name
@@ -51,30 +76,45 @@ class CompanyMatcher:
     def save_to_cache(self, cache_key, embeddings, index, company_names, original_names):
         """Save embeddings, index, and names to cache"""
         try:
+            import time
+            cache_start = time.time()
             paths = self.get_cache_paths(cache_key)
             
             # Save embeddings
+            print("      Saving embeddings to cache...", end=" ", flush=True)
+            embed_start = time.time()
             np.save(paths['embeddings'], embeddings)
+            print(f"[OK] ({time.time() - embed_start:.1f}s)")
             
             # Save FAISS index
+            print("      Saving FAISS index to cache...", end=" ", flush=True)
+            index_start = time.time()
             faiss.write_index(index, paths['index'])
+            print(f"[OK] ({time.time() - index_start:.1f}s)")
             
             # Save company names
+            print("      Saving company names to cache...", end=" ", flush=True)
+            names_start = time.time()
             with open(paths['names'], 'wb') as f:
                 pickle.dump({
                     'company_names': company_names,
                     'original_company_names': original_names
                 }, f)
+            print(f"[OK] ({time.time() - names_start:.1f}s)")
             
             # Save metadata
+            print("      Saving metadata to cache...", end=" ", flush=True)
+            meta_start = time.time()
             with open(paths['metadata'], 'wb') as f:
                 pickle.dump({
                     'model_name': self.model_name,
                     'cache_key': cache_key,
                     'num_companies': len(company_names)
                 }, f)
+            print(f"[OK] ({time.time() - meta_start:.1f}s)")
             
-            print(f"Cache saved successfully: {cache_key}")
+            cache_time = time.time() - cache_start
+            print(f"   Cache saved successfully: {cache_key[:16]}... (total: {cache_time:.1f}s)")
             return True
             
         except Exception as e:
@@ -84,6 +124,8 @@ class CompanyMatcher:
     def load_from_cache(self, cache_key):
         """Load embeddings, index, and names from cache"""
         try:
+            import time
+            cache_start = time.time()
             paths = self.get_cache_paths(cache_key)
             
             # Check if all cache files exist
@@ -91,29 +133,42 @@ class CompanyMatcher:
                 return False
             
             # Load embeddings
+            print("      Loading embeddings from cache...", end=" ", flush=True)
+            embed_start = time.time()
             self.embeddings = np.load(paths['embeddings'])
+            print(f"[OK] ({time.time() - embed_start:.1f}s)")
             
             # Load FAISS index
+            print("      Loading FAISS index from cache...", end=" ", flush=True)
+            index_start = time.time()
             self.index = faiss.read_index(paths['index'])
+            print(f"[OK] ({time.time() - index_start:.1f}s)")
             
             # Load company names
+            print("      Loading company names from cache...", end=" ", flush=True)
+            names_start = time.time()
             with open(paths['names'], 'rb') as f:
                 names_data = pickle.load(f)
                 self.company_names = names_data['company_names']
                 self.original_company_names = names_data['original_company_names']
+            print(f"[OK] ({time.time() - names_start:.1f}s)")
             
             # Verify metadata
+            print("      Verifying cache metadata...", end=" ", flush=True)
+            meta_start = time.time()
             with open(paths['metadata'], 'rb') as f:
                 metadata = pickle.load(f)
                 if metadata['model_name'] != self.model_name:
-                    print("Warning: Model name changed, cache invalid")
+                    print("[FAIL] (Model name changed, cache invalid)")
                     return False
+            print(f"[OK] ({time.time() - meta_start:.1f}s)")
             
             # Create fast lookup sets for exact matching
             self._create_fast_lookup_sets()
             
-            print(f"Cache loaded successfully: {cache_key}")
-            print(f"Loaded {len(self.original_company_names)} companies from cache")
+            cache_time = time.time() - cache_start
+            print(f"   Cache loaded successfully: {cache_key[:16]}... (total: {cache_time:.1f}s)")
+            print(f"   Loaded {len(self.original_company_names):,} companies from cache")
             return True
             
         except Exception as e:
@@ -131,28 +186,34 @@ class CompanyMatcher:
     def _create_fast_lookup_sets(self):
         """Create fast lookup sets for exact matching (called after building index)"""
         print("Creating fast lookup sets for exact matching...")
+        total = len(self.original_company_names)
         
         # Create lowercase sets for O(1) exact match lookup
-        self._company_names_lower_set = set(name.lower() for name in self.original_company_names)
+        print("   Step 1/3: Creating lowercase lookup set...")
+        self._company_names_lower_set = set()
+        for name in tqdm(self.original_company_names, desc="   Lowercase set", total=total, unit="names", ncols=80, disable=not HAS_TQDM):
+            self._company_names_lower_set.add(name.lower())
         
         # Create reverse lookup dictionary: lowercase_name -> index (for O(1) index lookup)
+        print("   Step 2/3: Creating reverse lookup dictionary...")
         self._company_names_lower_to_index = {}
-        for i, name in enumerate(self.original_company_names):
+        for i, name in enumerate(tqdm(self.original_company_names, desc="   Reverse lookup", total=total, unit="names", ncols=80, disable=not HAS_TQDM)):
             name_lower = name.lower()
             # Store first occurrence (in case of duplicates, which shouldn't happen)
             if name_lower not in self._company_names_lower_to_index:
                 self._company_names_lower_to_index[name_lower] = i
         
         # Create word-based lookup for faster partial matching
+        print("   Step 3/3: Creating word-based lookup dictionary...")
         self._company_words_dict = {}
-        for i, name in enumerate(self.original_company_names):
+        for i, name in enumerate(tqdm(self.original_company_names, desc="   Word lookup", total=total, unit="names", ncols=80, disable=not HAS_TQDM)):
             words = set(name.lower().split())
             for word in words:
                 if word not in self._company_words_dict:
                     self._company_words_dict[word] = []
                 self._company_words_dict[word].append(i)
         
-        print(f"   Created fast lookup sets for {len(self.original_company_names)} companies")
+        print(f"   [OK] Created fast lookup sets for {len(self.original_company_names):,} companies")
 
     def get_cache_info(self):
         """Get information about cached data"""
@@ -212,11 +273,58 @@ class CompanyMatcher:
         # Optional: normalize casing, strip punctuation, etc.
         return [name.strip().lower() for name in names]
 
-    def build_index(self, company_names):
-        # Generate cache key for this dataset
-        cache_key = self.get_cache_key(company_names)
+    def build_index(self, company_names=None, filepath=None):
+        """
+        Build index from company names or filepath.
+        If filepath is provided, uses file metadata for fast cache checking.
+        """
+        # Early return if index is already loaded - prevents duplicate loading
+        if self.is_index_ready():
+            print(f"[OK] Index already loaded with {len(self.original_company_names):,} companies - skipping rebuild")
+            print(f"  Index status: Ready | Companies: {len(self.original_company_names):,} | Embeddings shape: {self.embeddings.shape if self.embeddings is not None else 'N/A'}")
+            return True
         
-        # Try to load from cache first
+        cache_key = None
+        file_cache_key = None
+        
+        # Phase 1: Fast cache check using file metadata (if filepath provided)
+        if filepath and os.path.exists(filepath):
+            file_cache_key = self.get_cache_key_from_file(filepath)
+            if file_cache_key and self.load_from_cache(file_cache_key):
+                print(f"Using cached index (loaded from file metadata - no file loading needed!)")
+                print(f"  Cache key: {file_cache_key[:16]}...")
+                print(f"  Companies in cache: {len(self.original_company_names):,}")
+                return True
+        
+        # Phase 2: Load company names if not provided
+        if company_names is None:
+            if filepath and os.path.exists(filepath):
+                # Load from file
+                import json
+                print(f"Cache miss - loading companies from {filepath}...")
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                company_names = []
+                for item in data:
+                    if isinstance(item, dict) and "Company Name" in item:
+                        company_names.append(item["Company Name"])
+                print(f"Loaded {len(company_names):,} company names")
+            else:
+                raise ValueError("Must provide either company_names or filepath")
+        
+        # Phase 3: Generate content-based cache key (for validation)
+        content_cache_key = self.get_cache_key(company_names)
+        
+        # Use file-based key if available and matches, otherwise use content-based
+        if file_cache_key and file_cache_key == content_cache_key:
+            cache_key = file_cache_key
+            print(f"File-based cache key matches content-based key [OK]")
+        else:
+            cache_key = content_cache_key
+            if file_cache_key:
+                print(f"File-based cache key differs from content - using content-based key")
+        
+        # Try to load from cache with content-based key
         if self.load_from_cache(cache_key):
             print(f"Using cached index for {len(self.original_company_names)} companies")
             return True
@@ -226,8 +334,16 @@ class CompanyMatcher:
         
         # Store original names
         self.original_company_names = company_names
+        
         # Store preprocessed names for matching
-        self.company_names = self.preprocess(company_names)
+        print("Preprocessing company names...")
+        import time
+        preprocess_start = time.time()
+        self.company_names = []
+        for name in tqdm(company_names, desc="   Preprocessing", total=len(company_names), unit="names", ncols=80, disable=not HAS_TQDM):
+            self.company_names.append(name.strip().lower())
+        preprocess_time = time.time() - preprocess_start
+        print(f"   [OK] Preprocessed {len(self.company_names):,} names in {preprocess_time:.1f}s")
         
         # Generate embeddings with dramatically increased batch size for CPU speed
         print("Generating embeddings with optimized CPU batch processing...")
@@ -250,17 +366,21 @@ class CompanyMatcher:
         embeddings_list = []
         total_batches = (len(company_names) + batch_size - 1) // batch_size
         
-        batch_count = 0
-        for i in range(0, len(company_names), batch_size):
-            batch_count += 1
+        import time
+        overall_start = time.time()
+        
+        # Create progress bar for batch processing
+        batch_range = range(0, len(company_names), batch_size)
+        pbar = tqdm(batch_range, desc="   Generating embeddings", total=total_batches, unit="batch", ncols=80, disable=not HAS_TQDM)
+        
+        for i in pbar:
+            batch_count = (i // batch_size) + 1
             batch_end = min(i + batch_size, len(company_names))
             batch_names = company_names[i:batch_end]
             
-            # Show progress for every batch
-            print(f"   Processing batch {batch_count:,}/{total_batches:,} (companies {i:,}-{batch_end:,})")
+            # Update progress bar description with current batch info
+            pbar.set_description(f"   Batch {batch_count:,}/{total_batches:,} (companies {i:,}-{batch_end:,})")
             
-            # Add timing for each batch
-            import time
             start_time = time.time()
             
             # Process with ULTRA-speed optimizations
@@ -268,30 +388,35 @@ class CompanyMatcher:
                 batch_embeddings = self.model.encode(
                     batch_names, 
                     convert_to_numpy=True, 
-                    normalize_embeddings=False  # Disable normalization for speed
+                    normalize_embeddings=False,  # Disable normalization for speed
+                    show_progress_bar=False
                 )
                 
                 batch_time = time.time() - start_time
-                print(f"      Batch completed in {batch_time:.1f}s")
+                pbar.set_postfix({"time": f"{batch_time:.1f}s", "companies": f"{len(batch_names):,}"})
                 
             except Exception as e:
-                print(f"      Error processing batch: {e}")
-                print(f"      Retrying with smaller batch...")
+                pbar.write(f"      Error processing batch {batch_count}: {e}")
+                pbar.write(f"      Retrying with smaller batch...")
                 # Fallback to smaller batch size
                 smaller_batch = batch_names[:len(batch_names)//2]
                 batch_embeddings = self.model.encode(
                     smaller_batch, 
                     convert_to_numpy=True, 
-                    normalize_embeddings=False
+                    normalize_embeddings=False,
+                    show_progress_bar=False
                 )
-                print(f"      Smaller batch completed successfully")
+                pbar.write(f"      Smaller batch completed successfully")
             
             embeddings_list.append(batch_embeddings)
             
             # Memory cleanup every few batches
             if (i // batch_size) % 3 == 0:  # Every 3 batches
                 gc.collect()
-                print(f"      Memory cleanup completed")
+        
+        pbar.close()
+        overall_time = time.time() - overall_start
+        print(f"   [OK] Embedding generation completed in {overall_time:.1f}s ({overall_time/60:.1f} minutes)")
         
         # Combine all embeddings
         self.embeddings = np.vstack(embeddings_list)
@@ -303,17 +428,27 @@ class CompanyMatcher:
         self.index = faiss.IndexFlatIP(dim)  # Cosine similarity via normalized dot product
         
         # Add vectors to index with progress indication
-        print(f"   Adding {len(company_names):,} vectors to index...")
+        print(f"   Adding {len(company_names):,} vectors to FAISS index...")
+        import time
+        start_time = time.time()
         self.index.add(self.embeddings)
+        index_time = time.time() - start_time
+        print(f"   [OK] FAISS index built in {index_time:.1f}s")
         
         # Create fast lookup sets for exact matching
         self._create_fast_lookup_sets()
         
         # Save to cache for future use
         print("Saving to cache...")
+        import time
+        cache_start = time.time()
         self.save_to_cache(cache_key, self.embeddings, self.index, self.company_names, self.original_company_names)
+        cache_time = time.time() - cache_start
+        print(f"   [OK] Cache saved in {cache_time:.1f}s")
         
-        print(f"Index built successfully! Ready to match {len(company_names):,} companies")
+        print(f"\n{'='*60}")
+        print(f"[OK] Index built successfully! Ready to match {len(company_names):,} companies")
+        print(f"{'='*60}\n")
         return True
 
     def add_companies(self, new_company_names):
@@ -331,37 +466,57 @@ class CompanyMatcher:
             return True
         
         print(f"Adding {len(truly_new):,} new companies to existing index...")
+        import time
+        add_start = time.time()
         
         # Preprocess new names
-        print("   Preprocessing company names...")
-        new_preprocessed = self.preprocess(truly_new)
+        print("   Step 1/5: Preprocessing company names...")
+        new_preprocessed = []
+        for name in tqdm(truly_new, desc="   Preprocessing", unit="names", ncols=80, disable=not HAS_TQDM):
+            new_preprocessed.append(name.strip().lower())
+        print(f"   [OK] Preprocessed {len(new_preprocessed):,} names")
         
         # Generate embeddings for new companies with ULTRA-speed optimizations
-        print("   Generating embeddings for new companies...")
+        print("   Step 2/5: Generating embeddings for new companies...")
+        embed_start = time.time()
         new_embeddings = self.model.encode(
             new_preprocessed, 
             convert_to_numpy=True, 
-            normalize_embeddings=False  # Disable normalization for speed
+            normalize_embeddings=False,  # Disable normalization for speed
+            show_progress_bar=HAS_TQDM
         )
+        embed_time = time.time() - embed_start
+        print(f"   [OK] Generated embeddings in {embed_time:.1f}s")
         
         # Add to existing arrays
-        print("   Updating index with new data...")
+        print("   Step 3/5: Updating arrays with new data...")
         self.original_company_names.extend(truly_new)
         self.company_names.extend(new_preprocessed)
         self.embeddings = np.vstack([self.embeddings, new_embeddings])
+        print(f"   [OK] Arrays updated. Total companies: {len(self.original_company_names):,}")
         
         # Update FAISS index
+        print("   Step 4/5: Updating FAISS index...")
+        index_start = time.time()
         self.index.add(new_embeddings)
+        index_time = time.time() - index_start
+        print(f"   [OK] FAISS index updated in {index_time:.1f}s")
         
         # Update fast lookup sets for incremental updates
+        print("   Step 5/5: Updating fast lookup sets...")
         self._create_fast_lookup_sets()
         
-        print(f"   Successfully added {len(truly_new):,} companies. Total: {len(self.original_company_names):,}")
+        add_time = time.time() - add_start
+        print(f"\n   [OK] Successfully added {len(truly_new):,} companies in {add_time:.1f}s")
+        print(f"   [OK] Total companies in index: {len(self.original_company_names):,}")
         
         # Update cache with new data
         print("   Updating cache...")
+        cache_start = time.time()
         cache_key = self.get_cache_key(self.original_company_names)
         self.save_to_cache(cache_key, self.embeddings, self.index, self.company_names, self.original_company_names)
+        cache_time = time.time() - cache_start
+        print(f"   [OK] Cache updated in {cache_time:.1f}s")
         
         return True
 
@@ -378,8 +533,9 @@ class CompanyMatcher:
         # Stop words that add noise
         stop_words = {'the', 'of', 'and', '&', 'a', 'an'}
         
-        # Normalize
-        name_lower = name.lower().replace('.', '').replace(',', '')
+        # Normalize: replace hyphens with spaces so "Dallas-Parks" becomes "Dallas Parks"
+        # This helps match hyphenated names with their non-hyphenated variants
+        name_lower = name.lower().replace('.', '').replace(',', '').replace('-', ' ')
         words = name_lower.split()
         
         # Filter out suffixes and stop words
@@ -412,15 +568,99 @@ class CompanyMatcher:
         union = len(q_tokens.union(t_tokens))
         jaccard_score = intersection / union if union > 0 else 0.0
         
-        # 2. Sequence Matcher (Handles typos/partial words)
-        seq_score = difflib.SequenceMatcher(None, clean_query, clean_target).ratio()
+        # 2. Handle singular/plural variations (e.g., "Lake" vs "Lakes")
+        # Check if tokens are singular/plural variants
+        q_tokens_list = list(q_tokens)
+        t_tokens_list = list(t_tokens)
+        
+        # Simple pluralization check: add 's' or 'es' to match
+        adjusted_intersection = intersection
+        for q_token in q_tokens:
+            if q_token not in t_tokens:
+                # Check if plural/singular variant exists
+                if q_token + 's' in t_tokens or q_token + 'es' in t_tokens:
+                    adjusted_intersection += 1
+                elif (q_token.endswith('s') and q_token[:-1] in t_tokens) or \
+                     (q_token.endswith('es') and q_token[:-2] in t_tokens):
+                    adjusted_intersection += 1
+        
+        # Use adjusted intersection for better scoring
+        adjusted_jaccard = adjusted_intersection / union if union > 0 else 0.0
+        jaccard_score = max(jaccard_score, adjusted_jaccard)
+        
+        # 3. Sequence Matcher (Handles typos/partial words)
+        # Normalize singular/plural before sequence matching
+        seq_query = clean_query
+        seq_target = clean_target
+        # Simple normalization: remove trailing 's' or 'es' for comparison
+        seq_query_normalized = ' '.join([w.rstrip('es').rstrip('s') if len(w) > 3 else w for w in seq_query.split()])
+        seq_target_normalized = ' '.join([w.rstrip('es').rstrip('s') if len(w) > 3 else w for w in seq_target.split()])
+        seq_score = difflib.SequenceMatcher(None, seq_query_normalized, seq_target_normalized).ratio()
+        
+        # Also calculate original sequence score
+        seq_score_original = difflib.SequenceMatcher(None, clean_query, clean_target).ratio()
+        seq_score = max(seq_score, seq_score_original)
         
         # Return the higher of the two, boosted if one is a substring of the other
         base_score = max(jaccard_score, seq_score)
         
-        # Boost if one is a clean substring of the other (e.g. "Google" inside "Google Cloud")
+        # Calculate coverage: how many query words are matched in the target
+        query_words_in_target = len(q_tokens.intersection(t_tokens))
+        coverage_ratio = query_words_in_target / len(q_tokens) if q_tokens else 0
+        
+        # Calculate length ratio: penalize matches that are too short
+        # This prevents "Catholic" from ranking above "Our Lady of the Lake Catholic Church"
+        query_length = len(q_tokens)
+        target_length = len(t_tokens)
+        length_ratio = min(target_length, query_length) / max(target_length, query_length) if max(target_length, query_length) > 0 else 0
+        
+        # Boost for perfect substring matches (e.g. "Google" inside "Google Cloud")
         if clean_query in clean_target or clean_target in clean_query:
             base_score = max(base_score, 0.9)
+        # Boost for multi-word matches that cover significant portion of query
+        # This ensures "Breakfast Meeting" ranks higher than just "Breakfast"
+        elif coverage_ratio >= 0.5:  # At least 50% of query words matched
+            # Scale boost from 0.7 to 0.9 based on coverage ratio
+            # But also consider length ratio - longer matches get additional boost
+            coverage_boost = 0.7 + (coverage_ratio * 0.2)
+            # Additional boost if length is similar (prevents short matches from ranking too high)
+            if length_ratio >= 0.6:  # Target is at least 60% of query length
+                coverage_boost += 0.05  # Small bonus for appropriate length
+            base_score = max(base_score, coverage_boost)
+        # Small boost for partial matches (25-50% coverage)
+        elif coverage_ratio >= 0.25:
+            coverage_boost = 0.6 + ((coverage_ratio - 0.25) * 0.4)  # 0.6 to 0.7
+            # Apply length penalty more aggressively for partial matches
+            if target_length < query_length * 0.5:
+                coverage_boost *= 0.8  # Reduce by 20% if too short
+            base_score = max(base_score, coverage_boost)
+        
+        # Apply length-based penalty AFTER coverage boost to ensure it's not overridden
+        # This ensures longer, more complete matches rank higher than very short partial matches
+        if target_length < query_length:
+            # Calculate how much shorter the target is relative to query
+            length_shortfall = 1.0 - (target_length / query_length)
+            
+            # Apply penalty based on how much shorter it is
+            # Very short matches (less than 50% of query length) get heavy penalty
+            if length_shortfall > 0.5:  # Target is less than 50% of query length
+                # Penalty scales from 0.4x (for 1 word vs 5 words) to 0.7x (for 2.5 words vs 5 words)
+                # Formula: 0.4 + (0.3 * normalized_position_in_range)
+                normalized_pos = min(1.0, (0.5 - (length_shortfall - 0.5)) / 0.5)  # Maps 0.5-1.0 shortfall to 1.0-0.0
+                penalty_factor = 0.4 + (0.3 * normalized_pos)
+                base_score = base_score * penalty_factor
+            # Moderate penalty for matches between 50-70% of query length
+            elif length_shortfall > 0.3:  # Target is 50-70% of query length
+                # Penalty scales from 0.7x to 0.85x
+                normalized_pos = (length_shortfall - 0.3) / 0.2  # 0.0 to 1.0
+                penalty_factor = 0.7 + (0.15 * (1.0 - normalized_pos))
+                base_score = base_score * penalty_factor
+            # Small penalty for matches between 70-90% of query length
+            elif length_shortfall > 0.1:  # Target is 70-90% of query length
+                # Penalty scales from 0.85x to 0.95x
+                normalized_pos = (length_shortfall - 0.1) / 0.2  # 0.0 to 1.0
+                penalty_factor = 0.85 + (0.1 * (1.0 - normalized_pos))
+                base_score = base_score * penalty_factor
             
         return base_score
 
@@ -534,7 +774,13 @@ class CompanyMatcher:
         # Encode all queries in batches (no early termination - we want to see all matches)
         query_vecs_dict = {}  # query_idx -> query_vec
         
-        for batch_start in range(0, len(queries), batch_size):
+        total_encode_batches = (len(queries) + batch_size - 1) // batch_size
+        encode_batch_range = range(0, len(queries), batch_size)
+        
+        print(f"Encoding {len(queries):,} queries in {total_encode_batches:,} batches...")
+        encode_pbar = tqdm(encode_batch_range, desc="   Encoding queries", total=total_encode_batches, unit="batch", ncols=80, disable=not HAS_TQDM)
+        
+        for batch_start in encode_pbar:
             batch_end = min(batch_start + batch_size, len(queries))
             batch_queries = queries[batch_start:batch_end]
             batch_indices = list(range(batch_start, batch_end))
@@ -550,11 +796,19 @@ class CompanyMatcher:
             # Store vectors with their original query indices
             for local_idx, orig_idx in enumerate(batch_indices):
                 query_vecs_dict[orig_idx] = batch_vecs[local_idx:local_idx+1]
+            
+            encode_pbar.set_postfix({"queries": f"{batch_end:,}/{len(queries):,}"})
+        
+        encode_pbar.close()
+        print(f"   [OK] Encoded {len(queries):,} queries")
         
         # Process all queries with full semantic search and re-ranking
         candidate_k = min(50, len(self.original_company_names))
         
-        for query_idx, query in enumerate(queries):
+        print(f"Processing {len(queries):,} queries with semantic search and re-ranking...")
+        match_pbar = tqdm(enumerate(queries), desc="   Matching queries", total=len(queries), unit="query", ncols=80, disable=not HAS_TQDM)
+        
+        for query_idx, query in match_pbar:
             query_lower = query.lower().strip()
             
             # Semantic search for this query
@@ -626,6 +880,11 @@ class CompanyMatcher:
             # Return top_k
             results = candidates[:top_k]
             all_results.append(results)
+            
+            match_pbar.set_postfix({"matches": f"{len(results)}/query"})
+        
+        match_pbar.close()
+        print(f"   [OK] Processed {len(queries):,} queries, found matches for all")
         
         return all_results
 

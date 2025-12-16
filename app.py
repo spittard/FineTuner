@@ -4,6 +4,15 @@ import json
 import os
 import time
 
+# Try to import tqdm for progress bars
+try:
+    from tqdm import tqdm
+    HAS_TQDM = True
+except ImportError:
+    HAS_TQDM = False
+    def tqdm(iterable, desc=None, total=None, unit=None, ncols=None, **kwargs):
+        return iterable
+
 app = Flask(__name__)
 
 # Enable auto-reloading for development
@@ -407,6 +416,8 @@ def load_company_data(force_reload=False):
         
         # Load company names from the dataset
         print(f"Loading company data from {filename}...")
+        load_start = time.time()
+        
         with open(filename, 'r', encoding='utf-8') as f:
             data = json.load(f)
         
@@ -414,19 +425,18 @@ def load_company_data(force_reload=False):
         
         company_names = []
         print("   Extracting company names...")
-        for i, item in enumerate(data):
+        
+        # Use progress bar for extraction
+        for i, item in enumerate(tqdm(data, desc="   Extracting", total=len(data), unit="entries", ncols=80, disable=not HAS_TQDM)):
             if isinstance(item, dict) and "Company Name" in item:
                 company_names.append(item["Company Name"])
-            
-            # Show progress every 100,000 entries
-            if (i + 1) % 100000 == 0:
-                print(f"   Processed {i + 1:,} entries...")
         
         if not company_names:
             load_company_data._loading = False
             return False
         
-        print(f"   Extracted {len(company_names):,} company names")
+        load_time = time.time() - load_start
+        print(f"   [OK] Extracted {len(company_names):,} company names in {load_time:.1f}s")
         
         # Initialize CompanyMatcher with EXACTLY the same parameters as CLI
         # CLI uses: CompanyMatcher(model_name=args.matcher_model) with default 'all-MiniLM-L6-v2'

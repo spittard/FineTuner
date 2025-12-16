@@ -550,7 +550,7 @@ def main():
         matcher = CompanyMatcher(model_name=args.matcher_model)
         matcher.build_index(company_names)
         
-        print(f"✓ Index ready! {len(company_names):,} companies loaded.")
+        print(f"[OK] Index ready! {len(company_names):,} companies loaded.")
         
         # Interactive mode
         if args.interactive or not args.query:
@@ -697,7 +697,7 @@ def main():
                 
                 # Check if this specific dataset is cached
                 if matcher.load_from_cache(cache_key):
-                    print("✓ This dataset is cached and ready to use")
+                    print("[OK] This dataset is cached and ready to use")
                 else:
                     print("⚠ This dataset is not cached - will build index on first use")
         else:

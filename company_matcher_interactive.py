@@ -29,7 +29,7 @@ def load_company_names(dataset_path):
             print("Error: No company names found in dataset")
             return None
         
-        print(f"✓ Loaded {len(company_names):,} company names")
+        print(f"[OK] Loaded {len(company_names):,} company names")
         return company_names
     
     except Exception as e:
@@ -165,8 +165,8 @@ Examples:
     matcher = CompanyMatcher(model_name=args.model)
     matcher.build_index(company_names)
     
-    print(f"✓ Index ready! {len(company_names):,} companies loaded.")
-    print("✓ Cache loaded - all queries will be fast!")
+    print(f"[OK] Index ready! {len(company_names):,} companies loaded.")
+    print("[OK] Cache loaded - all queries will be fast!")
     
     # Start interactive mode
     interactive_mode(matcher, top_k=args.top_k)
