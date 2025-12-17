@@ -423,6 +423,15 @@ def load_company_data(force_reload=False):
         
         print(f"   Found {len(data):,} total entries in file")
         
+        # Check if data includes location information (City, State, Count)
+        has_location_data = False
+        if data and isinstance(data[0], dict):
+            sample = data[0]
+            has_location_data = 'City' in sample or 'State' in sample or 'Count' in sample
+        
+        if has_location_data:
+            print("   Location data detected (City/State/Count) - using location-aware loading")
+        
         company_names = []
         print("   Extracting company names...")
         
@@ -443,9 +452,13 @@ def load_company_data(force_reload=False):
         print("Initializing CompanyMatcher...")
         matcher = CompanyMatcher(model_name='all-MiniLM-L6-v2')
         
-        # Build index using the same logic as CLI
-        print(f"Building company matching index with {len(company_names):,} companies...")
-        matcher.build_index(company_names)
+        # Build index - use location-aware method if data has location info
+        if has_location_data:
+            print(f"Building company matching index with location data ({len(company_names):,} companies)...")
+            matcher.build_index_with_location(data=data)
+        else:
+            print(f"Building company matching index with {len(company_names):,} companies...")
+            matcher.build_index(company_names)
         
         # Store file modification time for change detection
         try:
@@ -457,12 +470,16 @@ def load_company_data(force_reload=False):
         last_data_check = current_time
         
         print(f"SUCCESS: Loaded {len(company_names):,} company name entries")
+        if matcher.has_location_data:
+            print(f"   Location data: Available ({len(matcher.company_locations):,} entries)")
         print(f"Webapp is now ready for company matching!")
         load_company_data._loading = False
         return True
         
     except Exception as e:
         print(f"Error loading company data: {e}")
+        import traceback
+        traceback.print_exc()
         load_company_data._loading = False
         return False
 
@@ -473,7 +490,7 @@ def index():
 
 @app.route('/search', methods=['POST'])
 def search():
-    """Handle company search requests"""
+    """Handle company search requests with optional location filtering"""
     try:
         # Load company data if not already loaded
         if not load_company_data():
@@ -489,10 +506,22 @@ def search():
         # Get number of results (default to 10)
         top_k = int(request.form.get('top_k', 10))
         
-        # Perform search using EXACTLY the same logic as CLI
+        # Get optional location parameters
+        city = request.form.get('city', '').strip() or None
+        state = request.form.get('state', '').strip() or None
+        
+        # Perform search - use location-aware matching if location data is available
         print(f"Searching for companies matching: {query}")
-        matches = matcher.match(query, top_k=top_k)
-        print(f"Found {len(matches)} matches")
+        if city or state:
+            print(f"   Location filter: city='{city}', state='{state}'")
+        
+        # Use location-aware matching if available and location params provided
+        if matcher.has_location_data and (city or state):
+            matches = matcher.match_with_location(query, city=city, state=state, top_k=top_k)
+            print(f"Found {len(matches)} matches (location-aware)")
+        else:
+            matches = matcher.match(query, top_k=top_k)
+            print(f"Found {len(matches)} matches")
         
         # Format results for display
         results = []
@@ -504,7 +533,7 @@ def search():
             rationale = generate_match_rationale(query, match['name'], explanation, match['score'])
             print(f"Rationale generated for match {i}")
             
-            results.append({
+            result_entry = {
                 'rank': i,
                 'company_name': match['name'],
                 'likeness_percent': round(match['score'] * 100, 1),
@@ -516,22 +545,52 @@ def search():
                     'overlap_tokens': list(explanation['overlap']),
                     'overlap_score': explanation['overlap_score']
                 }
-            })
+            }
+            
+            # Add location and count data if available
+            if 'city' in match:
+                result_entry['city'] = match.get('city', '')
+            if 'state' in match:
+                result_entry['state'] = match.get('state', '')
+            if 'count' in match:
+                result_entry['record_count'] = match.get('count', 0)
+            if 'location_score' in match:
+                result_entry['location_score'] = round(match.get('location_score', 0) * 100, 1)
+            if 'name_score' in match:
+                result_entry['name_score'] = round(match.get('name_score', 0) * 100, 1)
+            
+            results.append(result_entry)
         
         # Log the search results for debugging consistency
         print(f"\nTop {len(matches)} matches for '{query}':")
-        print("-" * 60)
+        print("-" * 80)
         for i, match in enumerate(matches, 1):
             score_percent = match['score'] * 100
-            print(f"{i:2d}. {match['name']:<40} {score_percent:5.1f}%")
-        print("-" * 60)
+            location_info = ""
+            if 'city' in match or 'state' in match:
+                city_val = match.get('city', '')
+                state_val = match.get('state', '')
+                count_val = match.get('count', 0)
+                location_info = f" | {city_val}, {state_val} (count: {count_val})"
+            print(f"{i:2d}. {match['name']:<40} {score_percent:5.1f}%{location_info}")
+        print("-" * 80)
         
-        return jsonify({
+        response_data = {
             'success': True,
             'query': query,
             'results': results,
-            'total_matches': len(results)
-        })
+            'total_matches': len(results),
+            'location_filter_used': bool(city or state),
+            'has_location_data': matcher.has_location_data
+        }
+        
+        # Include location filter in response if used
+        if city:
+            response_data['filter_city'] = city
+        if state:
+            response_data['filter_state'] = state
+        
+        return jsonify(response_data)
         
     except Exception as e:
         import traceback
@@ -801,12 +860,19 @@ def status():
         })
     
     if load_company_data():
-        return jsonify({
+        response = {
             'status': 'ready',
             'companies_loaded': len(matcher.original_company_names) if matcher else 0,
             'last_updated': last_data_check,
             'message': f'Ready with {len(matcher.original_company_names):,} companies' if matcher else 'Ready'
-        })
+        }
+        # Add location data status
+        if matcher:
+            response['has_location_data'] = matcher.has_location_data
+            if matcher.has_location_data:
+                response['location_entries'] = len(matcher.company_locations)
+                response['message'] += ' (with location data)'
+        return jsonify(response)
     else:
         return jsonify({
             'status': 'not_ready',

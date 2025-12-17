@@ -129,6 +129,141 @@ class CreateDataSet:
             print(f"ERROR: Error extracting data: {e}")
             return []
     
+    def extract_data_with_location(self, table_name: str, company_column: str = "Original",
+                                     city_column: str = "City", state_column: str = "State",
+                                     max_rows: Optional[int] = None) -> List[Dict[str, Any]]:
+        """
+        Extract company data with location (city, state) and record counts.
+        
+        Args:
+            table_name: Name of the table to extract from (can include schema, e.g., 'AcctRef.Master')
+            company_column: Name of the column containing company names (default: 'Original')
+            city_column: Name of the column containing city (default: 'City')
+            state_column: Name of the column containing state (default: 'State')
+            max_rows: Maximum number of rows to extract (None for all rows)
+            
+        Returns:
+            List of dictionaries in the format:
+            [{"Company Name": "value", "City": "value", "State": "value", "Count": N}, ...]
+        """
+        if not self.connection:
+            print("ERROR: No database connection. Call connect() first.")
+            return []
+        
+        try:
+            cursor = self.connection.cursor()
+            
+            # Parse table name for schema and table
+            table_parts = table_name.split('.')
+            if len(table_parts) == 2:
+                schema_name = table_parts[0]
+                actual_table_name = table_parts[1]
+                table_ref = f"[{schema_name}].[{actual_table_name}]"
+            else:
+                table_ref = f"[{table_name}]"
+            
+            # Build query to get company name, city, state, and count
+            # Groups by company name and location to get counts
+            if max_rows:
+                query = f"""
+                    SELECT TOP {max_rows} [{company_column}], [{city_column}], [{state_column}], COUNT(*) as RecordCount
+                    FROM {table_ref}
+                    WHERE [{company_column}] IS NOT NULL AND [{company_column}] != ''
+                    GROUP BY [{company_column}], [{city_column}], [{state_column}]
+                    ORDER BY [{company_column}]
+                """
+            else:
+                query = f"""
+                    SELECT [{company_column}], [{city_column}], [{state_column}], COUNT(*) as RecordCount
+                    FROM {table_ref}
+                    WHERE [{company_column}] IS NOT NULL AND [{company_column}] != ''
+                    GROUP BY [{company_column}], [{city_column}], [{state_column}]
+                    ORDER BY [{company_column}]
+                """
+            
+            print(f"   Executing query: {query[:100]}...")
+            cursor.execute(query)
+            results = cursor.fetchall()
+            cursor.close()
+            
+            print(f"   Query returned {len(results):,} rows")
+            
+            # Format data with location info
+            print("   Formatting data with location info...")
+            formatted_data = []
+            for i, row in enumerate(results):
+                company_name = row[0].strip() if row[0] else ""
+                city = row[1].strip() if row[1] else ""
+                state = row[2].strip() if row[2] else ""
+                count = row[3] if row[3] else 0
+                
+                if company_name:  # Only add non-empty names
+                    formatted_data.append({
+                        "Company Name": company_name,
+                        "City": city,
+                        "State": state,
+                        "Count": count
+                    })
+                
+                # Show progress every 100,000 rows
+                if (i + 1) % 100000 == 0:
+                    print(f"   Processed {i + 1:,} rows...")
+            
+            limit_info = f" (limited to {max_rows:,} rows)" if max_rows else ""
+            print(f"   Extracted {len(formatted_data):,} company records with location from {table_name}{limit_info}")
+            return formatted_data
+            
+        except Exception as e:
+            print(f"ERROR: Error extracting data with location: {e}")
+            import traceback
+            traceback.print_exc()
+            return []
+    
+    def create_dataset_with_location(self, table_name: str, output_file: str,
+                                      company_column: str = "Original",
+                                      city_column: str = "City", 
+                                      state_column: str = "State",
+                                      max_rows: Optional[int] = None) -> bool:
+        """
+        Complete workflow: extract data with location and save to JSON
+        
+        Args:
+            table_name: Name of the table to extract from (e.g., 'AcctRef.Master')
+            output_file: Path to output JSON file
+            company_column: Column name for company names (default: 'Original')
+            city_column: Column name for city (default: 'City')
+            state_column: Column name for state (default: 'State')
+            max_rows: Maximum number of rows to extract (None for all rows)
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        print(f"Starting dataset creation with location data...")
+        print(f"   Table: {table_name}")
+        print(f"   Company Column: {company_column}")
+        print(f"   City Column: {city_column}")
+        print(f"   State Column: {state_column}")
+        print(f"   Output: {output_file}")
+        if max_rows:
+            print(f"   Max rows: {max_rows:,}")
+        else:
+            print(f"   Max rows: No limit (all rows)")
+        print()
+        
+        data = self.extract_data_with_location(
+            table_name, company_column, city_column, state_column, max_rows
+        )
+        if not data:
+            return False
+        
+        success = self.save_to_json(data, output_file)
+        if success:
+            print(f"Dataset creation with location completed successfully!")
+            print(f"   Total entries: {len(data):,}")
+            print(f"   File size: {os.path.getsize(output_file) / (1024*1024):.1f} MB")
+        
+        return success
+
     def save_to_json(self, data: List[Dict[str, str]], output_file: str) -> bool:
         """
         Save extracted data to JSON file
@@ -219,3 +354,13 @@ if __name__ == "__main__":
     print("dataset_creator = CreateDataSet('sqlserver')")
     print("dataset_creator.connect('mydb', server='localhost', user='sa', password='password')")
     print("dataset_creator.create_dataset('companies', 'company_name', 'output.json', max_rows=2000)")
+    print("\n--- NEW: Extract with Location Data ---")
+    print("dataset_creator = CreateDataSet('sqlserver')")
+    print("dataset_creator.connect('SQLWebRefTable', server='localhost', trusted_connection=True)")
+    print("dataset_creator.create_dataset_with_location(")
+    print("    table_name='AcctRef.Master',")
+    print("    output_file='companies_with_location.json',")
+    print("    company_column='Original',")
+    print("    city_column='City',")
+    print("    state_column='State'")
+    print(")")

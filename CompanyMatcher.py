@@ -89,6 +89,12 @@ class CompanyMatcher:
         self.embeddings = None
         self.model_name = ultra_fast_model  # Store the actual model name used
         
+        # Location data storage (for location-aware matching)
+        self.company_locations = []  # List of {"city": str, "state": str} per company
+        self.company_counts = []  # List of record counts per company
+        self.company_ids = []  # List of database IDs per company (for reference back to DB)
+        self.has_location_data = False  # Flag to indicate if location data is loaded
+        
         # Persistence settings
         self.cache_dir = "company_matcher_cache"
         self.ensure_cache_dir()
@@ -130,8 +136,9 @@ class CompanyMatcher:
             'metadata': base_path + '_metadata.pkl'
         }
     
-    def save_to_cache(self, cache_key, embeddings, index, company_names, original_names):
-        """Save embeddings, index, and names to cache"""
+    def save_to_cache(self, cache_key, embeddings, index, company_names, original_names, 
+                      locations=None, counts=None, ids=None):
+        """Save embeddings, index, names, and optionally location data to cache"""
         try:
             import time
             cache_start = time.time()
@@ -149,14 +156,22 @@ class CompanyMatcher:
             faiss.write_index(index, paths['index'])
             print(f"[OK] ({time.time() - index_start:.1f}s)")
             
-            # Save company names
+            # Save company names (and location data if available)
             print("      Saving company names to cache...", end=" ", flush=True)
             names_start = time.time()
+            names_data = {
+                'company_names': company_names,
+                'original_company_names': original_names
+            }
+            # Include location data and IDs if provided
+            if locations is not None:
+                names_data['company_locations'] = locations
+            if counts is not None:
+                names_data['company_counts'] = counts
+            if ids is not None:
+                names_data['company_ids'] = ids
             with open(paths['names'], 'wb') as f:
-                pickle.dump({
-                    'company_names': company_names,
-                    'original_company_names': original_names
-                }, f)
+                pickle.dump(names_data, f)
             print(f"[OK] ({time.time() - names_start:.1f}s)")
             
             # Save metadata
@@ -166,7 +181,8 @@ class CompanyMatcher:
                 pickle.dump({
                     'model_name': self.model_name,
                     'cache_key': cache_key,
-                    'num_companies': len(company_names)
+                    'num_companies': len(company_names),
+                    'has_location_data': locations is not None
                 }, f)
             print(f"[OK] ({time.time() - meta_start:.1f}s)")
             
@@ -179,7 +195,7 @@ class CompanyMatcher:
             return False
     
     def load_from_cache(self, cache_key):
-        """Load embeddings, index, and names from cache"""
+        """Load embeddings, index, names, and location data from cache"""
         try:
             import time
             cache_start = time.time()
@@ -201,13 +217,28 @@ class CompanyMatcher:
             self.index = faiss.read_index(paths['index'])
             print(f"[OK] ({time.time() - index_start:.1f}s)")
             
-            # Load company names
+            # Load company names and location data
             print("      Loading company names from cache...", end=" ", flush=True)
             names_start = time.time()
             with open(paths['names'], 'rb') as f:
                 names_data = pickle.load(f)
                 self.company_names = names_data['company_names']
                 self.original_company_names = names_data['original_company_names']
+                # Load location data and IDs if available
+                if 'company_locations' in names_data:
+                    self.company_locations = names_data['company_locations']
+                    self.has_location_data = True
+                else:
+                    self.company_locations = []
+                    self.has_location_data = False
+                if 'company_counts' in names_data:
+                    self.company_counts = names_data['company_counts']
+                else:
+                    self.company_counts = []
+                if 'company_ids' in names_data:
+                    self.company_ids = names_data['company_ids']
+                else:
+                    self.company_ids = []
             print(f"[OK] ({time.time() - names_start:.1f}s)")
             
             # Verify metadata
@@ -226,6 +257,8 @@ class CompanyMatcher:
             cache_time = time.time() - cache_start
             print(f"   Cache loaded successfully: {cache_key[:16]}... (total: {cache_time:.1f}s)")
             print(f"   Loaded {len(self.original_company_names):,} companies from cache")
+            if self.has_location_data:
+                print(f"   Location data: Available ({len(self.company_locations):,} entries)")
             return True
             
         except Exception as e:
@@ -1119,3 +1152,506 @@ class CompanyMatcher:
             explanation["final_score"] = match_details.get("score", 0.0)
         
         return explanation
+
+    # ========================================================================
+    # LOCATION-AWARE MATCHING METHODS
+    # ========================================================================
+    
+    def build_index_with_location(self, filepath=None, data=None):
+        """
+        Build index from data that includes location information and IDs.
+        
+        Args:
+            filepath: Path to JSON file with format:
+                [{"ID": 123, "Company Name": "...", "City": "...", "State": "...", "Count": N}, ...]
+            data: List of dicts with same format (alternative to filepath)
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        import json
+        import time
+        
+        # Early return if index is already loaded
+        if self.is_index_ready() and self.has_location_data:
+            print(f"[OK] Index with location already loaded - skipping rebuild")
+            return True
+        
+        # Load data
+        if data is None:
+            if filepath and os.path.exists(filepath):
+                print(f"Loading company data with location from {filepath}...")
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                print(f"   Loaded {len(data):,} entries")
+            else:
+                raise ValueError("Must provide either data or filepath")
+        
+        # Extract company names, location data, and IDs
+        print("Extracting company names, location data, and IDs...")
+        company_names = []
+        locations = []
+        counts = []
+        ids = []
+        
+        for item in tqdm(data, desc="   Processing", unit="entries", ncols=80, disable=not HAS_TQDM):
+            if isinstance(item, dict) and "Company Name" in item:
+                company_names.append(item["Company Name"])
+                locations.append({
+                    "city": item.get("City", "").strip() if item.get("City") else "",
+                    "state": item.get("State", "").strip() if item.get("State") else ""
+                })
+                counts.append(item.get("Count", 0))
+                ids.append(item.get("ID", None))  # Database identifier
+        
+        print(f"   Extracted {len(company_names):,} companies with location data")
+        has_ids = any(id is not None for id in ids)
+        if has_ids:
+            print(f"   Database IDs: Available")
+        
+        # Store location data and IDs
+        self.company_locations = locations
+        self.company_counts = counts
+        self.company_ids = ids
+        self.has_location_data = True
+        
+        # Generate cache key that includes location data marker
+        cache_key = self.get_cache_key(company_names) + "_loc"
+        
+        # Try to load from cache
+        if self.load_from_cache(cache_key):
+            print(f"Using cached index with location data")
+            return True
+        
+        # Build index using existing method logic
+        print(f"Building new index with location for {len(company_names):,} companies...")
+        
+        # Store original names
+        self.original_company_names = company_names
+        
+        # Store preprocessed names
+        print("Preprocessing company names...")
+        preprocess_start = time.time()
+        self.company_names = []
+        for name in tqdm(company_names, desc="   Preprocessing", total=len(company_names), 
+                        unit="names", ncols=80, disable=not HAS_TQDM):
+            self.company_names.append(name.strip().lower())
+        print(f"   [OK] Preprocessed in {time.time() - preprocess_start:.1f}s")
+        
+        # Generate embeddings
+        print("Generating embeddings...")
+        import gc
+        gc.collect()
+        
+        batch_size = 50000
+        embeddings_list = []
+        total_batches = (len(company_names) + batch_size - 1) // batch_size
+        
+        overall_start = time.time()
+        batch_range = range(0, len(company_names), batch_size)
+        pbar = tqdm(batch_range, desc="   Generating embeddings", total=total_batches, 
+                   unit="batch", ncols=80, disable=not HAS_TQDM)
+        
+        for i in pbar:
+            batch_end = min(i + batch_size, len(company_names))
+            batch_names = company_names[i:batch_end]
+            
+            batch_embeddings = self.model.encode(
+                batch_names, 
+                convert_to_numpy=True, 
+                normalize_embeddings=False,
+                show_progress_bar=False
+            )
+            embeddings_list.append(batch_embeddings)
+            
+            if (i // batch_size) % 3 == 0:
+                gc.collect()
+        
+        pbar.close()
+        print(f"   [OK] Embedding generation completed in {time.time() - overall_start:.1f}s")
+        
+        # Combine embeddings
+        self.embeddings = np.vstack(embeddings_list)
+        
+        # Build FAISS index
+        print("Building FAISS index...")
+        dim = self.embeddings.shape[1]
+        self.index = faiss.IndexFlatIP(dim)
+        self.index.add(self.embeddings)
+        print(f"   [OK] FAISS index built")
+        
+        # Create fast lookup sets
+        self._create_fast_lookup_sets()
+        
+        # Save to cache with location data
+        print("Saving to cache with location data...")
+        self.save_to_cache(cache_key, self.embeddings, self.index, 
+                          self.company_names, self.original_company_names,
+                          locations=self.company_locations, counts=self.company_counts,
+                          ids=self.company_ids)
+        
+        print(f"\n{'='*60}")
+        print(f"[OK] Index built with location data!")
+        print(f"   Companies: {len(company_names):,}")
+        print(f"   Location entries: {len(self.company_locations):,}")
+        print(f"{'='*60}\n")
+        return True
+
+    # State abbreviation mappings (both directions)
+    STATE_ABBREV = {
+        'al': 'alabama', 'ak': 'alaska', 'az': 'arizona', 'ar': 'arkansas',
+        'ca': 'california', 'co': 'colorado', 'ct': 'connecticut', 'de': 'delaware',
+        'fl': 'florida', 'ga': 'georgia', 'hi': 'hawaii', 'id': 'idaho',
+        'il': 'illinois', 'in': 'indiana', 'ia': 'iowa', 'ks': 'kansas',
+        'ky': 'kentucky', 'la': 'louisiana', 'me': 'maine', 'md': 'maryland',
+        'ma': 'massachusetts', 'mi': 'michigan', 'mn': 'minnesota', 'ms': 'mississippi',
+        'mo': 'missouri', 'mt': 'montana', 'ne': 'nebraska', 'nv': 'nevada',
+        'nh': 'new hampshire', 'nj': 'new jersey', 'nm': 'new mexico', 'ny': 'new york',
+        'nc': 'north carolina', 'nd': 'north dakota', 'oh': 'ohio', 'ok': 'oklahoma',
+        'or': 'oregon', 'pa': 'pennsylvania', 'ri': 'rhode island', 'sc': 'south carolina',
+        'sd': 'south dakota', 'tn': 'tennessee', 'tx': 'texas', 'ut': 'utah',
+        'vt': 'vermont', 'va': 'virginia', 'wa': 'washington', 'wv': 'west virginia',
+        'wi': 'wisconsin', 'wy': 'wyoming', 'dc': 'district of columbia'
+    }
+    
+    # Common city name variations
+    CITY_VARIATIONS = {
+        'nyc': 'new york', 'new york city': 'new york', 'ny': 'new york',
+        'la': 'los angeles', 'l.a.': 'los angeles',
+        'sf': 'san francisco', 'san fran': 'san francisco',
+        'dc': 'washington', 'washington dc': 'washington', 'washington d.c.': 'washington',
+        'philly': 'philadelphia', 'phila': 'philadelphia',
+        'chi': 'chicago', 'chi-town': 'chicago',
+        'vegas': 'las vegas', 'lv': 'las vegas',
+        'nola': 'new orleans',
+        'atl': 'atlanta',
+        'stl': 'st louis', 'st. louis': 'saint louis', 'saint louis': 'st louis',
+        'ft worth': 'fort worth', 'ft. worth': 'fort worth',
+        'st paul': 'saint paul', 'st. paul': 'saint paul',
+        'mt': 'mount', 'mt.': 'mount',
+    }
+    
+    def _normalize_state(self, state):
+        """Normalize state to abbreviation form for comparison."""
+        if not state:
+            return ""
+        state = state.strip().lower()
+        
+        # If already abbreviation, return as-is
+        if len(state) == 2 and state in self.STATE_ABBREV:
+            return state
+        
+        # If full name, convert to abbreviation
+        for abbrev, full_name in self.STATE_ABBREV.items():
+            if state == full_name:
+                return abbrev
+        
+        return state
+    
+    def _normalize_city(self, city):
+        """Normalize city name for comparison."""
+        if not city:
+            return ""
+        city = city.strip().lower()
+        
+        # Apply known variations
+        if city in self.CITY_VARIATIONS:
+            city = self.CITY_VARIATIONS[city]
+        
+        # Remove common prefixes/suffixes
+        city = city.replace('city of ', '').replace(' city', '')
+        city = city.replace('town of ', '').replace(' town', '')
+        
+        return city
+    
+    def _calculate_city_similarity(self, query_city, target_city):
+        """
+        Calculate city similarity using multiple methods (similar to company name matching).
+        Returns score between 0.0 and 1.0.
+        """
+        import difflib
+        
+        if not query_city or not target_city:
+            return 0.0
+        
+        q_city = self._normalize_city(query_city)
+        t_city = self._normalize_city(target_city)
+        
+        # Exact match after normalization
+        if q_city == t_city:
+            return 1.0
+        
+        # Check if one contains the other (e.g., "York" in "New York")
+        if q_city in t_city or t_city in q_city:
+            # Partial containment - score based on coverage
+            shorter = min(len(q_city), len(t_city))
+            longer = max(len(q_city), len(t_city))
+            return 0.7 + (0.3 * shorter / longer)
+        
+        # Token-based matching (similar to company matching)
+        q_tokens = set(q_city.split())
+        t_tokens = set(t_city.split())
+        
+        if q_tokens and t_tokens:
+            intersection = q_tokens.intersection(t_tokens)
+            union = q_tokens.union(t_tokens)
+            jaccard = len(intersection) / len(union)
+            if jaccard > 0:
+                return 0.5 + (0.5 * jaccard)
+        
+        # Sequence similarity for typos/variations
+        seq_ratio = difflib.SequenceMatcher(None, q_city, t_city).ratio()
+        if seq_ratio > 0.7:
+            return seq_ratio
+        
+        return 0.0
+    
+    def _calculate_location_score(self, query_city, query_state, target_city, target_state):
+        """
+        Calculate location similarity score using fuzzy matching.
+        Similar matching logic as company names.
+        
+        Args:
+            query_city: City from query
+            query_state: State from query
+            target_city: City from target company
+            target_state: State from target company
+            
+        Returns:
+            Float between 0.0 and 1.0
+        """
+        state_score = 0.0
+        city_score = 0.0
+        
+        # Normalize inputs
+        q_state = self._normalize_state(query_state)
+        t_state = self._normalize_state(target_state)
+        
+        # State matching (40% weight)
+        if q_state and t_state:
+            if q_state == t_state:
+                state_score = 1.0
+            else:
+                # Check if states are similar (handles typos)
+                import difflib
+                state_ratio = difflib.SequenceMatcher(None, q_state, t_state).ratio()
+                if state_ratio > 0.8:
+                    state_score = state_ratio
+        
+        # City matching (60% weight) - use enhanced similarity
+        city_score = self._calculate_city_similarity(query_city, target_city)
+        
+        # Weighted combination
+        final_score = (city_score * 0.6) + (state_score * 0.4)
+        
+        return final_score
+
+    def match_with_location(self, query, city=None, state=None, top_k=10):
+        """
+        Match company name with optional location-based re-ranking.
+        
+        When no exact name match is found, uses city/state to boost
+        scores of candidates in the same location.
+        
+        Args:
+            query: Company name to search for
+            city: Optional city for location matching
+            state: Optional state for location matching  
+            top_k: Number of results to return
+            
+        Returns:
+            List of match results with location and count info
+        """
+        query_lower = query.lower().strip()
+        use_location = (city or state) and self.has_location_data
+        
+        # --- PHASE 1: RETRIEVAL (Semantic Search) ---
+        candidate_k = min(50, len(self.original_company_names))
+        
+        query_vec = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
+        semantic_scores, semantic_indices = self.index.search(query_vec, candidate_k)
+        
+        candidates = []
+        max_sem_score = float(semantic_scores[0][0]) if len(semantic_scores[0]) > 0 else 1.0
+        
+        # Check for exact match first
+        is_exact_match = False
+        if hasattr(self, '_company_names_lower_set') and query_lower in self._company_names_lower_set:
+            is_exact_match = True
+        
+        # --- PHASE 2: RE-RANKING (Weighted Scoring with Location) ---
+        for j, i in enumerate(semantic_indices[0]):
+            idx = int(i)
+            company_name = self.original_company_names[idx]
+            original_semantic_score = float(semantic_scores[0][j])
+            
+            # Normalize semantic score
+            sem_score_norm = original_semantic_score / max_sem_score if max_sem_score > 0 else 0
+            
+            # Calculate string similarity
+            string_score = self._calculate_string_similarity(query, company_name)
+            
+            # Exact match bonus
+            if query_lower == company_name.lower():
+                string_score = 1.0
+            
+            # Base score: 70% string, 30% semantic
+            name_score = (string_score * 0.7) + (sem_score_norm * 0.3)
+            
+            # --- LOCATION SCORING ---
+            location_score = 0.0
+            target_city = ""
+            target_state = ""
+            record_count = 0
+            
+            if self.has_location_data and idx < len(self.company_locations):
+                loc = self.company_locations[idx]
+                target_city = loc.get("city", "")
+                target_state = loc.get("state", "")
+                
+                if idx < len(self.company_counts):
+                    record_count = self.company_counts[idx]
+                
+                # Always calculate location score when location is provided
+                if use_location:
+                    location_score = self._calculate_location_score(
+                        city, state, target_city, target_state
+                    )
+            
+            # --- FINAL SCORE CALCULATION ---
+            # Check if this specific candidate is an exact name match
+            is_this_exact = (query_lower == company_name.lower())
+            
+            if use_location:
+                if is_this_exact:
+                    # For exact name matches: location is a TIE-BREAKER
+                    # Small boost (5%) to differentiate between same-name companies
+                    final_score = name_score + (location_score * 0.05)
+                else:
+                    # For non-exact matches: 80% name, 20% location
+                    final_score = (name_score * 0.8) + (location_score * 0.2)
+            else:
+                final_score = name_score
+            
+            # Get database ID if available
+            record_id = None
+            if self.company_ids and idx < len(self.company_ids):
+                record_id = self.company_ids[idx]
+            
+            candidates.append({
+                "name": company_name,
+                "id": record_id,
+                "score": final_score,
+                "name_score": name_score,
+                "semantic_score": original_semantic_score,
+                "string_score": string_score,
+                "location_score": location_score,
+                "city": target_city,
+                "state": target_state,
+                "count": record_count,
+                "index": idx,
+                "match_type": "exact" if query_lower == company_name.lower() else "hybrid"
+            })
+        
+        # --- PHASE 3: EXACT MATCH OVERRIDE ---
+        # Find ALL companies with exact name match (there may be multiple in different locations)
+        if is_exact_match:
+            for i, name in enumerate(self.original_company_names):
+                if name.lower() != query_lower:
+                    continue
+                
+                # Get location data and ID for this exact match
+                exact_city = ""
+                exact_state = ""
+                exact_count = 0
+                exact_id = None
+                if self.has_location_data and i < len(self.company_locations):
+                    loc = self.company_locations[i]
+                    exact_city = loc.get("city", "")
+                    exact_state = loc.get("state", "")
+                    if i < len(self.company_counts):
+                        exact_count = self.company_counts[i]
+                if self.company_ids and i < len(self.company_ids):
+                    exact_id = self.company_ids[i]
+                
+                # Calculate location score for this exact match
+                exact_loc_score = 0.0
+                if use_location:
+                    exact_loc_score = self._calculate_location_score(city, state, exact_city, exact_state)
+                
+                # Exact match score = 1.0 + location boost (5% for tie-breaking)
+                exact_final_score = 1.0 + (exact_loc_score * 0.05) if use_location else 1.0
+                
+                existing = next((c for c in candidates if c['index'] == i), None)
+                if existing:
+                    # Update with correct boosted score
+                    existing['score'] = exact_final_score
+                    existing['name_score'] = 1.0
+                    existing['location_score'] = exact_loc_score
+                    existing['match_type'] = "exact"
+                else:
+                    candidates.append({
+                        "name": name,
+                        "id": exact_id,
+                        "score": exact_final_score,
+                        "name_score": 1.0,
+                        "semantic_score": 1.0,
+                        "string_score": 1.0,
+                        "location_score": exact_loc_score,
+                        "city": exact_city,
+                        "state": exact_state,
+                        "count": exact_count,
+                        "index": i,
+                        "match_type": "exact"
+                    })
+        
+        # Sort by final score
+        candidates.sort(key=lambda x: x["score"], reverse=True)
+        
+        # Return top_k
+        results = candidates[:top_k]
+        
+        # Store for explanation
+        self._last_matches = results
+        
+        return results
+    
+    def get_company_count(self, company_name):
+        """
+        Get the record count for a specific company.
+        
+        Args:
+            company_name: Company name to look up
+            
+        Returns:
+            Integer count or 0 if not found
+        """
+        if not self.has_location_data or not self.company_counts:
+            return 0
+        
+        name_lower = company_name.lower()
+        if hasattr(self, '_company_names_lower_to_index'):
+            idx = self._company_names_lower_to_index.get(name_lower)
+            if idx is not None and idx < len(self.company_counts):
+                return self.company_counts[idx]
+        return 0
+    
+    def get_company_location(self, company_name):
+        """
+        Get the location for a specific company.
+        
+        Args:
+            company_name: Company name to look up
+            
+        Returns:
+            Dict with 'city' and 'state' keys, or empty dict if not found
+        """
+        if not self.has_location_data or not self.company_locations:
+            return {"city": "", "state": ""}
+        
+        name_lower = company_name.lower()
+        if hasattr(self, '_company_names_lower_to_index'):
+            idx = self._company_names_lower_to_index.get(name_lower)
+            if idx is not None and idx < len(self.company_locations):
+                return self.company_locations[idx]
+        return {"city": "", "state": ""}
