@@ -37,6 +37,7 @@ class CompanyMatcher:
         self.company_locations = []  # List of {"city": str, "state": str} per company
         self.company_counts = []  # List of record counts per company
         self.company_ids = []  # List of database IDs per company (for reference back to DB)
+        self.acronym_index = {}  # Map of Acronym -> List of Indices
         self.has_location_data = False  # Flag to indicate if location data is loaded
         
         # Persistence settings
@@ -77,7 +78,8 @@ class CompanyMatcher:
             'embeddings': base_path + '_embeddings.npy',
             'index': base_path + '_index.faiss',
             'names': base_path + '_names.pkl',
-            'metadata': base_path + '_metadata.pkl'
+            'metadata': base_path + '_metadata.pkl',
+            'acronyms': base_path + '_acronyms.pkl'
         }
     
     def save_to_cache(self, cache_key, embeddings, index, company_names, original_names, 
@@ -107,6 +109,11 @@ class CompanyMatcher:
                 names_data['company_counts'] = counts
             if ids is not None:
                 names_data['company_ids'] = ids
+                
+            # Save acronym index if available
+            if self.acronym_index:
+                names_data['acronym_index'] = self.acronym_index
+                
             with open(paths['names'], 'wb') as f:
                 pickle.dump(names_data, f)
             print(f"[OK] ({time.time() - names_start:.1f}s)")
@@ -141,7 +148,10 @@ class CompanyMatcher:
             paths = self.get_cache_paths(cache_key)
             
             # Check if all cache files exist
-            if not all(os.path.exists(path) for path in paths.values()):
+            # Note: We relax strict checking for acronyms or metadata if reusing old cache mostly works
+            # But here we strictly require core files.
+            # Acronyms are embedded in names.pkl, so check for core files.
+            if not all(os.path.exists(p) for p in [paths['embeddings'], paths['index'], paths['names'], paths['metadata']]):
                 return False
             
             # Load vectors and index via VectorStore
@@ -155,6 +165,13 @@ class CompanyMatcher:
                 names_data = pickle.load(f)
                 self.company_names = names_data['company_names']
                 self.original_company_names = names_data['original_company_names']
+                
+                # Load Acronym Index
+                if 'acronym_index' in names_data:
+                    self.acronym_index = names_data['acronym_index']
+                else:
+                    self.acronym_index = {}
+                    
                 # Load location data and IDs if available
                 if 'company_locations' in names_data:
                     self.company_locations = names_data['company_locations']
@@ -205,6 +222,25 @@ class CompanyMatcher:
             self._create_fast_lookup_sets()
             return True
         return False
+
+    def _create_acronym_index(self):
+        """
+        Creates a reverse index mapping acronyms to company indices.
+        Example: "ABA" -> [105, 2099, 5001]
+        """
+        print("   Creating Acronym Index...")
+        self.acronym_index = {}
+        
+        count = 0
+        for i, name in enumerate(self.original_company_names):
+            acronym = TextPreprocessor.generate_acronym(name)
+            if acronym:
+                if acronym not in self.acronym_index:
+                    self.acronym_index[acronym] = []
+                self.acronym_index[acronym].append(i)
+                count += 1
+                
+        print(f"   [OK] Indexed {count:,} acronyms mapping to {len(self.acronym_index):,} unique keys")
 
     def _create_fast_lookup_sets(self):
         """Create fast lookup sets for exact matching (called after building index)"""
@@ -449,6 +485,9 @@ class CompanyMatcher:
         
         # Create fast lookup sets for exact matching
         self._create_fast_lookup_sets()
+        
+        # Create Acronym Index
+        self._create_acronym_index()
         
         # Save to cache for future use
         print("Saving to cache...")
@@ -706,6 +745,7 @@ class CompanyMatcher:
             explanation["string_score"] = match_details.get("string_score", 0.0)
             explanation["semantic_score"] = match_details.get("semantic_score", 0.0)
             explanation["normalized_semantic_score"] = match_details.get("normalized_semantic_score", 0.0)
+            explanation["location_score"] = match_details.get("location_score", 0.0)
             explanation["final_score"] = match_details.get("score", 0.0)
         
         return explanation
@@ -904,13 +944,79 @@ class CompanyMatcher:
         query_lower = query.lower().strip()
         use_location = (city or state) and self.has_location_data
         
+        candidates = []
+        found_indices = set()
+        
+        # --- PHASE 0: ACRONYM EXPANSION ---
+        # 1. Query is potential Acronym (e.g. "ABA") -> Look for full names
+        # We check if query is short-ish, upper case or query_lower not in stop words
+        if len(query) < 12 and hasattr(self, 'acronym_index'):
+             # Try exact case first, then upper
+             potential_acronym = query.strip()
+             acronym_matches = self.acronym_index.get(potential_acronym)
+             if not acronym_matches:
+                 acronym_matches = self.acronym_index.get(potential_acronym.upper())
+                 
+             if acronym_matches:
+                 for idx in acronym_matches:
+                     if idx not in found_indices:
+                         company_name = self.original_company_names[idx]
+                         
+                         # TIE-BREAKER: Use a lightweight semantic check to prioritize quality expansions
+                         # (e.g. "International Business Machines" vs "IPAC Board Meeting" for "IBM")
+                         # Use self.vector_store.embeddings to avoid attribute error
+                         query_vec_ac = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
+                         target_vec_ac = self.vector_store.embeddings[idx].reshape(1, -1)
+                         # Normalize target vector if not already normalized (FAISS usually wants normalized for cosmne)
+                         target_vec_ac = target_vec_ac / (np.linalg.norm(target_vec_ac) + 1e-10)
+                         sem_score_ac = float(np.dot(query_vec_ac, target_vec_ac.T)[0][0])
+                         
+                         candidates.append({
+                             "name": company_name,
+                             "score": 0.90 + (sem_score_ac * 0.05), # Range 0.90 to 0.95
+                             "semantic_score": sem_score_ac,
+                             "normalized_semantic_score": sem_score_ac,
+                             "string_score": 0.5, # Dummy
+                             "index": idx,
+                             "match_type": "acronym_expansion",
+                             "acronym_fwd": True,
+                             "city": "", "state": "", "id": None, "count": 0, "location_score": 0.0
+                         })
+                         found_indices.add(idx)
+
+        # 2. Query is Full Name (e.g. "American Bar Association") -> Look for Acronym (e.g. "ABA")
+        generated_acronym = TextPreprocessor.generate_acronym(query)
+        if generated_acronym and hasattr(self, 'acronym_index'):
+             # Check if this acronym exists as a company name
+             # This is a bit tricky, we need to find if "ABA" is in our company list
+             # We can use the lowercase set or iterate (fast enough for 1 lookup)
+             if hasattr(self, '_company_names_lower_to_index'):
+                 idx = self._company_names_lower_to_index.get(generated_acronym.lower())
+                 if idx is not None:
+                     if idx not in found_indices:
+                         company_name = self.original_company_names[idx]
+                         # Verify it's actually the acronym we want (case sensitive-ish)
+                         if company_name.strip() == generated_acronym:
+                             candidates.append({
+                                 "name": company_name,
+                                 "score": 0.85 if len(generated_acronym) <= 2 else 0.92, 
+                                 "semantic_score": 1.0,
+                                 "normalized_semantic_score": 1.0,
+                                 "string_score": 1.0,
+                                 "index": idx,
+                                 "match_type": "acronym_reverse",
+                                 "acronym_rev": True,
+                                 "city": "", "state": "", "id": None, "count": 0, "location_score": 0.0
+                             })
+                             found_indices.add(idx)
+        
         # --- PHASE 1: RETRIEVAL (Semantic Search) ---
         candidate_k = min(50, len(self.original_company_names))
         
         query_vec = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
         semantic_scores, semantic_indices = self.vector_store.search(query_vec, candidate_k)
         
-        candidates = []
+        # candidates list already initialized in Phase 0
         max_sem_score = float(semantic_scores[0][0]) if len(semantic_scores[0]) > 0 else 1.0
         
         # Check for exact match first
@@ -921,6 +1027,11 @@ class CompanyMatcher:
         # --- PHASE 2: RE-RANKING (Weighted Scoring with Location) ---
         for j, i in enumerate(semantic_indices[0]):
             idx = int(i)
+            
+            # Skip if already found in Phase 0 (Acronyms)
+            if idx in found_indices:
+                continue
+                
             company_name = self.original_company_names[idx]
             original_semantic_score = float(semantic_scores[0][j])
             
@@ -936,6 +1047,11 @@ class CompanyMatcher:
             
             # Base score: 70% string, 30% semantic
             name_score = (string_score * 0.7) + (sem_score_norm * 0.3)
+            
+            # BOOST for high token coverage (all query words found in target)
+            if string_score >= 0.95:
+                # Ensure literal overlap is prioritized over generic acronyms
+                name_score = max(name_score, 0.93)
             
             # --- LOCATION SCORING ---
             location_score = 0.0
@@ -1023,17 +1139,23 @@ class CompanyMatcher:
                 if use_location:
                     exact_loc_score = TextPreprocessor.calculate_location_score(city, state, exact_city, exact_state)
                 
-                # Exact match score = 1.0 + location boost (5% for tie-breaking)
-                exact_final_score = 1.0 + (exact_loc_score * 0.05) if use_location else 1.0
+                # Deduplicate within this loop to avoid adding identical exact matches
+                # (e.g. multiple entries for same company with same/no location)
+                is_duplicate = False
+                for existing in candidates:
+                    if existing['name'] == name and existing.get('city') == exact_city and existing.get('state') == exact_state:
+                        # Update existing with exact score and type
+                        existing['score'] = 1.0 + (exact_loc_score * 0.05) if use_location else 1.0
+                        existing['name_score'] = 1.0
+                        existing['location_score'] = exact_loc_score
+                        existing['match_type'] = "exact"
+                        is_duplicate = True
+                        break
                 
-                existing = next((c for c in candidates if c['index'] == i), None)
-                if existing:
-                    # Update with correct boosted score
-                    existing['score'] = exact_final_score
-                    existing['name_score'] = 1.0
-                    existing['location_score'] = exact_loc_score
-                    existing['match_type'] = "exact"
-                else:
+                if not is_duplicate:
+                    # Exact match score = 1.0 + location boost (5% for tie-breaking)
+                    exact_final_score = 1.0 + (exact_loc_score * 0.05) if use_location else 1.0
+                    
                     candidates.append({
                         "name": name,
                         "id": exact_id,
@@ -1049,6 +1171,7 @@ class CompanyMatcher:
                         "index": i,
                         "match_type": "exact"
                     })
+                    found_indices.add(i)
         
         # Sort by final score
         candidates.sort(key=lambda x: x["score"], reverse=True)

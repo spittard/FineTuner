@@ -131,6 +131,36 @@ class TextPreprocessor:
         return found_categories
     
     @classmethod
+    def generate_acronym(cls, text):
+        """
+        Generates an acronym from a given text (e.g. 'American Bar Association' -> 'ABA').
+        Considers only capitalized words in the input.
+        Returns None if text has fewer than 2 words.
+        """
+        if not text: return None
+        
+        # Clean text first
+        clean_text = text.replace('.', '').replace(',', '').replace('-', ' ')
+        words = clean_text.split()
+        
+        if len(words) < 2: return None
+        
+        # Collect first chars of eligible words
+        acronym_chars = []
+        for word in words:
+            # Skip very short generic words unless capitalized (e.g. 'Of' vs 'of')
+            # Actually, proper acronyms usually take first letter of all significant words
+            if word.lower() in ['the', 'of', 'and', 'for', 'in', 'at', 'by', 'to']:
+                continue
+            
+            if word: 
+                acronym_chars.append(word[0].upper())
+        
+        if len(acronym_chars) < 2: return None
+        
+        return "".join(acronym_chars)
+
+    @classmethod
     def check_category_mismatch(cls, query_tokens, target_tokens):
         """Checks if query and target have mismatched category words."""
         query_categories = cls.get_category_words(query_tokens)

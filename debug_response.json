@@ -1,0 +1,204 @@
+{
+  "has_location_data": true,
+  "location_filter_used": false,
+  "query": "aba",
+  "results": [
+    {
+      "city": "",
+      "company_name": "ABA",
+      "explanation_details": {
+        "match_tokens": [
+          "aba"
+        ],
+        "overlap_score": 1.0,
+        "overlap_tokens": [
+          "aba"
+        ],
+        "query_tokens": [
+          "aba"
+        ]
+      },
+      "likeness_percent": 100.0,
+      "location_score": 0.0,
+      "match_rationale": "PERFECT MATCH\n\n**What This Means:**\nThis is exactly the same company name you're looking for.\n\n**Action Required:**\n\u2022 Use this match - no further checking needed\n\u2022 This is 100% the same company\n\n**Why This Happens:**\n\u2022 Someone entered the company name name exactly as it appears in your system\n\u2022 This is the ideal scenario for data entry",
+      "name_score": 100.0,
+      "rank": 1,
+      "raw_score": 1.0,
+      "record_count": 0,
+      "state": ""
+    },
+    {
+      "company_name": "AMERICAN BAR ASSOCATION",
+      "explanation_details": {
+        "match_tokens": [
+          "american",
+          "assocation",
+          "bar"
+        ],
+        "overlap_score": 0.0,
+        "overlap_tokens": [],
+        "query_tokens": [
+          "aba"
+        ]
+      },
+      "likeness_percent": 95.0,
+      "match_rationale": "SEMANTIC MATCH (Score: 0.95)\n\n**What This Means:**\nThe AI model found a meaning-based connection, but no direct word overlap.\n\n**Confidence Level:**\n\u2022 Exceptional (90%+) - Nearly perfect semantic match\n\n**Action Required:**\n\u2022 This is a LOWER confidence match\n\u2022 CAREFULLY verify if these companies are actually related\n\u2022 Check address and other details",
+      "rank": 2,
+      "raw_score": 0.95
+    },
+    {
+      "company_name": "American Baptish Association",
+      "explanation_details": {
+        "match_tokens": [
+          "american",
+          "baptish",
+          "association"
+        ],
+        "overlap_score": 0.0,
+        "overlap_tokens": [],
+        "query_tokens": [
+          "aba"
+        ]
+      },
+      "likeness_percent": 95.0,
+      "match_rationale": "SEMANTIC MATCH (Score: 0.95)\n\n**What This Means:**\nThe AI model found a meaning-based connection, but no direct word overlap.\n\n**Confidence Level:**\n\u2022 Exceptional (90%+) - Nearly perfect semantic match\n\n**Action Required:**\n\u2022 This is a LOWER confidence match\n\u2022 CAREFULLY verify if these companies are actually related\n\u2022 Check address and other details",
+      "rank": 3,
+      "raw_score": 0.95
+    },
+    {
+      "company_name": "American Board ABDA/ADMPP",
+      "explanation_details": {
+        "match_tokens": [
+          "american",
+          "abda/admpp",
+          "board"
+        ],
+        "overlap_score": 0.0,
+        "overlap_tokens": [],
+        "query_tokens": [
+          "aba"
+        ]
+      },
+      "likeness_percent": 95.0,
+      "match_rationale": "SEMANTIC MATCH (Score: 0.95)\n\n**What This Means:**\nThe AI model found a meaning-based connection, but no direct word overlap.\n\n**Confidence Level:**\n\u2022 Exceptional (90%+) - Nearly perfect semantic match\n\n**Action Required:**\n\u2022 This is a LOWER confidence match\n\u2022 CAREFULLY verify if these companies are actually related\n\u2022 Check address and other details",
+      "rank": 4,
+      "raw_score": 0.95
+    },
+    {
+      "company_name": "Amer Beauty Assn",
+      "explanation_details": {
+        "match_tokens": [
+          "beauty",
+          "amer",
+          "assn"
+        ],
+        "overlap_score": 0.0,
+        "overlap_tokens": [],
+        "query_tokens": [
+          "aba"
+        ]
+      },
+      "likeness_percent": 95.0,
+      "match_rationale": "SEMANTIC MATCH (Score: 0.95)\n\n**What This Means:**\nThe AI model found a meaning-based connection, but no direct word overlap.\n\n**Confidence Level:**\n\u2022 Exceptional (90%+) - Nearly perfect semantic match\n\n**Action Required:**\n\u2022 This is a LOWER confidence match\n\u2022 CAREFULLY verify if these companies are actually related\n\u2022 Check address and other details",
+      "rank": 5,
+      "raw_score": 0.95
+    },
+    {
+      "company_name": "American Bar Association",
+      "explanation_details": {
+        "match_tokens": [
+          "american",
+          "association",
+          "bar"
+        ],
+        "overlap_score": 0.0,
+        "overlap_tokens": [],
+        "query_tokens": [
+          "aba"
+        ]
+      },
+      "likeness_percent": 95.0,
+      "match_rationale": "SEMANTIC MATCH (Score: 0.95)\n\n**What This Means:**\nThe AI model found a meaning-based connection, but no direct word overlap.\n\n**Confidence Level:**\n\u2022 Exceptional (90%+) - Nearly perfect semantic match\n\n**Action Required:**\n\u2022 This is a LOWER confidence match\n\u2022 CAREFULLY verify if these companies are actually related\n\u2022 Check address and other details",
+      "rank": 6,
+      "raw_score": 0.95
+    },
+    {
+      "company_name": "Aitaneet Brotherhood Association",
+      "explanation_details": {
+        "match_tokens": [
+          "association",
+          "brotherhood",
+          "aitaneet"
+        ],
+        "overlap_score": 0.0,
+        "overlap_tokens": [],
+        "query_tokens": [
+          "aba"
+        ]
+      },
+      "likeness_percent": 95.0,
+      "match_rationale": "SEMANTIC MATCH (Score: 0.95)\n\n**What This Means:**\nThe AI model found a meaning-based connection, but no direct word overlap.\n\n**Confidence Level:**\n\u2022 Exceptional (90%+) - Nearly perfect semantic match\n\n**Action Required:**\n\u2022 This is a LOWER confidence match\n\u2022 CAREFULLY verify if these companies are actually related\n\u2022 Check address and other details",
+      "rank": 7,
+      "raw_score": 0.95
+    },
+    {
+      "company_name": "Austin Bellydance Association",
+      "explanation_details": {
+        "match_tokens": [
+          "bellydance",
+          "association",
+          "austin"
+        ],
+        "overlap_score": 0.0,
+        "overlap_tokens": [],
+        "query_tokens": [
+          "aba"
+        ]
+      },
+      "likeness_percent": 95.0,
+      "match_rationale": "SEMANTIC MATCH (Score: 0.95)\n\n**What This Means:**\nThe AI model found a meaning-based connection, but no direct word overlap.\n\n**Confidence Level:**\n\u2022 Exceptional (90%+) - Nearly perfect semantic match\n\n**Action Required:**\n\u2022 This is a LOWER confidence match\n\u2022 CAREFULLY verify if these companies are actually related\n\u2022 Check address and other details",
+      "rank": 8,
+      "raw_score": 0.95
+    },
+    {
+      "company_name": "American Business Association",
+      "explanation_details": {
+        "match_tokens": [
+          "american",
+          "association",
+          "business"
+        ],
+        "overlap_score": 0.0,
+        "overlap_tokens": [],
+        "query_tokens": [
+          "aba"
+        ]
+      },
+      "likeness_percent": 95.0,
+      "match_rationale": "SEMANTIC MATCH (Score: 0.95)\n\n**What This Means:**\nThe AI model found a meaning-based connection, but no direct word overlap.\n\n**Confidence Level:**\n\u2022 Exceptional (90%+) - Nearly perfect semantic match\n\n**Action Required:**\n\u2022 This is a LOWER confidence match\n\u2022 CAREFULLY verify if these companies are actually related\n\u2022 Check address and other details",
+      "rank": 9,
+      "raw_score": 0.95
+    },
+    {
+      "company_name": "Austin Baptist Association",
+      "explanation_details": {
+        "match_tokens": [
+          "baptist",
+          "association",
+          "austin"
+        ],
+        "overlap_score": 0.0,
+        "overlap_tokens": [],
+        "query_tokens": [
+          "aba"
+        ]
+      },
+      "likeness_percent": 95.0,
+      "match_rationale": "SEMANTIC MATCH (Score: 0.95)\n\n**What This Means:**\nThe AI model found a meaning-based connection, but no direct word overlap.\n\n**Confidence Level:**\n\u2022 Exceptional (90%+) - Nearly perfect semantic match\n\n**Action Required:**\n\u2022 This is a LOWER confidence match\n\u2022 CAREFULLY verify if these companies are actually related\n\u2022 Check address and other details",
+      "rank": 10,
+      "raw_score": 0.95
+    }
+  ],
+  "success": true,
+  "total_matches": 10
+}

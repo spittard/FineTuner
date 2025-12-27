@@ -13,6 +13,19 @@ class RationaleService:
         query_lower = query.lower()
         company_lower = company_name.lower()
         
+        # Phase 0: Acronym Match Check
+        match_type = explanation.get('match_type', 'hybrid')
+        if match_type in ['acronym_expansion', 'acronym_reverse']:
+            rationale = f"ACRONYM MATCH\n\n**What This Means:**\nThe system identified a direct link between an exact acronym and its full company name.\n\n**Match Type:**\n• {match_type.replace('_', ' ').title()}\n"
+            
+            # Score details for acronyms
+            string_score = explanation.get('string_score', 0.0)
+            sem_score = explanation.get('normalized_semantic_score', explanation.get('semantic_score', 0.0))
+            rationale += f"\n**Score Breakdown:**\n• Lexical: {string_score:.4f}\n• Semantic: {sem_score:.4f}\n"
+            
+            rationale += f"\n**Action Required:**\n• Verify the acronym stands for this company\n• High confidence match"
+            return rationale
+
         # Phase 1: Exact Match Check
         if query_lower == company_lower:
             return "PERFECT MATCH\n\n**What This Means:**\nThis is exactly the same company name you're looking for.\n\n**Action Required:**\n• Use this match - no further checking needed\n• This is 100% the same company\n\n**Why This Happens:**\n• Someone entered the company name name exactly as it appears in your system\n• This is the ideal scenario for data entry"
@@ -41,7 +54,13 @@ class RationaleService:
             overlap_count = len(overlap)
             overlap_percentage = (overlap_count / max(total_query_words, total_company_words)) * 100
             
-            rationale = f"WORD OVERLAP MATCH\n\n**What This Means:**\n{overlap_count} word(s) match exactly between your search and this company.\n\n**Matching Words:**\n• {', '.join(overlap_words)}\n"
+            # Check for Full Query Coverage
+            all_query_words_matched = (total_query_words > 0 and overlap_count == total_query_words)
+            
+            if all_query_words_matched:
+                rationale = f"ALL WORDS MATCHED\n\n**What This Means:**\nEvery word in your search '{query}' was found in this company name.\n\n**Matching Words:**\n• {', '.join(overlap_words)}\n"
+            else:
+                rationale = f"WORD OVERLAP MATCH\n\n**What This Means:**\n{overlap_count} word(s) match exactly between your search and this company.\n\n**Matching Words:**\n• {', '.join(overlap_words)}\n"
             
             if non_overlap_query:
                 rationale += f"\n**Your Search Also Includes:**\n• {', '.join(non_overlap_query)}\n"
@@ -60,6 +79,17 @@ class RationaleService:
                 rationale += f"• This is a WEAK match - may be coincidental\n"
                 rationale += f"• Action: Verify carefully before using\n"
             
+            # Score details for overlap
+            string_score = explanation.get('string_score', 0.0)
+            sem_score = explanation.get('normalized_semantic_score', explanation.get('semantic_score', 0.0))
+            rationale += f"\n**Score Breakdown:**\n"
+            rationale += f"• Lexical Similarity: {string_score:.4f} (Weight: 70%)\n"
+            rationale += f"• Semantic Similarity: {sem_score:.4f} (Weight: 30%)\n"
+            
+            loc_score = explanation.get('location_score', 0.0)
+            if loc_score > 0.01:
+                rationale += f"• Location Bonus: +{loc_score:.4f}\n"
+
             rationale += f"\n**Why This Happens:**\n• Company names often have multiple words\n• Some words are more important than others\n• Business names can vary in how they're written"
             
             return rationale
@@ -164,8 +194,21 @@ class RationaleService:
         if geographic_context:
             rationale += f"\n**Geographic Context:**\n• {geographic_context}\n"
             
-        score_breakdown = RationaleService.get_score_breakdown(score)
-        rationale += f"\n**Confidence Level:**\n• {score_breakdown}\n\n**Action Required:**\n• This is a LOWER confidence match\n• CAREFULLY verify if these companies are actually related\n• Check address and other details"
+        # Add Score Breakdown Section
+        string_score = explanation.get('string_score', 0.0)
+        sem_score = explanation.get('normalized_semantic_score', explanation.get('semantic_score', 0.0))
+        loc_score = explanation.get('location_score', 0.0)
+        
+        score_details = f"\n**Score Breakdown:**\n"
+        score_details += f"• Lexical Similarity: {string_score:.4f} (Weight: 70%)\n"
+        score_details += f"• Semantic Similarity: {sem_score:.4f} (Weight: 30%)\n"
+        
+        if loc_score > 0.01:
+            score_details += f"• Location Bonus: +{loc_score:.4f}\n"
+
+        score_breakdown_text = RationaleService.get_score_breakdown(score)
+        rationale += score_details
+        rationale += f"\n**Confidence Level:**\n• {score_breakdown_text}\n\n**Action Required:**\n• This is a LOWER confidence match\n• CAREFULLY verify if these companies are actually related\n• Check address and other details"
         
         return rationale
 

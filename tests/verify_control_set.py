@@ -14,7 +14,8 @@ from datetime import datetime
 # Add src to python path to access finetuner package
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 
-from finetuner.core.matcher import CompanyMatcher
+
+from finetuner.web.services.search_service import SearchService
 
 # Try to import tqdm
 try:
@@ -64,19 +65,6 @@ def generate_markdown_report(results, output_file='companies_control_set_results
     md_content.append(f"Total Companies Tested: {len(results)}\n")
     md_content.append("---\n\n")
     
-    # Summary statistics
-    exact_matches = sum(1 for r in results if r['top_match']['match_type'] == 'exact')
-    high_confidence = sum(1 for r in results if r['top_match']['score'] >= 0.9)
-    medium_confidence = sum(1 for r in results if 0.7 <= r['top_match']['score'] < 0.9)
-    low_confidence = sum(1 for r in results if r['top_match']['score'] < 0.7)
-    
-    md_content.append("## Summary Statistics\n\n")
-    md_content.append(f"- **Exact Matches**: {exact_matches} ({exact_matches/len(results)*100:.1f}%)\n")
-    md_content.append(f"- **High Confidence (>=0.9)**: {high_confidence} ({high_confidence/len(results)*100:.1f}%)\n")
-    md_content.append(f"- **Medium Confidence (0.7-0.9)**: {medium_confidence} ({medium_confidence/len(results)*100:.1f}%)\n")
-    md_content.append(f"- **Low Confidence (<0.7)**: {low_confidence} ({low_confidence/len(results)*100:.1f}%)\n\n")
-    md_content.append("---\n\n")
-    
     # Detailed results
     md_content.append("## Detailed Results\n\n")
     
@@ -86,24 +74,27 @@ def generate_markdown_report(results, output_file='companies_control_set_results
         all_matches = result['matches']
         
         md_content.append(f"### {i}. {query}\n\n")
-        md_content.append(f"**Top Match**: {top_match['name']}\n\n")
-        md_content.append(f"- **Score**: {top_match['score']:.4f} ({top_match['score']*100:.2f}%)\n")
-        md_content.append(f"- **Match Type**: {top_match.get('match_type', 'unknown')}\n")
-        md_content.append(f"- **String Score**: {top_match.get('string_score', 0):.4f}\n")
-        md_content.append(f"- **Semantic Score**: {top_match.get('semantic_score', 0):.4f}\n\n")
+        md_content.append(f"**Top Match**: {top_match['company_name']}\n\n")
+        md_content.append(f"- **Final Score**: {top_match['raw_score']:.4f} ({top_match['likeness_percent']}%) \n")
+        
+        # Format the rationale as a blockquote
+        rationale_lines = top_match.get('match_rationale', '').split('\n')
+        md_content.append(f"- **Top Match Rationale**:\n")
+        for line in rationale_lines:
+            md_content.append(f"  > {line}\n")
+        md_content.append("\n")
         
         if len(all_matches) > 1:
             num_to_show = min(len(all_matches), top_k)
             md_content.append(f"**Top {num_to_show} Matches:**\n\n")
-            md_content.append("| Rank | Company Name | Score | String | Semantic | Type |\n")
-            md_content.append("|------|--------------|-------|--------|----------|------|\n")
+            md_content.append("| Rank | Company Name | Score | Rationale |\n")
+            md_content.append("|------|--------------|-------|-----------|\n")
             for j, match in enumerate(all_matches[:num_to_show], 1):
-                name = match['name'].replace('|', '\\|')
-                score_pct = match['score'] * 100
-                string_score = match.get('string_score', 0)
-                semantic_score = match.get('semantic_score', 0)
-                match_type = match.get('match_type', 'unknown')
-                md_content.append(f"| {j} | {name} | {score_pct:.2f}% | {string_score:.4f} | {semantic_score:.4f} | {match_type} |\n")
+                name = match['company_name'].replace('|', '\\|')
+                score_pct = match['likeness_percent']
+                # Truncate rationale for table
+                rationale = match.get('match_rationale', '').split('\n')[0][:50] + "..."
+                md_content.append(f"| {j} | {name} | {score_pct:.1f}% | {rationale} |\n")
             md_content.append("\n")
         
         md_content.append("---\n\n")
@@ -115,17 +106,18 @@ def generate_markdown_report(results, output_file='companies_control_set_results
 
 def main():
     control_set_file = 'companies_control_set.json'
-    dataset_file = 'companies.json'
     output_file = 'companies_control_set_results.md'
-    top_k = 20  # Use 20 to match previous report
+    top_k = 20
     
     print("=" * 60)
-    print("Step 1: Initializing Matcher")
+    print("Step 1: Initializing Search Service")
     print("=" * 60)
     
-    matcher = CompanyMatcher(model_name='all-MiniLM-L6-v2')
-    matcher.build_index(filepath=dataset_file)
-    
+    service = SearchService()
+    if not service.load_company_data():
+        print("Failed to load company data via SearchService.")
+        return
+
     print("=" * 60)
     print("Step 2: Loading Control Set")
     print("=" * 60)
@@ -141,7 +133,8 @@ def main():
     results = []
     
     for query in tqdm(control_names, desc="Running matches", unit="query"):
-        matches = matcher.match(query, top_k=top_k)
+        # Use SearchService.search()
+        matches = service.search(query, top_k=top_k)
         
         if matches:
             top_match = matches[0]
@@ -153,7 +146,7 @@ def main():
         else:
             results.append({
                 'query': query,
-                'top_match': {'name': 'No matches found', 'score': 0.0, 'match_type': 'none'},
+                'top_match': {'company_name': 'No matches found', 'raw_score': 0.0, 'likeness_percent': 0.0},
                 'matches': []
             })
             

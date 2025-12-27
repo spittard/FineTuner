@@ -72,15 +72,40 @@ class SearchService:
         self._loading = True
         
         try:
-            # Check if companies.json exists
-            if not os.path.exists('companies.json'):
+            filename = 'companies.json'
+            if not os.path.exists(filename):
+                print(f"Error: {filename} not found")
                 self._loading = False
                 return False
             
-            filename = 'companies.json'
+            # Step 1: Initialize CompanyMatcher first
+            if self.matcher is None:
+                print("Initializing CompanyMatcher...")
+                self.matcher = CompanyMatcher(model_name='all-MiniLM-L6-v2')
             
-            # Load company names from the dataset
-            print(f"Loading company data from {filename}...")
+            # Step 2: FAST CACHE CHECK - Try to load from cache using file metadata
+            # This avoids loading the 176MB+ JSON file if we already have it indexed
+            file_cache_key_reg = self.matcher.get_cache_key_from_file(filename)
+            file_cache_key_loc = file_cache_key_reg + "_loc" if file_cache_key_reg else None
+            
+            # Try location cache first (more feature-rich)
+            if file_cache_key_loc and self.matcher.load_from_cache(file_cache_key_loc):
+                print(f"   [OK] Fast load successful! Loaded location-aware index from cache.")
+                self.company_data_loaded = True
+                self.last_data_check = current_time
+                self._loading = False
+                return True
+                
+            # Try regular cache
+            if file_cache_key_reg and self.matcher.load_from_cache(file_cache_key_reg):
+                print(f"   [OK] Fast load successful! Loaded regular index from cache.")
+                self.company_data_loaded = True
+                self.last_data_check = current_time
+                self._loading = False
+                return True
+            
+            # Step 3: CACHE MISS - Load from JSON file
+            print(f"Cache miss or reload forced - loading company data from {filename}...")
             load_start = time.time()
             
             with open(filename, 'r', encoding='utf-8') as f:
@@ -106,23 +131,23 @@ class SearchService:
                     company_names.append(item["Company Name"])
             
             if not company_names:
+                print("   [FAIL] No company names found in data")
                 self._loading = False
                 return False
             
             load_time = time.time() - load_start
             print(f"   [OK] Extracted {len(company_names):,} company names in {load_time:.1f}s")
             
-            # Initialize CompanyMatcher with EXACTLY the same parameters as CLI
-            print("Initializing CompanyMatcher...")
-            self.matcher = CompanyMatcher(model_name='all-MiniLM-L6-v2')
-            
+            # Step 4: Build or update index
             # Build index - use location-aware method if data has location info
             if has_location_data:
                 print(f"Building company matching index with location data ({len(company_names):,} companies)...")
-                self.matcher.build_index_with_location(data=data)
+                # build_index_with_location will also save to cache
+                self.matcher.build_index_with_location(filepath=filename, data=data)
             else:
                 print(f"Building company matching index with {len(company_names):,} companies...")
-                self.matcher.build_index(company_names)
+                # build_index will also save to cache
+                self.matcher.build_index(company_names, filepath=filename)
             
             # Store file modification time for change detection
             try:
