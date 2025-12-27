@@ -9,10 +9,10 @@ import os
 import sys
 import tempfile
 
-# Add parent directory to path
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# Add parent (root) directory to path so we can resolve 'src'
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 
-from CompanyMatcher import CompanyMatcher
+from finetuner.core.matcher import CompanyMatcher
 
 
 def create_test_data_with_location():

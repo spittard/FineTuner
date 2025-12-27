@@ -1,505 +1,115 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Company Name Search with Advanced AI-Powered Matching
-Uses both string matching and fine-tuned model similarity for better results.
+Company Name Search CLI
+Refactored to use the optimized src.finetuner.core.matcher.CompanyMatcher.
 """
-
-import json
-import difflib
-import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity
-import torch
-from transformers import AutoTokenizer, AutoModel
 import os
+import sys
 import argparse
-from typing import Dict, List, Tuple, Optional
+import time
 
-class CompanySearcher:
-    def __init__(self, training_data_path: str, model_path: str = None):
-        """
-        Initialize the company searcher with training data and optional fine-tuned model.
-        
-        Args:
-            training_data_path: Path to the JSON training data file
-            model_path: Path to the fine-tuned model (optional)
-        """
-        self.companies = []
-        self.training_data_path = training_data_path
-        self.model_path = model_path
-        self.model = None
-        self.tokenizer = None
-        self.user_selections = {}
-        
-        # Load companies from training data
-        self.load_companies()
-        
-        # Load model if available
-        if model_path and os.path.exists(model_path):
-            self.load_model()
+# Add src to python path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'src')))
+
+try:
+    from finetuner.core.matcher import CompanyMatcher
+except ImportError as e:
+    print(f"Error importing CompanyMatcher: {e}")
+    print("Please ensure the 'src' directory is in your Python path.")
+    sys.exit(1)
+
+def print_results(query, results, verbose=False):
+    if not results:
+        print(f"\nNo matches found for '{query}'")
+        return
     
-    def load_companies(self):
-        """Load company names from the training data JSON file."""
+    print(f"\nTop {len(results)} matches for '{query}':")
+    print("-" * 80)
+    print(f"{'#':<3} {'Company':<40} {'Score':<8} {'Type':<10} {'Details' if verbose else ''}")
+    print("-" * 80)
+    
+    for i, res in enumerate(results, 1):
+        score_pct = res['score'] * 100
+        match_type = res.get('match_type', 'hybrid')
+        
+        details = ""
+        if verbose:
+            details = f"Str: {res.get('string_score', 0):.2f}, Sem: {res.get('semantic_score', 0):.2f}"
+            if 'location_score' in res:
+                details += f", Loc: {res['location_score']:.2f}"
+                
+        print(f"{i:<3} {res['name'][:40]:<40} {score_pct:5.1f}%   {match_type:<10} {details}")
+    print("-" * 80)
+
+def search_loop(matcher):
+    print("\nInteractive Search Mode")
+    print("Type 'quit' or 'exit' to stop.")
+    
+    while True:
         try:
-            with open(self.training_data_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            
-            # Extract company names from the training data format
-            for item in data:
-                if isinstance(item, dict):
-                    if "Company Name" in item:
-                        self.companies.append(item["Company Name"])
-                    elif "text" in item:
-                        # Handle the format used by transformers fallback
-                        text = item["text"]
-                        if text.startswith("Company Name: "):
-                            company_name = text[14:]  # Remove "Company Name: " prefix
-                            self.companies.append(company_name)
-            
-            print(f"Loaded {len(self.companies)} companies from {self.training_data_path}")
-            
-        except FileNotFoundError:
-            print(f"Error: Training data file '{self.training_data_path}' not found.")
-            print("Please ensure the file exists and contains company name data.")
-        except json.JSONDecodeError:
-            print(f"Error: Invalid JSON format in '{self.training_data_path}'.")
-        except Exception as e:
-            print(f"Error loading companies: {e}")
-    
-    def load_model(self):
-        """Load the fine-tuned model and tokenizer."""
-        try:
-            print(f"Loading model from {self.model_path}...")
-            self.tokenizer = AutoTokenizer.from_pretrained(self.model_path)
-            self.model = AutoModel.from_pretrained(self.model_path)
-            
-            # Set model to evaluation mode
-            self.model.eval()
-            
-            # Check if CUDA is available
-            if torch.cuda.is_available():
-                self.model = self.model.cuda()
-                print("Model loaded on GPU")
-            else:
-                print("Model loaded on CPU")
-                
-        except Exception as e:
-            print(f"Warning: Could not load model: {e}")
-            print("Falling back to string-based search only")
-            self.model = None
-            self.tokenizer = None
-    
-    def get_model_embedding(self, text: str) -> Optional[np.ndarray]:
-        """Generate embedding for text using the fine-tuned model."""
-        if not self.model or not self.tokenizer:
-            return None
-        
-        try:
-            # Tokenize and encode the text
-            inputs = self.tokenizer(text, return_tensors="pt", padding=True, truncation=True, max_length=512)
-            
-            # Move to GPU if available
-            if torch.cuda.is_available():
-                inputs = {k: v.cuda() for k, v in inputs.items()}
-            
-            # Generate embeddings
-            with torch.no_grad():
-                outputs = self.model(**inputs)
-                # Use the last hidden state mean as embedding
-                embedding = outputs.last_hidden_state.mean(dim=1).cpu().numpy()
-            
-            return embedding
-            
-        except Exception as e:
-            print(f"Warning: Error generating embedding: {e}")
-            return None
-    
-    def get_model_similarity(self, query: str, company_name: str) -> float:
-        """Calculate similarity between query and company name using the model."""
-        if not self.model:
-            return 0.0
-        
-        # Generate embeddings
-        query_embedding = self.get_model_embedding(f"Company Name: {query}")
-        company_embedding = self.get_model_embedding(f"Company Name: {company_name}")
-        
-        if query_embedding is None or company_embedding is None:
-            return 0.0
-        
-        # Calculate cosine similarity
-        try:
-            similarity = cosine_similarity(query_embedding, company_embedding)[0][0]
-            return float(similarity)
-        except Exception:
-            return 0.0
-    
-    def context_search(self, query: str) -> List[str]:
-        """Use the model to understand context and find related companies (disabled - only dataset companies)."""
-        # Return empty list to ensure only dataset companies are searched
-        return []
-    
-    def expand_query(self, query: str) -> List[str]:
-        """Expand the query with common company name variations (disabled - only dataset companies)."""
-        # Return empty list to ensure only dataset companies are searched
-        return []
-    
-    def exact_match(self, query: str) -> Dict[str, float]:
-        """Find exact matches for the query."""
-        matches = {}
-        query_lower = query.lower()
-        
-        for company in self.companies:
-            if company.lower() == query_lower:
-                matches[company] = 1.0
-        
-        return matches
-    
-    def starts_with_match(self, query: str) -> Dict[str, float]:
-        """Find companies that start with the query."""
-        matches = {}
-        query_lower = query.lower()
-        
-        for company in self.companies:
-            if company.lower().startswith(query_lower):
-                # Score based on how much of the query matches
-                score = len(query) / len(company)
-                matches[company] = score
-        
-        return matches
-    
-    def contains_match(self, query: str) -> Dict[str, float]:
-        """Find companies that contain the query."""
-        matches = {}
-        query_lower = query.lower()
-        
-        for company in self.companies:
-            company_lower = company.lower()
-            if query_lower in company_lower:
-                # Much higher base score for contains matches
-                base_score = 0.85  # Increased from 0.6
-                
-                # Position bonus - earlier in the name is better
-                position = company_lower.find(query_lower)
-                position_bonus = max(0.1, (len(company) - position) / len(company))
-                
-                # Length bonus - shorter query relative to company name
-                length_bonus = min(0.15, len(query) / len(company))
-                
-                # Extra bonus for exact word boundaries (e.g., "essential" in "Essential Oils")
-                word_bonus = 0.0
-                words = company_lower.split()
-                if query_lower in words:
-                    word_bonus = 0.2  # Significant bonus for exact word match
-                
-                total_score = base_score + position_bonus + length_bonus + word_bonus
-                final_score = min(1.0, total_score)  # Cap at 1.0
-                
-                # Debug output for contains matches
-                if query_lower in company_lower:
-                    print(f"Contains Debug: {company}")
-                    print(f"  Base score: {base_score:.3f}")
-                    print(f"  Position bonus: {position_bonus:.3f}")
-                    print(f"  Length bonus: {length_bonus:.3f}")
-                    print(f"  Word bonus: {word_bonus:.3f}")
-                    print(f"  Total score: {total_score:.3f}")
-                    print(f"  Final score: {final_score:.3f}")
-                
-                matches[company] = final_score
-        
-        return matches
-    
-    def fuzzy_match(self, query: str, threshold: float = 0.3) -> Dict[str, float]:
-        """Find companies using fuzzy string matching."""
-        matches = {}
-        query_lower = query.lower()
-        
-        for company in self.companies:
-            company_lower = company.lower()
-            similarity = difflib.SequenceMatcher(None, query_lower, company_lower).ratio()
-            
-            if similarity >= threshold:
-                matches[company] = similarity
-        
-        return matches
-    
-    def hybrid_search(self, query: str, top_k: int = 10) -> Dict[str, float]:
-        """Combine string matching, fuzzy matching, and model similarity for better results."""
-        # Get string-based matches
-        exact_matches = self.exact_match(query)
-        starts_with_matches = self.starts_with_match(query)
-        contains_matches = self.contains_match(query)
-        fuzzy_matches = self.fuzzy_match(query)
-        
-        # Combine all string matches with priority system
-        string_matches = {}
-        
-        # Priority order: exact > starts_with > contains > fuzzy
-        # Higher priority matches should not be overridden by lower priority ones
-        
-        # Start with fuzzy matches (lowest priority)
-        string_matches.update(fuzzy_matches)
-        
-        # Update with contains matches (higher priority)
-        for company, score in contains_matches.items():
-            if company not in string_matches or score > string_matches[company]:
-                string_matches[company] = score
-        
-        # Update with starts_with matches (even higher priority)
-        for company, score in starts_with_matches.items():
-            if company not in string_matches or score > string_matches[company]:
-                string_matches[company] = score
-        
-        # Update with exact matches (highest priority)
-        for company, score in exact_matches.items():
-            if company not in string_matches or score > string_matches[company]:
-                string_matches[company] = score
-        
-        # Get model-based similarity scores if available
-        model_scores = {}
-        if self.model:
-            for company in string_matches:
-                model_score = self.get_model_similarity(query, company)
-                model_scores[company] = model_score
-        
-        # Combine scores (weighted average)
-        final_scores = {}
-        for company in string_matches:
-            string_score = string_matches[company]
-            model_score = model_scores.get(company, 0.0)
-            
-            # Weight: 70% string matching, 30% model similarity (reversed from 40/60)
-            # This makes string matching more influential, especially for contains matches
-            final_score = (0.7 * string_score) + (0.3 * model_score)
-            final_scores[company] = final_score
-            
-            # Debug output for companies containing the query
-            if query.lower() in company.lower():
-                print(f"Debug: {company}")
-                print(f"  String score: {string_score:.3f}")
-                print(f"  Model score: {model_score:.3f}")
-                print(f"  Final score: {final_score:.3f}")
-                print(f"  Contains query: {query.lower()} in {company.lower()}")
-        
-        # Sort by combined score and limit to top_k to prevent infinite loops
-        sorted_results = sorted(final_scores.items(), 
-                               key=lambda x: x[1], reverse=True)
-        
-        # Limit results to prevent performance issues
-        limited_results = dict(sorted_results[:top_k * 2])  # Get 2x more than needed for ranking
-        
-        return limited_results
-    
-    def smart_ranking(self, query: str, results: Dict[str, float]) -> Dict[str, float]:
-        """Apply business logic to improve ranking."""
-        ranked_results = {}
-        
-        for company, score in results.items():
-            adjusted_score = score
-            
-            # Boost exact matches
-            if query.lower() == company.lower():
-                adjusted_score *= 1.5
-            
-            # Boost companies that start with the query
-            elif company.lower().startswith(query.lower()):
-                adjusted_score *= 1.3
-            
-            # Boost companies that contain the query (highest priority after exact/startswith)
-            elif query.lower() in company.lower():
-                adjusted_score *= 1.4  # Higher boost than starts_with
-            
-            # Boost shorter names (often more common/recognizable)
-            if len(company) < 20:
-                adjusted_score *= 1.1
-            
-            # Boost companies with common business suffixes
-            common_suffixes = [" Inc", " Corp", " LLC", " Ltd", " Company", " Corporation"]
-            if any(company.endswith(suffix) for suffix in common_suffixes):
-                adjusted_score *= 1.05
-            
-            # Boost companies that appear in user selections (if any)
-            if query in self.user_selections and company in self.user_selections[query]:
-                adjusted_score *= 1.2
-            
-            ranked_results[company] = adjusted_score
-        
-        # Re-sort by adjusted scores
-        sorted_results = sorted(ranked_results.items(), 
-                               key=lambda x: x[1], reverse=True)
-        
-        return dict(sorted_results)
-    
-    def search_companies(self, query: str, top_k: int = 10, use_smart_ranking: bool = True) -> Dict[str, float]:
-        """Main search method that combines all approaches."""
-        if not query.strip():
-            return {}
-        
-        # Perform hybrid search - get more results than needed for ranking
-        results = self.hybrid_search(query, top_k * 2)  # Get 2x more results for ranking
-        
-        # Apply smart ranking if requested
-        if use_smart_ranking:
-            results = self.smart_ranking(query, results)
-        
-        # Debug info
-        print(f"Debug: Found {len(results)} total matches, returning top {top_k}")
-        
-        # Show top 3 scores for debugging
-        if results:
-            print("Debug: Top 3 scores:")
-            for i, (company, score) in enumerate(list(results.items())[:3], 1):
-                print(f"  {i}. {company}: {score:.3f}")
-        
-        # Return top k results
-        return dict(list(results.items())[:top_k])
-    
-    def update_ranking_weights(self, query: str, selected_company: str):
-        """Learn from user selections to improve future searches."""
-        if query not in self.user_selections:
-            self.user_selections[query] = []
-        
-        if selected_company not in self.user_selections[query]:
-            self.user_selections[query].append(selected_company)
-        
-        # Save user selections to file for persistence
-        try:
-            with open('user_selections.json', 'w') as f:
-                json.dump(self.user_selections, f, indent=2)
-        except Exception as e:
-            print(f"Warning: Could not save user selections: {e}")
-    
-    def load_user_selections(self):
-        """Load previously saved user selections."""
-        try:
-            if os.path.exists('user_selections.json'):
-                with open('user_selections.json', 'r') as f:
-                    self.user_selections = json.load(f)
-                print(f"Loaded {len(self.user_selections)} user selection patterns")
-        except Exception as e:
-            print(f"Warning: Could not load user selections: {e}")
-    
-    def print_search_results(self, query: str, results: Dict[str, float]):
-        """Print search results in a formatted way."""
-        if not results:
-            print(f"\nNo matches found for '{query}'")
-            return
-        
-        print(f"\nTop {len(results)} matches for '{query}':")
-        print("-" * 60)
-        
-        for i, (company, score) in enumerate(results.items(), 1):
-            score_percent = score * 100
-            print(f"{i:2d}. {company:<40} {score_percent:5.1f}%")
-        
-        print("-" * 60)
-    
-    def interactive_search(self):
-        """Interactive search interface."""
-        print("\nCompany Name Search - Interactive Mode")
-        print("Type 'quit' to exit, 'help' for commands")
-        
-        while True:
-            try:
-                query = input("\nEnter company name to search: ").strip()
-                
-                if query.lower() == 'quit':
-                    break
-                elif query.lower() == 'help':
-                    print("\nCommands:")
-                    print("  help    - Show this help")
-                    print("  quit    - Exit the program")
-                    print("  stats   - Show search statistics")
-                    print("  Any other text - Search for company names")
-                    continue
-                elif query.lower() == 'expand':
-                    print("Query expansion disabled - only searching actual dataset companies")
-                    continue
-                elif query.lower() == 'stats':
-                    print(f"\nSearch Statistics:")
-                    print(f"  Total companies loaded: {len(self.companies)}")
-                    print(f"  Model available: {'Yes' if self.model else 'No'}")
-                    print(f"  User selection patterns: {len(self.user_selections)}")
-                    continue
-                elif not query:
-                    continue
-                
-                # Store the query for expansion feature
-                self.last_query = query
-                
-                # Perform search
-                results = self.search_companies(query)
-                
-                # Display results
-                self.print_search_results(query, results)
-                
-                # Ask user if they want to select a result
-                if results:
-                    try:
-                        selection = input("\nSelect a result number (or press Enter to skip): ").strip()
-                        if selection.isdigit():
-                            idx = int(selection) - 1
-                            if 0 <= idx < len(results):
-                                selected_company = list(results.keys())[idx]
-                                self.update_ranking_weights(query, selected_company)
-                                print(f"Selected: {selected_company}")
-                            else:
-                                print("Invalid selection number")
-                    except (ValueError, IndexError):
-                        print("Invalid selection")
-                
-            except KeyboardInterrupt:
-                print("\nExiting...")
+            query = input("\nEnter company name: ").strip()
+            if query.lower() in ('quit', 'exit'):
                 break
-            except Exception as e:
-                print(f"Error during search: {e}")
-    
-    def batch_search(self, queries: List[str]) -> Dict[str, Dict[str, float]]:
-        """Perform batch search on multiple queries."""
-        results = {}
-        
-        for query in queries:
-            results[query] = self.search_companies(query)
-        
-        return results
+            if not query:
+                continue
+            
+            start = time.time()
+            results = matcher.match(query, top_k=10)
+            elapsed = time.time() - start
+            
+            print_results(query, results, verbose=True)
+            print(f"(Search took {elapsed:.3f}s)")
+            
+        except KeyboardInterrupt:
+            print("\nExiting...")
+            break
+        except Exception as e:
+            print(f"Error: {e}")
 
 def main():
-    """Main function for command line usage."""
-    parser = argparse.ArgumentParser(description="Advanced Company Name Search")
+    parser = argparse.ArgumentParser(description="Company Name Search (Powered by FineTuner)")
     parser.add_argument("query", nargs="?", help="Company name to search for")
-    parser.add_argument("--data", default="training_data.json", 
-                       help="Path to training data JSON file")
-    parser.add_argument("--model", help="Path to fine-tuned model directory")
-    parser.add_argument("--top", type=int, default=10, 
-                       help="Number of top results to return")
-    parser.add_argument("--interactive", "-i", action="store_true",
-                       help="Run in interactive mode")
-    parser.add_argument("--batch", nargs="+", 
-                       help="Batch search multiple company names")
+    parser.add_argument("--data", default="training_data.json", help="Path to training data JSON file")
+    parser.add_argument("--top", type=int, default=10, help="Number of results to return")
+    parser.add_argument("--interactive", "-i", action="store_true", help="Run in interactive mode")
+    parser.add_argument("--batch", nargs="+", help="Batch search multiple queries")
+    parser.add_argument("--no-cache", action="store_true", help="Rebuild index ignoring cache")
     
     args = parser.parse_args()
     
-    # Initialize searcher
+    print(f"Initializing CompanyMatcher...")
     try:
-        searcher = CompanySearcher(args.data, args.model)
-        searcher.load_user_selections()
-    except Exception as e:
-        print(f"Error initializing searcher: {e}")
-        return
-    
-    # Handle different modes
-    if args.interactive or (not args.query and not args.batch):
-        searcher.interactive_search()
-    elif args.batch:
-        print(f"Performing batch search for {len(args.batch)} queries...")
-        results = searcher.batch_search(args.batch)
+        matcher = CompanyMatcher()
         
-        for query, query_results in results.items():
-            searcher.print_search_results(query, query_results)
+        if args.no_cache:
+            print("Forcing index rebuild...")
+            # Ideally matcher would have force_rebuild param, but checks file timestamp. 
+            # We can clear cache manually using clear_cache if strictly needed, 
+            # but for now we rely on build_index logic.
+            matcher.clear_cache()
+            
+        # Initialize index
+        if not os.path.exists(args.data):
+            print(f"Error: Data file '{args.data}' not found.")
+            return
+            
+        matcher.build_index(filepath=args.data)
+        
+    except Exception as e:
+        print(f"Initialization failed: {e}")
+        return
+
+    # Mode selection
+    if args.interactive or (not args.query and not args.batch):
+        search_loop(matcher)
+    elif args.batch:
+        print(f"Batch searching {len(args.batch)} queries...")
+        for q in args.batch:
+            results = matcher.match(q, top_k=args.top)
+            print_results(q, results)
     elif args.query:
-        results = searcher.search_companies(args.query, args.top)
-        searcher.print_search_results(args.query, results)
-    else:
-        parser.print_help()
+        results = matcher.match(args.query, top_k=args.top)
+        print_results(args.query, results, verbose=True)
 
 if __name__ == "__main__":
     main()

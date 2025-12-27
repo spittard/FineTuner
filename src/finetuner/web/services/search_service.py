@@ -1,0 +1,266 @@
+
+import os
+import time
+import json
+from finetuner.core.matcher import CompanyMatcher
+from finetuner.web.services.rationale_service import RationaleService
+
+# Try to import tqdm for progress bars
+try:
+    from tqdm import tqdm
+    HAS_TQDM = True
+except ImportError:
+    HAS_TQDM = False
+    def tqdm(iterable, desc=None, total=None, unit=None, ncols=None, **kwargs):
+        return iterable
+
+class SearchService:
+    """
+    Service for orchestrating company searches, managing the matcher instance,
+    and handling data loading/caching.
+    """
+    
+    _instance = None
+    
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super(SearchService, cls).__new__(cls)
+            cls._instance._initialized = False
+        return cls._instance
+    
+    def __init__(self):
+        if self._initialized:
+            return
+            
+        self.matcher = None
+        self.company_data_loaded = False
+        self.last_data_check = 0
+        self.data_check_interval = 5
+        self._loading = False
+        self._initialized = True
+        
+    def load_company_data(self, force_reload=False):
+        """Load company data and initialize the matcher"""
+        
+        # Early return if data is already loaded and we don't need to force reload
+        if not force_reload and self.company_data_loaded and self.matcher is not None:
+            return True
+        
+        current_time = time.time()
+        
+        # Prevent multiple rapid calls to this function
+        if not force_reload and self.company_data_loaded and self.matcher is not None:
+            # Check if companies.json has been modified
+            if current_time - self.last_data_check < self.data_check_interval:
+                return True
+            
+            try:
+                # Check if file modification time has changed
+                if os.path.exists('companies.json'):
+                    file_mtime = os.path.getmtime('companies.json')
+                    if hasattr(self.matcher, '_last_file_mtime') and self.matcher._last_file_mtime == file_mtime:
+                        self.last_data_check = current_time
+                        return True
+            except:
+                pass
+        
+        # Add a guard to prevent multiple simultaneous loads
+        if self._loading:
+            print("Already loading company data, skipping...")
+            return self.company_data_loaded
+        
+        self._loading = True
+        
+        try:
+            # Check if companies.json exists
+            if not os.path.exists('companies.json'):
+                self._loading = False
+                return False
+            
+            filename = 'companies.json'
+            
+            # Load company names from the dataset
+            print(f"Loading company data from {filename}...")
+            load_start = time.time()
+            
+            with open(filename, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            print(f"   Found {len(data):,} total entries in file")
+            
+            # Check if data includes location information (City, State, Count)
+            has_location_data = False
+            if data and isinstance(data[0], dict):
+                sample = data[0]
+                has_location_data = 'City' in sample or 'State' in sample or 'Count' in sample
+            
+            if has_location_data:
+                print("   Location data detected (City/State/Count) - using location-aware loading")
+            
+            company_names = []
+            print("   Extracting company names...")
+            
+            # Use progress bar for extraction
+            for i, item in enumerate(tqdm(data, desc="   Extracting", total=len(data), unit="entries", ncols=80, disable=not HAS_TQDM)):
+                if isinstance(item, dict) and "Company Name" in item:
+                    company_names.append(item["Company Name"])
+            
+            if not company_names:
+                self._loading = False
+                return False
+            
+            load_time = time.time() - load_start
+            print(f"   [OK] Extracted {len(company_names):,} company names in {load_time:.1f}s")
+            
+            # Initialize CompanyMatcher with EXACTLY the same parameters as CLI
+            print("Initializing CompanyMatcher...")
+            self.matcher = CompanyMatcher(model_name='all-MiniLM-L6-v2')
+            
+            # Build index - use location-aware method if data has location info
+            if has_location_data:
+                print(f"Building company matching index with location data ({len(company_names):,} companies)...")
+                self.matcher.build_index_with_location(data=data)
+            else:
+                print(f"Building company matching index with {len(company_names):,} companies...")
+                self.matcher.build_index(company_names)
+            
+            # Store file modification time for change detection
+            try:
+                self.matcher._last_file_mtime = os.path.getmtime(filename)
+            except:
+                self.matcher._last_file_mtime = 0
+            
+            self.company_data_loaded = True
+            self.last_data_check = current_time
+            
+            print(f"SUCCESS: Loaded {len(company_names):,} company name entries")
+            if self.matcher.has_location_data:
+                print(f"   Location data: Available ({len(self.matcher.company_locations):,} entries)")
+            print(f"Webapp is now ready for company matching!")
+            self._loading = False
+            return True
+            
+        except Exception as e:
+            print(f"Error loading company data: {e}")
+            import traceback
+            traceback.print_exc()
+            self._loading = False
+            return False
+
+    def search(self, query, top_k=10, city=None, state=None):
+        """Perform search with optional location filtering"""
+        if not self.company_data_loaded or self.matcher is None:
+            if not self.load_company_data():
+                raise Exception("Company data not available")
+
+        # Perform search - use location-aware matching if location data is available
+        print(f"Searching for companies matching: {query}")
+        if city or state:
+            print(f"   Location filter: city='{city}', state='{state}'")
+        
+        # Use location-aware matching if available and location params provided
+        if self.matcher.has_location_data and (city or state):
+            matches = self.matcher.match_with_location(query, city=city, state=state, top_k=top_k)
+            print(f"Found {len(matches)} matches (location-aware)")
+        else:
+            matches = self.matcher.match(query, top_k=top_k)
+            print(f"Found {len(matches)} matches")
+        
+        # Format results for display
+        results = []
+        for i, match in enumerate(matches, 1):
+            # Generate match rationale based on the explanation
+            explanation = self.matcher.explain_match(query, match['name'])
+            rationale = RationaleService.generate_match_rationale(query, match['name'], explanation, match['score'])
+            
+            result_entry = {
+                'rank': i,
+                'company_name': match['name'],
+                'likeness_percent': round(match['score'] * 100, 1),
+                'match_rationale': rationale,
+                'raw_score': match['score'],
+                'explanation_details': {
+                    'query_tokens': list(explanation['query_tokens']),
+                    'match_tokens': list(explanation['match_tokens']),
+                    'overlap_tokens': list(explanation['overlap']),
+                    'overlap_score': explanation['overlap_score']
+                }
+            }
+            
+            # Add location and count data if available
+            if 'city' in match:
+                result_entry['city'] = match.get('city', '')
+            if 'state' in match:
+                result_entry['state'] = match.get('state', '')
+            if 'count' in match:
+                result_entry['record_count'] = match.get('count', 0)
+            if 'location_score' in match:
+                result_entry['location_score'] = round(match.get('location_score', 0) * 100, 1)
+            if 'name_score' in match:
+                result_entry['name_score'] = round(match.get('name_score', 0) * 100, 1)
+            
+            results.append(result_entry)
+        
+        return results
+
+    def clear_cache(self):
+        """Clear cache and force fresh data loading"""
+        if self.matcher is not None:
+            # Clear the cache for this matcher
+            cache_key = self.matcher.get_cache_key(self.matcher.original_company_names)
+            self.matcher.clear_cache(cache_key)
+            print(f"Cleared cache: {cache_key}")
+        
+        # Reset state
+        self.matcher = None
+        self.company_data_loaded = False
+        
+        return self.load_company_data(force_reload=True)
+
+    def get_status(self):
+        """Get current service status"""
+        if self._loading:
+            return {
+                'status': 'loading',
+                'message': 'Building company matching index...',
+                'progress': 'indexing'
+            }
+        
+        # Ensure data is loaded
+        loaded = self.load_company_data()
+        
+        if loaded:
+            response = {
+                'status': 'ready',
+                'companies_loaded': len(self.matcher.original_company_names) if self.matcher else 0,
+                'last_updated': self.last_data_check,
+                'message': f'Ready with {len(self.matcher.original_company_names):,} companies' if self.matcher else 'Ready'
+            }
+            # Add location data status
+            if self.matcher:
+                response['has_location_data'] = self.matcher.has_location_data
+                if self.matcher.has_location_data:
+                    response['location_entries'] = len(self.matcher.company_locations)
+                    response['message'] += ' (with location data)'
+            return response
+        else:
+            return {
+                'status': 'not_ready',
+                'error': 'Company data not available',
+                'message': 'Please ensure companies.json exists and is accessible'
+            }
+
+    def get_cache_info(self):
+        """Get cache debugging info"""
+        if self.matcher is None:
+            return None
+        
+        cache_info = self.matcher.get_cache_info()
+        cache_key = self.matcher.get_cache_key(self.matcher.original_company_names) if self.matcher.original_company_names else None
+        
+        return {
+            'cache_info': cache_info,
+            'current_cache_key': cache_key,
+            'companies_loaded': len(self.matcher.original_company_names) if self.matcher.original_company_names else 0,
+            'model_name': self.matcher.model_name
+        }

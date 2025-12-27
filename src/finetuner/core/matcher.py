@@ -1,9 +1,10 @@
 from sentence_transformers import SentenceTransformer
-import faiss
 import numpy as np
 import os
 import pickle
 import hashlib
+from finetuner.utils.text_preprocessor import TextPreprocessor
+from finetuner.core.vector_store import VectorStore
 
 # Try to import tqdm for progress bars, fallback if not available
 try:
@@ -14,63 +15,6 @@ except ImportError:
     # Simple fallback that just returns the iterable unchanged
     def tqdm(iterable, desc=None, total=None, unit=None, ncols=None, **kwargs):
         return iterable
-
-# Generic terms that should be down-weighted in matching
-# These are common organizational/structural words that don't distinguish entities
-GENERIC_TERMS = {
-    # Facility types (weight 0.3)
-    'center': 0.3, 'school': 0.3, 'hospital': 0.3, 'office': 0.3, 
-    'building': 0.3, 'facility': 0.3, 'church': 0.3, 'synagogue': 0.3,
-    # Event types (weight 0.3)
-    'meeting': 0.3, 'breakfast': 0.3, 'lunch': 0.3, 'dinner': 0.3, 
-    'conference': 0.3, 'event': 0.3, 'events': 0.3, 'tournament': 0.3,
-    'wedding': 0.3,
-    # Organization suffixes (weight 0.2) - common corporate terms
-    'group': 0.2, 'association': 0.2, 'coalition': 0.2, 'foundation': 0.2, 
-    'services': 0.2, 'service': 0.2, 'solutions': 0.2, 'partners': 0.2,
-    # Location modifiers (weight 0.5) - somewhat distinctive but common
-    'north': 0.5, 'south': 0.5, 'east': 0.5, 'west': 0.5, 
-    'shore': 0.5, 'bay': 0.5, 'coast': 0.5, 'lake': 0.5,
-    'valley': 0.5, 'mountain': 0.5, 'hill': 0.5, 'river': 0.5,
-    # Common modifiers (weight 0.4)
-    'national': 0.4, 'international': 0.4, 'global': 0.4, 'regional': 0.4,
-    'local': 0.4, 'community': 0.4, 'public': 0.4, 'private': 0.4,
-}
-
-# Category words that define the TYPE of entity - mismatches should be penalized
-CATEGORY_WORDS = {
-    'facility_type': {'center', 'school', 'hospital', 'church', 'synagogue', 'office', 'building'},
-    'event_type': {'meeting', 'conference', 'wedding', 'tournament', 'breakfast', 'lunch', 'dinner', 'event'},
-    'service_type': {'senior', 'medical', 'financial', 'legal', 'technical', 'nursing', 'dental', 'health'},
-}
-
-# Common words that should NOT be treated as proper nouns even if capitalized
-# These are words that commonly appear capitalized at the start of names but are generic
-COMMON_WORDS = {
-    # Articles and prepositions
-    'the', 'a', 'an', 'of', 'and', 'or', 'for', 'to', 'in', 'on', 'at', 'by', 'with',
-    # Generic business terms
-    'inc', 'incorporated', 'corp', 'corporation', 'llc', 'ltd', 'limited', 'co', 'company',
-    'group', 'holdings', 'enterprises', 'associates', 'partners', 'services', 'solutions',
-    # Facility/organization types
-    'center', 'school', 'hospital', 'office', 'building', 'facility', 'church', 'synagogue',
-    'university', 'college', 'institute', 'academy', 'association', 'foundation', 'society',
-    # Event types
-    'meeting', 'conference', 'event', 'events', 'breakfast', 'lunch', 'dinner', 'tournament',
-    'wedding', 'reception', 'ceremony', 'celebration', 'gala', 'banquet',
-    # Descriptors
-    'national', 'international', 'global', 'regional', 'local', 'community', 'public', 'private',
-    'general', 'special', 'annual', 'monthly', 'weekly', 'daily',
-    # Directions/locations
-    'north', 'south', 'east', 'west', 'central', 'upper', 'lower', 'new', 'old',
-    'shore', 'bay', 'coast', 'lake', 'valley', 'mountain', 'hill', 'river', 'island',
-    # Service types
-    'senior', 'medical', 'financial', 'legal', 'technical', 'nursing', 'dental', 'health',
-    'professional', 'executive', 'administrative', 'clinical', 'educational',
-    # Common adjectives
-    'first', 'second', 'third', 'fourth', 'fifth', 'primary', 'secondary',
-    'main', 'major', 'minor', 'grand', 'great', 'big', 'small', 'little',
-}
 
 class CompanyMatcher:
     def __init__(self, model_name='all-MiniLM-L6-v2'):
@@ -83,10 +27,10 @@ class CompanyMatcher:
             ultra_fast_model = model_name
             
         self.model = SentenceTransformer(ultra_fast_model)
-        self.index = None
+        self.vector_store = VectorStore()
+        
         self.original_company_names = []  # Store original names
         self.company_names = []  # Store preprocessed names for matching
-        self.embeddings = None
         self.model_name = ultra_fast_model  # Store the actual model name used
         
         # Location data storage (for location-aware matching)
@@ -144,17 +88,10 @@ class CompanyMatcher:
             cache_start = time.time()
             paths = self.get_cache_paths(cache_key)
             
-            # Save embeddings
-            print("      Saving embeddings to cache...", end=" ", flush=True)
-            embed_start = time.time()
-            np.save(paths['embeddings'], embeddings)
-            print(f"[OK] ({time.time() - embed_start:.1f}s)")
-            
-            # Save FAISS index
-            print("      Saving FAISS index to cache...", end=" ", flush=True)
-            index_start = time.time()
-            faiss.write_index(index, paths['index'])
-            print(f"[OK] ({time.time() - index_start:.1f}s)")
+            # Save vectors and index via VectorStore
+            # Note: embeddings and index args are kept for signature compatibility but ignored
+            # as we use self.vector_store
+            self.vector_store.save(paths['embeddings'], paths['index'])
             
             # Save company names (and location data if available)
             print("      Saving company names to cache...", end=" ", flush=True)
@@ -192,6 +129,8 @@ class CompanyMatcher:
             
         except Exception as e:
             print(f"Warning: Failed to save cache: {e}")
+            import traceback
+            traceback.print_exc()
             return False
     
     def load_from_cache(self, cache_key):
@@ -205,17 +144,9 @@ class CompanyMatcher:
             if not all(os.path.exists(path) for path in paths.values()):
                 return False
             
-            # Load embeddings
-            print("      Loading embeddings from cache...", end=" ", flush=True)
-            embed_start = time.time()
-            self.embeddings = np.load(paths['embeddings'])
-            print(f"[OK] ({time.time() - embed_start:.1f}s)")
-            
-            # Load FAISS index
-            print("      Loading FAISS index from cache...", end=" ", flush=True)
-            index_start = time.time()
-            self.index = faiss.read_index(paths['index'])
-            print(f"[OK] ({time.time() - index_start:.1f}s)")
+            # Load vectors and index via VectorStore
+            if not self.vector_store.load(paths['embeddings'], paths['index']):
+                return False
             
             # Load company names and location data
             print("      Loading company names from cache...", end=" ", flush=True)
@@ -263,6 +194,8 @@ class CompanyMatcher:
             
         except Exception as e:
             print(f"Warning: Failed to load cache: {e}")
+            import traceback
+            traceback.print_exc()
             return False
     
     def ensure_fast_lookup_sets(self):
@@ -355,8 +288,7 @@ class CompanyMatcher:
     
     def is_index_ready(self):
         """Check if the index is ready for matching"""
-        return (self.index is not None and 
-                self.embeddings is not None and 
+        return (self.vector_store.is_ready() and 
                 len(self.original_company_names) > 0)
 
     def preprocess(self, names):
@@ -371,7 +303,7 @@ class CompanyMatcher:
         # Early return if index is already loaded - prevents duplicate loading
         if self.is_index_ready():
             print(f"[OK] Index already loaded with {len(self.original_company_names):,} companies - skipping rebuild")
-            print(f"  Index status: Ready | Companies: {len(self.original_company_names):,} | Embeddings shape: {self.embeddings.shape if self.embeddings is not None else 'N/A'}")
+            print(f"  Index status: Ready | Companies: {len(self.original_company_names):,} | Embeddings shape: {self.vector_store.embeddings.shape if self.vector_store.embeddings is not None else 'N/A'}")
             return True
         
         cache_key = None
@@ -439,7 +371,7 @@ class CompanyMatcher:
         print("Generating embeddings with optimized CPU batch processing...")
         
         # AGGRESSIVE optimization for sub-1-hour processing
-        batch_size = 50000  # Large batch size for speed
+        batch_size = 2048  # Reduced from 50000 to avoid stuck processes
         
         print(f"   CPU-optimized processing")
         print(f"   Batch size: {batch_size:,} (vs previous 32)")
@@ -509,30 +441,25 @@ class CompanyMatcher:
         print(f"   [OK] Embedding generation completed in {overall_time:.1f}s ({overall_time/60:.1f} minutes)")
         
         # Combine all embeddings
-        self.embeddings = np.vstack(embeddings_list)
-        print(f"   Generated embeddings: {self.embeddings.shape}")
+        all_embeddings = np.vstack(embeddings_list)
+        print(f"   Generated embeddings: {all_embeddings.shape}")
         
-        # Build FAISS index
-        print("Building FAISS index...")
-        dim = self.embeddings.shape[1]
-        self.index = faiss.IndexFlatIP(dim)  # Cosine similarity via normalized dot product
-        
-        # Add vectors to index with progress indication
-        print(f"   Adding {len(company_names):,} vectors to FAISS index...")
-        import time
-        start_time = time.time()
-        self.index.add(self.embeddings)
-        index_time = time.time() - start_time
-        print(f"   [OK] FAISS index built in {index_time:.1f}s")
+        # Build FAISS index via VectorStore
+        self.vector_store.build_index(all_embeddings)
         
         # Create fast lookup sets for exact matching
         self._create_fast_lookup_sets()
         
         # Save to cache for future use
         print("Saving to cache...")
+        
+        # If we have a file-based key, use it for storage so we can fast-load next time
+        if file_cache_key:
+             cache_key = file_cache_key
+             
         import time
         cache_start = time.time()
-        self.save_to_cache(cache_key, self.embeddings, self.index, self.company_names, self.original_company_names)
+        self.save_to_cache(cache_key, None, None, self.company_names, self.original_company_names)
         cache_time = time.time() - cache_start
         print(f"   [OK] Cache saved in {cache_time:.1f}s")
         
@@ -578,22 +505,15 @@ class CompanyMatcher:
         embed_time = time.time() - embed_start
         print(f"   [OK] Generated embeddings in {embed_time:.1f}s")
         
-        # Add to existing arrays
-        print("   Step 3/5: Updating arrays with new data...")
+        # Add to existing arrays / index via VectorStore
+        print("   Step 3/4: Updating VectorStore...")
         self.original_company_names.extend(truly_new)
         self.company_names.extend(new_preprocessed)
-        self.embeddings = np.vstack([self.embeddings, new_embeddings])
-        print(f"   [OK] Arrays updated. Total companies: {len(self.original_company_names):,}")
         
-        # Update FAISS index
-        print("   Step 4/5: Updating FAISS index...")
-        index_start = time.time()
-        self.index.add(new_embeddings)
-        index_time = time.time() - index_start
-        print(f"   [OK] FAISS index updated in {index_time:.1f}s")
+        self.vector_store.add_vectors(new_embeddings)
         
         # Update fast lookup sets for incremental updates
-        print("   Step 5/5: Updating fast lookup sets...")
+        print("   Step 4/5: Updating fast lookup sets...")
         self._create_fast_lookup_sets()
         
         add_time = time.time() - add_start
@@ -604,388 +524,21 @@ class CompanyMatcher:
         print("   Updating cache...")
         cache_start = time.time()
         cache_key = self.get_cache_key(self.original_company_names)
-        self.save_to_cache(cache_key, self.embeddings, self.index, self.company_names, self.original_company_names)
+        self.save_to_cache(cache_key, None, None, self.company_names, self.original_company_names)
         cache_time = time.time() - cache_start
         print(f"   [OK] Cache updated in {cache_time:.1f}s")
         
         return True
 
-    def _clean_company_name(self, name):
-        """
-        Removes common business suffixes and stop words for cleaner string comparison.
-        This ensures 'Apple Inc' matches 'Apple' perfectly.
-        """
-        # Common suffixes to ignore during string comparison
-        suffixes = {
-            'inc', 'incorporated', 'corp', 'corporation', 'llc', 'ltd', 'limited',
-            'co', 'company', 'plc', 'group', 'holdings', 'enterprises', 'associates'
-        }
-        # Stop words that add noise
-        stop_words = {'the', 'of', 'and', '&', 'a', 'an'}
-        
-        # Normalize: replace hyphens with spaces so "Dallas-Parks" becomes "Dallas Parks"
-        # This helps match hyphenated names with their non-hyphenated variants
-        name_lower = name.lower().replace('.', '').replace(',', '').replace('-', ' ')
-        words = name_lower.split()
-        
-        # Filter out suffixes and stop words
-        clean_words = [w for w in words if w not in suffixes and w not in stop_words]
-        
-        # If we stripped everything (e.g. name was just "The Inc"), return original
-        if not clean_words:
-            return name_lower
-            
-        return " ".join(clean_words)
-
-    def _get_term_weight(self, term):
-        """
-        Returns a weight for a term based on how generic/common it is.
-        Generic terms get lower weights (0.2-0.5), distinctive terms get 1.0.
-        """
-        term_lower = term.lower()
-        return GENERIC_TERMS.get(term_lower, 1.0)
-    
-    def _get_category_words(self, tokens):
-        """
-        Extracts category-defining words from a set of tokens.
-        Returns a dict mapping category type to the words found.
-        """
-        found_categories = {}
-        for token in tokens:
-            token_lower = token.lower()
-            for category, words in CATEGORY_WORDS.items():
-                if token_lower in words:
-                    if category not in found_categories:
-                        found_categories[category] = set()
-                    found_categories[category].add(token_lower)
-        return found_categories
-    
-    def _check_category_mismatch(self, query_tokens, target_tokens):
-        """
-        Checks if query and target have mismatched category words.
-        Returns a penalty multiplier (0.0-1.0) where 1.0 means no penalty.
-        """
-        query_categories = self._get_category_words(query_tokens)
-        target_categories = self._get_category_words(target_tokens)
-        
-        penalty = 1.0
-        
-        # Check each category type for mismatches
-        for category in CATEGORY_WORDS.keys():
-            query_words = query_categories.get(category, set())
-            target_words = target_categories.get(category, set())
-            
-            # If both have words in this category but they're different, apply penalty
-            if query_words and target_words and not query_words.intersection(target_words):
-                # Significant penalty for category mismatch (e.g., "Senior" vs "Financial")
-                penalty *= 0.75
-        
-        return penalty
-
-    def _extract_proper_nouns(self, original_name):
-        """
-        Extracts likely proper nouns from a company name.
-        Proper nouns are capitalized words that aren't common generic terms.
-        
-        Args:
-            original_name: The original (non-lowercased) company name
-            
-        Returns:
-            Set of likely proper nouns (in lowercase for comparison)
-        """
-        proper_nouns = set()
-        
-        # Split on common delimiters while preserving original casing
-        import re
-        words = re.split(r'[\s\-/,&]+', original_name)
-        
-        for word in words:
-            # Skip empty strings and very short words
-            if len(word) < 2:
-                continue
-                
-            # Check if word starts with uppercase (likely proper noun)
-            if word[0].isupper():
-                word_lower = word.lower()
-                # Only treat as proper noun if NOT a common generic word
-                if word_lower not in COMMON_WORDS:
-                    proper_nouns.add(word_lower)
-        
-        return proper_nouns
-    
-    def _check_proper_noun_mismatch(self, query_original, target_original, query_tokens, target_tokens):
-        """
-        Checks if the query has proper nouns (identifiers) that are missing from the target.
-        This catches cases like "Hartford Hospital" vs "Jefferson Hospital" where
-        the structure matches but the identifying name differs.
-        
-        Returns a penalty multiplier (0.0-1.0) where 1.0 means no penalty.
-        """
-        # Extract proper nouns from original names (preserves capitalization info)
-        query_proper = self._extract_proper_nouns(query_original)
-        target_proper = self._extract_proper_nouns(target_original)
-        
-        # If query has no identifiable proper nouns, no penalty
-        if not query_proper:
-            return 1.0
-        
-        # Find proper nouns in query that are missing from target
-        missing_proper = query_proper - target_proper
-        
-        # Also check if they're in the target tokens (handles case variations)
-        target_tokens_lower = {t.lower() for t in target_tokens}
-        truly_missing = {p for p in missing_proper if p not in target_tokens_lower}
-        
-        if not truly_missing:
-            return 1.0
-        
-        # Calculate penalty based on how many proper nouns are missing
-        # More missing = bigger penalty
-        missing_ratio = len(truly_missing) / len(query_proper)
-        
-        # Apply penalty: up to 25% reduction for missing proper nouns
-        # This is gentler than the category mismatch because proper nouns
-        # can sometimes be abbreviations or variants
-        penalty = 1.0 - (missing_ratio * 0.25)
-        
-        return penalty
-
-    def _calculate_string_similarity(self, query, target):
-        """
-        Calculates a robust string similarity score (0.0 to 1.0)
-        combining weighted Token Set Ratio, Sequence Matching, and penalties
-        for generic term over-matching and category mismatches.
-        """
-        import difflib
-        
-        clean_query = self._clean_company_name(query)
-        clean_target = self._clean_company_name(target)
-        
-        q_tokens = set(clean_query.split())
-        t_tokens = set(clean_target.split())
-        
-        if not q_tokens or not t_tokens:
-            return 0.0
-        
-        # ============================================================
-        # IMPROVEMENT 1: WEIGHTED JACCARD (Generic term down-weighting)
-        # ============================================================
-        # Instead of counting each token equally, weight by term importance
-        intersection = q_tokens.intersection(t_tokens)
-        union = q_tokens.union(t_tokens)
-        
-        # Calculate weighted intersection and union
-        weighted_intersection = sum(self._get_term_weight(t) for t in intersection)
-        weighted_union = sum(self._get_term_weight(t) for t in union)
-        
-        weighted_jaccard = weighted_intersection / weighted_union if weighted_union > 0 else 0.0
-        
-        # Also keep unweighted for comparison
-        unweighted_jaccard = len(intersection) / len(union) if len(union) > 0 else 0.0
-        
-        # Handle singular/plural variations
-        adjusted_intersection = len(intersection)
-        for q_token in q_tokens:
-            if q_token not in t_tokens:
-                if q_token + 's' in t_tokens or q_token + 'es' in t_tokens:
-                    adjusted_intersection += 1
-                elif (q_token.endswith('s') and q_token[:-1] in t_tokens) or \
-                     (q_token.endswith('es') and q_token[:-2] in t_tokens):
-                    adjusted_intersection += 1
-        
-        adjusted_jaccard = adjusted_intersection / len(union) if len(union) > 0 else 0.0
-        
-        # Use weighted Jaccard as the primary score
-        jaccard_score = max(weighted_jaccard, adjusted_jaccard * 0.9)  # Slight preference for weighted
-        
-        # Sequence Matcher for typos/partial words
-        seq_query_normalized = ' '.join([w.rstrip('es').rstrip('s') if len(w) > 3 else w for w in clean_query.split()])
-        seq_target_normalized = ' '.join([w.rstrip('es').rstrip('s') if len(w) > 3 else w for w in clean_target.split()])
-        seq_score = difflib.SequenceMatcher(None, seq_query_normalized, seq_target_normalized).ratio()
-        seq_score_original = difflib.SequenceMatcher(None, clean_query, clean_target).ratio()
-        seq_score = max(seq_score, seq_score_original)
-        
-        base_score = max(jaccard_score, seq_score)
-        
-        # ============================================================
-        # IMPROVEMENT 2: DISCRIMINATING WORD PENALTY
-        # ============================================================
-        # If query has distinctive (non-generic) words that are missing from target,
-        # apply a penalty. E.g., "J&J" missing from "AEP Breakfast Meeting"
-        query_distinctive = [t for t in q_tokens if self._get_term_weight(t) >= 0.8]
-        missing_distinctive = [t for t in query_distinctive if t not in t_tokens]
-        
-        if query_distinctive and missing_distinctive:
-            # Penalty based on what fraction of distinctive words are missing
-            missing_ratio = len(missing_distinctive) / len(query_distinctive)
-            # Apply significant penalty (up to 40% reduction) for missing distinctive words
-            distinctive_penalty = 1.0 - (missing_ratio * 0.4)
-            base_score *= distinctive_penalty
-        
-        # ============================================================
-        # IMPROVEMENT 3: SHORT STRING SCORE CAP
-        # ============================================================
-        # Prevent very short matches from getting artificially high scores
-        # This fixes "BOD" matching "Bod Pro" at 80%+
-        matched_chars = sum(len(t) for t in intersection)
-        if matched_chars < 5:
-            base_score = min(base_score, 0.50)  # Cap at 50% for < 5 chars matched
-        elif matched_chars < 8:
-            base_score = min(base_score, 0.65)  # Cap at 65% for 5-7 chars matched
-        
-        # ============================================================
-        # IMPROVEMENT 4: CATEGORY MISMATCH PENALTY
-        # ============================================================
-        # E.g., "Senior Center" vs "Financial Center" should be penalized
-        category_penalty = self._check_category_mismatch(q_tokens, t_tokens)
-        base_score *= category_penalty
-        
-        # ============================================================
-        # IMPROVEMENT 5: PROPER NOUN MISMATCH PENALTY
-        # ============================================================
-        # E.g., "Hartford Hospital" vs "Jefferson Hospital" - same structure,
-        # different identifying proper noun. Uses original names to detect capitalization.
-        proper_noun_penalty = self._check_proper_noun_mismatch(query, target, q_tokens, t_tokens)
-        base_score *= proper_noun_penalty
-        
-        # ============================================================
-        # COVERAGE AND LENGTH ADJUSTMENTS (existing logic, refined)
-        # ============================================================
-        query_words_in_target = len(intersection)
-        coverage_ratio = query_words_in_target / len(q_tokens) if q_tokens else 0
-        
-        query_length = len(q_tokens)
-        target_length = len(t_tokens)
-        
-        # Combined penalty for boosts (category + proper noun)
-        combined_penalty = category_penalty * proper_noun_penalty
-        
-        # Boost for perfect substring matches (e.g. "Google" inside "Google Cloud")
-        if clean_query in clean_target or clean_target in clean_query:
-            # Only boost if not penalized significantly
-            if combined_penalty >= 0.85:
-                base_score = max(base_score, 0.9 * combined_penalty)
-        # Boost for multi-word matches that cover significant portion of query
-        elif coverage_ratio >= 0.5:
-            coverage_boost = 0.7 + (coverage_ratio * 0.2)
-            if target_length >= query_length * 0.6:
-                coverage_boost += 0.05
-            # Apply combined penalty to boost as well
-            coverage_boost *= combined_penalty
-            base_score = max(base_score, coverage_boost)
-        elif coverage_ratio >= 0.25:
-            coverage_boost = 0.6 + ((coverage_ratio - 0.25) * 0.4)
-            if target_length < query_length * 0.5:
-                coverage_boost *= 0.8
-            coverage_boost *= combined_penalty
-            base_score = max(base_score, coverage_boost)
-        
-        # Length-based penalty
-        if target_length < query_length:
-            length_shortfall = 1.0 - (target_length / query_length)
-            
-            if length_shortfall > 0.5:
-                normalized_pos = min(1.0, (0.5 - (length_shortfall - 0.5)) / 0.5)
-                penalty_factor = 0.4 + (0.3 * normalized_pos)
-                base_score = base_score * penalty_factor
-            elif length_shortfall > 0.3:
-                normalized_pos = (length_shortfall - 0.3) / 0.2
-                penalty_factor = 0.7 + (0.15 * (1.0 - normalized_pos))
-                base_score = base_score * penalty_factor
-            elif length_shortfall > 0.1:
-                normalized_pos = (length_shortfall - 0.1) / 0.2
-                penalty_factor = 0.85 + (0.1 * (1.0 - normalized_pos))
-                base_score = base_score * penalty_factor
-            
-        return base_score
+    # Text processing methods delegated to TextPreprocessor
 
     def match(self, query, top_k=10):
         """
         Hybrid Semantic + Lexical Matching (Retrieve & Re-rank)
+        
+        Delegates to match_with_location for consistent logic.
         """
-        query_lower = query.lower().strip()
-        
-        # --- PHASE 1: RETRIEVAL (Semantic Search) ---
-        # Get a larger candidate pool (e.g., top 50) using the fast vector index
-        # We fetch more than top_k because the best string match might be semantically ranked #20
-        candidate_k = min(50, len(self.original_company_names))
-        
-        query_vec = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
-        semantic_scores, semantic_indices = self.index.search(query_vec, candidate_k)
-        
-        candidates = []
-        
-        # Normalize semantic scores to 0-1 range roughly
-        max_sem_score = float(semantic_scores[0][0]) if len(semantic_scores[0]) > 0 else 1.0
-        
-        # --- PHASE 2: RE-RANKING (Weighted Scoring) ---
-        for j, i in enumerate(semantic_indices[0]):
-            idx = int(i)
-            company_name = self.original_company_names[idx]
-            original_semantic_score = float(semantic_scores[0][j])
-            
-            # 1. Normalize Vector Score
-            sem_score_norm = original_semantic_score / max_sem_score if max_sem_score > 0 else 0
-            
-            # 2. Calculate String Similarity (The "Better Solution")
-            string_score = self._calculate_string_similarity(query, company_name)
-            
-            # 3. Exact Match Bonus
-            if query_lower == company_name.lower():
-                string_score = 1.0
-            
-            # 4. Weighted Combination
-            # We trust string similarity MORE than semantic for company names
-            # Weight: 70% String Match, 30% Semantic Meaning
-            final_score = (string_score * 0.7) + (sem_score_norm * 0.3)
-            
-            candidates.append({
-                "name": company_name,
-                "score": final_score,
-                "semantic_score": original_semantic_score,
-                "string_score": string_score,
-                "index": idx,
-                "match_type": "hybrid"
-            })
-
-        # --- PHASE 3: EXACT MATCH OVERRIDE ---
-        # If we have an exact match in our lookup set, ensure it's #1
-        if hasattr(self, '_company_names_lower_set') and query_lower in self._company_names_lower_set:
-            # Use O(1) lookup if available, otherwise fallback to iteration
-            if hasattr(self, '_company_names_lower_to_index'):
-                i = self._company_names_lower_to_index[query_lower]
-                name = self.original_company_names[i]
-            else:
-                # Fallback to iteration if dictionary doesn't exist
-                for i, name in enumerate(self.original_company_names):
-                    if name.lower() == query_lower:
-                        break
-            
-            # Check if already in candidates
-            existing = next((c for c in candidates if c['index'] == i), None)
-            if existing:
-                existing['score'] = 1.0 # Force to top
-                existing['match_type'] = "exact"
-            else:
-                candidates.append({
-                    "name": name,
-                    "score": 1.0,
-                    "semantic_score": 1.0,
-                    "string_score": 1.0,
-                    "index": i,
-                    "match_type": "exact"
-                })
-
-        # Sort by Final Score
-        candidates.sort(key=lambda x: x["score"], reverse=True)
-        
-        # Return top_k
-        results = candidates[:top_k]
-        
-        # Store last matches for explanation
-        self._last_matches = results
-            
-        return results
+        return self.match_with_location(query, city=None, state=None, top_k=top_k)
 
     def batch_match(self, queries, top_k=10, batch_size=32):
         """
@@ -1048,12 +601,15 @@ class CompanyMatcher:
             
             # Semantic search for this query
             query_vec = query_vecs_dict[query_idx]
-            semantic_scores, semantic_indices = self.index.search(query_vec, candidate_k)
+            semantic_scores, semantic_indices = self.vector_store.search(query_vec, candidate_k)
             
             candidates = []
             
             # Normalize semantic scores
-            max_sem_score = float(semantic_scores[0][0]) if len(semantic_scores[0]) > 0 else 1.0
+            if len(semantic_scores) > 0 and len(semantic_scores[0]) > 0:
+                max_sem_score = float(semantic_scores[0][0])
+            else:
+                max_sem_score = 1.0
             
             # Re-ranking
             for j, i in enumerate(semantic_indices[0]):
@@ -1065,7 +621,7 @@ class CompanyMatcher:
                 sem_score_norm = original_semantic_score / max_sem_score if max_sem_score > 0 else 0
                 
                 # Calculate String Similarity
-                string_score = self._calculate_string_similarity(query, company_name)
+                string_score = TextPreprocessor.calculate_string_similarity(query, company_name)
                 
                 # Exact Match Bonus
                 if query_lower == company_name.lower():
@@ -1125,8 +681,8 @@ class CompanyMatcher:
 
     def explain_match(self, query, match_name):
         """Explanation based on the new hybrid logic"""
-        query_clean = self._clean_company_name(query)
-        match_clean = self._clean_company_name(match_name)
+        query_clean = TextPreprocessor.clean_company_name(query)
+        match_clean = TextPreprocessor.clean_company_name(match_name)
         
         q_tokens = set(query_clean.split())
         t_tokens = set(match_clean.split())
@@ -1149,6 +705,7 @@ class CompanyMatcher:
         if match_details:
             explanation["string_score"] = match_details.get("string_score", 0.0)
             explanation["semantic_score"] = match_details.get("semantic_score", 0.0)
+            explanation["normalized_semantic_score"] = match_details.get("normalized_semantic_score", 0.0)
             explanation["final_score"] = match_details.get("score", 0.0)
         
         return explanation
@@ -1176,6 +733,31 @@ class CompanyMatcher:
         if self.is_index_ready() and self.has_location_data:
             print(f"[OK] Index with location already loaded - skipping rebuild")
             return True
+        
+        # OPTIMIZATION: Check file-based cache BEFORE loading data
+        if filepath and os.path.exists(filepath):
+            cache_key_file = self.get_cache_key_from_file(filepath) + "_loc"
+            # We don't know the exact key yet because we haven't loaded names, 
+            # but we can check if a cache exists for this file signature.
+            # get_cache_key_from_file returns a hash of filepath+size+mtime.
+            # Use that as the key.
+            # NOTE: The existing logic uses get_cache_key(names) + "_loc".
+            # If we want to support file-based, we need to save/load using file-based key OR 
+            # verify if we can trust the file signature to map to the same content key.
+            
+            # Strategy: Try to load using file-based key directly.
+            # If we succeed, we save significantly. 
+            # BUT we need to ensure we save using this key too.
+            # Or, we just use this key for loading.
+            
+            print(f"Checking cache for file: {os.path.basename(filepath)}")
+            print(f"   Cache key: {cache_key_file}")
+            
+            if self.load_from_cache(cache_key_file):
+                print(f"[OK] Fast load successful! Loaded from cache using file metadata.")
+                return True
+        
+        # Load data (fallback)
         
         # Load data
         if data is None:
@@ -1215,10 +797,15 @@ class CompanyMatcher:
         self.company_ids = ids
         self.has_location_data = True
         
-        # Generate cache key that includes location data marker
-        cache_key = self.get_cache_key(company_names) + "_loc"
+        # Generate cache key
+        # If we have a file, use the file-based key for storage (matches our fast-load logic)
+        if filepath and os.path.exists(filepath):
+             cache_key = self.get_cache_key_from_file(filepath) + "_loc"
+        else:
+             cache_key = self.get_cache_key(company_names) + "_loc"
         
-        # Try to load from cache
+        # Try to load from cache (standard check using the selected key)
+        # This catches cases where we just calculated the key (file or content) and it exists
         if self.load_from_cache(cache_key):
             print(f"Using cached index with location data")
             return True
@@ -1243,7 +830,7 @@ class CompanyMatcher:
         import gc
         gc.collect()
         
-        batch_size = 50000
+        batch_size = 2048
         embeddings_list = []
         total_batches = (len(company_names) + batch_size - 1) // batch_size
         
@@ -1273,11 +860,9 @@ class CompanyMatcher:
         # Combine embeddings
         self.embeddings = np.vstack(embeddings_list)
         
-        # Build FAISS index
+        # Build FAISS index via VectorStore
         print("Building FAISS index...")
-        dim = self.embeddings.shape[1]
-        self.index = faiss.IndexFlatIP(dim)
-        self.index.add(self.embeddings)
+        self.vector_store.build_index(self.embeddings)
         print(f"   [OK] FAISS index built")
         
         # Create fast lookup sets
@@ -1285,7 +870,7 @@ class CompanyMatcher:
         
         # Save to cache with location data
         print("Saving to cache with location data...")
-        self.save_to_cache(cache_key, self.embeddings, self.index, 
+        self.save_to_cache(cache_key, None, None, 
                           self.company_names, self.original_company_names,
                           locations=self.company_locations, counts=self.company_counts,
                           ids=self.company_ids)
@@ -1298,153 +883,7 @@ class CompanyMatcher:
         return True
 
     # State abbreviation mappings (both directions)
-    STATE_ABBREV = {
-        'al': 'alabama', 'ak': 'alaska', 'az': 'arizona', 'ar': 'arkansas',
-        'ca': 'california', 'co': 'colorado', 'ct': 'connecticut', 'de': 'delaware',
-        'fl': 'florida', 'ga': 'georgia', 'hi': 'hawaii', 'id': 'idaho',
-        'il': 'illinois', 'in': 'indiana', 'ia': 'iowa', 'ks': 'kansas',
-        'ky': 'kentucky', 'la': 'louisiana', 'me': 'maine', 'md': 'maryland',
-        'ma': 'massachusetts', 'mi': 'michigan', 'mn': 'minnesota', 'ms': 'mississippi',
-        'mo': 'missouri', 'mt': 'montana', 'ne': 'nebraska', 'nv': 'nevada',
-        'nh': 'new hampshire', 'nj': 'new jersey', 'nm': 'new mexico', 'ny': 'new york',
-        'nc': 'north carolina', 'nd': 'north dakota', 'oh': 'ohio', 'ok': 'oklahoma',
-        'or': 'oregon', 'pa': 'pennsylvania', 'ri': 'rhode island', 'sc': 'south carolina',
-        'sd': 'south dakota', 'tn': 'tennessee', 'tx': 'texas', 'ut': 'utah',
-        'vt': 'vermont', 'va': 'virginia', 'wa': 'washington', 'wv': 'west virginia',
-        'wi': 'wisconsin', 'wy': 'wyoming', 'dc': 'district of columbia'
-    }
-    
-    # Common city name variations
-    CITY_VARIATIONS = {
-        'nyc': 'new york', 'new york city': 'new york', 'ny': 'new york',
-        'la': 'los angeles', 'l.a.': 'los angeles',
-        'sf': 'san francisco', 'san fran': 'san francisco',
-        'dc': 'washington', 'washington dc': 'washington', 'washington d.c.': 'washington',
-        'philly': 'philadelphia', 'phila': 'philadelphia',
-        'chi': 'chicago', 'chi-town': 'chicago',
-        'vegas': 'las vegas', 'lv': 'las vegas',
-        'nola': 'new orleans',
-        'atl': 'atlanta',
-        'stl': 'st louis', 'st. louis': 'saint louis', 'saint louis': 'st louis',
-        'ft worth': 'fort worth', 'ft. worth': 'fort worth',
-        'st paul': 'saint paul', 'st. paul': 'saint paul',
-        'mt': 'mount', 'mt.': 'mount',
-    }
-    
-    def _normalize_state(self, state):
-        """Normalize state to abbreviation form for comparison."""
-        if not state:
-            return ""
-        state = state.strip().lower()
-        
-        # If already abbreviation, return as-is
-        if len(state) == 2 and state in self.STATE_ABBREV:
-            return state
-        
-        # If full name, convert to abbreviation
-        for abbrev, full_name in self.STATE_ABBREV.items():
-            if state == full_name:
-                return abbrev
-        
-        return state
-    
-    def _normalize_city(self, city):
-        """Normalize city name for comparison."""
-        if not city:
-            return ""
-        city = city.strip().lower()
-        
-        # Apply known variations
-        if city in self.CITY_VARIATIONS:
-            city = self.CITY_VARIATIONS[city]
-        
-        # Remove common prefixes/suffixes
-        city = city.replace('city of ', '').replace(' city', '')
-        city = city.replace('town of ', '').replace(' town', '')
-        
-        return city
-    
-    def _calculate_city_similarity(self, query_city, target_city):
-        """
-        Calculate city similarity using multiple methods (similar to company name matching).
-        Returns score between 0.0 and 1.0.
-        """
-        import difflib
-        
-        if not query_city or not target_city:
-            return 0.0
-        
-        q_city = self._normalize_city(query_city)
-        t_city = self._normalize_city(target_city)
-        
-        # Exact match after normalization
-        if q_city == t_city:
-            return 1.0
-        
-        # Check if one contains the other (e.g., "York" in "New York")
-        if q_city in t_city or t_city in q_city:
-            # Partial containment - score based on coverage
-            shorter = min(len(q_city), len(t_city))
-            longer = max(len(q_city), len(t_city))
-            return 0.7 + (0.3 * shorter / longer)
-        
-        # Token-based matching (similar to company matching)
-        q_tokens = set(q_city.split())
-        t_tokens = set(t_city.split())
-        
-        if q_tokens and t_tokens:
-            intersection = q_tokens.intersection(t_tokens)
-            union = q_tokens.union(t_tokens)
-            jaccard = len(intersection) / len(union)
-            if jaccard > 0:
-                return 0.5 + (0.5 * jaccard)
-        
-        # Sequence similarity for typos/variations
-        seq_ratio = difflib.SequenceMatcher(None, q_city, t_city).ratio()
-        if seq_ratio > 0.7:
-            return seq_ratio
-        
-        return 0.0
-    
-    def _calculate_location_score(self, query_city, query_state, target_city, target_state):
-        """
-        Calculate location similarity score using fuzzy matching.
-        Similar matching logic as company names.
-        
-        Args:
-            query_city: City from query
-            query_state: State from query
-            target_city: City from target company
-            target_state: State from target company
-            
-        Returns:
-            Float between 0.0 and 1.0
-        """
-        state_score = 0.0
-        city_score = 0.0
-        
-        # Normalize inputs
-        q_state = self._normalize_state(query_state)
-        t_state = self._normalize_state(target_state)
-        
-        # State matching (40% weight)
-        if q_state and t_state:
-            if q_state == t_state:
-                state_score = 1.0
-            else:
-                # Check if states are similar (handles typos)
-                import difflib
-                state_ratio = difflib.SequenceMatcher(None, q_state, t_state).ratio()
-                if state_ratio > 0.8:
-                    state_score = state_ratio
-        
-        # City matching (60% weight) - use enhanced similarity
-        city_score = self._calculate_city_similarity(query_city, target_city)
-        
-        # Weighted combination
-        final_score = (city_score * 0.6) + (state_score * 0.4)
-        
-        return final_score
+    # Location methods moved to TextPreprocessor
 
     def match_with_location(self, query, city=None, state=None, top_k=10):
         """
@@ -1469,7 +908,7 @@ class CompanyMatcher:
         candidate_k = min(50, len(self.original_company_names))
         
         query_vec = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
-        semantic_scores, semantic_indices = self.index.search(query_vec, candidate_k)
+        semantic_scores, semantic_indices = self.vector_store.search(query_vec, candidate_k)
         
         candidates = []
         max_sem_score = float(semantic_scores[0][0]) if len(semantic_scores[0]) > 0 else 1.0
@@ -1489,7 +928,7 @@ class CompanyMatcher:
             sem_score_norm = original_semantic_score / max_sem_score if max_sem_score > 0 else 0
             
             # Calculate string similarity
-            string_score = self._calculate_string_similarity(query, company_name)
+            string_score = TextPreprocessor.calculate_string_similarity(query, company_name)
             
             # Exact match bonus
             if query_lower == company_name.lower():
@@ -1514,9 +953,13 @@ class CompanyMatcher:
                 
                 # Always calculate location score when location is provided
                 if use_location:
-                    location_score = self._calculate_location_score(
+                    location_score = TextPreprocessor.calculate_location_score(
                         city, state, target_city, target_state
                     )
+            
+            # DEBUG
+            # if j < 3:
+            #      print(f"DEBUG: {company_name} | Raw={original_semantic_score} | Max={max_sem_score} | Norm={sem_score_norm}")
             
             # --- FINAL SCORE CALCULATION ---
             # Check if this specific candidate is an exact name match
@@ -1544,6 +987,7 @@ class CompanyMatcher:
                 "score": final_score,
                 "name_score": name_score,
                 "semantic_score": original_semantic_score,
+                "normalized_semantic_score": sem_score_norm,
                 "string_score": string_score,
                 "location_score": location_score,
                 "city": target_city,
@@ -1577,7 +1021,7 @@ class CompanyMatcher:
                 # Calculate location score for this exact match
                 exact_loc_score = 0.0
                 if use_location:
-                    exact_loc_score = self._calculate_location_score(city, state, exact_city, exact_state)
+                    exact_loc_score = TextPreprocessor.calculate_location_score(city, state, exact_city, exact_state)
                 
                 # Exact match score = 1.0 + location boost (5% for tie-breaking)
                 exact_final_score = 1.0 + (exact_loc_score * 0.05) if use_location else 1.0
@@ -1596,6 +1040,7 @@ class CompanyMatcher:
                         "score": exact_final_score,
                         "name_score": 1.0,
                         "semantic_score": 1.0,
+                        "normalized_semantic_score": 1.0,
                         "string_score": 1.0,
                         "location_score": exact_loc_score,
                         "city": exact_city,

@@ -7,7 +7,15 @@ and the system uses BOTH company name similarity AND location
 to find the best match.
 """
 
-from CompanyMatcher import CompanyMatcher
+
+import os
+import sys
+
+# Add src to python path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'src')))
+
+from finetuner.core.matcher import CompanyMatcher
+
 
 # Scenario: Multiple similar companies across different locations
 # The query will NOT exact match - system must use name + location to disambiguate

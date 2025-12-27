@@ -4,11 +4,11 @@ import os
 from typing import List, Dict, Any
 
 # Import CreateDataSet from separate file
-from CreateDataSet import CreateDataSet
+from finetuner.data.dataset import CreateDataSet
 
 # Try to import CompanyMatcher
 try:
-    from CompanyMatcher import CompanyMatcher
+    from finetuner.core.matcher import CompanyMatcher
     COMPANY_MATCHER_AVAILABLE = True
 except ImportError:
     CompanyMatcher = None
