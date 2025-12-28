@@ -47,7 +47,7 @@ def check_company_matcher():
     global COMPANY_MATCHER_AVAILABLE
     
     try:
-        from CompanyMatcher import CompanyMatcher
+        from finetuner.core.matcher import CompanyMatcher
         COMPANY_MATCHER_AVAILABLE = True
         return True
     except ImportError:
@@ -64,7 +64,10 @@ class FineTuner:
                  instruction_prompt="What is the company name?",
                  system_prompt="You are a helpful assistant that identifies company names."):
         if not ML_DEPENDENCIES_AVAILABLE:
-            raise ImportError("ML dependencies not available. Please install torch, transformers, and datasets.")
+            # Attempt a late check in case they were installed since init
+            check_ml_dependencies()
+            if not ML_DEPENDENCIES_AVAILABLE:
+                print("WARNING: ML dependencies not available. Some features will be disabled.")
         
         import torch
         if dtype is None:
@@ -88,6 +91,10 @@ class FineTuner:
             self.using_unsloth = False
 
     def load_model(self):
+        if not ML_DEPENDENCIES_AVAILABLE:
+            print("ERROR: ML dependencies (torch, transformers) not available.")
+            return
+
         if self.using_unsloth:
             import torch
             from transformers import AutoTokenizer
@@ -241,8 +248,11 @@ class FineTuner:
             # Save the model
             trainer.save_model()
             self.tokenizer.save_pretrained(output_dir)
+            self.tokenizer.save_pretrained(output_dir)
 
     def predict(self, prompt, max_new_tokens=10):
+        if not self.tokenizer:
+            return ""
         import torch
         from transformers import AutoTokenizer
         
@@ -268,13 +278,13 @@ class FineTuner:
             return []
         
         try:
-            from CompanyMatcher import CompanyMatcher
+            from finetuner.core.matcher import CompanyMatcher
             
             # Initialize CompanyMatcher
             matcher = CompanyMatcher(model_name=matcher_model)
             
             # Perform matching
-            matches = matcher.find_matches(query, company_names, top_k=top_k)
+            matches = matcher.match(query, top_k=top_k)
             
             return matches
             

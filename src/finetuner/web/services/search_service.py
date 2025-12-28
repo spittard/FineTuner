@@ -39,20 +39,23 @@ class SearchService:
         self._loading = False
         self._initialized = True
         
-    def load_company_data(self, force_reload=False):
+    def load_company_data(self, force_reload=False, model_name='paraphrase-MiniLM-L3-v2'):
         """Load company data and initialize the matcher"""
         
         # Early return if data is already loaded and we don't need to force reload
         if not force_reload and self.company_data_loaded and self.matcher is not None:
-            return True
+            # If current model matches requested model, we're good
+            if self.matcher.model_name == model_name:
+                return True
         
         current_time = time.time()
         
         # Prevent multiple rapid calls to this function
         if not force_reload and self.company_data_loaded and self.matcher is not None:
-            # Check if companies.json has been modified
-            if current_time - self.last_data_check < self.data_check_interval:
-                return True
+            if self.matcher.model_name == model_name:
+                # Check if companies.json has been modified
+                if current_time - self.last_data_check < self.data_check_interval:
+                    return True
             
             try:
                 # Check if file modification time has changed
@@ -79,9 +82,9 @@ class SearchService:
                 return False
             
             # Step 1: Initialize CompanyMatcher first
-            if self.matcher is None:
-                print("Initializing CompanyMatcher...")
-                self.matcher = CompanyMatcher(model_name='paraphrase-MiniLM-L3-v2')
+            if self.matcher is None or self.matcher.model_name != model_name:
+                print(f"Initializing CompanyMatcher with model: {model_name}...")
+                self.matcher = CompanyMatcher(model_name=model_name)
             
             # Step 2: FAST CACHE CHECK - Try to load from cache using file metadata
             # This avoids loading the 176MB+ JSON file if we already have it indexed

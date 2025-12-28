@@ -119,13 +119,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: PDMA Association**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Association Headquarters-PDMA**
-> None
+> High-confidence lexical match with 0.95 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: PA**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 ### Ranking Rationale
 ```
@@ -172,13 +172,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Nicolas/Sanchez Wedding**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Sanchez Wedding**
-> None
+> Strong semantic match (semantic score: 1.00) recognizing the conceptual identity despite significant naming variations.
 
 **Rank #3: Garcia Sanchez Wedding**
-> None
+> Strong semantic match (semantic score: 0.96) recognizing the conceptual identity despite significant naming variations.
 
 ### Ranking Rationale
 ```
@@ -225,13 +225,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Kehilat Ariel Synagogue**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Kehilat Ariel Messianic Synagogue**
-> None
+> High-confidence lexical match with 0.95 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: KAS**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 ### Ranking Rationale
 ```
@@ -278,13 +278,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Next Level Events**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Next Level Events Inc**
-> None
+> Direct prefix match where the query is fully contained at the start of the target name, often indicating the core name vs. a full legal name.
 
 **Rank #3: Next Level Plus Events**
-> None
+> High-confidence lexical match with 0.95 string similarity, indicating minimal character deviation from the query.
 
 ### Ranking Rationale
 ```
@@ -331,13 +331,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Site Foundation Golf Tournament**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Hearth Foundation Golf Tournament**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.79) and contextual relevance (0.83).
 
 **Rank #3: Hi Kid Foundation Golf Tournament**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.79) and contextual relevance (0.75).
 
 ### Ranking Rationale
 ```
@@ -384,13 +384,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Interim WG Meeting - BIER**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Bi Annual Meeting**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 **Rank #3: BI Meeting**
-> None
+> Strong semantic match (semantic score: 0.92) recognizing the conceptual identity despite significant naming variations.
 
 ### Ranking Rationale
 ```
@@ -437,13 +437,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: DermaQuest Inc**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Dermaquest, Incorporated**
-> None
+> High-confidence lexical match with 1.00 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: DI**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 ### Ranking Rationale
 ```
@@ -490,13 +490,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Ellwood Group Inc**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: EGI**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 **Rank #3: Ellwood Associates**
-> None
+> High-confidence lexical match with 0.90 string similarity, indicating minimal character deviation from the query.
 
 ### Ranking Rationale
 ```
@@ -543,13 +543,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: American Miniature Horse Registry**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: American Miniature Horse Association**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.84) and contextual relevance (0.81).
 
 **Rank #3: American Miniature Horse Association Headquarters**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.84) and contextual relevance (0.76).
 
 ### Ranking Rationale
 ```
@@ -596,13 +596,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: YADA ENTERPRISES, INC**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Yada Yada**
-> None
+> High-confidence lexical match with 0.90 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: Yama Enterprises**
-> None
+> Strong semantic match (semantic score: 0.97) recognizing the conceptual identity despite significant naming variations.
 
 ### Ranking Rationale
 ```
@@ -649,13 +649,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Seafood Nutrition Partnership**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Sustainable Seafood Partnership**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.81) and contextual relevance (0.82).
 
 **Rank #3: SEAFOOD NUTRITION**
-> None
+> Strong semantic match (semantic score: 0.96) recognizing the conceptual identity despite significant naming variations.
 
 ### Ranking Rationale
 ```
@@ -702,13 +702,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: AVIAKOMPANIYA SIBIR, PAO**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: ASP**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 **Rank #3: AVIAKOMPANIYA MIZHNARODNI AVIA**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 ### Ranking Rationale
 ```
@@ -755,13 +755,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Hartford Hospital School of Nursing**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Hartford Hospital Offices USA**
-> None
+> High-confidence lexical match with 0.85 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: Hartford School District**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.76).
 
 ### Ranking Rationale
 ```
@@ -808,13 +808,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Internal J&J Meeting and Breakfast**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: AEP Breakfast Meeting**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 **Rank #3: Breakfast Meeting NYC**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 ### Ranking Rationale
 ```
@@ -861,13 +861,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Spina Bifida Coalition of Cincinnati**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: SBCC**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 **Rank #3: Spina Bifida Association of Cincinnati, Inc.**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.84) and contextual relevance (0.75).
 
 ### Ranking Rationale
 ```
@@ -914,13 +914,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: THE SOCA GROUP ORGANIZATION**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: SGO**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 **Rank #3: Team SOCA**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.89).
 
 ### Ranking Rationale
 ```
@@ -967,13 +967,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Shiroyama Junior High School**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: SJHS**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 **Rank #3: Heights Christian Junior High School**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.82) and contextual relevance (0.75).
 
 ### Ranking Rationale
 ```
@@ -1020,13 +1020,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: National Home Health**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: National Home Health Care**
-> None
+> Direct prefix match where the query is fully contained at the start of the target name, often indicating the core name vs. a full legal name.
 
 **Rank #3: National Home Healthcare**
-> None
+> Direct prefix match where the query is fully contained at the start of the target name, often indicating the core name vs. a full legal name.
 
 ### Ranking Rationale
 ```
@@ -1073,13 +1073,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: American News Women's Club**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: American Women's Club**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.87).
 
 **Rank #3: American Women Club**
-> None
+> Strong semantic match (semantic score: 1.00) recognizing the conceptual identity despite significant naming variations.
 
 ### Ranking Rationale
 ```
@@ -1126,13 +1126,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Denise Roberge**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Tamara Denise**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.70).
 
 **Rank #3: Denise Long**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.68).
 
 ### Ranking Rationale
 ```
@@ -1179,13 +1179,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Synergy Soccer Club**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Synergy Football Club**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.81) and contextual relevance (0.84).
 
 **Rank #3: Synergy Volleyball Club**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.81) and contextual relevance (0.80).
 
 ### Ranking Rationale
 ```
@@ -1232,13 +1232,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: NFC Forum**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: NFC Forum Members**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #3: NFC Forum         .**
-> None
+> Direct prefix match where the query is fully contained at the start of the target name, often indicating the core name vs. a full legal name.
 
 ### Ranking Rationale
 ```
@@ -1285,13 +1285,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: A Better Choice Limousine & Concierge**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: First Choice Limousine Services**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.82).
 
 **Rank #3: Capital Travel Limousine**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 ### Ranking Rationale
 ```
@@ -1338,13 +1338,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Danish Sisterhood of America**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: The Danish Sisterhood of America**
-> None
+> Target name contains the query as a substring, suggesting the query is a recognizable sub-component of the full entity name.
 
 **Rank #3: Danish Sisterhood and Brotherhood of America**
-> None
+> High-confidence lexical match with 0.95 string similarity, indicating minimal character deviation from the query.
 
 ### Ranking Rationale
 ```
@@ -1391,13 +1391,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Brooklyn Comics Club**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: BCC**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 **Rank #3: Brooklyn Baseball Club**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.81) and contextual relevance (0.78).
 
 ### Ranking Rationale
 ```
@@ -1444,13 +1444,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Global Interagency Security Forum**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: GISF**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 **Rank #3: Cyber Security Collaboration Forum**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.78) and contextual relevance (0.74).
 
 ### Ranking Rationale
 ```
@@ -1497,13 +1497,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Lancet Software**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Lancet Technology**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.82).
 
 **Rank #3: Lancet Technology, Incorporated**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.68).
 
 ### Ranking Rationale
 ```
@@ -1550,13 +1550,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Our Lady of the Lakes Catholic Church and School**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: OUR LADY OF THE LAKES CATHOLIC CHURCH**
-> None
+> High-confidence lexical match with 0.86 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: Our Lady of the Lakes Catholic School**
-> None
+> High-confidence lexical match with 0.86 string similarity, indicating minimal character deviation from the query.
 
 ### Ranking Rationale
 ```
@@ -1603,13 +1603,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Broadway Bound International**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: BBI**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 **Rank #3: Broadway Bound West**
-> None
+> High-confidence lexical match with 0.88 string similarity, indicating minimal character deviation from the query.
 
 ### Ranking Rationale
 ```
@@ -1656,13 +1656,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: E. H. Wachs**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: EHW**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 **Rank #3: E.H. Wachs**
-> None
+> Strong semantic match (semantic score: 1.00) recognizing the conceptual identity despite significant naming variations.
 
 ### Ranking Rationale
 ```
@@ -1709,13 +1709,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Marine Corps Fox 2/5**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: United State Marine Corps**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.78) and contextual relevance (0.75).
 
 **Rank #3: Marine Corps Personnel Support**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.78) and contextual relevance (0.75).
 
 ### Ranking Rationale
 ```
@@ -1762,13 +1762,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Fantasia Turistica**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: FT**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 **Rank #3: Fantasia Travels**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.85).
 
 ### Ranking Rationale
 ```
@@ -1815,13 +1815,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Esoterix**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Esoterix Headquarters**
-> None
+> Direct prefix match where the query is fully contained at the start of the target name, often indicating the core name vs. a full legal name.
 
 **Rank #3: Esoterix Integrated Genetics**
-> None
+> Direct prefix match where the query is fully contained at the start of the target name, often indicating the core name vs. a full legal name.
 
 ### Ranking Rationale
 ```
@@ -1868,13 +1868,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Coker Group**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: The Coker Group**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #3: Coker Grp**
-> None
+> High-confidence lexical match with 0.90 string similarity, indicating minimal character deviation from the query.
 
 ### Ranking Rationale
 ```
@@ -1921,13 +1921,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: GILEAD IT**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: GI**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 **Rank #3: Gilead Productions**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.84).
 
 ### Ranking Rationale
 ```
@@ -1974,13 +1974,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: 4143 Affiliate INDA 2016**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: 1528 Affiliate INDA 2016**
-> None
+> High-confidence lexical match with 0.90 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: 4143 Affiliate Aan 2017**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.78).
 
 ### Ranking Rationale
 ```
@@ -2027,13 +2027,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Pipe and Plant Solutions**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: PPS**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 **Rank #3: Pipe & Plant**
-> None
+> Strong semantic match (semantic score: 0.90) recognizing the conceptual identity despite significant naming variations.
 
 ### Ranking Rationale
 ```
@@ -2080,13 +2080,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Stephen Rourke**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Rourke Publishing**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.71).
 
 **Rank #3: Damon Rourke**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.69).
 
 ### Ranking Rationale
 ```
@@ -2133,13 +2133,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: MIT Initiative on the Digital Economy**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: MIT Energy Initiative**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 **Rank #3: MIT Information Services and Technology**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 ### Ranking Rationale
 ```
@@ -2186,13 +2186,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Urx Community USA**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: USA Community Service Commission**
-> None
+> Match based on combined scoring features, representing the most probable candidate relative to other results.
 
 **Rank #3: Florida Urological Society USA**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 ### Ranking Rationale
 ```
@@ -2239,13 +2239,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Spredfast Engage**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: SE**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 **Rank #3: Spredfast Events**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.85).
 
 ### Ranking Rationale
 ```
@@ -2292,13 +2292,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: City of Dallas-Parks & Recreation**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: City of Dallas Park & Recreation**
-> None
+> Strong semantic match (semantic score: 0.93) recognizing the conceptual identity despite significant naming variations.
 
 **Rank #3: Dallas Parks and Recreation Department**
-> None
+> Strong semantic match (semantic score: 0.92) recognizing the conceptual identity despite significant naming variations.
 
 ### Ranking Rationale
 ```
@@ -2345,13 +2345,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Kai Pono Builders, Inc.**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Kai Pono Builders**
-> None
+> High-confidence lexical match with 0.94 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: Pono Kai Resort**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.77) and contextual relevance (0.64).
 
 ### Ranking Rationale
 ```
@@ -2398,13 +2398,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: MUSICFIRST COALITION**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: MC**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 **Rank #3: music FIRST Coalition**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.80).
 
 ### Ranking Rationale
 ```
@@ -2451,13 +2451,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Frontier Power Products**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: FPP**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 **Rank #3: Frontier Business Products**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.81) and contextual relevance (0.74).
 
 ### Ranking Rationale
 ```
@@ -2504,13 +2504,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: 1960**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: District 1960**
-> None
+> Target name contains the query as a substring, suggesting the query is a recognizable sub-component of the full entity name.
 
 **Rank #3: 60**
-> None
+> High-confidence lexical match with 0.90 string similarity, indicating minimal character deviation from the query.
 
 ### Ranking Rationale
 ```
@@ -2557,13 +2557,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Pacific Northwest Diabetes Research Inst**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Pacific Northwest Diabetes Research**
-> None
+> Strong semantic match (semantic score: 1.00) recognizing the conceptual identity despite significant naming variations.
 
 **Rank #3: Diabetes Research**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 ### Ranking Rationale
 ```
@@ -2610,13 +2610,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Mentors & Mentees**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: RE Mentors**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.79).
 
 **Rank #3: TRUE Mentors**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.79).
 
 ### Ranking Rationale
 ```
@@ -2663,13 +2663,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: NaLA 2024 fall conference M01709226216947 02-29-24 12:03:46**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: NaLA 2023 fall conference M01674569043113 01-24-23 09:04:06**
-> None
+> Strong semantic match (semantic score: 0.93) recognizing the conceptual identity despite significant naming variations.
 
 **Rank #3: NaLA 2023 fall conference M01674661235470 01-25-23 10:40:54**
-> None
+> Strong semantic match (semantic score: 0.95) recognizing the conceptual identity despite significant naming variations.
 
 ### Ranking Rationale
 ```
@@ -2716,13 +2716,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Donnelley Work Session**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: DWS**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 **Rank #3: SMDS Work Session**
-> None
+> Match based on combined scoring features, representing the most probable candidate relative to other results.
 
 ### Ranking Rationale
 ```
@@ -2769,13 +2769,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: North Shore Senior Center**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: NSSC**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 **Rank #3: North Shore Cancer Center**
-> None
+> High-confidence lexical match with 0.90 string similarity, indicating minimal character deviation from the query.
 
 ### Ranking Rationale
 ```
@@ -2822,13 +2822,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Singles Who Like Food & Fun**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Fun Asian Singles**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 **Rank #3: Christian Singles Fun Events**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 ### Ranking Rationale
 ```
@@ -2875,13 +2875,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Zen Meetings & Events**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Zen Events México**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.77) and contextual relevance (0.78).
 
 **Rank #3: Zen Events Group**
-> None
+> Strong semantic match (semantic score: 0.93) recognizing the conceptual identity despite significant naming variations.
 
 ### Ranking Rationale
 ```
@@ -2928,13 +2928,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Chicago South Swim Club**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: CSSC**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 **Rank #3: South Carolina Swim Club**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.82) and contextual relevance (0.82).
 
 ### Ranking Rationale
 ```
@@ -2981,13 +2981,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Edna, Dabra@SAP.IO**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: ED**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 **Rank #3: Edna Owusu**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.79).
 
 ### Ranking Rationale
 ```
@@ -3034,13 +3034,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Boys and Girls Club of Dawson Community Centre**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: GIRLS CLUB**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 **Rank #3: Dawson Community College**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 ### Ranking Rationale
 ```
@@ -3087,13 +3087,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Beissbarth**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Beissbarth GmbH**
-> None
+> Direct prefix match where the query is fully contained at the start of the target name, often indicating the core name vs. a full legal name.
 
 **Rank #3: Breitbart**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 ### Ranking Rationale
 ```
@@ -3140,13 +3140,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: US Night Vision**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: PM Night Vision**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.81) and contextual relevance (0.83).
 
 **Rank #3: US Vision Care**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.81) and contextual relevance (0.76).
 
 ### Ranking Rationale
 ```
@@ -3193,13 +3193,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Amedysis, Incorporated**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Amedysis, Inc.**
-> None
+> High-confidence lexical match with 1.00 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: Amedysis Home Health**
-> None
+> High-confidence lexical match with 0.90 string similarity, indicating minimal character deviation from the query.
 
 ### Ranking Rationale
 ```
@@ -3246,13 +3246,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Taiyo Air Service Co.,Ltd**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: TASC**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 **Rank #3: Taiyo Air Services Co.**
-> None
+> Strong semantic match (semantic score: 1.00) recognizing the conceptual identity despite significant naming variations.
 
 ### Ranking Rationale
 ```
@@ -3299,13 +3299,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: National Conference on Race & Ethnicity in American Higher E**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: NATIONAL CONFERENCE ON RACE AND ETHNICITY IN AMERICAN HIGHER**
-> None
+> High-confidence lexical match with 0.88 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: NCORE NATIONAL CONFERENCE ON RACE AND ETHNICITY IN AMERICAN HIGHER EDUCATION**
-> None
+> High-confidence lexical match with 0.90 string similarity, indicating minimal character deviation from the query.
 
 ### Ranking Rationale
 ```
@@ -3352,13 +3352,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Reminger Law Firm**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Reminger & Reminger Law Firm**
-> None
+> Target name contains the query as a substring, suggesting the query is a recognizable sub-component of the full entity name.
 
 **Rank #3: RLF**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 ### Ranking Rationale
 ```
@@ -3405,13 +3405,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: SEMMOA BOD**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: SEMMOA AACM**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.73).
 
 **Rank #3: Bod Pro**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.71).
 
 ### Ranking Rationale
 ```
@@ -3458,13 +3458,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Telefonica Global Solutions**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Telefonica Multinational Solutions**
-> None
+> High-confidence lexical match with 0.88 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: Telefonica Global Solutions USA Inc.**
-> None
+> Direct prefix match where the query is fully contained at the start of the target name, often indicating the core name vs. a full legal name.
 
 ### Ranking Rationale
 ```
@@ -3511,13 +3511,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Travel Leaders - Dube Travel**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Dube Travel Leaders**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #3: Dube Travel / Travel Leaders**
-> None
+> High-confidence lexical match with 0.95 string similarity, indicating minimal character deviation from the query.
 
 ### Ranking Rationale
 ```
@@ -3564,13 +3564,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Hi- Tours**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Hi Tours**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #3: Hi-Tours**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 ### Ranking Rationale
 ```
@@ -3617,13 +3617,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Volkswagen Group China**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Volkswagen China**
-> None
+> High-confidence lexical match with 1.00 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: VOLKSWAGEN CHINA INVESTMENT COMPANY LTD**
-> None
+> High-confidence lexical match with 0.90 string similarity, indicating minimal character deviation from the query.
 
 ### Ranking Rationale
 ```
@@ -3670,13 +3670,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Sun Tx**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: SUN TRAN**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.69).
 
 **Rank #3: Sun Trans**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.66).
 
 ### Ranking Rationale
 ```
@@ -3723,13 +3723,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Southern Vermont Deerfield Valley Chamber of commerce**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Deerfield Beach Chamber of Commerce**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.61) and contextual relevance (0.79).
 
 **Rank #3: Chamber of Commerce Mid-Ohio Valley**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.63) and contextual relevance (0.71).
 
 ### Ranking Rationale
 ```
@@ -3776,13 +3776,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: DGR Ministries**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: DM**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 **Rank #3: DG Ministries**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.81).
 
 ### Ranking Rationale
 ```
@@ -3829,13 +3829,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Impacto 6**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Impacto 52**
-> None
+> High-confidence lexical match with 0.85 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: Impacto Strategies**
-> None
+> High-confidence lexical match with 0.85 string similarity, indicating minimal character deviation from the query.
 
 ### Ranking Rationale
 ```
@@ -3882,13 +3882,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Neos Therapeutics, Inc.**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Neos Therapeutics**
-> None
+> High-confidence lexical match with 0.92 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: NTI**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 ### Ranking Rationale
 ```
@@ -3935,13 +3935,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: International Tax Institute**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: INTERNATIONAL TAX INSTITUTE INC**
-> None
+> Direct prefix match where the query is fully contained at the start of the target name, often indicating the core name vs. a full legal name.
 
 **Rank #3: International Property Tax Institute**
-> None
+> High-confidence lexical match with 0.95 string similarity, indicating minimal character deviation from the query.
 
 ### Ranking Rationale
 ```
@@ -3988,13 +3988,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Mitsubishi M501G**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: NEC Mitsubishi**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.87).
 
 **Rank #3: Mitsubishi Power**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.86).
 
 ### Ranking Rationale
 ```
@@ -4041,13 +4041,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Huskies Sports**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Huskies Basketball**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.83).
 
 **Rank #3: Miami Huskies**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.79).
 
 ### Ranking Rationale
 ```
@@ -4094,13 +4094,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Acacia Pharma Group Inc.**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: ACACIA PHARMA, Inc.**
-> None
+> High-confidence lexical match with 1.00 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: Acacia Pharma**
-> None
+> High-confidence lexical match with 0.92 string similarity, indicating minimal character deviation from the query.
 
 ### Ranking Rationale
 ```
@@ -4147,13 +4147,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Acumatica Summit 2017 Z7NWPDKS625**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Acumatica User Group Southeast**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 **Rank #3: Contact Center Compliance Summit**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 ### Ranking Rationale
 ```
@@ -4200,13 +4200,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Linklaters CIS**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: LC**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 **Rank #3: CIS Partners**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.81).
 
 ### Ranking Rationale
 ```
@@ -4253,13 +4253,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Christian Girls Family Ministry**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Christian Girls Family Ministry Training**
-> None
+> Direct prefix match where the query is fully contained at the start of the target name, often indicating the core name vs. a full legal name.
 
 **Rank #3: Christian Faith Fellowship Couples Ministry**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.75).
 
 ### Ranking Rationale
 ```
@@ -4306,13 +4306,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Alosa Foundation**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: AF**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 **Rank #3: Formosa Foundation**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.64) and contextual relevance (0.86).
 
 ### Ranking Rationale
 ```
@@ -4359,13 +4359,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: La Chaine des Rotisseurs Wine Club of Newport Beach**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: La Chaine des Rotisseurs Wine Club of Ne**
-> None
+> Strong semantic match (semantic score: 0.93) recognizing the conceptual identity despite significant naming variations.
 
 **Rank #3: Newport Beach Wine Festival**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 ### Ranking Rationale
 ```
@@ -4412,13 +4412,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Sumner & Ryan, LLC**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Miller Ryan LLC**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.84).
 
 **Rank #3: Ryan Moving LLC**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.83).
 
 ### Ranking Rationale
 ```
@@ -4465,13 +4465,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Tilt Creative & Production**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Tilt Creative + Production**
-> None
+> High-confidence lexical match with 0.96 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: Creative Production Design**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.81) and contextual relevance (0.77).
 
 ### Ranking Rationale
 ```
@@ -4518,13 +4518,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Cerberus Capital**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Cerberus Capital Management**
-> None
+> Direct prefix match where the query is fully contained at the start of the target name, often indicating the core name vs. a full legal name.
 
 **Rank #3: Cerberus Capital Management L**
-> None
+> Direct prefix match where the query is fully contained at the start of the target name, often indicating the core name vs. a full legal name.
 
 ### Ranking Rationale
 ```
@@ -4571,13 +4571,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Institute of Health Technology Transformation**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Institute for Health Technology Transformation**
-> None
+> High-confidence lexical match with 0.95 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: INSTITUTE FOR HEALTH & TECHNOLOGY TRANSFORMATION**
-> None
+> High-confidence lexical match with 0.95 string similarity, indicating minimal character deviation from the query.
 
 ### Ranking Rationale
 ```
@@ -4624,13 +4624,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: The Jones Assembly**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: JA**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 **Rank #3: The Jones Assembly Presents**
-> None
+> Direct prefix match where the query is fully contained at the start of the target name, often indicating the core name vs. a full legal name.
 
 ### Ranking Rationale
 ```
@@ -4677,13 +4677,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: American Black Film Insitutute**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: American Black Film Festival**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.84) and contextual relevance (0.75).
 
 **Rank #3: American Black Film Festival Ventures**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.84) and contextual relevance (0.70).
 
 ### Ranking Rationale
 ```
@@ -4730,13 +4730,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Berk Tek**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Berk-Tek**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #3: Berk Tek / Leviton**
-> None
+> Direct prefix match where the query is fully contained at the start of the target name, often indicating the core name vs. a full legal name.
 
 ### Ranking Rationale
 ```
@@ -4783,13 +4783,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Northbridge Travel**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: NT**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 **Rank #3: Northbridge Communities**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.84).
 
 ### Ranking Rationale
 ```
@@ -4836,13 +4836,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Kohler 2024**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: K2**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 **Rank #3: Destination Kohler**
-> None
+> High-confidence lexical match with 0.85 string similarity, indicating minimal character deviation from the query.
 
 ### Ranking Rationale
 ```
@@ -4889,13 +4889,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Louisiana State University Swim**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Louisiana State Univ Swim**
-> None
+> High-confidence lexical match with 0.90 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: LSUS**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 ### Ranking Rationale
 ```
@@ -4942,13 +4942,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: X DO NOT USE - FRANCIS PARKER SCHOOL**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Francis Parker School**
-> None
+> Strong semantic match (semantic score: 1.00) recognizing the conceptual identity despite significant naming variations.
 
 **Rank #3: Francis Parker School English Department**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 ### Ranking Rationale
 ```
@@ -4995,13 +4995,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Mitsubishi Motor Sales of America, Incorporated**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Mitsubishi Motor Sales of America**
-> None
+> High-confidence lexical match with 1.00 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: Mitsubishi Electronic Sales America**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.84) and contextual relevance (0.88).
 
 ### Ranking Rationale
 ```
@@ -5048,13 +5048,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Energy Distribution Partners Holdings'**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Energy Distribution Partners**
-> None
+> Strong semantic match (semantic score: 1.00) recognizing the conceptual identity despite significant naming variations.
 
 **Rank #3: Energy Distribution Partners Holdings L.P.**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.82) and contextual relevance (0.75).
 
 ### Ranking Rationale
 ```
@@ -5101,13 +5101,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: ThinkAdvisor**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Planadvisor**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 **Rank #3: TRIPADVISOR**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 ### Ranking Rationale
 ```
@@ -5154,13 +5154,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Jump on it Outreach**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Air Force Outreach Program**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 **Rank #3: Above N Beyond Outreach**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 ### Ranking Rationale
 ```
@@ -5207,13 +5207,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: The Association of Ringside Consultants (ARC)**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Association of Ringside Physicians**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.65) and contextual relevance (0.78).
 
 **Rank #3: Ringside**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 ### Ranking Rationale
 ```
@@ -5260,13 +5260,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: SFA HASA**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: SH**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 **Rank #3: SFA Companies**
-> None
+> Balanced hybrid match utilizing both structural similarity (0.74) and contextual relevance (0.85).
 
 ### Ranking Rationale
 ```
@@ -5313,13 +5313,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: Grupo Duracell Ene 2025**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Grupo GT5 Brasil**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 **Rank #3: Duracell Research Development**
-> None
+> Primarily semantic match relying on business context and conceptual links where lexical overlap is limited.
 
 ### Ranking Rationale
 ```
@@ -5366,13 +5366,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: World Association of Medical Law**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: World Association for Medical Law**
-> None
+> High-confidence lexical match with 0.95 string similarity, indicating minimal character deviation from the query.
 
 **Rank #3: World Medical Association**
-> None
+> Strong semantic match (semantic score: 0.99) recognizing the conceptual identity despite significant naming variations.
 
 ### Ranking Rationale
 ```
@@ -5419,13 +5419,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: ABA**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: AMER BRIDGE ASSN**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 **Rank #3: Am Bridge Assn**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 ### Ranking Rationale
 ```
@@ -5472,13 +5472,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: PDMA**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: Prescription Drug Marketing Act**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 **Rank #3: Public Debt Management Agency**
-> None
+> Valid acronym relationship with 0.70 fidelity, linking the short-form and long-form company representations.
 
 ### Ranking Rationale
 ```
@@ -5525,13 +5525,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: IBM**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: IBM**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #3: International Business Machines**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 ### Ranking Rationale
 ```
@@ -5578,13 +5578,13 @@ Target: "International Business Machines"
 ### Match Narratives
 
 **Rank #1: GE**
-> None
+> Perfect character-for-character match providing absolute identity confidence.
 
 **Rank #2: GMG Education**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 **Rank #3: Gaia Experience**
-> None
+> Excellent acronym expansion/reverse match with 1.00 fidelity, showing a precise mapping of initials to words.
 
 ### Ranking Rationale
 ```

@@ -17,24 +17,27 @@ except ImportError:
         return iterable
 
 class CompanyMatcher:
+    """
+    Core engine for high-precision company name matching.
+    
+    ARCHITECTURE ROLES:
+    - CompanyMatcher (this class): The reusable core logic for indexing and matching.
+    - company_search.py: CLI utility that uses this engine for interactive/batch searches.
+    - SearchService: Web service wrapper that provides an API for the web application.
+    
+    This separation ensures consistent matching across all interfaces while 
+    avoiding logic redundancy.
+    """
     # Cache version - increment this when logic changes to invalidate old caches
     CACHE_VERSION = "v3.0_precomputed_similarities"
     
     def __init__(self, model_name='all-MiniLM-L6-v2'):
-        # Load the ULTRA-fastest available model for speed
-        if model_name == 'all-MiniLM-L6-v2':
-            # Use the absolute fastest model available - 10x+ speed boost
-            ultra_fast_model = 'paraphrase-MiniLM-L3-v2'  # Ultra-light, ultra-fast
-            print(f"Using ULTRA-fast model: {ultra_fast_model} (10x+ speed boost)")
-        else:
-            ultra_fast_model = model_name
-            
-        self.model = SentenceTransformer(ultra_fast_model)
+        self.model = SentenceTransformer(model_name)
         self.vector_store = VectorStore()
         
         self.original_company_names = []  # Store original names
         self.company_names = []  # Store preprocessed names for matching
-        self.model_name = ultra_fast_model  # Store the actual model name used
+        self.model_name = model_name  # Store the actual model name used
         
         # Location data storage (for location-aware matching)
         self.company_locations = []  # List of {"city": str, "state": str} per company
@@ -854,7 +857,8 @@ class CompanyMatcher:
                 final_score = (string_score * 0.7) + (sem_score_norm * 0.3)
                 
                 # BOOST for acronym fidelity (literal expansions get significant boost)
-                if acronym_fidelity > 0.7:  # High fidelity = literal expansion
+                # FIX: Never boost 2-letter acronyms (too much noise from states/suffixes)
+                if acronym_fidelity > 0.8 and len(query_acronym) > 2:  # Increased threshold and length check
                     # Add up to +0.15 boost for perfect acronym expansions
                     final_score = min(1.0, final_score + (acronym_fidelity * 0.15))
                 
@@ -1149,7 +1153,11 @@ class CompanyMatcher:
         if len(query) < 12 and hasattr(self, 'acronym_index'):
              # Try exact case first, then upper
              potential_acronym = query.strip()
-             acronym_matches = self.acronym_index.get(potential_acronym)
+             acronym_matches = None
+             
+             # IGNORE 2-letter acronyms in Phase 0 (too much noise from states/suffixes)
+             if len(potential_acronym) > 2:
+                 acronym_matches = self.acronym_index.get(potential_acronym)
              if not acronym_matches:
                  acronym_matches = self.acronym_index.get(potential_acronym.upper())
                  
@@ -1165,9 +1173,7 @@ class CompanyMatcher:
                          target_vec_ac = self.vector_store.embeddings[idx].reshape(1, -1)
                          target_vec_ac = target_vec_ac / (np.linalg.norm(target_vec_ac) + 1e-10)
                          sem_score_ac = float(np.dot(query_vec_ac, target_vec_ac.T)[0][0])
-                         # UPDATED FORMULA: Base (0.85) + (Fidelity * 0.12) + (Semantic * 0.03)
-                         # Range: 0.85 to 1.0 (Perfect expansions prioritized over semantic similarity)
-                         final_score_ac = min(0.99, 0.85 + (fidelity * 0.12) + (sem_score_ac * 0.03) if sem_score_ac > 0 else 0.85 + (fidelity * 0.12))
+                         final_score_ac = min(0.99, 0.70 + (fidelity * 0.20) + (sem_score_ac * 0.10) if sem_score_ac > 0 else 0.70 + (fidelity * 0.20))
                          
                          candidates.append({
                              "name": company_name,
@@ -1185,7 +1191,8 @@ class CompanyMatcher:
 
         # 2. Query is Full Name (e.g. "American Bar Association") -> Look for Acronym (e.g. "ABA")
         generated_acronym = TextPreprocessor.generate_acronym(query)
-        if generated_acronym and hasattr(self, 'acronym_index'):
+        # IGNORE 2-letter acronyms in Phase 0 (too much noise from states/suffixes)
+        if generated_acronym and len(generated_acronym) > 2 and hasattr(self, 'acronym_index'):
             # Check if this acronym exists as a company name
             if hasattr(self, '_company_names_lower_to_index'):
                 idx = self._company_names_lower_to_index.get(generated_acronym.lower())
@@ -1196,12 +1203,12 @@ class CompanyMatcher:
                         # Note: For reverse, query is text and company_name is the acronym
                         fidelity = TextPreprocessor.calculate_acronym_fidelity(company_name, query)
                         
-                        # REDUCED BASE for reverse acronyms (very lossy/risky)
-                        # Base (0.65) + (Fidelity * 0.15) + (Semantic * 0.10)
-                        final_score_ac = 0.65 + (fidelity * 0.15) + (1.0 * 0.10)
+                        # FURTHER REDUCED BASE for reverse acronyms (very lossy/risky)
+                        # Base (0.45) + (Fidelity * 0.20) + (Semantic * 0.10)
+                        final_score_ac = 0.45 + (fidelity * 0.20) + (1.0 * 0.10)
                         
-                        # Cap at 0.90 to ensure strong string matches win over reverse acronyms
-                        final_score_ac = min(0.90, final_score_ac)
+                        # Cap at 0.80 to ensure strong string matches win over reverse acronyms
+                        final_score_ac = min(0.80, final_score_ac)
                         
                         # Verify it's actually the acronym we want (case sensitive-ish)
                         if company_name.strip() == generated_acronym:
@@ -1272,14 +1279,15 @@ class CompanyMatcher:
             name_score = (string_score * 0.7) + (sem_score_norm * 0.3)
             
             # BOOST for acronym fidelity (literal expansions get significant boost)
-            if acronym_fidelity > 0.7:  # High fidelity = literal expansion
+            # FIX: Never boost 2-letter acronyms (too much noise from states/suffixes)
+            if acronym_fidelity > 0.8 and len(query_acronym) > 2:  # Increased threshold and length check
                 # Add up to +0.15 boost for perfect acronym expansions
                 name_score = min(1.0, name_score + (acronym_fidelity * 0.15))
             
             # BOOST for high token coverage (all query words found in target)
-            if string_score >= 0.95:
+            if string_score >= 0.80: # Relaxed threshold to capture penalized lexical matches
                 # Ensure literal overlap is prioritized over generic acronyms
-                name_score = max(name_score, 0.93)
+                name_score = max(name_score, 0.90)
             
             # --- LOCATION SCORING ---
             location_score = 0.0

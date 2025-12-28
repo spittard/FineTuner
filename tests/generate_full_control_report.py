@@ -145,31 +145,41 @@ def generate_report_header():
 
 
 def format_company_result(query, result_data, rank):
-    """Format a single company result"""
+    """Format a single company result with self-exclusion for bias analysis"""
     
     md = []
     
-    # Get top match
-    if not result_data.get('matches'):
+    # Get matches
+    original_matches = result_data.get('matches', [])
+    if not original_matches:
         md.append(f"### {rank}. {query}\n\n")
         md.append("❌ **No matches found**\n\n")
         md.append("---\n\n")
         return ''.join(md)
     
-    top_match = result_data['matches'][0]
-    company_name = top_match.get('company_name', 'Unknown')
-    score = top_match.get('likeness_percent', 0.0)
+    # FILTER: Programmatically discard exact self-matches to focus on model confusion
+    # This is critical for identifying abbreviation bias in Rank 2+ results
+    filtered_matches = [m for m in original_matches if m['company_name'].lower().strip() != query.lower().strip()]
+    
+    # Determine exact match status
+    has_exact = any(m['company_name'].lower().strip() == query.lower().strip() for m in original_matches)
     
     md.append(f"### {rank}. {query}\n\n")
     
-    # Check if exact match
-    if query.lower().strip() == company_name.lower().strip():
-        md.append(f"✅ **Exact Match:** `{company_name}` ({score:.1f}%)\n\n")
+    if has_exact:
+        md.append(f"✅ **Exact Match (Self) Found & Filtered**\n\n")
+    
+    if not filtered_matches:
+        md.append("> No non-identical matches found for this query.\n\n")
         md.append("---\n\n")
         return ''.join(md)
+        
+    top_match = filtered_matches[0]
+    company_name = top_match.get('company_name', 'Unknown')
+    score = top_match.get('likeness_percent', 0.0)
     
-    # Not exact - provide detailed analysis
-    md.append(f"**Top Match:** `{company_name}` ({score:.1f}%)\n\n")
+    # Highlight that this is the first non-identical result
+    md.append(f"**Top Non-Self Match (Rank 2):** `{company_name}` ({score:.1f}%)\n\n")
     
     # Extract score components
     string_score = top_match.get('string_score', 0.0)
@@ -178,7 +188,7 @@ def format_company_result(query, result_data, rank):
     match_type = top_match.get('match_type', 'hybrid')
     
     # Score breakdown table
-    md.append("**Score Breakdown:**\n\n")
+    md.append("**Score Breakdown for Best Non-Self Match:**\n\n")
     md.append("| Component | Value | Weight | Contribution |\n")
     md.append("|-----------|-------|--------|-------------|\n")
     md.append(f"| String Similarity | {string_score:.4f} | 70% | {string_score * 0.70:.4f} |\n")
@@ -191,33 +201,16 @@ def format_company_result(query, result_data, rank):
         acro_boost = acronym_fidelity * 0.15
         md.append(f"| Acronym Fidelity Boost | {acronym_fidelity:.4f} | 15% max | +{acro_boost:.4f} |\n")
         md.append(f"| **Final Score** | **{score/100:.4f}** | - | **{score:.2f}%** |\n\n")
-        
-        # Explain acronym match
-        md.append(f"**Acronym Analysis:**\n")
-        md.append(f"- Match Type: {match_type}\n")
-        md.append(f"- Fidelity: {acronym_fidelity:.4f} ")
-        
-        if acronym_fidelity >= 0.95:
-            md.append("(Excellent - Perfect or near-perfect letter matching)\n")
-        elif acronym_fidelity >= 0.85:
-            md.append("(Very Good - Strong letter pattern match)\n")
-        elif acronym_fidelity >= 0.70:
-            md.append("(Good - Solid letter pattern match)\n")
-        else:
-            md.append("(Moderate - Partial letter pattern match)\n")
-        
-        md.append(f"- Boost Applied: +{acro_boost * 100:.2f}%\n\n")
     else:
         md.append(f"| **Final Score** | **{score/100:.4f}** | - | **{score:.2f}%** |\n\n")
     
-    # Show top 5 matches
-    if len(result_data['matches']) > 1:
-        md.append("**Top 5 Matches:**\n\n")
-        for i, match in enumerate(result_data['matches'][:5], 1):
-            match_name = match.get('company_name', 'Unknown')
-            match_score = match.get('likeness_percent', 0.0)
-            md.append(f"{i}. {match_name} ({match_score:.1f}%)\n")
-        md.append("\n")
+    # Show top 5 non-identical matches
+    md.append("**Top 5 Non-Self Matches:**\n\n")
+    for i, match in enumerate(filtered_matches[:5], 2):
+        match_name = match.get('company_name', 'Unknown')
+        match_score = match.get('likeness_percent', 0.0)
+        md.append(f"{i}. {match_name} ({match_score:.1f}%)\n")
+    md.append("\n")
     
     md.append("---\n\n")
     
@@ -232,7 +225,7 @@ def main():
     # Initialize service
     print("\n📦 Initializing SearchService...")
     service = SearchService()
-    if not service.load_company_data():
+    if not service.load_company_data(model_name='paraphrase-MiniLM-L3-v2'):
         print("❌ Failed to load company data")
         return
     

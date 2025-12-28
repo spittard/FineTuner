@@ -14,6 +14,7 @@ class TextPreprocessor:
         # Organization suffixes (weight 0.2) - common corporate terms
         'group': 0.2, 'association': 0.2, 'coalition': 0.2, 'foundation': 0.2, 
         'services': 0.2, 'service': 0.2, 'solutions': 0.2, 'partners': 0.2,
+        'pa': 0.2, 'pc': 0.2,
         # Location modifiers (weight 0.5) - somewhat distinctive but common
         'north': 0.5, 'south': 0.5, 'east': 0.5, 'west': 0.5, 
         'shore': 0.5, 'bay': 0.5, 'coast': 0.5, 'lake': 0.5,
@@ -37,6 +38,7 @@ class TextPreprocessor:
         # Generic business terms
         'inc', 'incorporated', 'corp', 'corporation', 'llc', 'ltd', 'limited', 'co', 'company',
         'group', 'holdings', 'enterprises', 'associates', 'partners', 'services', 'solutions',
+        'pa', 'pc',
         # Facility/organization types
         'center', 'school', 'hospital', 'office', 'building', 'facility', 'church', 'synagogue',
         'university', 'college', 'institute', 'academy', 'association', 'foundation', 'society',
@@ -97,7 +99,8 @@ class TextPreprocessor:
         if not name: return ""
         suffixes = {
             'inc', 'incorporated', 'corp', 'corporation', 'llc', 'ltd', 'limited',
-            'co', 'company', 'plc', 'group', 'holdings', 'enterprises', 'associates'
+            'co', 'company', 'plc', 'group', 'holdings', 'enterprises', 'associates',
+            'pa', 'pc'
         }
         stop_words = {'the', 'of', 'and', '&', 'a', 'an'}
         
@@ -386,17 +389,18 @@ class TextPreprocessor:
             coverage_boost *= combined_penalty
             base_score = max(base_score, coverage_boost)
             
-        if target_length < query_length:
-            length_shortfall = 1.0 - (target_length / query_length)
-            if length_shortfall > 0.5:
-                normalized_pos = min(1.0, (0.5 - (length_shortfall - 0.5)) / 0.5)
-                penalty_factor = 0.4 + (0.3 * normalized_pos)
-                base_score *= penalty_factor
-            elif length_shortfall > 0.3:
-                base_score *= (0.7 + (0.15 * (1.0 - (length_shortfall - 0.3) / 0.2)))
-            elif length_shortfall > 0.1:
-                base_score *= (0.85 + (0.1 * (1.0 - (length_shortfall - 0.1) / 0.2)))
-                
+        # BIAS FIX: Penalize ANY deviation from query length (shorter OR longer)
+        # This prevents short strings (abbreviations) from jumping to the top unfairly
+        word_diff = abs(target_length - query_length)
+        
+        # INCREASE PENALTY for very short targets matching longer queries
+        if target_length < query_length and target_length == 1:
+            length_penalty = 1.0 / (1.0 + word_diff * 0.25) # More aggressive penalty
+        else:
+            length_penalty = 1.0 / (1.0 + word_diff * 0.1)
+            
+        base_score *= length_penalty
+            
         return base_score
 
     @classmethod
