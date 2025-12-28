@@ -17,6 +17,9 @@ except ImportError:
         return iterable
 
 class CompanyMatcher:
+    # Cache version - increment this when logic changes to invalidate old caches
+    CACHE_VERSION = "v3.0_precomputed_similarities"
+    
     def __init__(self, model_name='all-MiniLM-L6-v2'):
         # Load the ULTRA-fastest available model for speed
         if model_name == 'all-MiniLM-L6-v2':
@@ -40,6 +43,10 @@ class CompanyMatcher:
         self.acronym_index = {}  # Map of Acronym -> List of Indices
         self.has_location_data = False  # Flag to indicate if location data is loaded
         
+        # Precomputed similarity caches (NEW - for performance)
+        self.similarity_cache = {}  # Dict: (idx1, idx2) -> similarity_score
+        self.acronym_cache = {}  # Dict: idx -> {'acronym': str, 'fidelity_scores': {idx: score}}
+        
         # Persistence settings
         self.cache_dir = "company_matcher_cache"
         self.ensure_cache_dir()
@@ -59,16 +66,16 @@ class CompanyMatcher:
         file_size = stat.st_size
         file_mtime = stat.st_mtime
         
-        # Create hash from: filepath + size + mtime + model
+        # Create hash from: filepath + size + mtime + model + cache version
         # This allows cache checking without loading 2.9M+ company names
-        content = f"{os.path.abspath(filepath)}|{file_size}|{file_mtime}|{self.model_name}"
+        content = f"{os.path.abspath(filepath)}|{file_size}|{file_mtime}|{self.model_name}|{self.CACHE_VERSION}"
         return hashlib.md5(content.encode()).hexdigest()
     
     def get_cache_key(self, company_names):
         """Generate a unique cache key based on company names and model"""
-        # Create a hash of the sorted company names and model name
+        # Create a hash of the sorted company names, model name, and cache version
         sorted_names = sorted(company_names)
-        content = "|".join(sorted_names) + "|" + self.model_name
+        content = "|".join(sorted_names) + "|" + self.model_name + "|" + self.CACHE_VERSION
         return hashlib.md5(content.encode()).hexdigest()
     
     def get_cache_paths(self, cache_key):
@@ -113,6 +120,12 @@ class CompanyMatcher:
             # Save acronym index if available
             if self.acronym_index:
                 names_data['acronym_index'] = self.acronym_index
+            
+            # Save precomputed caches (NEW - for performance)
+            if self.similarity_cache:
+                names_data['similarity_cache'] = self.similarity_cache
+            if self.acronym_cache:
+                names_data['acronym_cache'] = self.acronym_cache
                 
             with open(paths['names'], 'wb') as f:
                 pickle.dump(names_data, f)
@@ -125,8 +138,11 @@ class CompanyMatcher:
                 pickle.dump({
                     'model_name': self.model_name,
                     'cache_key': cache_key,
+                    'cache_version': self.CACHE_VERSION,
                     'num_companies': len(company_names),
-                    'has_location_data': locations is not None
+                    'has_location_data': locations is not None,
+                    'has_similarity_cache': bool(self.similarity_cache),
+                    'has_acronym_cache': bool(self.acronym_cache)
                 }, f)
             print(f"[OK] ({time.time() - meta_start:.1f}s)")
             
@@ -171,6 +187,20 @@ class CompanyMatcher:
                     self.acronym_index = names_data['acronym_index']
                 else:
                     self.acronym_index = {}
+                
+                # Load precomputed caches (NEW - for performance)
+                if 'similarity_cache' in names_data:
+                    self.similarity_cache = names_data['similarity_cache']
+                    print(f"\n      [PERF] Loaded {len(self.similarity_cache):,} precomputed similarity scores")
+                else:
+                    self.similarity_cache = {}
+                
+                if 'acronym_cache' in names_data:
+                    self.acronym_cache = names_data['acronym_cache']
+                    total_fidelity = sum(len(data.get('fidelity_scores', {})) for data in self.acronym_cache.values())
+                    print(f"      [PERF] Loaded {total_fidelity:,} precomputed acronym fidelity scores")
+                else:
+                    self.acronym_cache = {}
                     
                 # Load location data and IDs if available
                 if 'company_locations' in names_data:
@@ -241,6 +271,140 @@ class CompanyMatcher:
                 count += 1
                 
         print(f"   [OK] Indexed {count:,} acronyms mapping to {len(self.acronym_index):,} unique keys")
+
+    def _precompute_similarity_matrix(self):
+        """
+        Precompute pairwise string similarities for all companies.
+        Only stores scores > 0.3 to save memory.
+        This is the HIGHEST IMPACT optimization - eliminates 100+ expensive calls per query.
+        """
+        import time
+        print("   Precomputing similarity matrix (this will take time but saves MASSIVE time later)...")
+        start_time = time.time()
+        
+        n = len(self.original_company_names)
+        self.similarity_cache = {}
+        
+        # Use threshold to only cache meaningful similarities
+        threshold = 0.3
+        cached_count = 0
+        
+        # Progress bar for precomputation
+        total_comparisons = (n * (n - 1)) // 2  # Only compute upper triangle
+        
+        pbar = tqdm(total=total_comparisons, desc="   Computing similarities", unit="pairs", ncols=80, disable=not HAS_TQDM)
+        
+        for i in range(n):
+            for j in range(i + 1, n):
+                score = TextPreprocessor.calculate_string_similarity(
+                    self.original_company_names[i],
+                    self.original_company_names[j]
+                )
+                
+                if score > threshold:
+                    # Store both directions for O(1) lookup
+                    self.similarity_cache[(i, j)] = score
+                    self.similarity_cache[(j, i)] = score
+                    cached_count += 1
+                
+                pbar.update(1)
+        
+        pbar.close()
+        
+        elapsed = time.time() - start_time
+        print(f"   [OK] Precomputed {cached_count:,} similarity pairs (>{threshold}) in {elapsed:.1f}s")
+        print(f"   [OK] Cache size: {len(self.similarity_cache):,} entries (saves ~{len(self.similarity_cache) * 0.001:.1f}s per query)")
+
+    def _precompute_acronym_data(self):
+        """
+        Precompute acronym fidelity scores for all companies.
+        For each company with an acronym, compute fidelity vs all other companies.
+        Only stores scores > 0.3 to save memory.
+        """
+        import time
+        print("   Precomputing acronym fidelity scores...")
+        start_time = time.time()
+        
+        n = len(self.original_company_names)
+        self.acronym_cache = {}
+        
+        threshold = 0.3
+        total_fidelity_scores = 0
+        companies_with_acronyms = 0
+        
+        # Progress bar
+        pbar = tqdm(enumerate(self.original_company_names), desc="   Computing acronyms", total=n, unit="companies", ncols=80, disable=not HAS_TQDM)
+        
+        for idx, name in pbar:
+            acronym = TextPreprocessor.generate_acronym(name)
+            
+            self.acronym_cache[idx] = {
+                'acronym': acronym,
+                'fidelity_scores': {}
+            }
+            
+            if acronym:
+                companies_with_acronyms += 1
+                # Compute fidelity vs all other companies
+                for other_idx, other_name in enumerate(self.original_company_names):
+                    if idx != other_idx:
+                        fidelity = TextPreprocessor.calculate_acronym_fidelity(acronym, other_name)
+                        if fidelity > threshold:
+                            self.acronym_cache[idx]['fidelity_scores'][other_idx] = fidelity
+                            total_fidelity_scores += 1
+        
+        pbar.close()
+        
+        elapsed = time.time() - start_time
+        print(f"   [OK] Precomputed acronym data for {companies_with_acronyms:,} companies in {elapsed:.1f}s")
+        print(f"   [OK] Cached {total_fidelity_scores:,} fidelity scores (>{threshold})")
+
+    def _get_cached_similarity(self, query, query_idx, candidate_idx):
+        """
+        Get similarity score from cache if available, otherwise compute it.
+        
+        Args:
+            query: Query string (for fallback computation)
+            query_idx: Index of query in original_company_names (None if not in database)
+            candidate_idx: Index of candidate in original_company_names
+            
+        Returns:
+            Similarity score between 0 and 1
+        """
+        # Try cache first if query is in our database
+        if query_idx is not None and (query_idx, candidate_idx) in self.similarity_cache:
+            return self.similarity_cache[(query_idx, candidate_idx)]
+        
+        # Fallback to computation for new queries not in cache
+        candidate_name = self.original_company_names[candidate_idx]
+        return TextPreprocessor.calculate_string_similarity(query, candidate_name)
+    
+    def _get_cached_acronym_fidelity(self, query, query_idx, candidate_idx):
+        """
+        Get acronym fidelity score from cache if available, otherwise compute it.
+        
+        Args:
+            query: Query string (for fallback computation)
+            query_idx: Index of query in original_company_names (None if not in database)
+            candidate_idx: Index of candidate in original_company_names
+            
+        Returns:
+            Acronym fidelity score between 0 and 1
+        """
+        # Try cache first if query is in our database
+        if query_idx is not None and query_idx in self.acronym_cache:
+            fidelity_scores = self.acronym_cache[query_idx].get('fidelity_scores', {})
+            if candidate_idx in fidelity_scores:
+                return fidelity_scores[candidate_idx]
+        
+        # Fallback to computation
+        candidate_name = self.original_company_names[candidate_idx]
+        acronym = TextPreprocessor.generate_acronym(query)
+        if acronym:
+            return TextPreprocessor.calculate_acronym_fidelity(acronym, candidate_name)
+        return 0.0
+
+
 
     def _create_fast_lookup_sets(self):
         """Create fast lookup sets for exact matching (called after building index)"""
@@ -489,6 +653,14 @@ class CompanyMatcher:
         # Create Acronym Index
         self._create_acronym_index()
         
+        # Precompute similarity matrix and acronym data (NEW - for performance)
+        print("\n" + "="*60)
+        print("PRECOMPUTING CACHES FOR INSTANT QUERY PERFORMANCE")
+        print("="*60)
+        self._precompute_similarity_matrix()
+        self._precompute_acronym_data()
+        print("="*60 + "\n")
+        
         # Save to cache for future use
         print("Saving to cache...")
         
@@ -659,15 +831,32 @@ class CompanyMatcher:
                 # Normalize Vector Score
                 sem_score_norm = original_semantic_score / max_sem_score if max_sem_score > 0 else 0
                 
-                # Calculate String Similarity
-                string_score = TextPreprocessor.calculate_string_similarity(query, company_name)
+                # Get query index if query is in database (for cache lookup)
+                query_idx = None
+                if hasattr(self, '_company_names_lower_to_index') and query_lower in self._company_names_lower_to_index:
+                    query_idx = self._company_names_lower_to_index[query_lower]
+                
+                # Calculate String Similarity (using cache if available)
+                string_score = self._get_cached_similarity(query, query_idx, idx)
                 
                 # Exact Match Bonus
                 if query_lower == company_name.lower():
                     string_score = 1.0
                 
+                # Check for acronym fidelity boost
+                acronym_fidelity = 0.0
+                query_acronym = TextPreprocessor.generate_acronym(query)
+                if query_acronym and len(query) < 12:  # Query might be an acronym
+                    # Check if candidate is a literal expansion of this acronym
+                    acronym_fidelity = self._get_cached_acronym_fidelity(query, query_idx, idx)
+                
                 # Weighted Combination
                 final_score = (string_score * 0.7) + (sem_score_norm * 0.3)
+                
+                # BOOST for acronym fidelity (literal expansions get significant boost)
+                if acronym_fidelity > 0.7:  # High fidelity = literal expansion
+                    # Add up to +0.15 boost for perfect acronym expansions
+                    final_score = min(1.0, final_score + (acronym_fidelity * 0.15))
                 
                 candidates.append({
                     "name": company_name,
@@ -908,6 +1097,13 @@ class CompanyMatcher:
         # Create fast lookup sets
         self._create_fast_lookup_sets()
         
+        # Create Acronym Index
+        self._create_acronym_index()
+        
+        # Precompute similarity matrix and acronym data (DISABLED - O(N^2) too slow for large datasets)
+        # self._precompute_similarity_matrix()
+        # self._precompute_acronym_data()
+        
         # Save to cache with location data
         print("Saving to cache with location data...")
         self.save_to_cache(cache_key, None, None, 
@@ -961,19 +1157,22 @@ class CompanyMatcher:
                  for idx in acronym_matches:
                      if idx not in found_indices:
                          company_name = self.original_company_names[idx]
+                         # TIE-BREAKER: Use fidelity score and semantic check
+                         fidelity = TextPreprocessor.calculate_acronym_fidelity(query, company_name)
                          
-                         # TIE-BREAKER: Use a lightweight semantic check to prioritize quality expansions
-                         # (e.g. "International Business Machines" vs "IPAC Board Meeting" for "IBM")
-                         # Use self.vector_store.embeddings to avoid attribute error
+                         # Get semantic score for quality check
                          query_vec_ac = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
                          target_vec_ac = self.vector_store.embeddings[idx].reshape(1, -1)
-                         # Normalize target vector if not already normalized (FAISS usually wants normalized for cosmne)
                          target_vec_ac = target_vec_ac / (np.linalg.norm(target_vec_ac) + 1e-10)
                          sem_score_ac = float(np.dot(query_vec_ac, target_vec_ac.T)[0][0])
+                         # UPDATED FORMULA: Base (0.85) + (Fidelity * 0.12) + (Semantic * 0.03)
+                         # Range: 0.85 to 1.0 (Perfect expansions prioritized over semantic similarity)
+                         final_score_ac = min(0.99, 0.85 + (fidelity * 0.12) + (sem_score_ac * 0.03) if sem_score_ac > 0 else 0.85 + (fidelity * 0.12))
                          
                          candidates.append({
                              "name": company_name,
-                             "score": 0.90 + (sem_score_ac * 0.05), # Range 0.90 to 0.95
+                             "score": min(1.0, final_score_ac),
+                             "acronym_fidelity": fidelity,
                              "semantic_score": sem_score_ac,
                              "normalized_semantic_score": sem_score_ac,
                              "string_score": 0.5, # Dummy
@@ -987,28 +1186,40 @@ class CompanyMatcher:
         # 2. Query is Full Name (e.g. "American Bar Association") -> Look for Acronym (e.g. "ABA")
         generated_acronym = TextPreprocessor.generate_acronym(query)
         if generated_acronym and hasattr(self, 'acronym_index'):
-             # Check if this acronym exists as a company name
-             # This is a bit tricky, we need to find if "ABA" is in our company list
-             # We can use the lowercase set or iterate (fast enough for 1 lookup)
-             if hasattr(self, '_company_names_lower_to_index'):
-                 idx = self._company_names_lower_to_index.get(generated_acronym.lower())
-                 if idx is not None:
-                     if idx not in found_indices:
-                         company_name = self.original_company_names[idx]
-                         # Verify it's actually the acronym we want (case sensitive-ish)
-                         if company_name.strip() == generated_acronym:
-                             candidates.append({
-                                 "name": company_name,
-                                 "score": 0.85 if len(generated_acronym) <= 2 else 0.92, 
-                                 "semantic_score": 1.0,
-                                 "normalized_semantic_score": 1.0,
-                                 "string_score": 1.0,
-                                 "index": idx,
-                                 "match_type": "acronym_reverse",
-                                 "acronym_rev": True,
-                                 "city": "", "state": "", "id": None, "count": 0, "location_score": 0.0
-                             })
-                             found_indices.add(idx)
+            # Check if this acronym exists as a company name
+            if hasattr(self, '_company_names_lower_to_index'):
+                idx = self._company_names_lower_to_index.get(generated_acronym.lower())
+                if idx is not None:
+                    if idx not in found_indices:
+                        company_name = self.original_company_names[idx]
+                        # TIE-BREAKER: Use fidelity score and semantic check
+                        # Note: For reverse, query is text and company_name is the acronym
+                        fidelity = TextPreprocessor.calculate_acronym_fidelity(company_name, query)
+                        
+                        # REDUCED BASE for reverse acronyms (very lossy/risky)
+                        # Base (0.65) + (Fidelity * 0.15) + (Semantic * 0.10)
+                        final_score_ac = 0.65 + (fidelity * 0.15) + (1.0 * 0.10)
+                        
+                        # Cap at 0.90 to ensure strong string matches win over reverse acronyms
+                        final_score_ac = min(0.90, final_score_ac)
+                        
+                        # Verify it's actually the acronym we want (case sensitive-ish)
+                        if company_name.strip() == generated_acronym:
+                            candidates.append({
+                                "name": company_name,
+                                "score": final_score_ac,
+                                "name_score": final_score_ac,
+                                "acronym_fidelity": fidelity,
+                                "semantic_score": 1.0,
+                                "normalized_semantic_score": 1.0,
+                                "string_score": 1.0,
+                                "location_score": 0.0,
+                                "index": idx,
+                                "match_type": "acronym_reverse",
+                                "acronym_rev": True,
+                                "city": "", "state": "", "id": None, "count": 0
+                            })
+                            found_indices.add(idx)
         
         # --- PHASE 1: RETRIEVAL (Semantic Search) ---
         candidate_k = min(50, len(self.original_company_names))
@@ -1038,15 +1249,32 @@ class CompanyMatcher:
             # Normalize semantic score
             sem_score_norm = original_semantic_score / max_sem_score if max_sem_score > 0 else 0
             
-            # Calculate string similarity
-            string_score = TextPreprocessor.calculate_string_similarity(query, company_name)
+            # Get query index if query is in database (for cache lookup)
+            query_idx = None
+            if hasattr(self, '_company_names_lower_to_index') and query_lower in self._company_names_lower_to_index:
+                query_idx = self._company_names_lower_to_index[query_lower]
+            
+            # Calculate string similarity (using cache if available)
+            string_score = self._get_cached_similarity(query, query_idx, idx)
             
             # Exact match bonus
             if query_lower == company_name.lower():
                 string_score = 1.0
             
+            # Check for acronym fidelity boost
+            acronym_fidelity = 0.0
+            query_acronym = TextPreprocessor.generate_acronym(query)
+            if query_acronym and len(query) < 12:  # Query might be an acronym
+                # Check if candidate is a literal expansion of this acronym
+                acronym_fidelity = self._get_cached_acronym_fidelity(query, query_idx, idx)
+            
             # Base score: 70% string, 30% semantic
             name_score = (string_score * 0.7) + (sem_score_norm * 0.3)
+            
+            # BOOST for acronym fidelity (literal expansions get significant boost)
+            if acronym_fidelity > 0.7:  # High fidelity = literal expansion
+                # Add up to +0.15 boost for perfect acronym expansions
+                name_score = min(1.0, name_score + (acronym_fidelity * 0.15))
             
             # BOOST for high token coverage (all query words found in target)
             if string_score >= 0.95:
@@ -1173,8 +1401,10 @@ class CompanyMatcher:
                     })
                     found_indices.add(i)
         
-        # Sort by final score
-        candidates.sort(key=lambda x: x["score"], reverse=True)
+        # Sort by final score, with secondary priority to "exact" match types
+        # This ensures that if an acronym expansion and an exact match both score 100%,
+        # the exact match is always Rank 1.
+        candidates.sort(key=lambda x: (round(x["score"], 4), 1 if x.get("match_type") == "exact" else 0), reverse=True)
         
         # Return top_k
         results = candidates[:top_k]

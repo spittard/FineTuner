@@ -13,6 +13,41 @@ class RationaleService:
         query_lower = query.lower()
         company_lower = company_name.lower()
         
+    @staticmethod
+    def get_short_summary(query, company_name, explanation):
+        """Returns a single line summary of why this matched"""
+        query_l = query.lower().strip()
+        comp_l = company_name.lower().strip()
+        mtype = explanation.get('match_type', 'hybrid')
+        
+        if query_l == comp_l:
+            return "Perfect character-for-character match."
+        
+        if mtype == 'acronym_expansion':
+            return f"Detected as a literal expansion of acronym '{query.upper()}'."
+        if mtype == 'acronym_reverse':
+            return f"Matched based on generated acronym '{company_name.upper()}'."
+        
+        if comp_l.startswith(query_l):
+            return "Direct prefix match (target contains extra trailing words)."
+        
+        if query_l in comp_l:
+            return "Substring match (target contains query text)."
+            
+        fidelity = explanation.get('acronym_fidelity', 0.0)
+        if fidelity > 0.8:
+            return f"Strong acronym pattern detected ({fidelity:.2f} fidelity)."
+            
+        overlap = explanation.get('overlap_score', 0.0)
+        if overlap > 0.7:
+            return "High word-for-word overlap."
+            
+        sem = explanation.get('normalized_semantic_score', explanation.get('semantic_score', 0.0))
+        if sem > 0.85:
+            return "Matched via strong semantic/conceptual similarity."
+            
+        return "Hybrid match based on combined lexical and semantic features."
+        
         # Phase 0: Acronym Match Check
         match_type = explanation.get('match_type', 'hybrid')
         if match_type in ['acronym_expansion', 'acronym_reverse']:
@@ -21,9 +56,14 @@ class RationaleService:
             # Score details for acronyms
             string_score = explanation.get('string_score', 0.0)
             sem_score = explanation.get('normalized_semantic_score', explanation.get('semantic_score', 0.0))
-            rationale += f"\n**Score Breakdown:**\n• Lexical: {string_score:.4f}\n• Semantic: {sem_score:.4f}\n"
+            fidelity = explanation.get('acronym_fidelity', 0.0)
             
-            rationale += f"\n**Action Required:**\n• Verify the acronym stands for this company\n• High confidence match"
+            rationale += f"\n**Score Breakdown:**\n• Expansion Quality: {fidelity:.2f}\n• Lexical match: {string_score:.2f}\n• Semantic link: {sem_score:.4f}\n"
+            
+            if fidelity >= 0.9:
+                rationale += f"\n**Action Required:**\n• This is a HIGH CONFIDENCE acronym expansion\n• Highly likely to be correct"
+            else:
+                rationale += f"\n**Action Required:**\n• Verify if the acronym '{query}' correctly represents '{company_name}'\n• Expansion quality is moderate"
             return rationale
 
         # Phase 1: Exact Match Check
@@ -572,3 +612,244 @@ class RationaleService:
         }
         
         return analysis
+
+    @staticmethod
+    def generate_detailed_score_breakdown(match_data, query):
+        """
+        Generate comprehensive score breakdown showing all components.
+        
+        Args:
+            match_data: Dictionary containing all match information including scores
+            query: Original query string
+            
+        Returns:
+            Formatted string with complete score breakdown
+        """
+        breakdown = "## Complete Score Breakdown\n\n"
+        
+        # Extract all score components
+        final_score = match_data.get('raw_score', match_data.get('score', 0.0))
+        string_score = match_data.get('string_score', 0.0)
+        semantic_score_raw = match_data.get('semantic_score', 0.0)
+        semantic_score_norm = match_data.get('normalized_semantic_score', semantic_score_raw)
+        acronym_fidelity = match_data.get('acronym_fidelity', 0.0)
+        location_score = match_data.get('location_score', 0.0)
+        name_score = match_data.get('name_score', 0.0)
+        
+        # Score components table
+        breakdown += "| Component | Raw Value | Weight | Contribution |\n"
+        breakdown += "|-----------|-----------|--------|-------------|\n"
+        
+        # String similarity
+        string_contrib = string_score * 0.7
+        breakdown += f"| String Similarity | {string_score:.4f} | 70% | {string_contrib:.4f} |\n"
+        
+        # Semantic similarity
+        sem_contrib = semantic_score_norm * 0.3
+        breakdown += f"| Semantic Similarity (Normalized) | {semantic_score_norm:.4f} | 30% | {sem_contrib:.4f} |\n"
+        breakdown += f"| Semantic Similarity (Raw) | {semantic_score_raw:.4f} | - | - |\n"
+        
+        # Base name score
+        base_score = string_contrib + sem_contrib
+        breakdown += f"| **Base Score** | **{base_score:.4f}** | - | - |\n"
+        
+        # Acronym fidelity boost
+        if acronym_fidelity > 0.0:
+            acronym_boost = acronym_fidelity * 0.15
+            breakdown += f"| Acronym Fidelity Boost | {acronym_fidelity:.4f} | 15% max | +{acronym_boost:.4f} |\n"
+        
+        # Location boost
+        if location_score > 0.0:
+            loc_boost = location_score * 0.05
+            breakdown += f"| Location Match Boost | {location_score:.4f} | 5% max | +{loc_boost:.4f} |\n"
+        
+        # Final score
+        breakdown += f"| **FINAL SCORE** | **{final_score:.4f}** | - | **{final_score*100:.1f}%** |\n\n"
+        
+        # Formula explanation
+        breakdown += "### Score Calculation Formula\n\n"
+        breakdown += "```\n"
+        breakdown += "Base Score = (String Similarity × 0.70) + (Semantic Similarity × 0.30)\n"
+        
+        if acronym_fidelity > 0.0:
+            breakdown += f"Acronym Boost = Acronym Fidelity × 0.15 = {acronym_fidelity:.4f} × 0.15 = {acronym_fidelity * 0.15:.4f}\n"
+        
+        if location_score > 0.0:
+            breakdown += f"Location Boost = Location Score × 0.05 = {location_score:.4f} × 0.05 = {location_score * 0.05:.4f}\n"
+        
+        breakdown += f"\nFinal Score = Base Score"
+        if acronym_fidelity > 0.0:
+            breakdown += " + Acronym Boost"
+        if location_score > 0.0:
+            breakdown += " + Location Boost"
+        breakdown += f" = {final_score:.4f}\n"
+        breakdown += "```\n\n"
+        
+        # Component analysis
+        breakdown += "### Component Analysis\n\n"
+        
+        if string_score >= 0.95:
+            breakdown += "- **String Similarity (EXCELLENT):** Nearly perfect lexical match - words align very closely\n"
+        elif string_score >= 0.80:
+            breakdown += "- **String Similarity (VERY GOOD):** Strong lexical match - most words align well\n"
+        elif string_score >= 0.60:
+            breakdown += "- **String Similarity (GOOD):** Moderate lexical match - significant word overlap\n"
+        elif string_score >= 0.40:
+            breakdown += "- **String Similarity (FAIR):** Some lexical similarity - partial word overlap\n"
+        else:
+            breakdown += "- **String Similarity (WEAK):** Low lexical match - minimal word overlap\n"
+        
+        if semantic_score_norm >= 0.90:
+            breakdown += "- **Semantic Similarity (EXCELLENT):** Very strong meaning-based connection\n"
+        elif semantic_score_norm >= 0.70:
+            breakdown += "- **Semantic Similarity (VERY GOOD):** Strong meaning-based connection\n"
+        elif semantic_score_norm >= 0.50:
+            breakdown += "- **Semantic Similarity (GOOD):** Moderate meaning-based connection\n"
+        elif semantic_score_norm >= 0.30:
+            breakdown += "- **Semantic Similarity (FAIR):** Some meaning-based connection\n"
+        else:
+            breakdown += "- **Semantic Similarity (WEAK):** Weak meaning-based connection\n"
+        
+        if acronym_fidelity > 0.0:
+            if acronym_fidelity >= 0.90:
+                breakdown += f"- **Acronym Fidelity (EXCELLENT):** {acronym_fidelity:.2f} - Highly likely literal acronym expansion\n"
+            elif acronym_fidelity >= 0.70:
+                breakdown += f"- **Acronym Fidelity (GOOD):** {acronym_fidelity:.2f} - Probable acronym expansion\n"
+            else:
+                breakdown += f"- **Acronym Fidelity (MODERATE):** {acronym_fidelity:.2f} - Possible acronym connection\n"
+        
+        if location_score > 0.0:
+            if location_score >= 0.90:
+                breakdown += f"- **Location Match (EXCELLENT):** {location_score:.2f} - Same city and state\n"
+            elif location_score >= 0.50:
+                breakdown += f"- **Location Match (GOOD):** {location_score:.2f} - Same state or similar location\n"
+            else:
+                breakdown += f"- **Location Match (PARTIAL):** {location_score:.2f} - Some geographic alignment\n"
+        
+        return breakdown
+
+    @staticmethod
+    def generate_relative_positioning_explanation(current_match, match_above, match_below, rank):
+        """
+        Generate explanation of why this match is ranked where it is relative to others.
+        
+        Args:
+            current_match: Current match data dictionary
+            match_above: Match ranked above (or None if rank 1)
+            match_below: Match ranked below (or None if last)
+            rank: Current rank position (1-indexed)
+            
+        Returns:
+            Formatted string explaining relative positioning
+        """
+        explanation = f"## Relative Positioning Analysis (Rank #{rank})\n\n"
+        
+        current_score = current_match.get('raw_score', current_match.get('score', 0.0))
+        current_name = current_match.get('company_name', 'Unknown')
+        
+        # Compare with match above
+        if match_above:
+            above_score = match_above.get('raw_score', match_above.get('score', 0.0))
+            above_name = match_above.get('company_name', 'Unknown')
+            score_diff = above_score - current_score
+            
+            explanation += f"### Why Ranked Below #{rank-1}: \"{above_name}\"\n\n"
+            explanation += f"**Score Difference:** {score_diff:.4f} ({score_diff*100:.2f} percentage points)\n\n"
+            
+            # Identify key differentiators
+            differentiators = []
+            
+            # String score comparison
+            current_string = current_match.get('string_score', 0.0)
+            above_string = match_above.get('string_score', 0.0)
+            if abs(above_string - current_string) > 0.05:
+                diff = above_string - current_string
+                differentiators.append(f"String Similarity: {above_string:.4f} vs {current_string:.4f} (Δ {diff:+.4f})")
+            
+            # Semantic score comparison
+            current_sem = current_match.get('normalized_semantic_score', current_match.get('semantic_score', 0.0))
+            above_sem = match_above.get('normalized_semantic_score', match_above.get('semantic_score', 0.0))
+            if abs(above_sem - current_sem) > 0.05:
+                diff = above_sem - current_sem
+                differentiators.append(f"Semantic Similarity: {above_sem:.4f} vs {current_sem:.4f} (Δ {diff:+.4f})")
+            
+            # Acronym fidelity comparison
+            current_acro = current_match.get('acronym_fidelity', 0.0)
+            above_acro = match_above.get('acronym_fidelity', 0.0)
+            if current_acro > 0.0 or above_acro > 0.0:
+                if abs(above_acro - current_acro) > 0.01:
+                    diff = above_acro - current_acro
+                    differentiators.append(f"Acronym Fidelity: {above_acro:.4f} vs {current_acro:.4f} (Δ {diff:+.4f})")
+            
+            # Location score comparison
+            current_loc = current_match.get('location_score', 0.0)
+            above_loc = match_above.get('location_score', 0.0)
+            if current_loc > 0.0 or above_loc > 0.0:
+                if abs(above_loc - current_loc) > 0.01:
+                    diff = above_loc - current_loc
+                    differentiators.append(f"Location Score: {above_loc:.4f} vs {current_loc:.4f} (Δ {diff:+.4f})")
+            
+            if differentiators:
+                explanation += "**Key Differentiators:**\n"
+                for diff in differentiators:
+                    explanation += f"- {diff}\n"
+            else:
+                explanation += "**Key Differentiators:** Scores are very similar - minor differences across components\n"
+            
+            explanation += "\n"
+        else:
+            explanation += "### Top Ranked Match\n\n"
+            explanation += "This is the highest-scoring match for this query.\n\n"
+        
+        # Compare with match below
+        if match_below:
+            below_score = match_below.get('raw_score', match_below.get('score', 0.0))
+            below_name = match_below.get('company_name', 'Unknown')
+            score_diff = current_score - below_score
+            
+            explanation += f"### Why Ranked Above #{rank+1}: \"{below_name}\"\n\n"
+            explanation += f"**Score Advantage:** {score_diff:.4f} ({score_diff*100:.2f} percentage points)\n\n"
+            
+            # Identify key advantages
+            advantages = []
+            
+            # String score comparison
+            current_string = current_match.get('string_score', 0.0)
+            below_string = match_below.get('string_score', 0.0)
+            if abs(current_string - below_string) > 0.05:
+                diff = current_string - below_string
+                advantages.append(f"String Similarity: {current_string:.4f} vs {below_string:.4f} (Δ {diff:+.4f})")
+            
+            # Semantic score comparison
+            current_sem = current_match.get('normalized_semantic_score', current_match.get('semantic_score', 0.0))
+            below_sem = match_below.get('normalized_semantic_score', match_below.get('semantic_score', 0.0))
+            if abs(current_sem - below_sem) > 0.05:
+                diff = current_sem - below_sem
+                advantages.append(f"Semantic Similarity: {current_sem:.4f} vs {below_sem:.4f} (Δ {diff:+.4f})")
+            
+            # Acronym fidelity comparison
+            current_acro = current_match.get('acronym_fidelity', 0.0)
+            below_acro = match_below.get('acronym_fidelity', 0.0)
+            if current_acro > 0.0 or below_acro > 0.0:
+                if abs(current_acro - below_acro) > 0.01:
+                    diff = current_acro - below_acro
+                    advantages.append(f"Acronym Fidelity: {current_acro:.4f} vs {below_acro:.4f} (Δ {diff:+.4f})")
+            
+            # Location score comparison
+            current_loc = current_match.get('location_score', 0.0)
+            below_loc = match_below.get('location_score', 0.0)
+            if current_loc > 0.0 or below_loc > 0.0:
+                if abs(current_loc - below_loc) > 0.01:
+                    diff = current_loc - below_loc
+                    advantages.append(f"Location Score: {current_loc:.4f} vs {below_loc:.4f} (Δ {diff:+.4f})")
+            
+            if advantages:
+                explanation += "**Key Advantages:**\n"
+                for adv in advantages:
+                    explanation += f"- {adv}\n"
+            else:
+                explanation += "**Key Advantages:** Scores are very similar - minor advantages across components\n"
+            
+            explanation += "\n"
+        
+        return explanation

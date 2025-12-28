@@ -81,7 +81,7 @@ class SearchService:
             # Step 1: Initialize CompanyMatcher first
             if self.matcher is None:
                 print("Initializing CompanyMatcher...")
-                self.matcher = CompanyMatcher(model_name='all-MiniLM-L6-v2')
+                self.matcher = CompanyMatcher(model_name='paraphrase-MiniLM-L3-v2')
             
             # Step 2: FAST CACHE CHECK - Try to load from cache using file metadata
             # This avoids loading the 176MB+ JSON file if we already have it indexed
@@ -103,6 +103,39 @@ class SearchService:
                 self.last_data_check = current_time
                 self._loading = False
                 return True
+            
+            # Step 2.5: FALLBACK - Try to find any existing cache with matching model
+            # This handles cases where file was modified after cache creation
+            print(f"   File-based cache lookup failed, searching for compatible caches...")
+            cache_dir = 'company_matcher_cache'
+            if os.path.exists(cache_dir):
+                import glob
+                metadata_files = glob.glob(os.path.join(cache_dir, '*_metadata.pkl'))
+                # Sort by file size (largest first) to try the most complete cache
+                metadata_files.sort(key=lambda x: os.path.getsize(x.replace('_metadata.pkl', '_names.pkl')) if os.path.exists(x.replace('_metadata.pkl', '_names.pkl')) else 0, reverse=True)
+                
+                for mf in metadata_files:
+                    try:
+                        import pickle
+                        with open(mf, 'rb') as f:
+                            metadata = pickle.load(f)
+                        
+                        # Check if model matches
+                        if metadata.get('model_name') == self.matcher.model_name:
+                            cache_key = metadata.get('cache_key')
+                            num_companies = metadata.get('num_companies', 0)
+                            has_loc = metadata.get('has_location_data', False)
+                            
+                            print(f"   Found compatible cache: {cache_key} ({num_companies:,} companies, location={has_loc})")
+                            
+                            if self.matcher.load_from_cache(cache_key):
+                                print(f"   [OK] Successfully loaded from compatible cache!")
+                                self.company_data_loaded = True
+                                self.last_data_check = current_time
+                                self._loading = False
+                                return True
+                    except Exception as e:
+                        continue
             
             # Step 3: CACHE MISS - Load from JSON file
             print(f"Cache miss or reload forced - loading company data from {filename}...")
@@ -205,12 +238,24 @@ class SearchService:
                 'match_rationale': rationale,
                 'raw_score': match['score'],
                 'explanation_details': {
-                    'query_tokens': list(explanation['query_tokens']),
-                    'match_tokens': list(explanation['match_tokens']),
-                    'overlap_tokens': list(explanation['overlap']),
-                    'overlap_score': explanation['overlap_score']
+                    'query_tokens': list(explanation.get('query_tokens', [])),
+                    'match_tokens': list(explanation.get('match_tokens', [])),
+                    'overlap_tokens': list(explanation.get('overlap', [])),
+                    'overlap_score': explanation.get('overlap_score', 0.0),
+                    'string_score': explanation.get('string_score', match.get('string_score', 0.0)),
+                    'semantic_score': explanation.get('semantic_score', match.get('semantic_score', 0.0)),
+                    'normalized_semantic_score': explanation.get('normalized_semantic_score', match.get('normalized_semantic_score', 0.0)),
+                    'acronym_fidelity': explanation.get('acronym_fidelity', match.get('acronym_fidelity', 0.0)),
+                    'match_type': match.get('match_type', explanation.get('match_type', 'hybrid'))
                 }
             }
+            
+            # Add top-level fields for convenience
+            result_entry['string_score'] = result_entry['explanation_details']['string_score']
+            result_entry['semantic_score'] = result_entry['explanation_details']['semantic_score']
+            result_entry['normalized_semantic_score'] = result_entry['explanation_details']['normalized_semantic_score']
+            result_entry['acronym_fidelity'] = result_entry['explanation_details']['acronym_fidelity']
+            result_entry['match_type'] = result_entry['explanation_details']['match_type']
             
             # Add location and count data if available
             if 'city' in match:

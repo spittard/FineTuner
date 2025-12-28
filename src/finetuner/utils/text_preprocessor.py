@@ -161,6 +161,103 @@ class TextPreprocessor:
         return "".join(acronym_chars)
 
     @classmethod
+    def calculate_acronym_fidelity(cls, acronym, text):
+        """
+        Calculates how "faithfully" a company name expands an acronym.
+        Returns a score between 0.0 and 1.0.
+        
+        1.0: Perfect Expansion (Each acronym char is the first letter of a distinct significant word)
+        0.7: Overlapping Match (Letters match word-starts, but some words contain multiple acronym letters)
+        0.3: Partial/Internal Match (Letters match inside words or out of order)
+        """
+        if not acronym or not text:
+            return 0.0
+            
+        acronym = acronym.upper()
+        # Clean and tokenize
+        clean_text = text.replace('.', '').replace(',', '').replace('-', ' ')
+        words = [w for w in clean_text.split() if w.lower() not in ['the', 'of', 'and', 'for', 'in', 'at', 'by', 'to']]
+        
+        if not words:
+            return 0.0
+            
+        # Target fidelity: One letter per word
+        word_starts = [w[0].upper() for w in words if w]
+        word_starts_str = "".join(word_starts)
+        
+        # Scenario 1: Exact Match of Word Starts (Perfect Expansion)
+        # e.g. "IBM" vs "International Business Machines"
+        if word_starts_str == acronym:
+            # Check for collisions: Do any of the words contain other characters of the acronym?
+            # e.g. searching "IBM" and finding "IBMA" as the first word
+            collision = False
+            for i, word in enumerate(words):
+                if i >= len(acronym): break
+                word_upper = word.upper()
+                current_char = acronym[i]
+                other_chars = acronym[:i] + acronym[i+1:]
+                
+                if len(word_upper) > 1:
+                    # Only check for SUBSEQUENT characters in the acronym
+                    # e.g. If we are at 'I', check if this word also contains 'B' or 'M'
+                    for char in acronym[i+1:]:
+                        if char in word_upper[1:]:
+                            collision = True
+                            break
+                if collision: break
+            
+            if not collision:
+                return 1.0
+            else:
+                return 0.70 # Penalize if words overlap with acronym
+            
+        # Scenario 2: Acronym is a prefix of Word Starts (Clean Expansion with extra words)
+        # e.g. "IBM" vs "International Business Machines Corporation"
+        if word_starts_str.startswith(acronym):
+            return 0.95
+            
+        # Scenario 3: Word Starts contain Acronym as subsequence
+        # e.g. "IBM" vs "International Bureau of Management" (Bureau of -> BM)
+        if acronym in word_starts_str:
+            return 0.90
+            
+        # Scenario 4: "Overlapping" Match (IBMA -> IBM)
+        # Check if any single word contains more than one letter of the acronym as a sequence
+        # e.g. "IBM" matching "IBMA" where "IBMA" has I, B, M
+        for word in words:
+            word_upper = word.upper()
+            if len(acronym) > 1 and acronym[:2] in word_upper:
+                # If the word itself contains the first two or more letters, it's a collision
+                # e.g. searching "IBM" and finding "IBMA..."
+                return 0.60
+            
+        # Scenario 5: Word contains the acronym as a prefix but is longer
+        # e.g. "IBM" vs "IBMA"
+        if len(words) >= 1:
+            first_word = words[0].upper()
+            if first_word.startswith(acronym) and len(first_word) > len(acronym):
+                return 0.65
+
+        # Scenario 6: Fuzzy word-start matching
+        # Check how many characters in acronym can be mapped to word starts in order
+        matched_chars = 0
+        word_idx = 0
+        for char in acronym:
+            found = False
+            while word_idx < len(word_starts):
+                if word_starts[word_idx] == char:
+                    matched_chars += 1
+                    word_idx += 1
+                    found = True
+                    break
+                word_idx += 1
+            if not found:
+                break
+                
+        fidelity = matched_chars / len(acronym)
+        return fidelity * 0.4 # Scale down for partial out-of-order or skipped words
+
+    @classmethod
     def check_category_mismatch(cls, query_tokens, target_tokens):
         """Checks if query and target have mismatched category words."""
         query_categories = cls.get_category_words(query_tokens)

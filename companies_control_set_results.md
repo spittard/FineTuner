@@ -1,5 +1,5 @@
 # Company Match Control Set Results
-Generated: 2025-12-27 16:16:29
+Generated: 2025-12-27 22:08:47
 Total Companies Tested: 104
 ---
 
@@ -10,7 +10,7 @@ Total Companies Tested: 104
 **Top Match**: PDMA Association
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -27,10 +27,9 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | PDMA Association | 100.0% | PERFECT MATCH... |
-| 2 | Association Headquarters-PDMA | 93.0% | WORD OVERLAP MATCH... |
-| 3 | PA | 85.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | PDMA Association | 100.0% | PERFECT MATCH... |
+| 2 | PA | 96.4% | ACRONYM MATCH... |
+| 3 | Association Headquarters-PDMA | 93.0% | WORD OVERLAP MATCH... |
 | 4 | PDMA Alliance | 81.5% | WORD OVERLAP MATCH... |
 | 5 | PDMA | 71.3% | WORD OVERLAP MATCH... |
 | 6 | PDMA inc | 68.9% | WORD OVERLAP MATCH... |
@@ -56,7 +55,7 @@ Total Companies Tested: 104
 **Top Match**: Nicolas/Sanchez Wedding
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -73,8 +72,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Nicolas/Sanchez Wedding | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Nicolas/Sanchez Wedding | 100.0% | PERFECT MATCH... |
 | 2 | Sanchez Wedding | 85.1% | WORD OVERLAP MATCH... |
 | 3 | Garcia Sanchez Wedding | 80.8% | WORD OVERLAP MATCH... |
 | 4 | Castillo Sanchez Wedding | 79.9% | WORD OVERLAP MATCH... |
@@ -102,7 +100,7 @@ Total Companies Tested: 104
 **Top Match**: Kehilat Ariel Synagogue
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -119,10 +117,9 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Kehilat Ariel Synagogue | 100.0% | PERFECT MATCH... |
-| 2 | Kehilat Ariel Messianic Synagogue | 93.0% | ALL WORDS MATCHED... |
-| 3 | KAS | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Kehilat Ariel Synagogue | 100.0% | PERFECT MATCH... |
+| 2 | KAS | 96.4% | ACRONYM MATCH... |
+| 3 | Kehilat Ariel Messianic Synagogue | 93.0% | ALL WORDS MATCHED... |
 | 4 | Kehilat Ariel | 73.0% | WORD OVERLAP MATCH... |
 | 5 | Kehilath Israel Synagogue | 59.6% | WORD OVERLAP MATCH... |
 | 6 | Beth Israel Synagogue | 55.5% | WORD OVERLAP MATCH... |
@@ -148,7 +145,7 @@ Total Companies Tested: 104
 **Top Match**: Next Level Events
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -165,8 +162,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Next Level Events | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Next Level Events | 100.0% | PERFECT MATCH... |
 | 2 | Next Level Events Inc | 95.1% | PREFIX MATCH... |
 | 3 | Next Level Plus Events | 93.0% | ALL WORDS MATCHED... |
 | 4 | Next Level Now | 84.3% | WORD OVERLAP MATCH... |
@@ -194,7 +190,7 @@ Total Companies Tested: 104
 **Top Match**: Site Foundation Golf Tournament
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -211,8 +207,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Site Foundation Golf Tournament | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Site Foundation Golf Tournament | 100.0% | PERFECT MATCH... |
 | 2 | Hearth Foundation Golf Tournament | 80.1% | WORD OVERLAP MATCH... |
 | 3 | Hi Kid Foundation Golf Tournament | 77.7% | WORD OVERLAP MATCH... |
 | 4 | WSU Athletic Foundation Golf Tournament | 77.7% | WORD OVERLAP MATCH... |
@@ -240,7 +235,7 @@ Total Companies Tested: 104
 **Top Match**: Interim WG Meeting - BIER
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -257,8 +252,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Interim WG Meeting - BIER | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Interim WG Meeting - BIER | 100.0% | PERFECT MATCH... |
 | 2 | Bi Annual Meeting | 52.3% | WORD OVERLAP MATCH... |
 | 3 | BI Meeting | 49.5% | WORD OVERLAP MATCH... |
 | 4 | Bim Object Meeting | 49.4% | WORD OVERLAP MATCH... |
@@ -283,31 +277,34 @@ Total Companies Tested: 104
 
 ### 7. DermaQuest Inc
 
-**Top Match**: DermaQuest Inc
+**Top Match**: DI
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'DermaQuest Inc' correctly represents 'DI'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | DermaQuest Inc | 100.0% | PERFECT MATCH... |
-| 2 | Dermaquest, Incorporated | 94.2% | LINGUISTIC MATCH... |
-| 3 | Dermaquest Skin Care | 85.0% | WORD OVERLAP MATCH... |
-| 4 | DI | 85.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | DI | 100.0% | ACRONYM MATCH... |
+| 2 | DermaQuest Inc | 100.0% | PERFECT MATCH... |
+| 3 | Dermaquest, Incorporated | 94.2% | LINGUISTIC MATCH... |
+| 4 | Dermaquest Skin Care | 85.0% | WORD OVERLAP MATCH... |
 | 5 | Dermaquest Skin Therapy | 83.6% | WORD OVERLAP MATCH... |
 | 6 | Derma E | 43.6% | LINGUISTIC MATCH... |
 | 7 | Perquest Inc | 42.9% | WORD OVERLAP MATCH... |
@@ -329,29 +326,32 @@ Total Companies Tested: 104
 
 ### 8. Ellwood Group Inc
 
-**Top Match**: Ellwood Group Inc
+**Top Match**: EGI
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'Ellwood Group Inc' correctly represents 'EGI'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Ellwood Group Inc | 100.0% | PERFECT MATCH... |
-| 2 | EGI | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | EGI | 100.0% | ACRONYM MATCH... |
+| 2 | Ellwood Group Inc | 100.0% | PERFECT MATCH... |
 | 3 | Ellwood Associates | 86.2% | WORD OVERLAP MATCH... |
 | 4 | Ellwood Community Church | 84.6% | WORD OVERLAP MATCH... |
 | 5 | Delwood | 48.5% | SEMANTIC MATCH (Score: 0.49)... |
@@ -378,7 +378,7 @@ Total Companies Tested: 104
 **Top Match**: American Miniature Horse Registry
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -395,8 +395,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | American Miniature Horse Registry | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | American Miniature Horse Registry | 100.0% | PERFECT MATCH... |
 | 2 | American Miniature Horse Association | 83.5% | WORD OVERLAP MATCH... |
 | 3 | American Miniature Horse Association Headquarters | 81.9% | WORD OVERLAP MATCH... |
 | 4 | Miniature Horse & Pony Show | 73.1% | WORD OVERLAP MATCH... |
@@ -424,7 +423,7 @@ Total Companies Tested: 104
 **Top Match**: YADA ENTERPRISES, INC
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -441,8 +440,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | YADA ENTERPRISES, INC | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | YADA ENTERPRISES, INC | 100.0% | PERFECT MATCH... |
 | 2 | Yada Yada | 90.5% | WORD OVERLAP MATCH... |
 | 3 | Yama Enterprises | 52.9% | LINGUISTIC MATCH... |
 | 4 | Yacada | 47.6% | SEMANTIC MATCH (Score: 0.48)... |
@@ -470,7 +468,7 @@ Total Companies Tested: 104
 **Top Match**: Seafood Nutrition Partnership
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -487,8 +485,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Seafood Nutrition Partnership | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Seafood Nutrition Partnership | 100.0% | PERFECT MATCH... |
 | 2 | Sustainable Seafood Partnership | 81.3% | WORD OVERLAP MATCH... |
 | 3 | SEAFOOD NUTRITION | 76.5% | WORD OVERLAP MATCH... |
 | 4 | Seafood Products Association | 59.5% | WORD OVERLAP MATCH... |
@@ -516,7 +513,7 @@ Total Companies Tested: 104
 **Top Match**: AVIAKOMPANIYA SIBIR, PAO
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -533,9 +530,8 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | AVIAKOMPANIYA SIBIR, PAO | 100.0% | PERFECT MATCH... |
-| 2 | ASP | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | AVIAKOMPANIYA SIBIR, PAO | 100.0% | PERFECT MATCH... |
+| 2 | ASP | 96.4% | ACRONYM MATCH... |
 | 3 | AVIAKOMPANIYA MIZHNARODNI AVIA | 59.0% | WORD OVERLAP MATCH... |
 | 4 | Faizan Kabir | 33.9% | SEMANTIC MATCH (Score: 0.34)... |
 | 5 | Ebira Vonya International | 33.9% | SEMANTIC MATCH (Score: 0.34)... |
@@ -562,7 +558,7 @@ Total Companies Tested: 104
 **Top Match**: Hartford Hospital School of Nursing
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -579,8 +575,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Hartford Hospital School of Nursing | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Hartford Hospital School of Nursing | 100.0% | PERFECT MATCH... |
 | 2 | Hartford Hospital Offices USA | 83.4% | WORD OVERLAP MATCH... |
 | 3 | Hartford School District | 75.0% | WORD OVERLAP MATCH... |
 | 4 | New Hartford School | 74.2% | WORD OVERLAP MATCH... |
@@ -608,7 +603,7 @@ Total Companies Tested: 104
 **Top Match**: Internal J&J Meeting and Breakfast
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -625,8 +620,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Internal J&J Meeting and Breakfast | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Internal J&J Meeting and Breakfast | 100.0% | PERFECT MATCH... |
 | 2 | AEP Breakfast Meeting | 62.8% | WORD OVERLAP MATCH... |
 | 3 | Breakfast Meeting NYC | 62.7% | WORD OVERLAP MATCH... |
 | 4 | Bisnow Breakfast Meeting | 61.8% | WORD OVERLAP MATCH... |
@@ -651,29 +645,32 @@ Total Companies Tested: 104
 
 ### 15. Spina Bifida Coalition of Cincinnati
 
-**Top Match**: Spina Bifida Coalition of Cincinnati
+**Top Match**: SBCC
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'Spina Bifida Coalition of Cincinnati' correctly represents 'SBCC'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Spina Bifida Coalition of Cincinnati | 100.0% | PERFECT MATCH... |
-| 2 | SBCC | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | SBCC | 100.0% | ACRONYM MATCH... |
+| 2 | Spina Bifida Coalition of Cincinnati | 100.0% | PERFECT MATCH... |
 | 3 | Spina Bifida Association of Cincinnati, Inc. | 81.7% | WORD OVERLAP MATCH... |
 | 4 | Spina Bifida Association of Michigan | 75.0% | WORD OVERLAP MATCH... |
 | 5 | Illinois Spina Bifida Association | 74.7% | WORD OVERLAP MATCH... |
@@ -700,7 +697,7 @@ Total Companies Tested: 104
 **Top Match**: THE SOCA GROUP ORGANIZATION
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -717,9 +714,8 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | THE SOCA GROUP ORGANIZATION | 100.0% | PERFECT MATCH... |
-| 2 | SGO | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | THE SOCA GROUP ORGANIZATION | 100.0% | PERFECT MATCH... |
+| 2 | SGO | 96.4% | ACRONYM MATCH... |
 | 3 | Team SOCA | 78.9% | WORD OVERLAP MATCH... |
 | 4 | Soca Society | 78.0% | WORD OVERLAP MATCH... |
 | 5 | System Organization Group | 75.9% | WORD OVERLAP MATCH... |
@@ -746,7 +742,7 @@ Total Companies Tested: 104
 **Top Match**: Shiroyama Junior High School
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -763,9 +759,8 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Shiroyama Junior High School | 100.0% | PERFECT MATCH... |
-| 2 | SJHS | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Shiroyama Junior High School | 100.0% | PERFECT MATCH... |
+| 2 | SJHS | 96.4% | ACRONYM MATCH... |
 | 3 | Heights Christian Junior High School | 80.4% | WORD OVERLAP MATCH... |
 | 4 | Junior High School 45 | 79.7% | WORD OVERLAP MATCH... |
 | 5 | Haga Junior High School | 79.6% | WORD OVERLAP MATCH... |
@@ -792,7 +787,7 @@ Total Companies Tested: 104
 **Top Match**: National Home Health
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -809,8 +804,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | National Home Health | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | National Home Health | 100.0% | PERFECT MATCH... |
 | 2 | National Home Health Care | 90.1% | PREFIX MATCH... |
 | 3 | National Home Healthcare | 90.0% | PREFIX MATCH... |
 | 4 | Community Home Health | 87.8% | WORD OVERLAP MATCH... |
@@ -838,7 +832,7 @@ Total Companies Tested: 104
 **Top Match**: American News Women's Club
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -855,8 +849,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | American News Women's Club | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | American News Women's Club | 100.0% | PERFECT MATCH... |
 | 2 | American Women's Club | 77.8% | WORD OVERLAP MATCH... |
 | 3 | American Women Club | 75.6% | WORD OVERLAP MATCH... |
 | 4 | DC Democratic Women's Club | 73.4% | WORD OVERLAP MATCH... |
@@ -884,7 +877,7 @@ Total Companies Tested: 104
 **Top Match**: Denise Roberge
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -901,8 +894,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Denise Roberge | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Denise Roberge | 100.0% | PERFECT MATCH... |
 | 2 | Tamara Denise | 73.1% | WORD OVERLAP MATCH... |
 | 3 | Denise Long | 72.6% | WORD OVERLAP MATCH... |
 | 4 | Tasha Denise | 72.4% | WORD OVERLAP MATCH... |
@@ -930,7 +922,7 @@ Total Companies Tested: 104
 **Top Match**: Synergy Soccer Club
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -947,8 +939,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Synergy Soccer Club | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Synergy Soccer Club | 100.0% | PERFECT MATCH... |
 | 2 | Synergy Football Club | 81.8% | WORD OVERLAP MATCH... |
 | 3 | Synergy Volleyball Club | 80.6% | WORD OVERLAP MATCH... |
 | 4 | Alliance Soccer Club | 78.6% | WORD OVERLAP MATCH... |
@@ -976,7 +967,7 @@ Total Companies Tested: 104
 **Top Match**: NFC Forum
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -993,27 +984,26 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | NFC Forum | 100.0% | PERFECT MATCH... |
-| 2 | NFC Forum         . | 96.6% | PREFIX MATCH... |
-| 3 | NFC Forum Members | 90.0% | PREFIX MATCH... |
-| 4 | NF | 85.0% | ACRONYM MATCH... |
-| 5 | Near Field Communications Forum (NFC Forum) | 75.4% | SUBSTRING MATCH... |
-| 6 | NFC Fighting | 73.8% | WORD OVERLAP MATCH... |
-| 7 | NFC Orientation | 73.4% | WORD OVERLAP MATCH... |
-| 8 | NFC Consulting | 73.2% | WORD OVERLAP MATCH... |
-| 9 | NFC MARKETING | 73.0% | WORD OVERLAP MATCH... |
-| 10 | NFC Life | 72.4% | WORD OVERLAP MATCH... |
-| 11 | NFC Amenity | 72.2% | WORD OVERLAP MATCH... |
-| 12 | NFC Insurance | 72.2% | WORD OVERLAP MATCH... |
-| 13 | Eagles Forum | 71.9% | WORD OVERLAP MATCH... |
-| 14 | NFC Tabagators | 70.9% | WORD OVERLAP MATCH... |
-| 15 | Nfc Services Inc. | 70.7% | WORD OVERLAP MATCH... |
-| 16 | NFC Insurance/NFC Life | 70.2% | WORD OVERLAP MATCH... |
-| 17 | WIMA NFC USA | 69.9% | WORD OVERLAP MATCH... |
-| 18 | Forum Nexus | 69.9% | WORD OVERLAP MATCH... |
-| 19 | NFC Professional Selling Group | 69.9% | WORD OVERLAP MATCH... |
-| 20 | NFC Amenity Management | 69.8% | WORD OVERLAP MATCH... |
+|------|--------------|-------|-----------|\n| 1 | NFC Forum | 100.0% | PERFECT MATCH... |
+| 2 | NFC Forum Members | 100.0% | PREFIX MATCH... |
+| 3 | NFC Forum         . | 96.6% | PREFIX MATCH... |
+| 4 | NF | 96.4% | ACRONYM MATCH... |
+| 5 | Near Field Communications Forum (NFC Forum) | 89.7% | SUBSTRING MATCH... |
+| 6 | Nexus Forum | 84.6% | WORD OVERLAP MATCH... |
+| 7 | NFC Fighting | 73.8% | WORD OVERLAP MATCH... |
+| 8 | NFC Orientation | 73.4% | WORD OVERLAP MATCH... |
+| 9 | NFC Consulting | 73.2% | WORD OVERLAP MATCH... |
+| 10 | NFC MARKETING | 73.0% | WORD OVERLAP MATCH... |
+| 11 | NFC Life | 72.4% | WORD OVERLAP MATCH... |
+| 12 | NFC Amenity | 72.2% | WORD OVERLAP MATCH... |
+| 13 | NFC Insurance | 72.2% | WORD OVERLAP MATCH... |
+| 14 | Eagles Forum | 71.9% | WORD OVERLAP MATCH... |
+| 15 | NFC Tabagators | 70.9% | WORD OVERLAP MATCH... |
+| 16 | Nfc Services Inc. | 70.7% | WORD OVERLAP MATCH... |
+| 17 | NFC Insurance/NFC Life | 70.2% | WORD OVERLAP MATCH... |
+| 18 | WIMA NFC USA | 69.9% | WORD OVERLAP MATCH... |
+| 19 | Forum Nexus | 69.9% | WORD OVERLAP MATCH... |
+| 20 | NFC Professional Selling Group | 69.9% | WORD OVERLAP MATCH... |
 
 ---
 
@@ -1022,7 +1012,7 @@ Total Companies Tested: 104
 **Top Match**: A Better Choice Limousine & Concierge
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -1039,8 +1029,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | A Better Choice Limousine & Concierge | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | A Better Choice Limousine & Concierge | 100.0% | PERFECT MATCH... |
 | 2 | First Choice Limousine Services | 76.7% | WORD OVERLAP MATCH... |
 | 3 | Capital Travel Limousine | 55.4% | WORD OVERLAP MATCH... |
 | 4 | Chicago Limousine Transportation | 54.3% | WORD OVERLAP MATCH... |
@@ -1068,7 +1057,7 @@ Total Companies Tested: 104
 **Top Match**: Danish Sisterhood of America
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -1085,11 +1074,10 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Danish Sisterhood of America | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Danish Sisterhood of America | 100.0% | PERFECT MATCH... |
 | 2 | The Danish Sisterhood of America | 97.4% | SUBSTRING MATCH... |
-| 3 | Danish Sisterhood and Brotherhood of America | 93.0% | ALL WORDS MATCHED... |
-| 4 | DSA | 92.0% | ACRONYM MATCH... |
+| 3 | DSA | 96.4% | ACRONYM MATCH... |
+| 4 | Danish Sisterhood and Brotherhood of America | 93.0% | ALL WORDS MATCHED... |
 | 5 | Danish Brotherhood & Danish Sisterhood of America | 86.1% | SUBSTRING MATCH... |
 | 6 | DANISH BROTHERHOOD AND DANISH SISTERHOOD OF AMERICA | 85.7% | SUBSTRING MATCH... |
 | 7 | Danish Sisterhood of the Americas | 82.7% | WORD OVERLAP MATCH... |
@@ -1114,7 +1102,7 @@ Total Companies Tested: 104
 **Top Match**: Brooklyn Comics Club
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -1131,9 +1119,8 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Brooklyn Comics Club | 100.0% | PERFECT MATCH... |
-| 2 | BCC | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Brooklyn Comics Club | 100.0% | PERFECT MATCH... |
+| 2 | BCC | 96.4% | ACRONYM MATCH... |
 | 3 | Brooklyn Baseball Club | 80.0% | WORD OVERLAP MATCH... |
 | 4 | Brooklyn NY Film Club | 79.8% | WORD OVERLAP MATCH... |
 | 5 | North Brooklyn Comic Book Club | 79.5% | WORD OVERLAP MATCH... |
@@ -1157,29 +1144,32 @@ Total Companies Tested: 104
 
 ### 26. Global Interagency Security Forum
 
-**Top Match**: Global Interagency Security Forum
+**Top Match**: GISF
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'Global Interagency Security Forum' correctly represents 'GISF'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Global Interagency Security Forum | 100.0% | PERFECT MATCH... |
-| 2 | GISF | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | GISF | 100.0% | ACRONYM MATCH... |
+| 2 | Global Interagency Security Forum | 100.0% | PERFECT MATCH... |
 | 3 | Cyber Security Collaboration Forum | 76.7% | WORD OVERLAP MATCH... |
 | 4 | Infrastructure Security and Resilience Forum | 76.4% | WORD OVERLAP MATCH... |
 | 5 | The Cyber Security Forum Initiative | 76.3% | WORD OVERLAP MATCH... |
@@ -1206,7 +1196,7 @@ Total Companies Tested: 104
 **Top Match**: Lancet Software
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -1223,8 +1213,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Lancet Software | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Lancet Software | 100.0% | PERFECT MATCH... |
 | 2 | Lancet Technology | 76.8% | WORD OVERLAP MATCH... |
 | 3 | Lancet Technology, Incorporated | 72.4% | WORD OVERLAP MATCH... |
 | 4 | JAT Software | 71.4% | WORD OVERLAP MATCH... |
@@ -1252,7 +1241,7 @@ Total Companies Tested: 104
 **Top Match**: Our Lady of the Lakes Catholic Church and School
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -1269,8 +1258,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Our Lady of the Lakes Catholic Church and School | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Our Lady of the Lakes Catholic Church and School | 100.0% | PERFECT MATCH... |
 | 2 | OUR LADY OF THE LAKES CATHOLIC CHURCH | 88.8% | WORD OVERLAP MATCH... |
 | 3 | Our Lady of the Lakes Catholic School | 87.9% | WORD OVERLAP MATCH... |
 | 4 | Our Lady of the Lake Roman Catholic Church | 83.6% | WORD OVERLAP MATCH... |
@@ -1295,29 +1283,32 @@ Total Companies Tested: 104
 
 ### 29. Broadway Bound International
 
-**Top Match**: Broadway Bound International
+**Top Match**: BBI
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'Broadway Bound International' correctly represents 'BBI'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Broadway Bound International | 100.0% | PERFECT MATCH... |
-| 2 | BBI | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | BBI | 100.0% | ACRONYM MATCH... |
+| 2 | Broadway Bound International | 100.0% | PERFECT MATCH... |
 | 3 | Broadway Bound West | 87.2% | WORD OVERLAP MATCH... |
 | 4 | Broadway Bound Kids | 85.8% | WORD OVERLAP MATCH... |
 | 5 | Bound Four Broadway | 85.7% | WORD OVERLAP MATCH... |
@@ -1341,29 +1332,32 @@ Total Companies Tested: 104
 
 ### 30. E. H. Wachs
 
-**Top Match**: E. H. Wachs
+**Top Match**: EHW
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'E. H. Wachs' correctly represents 'EHW'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | E. H. Wachs | 100.0% | PERFECT MATCH... |
-| 2 | EHW | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | EHW | 100.0% | ACRONYM MATCH... |
+| 2 | E. H. Wachs | 100.0% | PERFECT MATCH... |
 | 3 | E.H. Wachs | 61.3% | WORD OVERLAP MATCH... |
 | 4 | Wachs Water Services | 58.2% | WORD OVERLAP MATCH... |
 | 5 | Wachs / Russell Wedding | 57.4% | WORD OVERLAP MATCH... |
@@ -1390,7 +1384,7 @@ Total Companies Tested: 104
 **Top Match**: Marine Corps Fox 2/5
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -1407,8 +1401,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Marine Corps Fox 2/5 | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Marine Corps Fox 2/5 | 100.0% | PERFECT MATCH... |
 | 2 | United State Marine Corps | 77.0% | WORD OVERLAP MATCH... |
 | 3 | Marine Corps Personnel Support | 76.9% | WORD OVERLAP MATCH... |
 | 4 | American US Marine Corps | 76.9% | WORD OVERLAP MATCH... |
@@ -1436,7 +1429,7 @@ Total Companies Tested: 104
 **Top Match**: Fantasia Turistica
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -1453,9 +1446,8 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Fantasia Turistica | 100.0% | PERFECT MATCH... |
-| 2 | FT | 85.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Fantasia Turistica | 100.0% | PERFECT MATCH... |
+| 2 | FT | 96.4% | ACRONYM MATCH... |
 | 3 | Fantasia Travels | 77.5% | WORD OVERLAP MATCH... |
 | 4 | Fantasia Travel | 76.7% | WORD OVERLAP MATCH... |
 | 5 | Fantasia Accessry | 75.4% | WORD OVERLAP MATCH... |
@@ -1482,7 +1474,7 @@ Total Companies Tested: 104
 **Top Match**: Esoterix
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -1499,8 +1491,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Esoterix | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Esoterix | 100.0% | PERFECT MATCH... |
 | 2 | Esoterix Headquarters | 85.9% | PREFIX MATCH... |
 | 3 | Esoterix Integrated Genetics | 83.7% | PREFIX MATCH... |
 | 4 | CENTRIX | 42.6% | SEMANTIC MATCH (Score: 0.43)... |
@@ -1525,40 +1516,43 @@ Total Companies Tested: 104
 
 ### 34. Coker Group
 
-**Top Match**: Coker Group
+**Top Match**: CG
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'Coker Group' correctly represents 'CG'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Coker Group | 100.0% | PERFECT MATCH... |
-| 2 | The Coker Group | 90.1% | SUBSTRING MATCH... |
-| 3 | Coker College | 85.8% | WORD OVERLAP MATCH... |
-| 4 | Coker Family Reunion | 85.7% | WORD OVERLAP MATCH... |
-| 5 | CG | 85.0% | ACRONYM MATCH... |
-| 6 | Coker Consultants | 84.9% | WORD OVERLAP MATCH... |
-| 7 | Coker University | 84.7% | WORD OVERLAP MATCH... |
-| 8 | Coker Law | 84.6% | WORD OVERLAP MATCH... |
-| 9 | Coker Coaters | 84.5% | WORD OVERLAP MATCH... |
-| 10 | Coker Legal | 84.5% | WORD OVERLAP MATCH... |
-| 11 | Coker Capital | 84.2% | WORD OVERLAP MATCH... |
-| 12 | Coker Cheerleading Group | 84.0% | ALL WORDS MATCHED... |
-| 13 | Coker Grp | 83.5% | WORD OVERLAP MATCH... |
+|------|--------------|-------|-----------|\n| 1 | CG | 100.0% | ACRONYM MATCH... |
+| 2 | Coker Group | 100.0% | PERFECT MATCH... |
+| 3 | The Coker Group | 100.0% | SUBSTRING MATCH... |
+| 4 | Coker Grp | 98.5% | WORD OVERLAP MATCH... |
+| 5 | Coker Cheerleading Group | 97.5% | ALL WORDS MATCHED... |
+| 6 | Coker College | 85.8% | WORD OVERLAP MATCH... |
+| 7 | Coker Family Reunion | 85.7% | WORD OVERLAP MATCH... |
+| 8 | Coker Consultants | 84.9% | WORD OVERLAP MATCH... |
+| 9 | Coker University | 84.7% | WORD OVERLAP MATCH... |
+| 10 | Coker Law | 84.6% | WORD OVERLAP MATCH... |
+| 11 | Coker Coaters | 84.5% | WORD OVERLAP MATCH... |
+| 12 | Coker Legal | 84.5% | WORD OVERLAP MATCH... |
+| 13 | Coker Capital | 84.2% | WORD OVERLAP MATCH... |
 | 14 | Betty Coker | 83.3% | WORD OVERLAP MATCH... |
 | 15 | Friends of Leslie Coker | 83.1% | WORD OVERLAP MATCH... |
 | 16 | Kristen Coker | 82.8% | WORD OVERLAP MATCH... |
@@ -1574,7 +1568,7 @@ Total Companies Tested: 104
 **Top Match**: GILEAD IT
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -1591,9 +1585,8 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | GILEAD IT | 100.0% | PERFECT MATCH... |
-| 2 | GI | 85.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | GILEAD IT | 100.0% | PERFECT MATCH... |
+| 2 | GI | 96.4% | ACRONYM MATCH... |
 | 3 | Gilead Productions | 77.3% | WORD OVERLAP MATCH... |
 | 4 | Gilead Science | 77.3% | WORD OVERLAP MATCH... |
 | 5 | Gilead Sciences | 77.0% | WORD OVERLAP MATCH... |
@@ -1620,7 +1613,7 @@ Total Companies Tested: 104
 **Top Match**: 4143 Affiliate INDA 2016
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -1637,8 +1630,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | 4143 Affiliate INDA 2016 | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | 4143 Affiliate INDA 2016 | 100.0% | PERFECT MATCH... |
 | 2 | 1528 Affiliate INDA 2016 | 84.1% | WORD OVERLAP MATCH... |
 | 3 | 4143 Affiliate Aan 2017 | 75.6% | WORD OVERLAP MATCH... |
 | 4 | 430 Affiliate ALA 2016 | 72.2% | WORD OVERLAP MATCH... |
@@ -1666,7 +1658,7 @@ Total Companies Tested: 104
 **Top Match**: Pipe and Plant Solutions
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -1683,9 +1675,8 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Pipe and Plant Solutions | 100.0% | PERFECT MATCH... |
-| 2 | PPS | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Pipe and Plant Solutions | 100.0% | PERFECT MATCH... |
+| 2 | PPS | 96.4% | ACRONYM MATCH... |
 | 3 | Pipe & Plant | 79.5% | WORD OVERLAP MATCH... |
 | 4 | Advanced Pipe Solutions | 78.9% | WORD OVERLAP MATCH... |
 | 5 | TV Pipe Solutions | 73.8% | WORD OVERLAP MATCH... |
@@ -1712,7 +1703,7 @@ Total Companies Tested: 104
 **Top Match**: Stephen Rourke
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -1729,8 +1720,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Stephen Rourke | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Stephen Rourke | 100.0% | PERFECT MATCH... |
 | 2 | Rourke Publishing | 73.4% | WORD OVERLAP MATCH... |
 | 3 | Damon Rourke | 72.7% | WORD OVERLAP MATCH... |
 | 4 | Rourke Manufacturing | 71.5% | WORD OVERLAP MATCH... |
@@ -1758,7 +1748,7 @@ Total Companies Tested: 104
 **Top Match**: MIT Initiative on the Digital Economy
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -1775,8 +1765,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | MIT Initiative on the Digital Economy | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | MIT Initiative on the Digital Economy | 100.0% | PERFECT MATCH... |
 | 2 | MIT Energy Initiative | 55.7% | WORD OVERLAP MATCH... |
 | 3 | MIT Information Services and Technology | 44.2% | WORD OVERLAP MATCH... |
 | 4 | MIT INFORMATION SERVICES | 42.0% | WORD OVERLAP MATCH... |
@@ -1804,7 +1793,7 @@ Total Companies Tested: 104
 **Top Match**: Urx Community USA
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -1821,8 +1810,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Urx Community USA | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Urx Community USA | 100.0% | PERFECT MATCH... |
 | 2 | USA Community Service Commission | 72.1% | WORD OVERLAP MATCH... |
 | 3 | Florida Urological Society USA | 59.6% | WORD OVERLAP MATCH... |
 | 4 | Uratta National Association USA | 56.8% | WORD OVERLAP MATCH... |
@@ -1850,7 +1838,7 @@ Total Companies Tested: 104
 **Top Match**: Spredfast Engage
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -1867,9 +1855,8 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Spredfast Engage | 100.0% | PERFECT MATCH... |
-| 2 | SE | 85.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Spredfast Engage | 100.0% | PERFECT MATCH... |
+| 2 | SE | 96.4% | ACRONYM MATCH... |
 | 3 | Spredfast Events | 77.7% | WORD OVERLAP MATCH... |
 | 4 | Spredfast Product | 73.9% | WORD OVERLAP MATCH... |
 | 5 | Spredfast | 67.5% | WORD OVERLAP MATCH... |
@@ -1896,7 +1883,7 @@ Total Companies Tested: 104
 **Top Match**: City of Dallas-Parks & Recreation
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -1913,8 +1900,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | City of Dallas-Parks & Recreation | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | City of Dallas-Parks & Recreation | 100.0% | PERFECT MATCH... |
 | 2 | City of Dallas Park & Recreation | 87.0% | WORD OVERLAP MATCH... |
 | 3 | Dallas Parks and Recreation Department | 86.6% | WORD OVERLAP MATCH... |
 | 4 | Dallas Parks and Recreation Dept | 86.5% | WORD OVERLAP MATCH... |
@@ -1942,7 +1928,7 @@ Total Companies Tested: 104
 **Top Match**: Kai Pono Builders, Inc.
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -1959,8 +1945,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Kai Pono Builders, Inc. | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Kai Pono Builders, Inc. | 100.0% | PERFECT MATCH... |
 | 2 | Kai Pono Builders | 95.6% | WORD OVERLAP MATCH... |
 | 3 | Pono Kai Resort | 73.3% | WORD OVERLAP MATCH... |
 | 4 | Pono Kai | 67.7% | WORD OVERLAP MATCH... |
@@ -1988,7 +1973,7 @@ Total Companies Tested: 104
 **Top Match**: MUSICFIRST COALITION
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -2005,9 +1990,8 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | MUSICFIRST COALITION | 100.0% | PERFECT MATCH... |
-| 2 | MC | 85.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | MUSICFIRST COALITION | 100.0% | PERFECT MATCH... |
+| 2 | MC | 96.4% | ACRONYM MATCH... |
 | 3 | music FIRST Coalition | 76.0% | WORD OVERLAP MATCH... |
 | 4 | Future of Music Coalition | 74.3% | WORD OVERLAP MATCH... |
 | 5 | District New Music Coalition | 73.6% | WORD OVERLAP MATCH... |
@@ -2031,29 +2015,32 @@ Total Companies Tested: 104
 
 ### 45. Frontier Power Products
 
-**Top Match**: Frontier Power Products
+**Top Match**: FPP
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'Frontier Power Products' correctly represents 'FPP'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Frontier Power Products | 100.0% | PERFECT MATCH... |
-| 2 | FPP | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | FPP | 100.0% | ACRONYM MATCH... |
+| 2 | Frontier Power Products | 100.0% | PERFECT MATCH... |
 | 3 | Frontier Business Products | 79.0% | WORD OVERLAP MATCH... |
 | 4 | Frontier Natural Products | 76.7% | WORD OVERLAP MATCH... |
 | 5 | Advanced Power Products | 76.4% | WORD OVERLAP MATCH... |
@@ -2080,7 +2067,7 @@ Total Companies Tested: 104
 **Top Match**: 1960
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -2097,8 +2084,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | 1960 | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | 1960 | 100.0% | PERFECT MATCH... |
 | 2 | District 1960 | 85.4% | SUBSTRING MATCH... |
 | 3 | 60 | 81.1% | LINGUISTIC MATCH... |
 | 4 | Playhouse 1960 | 80.3% | SUBSTRING MATCH... |
@@ -2126,7 +2112,7 @@ Total Companies Tested: 104
 **Top Match**: Pacific Northwest Diabetes Research Inst
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -2143,8 +2129,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Pacific Northwest Diabetes Research Inst | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Pacific Northwest Diabetes Research Inst | 100.0% | PERFECT MATCH... |
 | 2 | Pacific Northwest Diabetes Research | 83.9% | WORD OVERLAP MATCH... |
 | 3 | Diabetes Research | 59.0% | WORD OVERLAP MATCH... |
 | 4 | Diabetes Research Wellness Foundation | 57.3% | WORD OVERLAP MATCH... |
@@ -2172,7 +2157,7 @@ Total Companies Tested: 104
 **Top Match**: Mentors & Mentees
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -2189,8 +2174,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Mentors & Mentees | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Mentors & Mentees | 100.0% | PERFECT MATCH... |
 | 2 | RE Mentors | 75.7% | WORD OVERLAP MATCH... |
 | 3 | TRUE Mentors | 75.6% | WORD OVERLAP MATCH... |
 | 4 | Master Mentors | 75.5% | WORD OVERLAP MATCH... |
@@ -2218,7 +2202,7 @@ Total Companies Tested: 104
 **Top Match**: NaLA 2024 fall conference M01709226216947 02-29-24 12:03:46
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -2235,8 +2219,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | NaLA 2024 fall conference M01709226216947 02-29-24 12:03:46 | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | NaLA 2024 fall conference M01709226216947 02-29-24 12:03:46 | 100.0% | PERFECT MATCH... |
 | 2 | NaLA 2023 fall conference M01674569043113 01-24-23 09:04:06 | 69.4% | WORD OVERLAP MATCH... |
 | 3 | NaLA 2023 fall conference M01674661235470 01-25-23 10:40:54 | 67.2% | WORD OVERLAP MATCH... |
 | 4 | NALSC 2024 Annual Conference M01680804350265 04-06-23 14:05:56 | 44.7% | WORD OVERLAP MATCH... |
@@ -2261,29 +2244,32 @@ Total Companies Tested: 104
 
 ### 50. Donnelley Work Session
 
-**Top Match**: Donnelley Work Session
+**Top Match**: DWS
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'Donnelley Work Session' correctly represents 'DWS'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Donnelley Work Session | 100.0% | PERFECT MATCH... |
-| 2 | DWS | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | DWS | 100.0% | ACRONYM MATCH... |
+| 2 | Donnelley Work Session | 100.0% | PERFECT MATCH... |
 | 3 | SMDS Work Session | 72.7% | WORD OVERLAP MATCH... |
 | 4 | Donnelley Financial Services | 56.5% | WORD OVERLAP MATCH... |
 | 5 | Experience Session 5 | 55.6% | WORD OVERLAP MATCH... |
@@ -2307,29 +2293,32 @@ Total Companies Tested: 104
 
 ### 51. North Shore Senior Center
 
-**Top Match**: North Shore Senior Center
+**Top Match**: NSSC
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'North Shore Senior Center' correctly represents 'NSSC'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | North Shore Senior Center | 100.0% | PERFECT MATCH... |
-| 2 | NSSC | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | NSSC | 100.0% | ACRONYM MATCH... |
+| 2 | North Shore Senior Center | 100.0% | PERFECT MATCH... |
 | 3 | North Shore Cancer Center | 84.8% | WORD OVERLAP MATCH... |
 | 4 | Northshore Senior Center | 84.5% | WORD OVERLAP MATCH... |
 | 5 | Coastal North Town Center | 82.3% | WORD OVERLAP MATCH... |
@@ -2356,7 +2345,7 @@ Total Companies Tested: 104
 **Top Match**: Singles Who Like Food & Fun
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -2373,8 +2362,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Singles Who Like Food & Fun | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Singles Who Like Food & Fun | 100.0% | PERFECT MATCH... |
 | 2 | Fun Asian Singles | 55.2% | WORD OVERLAP MATCH... |
 | 3 | Christian Singles Fun Events | 55.1% | WORD OVERLAP MATCH... |
 | 4 | Fun Social Singles 35+ | 55.0% | WORD OVERLAP MATCH... |
@@ -2402,7 +2390,7 @@ Total Companies Tested: 104
 **Top Match**: Zen Meetings & Events
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -2419,8 +2407,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Zen Meetings & Events | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Zen Meetings & Events | 100.0% | PERFECT MATCH... |
 | 2 | Zen Events México | 77.5% | WORD OVERLAP MATCH... |
 | 3 | Zen Events Group | 72.5% | WORD OVERLAP MATCH... |
 | 4 | Zen Events, LLC | 66.8% | WORD OVERLAP MATCH... |
@@ -2448,7 +2435,7 @@ Total Companies Tested: 104
 **Top Match**: Chicago South Swim Club
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -2465,9 +2452,8 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Chicago South Swim Club | 100.0% | PERFECT MATCH... |
-| 2 | CSSC | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Chicago South Swim Club | 100.0% | PERFECT MATCH... |
+| 2 | CSSC | 96.4% | ACRONYM MATCH... |
 | 3 | South Carolina Swim Club | 82.4% | WORD OVERLAP MATCH... |
 | 4 | South West Florida Swim Club | 81.3% | WORD OVERLAP MATCH... |
 | 5 | South Metro Storm Swim Club | 78.5% | WORD OVERLAP MATCH... |
@@ -2494,7 +2480,7 @@ Total Companies Tested: 104
 **Top Match**: Edna, Dabra@SAP.IO
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -2511,9 +2497,8 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Edna, Dabra@SAP.IO | 100.0% | PERFECT MATCH... |
-| 2 | ED | 85.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Edna, Dabra@SAP.IO | 100.0% | PERFECT MATCH... |
+| 2 | ED | 96.4% | ACRONYM MATCH... |
 | 3 | Edna Owusu | 75.7% | LINGUISTIC MATCH... |
 | 4 | Edna Rose | 75.0% | LINGUISTIC MATCH... |
 | 5 | Edna Travel | 74.5% | LINGUISTIC MATCH... |
@@ -2540,7 +2525,7 @@ Total Companies Tested: 104
 **Top Match**: Boys and Girls Club of Dawson Community Centre
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -2557,8 +2542,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Boys and Girls Club of Dawson Community Centre | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Boys and Girls Club of Dawson Community Centre | 100.0% | PERFECT MATCH... |
 | 2 | GIRLS CLUB | 54.0% | WORD OVERLAP MATCH... |
 | 3 | Dawson Community College | 51.2% | WORD OVERLAP MATCH... |
 | 4 | DAWSON COMMUNITY BLUES | 50.7% | WORD OVERLAP MATCH... |
@@ -2586,7 +2570,7 @@ Total Companies Tested: 104
 **Top Match**: Beissbarth
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -2603,8 +2587,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Beissbarth | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Beissbarth | 100.0% | PERFECT MATCH... |
 | 2 | Beissbarth GmbH | 88.1% | PREFIX MATCH... |
 | 3 | Breitbart | 42.4% | SEMANTIC MATCH (Score: 0.42)... |
 | 4 | Bitbar | 42.3% | SEMANTIC MATCH (Score: 0.42)... |
@@ -2632,7 +2615,7 @@ Total Companies Tested: 104
 **Top Match**: US Night Vision
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -2649,8 +2632,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | US Night Vision | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | US Night Vision | 100.0% | PERFECT MATCH... |
 | 2 | PM Night Vision | 81.5% | WORD OVERLAP MATCH... |
 | 3 | US Vision Care | 79.6% | WORD OVERLAP MATCH... |
 | 4 | Night Vision Entertainment | 79.5% | WORD OVERLAP MATCH... |
@@ -2678,7 +2660,7 @@ Total Companies Tested: 104
 **Top Match**: Amedysis, Incorporated
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -2695,11 +2677,10 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Amedysis, Incorporated | 100.0% | PERFECT MATCH... |
-| 2 | Amedysis, Inc. | 95.8% | WORD OVERLAP MATCH... |
-| 3 | Amedysis Home Health | 89.5% | LINGUISTIC MATCH... |
-| 4 | AI | 85.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Amedysis, Incorporated | 100.0% | PERFECT MATCH... |
+| 2 | AI | 96.4% | ACRONYM MATCH... |
+| 3 | Amedysis, Inc. | 95.8% | WORD OVERLAP MATCH... |
+| 4 | Amedysis Home Health | 89.5% | LINGUISTIC MATCH... |
 | 5 | Medysis | 55.2% | LINGUISTIC MATCH... |
 | 6 | Avysis | 46.0% | SEMANTIC MATCH (Score: 0.46)... |
 | 7 | Lysis | 44.5% | SEMANTIC MATCH (Score: 0.45)... |
@@ -2724,7 +2705,7 @@ Total Companies Tested: 104
 **Top Match**: Taiyo Air Service Co.,Ltd
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -2741,9 +2722,8 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Taiyo Air Service Co.,Ltd | 100.0% | PERFECT MATCH... |
-| 2 | TASC | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Taiyo Air Service Co.,Ltd | 100.0% | PERFECT MATCH... |
+| 2 | TASC | 96.4% | ACRONYM MATCH... |
 | 3 | Taiyo Air Services Co. | 78.8% | WORD OVERLAP MATCH... |
 | 4 | Fuyo Air Service Co. Ltd. | 73.7% | WORD OVERLAP MATCH... |
 | 5 | CITS Taikoo Air Service Ltd | 72.8% | WORD OVERLAP MATCH... |
@@ -2770,7 +2750,7 @@ Total Companies Tested: 104
 **Top Match**: National Conference on Race & Ethnicity in American Higher E
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -2787,8 +2767,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | National Conference on Race & Ethnicity in American Higher E | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | National Conference on Race & Ethnicity in American Higher E | 100.0% | PERFECT MATCH... |
 | 2 | NATIONAL CONFERENCE ON RACE AND ETHNICITY IN AMERICAN HIGHER | 88.8% | WORD OVERLAP MATCH... |
 | 3 | NCORE NATIONAL CONFERENCE ON RACE AND ETHNICITY IN AMERICAN HIGHER EDUCATION | 86.4% | WORD OVERLAP MATCH... |
 | 4 | National Conference On Race & Ethnicity In America Higher Ed | 86.3% | WORD OVERLAP MATCH... |
@@ -2813,30 +2792,33 @@ Total Companies Tested: 104
 
 ### 62. Reminger Law Firm
 
-**Top Match**: Reminger Law Firm
+**Top Match**: RLF
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'Reminger Law Firm' correctly represents 'RLF'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Reminger Law Firm | 100.0% | PERFECT MATCH... |
-| 2 | Reminger & Reminger Law Firm | 97.0% | SUBSTRING MATCH... |
-| 3 | RLF | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | RLF | 100.0% | ACRONYM MATCH... |
+| 2 | Reminger Law Firm | 100.0% | PERFECT MATCH... |
+| 3 | Reminger & Reminger Law Firm | 97.0% | SUBSTRING MATCH... |
 | 4 | Withers Law Firm | 82.3% | WORD OVERLAP MATCH... |
 | 5 | S Law Firm | 81.9% | WORD OVERLAP MATCH... |
 | 6 | Speer Law Firm | 81.8% | WORD OVERLAP MATCH... |
@@ -2862,7 +2844,7 @@ Total Companies Tested: 104
 **Top Match**: SEMMOA BOD
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -2879,8 +2861,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | SEMMOA BOD | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | SEMMOA BOD | 100.0% | PERFECT MATCH... |
 | 2 | SEMMOA AACM | 74.0% | WORD OVERLAP MATCH... |
 | 3 | Bod Pro | 73.5% | WORD OVERLAP MATCH... |
 | 4 | SEMMOA Coop | 73.2% | WORD OVERLAP MATCH... |
@@ -2905,29 +2886,32 @@ Total Companies Tested: 104
 
 ### 64. Telefonica Global Solutions
 
-**Top Match**: Telefonica Global Solutions
+**Top Match**: TGS
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'Telefonica Global Solutions' correctly represents 'TGS'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Telefonica Global Solutions | 100.0% | PERFECT MATCH... |
-| 2 | TGS | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | TGS | 100.0% | ACRONYM MATCH... |
+| 2 | Telefonica Global Solutions | 100.0% | PERFECT MATCH... |
 | 3 | Telefonica Multinational Solutions | 90.1% | WORD OVERLAP MATCH... |
 | 4 | Telefonica Global Solutions USA Inc. | 90.1% | PREFIX MATCH... |
 | 5 | TELEFONICA INTERNATIONAL USA | 71.7% | WORD OVERLAP MATCH... |
@@ -2954,7 +2938,7 @@ Total Companies Tested: 104
 **Top Match**: Dube Travel Leaders
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > WORD OVERLAP MATCH
   > 
   > **What This Means:**
@@ -2983,8 +2967,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Dube Travel Leaders | 100.0% | WORD OVERLAP MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Dube Travel Leaders | 100.0% | WORD OVERLAP MATCH... |
 | 2 | Travel Leaders - Dube Travel | 100.0% | PERFECT MATCH... |
 | 3 | Dube Travel / Travel Leaders | 93.4% | WORD OVERLAP MATCH... |
 | 4 | Dube / Travel Leaders | 93.0% | WORD OVERLAP MATCH... |
@@ -3009,47 +2992,50 @@ Total Companies Tested: 104
 
 ### 66. Hi- Tours
 
-**Top Match**: Hi- Tours
+**Top Match**: HT
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'Hi- Tours' correctly represents 'HT'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Hi- Tours | 100.0% | PERFECT MATCH... |
-| 2 | Hi Life Tours | 93.0% | WORD OVERLAP MATCH... |
-| 3 | HI LITE TOURS | 93.0% | WORD OVERLAP MATCH... |
-| 4 | Hi Tours | 93.0% | WORD OVERLAP MATCH... |
-| 5 | Hi-Tours | 89.4% | LINGUISTIC MATCH... |
-| 6 | HT | 85.0% | ACRONYM MATCH... |
-| 7 | Hi Tour | 81.7% | LINGUISTIC MATCH... |
-| 8 | Hi Tours2 | 81.3% | LINGUISTIC MATCH... |
-| 9 | Journey Tours | 77.1% | WORD OVERLAP MATCH... |
-| 10 | Excursion Tours | 76.8% | WORD OVERLAP MATCH... |
-| 11 | Nice Tours | 76.7% | WORD OVERLAP MATCH... |
-| 12 | Sky Tours | 76.5% | WORD OVERLAP MATCH... |
-| 13 | DESTINATION TOURS | 76.4% | WORD OVERLAP MATCH... |
-| 14 | Journeys Tours | 76.4% | WORD OVERLAP MATCH... |
-| 15 | FRIENDLY TOURS | 76.3% | WORD OVERLAP MATCH... |
-| 16 | Fun Tours | 76.0% | WORD OVERLAP MATCH... |
-| 17 | Great Tours | 75.9% | WORD OVERLAP MATCH... |
-| 18 | GO TOURS | 75.9% | WORD OVERLAP MATCH... |
-| 19 | Open Tours | 75.9% | WORD OVERLAP MATCH... |
-| 20 | Excellent Tours | 75.8% | WORD OVERLAP MATCH... |
+|------|--------------|-------|-----------|\n| 1 | HT | 100.0% | ACRONYM MATCH... |
+| 2 | Hi Tours | 100.0% | WORD OVERLAP MATCH... |
+| 3 | Hi-Tours | 100.0% | LINGUISTIC MATCH... |
+| 4 | Hi- Tours | 100.0% | PERFECT MATCH... |
+| 5 | Hi Tour | 96.7% | LINGUISTIC MATCH... |
+| 6 | Hi Tours2 | 96.3% | LINGUISTIC MATCH... |
+| 7 | Hi Life Tours | 93.0% | WORD OVERLAP MATCH... |
+| 8 | HI LITE TOURS | 93.0% | WORD OVERLAP MATCH... |
+| 9 | HiFiveLive Tours | 90.6% | WORD OVERLAP MATCH... |
+| 10 | Journey Tours | 77.1% | WORD OVERLAP MATCH... |
+| 11 | Excursion Tours | 76.8% | WORD OVERLAP MATCH... |
+| 12 | Nice Tours | 76.7% | WORD OVERLAP MATCH... |
+| 13 | Sky Tours | 76.5% | WORD OVERLAP MATCH... |
+| 14 | DESTINATION TOURS | 76.4% | WORD OVERLAP MATCH... |
+| 15 | Journeys Tours | 76.4% | WORD OVERLAP MATCH... |
+| 16 | FRIENDLY TOURS | 76.3% | WORD OVERLAP MATCH... |
+| 17 | Fun Tours | 76.0% | WORD OVERLAP MATCH... |
+| 18 | Great Tours | 75.9% | WORD OVERLAP MATCH... |
+| 19 | GO TOURS | 75.9% | WORD OVERLAP MATCH... |
+| 20 | Open Tours | 75.9% | WORD OVERLAP MATCH... |
 
 ---
 
@@ -3058,7 +3044,7 @@ Total Companies Tested: 104
 **Top Match**: Volkswagen Group China
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -3075,8 +3061,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Volkswagen Group China | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Volkswagen Group China | 100.0% | PERFECT MATCH... |
 | 2 | Volkswagen China | 99.0% | WORD OVERLAP MATCH... |
 | 3 | VOLKSWAGEN CHINA INVESTMENT COMPANY LTD | 84.5% | WORD OVERLAP MATCH... |
 | 4 | Volkswagen Group Japan | 76.6% | WORD OVERLAP MATCH... |
@@ -3104,7 +3089,7 @@ Total Companies Tested: 104
 **Top Match**: Sun Tx
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -3121,27 +3106,26 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Sun Tx | 100.0% | PERFECT MATCH... |
-| 2 | Sun City Texas | 77.1% | WORD OVERLAP MATCH... |
-| 3 | Standard Sun | 73.7% | WORD OVERLAP MATCH... |
-| 4 | Sun City | 73.5% | WORD OVERLAP MATCH... |
-| 5 | Sun Am | 73.4% | WORD OVERLAP MATCH... |
-| 6 | Sun Outdoors | 73.4% | WORD OVERLAP MATCH... |
-| 7 | sun coast | 73.3% | WORD OVERLAP MATCH... |
-| 8 | Rising Sun | 73.2% | WORD OVERLAP MATCH... |
-| 9 | Sun Com | 73.2% | WORD OVERLAP MATCH... |
-| 10 | Sun Vista | 73.2% | WORD OVERLAP MATCH... |
-| 11 | Sun Space | 72.9% | WORD OVERLAP MATCH... |
-| 12 | New Sun | 72.8% | WORD OVERLAP MATCH... |
-| 13 | Basic Sun | 72.7% | WORD OVERLAP MATCH... |
-| 14 | SUN TRAN | 72.7% | WORD OVERLAP MATCH... |
-| 15 | Sun Corp USA | 72.5% | WORD OVERLAP MATCH... |
-| 16 | Asian Sun | 72.5% | WORD OVERLAP MATCH... |
-| 17 | California Sun | 72.4% | WORD OVERLAP MATCH... |
-| 18 | Sun Coast Marina | 72.4% | WORD OVERLAP MATCH... |
-| 19 | Sun Valley Sunset | 72.4% | WORD OVERLAP MATCH... |
-| 20 | Sun Supply | 72.4% | WORD OVERLAP MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Sun Tx | 100.0% | PERFECT MATCH... |
+| 2 | SUN TRAN | 87.7% | WORD OVERLAP MATCH... |
+| 3 | Sun Trans | 86.9% | WORD OVERLAP MATCH... |
+| 4 | Sun Tan City | 86.3% | WORD OVERLAP MATCH... |
+| 5 | Sun City Texas | 77.1% | WORD OVERLAP MATCH... |
+| 6 | Standard Sun | 73.7% | WORD OVERLAP MATCH... |
+| 7 | Sun City | 73.5% | WORD OVERLAP MATCH... |
+| 8 | Sun Am | 73.4% | WORD OVERLAP MATCH... |
+| 9 | Sun Outdoors | 73.4% | WORD OVERLAP MATCH... |
+| 10 | sun coast | 73.3% | WORD OVERLAP MATCH... |
+| 11 | Rising Sun | 73.2% | WORD OVERLAP MATCH... |
+| 12 | Sun Com | 73.2% | WORD OVERLAP MATCH... |
+| 13 | Sun Vista | 73.2% | WORD OVERLAP MATCH... |
+| 14 | Sun Space | 72.9% | WORD OVERLAP MATCH... |
+| 15 | New Sun | 72.8% | WORD OVERLAP MATCH... |
+| 16 | Basic Sun | 72.7% | WORD OVERLAP MATCH... |
+| 17 | Sun Corp USA | 72.5% | WORD OVERLAP MATCH... |
+| 18 | Asian Sun | 72.5% | WORD OVERLAP MATCH... |
+| 19 | California Sun | 72.4% | WORD OVERLAP MATCH... |
+| 20 | Sun Coast Marina | 72.4% | WORD OVERLAP MATCH... |
 
 ---
 
@@ -3150,7 +3134,7 @@ Total Companies Tested: 104
 **Top Match**: Southern Vermont Deerfield Valley Chamber of commerce
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -3167,8 +3151,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Southern Vermont Deerfield Valley Chamber of commerce | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Southern Vermont Deerfield Valley Chamber of commerce | 100.0% | PERFECT MATCH... |
 | 2 | Deerfield Beach Chamber of Commerce | 66.8% | WORD OVERLAP MATCH... |
 | 3 | Chamber of Commerce Mid-Ohio Valley | 65.8% | WORD OVERLAP MATCH... |
 | 4 | Northwest Valley Chamber of Commerce | 62.3% | WORD OVERLAP MATCH... |
@@ -3193,29 +3176,32 @@ Total Companies Tested: 104
 
 ### 70. DGR Ministries
 
-**Top Match**: DGR Ministries
+**Top Match**: DM
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'DGR Ministries' correctly represents 'DM'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | DGR Ministries | 100.0% | PERFECT MATCH... |
-| 2 | DM | 85.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | DM | 100.0% | ACRONYM MATCH... |
+| 2 | DGR Ministries | 100.0% | PERFECT MATCH... |
 | 3 | DG Ministries | 76.3% | WORD OVERLAP MATCH... |
 | 4 | Power Ministries | 74.5% | WORD OVERLAP MATCH... |
 | 5 | Impact Ministries | 73.5% | WORD OVERLAP MATCH... |
@@ -3242,7 +3228,7 @@ Total Companies Tested: 104
 **Top Match**: Impacto 6
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -3259,8 +3245,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Impacto 6 | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Impacto 6 | 100.0% | PERFECT MATCH... |
 | 2 | Impacto 52 | 83.8% | WORD OVERLAP MATCH... |
 | 3 | Impacto Strategies | 83.4% | WORD OVERLAP MATCH... |
 | 4 | Impacto Vital | 81.2% | WORD OVERLAP MATCH... |
@@ -3288,7 +3273,7 @@ Total Companies Tested: 104
 **Top Match**: Neos Therapeutics, Inc.
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -3305,10 +3290,9 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Neos Therapeutics, Inc. | 100.0% | PERFECT MATCH... |
-| 2 | Neos Therapeutics | 93.7% | WORD OVERLAP MATCH... |
-| 3 | NTI | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Neos Therapeutics, Inc. | 100.0% | PERFECT MATCH... |
+| 2 | NTI | 96.4% | ACRONYM MATCH... |
+| 3 | Neos Therapeutics | 93.7% | WORD OVERLAP MATCH... |
 | 4 | Neos Therapeutics LP | 85.2% | WORD OVERLAP MATCH... |
 | 5 | Neogene Therapeutics, Inc. | 76.9% | WORD OVERLAP MATCH... |
 | 6 | Neogene Therapeutics | 74.0% | LINGUISTIC MATCH... |
@@ -3334,7 +3318,7 @@ Total Companies Tested: 104
 **Top Match**: International Tax Institute
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -3351,12 +3335,11 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | International Tax Institute | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | International Tax Institute | 100.0% | PERFECT MATCH... |
 | 2 | INTERNATIONAL TAX INSTITUTE INC | 97.7% | PREFIX MATCH... |
-| 3 | International Property Tax Institute | 93.0% | ALL WORDS MATCHED... |
-| 4 | International Tax & Auditing Institute | 93.0% | ALL WORDS MATCHED... |
-| 5 | ITI | 92.0% | ACRONYM MATCH... |
+| 3 | ITI | 96.4% | ACRONYM MATCH... |
+| 4 | International Property Tax Institute | 93.0% | ALL WORDS MATCHED... |
+| 5 | International Tax & Auditing Institute | 93.0% | ALL WORDS MATCHED... |
 | 6 | National Tax Institute | 90.4% | WORD OVERLAP MATCH... |
 | 7 | Professional Tax Institute | 87.4% | WORD OVERLAP MATCH... |
 | 8 | Tax Research Institute | 87.1% | WORD OVERLAP MATCH... |
@@ -3380,7 +3363,7 @@ Total Companies Tested: 104
 **Top Match**: Mitsubishi M501G
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -3397,8 +3380,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Mitsubishi M501G | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Mitsubishi M501G | 100.0% | PERFECT MATCH... |
 | 2 | NEC Mitsubishi | 78.1% | WORD OVERLAP MATCH... |
 | 3 | Mitsubishi Power | 77.9% | WORD OVERLAP MATCH... |
 | 4 | Mitsubishi Motors | 77.9% | WORD OVERLAP MATCH... |
@@ -3426,7 +3408,7 @@ Total Companies Tested: 104
 **Top Match**: Huskies Sports
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -3443,8 +3425,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Huskies Sports | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Huskies Sports | 100.0% | PERFECT MATCH... |
 | 2 | Huskies Basketball | 77.1% | WORD OVERLAP MATCH... |
 | 3 | Miami Huskies | 75.9% | WORD OVERLAP MATCH... |
 | 4 | Mass Huskies | 75.6% | WORD OVERLAP MATCH... |
@@ -3472,7 +3453,7 @@ Total Companies Tested: 104
 **Top Match**: Acacia Pharma Group Inc.
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -3489,8 +3470,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Acacia Pharma Group Inc. | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Acacia Pharma Group Inc. | 100.0% | PERFECT MATCH... |
 | 2 | ACACIA PHARMA, Inc. | 94.1% | WORD OVERLAP MATCH... |
 | 3 | Acacia Pharma | 92.2% | WORD OVERLAP MATCH... |
 | 4 | Acacia Pharma Ltd | 91.7% | WORD OVERLAP MATCH... |
@@ -3518,7 +3498,7 @@ Total Companies Tested: 104
 **Top Match**: Acumatica Summit 2017 Z7NWPDKS625
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -3535,8 +3515,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Acumatica Summit 2017 Z7NWPDKS625 | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Acumatica Summit 2017 Z7NWPDKS625 | 100.0% | PERFECT MATCH... |
 | 2 | Acumatica User Group Southeast | 52.8% | WORD OVERLAP MATCH... |
 | 3 | Contact Center Compliance Summit | 51.7% | WORD OVERLAP MATCH... |
 | 4 | Acumatica Asia | 50.3% | WORD OVERLAP MATCH... |
@@ -3561,29 +3540,32 @@ Total Companies Tested: 104
 
 ### 78. Linklaters CIS
 
-**Top Match**: Linklaters CIS
+**Top Match**: LC
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'Linklaters CIS' correctly represents 'LC'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Linklaters CIS | 100.0% | PERFECT MATCH... |
-| 2 | LC | 85.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | LC | 100.0% | ACRONYM MATCH... |
+| 2 | Linklaters CIS | 100.0% | PERFECT MATCH... |
 | 3 | CIS Partners | 76.2% | WORD OVERLAP MATCH... |
 | 4 | Cis GmbH | 75.8% | WORD OVERLAP MATCH... |
 | 5 | One Cis | 75.7% | WORD OVERLAP MATCH... |
@@ -3610,7 +3592,7 @@ Total Companies Tested: 104
 **Top Match**: Christian Girls Family Ministry
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -3627,8 +3609,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Christian Girls Family Ministry | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Christian Girls Family Ministry | 100.0% | PERFECT MATCH... |
 | 2 | Christian Girls Family Ministry Training | 88.4% | PREFIX MATCH... |
 | 3 | Christian Faith Fellowship Couples Ministry | 74.5% | WORD OVERLAP MATCH... |
 | 4 | Christian Family Fellowship Church | 74.5% | WORD OVERLAP MATCH... |
@@ -3653,29 +3634,32 @@ Total Companies Tested: 104
 
 ### 80. Alosa Foundation
 
-**Top Match**: Alosa Foundation
+**Top Match**: AF
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'Alosa Foundation' correctly represents 'AF'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Alosa Foundation | 100.0% | PERFECT MATCH... |
-| 2 | AF | 85.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | AF | 100.0% | ACRONYM MATCH... |
+| 2 | Alosa Foundation | 100.0% | PERFECT MATCH... |
 | 3 | Formosa Foundation | 70.5% | WORD OVERLAP MATCH... |
 | 4 | CL Foundation | 66.4% | WORD OVERLAP MATCH... |
 | 5 | CAP Foundation | 66.1% | WORD OVERLAP MATCH... |
@@ -3702,7 +3686,7 @@ Total Companies Tested: 104
 **Top Match**: La Chaine des Rotisseurs Wine Club of Newport Beach
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -3719,8 +3703,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | La Chaine des Rotisseurs Wine Club of Newport Beach | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | La Chaine des Rotisseurs Wine Club of Newport Beach | 100.0% | PERFECT MATCH... |
 | 2 | La Chaine des Rotisseurs Wine Club of Ne | 82.6% | WORD OVERLAP MATCH... |
 | 3 | Newport Beach Wine Festival | 52.8% | WORD OVERLAP MATCH... |
 | 4 | Southern Trace Wine Club | 49.1% | WORD OVERLAP MATCH... |
@@ -3748,7 +3731,7 @@ Total Companies Tested: 104
 **Top Match**: Sumner & Ryan, LLC
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -3765,8 +3748,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Sumner & Ryan, LLC | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Sumner & Ryan, LLC | 100.0% | PERFECT MATCH... |
 | 2 | Miller Ryan LLC | 77.2% | WORD OVERLAP MATCH... |
 | 3 | Ryan Moving LLC | 77.1% | WORD OVERLAP MATCH... |
 | 4 | Ryan Companies | 76.4% | LINGUISTIC MATCH... |
@@ -3794,7 +3776,7 @@ Total Companies Tested: 104
 **Top Match**: Tilt Creative & Production
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -3811,8 +3793,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Tilt Creative & Production | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Tilt Creative & Production | 100.0% | PERFECT MATCH... |
 | 2 | Tilt Creative + Production | 95.1% | WORD OVERLAP MATCH... |
 | 3 | Creative Production Design | 79.8% | WORD OVERLAP MATCH... |
 | 4 | Creative Production Incentives | 77.1% | WORD OVERLAP MATCH... |
@@ -3840,7 +3821,7 @@ Total Companies Tested: 104
 **Top Match**: Cerberus Capital
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -3857,8 +3838,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Cerberus Capital | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Cerberus Capital | 100.0% | PERFECT MATCH... |
 | 2 | Cerberus Capital Management | 90.2% | PREFIX MATCH... |
 | 3 | Cerberus Capital Management L | 88.0% | PREFIX MATCH... |
 | 4 | Cerberus Capital Management LP | 87.4% | PREFIX MATCH... |
@@ -3886,7 +3866,7 @@ Total Companies Tested: 104
 **Top Match**: Institute of Health Technology Transformation
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -3903,11 +3883,10 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Institute of Health Technology Transformation | 100.0% | PERFECT MATCH... |
-| 2 | Institute for Health Technology Transformation | 95.8% | WORD OVERLAP MATCH... |
-| 3 | INSTITUTE FOR HEALTH & TECHNOLOGY TRANSFORMATION | 93.0% | WORD OVERLAP MATCH... |
-| 4 | IHTT | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Institute of Health Technology Transformation | 100.0% | PERFECT MATCH... |
+| 2 | IHTT | 96.4% | ACRONYM MATCH... |
+| 3 | Institute for Health Technology Transformation | 95.8% | WORD OVERLAP MATCH... |
+| 4 | INSTITUTE FOR HEALTH & TECHNOLOGY TRANSFORMATION | 93.0% | WORD OVERLAP MATCH... |
 | 5 | Health Science Technology Education | 77.3% | WORD OVERLAP MATCH... |
 | 6 | Achieve Health Care Technology | 75.7% | WORD OVERLAP MATCH... |
 | 7 | Technology Health Experience | 72.8% | WORD OVERLAP MATCH... |
@@ -3929,30 +3908,33 @@ Total Companies Tested: 104
 
 ### 86. The Jones Assembly
 
-**Top Match**: The Jones Assembly
+**Top Match**: JA
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'The Jones Assembly' correctly represents 'JA'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | The Jones Assembly | 100.0% | PERFECT MATCH... |
-| 2 | The Jones Assembly Presents | 87.8% | PREFIX MATCH... |
-| 3 | JA | 85.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | JA | 100.0% | ACRONYM MATCH... |
+| 2 | The Jones Assembly | 100.0% | PERFECT MATCH... |
+| 3 | The Jones Assembly Presents | 87.8% | PREFIX MATCH... |
 | 4 | General Assembly | 74.4% | WORD OVERLAP MATCH... |
 | 5 | 1st Assembly | 74.3% | WORD OVERLAP MATCH... |
 | 6 | Bill Jones | 74.1% | WORD OVERLAP MATCH... |
@@ -3978,7 +3960,7 @@ Total Companies Tested: 104
 **Top Match**: American Black Film Insitutute
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -3995,8 +3977,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | American Black Film Insitutute | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | American Black Film Insitutute | 100.0% | PERFECT MATCH... |
 | 2 | American Black Film Festival | 81.6% | WORD OVERLAP MATCH... |
 | 3 | American Black Film Festival Ventures | 80.2% | WORD OVERLAP MATCH... |
 | 4 | Black Women Film Preservation | 74.0% | WORD OVERLAP MATCH... |
@@ -4021,38 +4002,41 @@ Total Companies Tested: 104
 
 ### 88. Berk Tek
 
-**Top Match**: Berk Tek
+**Top Match**: BT
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'Berk Tek' correctly represents 'BT'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Berk Tek | 100.0% | PERFECT MATCH... |
-| 2 | Berk-Tek | 89.4% | LINGUISTIC MATCH... |
-| 3 | BT | 85.0% | ACRONYM MATCH... |
-| 4 | Berk Tek / Leviton | 82.8% | PREFIX MATCH... |
-| 5 | Berk Tck | 74.6% | WORD OVERLAP MATCH... |
-| 6 | Berk Technologies | 73.3% | WORD OVERLAP MATCH... |
-| 7 | TEK Source | 73.2% | WORD OVERLAP MATCH... |
-| 8 | World Tek | 72.3% | WORD OVERLAP MATCH... |
-| 9 | Tek Travel | 71.8% | WORD OVERLAP MATCH... |
-| 10 | New Tek | 71.5% | WORD OVERLAP MATCH... |
-| 11 | Paul Berk Travel | 71.2% | WORD OVERLAP MATCH... |
+|------|--------------|-------|-----------|\n| 1 | BT | 100.0% | ACRONYM MATCH... |
+| 2 | Berk Tek | 100.0% | PERFECT MATCH... |
+| 3 | Berk-Tek | 100.0% | LINGUISTIC MATCH... |
+| 4 | Berk Tek / Leviton | 97.0% | PREFIX MATCH... |
+| 5 | Berk Tck | 89.6% | WORD OVERLAP MATCH... |
+| 6 | Berk Technologies | 88.3% | WORD OVERLAP MATCH... |
+| 7 | Paul Berk Travel | 84.7% | WORD OVERLAP MATCH... |
+| 8 | TEK Source | 73.2% | WORD OVERLAP MATCH... |
+| 9 | World Tek | 72.3% | WORD OVERLAP MATCH... |
+| 10 | Tek Travel | 71.8% | WORD OVERLAP MATCH... |
+| 11 | New Tek | 71.5% | WORD OVERLAP MATCH... |
 | 12 | Tek Systems | 71.2% | WORD OVERLAP MATCH... |
 | 13 | Berk Communications | 71.1% | WORD OVERLAP MATCH... |
 | 14 | Tek Interests | 71.1% | WORD OVERLAP MATCH... |
@@ -4070,7 +4054,7 @@ Total Companies Tested: 104
 **Top Match**: Northbridge Travel
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -4087,9 +4071,8 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Northbridge Travel | 100.0% | PERFECT MATCH... |
-| 2 | NT | 85.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Northbridge Travel | 100.0% | PERFECT MATCH... |
+| 2 | NT | 96.4% | ACRONYM MATCH... |
 | 3 | Northbridge Communities | 77.2% | WORD OVERLAP MATCH... |
 | 4 | Bridge Travel | 77.2% | WORD OVERLAP MATCH... |
 | 5 | WestBridge Travel | 77.1% | WORD OVERLAP MATCH... |
@@ -4113,29 +4096,32 @@ Total Companies Tested: 104
 
 ### 90. Kohler 2024
 
-**Top Match**: Kohler 2024
+**Top Match**: K2
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'Kohler 2024' correctly represents 'K2'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Kohler 2024 | 100.0% | PERFECT MATCH... |
-| 2 | K2 | 85.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | K2 | 100.0% | ACRONYM MATCH... |
+| 2 | Kohler 2024 | 100.0% | PERFECT MATCH... |
 | 3 | Destination Kohler | 81.4% | WORD OVERLAP MATCH... |
 | 4 | Kohler Distributing | 81.4% | WORD OVERLAP MATCH... |
 | 5 | Kohler Fixtures | 80.4% | WORD OVERLAP MATCH... |
@@ -4162,7 +4148,7 @@ Total Companies Tested: 104
 **Top Match**: Louisiana State University Swim
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -4179,9 +4165,8 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Louisiana State University Swim | 100.0% | PERFECT MATCH... |
-| 2 | LSUS | 92.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Louisiana State University Swim | 100.0% | PERFECT MATCH... |
+| 2 | LSUS | 96.4% | ACRONYM MATCH... |
 | 3 | Louisiana State Univ Swim | 88.4% | WORD OVERLAP MATCH... |
 | 4 | LOUISIANA STATE UNIVERSITY ATHLETICS | 80.2% | WORD OVERLAP MATCH... |
 | 5 | Louisiana State University USA | 80.1% | WORD OVERLAP MATCH... |
@@ -4208,7 +4193,7 @@ Total Companies Tested: 104
 **Top Match**: X DO NOT USE - FRANCIS PARKER SCHOOL
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -4225,8 +4210,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | X DO NOT USE - FRANCIS PARKER SCHOOL | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | X DO NOT USE - FRANCIS PARKER SCHOOL | 100.0% | PERFECT MATCH... |
 | 2 | Francis Parker School | 65.2% | WORD OVERLAP MATCH... |
 | 3 | Francis Parker School English Department | 58.6% | WORD OVERLAP MATCH... |
 | 4 | Francis Parker School of San Diego | 57.9% | WORD OVERLAP MATCH... |
@@ -4254,7 +4238,7 @@ Total Companies Tested: 104
 **Top Match**: Mitsubishi Motor Sales of America, Incorporated
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -4271,8 +4255,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Mitsubishi Motor Sales of America, Incorporated | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Mitsubishi Motor Sales of America, Incorporated | 100.0% | PERFECT MATCH... |
 | 2 | Mitsubishi Motor Sales of America | 97.7% | WORD OVERLAP MATCH... |
 | 3 | Mitsubishi Electronic Sales America | 85.4% | WORD OVERLAP MATCH... |
 | 4 | Mitsubishi Motors Sales of America | 85.4% | WORD OVERLAP MATCH... |
@@ -4300,7 +4283,7 @@ Total Companies Tested: 104
 **Top Match**: Energy Distribution Partners Holdings'
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -4317,8 +4300,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Energy Distribution Partners Holdings' | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Energy Distribution Partners Holdings' | 100.0% | PERFECT MATCH... |
 | 2 | Energy Distribution Partners | 80.5% | WORD OVERLAP MATCH... |
 | 3 | Energy Distribution Partners Holdings L.P. | 80.3% | WORD OVERLAP MATCH... |
 | 4 | Energy Products Distribution | 71.6% | WORD OVERLAP MATCH... |
@@ -4346,7 +4328,7 @@ Total Companies Tested: 104
 **Top Match**: ThinkAdvisor
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -4363,8 +4345,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | ThinkAdvisor | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | ThinkAdvisor | 100.0% | PERFECT MATCH... |
 | 2 | Planadvisor | 46.5% | SEMANTIC MATCH (Score: 0.46)... |
 | 3 | TRIPADVISOR | 45.7% | SEMANTIC MATCH (Score: 0.46)... |
 | 4 | NeXtAdvisors | 45.3% | SEMANTIC MATCH (Score: 0.45)... |
@@ -4392,7 +4373,7 @@ Total Companies Tested: 104
 **Top Match**: Jump on it Outreach
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -4409,8 +4390,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Jump on it Outreach | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Jump on it Outreach | 100.0% | PERFECT MATCH... |
 | 2 | Air Force Outreach Program | 60.7% | WORD OVERLAP MATCH... |
 | 3 | Above N Beyond Outreach | 60.7% | WORD OVERLAP MATCH... |
 | 4 | Outreach | 59.8% | WORD OVERLAP MATCH... |
@@ -4438,7 +4418,7 @@ Total Companies Tested: 104
 **Top Match**: The Association of Ringside Consultants (ARC)
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -4455,8 +4435,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | The Association of Ringside Consultants (ARC) | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | The Association of Ringside Consultants (ARC) | 100.0% | PERFECT MATCH... |
 | 2 | Association of Ringside Physicians | 69.0% | WORD OVERLAP MATCH... |
 | 3 | Ringside | 56.4% | WORD OVERLAP MATCH... |
 | 4 | Arc-Consultants | 54.6% | LINGUISTIC MATCH... |
@@ -4481,29 +4460,32 @@ Total Companies Tested: 104
 
 ### 98. SFA HASA
 
-**Top Match**: SFA HASA
+**Top Match**: SH
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
-  > PERFECT MATCH
+- **Top Match Rationale**:
+  > ACRONYM MATCH
   > 
   > **What This Means:**
-  > This is exactly the same company name you're looking for.
+  > The system identified a direct link between an exact acronym and its full company name.
+  > 
+  > **Match Type:**
+  > • Acronym Reverse
+  > 
+  > **Score Breakdown:**
+  > • Expansion Quality: 0.00
+  > • Lexical match: 1.00
+  > • Semantic link: 1.0000
   > 
   > **Action Required:**
-  > • Use this match - no further checking needed
-  > • This is 100% the same company
-  > 
-  > **Why This Happens:**
-  > • Someone entered the company name name exactly as it appears in your system
-  > • This is the ideal scenario for data entry
+  > • Verify if the acronym 'SFA HASA' correctly represents 'SH'
+  > • Expansion quality is moderate
 
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | SFA HASA | 100.0% | PERFECT MATCH... |
-| 2 | SH | 85.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | SH | 100.0% | ACRONYM MATCH... |
+| 2 | SFA HASA | 100.0% | PERFECT MATCH... |
 | 3 | SFA Companies | 77.6% | WORD OVERLAP MATCH... |
 | 4 | SFA Leads | 77.3% | WORD OVERLAP MATCH... |
 | 5 | Sfa Charter | 76.4% | WORD OVERLAP MATCH... |
@@ -4530,7 +4512,7 @@ Total Companies Tested: 104
 **Top Match**: Grupo Duracell Ene 2025
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -4547,8 +4529,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | Grupo Duracell Ene 2025 | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | Grupo Duracell Ene 2025 | 100.0% | PERFECT MATCH... |
 | 2 | Grupo GT5 Brasil | 50.6% | WORD OVERLAP MATCH... |
 | 3 | Duracell Research Development | 50.2% | WORD OVERLAP MATCH... |
 | 4 | Grupo Brasil DPE | 50.1% | WORD OVERLAP MATCH... |
@@ -4576,7 +4557,7 @@ Total Companies Tested: 104
 **Top Match**: World Association of Medical Law
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -4593,8 +4574,7 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | World Association of Medical Law | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | World Association of Medical Law | 100.0% | PERFECT MATCH... |
 | 2 | World Association for Medical Law | 96.5% | WORD OVERLAP MATCH... |
 | 3 | World Medical Association | 78.1% | WORD OVERLAP MATCH... |
 | 4 | International Law Association | 70.1% | WORD OVERLAP MATCH... |
@@ -4622,7 +4602,7 @@ Total Companies Tested: 104
 **Top Match**: ABA
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -4639,27 +4619,26 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | ABA | 100.0% | PERFECT MATCH... |
-| 2 | AMERICAN BAR ASSOCATION | 95.0% | ACRONYM MATCH... |
-| 3 | American Baptish Association | 95.0% | ACRONYM MATCH... |
-| 4 | American Board ABDA/ADMPP | 95.0% | ACRONYM MATCH... |
-| 5 | Amer Beauty Assn | 95.0% | ACRONYM MATCH... |
-| 6 | American Bar Association | 95.0% | ACRONYM MATCH... |
-| 7 | Aitaneet Brotherhood Association | 95.0% | ACRONYM MATCH... |
-| 8 | Austin Bellydance Association | 95.0% | ACRONYM MATCH... |
-| 9 | American Business Association | 95.0% | ACRONYM MATCH... |
-| 10 | Austin Baptist Association | 95.0% | ACRONYM MATCH... |
-| 11 | Academy of Business Administration | 95.0% | ACRONYM MATCH... |
-| 12 | Ashleigh's BT account | 95.0% | ACRONYM MATCH... |
-| 13 | Arthur Bell and Associates | 95.0% | ACRONYM MATCH... |
-| 14 | Advisory Board Architects | 95.0% | ACRONYM MATCH... |
-| 15 | American Banking Association | 95.0% | ACRONYM MATCH... |
-| 16 | American Bakers Associaion | 95.0% | ACRONYM MATCH... |
-| 17 | The American Business Awards | 95.0% | ACRONYM MATCH... |
-| 18 | The Alabama Bankers Association | 95.0% | ACRONYM MATCH... |
-| 19 | ACL Business Assurance | 95.0% | ACRONYM MATCH... |
-| 20 | Agent Benefits Association | 95.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | ABA | 100.0% | PERFECT MATCH... |
+| 2 | AMER BRIDGE ASSN | 97.8% | ACRONYM MATCH... |
+| 3 | Am Bridge Assn | 97.8% | ACRONYM MATCH... |
+| 4 | Arrowood Business Association | 97.7% | ACRONYM MATCH... |
+| 5 | AZ Business Assn | 97.7% | ACRONYM MATCH... |
+| 6 | ACL Business Assurance | 97.6% | ACRONYM MATCH... |
+| 7 | AG Bell Association | 97.6% | ACRONYM MATCH... |
+| 8 | A Brodi Abroad | 97.6% | ACRONYM MATCH... |
+| 9 | Aprende Business Academy | 97.6% | ACRONYM MATCH... |
+| 10 | Amcol Bio Ag | 97.6% | ACRONYM MATCH... |
+| 11 | Ancienne Belgique - AB | 97.6% | ACRONYM MATCH... |
+| 12 | Andreini Benefit Advantage | 97.6% | ACRONYM MATCH... |
+| 13 | Anderson Brule Architects | 97.5% | ACRONYM MATCH... |
+| 14 | Am Business Advantage | 97.5% | ACRONYM MATCH... |
+| 15 | Active Biotech AB | 97.5% | ACRONYM MATCH... |
+| 16 | Anderson Business Advisors | 97.5% | ACRONYM MATCH... |
+| 17 | Arthur Bell and Associates | 97.5% | ACRONYM MATCH... |
+| 18 | Am Bus Assn | 97.5% | ACRONYM MATCH... |
+| 19 | Argent Bridge Advisors | 97.5% | ACRONYM MATCH... |
+| 20 | Acumen Benefit Advisors | 97.5% | ACRONYM MATCH... |
 
 ---
 
@@ -4668,7 +4647,7 @@ Total Companies Tested: 104
 **Top Match**: PDMA
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -4685,15 +4664,14 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | PDMA | 100.0% | PERFECT MATCH... |
-| 2 | PRODUCT DEVEL MGMT ASSN | 95.0% | ACRONYM MATCH... |
-| 3 | PRA Destination Management Atlanta | 95.0% | ACRONYM MATCH... |
-| 4 | Producttank Des Moines Ames | 95.0% | ACRONYM MATCH... |
-| 5 | Penn Dental Medicine Alumni | 95.0% | ACRONYM MATCH... |
-| 6 | Prescription Drug Marketing Act | 95.0% | ACRONYM MATCH... |
-| 7 | Public Debt Management Agency | 95.0% | ACRONYM MATCH... |
-| 8 | Product Development Management Association | 95.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | PDMA | 100.0% | PERFECT MATCH... |
+| 2 | Prescription Drug Marketing Act | 94.0% | ACRONYM MATCH... |
+| 3 | Public Debt Management Agency | 93.9% | ACRONYM MATCH... |
+| 4 | Product Development Management Association | 93.8% | ACRONYM MATCH... |
+| 5 | PRA Destination Management Atlanta | 93.6% | ACRONYM MATCH... |
+| 6 | Penn Dental Medicine Alumni | 93.5% | ACRONYM MATCH... |
+| 7 | PRODUCT DEVEL MGMT ASSN | 93.4% | ACRONYM MATCH... |
+| 8 | Producttank Des Moines Ames | 93.4% | ACRONYM MATCH... |
 | 9 | PDMA inc | 89.0% | PREFIX MATCH... |
 | 10 | PDMA Association | 88.9% | PREFIX MATCH... |
 | 11 | PDMA Corporation | 88.5% | PREFIX MATCH... |
@@ -4714,7 +4692,7 @@ Total Companies Tested: 104
 **Top Match**: IBM
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -4731,27 +4709,26 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | IBM | 100.0% | PERFECT MATCH... |
+|------|--------------|-------|-----------|\n| 1 | IBM | 100.0% | PERFECT MATCH... |
 | 2 | IBM | 100.0% | PERFECT MATCH... |
-| 3 | IPAC Board Meeting | 95.0% | ACRONYM MATCH... |
-| 4 | IAGD Board Meeting | 95.0% | ACRONYM MATCH... |
-| 5 | Inabinet's Bat Mitzvah | 95.0% | ACRONYM MATCH... |
-| 6 | Indianapolis Blogger Meetup | 95.0% | ACRONYM MATCH... |
-| 7 | Improper Bostonian Magazine | 95.0% | ACRONYM MATCH... |
-| 8 | Iberia Bank Mortgage | 95.0% | ACRONYM MATCH... |
-| 9 | International Brotherhood of Magicians | 95.0% | ACRONYM MATCH... |
-| 10 | International Brotherhood of Magicians - | 95.0% | ACRONYM MATCH... |
-| 11 | International Business Machine | 95.0% | ACRONYM MATCH... |
-| 12 | International Breakthrough Ministries | 95.0% | ACRONYM MATCH... |
-| 13 | Inner Balance Meditation | 95.0% | ACRONYM MATCH... |
-| 14 | Inquiry-Bar/Bat Mitzvahs | 95.0% | ACRONYM MATCH... |
-| 15 | International Bowling Museum | 95.0% | ACRONYM MATCH... |
-| 16 | International Business Machin | 95.0% | ACRONYM MATCH... |
-| 17 | Integral Blue Meeting | 95.0% | ACRONYM MATCH... |
-| 18 | ION Beam Milling | 95.0% | ACRONYM MATCH... |
-| 19 | The International Bank of Miami | 95.0% | ACRONYM MATCH... |
-| 20 | I Believe Ministries | 95.0% | ACRONYM MATCH... |
+| 3 | International Business Machines | 98.3% | ACRONYM MATCH... |
+| 4 | International Business Machine | 98.3% | ACRONYM MATCH... |
+| 5 | Intel Board Meeting | 98.1% | ACRONYM MATCH... |
+| 6 | intechRx Business Meeting | 97.9% | ACRONYM MATCH... |
+| 7 | International Boiler Makers | 97.8% | ACRONYM MATCH... |
+| 8 | Innovation Business Media | 97.8% | ACRONYM MATCH... |
+| 9 | INTERNATIONAL BUSINESS MACH | 97.7% | ACRONYM MATCH... |
+| 10 | International Business Management | 97.7% | ACRONYM MATCH... |
+| 11 | Internet Business Mastery | 97.7% | ACRONYM MATCH... |
+| 12 | Italian Business Mission | 97.7% | ACRONYM MATCH... |
+| 13 | ISO BRAND MARKETING | 97.7% | ACRONYM MATCH... |
+| 14 | Inspired Business Media | 97.7% | ACRONYM MATCH... |
+| 15 | Integral Blue Meeting | 97.7% | ACRONYM MATCH... |
+| 16 | International Business Machin | 97.7% | ACRONYM MATCH... |
+| 17 | ISSA BOSS MOVE | 97.7% | ACRONYM MATCH... |
+| 18 | Irene Bell Ministries | 97.6% | ACRONYM MATCH... |
+| 19 | International Breakthrough Ministries | 97.6% | ACRONYM MATCH... |
+| 20 | Incisive Business Media | 97.6% | ACRONYM MATCH... |
 
 ---
 
@@ -4760,7 +4737,7 @@ Total Companies Tested: 104
 **Top Match**: GE
 
 - **Final Score**: 1.0000 (100.0%) 
-- **Rationale**:
+- **Top Match Rationale**:
   > PERFECT MATCH
   > 
   > **What This Means:**
@@ -4777,27 +4754,26 @@ Total Companies Tested: 104
 **Top 20 Matches:**
 
 | Rank | Company Name | Score | Rationale |
-|------|--------------|-------|-----------|
-| 1 | GE | 100.0% | PERFECT MATCH... |
-| 2 | GE EAGLES | 95.0% | ACRONYM MATCH... |
-| 3 | Grand Edventures | 95.0% | ACRONYM MATCH... |
-| 4 | GSP Events | 95.0% | ACRONYM MATCH... |
-| 5 | Greg Economou | 95.0% | ACRONYM MATCH... |
-| 6 | Glass Emporium | 95.0% | ACRONYM MATCH... |
-| 7 | Government Executive | 95.0% | ACRONYM MATCH... |
-| 8 | Gretzula Events | 95.0% | ACRONYM MATCH... |
-| 9 | Grupo Encina | 95.0% | ACRONYM MATCH... |
-| 10 | Gatsby Entertainment | 95.0% | ACRONYM MATCH... |
-| 11 | Gaynor Energy | 95.0% | ACRONYM MATCH... |
-| 12 | Gecko Electronics | 95.0% | ACRONYM MATCH... |
-| 13 | GGJ Engineers | 95.0% | ACRONYM MATCH... |
-| 14 | GT ENT | 95.0% | ACRONYM MATCH... |
-| 15 | Global Eventos | 95.0% | ACRONYM MATCH... |
-| 16 | GUSI event | 95.0% | ACRONYM MATCH... |
-| 17 | Gosling's Export | 95.0% | ACRONYM MATCH... |
-| 18 | Grupo Erictel | 95.0% | ACRONYM MATCH... |
-| 19 | Gold Entertainment | 95.0% | ACRONYM MATCH... |
-| 20 | Global Ent. | 95.0% | ACRONYM MATCH... |
+|------|--------------|-------|-----------|\n| 1 | GE | 100.0% | PERFECT MATCH... |
+| 2 | GMG Education | 98.0% | ACRONYM MATCH... |
+| 3 | Gaia Experience | 97.9% | ACRONYM MATCH... |
+| 4 | Gould Evans | 97.9% | ACRONYM MATCH... |
+| 5 | GAD e.G. | 97.9% | ACRONYM MATCH... |
+| 6 | GU Energy | 97.9% | ACRONYM MATCH... |
+| 7 | G+G Enterprises | 97.9% | ACRONYM MATCH... |
+| 8 | G&G Enterprises | 97.9% | ACRONYM MATCH... |
+| 9 | Gud Energy | 97.9% | ACRONYM MATCH... |
+| 10 | G E | 97.9% | ACRONYM MATCH... |
+| 11 | Guardian Education | 97.9% | ACRONYM MATCH... |
+| 12 | Grupo EP&A | 97.9% | ACRONYM MATCH... |
+| 13 | Girard Elementary | 97.9% | ACRONYM MATCH... |
+| 14 | Govbr Educacional | 97.9% | ACRONYM MATCH... |
+| 15 | G.U.M.B.O Enterprises | 97.9% | ACRONYM MATCH... |
+| 16 | G&S Enterprises | 97.9% | ACRONYM MATCH... |
+| 17 | Gurtz Electric | 97.8% | ACRONYM MATCH... |
+| 18 | GRUPO ESG | 97.8% | ACRONYM MATCH... |
+| 19 | Giana Entertainment | 97.8% | ACRONYM MATCH... |
+| 20 | Grupo EEAG | 97.8% | ACRONYM MATCH... |
 
 ---
 

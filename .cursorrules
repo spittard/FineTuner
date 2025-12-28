@@ -1,0 +1,27 @@
+# Cursor Rules for FineTuner
+
+## Project Architecture
+- **Language**: Python 3.x
+- **Core Package**: `finetuner` (located in `src/`)
+- **Key Modules**:
+  - `CompanyMatcher`: Hybrid matching logic (`src/finetuner/core/matcher.py`).
+  - `TextPreprocessor`: Text cleaning and scoring metrics (`src/finetuner/utils/text_preprocessor.py`).
+  - `RationaleService`: Explains WHY a match happened (`src/finetuner/web/services/rationale_service.py`).
+
+## Coding Standards
+- **Imports**: Always use absolute imports like `from finetuner.core.matcher import CompanyMatcher`.
+- **Packaging**: Keep code within the `src/` directory. Useroot scripts only for entry points.
+- **Documentation**: Maintain the detailed rationales in `CompanyMatcher`. If you add a new penalty or score component, ensure it is reflected in the `RationaleService`.
+
+## Testing & Verification
+- **Control Set**: Always verify changes against the control set using `python tests/verify_control_set.py`.
+- **Performance**: Be mindful of performance. The dataset is 2.9M+ companies. Avoid loops over the entire dataset; use FAISS and precomputed caches where possible.
+- **Caching**: The `CompanyMatcher` uses a `CACHE_VERSION`. If you make a breaking change to the indexing logic, increment `CACHE_VERSION` in `matcher.py`.
+
+## Agent Workflows
+Use the following slash commands for common tasks:
+- `/verify`: Run the control set verification.
+- `/debug`: Interactively test a match.
+- `/clear-cache`: Wipe the embedding cache.
+
+Refer to `.agent/context.md` for more details.

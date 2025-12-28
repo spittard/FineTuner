@@ -60,7 +60,9 @@ class FineTuner:
                  max_seq_length=2048,
                  dtype=None,
                  load_in_4bit=True,
-                 device="cpu"):
+                 device="cpu",
+                 instruction_prompt="What is the company name?",
+                 system_prompt="You are a helpful assistant that identifies company names."):
         if not ML_DEPENDENCIES_AVAILABLE:
             raise ImportError("ML dependencies not available. Please install torch, transformers, and datasets.")
         
@@ -73,6 +75,8 @@ class FineTuner:
         self.dtype = dtype
         self.load_in_4bit = load_in_4bit
         self.device = device
+        self.instruction_prompt = instruction_prompt
+        self.system_prompt = system_prompt
         self.model = None
         self.tokenizer = None
         
@@ -129,8 +133,9 @@ class FineTuner:
             for item in data:
                 company_name = item.get("Company Name", "")
                 formatted_data.append({
-                    "prompt": "What is the company name?",
-                    "completion": company_name
+                    "instruction": self.system_prompt,
+                    "input": self.instruction_prompt,
+                    "output": company_name
                 })
             return Dataset.from_list(formatted_data)
         else:
@@ -141,10 +146,11 @@ class FineTuner:
                 # Create a simple text format for training, limit length
                 if len(company_name) > 100:  # Limit very long names
                     company_name = company_name[:100]
-                text = f"Company Name: {company_name}"
+                text = f"{self.instruction_prompt} {company_name}"
                 formatted_data.append({"text": text})
             
             # Create dataset
+            from datasets import Dataset
             dataset = Dataset.from_list(formatted_data)
             
             # Simple tokenization without labels - let the data collator handle everything

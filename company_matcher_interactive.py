@@ -7,7 +7,11 @@ Direct interactive mode for CompanyMatcher - keeps cache loaded for multiple que
 import json
 import os
 import sys
-from CompanyMatcher import CompanyMatcher
+
+# Add src to python path to access finetuner package
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'src')))
+
+from finetuner.core.matcher import CompanyMatcher
 
 def load_company_names(dataset_path):
     """Load company names from JSON dataset"""
