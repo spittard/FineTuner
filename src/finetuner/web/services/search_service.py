@@ -39,25 +39,35 @@ class SearchService:
         self._loading = False
         self._initialized = True
         
-    def load_company_data(self, force_reload=False):
+    def load_company_data(self, force_reload=False, model_name='paraphrase-MiniLM-L3-v2', filename=None):
         """Load company data and initialize the matcher"""
+        
+        # If no filename provided, try to find the best available file
+        if filename is None:
+            if os.path.exists('companies_with_location.json'):
+                filename = 'companies_with_location.json'
+            else:
+                filename = 'companies.json'
         
         # Early return if data is already loaded and we don't need to force reload
         if not force_reload and self.company_data_loaded and self.matcher is not None:
-            return True
+            # If current model matches requested model, we're good
+            if self.matcher.model_name == model_name:
+                return True
         
         current_time = time.time()
         
         # Prevent multiple rapid calls to this function
         if not force_reload and self.company_data_loaded and self.matcher is not None:
-            # Check if companies.json has been modified
-            if current_time - self.last_data_check < self.data_check_interval:
-                return True
+            if self.matcher.model_name == model_name:
+                # Check if companies.json has been modified
+                if current_time - self.last_data_check < self.data_check_interval:
+                    return True
             
             try:
-                # Check if file modification time has changed
-                if os.path.exists('companies.json'):
-                    file_mtime = os.path.getmtime('companies.json')
+                # Check if file has been modified
+                if os.path.exists(filename):
+                    file_mtime = os.path.getmtime(filename)
                     if hasattr(self.matcher, '_last_file_mtime') and self.matcher._last_file_mtime == file_mtime:
                         self.last_data_check = current_time
                         return True
@@ -72,16 +82,15 @@ class SearchService:
         self._loading = True
         
         try:
-            filename = 'companies.json'
             if not os.path.exists(filename):
                 print(f"Error: {filename} not found")
                 self._loading = False
                 return False
             
             # Step 1: Initialize CompanyMatcher first
-            if self.matcher is None:
-                print("Initializing CompanyMatcher...")
-                self.matcher = CompanyMatcher(model_name='paraphrase-MiniLM-L3-v2')
+            if self.matcher is None or self.matcher.model_name != model_name:
+                print(f"Initializing CompanyMatcher with model: {model_name}...")
+                self.matcher = CompanyMatcher(model_name=model_name)
             
             # Step 2: FAST CACHE CHECK - Try to load from cache using file metadata
             # This avoids loading the 176MB+ JSON file if we already have it indexed
@@ -120,20 +129,26 @@ class SearchService:
                         with open(mf, 'rb') as f:
                             metadata = pickle.load(f)
                         
-                        # Check if model matches
-                        if metadata.get('model_name') == self.matcher.model_name:
-                            cache_key = metadata.get('cache_key')
-                            num_companies = metadata.get('num_companies', 0)
-                            has_loc = metadata.get('has_location_data', False)
-                            
-                            print(f"   Found compatible cache: {cache_key} ({num_companies:,} companies, location={has_loc})")
-                            
-                            if self.matcher.load_from_cache(cache_key):
-                                print(f"   [OK] Successfully loaded from compatible cache!")
-                                self.company_data_loaded = True
-                                self.last_data_check = current_time
-                                self._loading = False
-                                return True
+                            # Check if model matches and it's large enough (if we're trying for a specific file)
+                            if metadata.get('model_name') == self.matcher.model_name:
+                                num_companies = metadata.get('num_companies', 0)
+                                
+                                # If we're loading a specific large file, don't settle for a significantly smaller cache
+                                if filename == 'companies_with_location.json' and num_companies < 4000000:
+                                    print(f"   Skipping cache {cache_key}: too small ({num_companies:,} < 4M)")
+                                    continue
+                                    
+                                cache_key = metadata.get('cache_key')
+                                has_loc = metadata.get('has_location_data', False)
+                                
+                                print(f"   Found compatible cache: {cache_key} ({num_companies:,} companies, location={has_loc})")
+                                
+                                if self.matcher.load_from_cache(cache_key):
+                                    print(f"   [OK] Successfully loaded from compatible cache!")
+                                    self.company_data_loaded = True
+                                    self.last_data_check = current_time
+                                    self._loading = False
+                                    return True
                     except Exception as e:
                         continue
             

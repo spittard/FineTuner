@@ -47,7 +47,7 @@ def check_company_matcher():
     global COMPANY_MATCHER_AVAILABLE
     
     try:
-        from CompanyMatcher import CompanyMatcher
+        from finetuner.core.matcher import CompanyMatcher
         COMPANY_MATCHER_AVAILABLE = True
         return True
     except ImportError:
@@ -64,7 +64,10 @@ class FineTuner:
                  instruction_prompt="What is the company name?",
                  system_prompt="You are a helpful assistant that identifies company names."):
         if not ML_DEPENDENCIES_AVAILABLE:
-            raise ImportError("ML dependencies not available. Please install torch, transformers, and datasets.")
+            # Attempt a late check in case they were installed since init
+            check_ml_dependencies()
+            if not ML_DEPENDENCIES_AVAILABLE:
+                print("WARNING: ML dependencies not available. Some features will be disabled.")
         
         import torch
         if dtype is None:
@@ -88,6 +91,10 @@ class FineTuner:
             self.using_unsloth = False
 
     def load_model(self):
+        if not ML_DEPENDENCIES_AVAILABLE:
+            print("ERROR: ML dependencies (torch, transformers) not available.")
+            return
+
         if self.using_unsloth:
             import torch
             from transformers import AutoTokenizer
@@ -241,8 +248,11 @@ class FineTuner:
             # Save the model
             trainer.save_model()
             self.tokenizer.save_pretrained(output_dir)
+            self.tokenizer.save_pretrained(output_dir)
 
     def predict(self, prompt, max_new_tokens=10):
+        if not self.tokenizer:
+            return ""
         import torch
         from transformers import AutoTokenizer
         
@@ -268,13 +278,13 @@ class FineTuner:
             return []
         
         try:
-            from CompanyMatcher import CompanyMatcher
+            from finetuner.core.matcher import CompanyMatcher
             
             # Initialize CompanyMatcher
             matcher = CompanyMatcher(model_name=matcher_model)
             
             # Perform matching
-            matches = matcher.find_matches(query, company_names, top_k=top_k)
+            matches = matcher.match(query, top_k=top_k)
             
             return matches
             
@@ -348,6 +358,9 @@ def main():
     parser.add_argument('--column-name', help='Column name containing company names')
     parser.add_argument('--output-file', help='Output JSON file path')
     parser.add_argument('--max-rows', type=int, help='Maximum number of rows to extract from database (default: all rows)')
+    parser.add_argument('--with-location', action='store_true', help='Extract location data (city, state) and counts')
+    parser.add_argument('--city-column', default='City', help='Column name for city (default: City)')
+    parser.add_argument('--state-column', default='State', help='Column name for state (default: State)')
     
     # Company matching configuration
     parser.add_argument('--query', help='Company name to search for in match mode')
@@ -433,12 +446,22 @@ def main():
                 return
             
             # Extract and save data
-            success = dataset_creator.create_dataset(
-                args.table_name,
-                args.column_name,
-                args.output_file,
-                max_rows=args.max_rows
-            )
+            if args.with_location:
+                success = dataset_creator.create_dataset_with_location(
+                    args.table_name,
+                    args.output_file,
+                    company_column=args.column_name,
+                    city_column=args.city_column,
+                    state_column=args.state_column,
+                    max_rows=args.max_rows
+                )
+            else:
+                success = dataset_creator.create_dataset(
+                    args.table_name,
+                    args.column_name,
+                    args.output_file,
+                    max_rows=args.max_rows
+                )
             
             if success:
                 print(f"OK: Dataset created successfully: {args.output_file}")

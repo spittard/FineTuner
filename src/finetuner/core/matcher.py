@@ -17,24 +17,27 @@ except ImportError:
         return iterable
 
 class CompanyMatcher:
+    """
+    Core engine for high-precision company name matching.
+    
+    ARCHITECTURE ROLES:
+    - CompanyMatcher (this class): The reusable core logic for indexing and matching.
+    - company_search.py: CLI utility that uses this engine for interactive/batch searches.
+    - SearchService: Web service wrapper that provides an API for the web application.
+    
+    This separation ensures consistent matching across all interfaces while 
+    avoiding logic redundancy.
+    """
     # Cache version - increment this when logic changes to invalidate old caches
-    CACHE_VERSION = "v3.0_precomputed_similarities"
+    CACHE_VERSION = "v4.0_location_baked"
     
     def __init__(self, model_name='all-MiniLM-L6-v2'):
-        # Load the ULTRA-fastest available model for speed
-        if model_name == 'all-MiniLM-L6-v2':
-            # Use the absolute fastest model available - 10x+ speed boost
-            ultra_fast_model = 'paraphrase-MiniLM-L3-v2'  # Ultra-light, ultra-fast
-            print(f"Using ULTRA-fast model: {ultra_fast_model} (10x+ speed boost)")
-        else:
-            ultra_fast_model = model_name
-            
-        self.model = SentenceTransformer(ultra_fast_model)
+        self.model = SentenceTransformer(model_name)
         self.vector_store = VectorStore()
         
         self.original_company_names = []  # Store original names
         self.company_names = []  # Store preprocessed names for matching
-        self.model_name = ultra_fast_model  # Store the actual model name used
+        self.model_name = model_name  # Store the actual model name used
         
         # Location data storage (for location-aware matching)
         self.company_locations = []  # List of {"city": str, "state": str} per company
@@ -42,6 +45,7 @@ class CompanyMatcher:
         self.company_ids = []  # List of database IDs per company (for reference back to DB)
         self.acronym_index = {}  # Map of Acronym -> List of Indices
         self.has_location_data = False  # Flag to indicate if location data is loaded
+        self.max_company_count = 0  # To be populated for frequency boost
         
         # Precomputed similarity caches (NEW - for performance)
         self.similarity_cache = {}  # Dict: (idx1, idx2) -> similarity_score
@@ -140,6 +144,7 @@ class CompanyMatcher:
                     'cache_key': cache_key,
                     'cache_version': self.CACHE_VERSION,
                     'num_companies': len(company_names),
+                    'max_company_count': self.max_company_count,
                     'has_location_data': locations is not None,
                     'has_similarity_cache': bool(self.similarity_cache),
                     'has_acronym_cache': bool(self.acronym_cache)
@@ -227,6 +232,7 @@ class CompanyMatcher:
                 if metadata['model_name'] != self.model_name:
                     print("[FAIL] (Model name changed, cache invalid)")
                     return False
+                self.max_company_count = metadata.get('max_company_count', 0)
             print(f"[OK] ({time.time() - meta_start:.1f}s)")
             
             # Create fast lookup sets for exact matching
@@ -580,6 +586,8 @@ class CompanyMatcher:
         print(f"   Target: Complete in under 1 hour")
         print(f"   Normalization: DISABLED for speed")
         
+        self.max_company_count = 0 # No frequency data in standard build_index
+        
         # Memory optimization: clear any existing data
         import gc
         gc.collect()
@@ -854,7 +862,8 @@ class CompanyMatcher:
                 final_score = (string_score * 0.7) + (sem_score_norm * 0.3)
                 
                 # BOOST for acronym fidelity (literal expansions get significant boost)
-                if acronym_fidelity > 0.7:  # High fidelity = literal expansion
+                # FIX: Never boost 2-letter acronyms (too much noise from states/suffixes)
+                if acronym_fidelity > 0.8 and len(query_acronym) > 2:  # Increased threshold and length check
                     # Add up to +0.15 boost for perfect acronym expansions
                     final_score = min(1.0, final_score + (acronym_fidelity * 0.15))
                 
@@ -1025,6 +1034,20 @@ class CompanyMatcher:
         self.company_counts = counts
         self.company_ids = ids
         self.has_location_data = True
+        self.max_company_count = max(counts) if counts else 0
+        
+        # --- LOCATION BAKING ---
+        print("Baking location into company names for embeddings...")
+        baking_text = []
+        for i, name in enumerate(company_names):
+            loc = locations[i]
+            city = loc.get("city", "")
+            state = loc.get("state", "")
+            if city or state:
+                # Format: "Name City State"
+                baking_text.append(f"{name} {city} {state}".strip())
+            else:
+                baking_text.append(name)
         
         # Generate cache key
         # If we have a file, use the file-based key for storage (matches our fast-load logic)
@@ -1054,37 +1077,46 @@ class CompanyMatcher:
             self.company_names.append(name.strip().lower())
         print(f"   [OK] Preprocessed in {time.time() - preprocess_start:.1f}s")
         
-        # Generate embeddings
-        print("Generating embeddings...")
-        import gc
-        gc.collect()
-        
-        batch_size = 2048
-        embeddings_list = []
-        total_batches = (len(company_names) + batch_size - 1) // batch_size
-        
+        # Generate embeddings using multi-process pool for dramatic speedup
+        print(f"Generating embeddings using multi-process pool...")
         overall_start = time.time()
-        batch_range = range(0, len(company_names), batch_size)
-        pbar = tqdm(batch_range, desc="   Generating embeddings", total=total_batches, 
-                   unit="batch", ncols=80, disable=not HAS_TQDM)
+        
+        # Start a multi-process pool
+        pool = self.model.start_multi_process_pool()
+        
+        # Chunk the data to show progress
+        # 4.3M records is too big to wait for a single progress bar update at the very end
+        chunk_size = 5000 
+        total_chunks = (len(baking_text) + chunk_size - 1) // chunk_size
+        
+        embeddings_list = []
+        
+        print(f"   Splitting {len(baking_text):,} records into {total_chunks} chunks for visibility...")
+        pbar = tqdm(range(0, len(baking_text), chunk_size), desc="   Multi-process Encoding", 
+                   total=total_chunks, unit="chunk", ncols=80, disable=not HAS_TQDM)
         
         for i in pbar:
-            batch_end = min(i + batch_size, len(company_names))
-            batch_names = company_names[i:batch_end]
+            chunk_batch = baking_text[i : i + chunk_size]
             
-            batch_embeddings = self.model.encode(
-                batch_names, 
-                convert_to_numpy=True, 
-                normalize_embeddings=False,
-                show_progress_bar=False
+            # Encode chunk with multi-process (distributes this chunk across cores)
+            chunk_emb = self.model.encode_multi_process(
+                chunk_batch, 
+                pool,
+                batch_size=2048
             )
-            embeddings_list.append(batch_embeddings)
+            embeddings_list.append(chunk_emb)
             
-            if (i // batch_size) % 3 == 0:
+            # Force garbage collection to keep memory stable
+            if (i // chunk_size) % 5 == 0:
+                import gc
                 gc.collect()
         
         pbar.close()
-        print(f"   [OK] Embedding generation completed in {time.time() - overall_start:.1f}s")
+        
+        # Stop the pool
+        self.model.stop_multi_process_pool(pool)
+        
+        print(f"   [OK] Multi-process encoding completed in {time.time() - overall_start:.1f}s")
         
         # Combine embeddings
         self.embeddings = np.vstack(embeddings_list)
@@ -1149,7 +1181,11 @@ class CompanyMatcher:
         if len(query) < 12 and hasattr(self, 'acronym_index'):
              # Try exact case first, then upper
              potential_acronym = query.strip()
-             acronym_matches = self.acronym_index.get(potential_acronym)
+             acronym_matches = None
+             
+             # IGNORE 2-letter acronyms in Phase 0 (too much noise from states/suffixes)
+             if len(potential_acronym) > 2:
+                 acronym_matches = self.acronym_index.get(potential_acronym)
              if not acronym_matches:
                  acronym_matches = self.acronym_index.get(potential_acronym.upper())
                  
@@ -1165,9 +1201,7 @@ class CompanyMatcher:
                          target_vec_ac = self.vector_store.embeddings[idx].reshape(1, -1)
                          target_vec_ac = target_vec_ac / (np.linalg.norm(target_vec_ac) + 1e-10)
                          sem_score_ac = float(np.dot(query_vec_ac, target_vec_ac.T)[0][0])
-                         # UPDATED FORMULA: Base (0.85) + (Fidelity * 0.12) + (Semantic * 0.03)
-                         # Range: 0.85 to 1.0 (Perfect expansions prioritized over semantic similarity)
-                         final_score_ac = min(0.99, 0.85 + (fidelity * 0.12) + (sem_score_ac * 0.03) if sem_score_ac > 0 else 0.85 + (fidelity * 0.12))
+                         final_score_ac = min(0.99, 0.70 + (fidelity * 0.20) + (sem_score_ac * 0.10) if sem_score_ac > 0 else 0.70 + (fidelity * 0.20))
                          
                          candidates.append({
                              "name": company_name,
@@ -1185,7 +1219,8 @@ class CompanyMatcher:
 
         # 2. Query is Full Name (e.g. "American Bar Association") -> Look for Acronym (e.g. "ABA")
         generated_acronym = TextPreprocessor.generate_acronym(query)
-        if generated_acronym and hasattr(self, 'acronym_index'):
+        # IGNORE 2-letter acronyms in Phase 0 (too much noise from states/suffixes)
+        if generated_acronym and len(generated_acronym) > 2 and hasattr(self, 'acronym_index'):
             # Check if this acronym exists as a company name
             if hasattr(self, '_company_names_lower_to_index'):
                 idx = self._company_names_lower_to_index.get(generated_acronym.lower())
@@ -1196,12 +1231,12 @@ class CompanyMatcher:
                         # Note: For reverse, query is text and company_name is the acronym
                         fidelity = TextPreprocessor.calculate_acronym_fidelity(company_name, query)
                         
-                        # REDUCED BASE for reverse acronyms (very lossy/risky)
-                        # Base (0.65) + (Fidelity * 0.15) + (Semantic * 0.10)
-                        final_score_ac = 0.65 + (fidelity * 0.15) + (1.0 * 0.10)
+                        # FURTHER REDUCED BASE for reverse acronyms (very lossy/risky)
+                        # Base (0.45) + (Fidelity * 0.20) + (Semantic * 0.10)
+                        final_score_ac = 0.45 + (fidelity * 0.20) + (1.0 * 0.10)
                         
-                        # Cap at 0.90 to ensure strong string matches win over reverse acronyms
-                        final_score_ac = min(0.90, final_score_ac)
+                        # Cap at 0.80 to ensure strong string matches win over reverse acronyms
+                        final_score_ac = min(0.80, final_score_ac)
                         
                         # Verify it's actually the acronym we want (case sensitive-ish)
                         if company_name.strip() == generated_acronym:
@@ -1224,7 +1259,14 @@ class CompanyMatcher:
         # --- PHASE 1: RETRIEVAL (Semantic Search) ---
         candidate_k = min(50, len(self.original_company_names))
         
-        query_vec = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
+        # RETRIEVAL (Semantic Search)
+        # Use location-baked query for semantic search if location is provided
+        if use_location:
+            bake_query = f"{query} {city or ''} {state or ''}".strip()
+            query_vec = self.model.encode([bake_query], convert_to_numpy=True, normalize_embeddings=True)
+        else:
+            query_vec = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
+            
         semantic_scores, semantic_indices = self.vector_store.search(query_vec, candidate_k)
         
         # candidates list already initialized in Phase 0
@@ -1272,14 +1314,15 @@ class CompanyMatcher:
             name_score = (string_score * 0.7) + (sem_score_norm * 0.3)
             
             # BOOST for acronym fidelity (literal expansions get significant boost)
-            if acronym_fidelity > 0.7:  # High fidelity = literal expansion
+            # FIX: Never boost 2-letter acronyms (too much noise from states/suffixes)
+            if acronym_fidelity > 0.8 and len(query_acronym) > 2:  # Increased threshold and length check
                 # Add up to +0.15 boost for perfect acronym expansions
                 name_score = min(1.0, name_score + (acronym_fidelity * 0.15))
             
             # BOOST for high token coverage (all query words found in target)
-            if string_score >= 0.95:
+            if string_score >= 0.80: # Relaxed threshold to capture penalized lexical matches
                 # Ensure literal overlap is prioritized over generic acronyms
-                name_score = max(name_score, 0.93)
+                name_score = max(name_score, 0.90)
             
             # --- LOCATION SCORING ---
             location_score = 0.0
@@ -1319,6 +1362,15 @@ class CompanyMatcher:
                     final_score = (name_score * 0.8) + (location_score * 0.2)
             else:
                 final_score = name_score
+            
+            # --- FREQUENCY BOOST ---
+            if record_count > 0 and self.max_company_count > 0:
+                import math
+                # Logarithmic scale for frequency boost
+                freq_score = math.log1p(record_count) / math.log1p(self.max_company_count)
+                # Add up to +0.05 boost for popular companies (scaled by name score to avoid over-boosting weak matches)
+                # NOTE: We allow this to slightly exceed 1.0 for sorting purposes; UI will cap if needed
+                final_score = final_score + (freq_score * 0.05 * name_score)
             
             # Get database ID if available
             record_id = None
@@ -1366,14 +1418,20 @@ class CompanyMatcher:
                 exact_loc_score = 0.0
                 if use_location:
                     exact_loc_score = TextPreprocessor.calculate_location_score(city, state, exact_city, exact_state)
-                
+
+                # Calculate frequency boost for this exact match as a tie-breaker
+                import math
+                exact_freq_boost = 0.0
+                if self.max_company_count > 0:
+                    exact_freq_boost = (math.log1p(exact_count) / math.log1p(self.max_company_count)) * 0.02
+
                 # Deduplicate within this loop to avoid adding identical exact matches
                 # (e.g. multiple entries for same company with same/no location)
                 is_duplicate = False
                 for existing in candidates:
                     if existing['name'] == name and existing.get('city') == exact_city and existing.get('state') == exact_state:
                         # Update existing with exact score and type
-                        existing['score'] = 1.0 + (exact_loc_score * 0.05) if use_location else 1.0
+                        existing['score'] = 1.0 + (exact_loc_score * 0.05) + exact_freq_boost
                         existing['name_score'] = 1.0
                         existing['location_score'] = exact_loc_score
                         existing['match_type'] = "exact"
@@ -1381,8 +1439,8 @@ class CompanyMatcher:
                         break
                 
                 if not is_duplicate:
-                    # Exact match score = 1.0 + location boost (5% for tie-breaking)
-                    exact_final_score = 1.0 + (exact_loc_score * 0.05) if use_location else 1.0
+                    # Exact match score = 1.0 + location boost (5%) + frequency boost (2%)
+                    exact_final_score = 1.0 + (exact_loc_score * 0.05) + exact_freq_boost
                     
                     candidates.append({
                         "name": name,

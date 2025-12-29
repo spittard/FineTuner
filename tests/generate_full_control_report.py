@@ -21,7 +21,7 @@ def generate_report_header():
     """Generate the report header with scenario highlights and fidelity explanation"""
     
     header = []
-    header.append("# Company Matching Control Set Report\n\n")
+    header.append("# Company Matching Control Set Report (Location-Aware)\n\n")
     header.append(f"**Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
     header.append("---\n\n")
     
@@ -35,108 +35,26 @@ def generate_report_header():
     
     header.append("### 2. **Acronym Expansions**\n")
     header.append("Matching acronyms to their full company names.\n")
-    header.append("- Example: `\"IBM\"` → `\"International Business Machines\"` (98%+ match)\n")
-    header.append("- Example: `\"ABA\"` → `\"American Bar Association\"` (98%+ match)\n\n")
+    header.append("- Example: `\"IBM\"` → `\"International Business Machines\"` (98%+ match)\n\n")
     
-    header.append("### 3. **Typo Tolerance**\n")
-    header.append("Fuzzy matching handles common spelling errors.\n")
-    header.append("- Example: `\"Microsft\"` → `\"Microsoft\"` (94%+ match)\n")
-    header.append("- Example: `\"Gogle\"` → `\"Google\"` (92%+ match)\n\n")
+    header.append("### 3. **Location-Aware Matching (NEW)**\n")
+    header.append("Differentiates identical names using geographic context.\n")
+    header.append("- Example: `\"Acme\"` in `\"Chicago\"` → Matches `\"Acme Corp (Chicago)\"` higher than `\"Acme Corp (Miami)\"`\n\n")
     
-    header.append("### 4. **Abbreviation Variations**\n")
-    header.append("Recognizes common business abbreviations.\n")
-    header.append("- Example: `\"Corp\"` ↔ `\"Corporation\"`\n")
-    header.append("- Example: `\"Inc\"` ↔ `\"Incorporated\"`\n")
-    header.append("- Example: `\"Intl\"` ↔ `\"International\"`\n\n")
-    
-    header.append("### 5. **Plural/Singular Variations**\n")
-    header.append("Handles grammatical number differences.\n")
-    header.append("- Example: `\"International Business Machine\"` vs `\"International Business Machines\"`\n\n")
-    
-    header.append("### 6. **Word Order Variations**\n")
-    header.append("Matches despite different word arrangements.\n")
-    header.append("- Example: `\"Bank First National\"` → `\"First National Bank\"`\n\n")
-    
-    header.append("### 7. **Partial Name Matches**\n")
-    header.append("Finds matches when only part of the company name is provided.\n")
-    header.append("- Example: `\"Acme\"` → `\"Acme Corporation\"`\n\n")
-    
-    header.append("### 8. **Legal Entity Suffix Variations**\n")
-    header.append("Handles different legal entity designations.\n")
-    header.append("- Example: `\"Acme LLC\"` vs `\"Acme Inc\"` vs `\"Acme Corporation\"`\n\n")
-    
+    header.append("### 4. **Popularity/Frequency Bias (NEW)**\n")
+    header.append("Uses occurrence counts to break ties and prioritize larger entities.\n")
+    header.append("- Example: Frequent national brands rank higher than obscure single-occurrence entries.\n\n")
+
     header.append("---\n\n")
     
     # Scoring formula
-    header.append("## Scoring Formula\n\n")
+    header.append("## Advanced Scoring Formula\n\n")
     header.append("```\n")
     header.append("Base Score = (String Similarity × 70%) + (Semantic Similarity × 30%)\n")
-    header.append("Final Score = Base Score + Acronym Fidelity Boost (up to +15%)\n")
+    header.append("Fidelity Boost = Acronym Fidelity × 15%\n")
+    header.append("Location Boost = Location Score × 5% (Implicit via Location Baking)\n")
+    header.append("Final Score = Base Score + Fidelity Boost + Location Boost + Popularity Boost\n")
     header.append("```\n\n")
-    
-    # Fidelity explanation with examples
-    header.append("## Acronym Fidelity Score Explained\n\n")
-    header.append("The **Acronym Fidelity Score** measures how well a company name expands an acronym ")
-    header.append("using **pure algorithmic pattern matching**. It analyzes whether the first letters of ")
-    header.append("significant words match the acronym letters in order.\n\n")
-    
-    header.append("### How It Works\n\n")
-    header.append("The algorithm extracts the first letter of each significant word (excluding common words ")
-    header.append("like 'the', 'of', 'and') and compares them to the acronym:\n\n")
-    
-    header.append("**Example 1: Perfect Match (Fidelity = 1.00)**\n")
-    header.append("```\n")
-    header.append("Query: \"IBM\"\n")
-    header.append("Match: \"International Business Machines\"\n")
-    header.append("\n")
-    header.append("Step 1: Extract first letters\n")
-    header.append("  Words: [International, Business, Machines]\n")
-    header.append("  First letters: [I, B, M]\n")
-    header.append("  Joined: \"IBM\"\n")
-    header.append("\n")
-    header.append("Step 2: Compare to query\n")
-    header.append("  Query: \"IBM\"\n")
-    header.append("  Word starts: \"IBM\"\n")
-    header.append("  Match: EXACT ✓\n")
-    header.append("\n")
-    header.append("Step 3: Check for overlaps\n")
-    header.append("  Does any word contain multiple acronym letters? NO ✓\n")
-    header.append("\n")
-    header.append("Result: Fidelity = 1.00 (Perfect Expansion)\n")
-    header.append("```\n\n")
-    
-    header.append("**Example 2: Prefix Match (Fidelity = 0.95)**\n")
-    header.append("```\n")
-    header.append("Query: \"IBM\"\n")
-    header.append("Match: \"International Business Machines Corporation\"\n")
-    header.append("\n")
-    header.append("First letters: [I, B, M, C] → \"IBMC\"\n")
-    header.append("Query: \"IBM\"\n")
-    header.append("Pattern: \"IBM\" is a prefix of \"IBMC\" ✓\n")
-    header.append("\n")
-    header.append("Result: Fidelity = 0.95 (Acronym matches start, extra words after)\n")
-    header.append("```\n\n")
-    
-    header.append("**Example 3: Subsequence Match (Fidelity = 0.90)**\n")
-    header.append("```\n")
-    header.append("Query: \"IBM\"\n")
-    header.append("Match: \"International Bureau of Management\"\n")
-    header.append("\n")
-    header.append("First letters: [I, B, M] → \"IBM\" (skipping 'of')\n")
-    header.append("Pattern: \"IBM\" appears as subsequence in word starts ✓\n")
-    header.append("\n")
-    header.append("Result: Fidelity = 0.90 (Subsequence match)\n")
-    header.append("```\n\n")
-    
-    header.append("### Fidelity Score Reference\n\n")
-    header.append("| Score | Pattern | Example |\n")
-    header.append("|-------|---------|----------|\n")
-    header.append("| 1.00 | Perfect: Each letter = first letter of distinct word, no overlaps | IBM → International Business Machines |\n")
-    header.append("| 0.95 | Prefix: Acronym matches start, extra words after | IBM → International Business Machines Corp |\n")
-    header.append("| 0.90 | Subsequence: Acronym appears in word-starts | IBM → International Bureau of Management |\n")
-    header.append("| 0.70 | Collision: Words overlap with acronym letters | (penalized) |\n")
-    header.append("| 0.65 | Word prefix: First word starts with acronym | IBMA → IBM... |\n")
-    header.append("| 0.40 | Partial: Some letters match out of order | (scaled down) |\n\n")
     
     header.append("---\n\n")
     header.append("## Control Set Results\n\n")
@@ -145,40 +63,55 @@ def generate_report_header():
 
 
 def format_company_result(query, result_data, rank):
-    """Format a single company result"""
+    """Format a single company result with self-exclusion for bias analysis"""
     
     md = []
     
-    # Get top match
-    if not result_data.get('matches'):
+    # Get matches
+    original_matches = result_data.get('matches', [])
+    if not original_matches:
         md.append(f"### {rank}. {query}\n\n")
         md.append("❌ **No matches found**\n\n")
         md.append("---\n\n")
         return ''.join(md)
     
-    top_match = result_data['matches'][0]
-    company_name = top_match.get('company_name', 'Unknown')
-    score = top_match.get('likeness_percent', 0.0)
+    # FILTER: Programmatically discard exact self-matches to focus on model confusion
+    filtered_matches = [m for m in original_matches if m['company_name'].lower().strip() != query.lower().strip()]
+    
+    # Determine exact match status
+    has_exact = any(m['company_name'].lower().strip() == query.lower().strip() for m in original_matches)
     
     md.append(f"### {rank}. {query}\n\n")
     
-    # Check if exact match
-    if query.lower().strip() == company_name.lower().strip():
-        md.append(f"✅ **Exact Match:** `{company_name}` ({score:.1f}%)\n\n")
+    if has_exact:
+        md.append(f"✅ **Exact Match (Self) Found & Filtered**\n\n")
+    
+    if not filtered_matches:
+        md.append("> No non-identical matches found for this query.\n\n")
         md.append("---\n\n")
         return ''.join(md)
+        
+    top_match = filtered_matches[0]
+    company_name = top_match.get('company_name', 'Unknown')
+    score = top_match.get('likeness_percent', 0.0)
+    city = top_match.get('city', '')
+    state = top_match.get('state', '')
+    count = top_match.get('count', 0)
     
-    # Not exact - provide detailed analysis
-    md.append(f"**Top Match:** `{company_name}` ({score:.1f}%)\n\n")
+    location_str = f" ({city}, {state})" if city or state else ""
+    
+    # Highlight that this is the first non-identical result
+    md.append(f"**Top Non-Self Match (Rank 2):** `{company_name}`{location_str} ({score:.1f}%)\n\n")
     
     # Extract score components
-    string_score = top_match.get('string_score', 0.0)
-    semantic_score = top_match.get('normalized_semantic_score', top_match.get('semantic_score', 0.0))
-    acronym_fidelity = top_match.get('acronym_fidelity', 0.0)
-    match_type = top_match.get('match_type', 'hybrid')
+    explanation = top_match.get('explanation_details', {})
+    string_score = explanation.get('string_score', top_match.get('string_score', 0.0))
+    semantic_score = explanation.get('normalized_semantic_score', explanation.get('semantic_score', 0.0))
+    acronym_fidelity = explanation.get('acronym_fidelity', top_match.get('acronym_fidelity', 0.0))
+    location_score = explanation.get('location_score', top_match.get('location_score', 0.0))
     
     # Score breakdown table
-    md.append("**Score Breakdown:**\n\n")
+    md.append("**Score Breakdown for Best Non-Self Match:**\n\n")
     md.append("| Component | Value | Weight | Contribution |\n")
     md.append("|-----------|-------|--------|-------------|\n")
     md.append(f"| String Similarity | {string_score:.4f} | 70% | {string_score * 0.70:.4f} |\n")
@@ -190,34 +123,27 @@ def format_company_result(query, result_data, rank):
     if acronym_fidelity > 0.0:
         acro_boost = acronym_fidelity * 0.15
         md.append(f"| Acronym Fidelity Boost | {acronym_fidelity:.4f} | 15% max | +{acro_boost:.4f} |\n")
-        md.append(f"| **Final Score** | **{score/100:.4f}** | - | **{score:.2f}%** |\n\n")
+
+    if location_score > 0.0:
+        loc_boost = location_score * 0.05
+        md.append(f"| Location Match Boost | {location_score:.4f} | 5% max | +{loc_boost:.4f} |\n")
+
+    if count > 1:
+        # Show that popularity played a role if count > 1
+        md.append(f"| Popularity Boost | {count} counts | log-scale | YES |\n")
         
-        # Explain acronym match
-        md.append(f"**Acronym Analysis:**\n")
-        md.append(f"- Match Type: {match_type}\n")
-        md.append(f"- Fidelity: {acronym_fidelity:.4f} ")
-        
-        if acronym_fidelity >= 0.95:
-            md.append("(Excellent - Perfect or near-perfect letter matching)\n")
-        elif acronym_fidelity >= 0.85:
-            md.append("(Very Good - Strong letter pattern match)\n")
-        elif acronym_fidelity >= 0.70:
-            md.append("(Good - Solid letter pattern match)\n")
-        else:
-            md.append("(Moderate - Partial letter pattern match)\n")
-        
-        md.append(f"- Boost Applied: +{acro_boost * 100:.2f}%\n\n")
-    else:
-        md.append(f"| **Final Score** | **{score/100:.4f}** | - | **{score:.2f}%** |\n\n")
+    md.append(f"| **Final Score** | **{score/100:.4f}** | - | **{score:.2f}%** |\n\n")
     
-    # Show top 5 matches
-    if len(result_data['matches']) > 1:
-        md.append("**Top 5 Matches:**\n\n")
-        for i, match in enumerate(result_data['matches'][:5], 1):
-            match_name = match.get('company_name', 'Unknown')
-            match_score = match.get('likeness_percent', 0.0)
-            md.append(f"{i}. {match_name} ({match_score:.1f}%)\n")
-        md.append("\n")
+    # Show top 5 non-identical matches
+    md.append("**Top 5 Non-Self Matches:**\n\n")
+    for i, match in enumerate(filtered_matches[:5], 2):
+        match_name = match.get('company_name', 'Unknown')
+        match_score = match.get('likeness_percent', 0.0)
+        m_city = match.get('city', '')
+        m_state = match.get('state', '')
+        m_loc = f" ({m_city}, {m_state})" if m_city or m_state else ""
+        md.append(f"{i}. {match_name}{m_loc} ({match_score:.1f}%)\n")
+    md.append("\n")
     
     md.append("---\n\n")
     
@@ -226,13 +152,14 @@ def format_company_result(query, result_data, rank):
 
 def main():
     print("="*70)
-    print("🔬 GENERATING FULL CONTROL SET REPORT")
+    print("🔬 GENERATING FULL CONTROL SET REPORT (LOCATION-AWARE)")
     print("="*70)
     
     # Initialize service
     print("\n📦 Initializing SearchService...")
     service = SearchService()
-    if not service.load_company_data():
+    # Explicitly load the location-aware dataset
+    if not service.load_company_data(model_name='paraphrase-MiniLM-L3-v2', filename='companies_sample_100k.json'):
         print("❌ Failed to load company data")
         return
     
@@ -277,14 +204,14 @@ def main():
         
         # Write report after first 10 companies
         if i == 10:
-            output_file = 'control_set_report_FULL.md'
+            output_file = 'control_set_report_ULTRA.md'
             print(f"\n📄 Writing initial report (first 10 companies) to {output_file}...")
             with open(output_file, 'w', encoding='utf-8') as f:
                 f.write(''.join(report_content))
             print(f"✅ Initial report written! Continuing with remaining {len(companies) - 10} companies...\n")
     
     # Write final report
-    output_file = 'control_set_report_FULL.md'
+    output_file = 'control_set_report_ULTRA.md'
     print(f"\n📄 Writing final report to {output_file}...")
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(''.join(report_content))

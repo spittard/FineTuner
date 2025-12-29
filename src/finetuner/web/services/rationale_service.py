@@ -130,6 +130,10 @@ class RationaleService:
             if loc_score > 0.01:
                 rationale += f"• Location Bonus: +{loc_score:.4f}\n"
 
+            record_count = explanation.get('count', 0)
+            if record_count > 10:
+                rationale += f"• Popularity: High record frequency ({record_count} occurrences)\n"
+
             rationale += f"\n**Why This Happens:**\n• Company names often have multiple words\n• Some words are more important than others\n• Business names can vary in how they're written"
             
             return rationale
@@ -245,6 +249,10 @@ class RationaleService:
         
         if loc_score > 0.01:
             score_details += f"• Location Bonus: +{loc_score:.4f}\n"
+
+        record_count = explanation.get('count', 0)
+        if record_count > 0:
+            score_details += f"• Popularity Boost: Log-weighted frequency\n"
 
         score_breakdown_text = RationaleService.get_score_breakdown(score)
         rationale += score_details
@@ -662,6 +670,13 @@ class RationaleService:
         if location_score > 0.0:
             loc_boost = location_score * 0.05
             breakdown += f"| Location Match Boost | {location_score:.4f} | 5% max | +{loc_boost:.4f} |\n"
+        
+        # Frequency boost
+        record_count = match_data.get('count', 0)
+        if record_count > 0:
+            # Note: The actual boost value isn't stored separately in the match object yet, 
+            # but we can indicate its presence.
+            breakdown += f"| Popularity Boost | {record_count:,} occurrences | ~2-5% | Included |\n"
         
         # Final score
         breakdown += f"| **FINAL SCORE** | **{final_score:.4f}** | - | **{final_score*100:.1f}%** |\n\n"
