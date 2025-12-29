@@ -54,7 +54,9 @@ def search_loop(matcher):
                 continue
             
             start = time.time()
-            results = matcher.match(query, top_k=10)
+            # Pass city/state from args if available in loop context (simplified for now to global args)
+            results = matcher.match_with_location(query, city=getattr(matcher, '_default_city', None), 
+                                                state=getattr(matcher, '_default_state', None), top_k=10)
             elapsed = time.time() - start
             
             print_results(query, results, verbose=True)
@@ -74,6 +76,8 @@ def main():
     parser.add_argument("--interactive", "-i", action="store_true", help="Run in interactive mode")
     parser.add_argument("--batch", nargs="+", help="Batch search multiple queries")
     parser.add_argument("--no-cache", action="store_true", help="Rebuild index ignoring cache")
+    parser.add_argument("--city", help="City for location-aware matching")
+    parser.add_argument("--state", help="State for location-aware matching")
     
     args = parser.parse_args()
     
@@ -105,10 +109,13 @@ def main():
     elif args.batch:
         print(f"Batch searching {len(args.batch)} queries...")
         for q in args.batch:
-            results = matcher.match(q, top_k=args.top)
+            results = matcher.match_with_location(q, city=args.city, state=args.state, top_k=args.top)
             print_results(q, results)
     elif args.query:
-        results = matcher.match(args.query, top_k=args.top)
+        # Store for interactive loop if needed
+        matcher._default_city = args.city
+        matcher._default_state = args.state
+        results = matcher.match_with_location(args.query, city=args.city, state=args.state, top_k=args.top)
         print_results(args.query, results, verbose=True)
 
 if __name__ == "__main__":
