@@ -132,16 +132,20 @@ class SearchService:
                             # Check if model matches and it's large enough (if we're trying for a specific file)
                             if metadata.get('model_name') == self.matcher.model_name:
                                 num_companies = metadata.get('num_companies', 0)
+                                cache_ver = metadata.get('cache_version')
                                 
+                                # Skip if cache version mismatch
+                                if cache_ver != self.matcher.CACHE_VERSION:
+                                    continue
+                                    
                                 # If we're loading a specific large file, don't settle for a significantly smaller cache
                                 if filename == 'companies_with_location.json' and num_companies < 4000000:
-                                    print(f"   Skipping cache {cache_key}: too small ({num_companies:,} < 4M)")
                                     continue
                                     
                                 cache_key = metadata.get('cache_key')
                                 has_loc = metadata.get('has_location_data', False)
                                 
-                                print(f"   Found compatible cache: {cache_key} ({num_companies:,} companies, location={has_loc})")
+                                print(f"   Found compatible cache: {cache_key} ({num_companies:,} companies, location={has_loc}, version={cache_ver})")
                                 
                                 if self.matcher.load_from_cache(cache_key):
                                     print(f"   [OK] Successfully loaded from compatible cache!")
@@ -292,8 +296,9 @@ class SearchService:
         """Clear cache and force fresh data loading"""
         if self.matcher is not None:
             # Clear the cache for this matcher
+            # This is an explicit user action, so we confirm deletion
             cache_key = self.matcher.get_cache_key(self.matcher.original_company_names)
-            self.matcher.clear_cache(cache_key)
+            self.matcher.clear_cache(cache_key, confirm_delete=True)
             print(f"Cleared cache: {cache_key}")
         
         # Reset state

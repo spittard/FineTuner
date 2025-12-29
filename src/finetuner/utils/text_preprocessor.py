@@ -14,11 +14,7 @@ class TextPreprocessor:
         # Organization suffixes (weight 0.2) - common corporate terms
         'group': 0.2, 'association': 0.2, 'coalition': 0.2, 'foundation': 0.2, 
         'services': 0.2, 'service': 0.2, 'solutions': 0.2, 'partners': 0.2,
-        'pa': 0.2, 'pc': 0.2,
-        # Location modifiers (weight 0.5) - somewhat distinctive but common
-        'north': 0.5, 'south': 0.5, 'east': 0.5, 'west': 0.5, 
-        'shore': 0.5, 'bay': 0.5, 'coast': 0.5, 'lake': 0.5,
-        'valley': 0.5, 'mountain': 0.5, 'hill': 0.5, 'river': 0.5,
+        'pa': 0.2, 'pc': 0.2, 'alliance': 0.2, 'headquarters': 0.2, 'hq': 0.2,
         # Common modifiers (weight 0.4)
         'national': 0.4, 'international': 0.4, 'global': 0.4, 'regional': 0.4,
         'local': 0.4, 'community': 0.4, 'public': 0.4, 'private': 0.4,

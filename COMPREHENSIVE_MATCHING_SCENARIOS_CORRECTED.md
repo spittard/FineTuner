@@ -20,16 +20,17 @@ This document showcases real-world matching scenarios with 20 matches each, usin
 │                         SCORING FORMULA SUMMARY                             │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  Base Score = (String Similarity × 0.70) + (Semantic Similarity × 0.30)    │
+│  1. Name Score = (String Similarity × 0.70) + (Semantic Similarity × 0.30)  │
+│  2. Acronym Boost = Acronym Fidelity × 0.15                                 │
+│  3. Base Match Score = Name Score + Acronym Boost                           │
 │                                                                             │
-│  Bonuses:                                                                   │
-│  • Acronym Fidelity Boost: up to +15% (0.15)                                │
-│  • Location Match Boost: up to +5% (0.05)                                   │
+│  4. Location Integration (Post-Inference):                                  │
+│     • If Non-Exact Match: (Base Match Score × 0.80) + (Location Score × 0.20)│
+│     • If Exact Name Match: Base Match Score + (Location Score × 0.05)       │
 │                                                                             │
-│  Final Score = Base Score + Acronym Boost + Location Boost                 │
+│  5. Popularity Boost: up to +5% (log-scale based on record frequency)       │
 │                                                                             │
-│  Special Case - Exact Match:                                                │
-│  • If query exactly equals company name → Score = 1.00 (100%)               │
+│  Final Score = Location Integrated Score + Popularity Boost                 │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -95,61 +96,61 @@ It ONLY knows: "Do the letters match the word-starts in a clean pattern?"
 │  │  • Match: EXACT ✓                                                     │  │
 │  │                                                                       │  │
 │  │  Step 3: Check for word overlaps                                      │  │
-│  │  • Does "American" contain 'B' or 'A' after first letter? NO         │  │
-│  │  • Does "Bar" contain 'A' after first letter? NO                      │  │
-│  │  • Does "Association" contain 'B' after first letter? NO              │  │
-│  │  • Collision: NONE ✓                                                  │  │
-│  │                                                                       │  │
-│  │  Result: Fidelity = 1.00 (Perfect Expansion)                          │  │
+│  │  • Result: Fidelity = 1.00 (Perfect Expansion)                          │  │
 │  │                                                                       │  │
 │  └───────────────────────────────────────────────────────────────────────┘  │
 │                                                                             │
 │  ┌───────────────────────────────────────────────────────────────────────┐  │
-│  │  MATCH: "A BETTER ANSWER"                                             │  │
+│  │  WHY THEY RANK DIFFERENTLY                                            │  │
 │  ├───────────────────────────────────────────────────────────────────────┤  │
 │  │                                                                       │  │
-│  │  Step 1: Extract first letters                                        │  │
-│  │  • Words: ["A", "Better", "Answer"]                                   │  │
-│  │  • First letters: ['A', 'B', 'A']                                     │  │
-│  │  • Joined: "ABA"                                                      │  │
+│  │  Both "American Bar Association" and "A Better Answer" get             │  │
+│  │  Fidelity = 1.00, but final scores differ based on:                   │  │
 │  │                                                                       │  │
-│  │  Step 2: Compare to acronym                                           │  │
-│  │  • Query acronym: "ABA"                                               │  │
-│  │  • Word starts: "ABA"                                                 │  │
-│  │  • Match: EXACT ✓                                                     │  │
-│  │                                                                       │  │
-│  │  Step 3: Check for word overlaps                                      │  │
-│  │  • No overlaps found ✓                                                │  │
-│  │                                                                       │  │
-│  │  Result: Fidelity = 1.00 (Perfect Expansion)                          │  │
-│  │                                                                       │  │
-│  │  NOTE: The algorithm gives the SAME score as "American Bar            │  │
-│  │  Association" because the letter-matching pattern is identical!       │  │
-│  │  It does NOT know that one is a "well-known organization" and         │  │
-│  │  the other is a casual phrase.                                        │  │
-│  │                                                                       │  │
-│  └───────────────────────────────────────────────────────────────────────┘  │
-│                                                                             │
-│  ┌───────────────────────────────────────────────────────────────────────┐  │
-│  │  WHY THEY RANK DIFFERENTLY DESPITE SAME FIDELITY                      │  │
-│  ├───────────────────────────────────────────────────────────────────────┤  │
-│  │                                                                       │  │
-│  │  Both have fidelity = 1.00, but different final scores because:      │  │
-│  │                                                                       │  │
-│  │  "American Bar Association" (98.45%):                                 │  │
-│  │  • String similarity: 0.96 (higher - more formal/common pattern)     │  │
-│  │  • Semantic similarity: 0.91 (higher - professional context)          │  │
-│  │                                                                       │  │
-│  │  "A Better Answer" (96.80%):                                          │  │
-│  │  • String similarity: 0.88 (lower - less common pattern)             │  │
-│  │  • Semantic similarity: 0.87 (lower - casual context)                 │  │
-│  │                                                                       │  │
-│  │  The DIFFERENCE comes from string/semantic scores, NOT fidelity!      │  │
+│  │  1. String/Semantic Alignment (Base Name Score)                       │  │
+│  │  2. Popularity Boost (Record Count)                                   │  │
 │  │                                                                       │  │
 │  └───────────────────────────────────────────────────────────────────────┘  │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
+
+---
+
+## Example Scenario: Location-Aware Matching (Decoupled)
+
+**Scenario:** User searches for `"Acme"` in `"Chicago, IL"`. The database has multiple companies named `"Acme"`.
+
+### Visual Sequence
+
+```mermaid
+graph TD
+    A["Query: 'Acme' (City: Chicago)"] --> B["Phase 1: Retrieval (Name-Only)"]
+    B --> C["Embeddings: [Acme, Acme Corp, Acme Systems]"]
+    C --> D["Phase 2: Location Re-ranking (Post-Inference)"]
+    D --> E["Match 1: Acme - Chicago (Location Score = 1.0)"]
+    D --> F["Match 2: Acme - Miami (Location Score = 0.0)"]
+    E --> G["Final Score: 1.0 + (1.0 x 0.05) = 1.05"]
+    F --> H["Final Score: 1.0 + (0.0 x 0.05) = 1.00"]
+    G --> I["Rank 1: Chicago ✓"]
+    H --> J["Rank 2: Miami"]
+```
+
+> [!NOTE]
+> Location is **decoupled** from embeddings. We fetch "Acme" based on the name alone, then use the city/state as a **tie-breaker** or **re-ranking signal**. This ensures we don't pollute the semantic search space with geographic data.
+
+---
+
+## Example Scenario: Popularity / Frequency Bias
+
+**Scenario:** User searches for `"Pizza Hut"`. The system resolves between a major national brand and a local obscure entry.
+
+| Rank | Company Name | Count | Popularity Boost | Why? |
+|------|--------------|-------|------------------|------|
+| **1** | Pizza Hut | 5,420 | +4.8% | **Log-scale Reward:** More records = more likely to be the correct target. |
+| **2** | Pizza Hut of London | 1 | +0.2% | **Lower Priority:** Minimal records suggest a specific sub-entity or outlier. |
+
+---
 
 ---
 
@@ -168,21 +169,19 @@ It ONLY knows: "Do the letters match the word-starts in a clean pattern?"
 
 ### How Matches Are Actually Differentiated
 
-When two matches have the **same fidelity score**, they're ranked by:
-1. **String Similarity (70%)** - Lexical word overlap
-2. **Semantic Similarity (30%)** - Embedding-based meaning
-
-This is why "American Bar Association" ranks higher than "A Better Answer" despite having identical fidelity scores - the string and semantic components favor the more formal, professional organization name.
+When multiple matches have strong name similarity, the system breaks ties using:
+1. **Location Integrated Re-ranking (20% weight)** - Favors same city/state.
+2. **Popularity Boost (5% weight)** - Favors higher record frequency.
+3. **Acronym Fidelity (15% weight)** - Prioritizes literal expansions.
 
 ---
 
 ## Summary
 
-**CORRECTED UNDERSTANDING:**
-- Acronym fidelity is purely algorithmic pattern matching
-- No external knowledge or databases are consulted
-- "Well-known" organizations get higher fidelity ONLY if their letter pattern is cleaner
-- Semantic context affects string/semantic scores, NOT fidelity scores
-- Final ranking is determined by the combination of all scoring components
+**Key Implementation Facts:**
+- **Decoupled Location**: Search is by name, re-ranking is by geography.
+- **Pure Pattern Fidelity**: Acronym matching uses letter patterns, not reputation.
+- **Logarithmic Popularity**: Boosts common names without drowning out specific matches.
+- **Post-Inference Logic**: Final scores are calculated *after* semantic candidates are retrieved.
 
 This document has been corrected to accurately reflect the actual implementation in `text_preprocessor.py::calculate_acronym_fidelity()`.

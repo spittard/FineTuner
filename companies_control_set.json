@@ -6,7 +6,9 @@
     "Company Name": "Nicolas/Sanchez Wedding"
   },
   {
-    "Company Name": "Kehilat Ariel Synagogue"
+    "Company Name": "Kehilat Ariel Synagogue",
+    "City": "Los Angeles",
+    "State": "CA"
   },
   {
     "Company Name": "Next Level Events"
@@ -21,7 +23,9 @@
     "Company Name": "DermaQuest Inc"
   },
   {
-    "Company Name": "Ellwood Group Inc"
+    "Company Name": "Ellwood Group Inc",
+    "City": "Chicago",
+    "State": "IL"
   },
   {
     "Company Name": "American Miniature Horse Registry"
@@ -36,13 +40,17 @@
     "Company Name": "AVIAKOMPANIYA SIBIR, PAO"
   },
   {
-    "Company Name": "Hartford Hospital School of Nursing"
+    "Company Name": "Hartford Hospital School of Nursing",
+    "City": "Hartford",
+    "State": "CT"
   },
   {
     "Company Name": "Internal J&J Meeting and Breakfast"
   },
   {
-    "Company Name": "Spina Bifida Coalition of Cincinnati"
+    "Company Name": "Spina Bifida Coalition of Cincinnati",
+    "City": "Cincinnati",
+    "State": "OH"
   },
   {
     "Company Name": "THE SOCA GROUP ORGANIZATION"
@@ -51,7 +59,9 @@
     "Company Name": "Shiroyama Junior High School"
   },
   {
-    "Company Name": "National Home Health"
+    "Company Name": "National Home Health",
+    "City": "Washington",
+    "State": "DC"
   },
   {
     "Company Name": "American News Women's Club"
@@ -72,7 +82,9 @@
     "Company Name": "Danish Sisterhood of America"
   },
   {
-    "Company Name": "Brooklyn Comics Club"
+    "Company Name": "Brooklyn Comics Club",
+    "City": "Brooklyn",
+    "State": "NY"
   },
   {
     "Company Name": "Global Interagency Security Forum"
@@ -81,7 +93,9 @@
     "Company Name": "Lancet Software"
   },
   {
-    "Company Name": "Our Lady of the Lakes Catholic Church and School"
+    "Company Name": "Our Lady of the Lakes Catholic Church and School",
+    "City": "Miami Lakes",
+    "State": "FL"
   },
   {
     "Company Name": "Broadway Bound International"
@@ -114,7 +128,9 @@
     "Company Name": "Stephen Rourke"
   },
   {
-    "Company Name": "MIT Initiative on the Digital Economy"
+    "Company Name": "MIT Initiative on the Digital Economy",
+    "City": "Cambridge",
+    "State": "MA"
   },
   {
     "Company Name": "Urx Community USA"
@@ -123,10 +139,14 @@
     "Company Name": "Spredfast Engage"
   },
   {
-    "Company Name": "City of Dallas-Parks & Recreation"
+    "Company Name": "City of Dallas-Parks & Recreation",
+    "City": "Dallas",
+    "State": "TX"
   },
   {
-    "Company Name": "Kai Pono Builders, Inc."
+    "Company Name": "Kai Pono Builders, Inc.",
+    "City": "Honolulu",
+    "State": "HI"
   },
   {
     "Company Name": "MUSICFIRST COALITION"
@@ -138,7 +158,9 @@
     "Company Name": "1960"
   },
   {
-    "Company Name": "Pacific Northwest Diabetes Research Inst"
+    "Company Name": "Pacific Northwest Diabetes Research Inst",
+    "City": "Seattle",
+    "State": "WA"
   },
   {
     "Company Name": "Mentors & Mentees"
@@ -159,7 +181,9 @@
     "Company Name": "Zen Meetings & Events"
   },
   {
-    "Company Name": "Chicago South Swim Club"
+    "Company Name": "Chicago South Swim Club",
+    "City": "Chicago",
+    "State": "IL"
   },
   {
     "Company Name": "Edna, Dabra@SAP.IO"
@@ -180,7 +204,9 @@
     "Company Name": "Taiyo Air Service Co.,Ltd"
   },
   {
-    "Company Name": "National Conference on Race & Ethnicity in American Higher E"
+    "Company Name": "National Conference on Race & Ethnicity in American Higher E",
+    "City": "Norman",
+    "State": "OK"
   },
   {
     "Company Name": "Reminger Law Firm"
@@ -204,7 +230,9 @@
     "Company Name": "Sun Tx"
   },
   {
-    "Company Name": "Southern Vermont Deerfield Valley Chamber of commerce"
+    "Company Name": "Southern Vermont Deerfield Valley Chamber of commerce",
+    "City": "Deerfield",
+    "State": "VT"
   },
   {
     "Company Name": "DGR Ministries"
@@ -240,7 +268,9 @@
     "Company Name": "Alosa Foundation"
   },
   {
-    "Company Name": "La Chaine des Rotisseurs Wine Club of Newport Beach"
+    "Company Name": "La Chaine des Rotisseurs Wine Club of Newport Beach",
+    "City": "Newport Beach",
+    "State": "CA"
   },
   {
     "Company Name": "Sumner & Ryan, LLC"
@@ -267,13 +297,19 @@
     "Company Name": "Northbridge Travel"
   },
   {
-    "Company Name": "Kohler 2024"
+    "Company Name": "Kohler 2024",
+    "City": "Kohler",
+    "State": "WI"
   },
   {
-    "Company Name": "Louisiana State University Swim"
+    "Company Name": "Louisiana State University Swim",
+    "City": "Baton Rouge",
+    "State": "LA"
   },
   {
-    "Company Name": "X DO NOT USE - FRANCIS PARKER SCHOOL"
+    "Company Name": "X DO NOT USE - FRANCIS PARKER SCHOOL",
+    "City": "San Diego",
+    "State": "CA"
   },
   {
     "Company Name": "Mitsubishi Motor Sales of America, Incorporated"

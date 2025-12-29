@@ -30,20 +30,36 @@ def generate_report_header():
     header.append("This system is designed to handle the following real-world company matching challenges:\n\n")
     
     header.append("### 1. **Exact Matches**\n")
-    header.append("Perfect text matching when query exactly equals company name.\n")
-    header.append("- Example: `\"IBM\"` → `\"IBM\"` (100% match)\n\n")
+    header.append("Perfect character-for-character matching.\n")
+    header.append("- `\"IBM\"` → `\"IBM\"` (100%)\n")
+    header.append("- `\"Microsoft\"` → `\"Microsoft\"` (100%)\n")
+    header.append("- `\"Apple Inc.\"` → `\"Apple Inc.\"` (100%)\n")
+    header.append("- `\"Google\"` → `\"Google\"` (100%)\n")
+    header.append("- `\"Amazon.com\"` → `\"Amazon.com\"` (100%)\n\n")
     
     header.append("### 2. **Acronym Expansions**\n")
-    header.append("Matching acronyms to their full company names.\n")
-    header.append("- Example: `\"IBM\"` → `\"International Business Machines\"` (98%+ match)\n\n")
+    header.append("Matching acronyms to their full company names or vice-versa.\n")
+    header.append("- `\"IBM\"` → `\"International Business Machines\"` (Strong expansion)\n")
+    header.append("- `\"AWS\"` → `\"Amazon Web Services\"` (Strong expansion)\n")
+    header.append("- `\"GE\"` → `\"General Electric\"` (Strong expansion)\n")
+    header.append("- `\"AT&T\"` → `\"American Telephone and Telegraph\"` (Strong expansion)\n")
+    header.append("- `\"FedEx\"` → `\"Federal Express\"` (Strong expansion)\n\n")
     
     header.append("### 3. **Location-Aware Matching (NEW)**\n")
-    header.append("Differentiates identical names using geographic context.\n")
-    header.append("- Example: `\"Acme\"` in `\"Chicago\"` → Matches `\"Acme Corp (Chicago)\"` higher than `\"Acme Corp (Miami)\"`\n\n")
+    header.append("Using city/state context to resolve ambiguity between identical or similar names.\n")
+    header.append("- `\"Acme\"` (Chicago) → `\"Acme Corp\"` (Chicago, IL) vs (Miami, FL)\n")
+    header.append("- `\"Northwestern\"` (Evanston) → `\"Northwestern University\"` (Evanston, IL) vs `\"Northwestern Mutual\"` (Milwaukee, WI)\n")
+    header.append("- `\"Pizza Hut\"` (London, KY) → `\"Pizza Hut\"` (London, KY) vs `\"Pizza Hut\"` (London, UK)\n")
+    header.append("- `\"Springfield Power\"` (Springfield, IL) → Resolved to Illinois entity over Massachusetts\n")
+    header.append("- `\"Regency Hotel\"` (Paris, TX) → Resolved to Texas entity over France or Nevada\n\n")
     
     header.append("### 4. **Popularity/Frequency Bias (NEW)**\n")
-    header.append("Uses occurrence counts to break ties and prioritize larger entities.\n")
-    header.append("- Example: Frequent national brands rank higher than obscure single-occurrence entries.\n\n")
+    header.append("Using occurrence counts to break ties, prioritizing major entities over obscure ones.\n")
+    header.append("- `\"McDonalds\"` → Global chain (5,000+ records) vs `\"McDonalds Hardware\"` (1 record)\n")
+    header.append("- `\"Starbucks\"` → National brand vs `\"Starbucks Coffee Roasters\"` (local shop)\n")
+    header.append("- `\"Walmart\"` → Major retailer vs `\"Walmarts Antiques\"` (single entry)\n")
+    header.append("- `\"Chase\"` → `\"JP Morgan Chase\"` (Bank) vs `\"Chase & Sons Trucking\"` \n")
+    header.append("- `\"Ford\"` → `\"Ford Motor Company\"` vs `\"Ford's Diner\"`\n\n")
 
     header.append("---\n\n")
     
@@ -52,7 +68,7 @@ def generate_report_header():
     header.append("```\n")
     header.append("Base Score = (String Similarity × 70%) + (Semantic Similarity × 30%)\n")
     header.append("Fidelity Boost = Acronym Fidelity × 15%\n")
-    header.append("Location Boost = Location Score × 5% (Implicit via Location Baking)\n")
+    header.append("Location Boost = Location Score × 5% (Post-Inference)\n")
     header.append("Final Score = Base Score + Fidelity Boost + Location Boost + Popularity Boost\n")
     header.append("```\n\n")
     
@@ -63,28 +79,83 @@ def generate_report_header():
 
 
 def format_company_result(query, result_data, rank):
-    """Format a single company result with self-exclusion for bias analysis"""
+    """Format a single company result in compact format with detailed rationales"""
     
     md = []
     
     # Get matches
     original_matches = result_data.get('matches', [])
     if not original_matches:
-        md.append(f"### {rank}. {query}\n\n")
+        md.append(f"## {rank}. {query}\n\n")
         md.append("❌ **No matches found**\n\n")
         md.append("---\n\n")
         return ''.join(md)
     
-    # FILTER: Programmatically discard exact self-matches to focus on model confusion
-    filtered_matches = [m for m in original_matches if m['company_name'].lower().strip() != query.lower().strip()]
+    # Determine exact match status (name-only)
+    has_exact_name = any(m['company_name'].lower().strip() == query.lower().strip() for m in original_matches)
     
-    # Determine exact match status
-    has_exact = any(m['company_name'].lower().strip() == query.lower().strip() for m in original_matches)
+    # FILTER: Only discard if it's truly the "same" entity as the query (if location provided)
+    # Otherwise, keep at least one exact match if we want to show it, or keep all if they are different entities
+    filtered_matches = []
+    found_self = False
     
-    md.append(f"### {rank}. {query}\n\n")
+    query_name_lower = query.lower().strip()
+    query_city_lower = (result_data.get('query_city') or "").lower().strip()
+    query_state_lower = (result_data.get('query_state') or "").lower().strip()
+    
+    for m in original_matches:
+        match_name_lower = m['company_name'].lower().strip()
+        match_city_lower = (m.get('city') or "").lower().strip()
+        match_state_lower = (m.get('state') or "").lower().strip()
+        
+        # Is this a perfect identity match (Name + Location)?
+        is_identity = (match_name_lower == query_name_lower)
+        if query_city_lower or query_state_lower:
+            # If query has location, identity requires location match too
+            is_identity = is_identity and (match_city_lower == query_city_lower) and (match_state_lower == query_state_lower)
+        
+        if is_identity and not found_self:
+            # Filter out ONLY the FIRST perfect identity match as the "Self-Match"
+            found_self = True
+            continue
+        
+        filtered_matches.append(m)
+    
+    has_exact = found_self or has_exact_name
+    
+    # Extract query location
+    query_city = result_data.get('query_city', '')
+    query_state = result_data.get('query_state', '')
+    location_str = ""
+    if query_city.strip() or query_state.strip():
+        location_parts = []
+        if query_city.strip():
+            location_parts.append(query_city.strip())
+        if query_state.strip():
+            location_parts.append(query_state.strip())
+        location_str = f" ({', '.join(location_parts)})"
+    
+    # Header with inline metadata
+    md.append(f"## {rank}. {query}{location_str}\n\n")
+    
+    # Inline query details
+    query_meta = f"**Query:** `{query}`"
+    if query_city.strip() or query_state.strip():
+        loc_parts = []
+        if query_city.strip():
+            loc_parts.append(query_city.strip())
+        if query_state.strip():
+            loc_parts.append(query_state.strip())
+        query_meta += f" • **Location:** {', '.join(loc_parts)}"
+    else:
+        query_meta += " • **Location:** None (name-only search)"
     
     if has_exact:
-        md.append(f"✅ **Exact Match (Self) Found & Filtered**\n\n")
+        query_meta += " • **Self-Match:** ✅ Found & Filtered"
+    else:
+        query_meta += " • **Self-Match:** ❌ Not Found"
+    
+    md.append(f"{query_meta}\n\n")
     
     if not filtered_matches:
         md.append("> No non-identical matches found for this query.\n\n")
@@ -96,58 +167,54 @@ def format_company_result(query, result_data, rank):
     score = top_match.get('likeness_percent', 0.0)
     city = top_match.get('city', '')
     state = top_match.get('state', '')
-    count = top_match.get('count', 0)
     
-    location_str = f" ({city}, {state})" if city or state else ""
+    match_location_str = f" ({city}, {state})" if city or state else ""
     
-    # Highlight that this is the first non-identical result
-    md.append(f"**Top Non-Self Match (Rank 2):** `{company_name}`{location_str} ({score:.1f}%)\n\n")
+    # Top match header
+    md.append(f"**Top Match:** {company_name}{match_location_str} • **Score:** {score:.1f}%\n\n")
     
-    # Extract score components
-    explanation = top_match.get('explanation_details', {})
-    string_score = explanation.get('string_score', top_match.get('string_score', 0.0))
-    semantic_score = explanation.get('normalized_semantic_score', explanation.get('semantic_score', 0.0))
-    acronym_fidelity = explanation.get('acronym_fidelity', top_match.get('acronym_fidelity', 0.0))
-    location_score = explanation.get('location_score', top_match.get('location_score', 0.0))
+    # Detailed score breakdown from RationaleService
+    md.append("<details>\n")
+    md.append("<summary><b>📊 Scoring Breakdown</b></summary>\n\n")
+    breakdown = RationaleService.generate_detailed_score_breakdown(top_match, query)
+    md.append(f"{breakdown}\n")
+    md.append("</details>\n\n")
     
-    # Score breakdown table
-    md.append("**Score Breakdown for Best Non-Self Match:**\n\n")
-    md.append("| Component | Value | Weight | Contribution |\n")
-    md.append("|-----------|-------|--------|-------------|\n")
-    md.append(f"| String Similarity | {string_score:.4f} | 70% | {string_score * 0.70:.4f} |\n")
-    md.append(f"| Semantic Similarity | {semantic_score:.4f} | 30% | {semantic_score * 0.30:.4f} |\n")
+    # Detailed match rationale from RationaleService
+    md.append("**Match Rationale (Narrative):**  \n")
+    explanation_dict = top_match.get('explanation_details', {})
+    rationale = RationaleService.generate_match_rationale(query, company_name, explanation_dict, score / 100.0)
+    md.append(f"{rationale}\n\n")
     
-    base_score = (string_score * 0.70) + (semantic_score * 0.30)
-    md.append(f"| **Base Score** | **{base_score:.4f}** | - | **{base_score * 100:.2f}%** |\n")
-    
-    if acronym_fidelity > 0.0:
-        acro_boost = acronym_fidelity * 0.15
-        md.append(f"| Acronym Fidelity Boost | {acronym_fidelity:.4f} | 15% max | +{acro_boost:.4f} |\n")
-
-    if location_score > 0.0:
-        loc_boost = location_score * 0.05
-        md.append(f"| Location Match Boost | {location_score:.4f} | 5% max | +{loc_boost:.4f} |\n")
-
-    if count > 1:
-        # Show that popularity played a role if count > 1
-        md.append(f"| Popularity Boost | {count} counts | log-scale | YES |\n")
-        
-    md.append(f"| **Final Score** | **{score/100:.4f}** | - | **{score:.2f}%** |\n\n")
-    
-    # Show top 5 non-identical matches
-    md.append("**Top 5 Non-Self Matches:**\n\n")
-    for i, match in enumerate(filtered_matches[:5], 2):
+    # Top 10 matches with RationaleService summaries and relative positioning
+    md.append("**Top 10 Matches:**\n")
+    for i, match in enumerate(filtered_matches[:10], 1):
         match_name = match.get('company_name', 'Unknown')
         match_score = match.get('likeness_percent', 0.0)
         m_city = match.get('city', '')
         m_state = match.get('state', '')
         m_loc = f" ({m_city}, {m_state})" if m_city or m_state else ""
-        md.append(f"{i}. {match_name}{m_loc} ({match_score:.1f}%)\n")
+        
+        # Use RationaleService for a concise summary note
+        m_explanation = match.get('explanation_details', {})
+        note = RationaleService.get_short_summary(query, match_name, m_explanation)
+        md.append(f"{i}. {match_name}{m_loc} - {match_score:.1f}% • *{note}*\n")
+        
+        # Add relative positioning analysis (why this is below the one above)
+        if i > 1:
+            match_above = filtered_matches[i-2]
+            # We don't need the match below for this specific compact view
+            rel_pos = RationaleService.generate_relative_positioning_explanation(match, match_above, None, i)
+            # Make it collapsible to save space
+            md.append(f"<details><summary><i>Why below #{i-1}?</i></summary>\n\n{rel_pos}\n</details>\n")
     md.append("\n")
     
     md.append("---\n\n")
     
     return ''.join(md)
+
+
+# Removed local rationale/note generators - now using RationaleService
 
 
 def main():
@@ -159,7 +226,7 @@ def main():
     print("\n📦 Initializing SearchService...")
     service = SearchService()
     # Explicitly load the location-aware dataset
-    if not service.load_company_data(model_name='paraphrase-MiniLM-L3-v2', filename='companies_sample_100k.json'):
+    if not service.load_company_data(model_name='paraphrase-MiniLM-L3-v2', filename='companies_with_location.json'):
         print("❌ Failed to load company data")
         return
     
@@ -176,7 +243,8 @@ def main():
     with open(control_set_file, 'r', encoding='utf-8') as f:
         control_data = json.load(f)
     
-    companies = [item['Company Name'] for item in control_data]
+    # Keep the full dictionary entries to preserve City/State data
+    companies = control_data
     
     print(f"📋 Loaded {len(companies)} companies from control set\n")
     
@@ -186,14 +254,29 @@ def main():
     # Process companies
     results = []
     
-    for i, company in enumerate(companies, 1):
-        print(f"Processing {i}/{len(companies)}: {company}")
+    for i, company_entry in enumerate(companies, 1):
+        # Extract company name and optional location
+        if isinstance(company_entry, dict):
+            company = company_entry.get('Company Name', '')
+            city = company_entry.get('City', None)
+            state = company_entry.get('State', None)
+        else:
+            # Backward compatibility: if it's just a string
+            company = company_entry
+            city = None
+            state = None
         
-        # Search
-        matches = service.search(company, top_k=10)
+        print(f"Processing {i}/{len(companies)}: {company}")
+        if city or state:
+            print(f"   With location: {city}, {state}")
+        
+        # Search with location parameters
+        matches = service.search(company, top_k=10, city=city, state=state)
         
         result_data = {
             'query': company,
+            'query_city': city or '',
+            'query_state': state or '',
             'matches': matches
         }
         results.append(result_data)

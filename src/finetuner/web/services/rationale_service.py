@@ -13,41 +13,6 @@ class RationaleService:
         query_lower = query.lower()
         company_lower = company_name.lower()
         
-    @staticmethod
-    def get_short_summary(query, company_name, explanation):
-        """Returns a single line summary of why this matched"""
-        query_l = query.lower().strip()
-        comp_l = company_name.lower().strip()
-        mtype = explanation.get('match_type', 'hybrid')
-        
-        if query_l == comp_l:
-            return "Perfect character-for-character match."
-        
-        if mtype == 'acronym_expansion':
-            return f"Detected as a literal expansion of acronym '{query.upper()}'."
-        if mtype == 'acronym_reverse':
-            return f"Matched based on generated acronym '{company_name.upper()}'."
-        
-        if comp_l.startswith(query_l):
-            return "Direct prefix match (target contains extra trailing words)."
-        
-        if query_l in comp_l:
-            return "Substring match (target contains query text)."
-            
-        fidelity = explanation.get('acronym_fidelity', 0.0)
-        if fidelity > 0.8:
-            return f"Strong acronym pattern detected ({fidelity:.2f} fidelity)."
-            
-        overlap = explanation.get('overlap_score', 0.0)
-        if overlap > 0.7:
-            return "High word-for-word overlap."
-            
-        sem = explanation.get('normalized_semantic_score', explanation.get('semantic_score', 0.0))
-        if sem > 0.85:
-            return "Matched via strong semantic/conceptual similarity."
-            
-        return "Hybrid match based on combined lexical and semantic features."
-        
         # Phase 0: Acronym Match Check
         match_type = explanation.get('match_type', 'hybrid')
         if match_type in ['acronym_expansion', 'acronym_reverse']:
@@ -143,8 +108,11 @@ class RationaleService:
         transformation_details = []
         practical_examples = []
         
-        for q_word in query_words:
-            for c_word in company_words:
+        query_words_list = query_lower.split()
+        company_words_list = company_lower.split()
+
+        for q_word in query_words_list:
+            for c_word in company_words_list:
                 if q_word == c_word:
                     continue
                     
@@ -259,6 +227,41 @@ class RationaleService:
         rationale += f"\n**Confidence Level:**\n• {score_breakdown_text}\n\n**Action Required:**\n• This is a LOWER confidence match\n• CAREFULLY verify if these companies are actually related\n• Check address and other details"
         
         return rationale
+        
+    @staticmethod
+    def get_short_summary(query, company_name, explanation):
+        """Returns a single line summary of why this matched"""
+        query_l = query.lower().strip()
+        comp_l = company_name.lower().strip()
+        mtype = explanation.get('match_type', 'hybrid')
+        
+        if query_l == comp_l:
+            return "Perfect character-for-character match."
+        
+        if mtype == 'acronym_expansion':
+            return f"Detected as a literal expansion of acronym '{query.upper()}'."
+        if mtype == 'acronym_reverse':
+            return f"Matched based on generated acronym '{company_name.upper()}'."
+        
+        if comp_l.startswith(query_l):
+            return "Direct prefix match (target contains extra trailing words)."
+        
+        if query_l in comp_l:
+            return "Substring match (target contains query text)."
+            
+        fidelity = explanation.get('acronym_fidelity', 0.0)
+        if fidelity > 0.8:
+            return f"Strong acronym pattern detected ({fidelity:.2f} fidelity)."
+            
+        overlap = explanation.get('overlap_score', 0.0)
+        if overlap > 0.7:
+            return "High word-for-word overlap."
+            
+        sem = explanation.get('normalized_semantic_score', explanation.get('semantic_score', 0.0))
+        if sem > 0.85:
+            return "Matched via strong semantic/conceptual similarity."
+            
+        return "Hybrid match based on combined lexical and semantic features."
 
     # Helper methods (made static)
     @staticmethod

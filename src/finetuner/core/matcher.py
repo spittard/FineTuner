@@ -29,9 +29,9 @@ class CompanyMatcher:
     avoiding logic redundancy.
     """
     # Cache version - increment this when logic changes to invalidate old caches
-    CACHE_VERSION = "v4.0_location_baked"
+    CACHE_VERSION = "v4.1_location_decoupled"
     
-    def __init__(self, model_name='all-MiniLM-L6-v2'):
+    def __init__(self, model_name='paraphrase-MiniLM-L3-v2'):
         self.model = SentenceTransformer(model_name)
         self.vector_store = VectorStore()
         
@@ -131,6 +131,14 @@ class CompanyMatcher:
             if self.acronym_cache:
                 names_data['acronym_cache'] = self.acronym_cache
                 
+            # Save fast lookup structures (NEW - to avoid recomputing on load)
+            if hasattr(self, '_company_names_lower_set'):
+                names_data['_company_names_lower_set'] = self._company_names_lower_set
+            if hasattr(self, '_company_names_lower_to_index'):
+                names_data['_company_names_lower_to_index'] = self._company_names_lower_to_index
+            if hasattr(self, '_company_words_dict'):
+                names_data['_company_words_dict'] = self._company_words_dict
+                
             with open(paths['names'], 'wb') as f:
                 pickle.dump(names_data, f)
             print(f"[OK] ({time.time() - names_start:.1f}s)")
@@ -222,6 +230,14 @@ class CompanyMatcher:
                     self.company_ids = names_data['company_ids']
                 else:
                     self.company_ids = []
+                    
+                # Load fast lookup structures if available (NEW)
+                if '_company_names_lower_set' in names_data:
+                    self._company_names_lower_set = names_data['_company_names_lower_set']
+                if '_company_names_lower_to_index' in names_data:
+                    self._company_names_lower_to_index = names_data['_company_names_lower_to_index']
+                if '_company_words_dict' in names_data:
+                    self._company_words_dict = names_data['_company_words_dict']
             print(f"[OK] ({time.time() - names_start:.1f}s)")
             
             # Verify metadata
@@ -229,6 +245,9 @@ class CompanyMatcher:
             meta_start = time.time()
             with open(paths['metadata'], 'rb') as f:
                 metadata = pickle.load(f)
+                if metadata.get('cache_version') != self.CACHE_VERSION:
+                    print(f"[FAIL] (Cache version mismatch: {metadata.get('cache_version')} != {self.CACHE_VERSION})")
+                    return False
                 if metadata['model_name'] != self.model_name:
                     print("[FAIL] (Model name changed, cache invalid)")
                     return False
@@ -414,6 +433,12 @@ class CompanyMatcher:
 
     def _create_fast_lookup_sets(self):
         """Create fast lookup sets for exact matching (called after building index)"""
+        # SKIP if already loaded from cache
+        if (hasattr(self, '_company_names_lower_set') and 
+            hasattr(self, '_company_names_lower_to_index') and 
+            hasattr(self, '_company_words_dict')):
+            return
+
         print("Creating fast lookup sets for exact matching...")
         total = len(self.original_company_names)
         
@@ -471,8 +496,25 @@ class CompanyMatcher:
         
         return info
     
-    def clear_cache(self, cache_key=None):
-        """Clear specific cache or all cache"""
+    def clear_cache(self, cache_key=None, confirm_delete=False):
+        """
+        Clear specific cache or all cache.
+        
+        SAFETY: Requires confirm_delete=True to actually delete files.
+        This prevents accidental data loss.
+        
+        Args:
+            cache_key: Specific cache key to clear, or None for all caches
+            confirm_delete: Must be True to actually delete files
+        """
+        if not confirm_delete:
+            raise ValueError(
+                "Cache deletion requires confirm_delete=True. "
+                "This is a safety measure to prevent accidental data loss. "
+                "If you are sure you want to delete cache files, call: "
+                "clear_cache(cache_key, confirm_delete=True)"
+            )
+            
         if not os.path.exists(self.cache_dir):
             print("No cache directory found")
             return
@@ -809,8 +851,8 @@ class CompanyMatcher:
         encode_pbar.close()
         print(f"   [OK] Encoded {len(queries):,} queries")
         
-        # Process all queries with full semantic search and re-ranking
-        candidate_k = min(50, len(self.original_company_names))
+        # INCREASED retrieval limit (funnel) for higher precision on large datasets
+        candidate_k = min(1000, len(self.original_company_names))
         
         print(f"Processing {len(queries):,} queries with semantic search and re-ranking...")
         match_pbar = tqdm(enumerate(queries), desc="   Matching queries", total=len(queries), unit="query", ncols=80, disable=not HAS_TQDM)
@@ -859,13 +901,25 @@ class CompanyMatcher:
                     acronym_fidelity = self._get_cached_acronym_fidelity(query, query_idx, idx)
                 
                 # Weighted Combination
-                final_score = (string_score * 0.7) + (sem_score_norm * 0.3)
+                name_score = (string_score * 0.7) + (sem_score_norm * 0.3)
                 
-                # BOOST for acronym fidelity (literal expansions get significant boost)
-                # FIX: Never boost 2-letter acronyms (too much noise from states/suffixes)
-                if acronym_fidelity > 0.8 and len(query_acronym) > 2:  # Increased threshold and length check
-                    # Add up to +0.15 boost for perfect acronym expansions
-                    final_score = min(1.0, final_score + (acronym_fidelity * 0.15))
+                # BOOST for acronym fidelity
+                if acronym_fidelity > 0.8 and len(query_acronym) > 2:
+                    name_score = min(1.0, name_score + (acronym_fidelity * 0.15))
+                
+                # TOKEN COVERAGE CHECK
+                q_tokens = set(TextPreprocessor.clean_company_name(query).split())
+                t_tokens = set(TextPreprocessor.clean_company_name(company_name).split())
+                is_full_overlap = q_tokens.issubset(t_tokens) if q_tokens else False
+                
+                # TIERED LEXICAL OVERRIDES
+                if string_score >= 0.92 or is_full_overlap:
+                    # Near-perfect lexical match OR 100% token coverage
+                    name_score = max(name_score, 0.95)
+                elif string_score >= 0.80:
+                    name_score = max(name_score, 0.90)
+                
+                final_score = name_score
                 
                 candidates.append({
                     "name": company_name,
@@ -1036,18 +1090,10 @@ class CompanyMatcher:
         self.has_location_data = True
         self.max_company_count = max(counts) if counts else 0
         
-        # --- LOCATION BAKING ---
-        print("Baking location into company names for embeddings...")
-        baking_text = []
-        for i, name in enumerate(company_names):
-            loc = locations[i]
-            city = loc.get("city", "")
-            state = loc.get("state", "")
-            if city or state:
-                # Format: "Name City State"
-                baking_text.append(f"{name} {city} {state}".strip())
-            else:
-                baking_text.append(name)
+        # --- LOCATION BAKING REMOVED ---
+        # The baking logic below is removed to decouple location from core embeddings.
+        # We now use only the company names for the semantic search space.
+        baking_text = company_names
         
         # Generate cache key
         # If we have a file, use the file-based key for storage (matches our fast-load logic)
@@ -1257,15 +1303,12 @@ class CompanyMatcher:
                             found_indices.add(idx)
         
         # --- PHASE 1: RETRIEVAL (Semantic Search) ---
-        candidate_k = min(50, len(self.original_company_names))
+        # INCREASED retrieval limit (funnel) for higher precision on large datasets
+        candidate_k = min(1000, len(self.original_company_names))
         
         # RETRIEVAL (Semantic Search)
-        # Use location-baked query for semantic search if location is provided
-        if use_location:
-            bake_query = f"{query} {city or ''} {state or ''}".strip()
-            query_vec = self.model.encode([bake_query], convert_to_numpy=True, normalize_embeddings=True)
-        else:
-            query_vec = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
+        # Location baking removed from query - we search by name only
+        query_vec = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
             
         semantic_scores, semantic_indices = self.vector_store.search(query_vec, candidate_k)
         
@@ -1313,16 +1356,25 @@ class CompanyMatcher:
             # Base score: 70% string, 30% semantic
             name_score = (string_score * 0.7) + (sem_score_norm * 0.3)
             
-            # BOOST for acronym fidelity (literal expansions get significant boost)
-            # FIX: Never boost 2-letter acronyms (too much noise from states/suffixes)
-            if acronym_fidelity > 0.8 and len(query_acronym) > 2:  # Increased threshold and length check
-                # Add up to +0.15 boost for perfect acronym expansions
+            # BOOST for acronym fidelity
+            if acronym_fidelity > 0.8 and len(query_acronym) > 2:
                 name_score = min(1.0, name_score + (acronym_fidelity * 0.15))
             
-            # BOOST for high token coverage (all query words found in target)
-            if string_score >= 0.80: # Relaxed threshold to capture penalized lexical matches
-                # Ensure literal overlap is prioritized over generic acronyms
+            # TOKEN COVERAGE CHECK
+            q_tokens = set(TextPreprocessor.clean_company_name(query).split())
+            t_tokens = set(TextPreprocessor.clean_company_name(company_name).split())
+            is_full_overlap = q_tokens.issubset(t_tokens) if q_tokens else False
+            
+            # TIERED LEXICAL OVERRIDES (Ensures literal matches consistently outrank semantic noise)
+            if string_score >= 0.92 or is_full_overlap:
+                # Near-perfect lexical match OR 100% token coverage
+                name_score = max(name_score, 0.95)
+            elif string_score >= 0.80: 
+                # Strong lexical match - high priority
                 name_score = max(name_score, 0.90)
+            
+            # BOOST for high token coverage (all query words found in target)
+            # (Merged into tiered logic above)
             
             # --- LOCATION SCORING ---
             location_score = 0.0
