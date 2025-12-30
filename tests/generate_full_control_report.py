@@ -12,10 +12,11 @@ import time
 from datetime import datetime
 
 # Add src to python path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 
 from finetuner.core import cache_rpc
 from finetuner.core.matcher import TextPreprocessor
+from finetuner.web.services.rationale_service import RationaleService
 
 def enrich_rpc_results(query, raw_matches):
     """
@@ -395,14 +396,18 @@ def format_company_result(query, result_data, rank):
         m_loc = f" ({m_city}, {m_state})" if m_city or m_state else ""
         
         # Concise one-line summary for the collapsed state
-        summary_line = f"<b>#{i}</b> | <b>{match_name}</b>{m_loc} | Score: <b>{match_score:.1f}%</b>"
+        visual_indicator = RationaleService.get_visual_indicator(match_score / 100.0)
+        summary_line = f"{visual_indicator} <b>#{i}</b> | <b>{match_name}</b>{m_loc} | Score: <b>{match_score:.1f}%</b>"
         
         # 1. Detailed Score Breakdown
         exp = match.get('explanation_details', {})
         string_score = exp.get('string_score', 0.0)
         semantic_norm = exp.get('normalized_semantic_score', exp.get('semantic_score', 0.0))
+        location_boost = exp.get('location_boost', 0.0)
+        popularity_boost = exp.get('popularity_boost', 0.0)
         contrib_string = string_score * 0.7
         contrib_semantic = semantic_norm * 0.3
+        base_score = contrib_string + contrib_semantic
         
         # Content Generation
         html_parts = []
@@ -415,7 +420,12 @@ def format_company_result(query, result_data, rank):
         html_parts.append(f"        <tr style='text-align: left; border-bottom: 1px solid #ccc;'><th>Component</th><th>Raw</th><th>Weight</th><th>Contrib</th></tr>")
         html_parts.append(f"        <tr><td>String Similarity</td><td>{string_score:.4f}</td><td>70%</td><td>{contrib_string:.4f}</td></tr>")
         html_parts.append(f"        <tr><td>Semantic Similarity (Norm)</td><td>{semantic_norm:.4f}</td><td>30%</td><td>{contrib_semantic:.4f}</td></tr>")
-        html_parts.append(f"        <tr><td><strong>Final Score</strong></td><td></td><td></td><td><strong>{match_score/100:.4f}</strong></td></tr>")
+        html_parts.append(f"        <tr style='border-top: 1px solid #eee;'><td><em>Base Score</em></td><td></td><td></td><td><em>{base_score:.4f}</em></td></tr>")
+        if location_boost > 0:
+            html_parts.append(f"        <tr><td>Location Boost</td><td></td><td>5% max</td><td>+{location_boost:.4f}</td></tr>")
+        if popularity_boost > 0:
+            html_parts.append(f"        <tr><td>Frequency Boost</td><td></td><td></td><td>+{popularity_boost:.4f}</td></tr>")
+        html_parts.append(f"        <tr style='border-top: 1px solid #ccc;'><td><strong>Final Score</strong></td><td></td><td></td><td><strong>{match_score/100:.4f}</strong></td></tr>")
         html_parts.append(f"      </table>")
         
         # Match Rationale

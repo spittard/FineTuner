@@ -30,25 +30,25 @@ class RationaleService:
             else:
                 rationale += f"<br><b>Action Required:</b><br>• Verify if the acronym '{query}' correctly represents '{company_name}'<br>• Expansion quality is moderate"
             
-            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''))
+            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''), query, company_name)
             return rationale
 
         # Phase 1: Exact Match Check
         if query_lower == company_lower:
             rationale = "PERFECT MATCH<br><br><b>What This Means:</b><br>This is exactly the same company name you're looking for.<br><br><b>Action Required:</b><br>• Use this match - no further checking needed<br>• This is 100% the same company<br><br><b>Why This Happens:</b><br>• Someone entered the company name name exactly as it appears in your system<br>• This is the ideal scenario for data entry"
-            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''))
+            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''), query, company_name)
             return rationale
         
         # Phase 2: Prefix Match Check
         if company_lower.startswith(query_lower):
             rationale = f"PREFIX MATCH<br><br><b>What This Means:</b><br>This company name starts with '{query}' and has additional information added.<br><br><b>Action Required:</b><br>• This is likely the same company with extra details<br>• Check if the additional words are just descriptive (like 'Inc', 'LLC', 'Corp')<br>• If yes, use this match<br><br><b>Why This Happens:</b><br>• Someone entered just the core company name<br>• Your system has the full legal name<br>• Common in business databases where legal names include extra terms"
-            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''))
+            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''), query, company_name)
             return rationale
         
         # Phase 3: Substring Match Check
         if query_lower in company_lower:
             rationale = f"SUBSTRING MATCH<br><br><b>What This Means:</b><br>This company name contains '{query}' somewhere within it.<br><br><b>Action Required:</b><br>• This is likely the same company<br>• Check if the surrounding words make sense<br>• If yes, use this match<br><br><b>Why This Happens:</b><br>• Someone entered a partial company name<br>• Your system has the complete name<br>• Common when people remember only part of a company name"
-            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''))
+            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''), query, company_name)
             return rationale
         
         # Phase 4: Word-by-Word Analysis
@@ -109,7 +109,7 @@ class RationaleService:
 
             rationale += f"<br><b>Why This Happens:</b><br>• Company names often have multiple words<br>• Some words are more important than others<br>• Business names can vary in how they're written"
             
-            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''))
+            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''), query, company_name)
             return rationale
         
         # Phase 5: Linguistic Relationship Analysis
@@ -195,14 +195,14 @@ class RationaleService:
                     rationale += f"• {ex}<br>"
             
             rationale += f"<br><b>Action Required:</b><br>• Verify if this variation makes sense<br>• Likely the same company"
-            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''))
+            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''), query, company_name)
             return rationale
 
         # Phase 6: Phonetic Match Check
         phonetic_analysis = RationaleService.analyze_phonetic_similarity(query, company_name)
         if phonetic_analysis:
             rationale = f"PHONETIC MATCH<br><br><b>What This Means:</b><br>The names sound similar when spoken aloud, even if spelled differently.<br><br><b>Analysis:</b><br>• {phonetic_analysis}<br><br><b>Action Required:</b><br>• Say both names out loud<br>• If they sound the same, it's likely a match<br><br><b>Why This Happens:</b><br>• Names are often entered by listening to someone speak<br>• typos can result in phonetically similar words"
-            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''))
+            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''), query, company_name)
             return rationale
         
         # Phase 7: Semantic/Contextual Fallback
@@ -246,17 +246,69 @@ class RationaleService:
         return rationale
 
     @staticmethod
-    def _append_location_frequency_analysis(rationale, explanation, match_city):
-        """Helper to append Location & Frequency analysis to rationale"""
+    def _append_location_frequency_analysis(rationale, explanation, match_city, query=None, company_name=None):
+        """Helper to append Semantic, Location & Frequency analysis to rationale"""
+        # --- NEW: Semantic Analysis ---
+        sem_score = explanation.get('normalized_semantic_score', explanation.get('semantic_score', 0.0))
+        
+        # Determine Visual Indicator
+        if sem_score >= 0.8:
+            indicator = "🟢"
+        elif sem_score >= 0.5:
+            indicator = "🟡"
+        else:
+            indicator = "🔴"
+            
+        rationale += "<br><br><b>Semantic Analysis:</b><br>"
+        rationale += f"• <b>Strength:</b> {indicator} {sem_score:.2f}<br>"
+        
+        # Determine Base Meaning
+        if sem_score >= 0.9:
+            meaning = "The model detects a very strong meaning-based connection."
+        elif sem_score >= 0.7:
+             meaning = "The model detects a strong meaning-based connection."
+        elif sem_score >= 0.5:
+             meaning = "The model detects a moderate meaning-based connection."
+        else:
+             meaning = "The model detects a weak or incidental connection."
+
+        # Add Specific Context if available
+        context_notes = []
+        if query and company_name:
+            biz_ctx = RationaleService.analyze_business_context(query, company_name)
+            ind_ctx = RationaleService.analyze_industry_context(query, company_name)
+            
+            if biz_ctx:
+                context_notes.append(biz_ctx)
+            if ind_ctx:
+                context_notes.append(ind_ctx)
+
+        if context_notes:
+            rationale += f"• <b>Meaning:</b> {meaning}<br>"
+            for note in context_notes:
+                rationale += f"• <b>Context:</b> {note}<br>"
+        else:
+            rationale += f"• <b>Meaning:</b> {meaning}<br>"
+
         loc_boost = explanation.get('location_boost', 0.0)
         pop_boost = explanation.get('popularity_boost', 0.0)
         record_count = explanation.get('count', 0)
         
-        rationale += "<br><br><b>Location & Frequency Analysis:</b><br>"
+        rationale += "<br><b>Location & Frequency Analysis:</b><br>"
         
         # Location Impact
+        # Location Impact
+        loc_score = explanation.get('location_score', 0.0)
+        
         if loc_boost > 0:
-            rationale += f"• <b>Location:</b> <span style='color: green;'>Positive Impact (+{loc_boost*100:.2f}%)</span>. The record matches the query location ({match_city}), confirming it is the correct local entity.<br>"
+            if loc_score >= 0.9:
+                match_desc = f"The record's location ({match_city}) matches the city and state requirements."
+            elif loc_score >= 0.4: # State match threshold
+                match_desc = f"The record's location ({match_city}) is in the same region/state, providing a partial boost."
+            else:
+                match_desc = f"The record's location ({match_city}) provides a minor geographic boost."
+                
+            rationale += f"• <b>Location:</b> <span style='color: green;'>Positive Impact (+{loc_boost*100:.2f}%)</span>. {match_desc}<br>"
         elif match_city and not loc_boost:
              rationale += f"• <b>Location:</b> No impact. Location present but did not boost score (likely loose match or ignored).<br>"
         else:
@@ -536,32 +588,67 @@ class RationaleService:
     def analyze_business_context(query, company_name):
         """Analyze business context and corporate terminology"""
         business_keywords = {
-            'corporate': ['corp', 'corporation', 'incorporated', 'inc', 'llc', 'ltd', 'limited'],
-            'partnership': ['partners', 'partnership', 'associates', 'assoc'],
-            'holding': ['holdings', 'holding', 'group', 'enterprises', 'ventures'],
-            'international': ['intl', 'international', 'global', 'worldwide'],
-            'regional': ['regional', 'national', 'local', 'state', 'city'],
+            'religious': ['church', 'synagogue', 'temple', 'ministry', 'messianic', 'assemblies', 'catholic'],
+            'non_profit': ['association', 'foundation', 'club', 'society', 'coalition', 'initiative', 'center', 'charity'],
             'technology': ['tech', 'technology', 'digital', 'software', 'systems'],
             'financial': ['financial', 'finance', 'capital', 'investment', 'funds'],
-            'consulting': ['consulting', 'consultants', 'advisory', 'services']
+            'consulting': ['consulting', 'consultants', 'advisory', 'services'],
+            'healthcare': ['health', 'medical', 'hospital', 'clinic', 'care', 'nursing'],
+            'corporate': ['corp', 'corporation', 'incorporated', 'inc', 'llc', 'ltd', 'limited'],
+            'partnership': ['partners', 'partnership', 'associates', 'assoc'],
+            'international': ['intl', 'international', 'global', 'worldwide']
         }
         
-        query_business = None
-        company_business = None
+        def get_contexts(text):
+            found = set()
+            text_lower = text.lower()
+            for b_type, keywords in business_keywords.items():
+                if any(k in text_lower for k in keywords):
+                    found.add(b_type)
+            
+            # Refine Priority: Specific trumps Generic
+            if 'religious' in found:
+                found.discard('non_profit') # Religious usually implies NP, but let's be specific
+                found.discard('corporate')
+            if 'non_profit' in found:
+                found.discard('corporate') # e.g. "Association Inc" -> Just Association context
+            if 'healthcare' in found:
+                found.discard('corporate')
+            
+            return found
+
+        q_ctx = get_contexts(query)
+        c_ctx = get_contexts(company_name)
         
-        for business_type, keywords in business_keywords.items():
-            if any(keyword in query.lower() for keyword in keywords):
-                query_business = business_type
-            if any(keyword in company_name.lower() for keyword in keywords):
-                company_business = business_type
+        common = q_ctx.intersection(c_ctx)
         
-        if query_business and company_business:
-            if query_business == company_business:
-                return f"Both {business_type} entities - strong business structure alignment"
-            else:
-                return f"Different business structures: {query_business} vs {company_business}"
+        if common:
+            # Pick the most specific one to mention
+            priority_order = ['religious', 'healthcare', 'non_profit', 'technology', 'financial', 'consulting']
+            for p in priority_order:
+                if p in common:
+                    return f"Both have {p} indicators - strong alignment"
+            return f"Both have {'/'.join(common)} indicators"
+            
+        if q_ctx and c_ctx:
+            return f"Different contexts: {', '.join(q_ctx)} vs {', '.join(c_ctx)}"
+        
+        if q_ctx:
+             return f"Query indicates {', '.join(q_ctx)} context"
+        if c_ctx:
+             return f"Match indicates {', '.join(c_ctx)} context"
         
         return None
+
+    @staticmethod
+    def get_visual_indicator(score):
+        """Get visual strength indicator (circle)"""
+        if score >= 0.8:
+            return "🟢"
+        elif score >= 0.5:
+            return "🟡"
+        else:
+            return "🔴"
 
     @staticmethod
     def analyze_word_origins(query, company_name):
@@ -792,11 +879,11 @@ class RationaleService:
         
         if location_score > 0.0:
             if location_score >= 0.90:
-                breakdown += f"- **Location Match (EXCELLENT):** {location_score:.2f} - Same city and state\n"
+                breakdown += f"- **Location Match (EXCELLENT):** {location_score:.2f} - Strong geographic match\n"
             elif location_score >= 0.50:
-                breakdown += f"- **Location Match (GOOD):** {location_score:.2f} - Same state or similar location\n"
+                breakdown += f"- **Location Match (GOOD):** {location_score:.2f} - Good geographic alignment\n"
             else:
-                breakdown += f"- **Location Match (PARTIAL):** {location_score:.2f} - Some geographic alignment\n"
+                breakdown += f"- **Location Match (PARTIAL):** {location_score:.2f} - Some geographic relevance\n"
         
         return breakdown
 
