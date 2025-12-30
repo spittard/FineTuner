@@ -6,42 +6,76 @@ description: Always use comprehensive detailed rationales in reports
 
 When generating ANY report or match output for SME review, ALWAYS use the **full comprehensive rationale** from `RationaleService`. 
 
-## Required Rationale Sections
+## Required Report Format
 
-Every match rationale MUST include:
+### Table Structure
+```markdown
+| # | Score | Company | Type | Rationale |
+|:-:|:-----:|---------|------|-----------|
+| 1 | 🟢 **100.2%** | `Company Name` | Exact | <details><summary>📊 View</summary>...</details> |
+```
 
-1. **Match Rationale:** - Detailed narrative explaining the match
-2. **Why This Match Makes Sense:** - Justification for the match
-3. **Why This Match Might Be Wrong:** - Potential issues/concerns
-4. **Score Breakdown** - Full component breakdown (String, Semantic, Acronym, Location)
-5. **Alternative Interpretations** - When applicable
+### Score Icons
+- 🟢 ≥ 80% (High confidence)
+- 🟡 60-79% (Medium confidence)
+- 🟠 40-59% (Low confidence)
+- 🔴 < 40% (Very low confidence)
+
+### Match Type Column
+- **Exact** - String score ≥ 0.9
+- **Acronym** - Acronym fidelity > 0.5
+- **Semantic** - Semantic score > string score
+- **Lexical** - Otherwise
+
+## Required Rationale Sections (via RationaleService)
+
+Every expandable rationale MUST include:
+
+1. **Match Type Header:** PERFECT MATCH / WORD OVERLAP MATCH / ACRONYM MATCH / etc.
+2. **What This Means:** Plain language explanation
+3. **Action Required:** Clear next steps for the data clerk
+4. **Why This Happens:** Context for the match behavior
+5. **Complete Score Breakdown:** Full component table with weights
 
 ## Implementation
 
 ```python
 from finetuner.web.services.rationale_service import RationaleService
 
-# Generate FULL rationale - never abbreviated
-rationale = RationaleService.generate_match_rationale(
+# Get COMPREHENSIVE rationale - NEVER abbreviated
+full_rationale = RationaleService.generate_match_rationale(
     query=query,
     company_name=match['name'],
-    explanation=match,  # Pass full match data
+    explanation=match,  # Pass full match data dict
     score=match['score']
 )
 
-# Also use detailed score breakdown
-breakdown = RationaleService.generate_detailed_score_breakdown(match, query)
+# Also get detailed score breakdown
+score_breakdown = RationaleService.generate_detailed_score_breakdown(match, query)
+
+# Combine both for complete rationale
+combined = f"{full_rationale}\n\n---\n\n{score_breakdown}"
+
+# Format for HTML table cell
+rationale_html = combined.replace('\n', '<br>').replace('|', '&#124;')
 ```
+
+## Reference Script
+
+The canonical implementation is: `tests/generate_report_sme.py`
 
 ## NEVER DO THIS
 
 - ❌ One-line summaries like "Semantic match" or "Near-exact text"
 - ❌ Abbreviated score tables without context
-- ❌ Missing "Why This Match Makes Sense" / "Might Be Wrong" sections
+- ❌ Missing "What This Means" / "Action Required" / "Why This Happens" sections
+- ❌ Rationale without score breakdown
+- ❌ Rationale outside of expandable `<details>` tags
 
 ## ALWAYS DO THIS
 
-- ✅ Full narrative rationale explaining the match
-- ✅ Complete score breakdown with all components
-- ✅ Context about why the match is ranked where it is
-- ✅ Alternative interpretations when relevant
+- ✅ Full `RationaleService.generate_match_rationale()` output
+- ✅ Full `RationaleService.generate_detailed_score_breakdown()` output  
+- ✅ Combine both in expandable `<details>` section
+- ✅ Score icons (🟢🟡🟠🔴) for quick visual scanning
+- ✅ Table format with columns: # | Score | Company | Type | Rationale
