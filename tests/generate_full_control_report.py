@@ -7,15 +7,216 @@ Writes report after first 10 companies, then continues processing all 104.
 import json
 import os
 import sys
+import argparse
 import time
 from datetime import datetime
 
 # Add src to python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 
-from finetuner.web.services.search_service import SearchService
-from finetuner.web.services.rationale_service import RationaleService
+from finetuner.core import cache_rpc
+from finetuner.core.matcher import TextPreprocessor
 
+def enrich_rpc_results(query, raw_matches):
+    """
+    Enrich raw RPC matches with rationales and explanations locally.
+    This replaces what SearchService.search() used to do.
+    """
+    results = []
+    for i, match in enumerate(raw_matches, 1):
+        # 1. Replicate CompanyMatcher.explain_match() locally
+        # We need this because RPC doesn't return the 'explanation' object
+        q_tokens = set(TextPreprocessor.clean_company_name(query).split())
+        t_tokens = set(TextPreprocessor.clean_company_name(match['name']).split())
+        overlap = q_tokens.intersection(t_tokens)
+        overlap_score = len(overlap) / len(q_tokens) if q_tokens else 0.0
+        
+        explanation = {
+            "query_tokens": list(q_tokens),
+            "match_tokens": list(t_tokens),
+            "overlap": list(overlap),
+            "overlap_score": overlap_score,
+            "string_score": match.get('string_score', 0.0),
+            "semantic_score": match.get('semantic_score', 0.0),
+            "normalized_semantic_score": match.get('normalized_semantic_score', 0.0),
+            "acronym_fidelity": match.get('acronym_fidelity', 0.0),
+            "match_type": match.get('match_type', 'hybrid'),
+            "location_score": match.get('location_score', 0.0),
+            "count": match.get('count', 0),
+            "popularity_boost": match.get('popularity_boost', 0.0),
+            "location_boost": match.get('location_boost', 0.0),
+            "match_city": match.get('city', '')
+        }
+
+        # 2. Generate Rationale using RationaleService
+        rationale = RationaleService.generate_match_rationale(query, match['name'], explanation, match['score'])
+        
+        result_entry = {
+            'rank': i,
+            'company_name': match['name'],
+            'likeness_percent': round(match['score'] * 100, 1),
+            'match_rationale': rationale,
+            'raw_score': match['score'],
+            'explanation_details': explanation
+        }
+        
+        # Add top-level fields
+        result_entry['string_score'] = explanation['string_score']
+        result_entry['semantic_score'] = explanation['semantic_score']
+        result_entry['normalized_semantic_score'] = explanation['normalized_semantic_score']
+        result_entry['acronym_fidelity'] = explanation['acronym_fidelity']
+        result_entry['match_type'] = explanation['match_type']
+        
+        # Add location/count
+        if 'city' in match:
+            result_entry['city'] = match.get('city', '')
+        if 'state' in match:
+            result_entry['state'] = match.get('state', '')
+        if 'count' in match:
+            result_entry['record_count'] = match.get('count', 0)
+        if 'location_score' in match:
+            result_entry['location_score'] = round(match.get('location_score', 0) * 100, 1)
+        if 'name_score' in match:
+            result_entry['name_score'] = round(match.get('name_score', 0) * 100, 1)
+            
+        results.append(result_entry)
+    return results
+
+def main():
+    parser = argparse.ArgumentParser(description='Generate control set report')
+    parser.add_argument('--limit', type=int, default=None, help='Limit number of companies to process')
+    args = parser.parse_args()
+
+    print("="*70)
+    print("🔬 GENERATING FULL CONTROL SET REPORT (RPC CLIENT MODE)")
+    if args.limit:
+        print(f"⚠️ LIMIT SET: Processing only {args.limit} companies")
+    print("="*70)
+    
+    # Initialize RPC Client
+    print("\n🔗 Connecting to RPC Server...")
+    try:
+        if not cache_rpc.is_server_running():
+            print("❌ RPC Server is not running! Please start it with: python -m finetuner.core.cache_rpc --serve")
+            return
+        
+        client = cache_rpc.connect()
+        status = client.get_status()
+        print(f"✅ Connected to RPC Server (PID: {status.get('pid')})")
+        
+        # Check loaded caches
+        loaded_caches = client.list_loaded_caches()
+        
+        # We need the location-aware cache
+        # Ideally, we find a cache key that corresponds to 'companies_with_location.json'
+        # For now, we'll try to load it by filename if we can, or check if any large cache is loaded
+        
+        # Try to ensure a cache is loaded
+        if not loaded_caches:
+            print("⚠️ No caches loaded on server. Attempting to search to trigger auto-load...")
+            # This relies on server having a default or us knowing the key.
+            # Let's try to list available and load the largest one
+            avail = client.list_available_caches()
+            if avail:
+                # Pick largest
+                best_cache = sorted(avail, key=lambda x: x.get('num_companies', 0), reverse=True)[0]
+                cache_key = best_cache['cache_key']
+                print(f"   Loading largest cache: {cache_key} ({best_cache.get('num_companies')} companies)...")
+                client.load_cache(cache_key)
+            else:
+                print("❌ No caches found on server disk.")
+                return
+        
+        print("✅ Cache ready on server\n")
+        
+    except Exception as e:
+        print(f"❌ Connection failed: {e}")
+        return
+    
+    # Load control set
+    control_set_file = os.path.join(os.path.dirname(__file__), '..', 'companies_control_set.json')
+    
+    if not os.path.exists(control_set_file):
+        print(f"❌ Control set file not found: {control_set_file}")
+        return
+    
+    # Read control set JSON
+    with open(control_set_file, 'r', encoding='utf-8') as f:
+        control_data = json.load(f)
+    
+    # Keep the full dictionary entries to preserve City/State data
+    companies = control_data
+    
+    print(f"📋 Loaded {len(companies)} companies from control set\n")
+    
+    # Generate header
+    report_content = [generate_report_header()]
+    
+    # Process companies
+    results = []
+    
+    for i, company_entry in enumerate(companies, 1):
+        if args.limit and i > args.limit:
+            print(f"\n⚠️ Limit reached ({args.limit}). Stopping early.")
+            break
+        # Extract company name and optional location
+        if isinstance(company_entry, dict):
+            company = company_entry.get('Company Name', '')
+            city = company_entry.get('City', None)
+            state = company_entry.get('State', None)
+        else:
+            # Backward compatibility: if it's just a string
+            company = company_entry
+            city = None
+            state = None
+        
+        print(f"Processing {i}/{len(companies)}: {company}")
+        if city or state:
+            print(f"   With location: {city}, {state}")
+        
+        # Search via RPC (fetch more to allow for filtering)
+        rpc_response = client.search(company, top_k=15, city=city, state=state)
+        
+        # Enrich results locally
+        if 'error' in rpc_response:
+             print(f"   ❌ RPC Error: {rpc_response['error']}")
+             matches = []
+        else:
+             raw_matches = rpc_response.get('results', [])
+             matches = enrich_rpc_results(company, raw_matches)
+        
+        result_data = {
+            'query': company,
+            'query_city': city or '',
+            'query_state': state or '',
+            'matches': matches
+        }
+        results.append(result_data)
+        
+        # Format result
+        company_md = format_company_result(company, result_data, i)
+        report_content.append(company_md)
+        
+        # Write report after first 10 companies
+        if i == 10:
+            output_file = 'control_set_report_ULTRA.md'
+            print(f"\n📄 Writing initial report (first 10 companies) to {output_file}...")
+            with open(output_file, 'w', encoding='utf-8') as f:
+                f.write(''.join(report_content))
+            print(f"✅ Initial report written! Continuing with remaining {len(companies) - 10} companies...\n")
+    
+    # Write final report
+    output_file = 'control_set_report_ULTRA.md'
+    print(f"\n📄 Writing final report to {output_file}...")
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.write(''.join(report_content))
+    
+    print(f"\n✅ COMPLETE! Processed {len(companies)} companies")
+    print(f"📊 Report saved: {output_file}")
+    print("="*70)
+
+
+from finetuner.web.services.rationale_service import RationaleService
 
 def generate_report_header():
     """Generate the report header with scenario highlights and fidelity explanation"""
@@ -73,10 +274,10 @@ def generate_report_header():
     header.append("```\n\n")
     
     header.append("---\n\n")
+    
     header.append("## Control Set Results\n\n")
     
     return ''.join(header)
-
 
 def format_company_result(query, result_data, rank):
     """Format a single company result in compact format with detailed rationales"""
@@ -186,11 +387,6 @@ def format_company_result(query, result_data, rank):
     rationale = RationaleService.generate_match_rationale(query, company_name, explanation_dict, score / 100.0)
     md.append(f"{rationale}\n\n")
     
-    # Top 10 matches as table with expandable details
-    md.append("**Top 10 Matches:**\n\n")
-    md.append("| Rank | Company | Score | Summary |\n")
-    md.append("|:----:|---------|:-----:|:--------|\n")
-    
     for i, match in enumerate(filtered_matches[:10], 1):
         match_name = match.get('company_name', 'Unknown')
         match_score = match.get('likeness_percent', 0.0)
@@ -198,150 +394,52 @@ def format_company_result(query, result_data, rank):
         m_state = match.get('state', '')
         m_loc = f" ({m_city}, {m_state})" if m_city or m_state else ""
         
-        # Use RationaleService for a concise summary note
-        m_explanation = match.get('explanation_details', {})
-        note = RationaleService.get_short_summary(query, match_name, m_explanation)
+        # Concise one-line summary for the collapsed state
+        summary_line = f"<b>#{i}</b> | <b>{match_name}</b>{m_loc} | Score: <b>{match_score:.1f}%</b>"
         
-        # Determine confidence indicator
-        if match_score >= 95:
-            indicator = "🟢 EXACT"
-        elif match_score >= 80:
-            indicator = "🟢 HIGH"
-        elif match_score >= 60:
-            indicator = "🟡 MEDIUM"
-        elif match_score >= 40:
-            indicator = "🟠 LOW"
-        else:
-            indicator = "🔴 VERY LOW"
+        # 1. Detailed Score Breakdown
+        exp = match.get('explanation_details', {})
+        string_score = exp.get('string_score', 0.0)
+        semantic_norm = exp.get('normalized_semantic_score', exp.get('semantic_score', 0.0))
+        contrib_string = string_score * 0.7
+        contrib_semantic = semantic_norm * 0.3
         
-        # Table row
-        md.append(f"| {i} | {match_name}{m_loc} | **{match_score:.1f}%** | {indicator} {match_score:.1f}% |\n")
+        # Content Generation
+        html_parts = []
+        # Full width container (removed width: 600px constraint)
+        html_parts.append(f"    <div style='margin-top: 10px; margin-bottom: 20px; border-left: 3px solid #eee; padding-left: 15px;'>") 
+        
+        # Score Breakdown Table (Small, compact)
+        html_parts.append(f"      <b>📊 Score Breakdown:</b><br>")
+        html_parts.append(f"      <table style='width: 100%; max-width: 600px; border-collapse: collapse; font-size: 0.9em; margin-top: 5px; margin-bottom: 15px;'>")
+        html_parts.append(f"        <tr style='text-align: left; border-bottom: 1px solid #ccc;'><th>Component</th><th>Raw</th><th>Weight</th><th>Contrib</th></tr>")
+        html_parts.append(f"        <tr><td>String Similarity</td><td>{string_score:.4f}</td><td>70%</td><td>{contrib_string:.4f}</td></tr>")
+        html_parts.append(f"        <tr><td>Semantic Similarity (Norm)</td><td>{semantic_norm:.4f}</td><td>30%</td><td>{contrib_semantic:.4f}</td></tr>")
+        html_parts.append(f"        <tr><td><strong>Final Score</strong></td><td></td><td></td><td><strong>{match_score/100:.4f}</strong></td></tr>")
+        html_parts.append(f"      </table>")
+        
+        # Match Rationale
+        rationale_text = RationaleService.generate_match_rationale(query, match_name, exp, match_score / 100.0)
+        
+        html_parts.append(f"      <b>📝 Match Rationale:</b><br>")
+        html_parts.append(f"      <div style='padding: 10px; border: 1px solid #eee; border-radius: 4px;'>")
+        html_parts.append(f"{rationale_text}") 
+        html_parts.append(f"      </div>")
+        
+        html_parts.append(f"    </div>")
+        
+        detail_content = "\n".join(html_parts)
+        
+        # Create the details block
+        md.append(f"<details style='margin-bottom: 5px; padding: 5px;'>\n")
+        md.append(f"  <summary style='cursor: pointer; font-size: 1.1em; font-family: sans-serif; padding: 5px;'>{summary_line}</summary>\n")
+        md.append(f"{detail_content}\n")
+        md.append(f"</details>\n")
     
     md.append("\n")
-    
-    # Expandable detailed rationales for each match
-    for i, match in enumerate(filtered_matches[:10], 1):
-        match_name = match.get('company_name', 'Unknown')
-        match_score = match.get('likeness_percent', 0.0)
-        m_city = match.get('city', '')
-        m_state = match.get('state', '')
-        m_loc = f" ({m_city}, {m_state})" if m_city or m_state else ""
-        m_explanation = match.get('explanation_details', {})
-        
-        md.append(f"<details>\n")
-        md.append(f"<summary><b>#{i} {match_name}{m_loc}</b> — {match_score:.1f}% — Click for detailed rationale</summary>\n\n")
-        
-        # Detailed scoring breakdown
-        breakdown = RationaleService.generate_detailed_score_breakdown(match, query)
-        md.append(f"**📊 Score Breakdown:**\n{breakdown}\n\n")
-        
-        # Full narrative rationale
-        rationale = RationaleService.generate_match_rationale(query, match_name, m_explanation, match_score / 100.0)
-        md.append(f"**📝 Match Rationale:**\n{rationale}\n\n")
-        
-        # Relative positioning (why below the one above)
-        if i > 1:
-            match_above = filtered_matches[i-2]
-            rel_pos = RationaleService.generate_relative_positioning_explanation(match, match_above, None, i)
-            md.append(f"**📍 Why below #{i-1}?**\n{rel_pos}\n\n")
-        
-        md.append("</details>\n\n")
-    
-    
     md.append("---\n\n")
     
     return ''.join(md)
-
-
-# Removed local rationale/note generators - now using RationaleService
-
-
-def main():
-    print("="*70)
-    print("🔬 GENERATING FULL CONTROL SET REPORT (LOCATION-AWARE)")
-    print("="*70)
-    
-    # Initialize service
-    print("\n📦 Initializing SearchService...")
-    service = SearchService()
-    # Explicitly load the location-aware dataset
-    if not service.load_company_data(model_name='paraphrase-MiniLM-L3-v2', filename='companies_with_location.json'):
-        print("❌ Failed to load company data")
-        return
-    
-    print("✅ Company data loaded\n")
-    
-    # Load control set
-    control_set_file = os.path.join(os.path.dirname(__file__), '..', 'companies_control_set.json')
-    
-    if not os.path.exists(control_set_file):
-        print(f"❌ Control set file not found: {control_set_file}")
-        return
-    
-    # Read control set JSON
-    with open(control_set_file, 'r', encoding='utf-8') as f:
-        control_data = json.load(f)
-    
-    # Keep the full dictionary entries to preserve City/State data
-    companies = control_data
-    
-    print(f"📋 Loaded {len(companies)} companies from control set\n")
-    
-    # Generate header
-    report_content = [generate_report_header()]
-    
-    # Process companies
-    results = []
-    
-    for i, company_entry in enumerate(companies, 1):
-        # Extract company name and optional location
-        if isinstance(company_entry, dict):
-            company = company_entry.get('Company Name', '')
-            city = company_entry.get('City', None)
-            state = company_entry.get('State', None)
-        else:
-            # Backward compatibility: if it's just a string
-            company = company_entry
-            city = None
-            state = None
-        
-        print(f"Processing {i}/{len(companies)}: {company}")
-        if city or state:
-            print(f"   With location: {city}, {state}")
-        
-        # Search with location parameters
-        matches = service.search(company, top_k=10, city=city, state=state)
-        
-        result_data = {
-            'query': company,
-            'query_city': city or '',
-            'query_state': state or '',
-            'matches': matches
-        }
-        results.append(result_data)
-        
-        # Format result
-        company_md = format_company_result(company, result_data, i)
-        report_content.append(company_md)
-        
-        # Write report after first 10 companies
-        if i == 10:
-            output_file = 'control_set_report_ULTRA.md'
-            print(f"\n📄 Writing initial report (first 10 companies) to {output_file}...")
-            with open(output_file, 'w', encoding='utf-8') as f:
-                f.write(''.join(report_content))
-            print(f"✅ Initial report written! Continuing with remaining {len(companies) - 10} companies...\n")
-    
-    # Write final report
-    output_file = 'control_set_report_ULTRA.md'
-    print(f"\n📄 Writing final report to {output_file}...")
-    with open(output_file, 'w', encoding='utf-8') as f:
-        f.write(''.join(report_content))
-    
-    print(f"\n✅ COMPLETE! Processed {len(companies)} companies")
-    print(f"📊 Report saved: {output_file}")
-    print("="*70)
-
 
 if __name__ == "__main__":
     main()

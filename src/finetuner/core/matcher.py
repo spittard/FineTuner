@@ -1416,18 +1416,35 @@ class CompanyMatcher:
                 final_score = name_score
             
             # --- FREQUENCY BOOST ---
+            freq_boost_val = 0.0
             if record_count > 0 and self.max_company_count > 0:
                 import math
                 # Logarithmic scale for frequency boost
                 freq_score = math.log1p(record_count) / math.log1p(self.max_company_count)
                 # Add up to +0.05 boost for popular companies (scaled by name score to avoid over-boosting weak matches)
                 # NOTE: We allow this to slightly exceed 1.0 for sorting purposes; UI will cap if needed
-                final_score = final_score + (freq_score * 0.05 * name_score)
+                freq_boost_val = (freq_score * 0.05 * name_score)
+                final_score = final_score + freq_boost_val
             
             # Get database ID if available
             record_id = None
             if self.company_ids and idx < len(self.company_ids):
                 record_id = self.company_ids[idx]
+            
+            # Calculate explicit location boost value for reporting
+            loc_boost_val = 0.0
+            if use_location and location_score > 0:
+                 if is_this_exact:
+                     loc_boost_val = location_score * 0.05
+                 else:
+                     # For hybrid, it's weighted, not additive, but we can approximate the "boost" 
+                     # relative to name score for reporting, OR just report the raw boost component if it was additive.
+                     # However, the RationaleService expects an additive boost for display.
+                     # In the hybrid formula: final = (name * 0.8) + (loc * 0.2)
+                     # The "boost" is effectively how much location pulled it up (or down).
+                     # But for simplicity and consistency with the "Bonus" concept in RationaleService,
+                     # we'll report the weighted contribution of location.
+                     loc_boost_val = location_score * 0.2
             
             candidates.append({
                 "name": company_name,
@@ -1438,6 +1455,8 @@ class CompanyMatcher:
                 "normalized_semantic_score": sem_score_norm,
                 "string_score": string_score,
                 "location_score": location_score,
+                "location_boost": loc_boost_val,
+                "popularity_boost": freq_boost_val,
                 "city": target_city,
                 "state": target_state,
                 "count": record_count,
@@ -1486,6 +1505,8 @@ class CompanyMatcher:
                         existing['score'] = 1.0 + (exact_loc_score * 0.05) + exact_freq_boost
                         existing['name_score'] = 1.0
                         existing['location_score'] = exact_loc_score
+                        existing['location_boost'] = exact_loc_score * 0.05
+                        existing['popularity_boost'] = exact_freq_boost
                         existing['match_type'] = "exact"
                         is_duplicate = True
                         break
@@ -1503,6 +1524,8 @@ class CompanyMatcher:
                         "normalized_semantic_score": 1.0,
                         "string_score": 1.0,
                         "location_score": exact_loc_score,
+                        "location_boost": exact_loc_score * 0.05,
+                        "popularity_boost": exact_freq_boost,
                         "city": exact_city,
                         "state": exact_state,
                         "count": exact_count,

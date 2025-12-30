@@ -16,32 +16,40 @@ class RationaleService:
         # Phase 0: Acronym Match Check
         match_type = explanation.get('match_type', 'hybrid')
         if match_type in ['acronym_expansion', 'acronym_reverse']:
-            rationale = f"ACRONYM MATCH\n\n**What This Means:**\nThe system identified a direct link between an exact acronym and its full company name.\n\n**Match Type:**\n• {match_type.replace('_', ' ').title()}\n"
+            rationale = f"ACRONYM MATCH<br><br><b>What This Means:</b><br>The system identified a direct link between an exact acronym and its full company name.<br><br><b>Match Type:</b><br>• {match_type.replace('_', ' ').title()}<br>"
             
             # Score details for acronyms
             string_score = explanation.get('string_score', 0.0)
             sem_score = explanation.get('normalized_semantic_score', explanation.get('semantic_score', 0.0))
             fidelity = explanation.get('acronym_fidelity', 0.0)
             
-            rationale += f"\n**Score Breakdown:**\n• Expansion Quality: {fidelity:.2f}\n• Lexical match: {string_score:.2f}\n• Semantic link: {sem_score:.4f}\n"
+            rationale += f"<br><b>Score Breakdown:</b><br>• Expansion Quality: {fidelity:.2f}<br>• Lexical match: {string_score:.2f}<br>• Semantic link: {sem_score:.4f}<br>"
             
             if fidelity >= 0.9:
-                rationale += f"\n**Action Required:**\n• This is a HIGH CONFIDENCE acronym expansion\n• Highly likely to be correct"
+                rationale += f"<br><b>Action Required:</b><br>• This is a HIGH CONFIDENCE acronym expansion<br>• Highly likely to be correct"
             else:
-                rationale += f"\n**Action Required:**\n• Verify if the acronym '{query}' correctly represents '{company_name}'\n• Expansion quality is moderate"
+                rationale += f"<br><b>Action Required:</b><br>• Verify if the acronym '{query}' correctly represents '{company_name}'<br>• Expansion quality is moderate"
+            
+            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''))
             return rationale
 
         # Phase 1: Exact Match Check
         if query_lower == company_lower:
-            return "PERFECT MATCH\n\n**What This Means:**\nThis is exactly the same company name you're looking for.\n\n**Action Required:**\n• Use this match - no further checking needed\n• This is 100% the same company\n\n**Why This Happens:**\n• Someone entered the company name name exactly as it appears in your system\n• This is the ideal scenario for data entry"
+            rationale = "PERFECT MATCH<br><br><b>What This Means:</b><br>This is exactly the same company name you're looking for.<br><br><b>Action Required:</b><br>• Use this match - no further checking needed<br>• This is 100% the same company<br><br><b>Why This Happens:</b><br>• Someone entered the company name name exactly as it appears in your system<br>• This is the ideal scenario for data entry"
+            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''))
+            return rationale
         
         # Phase 2: Prefix Match Check
         if company_lower.startswith(query_lower):
-            return f"PREFIX MATCH\n\n**What This Means:**\nThis company name starts with '{query}' and has additional information added.\n\n**Action Required:**\n• This is likely the same company with extra details\n• Check if the additional words are just descriptive (like 'Inc', 'LLC', 'Corp')\n• If yes, use this match\n\n**Why This Happens:**\n• Someone entered just the core company name\n• Your system has the full legal name\n• Common in business databases where legal names include extra terms"
+            rationale = f"PREFIX MATCH<br><br><b>What This Means:</b><br>This company name starts with '{query}' and has additional information added.<br><br><b>Action Required:</b><br>• This is likely the same company with extra details<br>• Check if the additional words are just descriptive (like 'Inc', 'LLC', 'Corp')<br>• If yes, use this match<br><br><b>Why This Happens:</b><br>• Someone entered just the core company name<br>• Your system has the full legal name<br>• Common in business databases where legal names include extra terms"
+            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''))
+            return rationale
         
         # Phase 3: Substring Match Check
         if query_lower in company_lower:
-            return f"SUBSTRING MATCH\n\n**What This Means:**\nThis company name contains '{query}' somewhere within it.\n\n**Action Required:**\n• This is likely the same company\n• Check if the surrounding words make sense\n• If yes, use this match\n\n**Why This Happens:**\n• Someone entered a partial company name\n• Your system has the complete name\n• Common when people remember only part of a company name"
+            rationale = f"SUBSTRING MATCH<br><br><b>What This Means:</b><br>This company name contains '{query}' somewhere within it.<br><br><b>Action Required:</b><br>• This is likely the same company<br>• Check if the surrounding words make sense<br>• If yes, use this match<br><br><b>Why This Happens:</b><br>• Someone entered a partial company name<br>• Your system has the complete name<br>• Common when people remember only part of a company name"
+            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''))
+            return rationale
         
         # Phase 4: Word-by-Word Analysis
         query_words = set(query_lower.split())
@@ -63,44 +71,45 @@ class RationaleService:
             all_query_words_matched = (total_query_words > 0 and overlap_count == total_query_words)
             
             if all_query_words_matched:
-                rationale = f"ALL WORDS MATCHED\n\n**What This Means:**\nEvery word in your search '{query}' was found in this company name.\n\n**Matching Words:**\n• {', '.join(overlap_words)}\n"
+                rationale = f"ALL WORDS MATCHED<br><br><b>What This Means:</b><br>Every word in your search '{query}' was found in this company name.<br><br><b>Matching Words:</b><br>• {', '.join(overlap_words)}<br>"
             else:
-                rationale = f"WORD OVERLAP MATCH\n\n**What This Means:**\n{overlap_count} word(s) match exactly between your search and this company.\n\n**Matching Words:**\n• {', '.join(overlap_words)}\n"
+                rationale = f"WORD OVERLAP MATCH<br><br><b>What This Means:</b><br>{overlap_count} word(s) match exactly between your search and this company.<br><br><b>Matching Words:</b><br>• {', '.join(overlap_words)}<br>"
             
             if non_overlap_query:
-                rationale += f"\n**Your Search Also Includes:**\n• {', '.join(non_overlap_query)}\n"
+                rationale += f"<br><b>Your Search Also Includes:</b><br>• {', '.join(non_overlap_query)}<br>"
             if non_overlap_company:
-                rationale += f"\n**Company Name Also Includes:**\n• {', '.join(non_overlap_company)}\n"
+                rationale += f"<br><b>Company Name Also Includes:</b><br>• {', '.join(non_overlap_company)}<br>"
             
-            rationale += f"\n**Match Strength:**\n• {overlap_percentage:.0f}% word overlap\n"
+            rationale += f"<br><b>Match Strength:</b><br>• {overlap_percentage:.0f}% word overlap<br>"
             
             if overlap_percentage > 50:
-                rationale += f"• This is a STRONG match - likely the same company\n"
-                rationale += f"• Action: Use this match with high confidence\n"
+                rationale += f"• This is a STRONG match - likely the same company<br>"
+                rationale += f"• Action: Use this match with high confidence<br>"
             elif overlap_percentage > 25:
-                rationale += f"• This is a MODERATE match - worth investigating\n"
-                rationale += f"• Action: Check if this makes business sense\n"
+                rationale += f"• This is a MODERATE match - worth investigating<br>"
+                rationale += f"• Action: Check if this makes business sense<br>"
             else:
-                rationale += f"• This is a WEAK match - may be coincidental\n"
-                rationale += f"• Action: Verify carefully before using\n"
+                rationale += f"• This is a WEAK match - may be coincidental<br>"
+                rationale += f"• Action: Verify carefully before using<br>"
             
             # Score details for overlap
             string_score = explanation.get('string_score', 0.0)
             sem_score = explanation.get('normalized_semantic_score', explanation.get('semantic_score', 0.0))
-            rationale += f"\n**Score Breakdown:**\n"
-            rationale += f"• Lexical Similarity: {string_score:.4f} (Weight: 70%)\n"
-            rationale += f"• Semantic Similarity: {sem_score:.4f} (Weight: 30%)\n"
+            rationale += f"<br><b>Score Breakdown:</b><br>"
+            rationale += f"• Lexical Similarity: {string_score:.4f} (Weight: 70%)<br>"
+            rationale += f"• Semantic Similarity: {sem_score:.4f} (Weight: 30%)<br>"
             
             loc_score = explanation.get('location_score', 0.0)
             if loc_score > 0.01:
-                rationale += f"• Location Bonus: +{loc_score:.4f}\n"
+                rationale += f"• Location Bonus: +{loc_score:.4f}<br>"
 
             record_count = explanation.get('count', 0)
             if record_count > 10:
-                rationale += f"• Popularity: High record frequency ({record_count} occurrences)\n"
+                rationale += f"• Popularity: High record frequency ({record_count} occurrences)<br>"
 
-            rationale += f"\n**Why This Happens:**\n• Company names often have multiple words\n• Some words are more important than others\n• Business names can vary in how they're written"
+            rationale += f"<br><b>Why This Happens:</b><br>• Company names often have multiple words<br>• Some words are more important than others<br>• Business names can vary in how they're written"
             
+            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''))
             return rationale
         
         # Phase 5: Linguistic Relationship Analysis
@@ -171,61 +180,102 @@ class RationaleService:
                     linguistic_relationships.append(f"'{q_word}' ↔ '{c_word}' ({relationship_type})")
 
         if linguistic_relationships:
-            rationale = "LINGUISTIC MATCH\n\n**What This Means:**\nThe names look different but are linguistically related.\n\n**Key Relationships Found:**\n"
+            rationale = "LINGUISTIC MATCH<br><br><b>What This Means:</b><br>The names look different but are linguistically related.<br><br><b>Key Relationships Found:</b><br>"
             for rel in linguistic_relationships:
-                rationale += f"• {rel}\n"
+                rationale += f"• {rel}<br>"
             
             if transformation_details:
-                rationale += "\n**Details:**\n"
+                rationale += "<br><b>Details:</b><br>"
                 for det in transformation_details:
-                    rationale += f"• {det}\n"
+                    rationale += f"• {det}<br>"
             
             if practical_examples:
-                rationale += "\n**Real-World Scenario:**\n"
+                rationale += "<br><b>Real-World Scenario:</b><br>"
                 for ex in practical_examples:
-                    rationale += f"• {ex}\n"
+                    rationale += f"• {ex}<br>"
             
-            rationale += f"\n**Action Required:**\n• Verify if this variation makes sense\n• Likely the same company"
+            rationale += f"<br><b>Action Required:</b><br>• Verify if this variation makes sense<br>• Likely the same company"
+            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''))
             return rationale
 
         # Phase 6: Phonetic Match Check
         phonetic_analysis = RationaleService.analyze_phonetic_similarity(query, company_name)
         if phonetic_analysis:
-            rationale = f"PHONETIC MATCH\n\n**What This Means:**\nThe names sound similar when spoken aloud, even if spelled differently.\n\n**Analysis:**\n• {phonetic_analysis}\n\n**Action Required:**\n• Say both names out loud\n• If they sound the same, it's likely a match\n\n**Why This Happens:**\n• Names are often entered by listening to someone speak\n• typos can result in phonetically similar words"
+            rationale = f"PHONETIC MATCH<br><br><b>What This Means:</b><br>The names sound similar when spoken aloud, even if spelled differently.<br><br><b>Analysis:</b><br>• {phonetic_analysis}<br><br><b>Action Required:</b><br>• Say both names out loud<br>• If they sound the same, it's likely a match<br><br><b>Why This Happens:</b><br>• Names are often entered by listening to someone speak<br>• typos can result in phonetically similar words"
+            rationale = RationaleService._append_location_frequency_analysis(rationale, explanation, explanation.get('match_city', ''))
             return rationale
         
         # Phase 7: Semantic/Contextual Fallback
         industry_context = RationaleService.analyze_industry_context(query, company_name)
         geographic_context = RationaleService.analyze_geographic_context(query, company_name)
         
-        rationale = f"SEMANTIC MATCH (Score: {score:.2f})\n\n**What This Means:**\nThe AI model found a meaning-based connection, but no direct word overlap.\n"
+        rationale = f"SEMANTIC MATCH (Score: {score:.2f})<br><br><b>What This Means:</b><br>The AI model found a meaning-based connection, but no direct word overlap.<br>"
         
         if industry_context:
-            rationale += f"\n**Industry Context:**\n• {industry_context}\n"
+            rationale += f"<br><b>Industry Context:</b><br>• {industry_context}<br>"
         
         if geographic_context:
-            rationale += f"\n**Geographic Context:**\n• {geographic_context}\n"
+            rationale += f"<br><b>Geographic Context:</b><br>• {geographic_context}<br>"
             
         # Add Score Breakdown Section
         string_score = explanation.get('string_score', 0.0)
         sem_score = explanation.get('normalized_semantic_score', explanation.get('semantic_score', 0.0))
         loc_score = explanation.get('location_score', 0.0)
         
-        score_details = f"\n**Score Breakdown:**\n"
-        score_details += f"• Lexical Similarity: {string_score:.4f} (Weight: 70%)\n"
-        score_details += f"• Semantic Similarity: {sem_score:.4f} (Weight: 30%)\n"
+        score_details = f"<br><b>Score Breakdown:</b><br>"
+        score_details += f"• Lexical Similarity: {string_score:.4f} (Weight: 70%)<br>"
+        score_details += f"• Semantic Similarity: {sem_score:.4f} (Weight: 30%)<br>"
         
         if loc_score > 0.01:
-            score_details += f"• Location Bonus: +{loc_score:.4f}\n"
+            score_details += f"• Location Bonus: +{loc_score:.4f}<br>"
 
         record_count = explanation.get('count', 0)
         if record_count > 0:
-            score_details += f"• Popularity Boost: Log-weighted frequency\n"
+            score_details += f"• Popularity Boost: Log-weighted frequency<br>"
 
         score_breakdown_text = RationaleService.get_score_breakdown(score)
         rationale += score_details
-        rationale += f"\n**Confidence Level:**\n• {score_breakdown_text}\n\n**Action Required:**\n• This is a LOWER confidence match\n• CAREFULLY verify if these companies are actually related\n• Check address and other details"
+        rationale += f"<br><b>Confidence Level:</b><br>• {score_breakdown_text}<br><br><b>Action Required:</b><br>• This is a LOWER confidence match<br>• CAREFULLY verify if these companies are actually related<br>• Check address and other details"
         
+        # --- PHASE 8: Location & Frequency Analysis (Common for ALL match types) ---
+        # Note: We append this to the rationale for every match type. 
+        # Ideally, we should refactor to have a common exit point, but for now we append here 
+        # and we must also update the return statements in Phases 0-6 to include this.
+        # Actually, let's create a helper method to append this and call it before returning in all phases.
+        
+        return rationale
+
+    @staticmethod
+    def _append_location_frequency_analysis(rationale, explanation, match_city):
+        """Helper to append Location & Frequency analysis to rationale"""
+        loc_boost = explanation.get('location_boost', 0.0)
+        pop_boost = explanation.get('popularity_boost', 0.0)
+        record_count = explanation.get('count', 0)
+        
+        rationale += "<br><br><b>Location & Frequency Analysis:</b><br>"
+        
+        # Location Impact
+        if loc_boost > 0:
+            rationale += f"• <b>Location:</b> <span style='color: green;'>Positive Impact (+{loc_boost*100:.2f}%)</span>. The record matches the query location ({match_city}), confirming it is the correct local entity.<br>"
+        elif match_city and not loc_boost:
+             rationale += f"• <b>Location:</b> No impact. Location present but did not boost score (likely loose match or ignored).<br>"
+        else:
+             rationale += f"• <b>Location:</b> N/A (No location context used).<br>"
+             
+        # Frequency Impact
+        if pop_boost > 0:
+            if record_count > 10:
+                rationale += f"• <b>Frequency:</b> <span style='color: green;'>Positive Impact (+{pop_boost*100:.2f}%)</span>. This is a high-frequency record ({record_count:,} occurrences), suggesting it is a well-known entity.<br>"
+            else:
+                rationale += f"• <b>Frequency:</b> <span style='color: green;'>Positive Impact (+{pop_boost*100:.2f}%)</span>. Frequency boost applied ({record_count} occurrences).<br>"
+        elif record_count > 10:
+             # High count but maybe no boost (e.g. maxed out or not configured?) - usually implies boost if configured
+             rationale += f"• <b>Frequency:</b> Neutral. Record appears {record_count:,} times (High), but popularity boost was minimal or capped.<br>"
+        elif record_count > 1:
+             rationale += f"• <b>Frequency:</b> Neutral. Record appears {record_count} times, but not enough to trigger significant popularity boost (>10 needed).<br>"
+        else:
+             rationale += f"• <b>Frequency:</b> Neutral (Single occurrence).<br>"
+             
         return rationale
         
     @staticmethod
@@ -670,16 +720,20 @@ class RationaleService:
             breakdown += f"| Acronym Fidelity Boost | {acronym_fidelity:.4f} | 15% max | +{acronym_boost:.4f} |\n"
         
         # Location boost
-        if location_score > 0.0:
-            loc_boost = location_score * 0.05
-            breakdown += f"| Location Match Boost | {location_score:.4f} | 5% max | +{loc_boost:.4f} |\n"
+        # Force a check for location boost, sometimes it comes through as location_boost directly
+        loc_boost_val = match_data.get('location_boost', None)
+        if loc_boost_val is None and location_score > 0.0:
+            loc_boost_val = location_score * 0.05
+            
+        if loc_boost_val and loc_boost_val > 0.0:
+            breakdown += f"| Location Context Boost | {location_score:.4f} | 5% max | +{loc_boost_val:.4f} |\n"
         
-        # Frequency boost
+        # Frequency boost - Explicit Visualization
+        pop_boost = match_data.get('popularity_boost', 0.0)
         record_count = match_data.get('count', 0)
-        if record_count > 0:
-            # Note: The actual boost value isn't stored separately in the match object yet, 
-            # but we can indicate its presence.
-            breakdown += f"| Popularity Boost | {record_count:,} occurrences | ~2-5% | Included |\n"
+        if pop_boost > 0.0 or record_count > 1:
+            # Even if exact boost val is hidden, show the count
+            breakdown += f"| Frequency Impact | {record_count:,} records | ~2-5% | +{pop_boost:.4f} (Included) |\n"
         
         # Final score
         breakdown += f"| **FINAL SCORE** | **{final_score:.4f}** | - | **{final_score*100:.1f}%** |\n\n"

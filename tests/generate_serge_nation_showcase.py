@@ -24,39 +24,85 @@ from finetuner.core.cache_rpc import connect, is_server_running
 from finetuner.web.services.rationale_service import RationaleService
 
 
-# Curated queries to demonstrate ALL matching scenarios
+# Curated queries prioritized by LIKELIHOOD OF OCCURRENCE
 SHOWCASE_QUERIES = [
-    # === ACRONYM MATCHING ===
-    {"query": "IBM", "category": "Acronym Expansion", "why": "Classic 3-letter acronym → full company name"},
-    {"query": "ABA", "category": "Acronym Ambiguity", "why": "Multiple valid expansions (American Bar Assoc, American Bankers Assoc)"},
-    {"query": "PDMA", "category": "Acronym Expansion", "why": "Industry acronym with multiple related organizations"},
-    {"query": "GE", "category": "Acronym Expansion", "why": "2-letter giant → General Electric variations"},
-    {"query": "NFC Forum", "category": "Acronym + Words", "why": "Mixed acronym and regular text"},
-    
-    # === EXACT MATCHES ===
-    {"query": "Next Level Events", "category": "Exact Match", "why": "Multiple identical names at different locations"},
-    {"query": "DermaQuest Inc", "category": "Exact Match", "why": "Exact corporate name with suffix"},
-    
-    # === SEMANTIC MATCHES ===
-    {"query": "Chicago South Swim Club", "category": "Semantic Match", "why": "Sports organization context matching"},
-    {"query": "National Home Health", "category": "Semantic Match", "why": "Industry-specific semantic similarity"},
-    {"query": "World Association of Medical Law", "category": "Semantic Match", "why": "Professional association semantics"},
-    
-    # === WORD OVERLAP MATCHES ===
-    {"query": "Hartford Hospital School of Nursing", "category": "Word Overlap", "why": "Multi-word partial matches"},
-    {"query": "Mitsubishi Motor Sales of America, Incorporated", "category": "Word Overlap", "why": "Long formal name with variations"},
-    {"query": "Louisiana State University Swim", "category": "Word Overlap", "why": "Institution + activity combination"},
-    
-    # === LOCATION-AWARE MATCHING ===
-    {"query": "Southern Vermont Deerfield Valley Chamber of commerce", "category": "Location Context", "why": "Regional organization with geographic specificity"},
-    {"query": "Boys and Girls Club of Dawson Community Centre", "category": "Location Context", "why": "Local chapter identification"},
-    
-    # === EDGE CASES / CHALLENGING ===
-    {"query": "Nicolas/Sanchez Wedding", "category": "Event/Personal", "why": "Personal event matching (weddings)"},
-    {"query": "X DO NOT USE - FRANCIS PARKER SCHOOL", "category": "Data Quality", "why": "Annotation markers in source data"},
-    {"query": "Grupo Duracell Ene 2025", "category": "Multilingual", "why": "Non-English text with date"},
-    {"query": "Edna, Dabra@SAP.IO", "category": "Special Format", "why": "Email-like format in company name"},
-    {"query": "Interim WG Meeting - BIER", "category": "Meeting/Event", "why": "Meeting name vs organization"},
+    # === TIER 1: HIGH FREQUENCY (~60% of cases) ===
+    # Exact and near-exact matches are the bread and butter.
+    {
+        "query": "Next Level Events",
+        "category": "Exact Match",
+        "likelihood": "Very High (~60%)",
+        "why": "The system's primary job: finding the exact name quickly and incorrectly handling duplicates."
+    },
+    {
+        "query": "DermaQuest Inc",
+        "category": "Corporate Suffix",
+        "likelihood": "Very High (~60%)",
+        "why": "Users often omit 'Inc', 'LLC', etc. The system handles this trivially."
+    },
+
+    # === TIER 2: COMMON VARIATIONS (~25% of cases) ===
+    # Partial names, typos, and word overlaps.
+    {
+        "query": "Hartford Hospital School of Nursing",
+        "category": "Partial/Word Overlap",
+        "likelihood": "High (~25%)",
+        "why": "Long names where the user query matches a significant chunk (but not all) of the official name.",
+    },
+    {
+        "query": "Mitsubishi Motor Sales of America, Incorporated",
+        "category": "Complex Corporate Name",
+        "likelihood": "High (~25%)",
+        "why": "Complex names with multiple variations in the database."
+    },
+    {
+        "query": "Southern Vermont Deerfield Valley Chamber of commerce",
+        "category": "Location/Regional",
+        "likelihood": "Medium (~15%)",
+        "why": "Names where the location (Vermont) is part of the entity name itself.",
+    },
+
+    # === TIER 3: ACRONYMS (~10% of cases) ===
+    # High value, but less frequent. The "magic" layer.
+    {
+        "query": "IBM",
+        "category": "Acronym Expansion",
+        "likelihood": "Medium (~10%)",
+        "why": "Classic 3-letter acronym. Shows the system knowing 'IBM' = 'International Business Machines'."
+    },
+    {
+        "query": "PDMA",
+        "category": "Acronym Ambiguity",
+        "likelihood": "Medium (~10%)",
+        "why": "Acronyms that might expand to multiple different organizations (Product Dev vs. others)."
+    },
+    {
+        "query": "NFC Forum",
+        "category": "Mixed Acronym",
+        "likelihood": "Low (~5%)",
+        "why": "Mixture of acronyms and regular words."
+    },
+
+    # === TIER 4: SEMANTIC & EDGE CASES (<5% of cases) ===
+    # Rare but "noisy" if noticed.
+    {
+        "query": "Chicago South Swim Club",
+        "category": "Semantic/Topic",
+        "likelihood": "Low (<5%)",
+        "why": "No word overlap, but conceptually similar to other swim clubs (Semantic Search)."
+    },
+    {
+        "query": "Nicolas/Sanchez Wedding",
+        "category": "Noise/Events",
+        "likelihood": "Rare (<1%)",
+        "why": "Personal events that pollute the company database. Shows how scoring deprioritizes them."
+    },
+    {
+        "query": "X DO NOT USE - FRANCIS PARKER SCHOOL",
+        "category": "Dirty Data",
+        "likelihood": "Rare (<1%)",
+        "why": "Database artifacts (DO NOT USE) that can confuse search engines."
+    },
 ]
 
 
@@ -88,14 +134,16 @@ explanations to help Serge Nation understand the matching logic.
 """
 
 
-def format_company_result(query, result_data, query_num, category, why):
+def format_company_result(query, result_data, query_num, category, why, likelihood):
     """Format with COMPREHENSIVE rationales for Serge Nation."""
     output = []
     results = result_data.get('results', [])
     
-    output.append(f"## {query_num}. {category}: `{query}`")
+    # Header containing the vital context for the SME
+    output.append(f"## {query_num}. {query}")
+    output.append(f"**Scenario Category:** {category}  |  **Likelihood:** `{likelihood}`")
     output.append("")
-    output.append(f"> **Why this scenario?** {why}")
+    output.append(f"> **Why matches happen here:** {why}")
     output.append("")
     
     if not results:
@@ -117,7 +165,7 @@ def format_company_result(query, result_data, query_num, category, why):
         # Icon
         icon = "🟢" if score >= 0.80 else "🟡" if score >= 0.60 else "🟠" if score >= 0.40 else "🔴"
         
-        # Match type
+        # Match type logic
         if string_score >= 0.9:
             match_type = "Exact"
         elif acronym_fidelity > 0.5:
@@ -177,13 +225,14 @@ def main():
         query = entry['query']
         category = entry['category']
         why = entry['why']
+        likelihood = entry['likelihood']
         
         elapsed = time.time() - start_time
         eta = (elapsed / (i + 1)) * (len(SHOWCASE_QUERIES) - i - 1) if i > 0 else 0
-        print(f"[{i+1}/{len(SHOWCASE_QUERIES)}] ({elapsed:.0f}s, ETA: {eta:.0f}s) [{category}] {query}")
+        print(f"[{i+1}/{len(SHOWCASE_QUERIES)}] ({elapsed:.0f}s, ETA: {eta:.0f}s) [{likelihood}] {query}")
         
         result = server.search(query, top_k=10)
-        report_content += format_company_result(query, result, i+1, category, why)
+        report_content += format_company_result(query, result, i+1, category, why, likelihood)
     
     # Add summary section
     report_content += """
