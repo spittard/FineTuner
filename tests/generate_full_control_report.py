@@ -186,8 +186,11 @@ def format_company_result(query, result_data, rank):
     rationale = RationaleService.generate_match_rationale(query, company_name, explanation_dict, score / 100.0)
     md.append(f"{rationale}\n\n")
     
-    # Top 10 matches with RationaleService summaries and relative positioning
-    md.append("**Top 10 Matches:**\n")
+    # Top 10 matches as table with expandable details
+    md.append("**Top 10 Matches:**\n\n")
+    md.append("| Rank | Company | Score | Summary |\n")
+    md.append("|:----:|---------|:-----:|:--------|\n")
+    
     for i, match in enumerate(filtered_matches[:10], 1):
         match_name = match.get('company_name', 'Unknown')
         match_score = match.get('likeness_percent', 0.0)
@@ -198,16 +201,52 @@ def format_company_result(query, result_data, rank):
         # Use RationaleService for a concise summary note
         m_explanation = match.get('explanation_details', {})
         note = RationaleService.get_short_summary(query, match_name, m_explanation)
-        md.append(f"{i}. {match_name}{m_loc} - {match_score:.1f}% • *{note}*\n")
         
-        # Add relative positioning analysis (why this is below the one above)
+        # Determine confidence indicator
+        if match_score >= 95:
+            indicator = "🟢 EXACT"
+        elif match_score >= 80:
+            indicator = "🟢 HIGH"
+        elif match_score >= 60:
+            indicator = "🟡 MEDIUM"
+        elif match_score >= 40:
+            indicator = "🟠 LOW"
+        else:
+            indicator = "🔴 VERY LOW"
+        
+        # Table row
+        md.append(f"| {i} | {match_name}{m_loc} | **{match_score:.1f}%** | {indicator} {match_score:.1f}% |\n")
+    
+    md.append("\n")
+    
+    # Expandable detailed rationales for each match
+    for i, match in enumerate(filtered_matches[:10], 1):
+        match_name = match.get('company_name', 'Unknown')
+        match_score = match.get('likeness_percent', 0.0)
+        m_city = match.get('city', '')
+        m_state = match.get('state', '')
+        m_loc = f" ({m_city}, {m_state})" if m_city or m_state else ""
+        m_explanation = match.get('explanation_details', {})
+        
+        md.append(f"<details>\n")
+        md.append(f"<summary><b>#{i} {match_name}{m_loc}</b> — {match_score:.1f}% — Click for detailed rationale</summary>\n\n")
+        
+        # Detailed scoring breakdown
+        breakdown = RationaleService.generate_detailed_score_breakdown(match, query)
+        md.append(f"**📊 Score Breakdown:**\n{breakdown}\n\n")
+        
+        # Full narrative rationale
+        rationale = RationaleService.generate_match_rationale(query, match_name, m_explanation, match_score / 100.0)
+        md.append(f"**📝 Match Rationale:**\n{rationale}\n\n")
+        
+        # Relative positioning (why below the one above)
         if i > 1:
             match_above = filtered_matches[i-2]
-            # We don't need the match below for this specific compact view
             rel_pos = RationaleService.generate_relative_positioning_explanation(match, match_above, None, i)
-            # Make it collapsible to save space
-            md.append(f"<details><summary><i>Why below #{i-1}?</i></summary>\n\n{rel_pos}\n</details>\n")
-    md.append("\n")
+            md.append(f"**📍 Why below #{i-1}?**\n{rel_pos}\n\n")
+        
+        md.append("</details>\n\n")
+    
     
     md.append("---\n\n")
     

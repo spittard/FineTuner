@@ -92,7 +92,7 @@ def load_cache(cache_key: str):
     """Load a cache into memory."""
     try:
         s = get_server()
-        data = request.get_json() or {}
+        data = request.get_json(force=True, silent=True) or {}
         model_name = data.get('model_name', 'paraphrase-MiniLM-L3-v2')
         
         success = s.load_cache(cache_key, model_name=model_name)
