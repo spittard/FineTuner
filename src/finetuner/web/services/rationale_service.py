@@ -1,5 +1,8 @@
-
 import re
+import logging
+from finetuner.core.llm_service import LLMService
+
+logger = logging.getLogger(__name__)
 
 class RationaleService:
     """
@@ -282,6 +285,38 @@ class RationaleService:
                 context_notes.append(biz_ctx)
             if ind_ctx:
                 context_notes.append(ind_ctx)
+
+        # Add LLM-powered analysis if enabled/available
+        # --- NEW: Tiered Evaluation ---
+        # Skip LLM for:
+        # 1. 100% Exact Matches (Lexical is enough)
+        # 2. Very high confidence string matches (>0.95)
+        # 3. Very low semantic score (<0.2) where it's clearly not a match
+        
+        string_score = explanation.get('string_score', 0.0)
+        sem_score = explanation.get('normalized_semantic_score', explanation.get('semantic_score', 0.0))
+        fidelity = explanation.get('acronym_fidelity', 0.0)
+        
+        should_use_llm = True
+        # Only skip LLM if we have high confidence in BOTH lexical and semantic similarity
+        # If string is high but semantic is low (or vice versa), we want the AI to resolve the discrepancy.
+        if string_score > 0.98 and sem_score > 0.85:
+            should_use_llm = False
+        
+        # Still skip for very low significance cases
+        if string_score < 0.1 and sem_score < 0.1:
+            should_use_llm = False
+
+        # However, always use LLM for Acronyms if fidelity is not perfect
+        if fidelity > 0.2 and fidelity < 0.95:
+            should_use_llm = True
+            
+        llm_context = None
+        if should_use_llm:
+            llm_context = LLMService.analyze_semantic_context(query, company_name)
+            
+        if llm_context:
+            rationale += f"• <b>AI Insight:</b> {llm_context}<br>"
 
         if context_notes:
             rationale += f"• <b>Meaning:</b> {meaning}<br>"
@@ -798,29 +833,35 @@ class RationaleService:
         breakdown += f"| Semantic Similarity (Raw) | {semantic_score_raw:.4f} | - | - |\n"
         
         # Base name score
-        base_score = string_contrib + sem_contrib
-        breakdown += f"| **Base Score** | **{base_score:.4f}** | - | - |\n"
+        # Use name_score from match_data if available (it accounts for exact matches and tiered overrides)
+        base_score = match_data.get('name_score', string_contrib + sem_contrib)
+        
+        # Account for tiered overrides in the breakdown
+        if match_data.get('match_type') == 'exact' and base_score < 1.0:
+             base_score = 1.0
+             
+        breakdown += f"| **Base Score (Name)** | **{base_score:.4f}** | - | - |\n"
         
         # Acronym fidelity boost
         if acronym_fidelity > 0.0:
-            acronym_boost = acronym_fidelity * 0.15
-            breakdown += f"| Acronym Fidelity Boost | {acronym_fidelity:.4f} | 15% max | +{acronym_boost:.4f} |\n"
+            # Check if this was a Phase 0 acronym expansion or a boost
+            if match_data.get('match_type') == 'acronym_expansion' or match_data.get('match_type') == 'acronym_reverse':
+                 breakdown += f"| Acronym Fidelity contribution | {acronym_fidelity:.4f} | Built-in | (Included in Base) |\n"
+            else:
+                 acronym_boost = acronym_fidelity * 0.15
+                 # Check if it was actually applied (if base_score + boost > base_score)
+                 breakdown += f"| Acronym Fidelity Boost | {acronym_fidelity:.4f} | 15% max | +{acronym_boost:.4f} |\n"
         
         # Location boost
-        # Force a check for location boost, sometimes it comes through as location_boost directly
-        loc_boost_val = match_data.get('location_boost', None)
-        if loc_boost_val is None and location_score > 0.0:
-            loc_boost_val = location_score * 0.05
-            
-        if loc_boost_val and loc_boost_val > 0.0:
-            breakdown += f"| Location Context Boost | {location_score:.4f} | 5% max | +{loc_boost_val:.4f} |\n"
+        loc_boost_val = match_data.get('location_boost', 0.0)
+        if loc_boost_val > 0.0:
+            breakdown += f"| Location Context Boost | {location_score:.4f} | 5-20% | +{loc_boost_val:.4f} |\n"
         
         # Frequency boost - Explicit Visualization
         pop_boost = match_data.get('popularity_boost', 0.0)
         record_count = match_data.get('count', 0)
         if pop_boost > 0.0 or record_count > 1:
-            # Even if exact boost val is hidden, show the count
-            breakdown += f"| Frequency Impact | {record_count:,} records | ~2-5% | +{pop_boost:.4f} (Included) |\n"
+            breakdown += f"| Frequency Impact | {record_count:,} records | ~2-5% | +{pop_boost:.4f} |\n"
         
         # Final score
         breakdown += f"| **FINAL SCORE** | **{final_score:.4f}** | - | **{final_score*100:.1f}%** |\n\n"

@@ -1417,7 +1417,7 @@ class CompanyMatcher:
             
             # --- FREQUENCY BOOST ---
             freq_boost_val = 0.0
-            if record_count > 0 and self.max_company_count > 0:
+            if record_count > 1 and self.max_company_count > 0:
                 import math
                 # Logarithmic scale for frequency boost
                 freq_score = math.log1p(record_count) / math.log1p(self.max_company_count)
@@ -1451,6 +1451,7 @@ class CompanyMatcher:
                 "id": record_id,
                 "score": final_score,
                 "name_score": name_score,
+                "acronym_fidelity": acronym_fidelity,
                 "semantic_score": original_semantic_score,
                 "normalized_semantic_score": sem_score_norm,
                 "string_score": string_score,
@@ -1493,7 +1494,7 @@ class CompanyMatcher:
                 # Calculate frequency boost for this exact match as a tie-breaker
                 import math
                 exact_freq_boost = 0.0
-                if self.max_company_count > 0:
+                if exact_count > 1 and self.max_company_count > 0:
                     exact_freq_boost = (math.log1p(exact_count) / math.log1p(self.max_company_count)) * 0.02
 
                 # Deduplicate within this loop to avoid adding identical exact matches

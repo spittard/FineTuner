@@ -151,7 +151,13 @@ def main():
     print(f"📋 Loaded {len(companies)} companies from control set\n")
     
     # Generate header
-    report_content = [generate_report_header()]
+    report_header = generate_report_header()
+    
+    # Initialize report file with header
+    output_file = 'control_set_report_ULTRA.md'
+    print(f"📄 Initializing report output to {output_file}...")
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.write(report_header)
     
     # Process companies
     results = []
@@ -175,6 +181,8 @@ def main():
         if city or state:
             print(f"   With location: {city}, {state}")
         
+        start_comp = time.time()
+        
         # Search via RPC (fetch more to allow for filtering)
         rpc_response = client.search(company, top_k=15, city=city, state=state)
         
@@ -196,21 +204,16 @@ def main():
         
         # Format result
         company_md = format_company_result(company, result_data, i)
-        report_content.append(company_md)
         
-        # Write report after first 10 companies
-        if i == 10:
-            output_file = 'control_set_report_ULTRA.md'
-            print(f"\n📄 Writing initial report (first 10 companies) to {output_file}...")
-            with open(output_file, 'w', encoding='utf-8') as f:
-                f.write(''.join(report_content))
-            print(f"✅ Initial report written! Continuing with remaining {len(companies) - 10} companies...\n")
+        comp_duration = time.time() - start_comp
+        print(f"   ✅ Done in {comp_duration:.2f}s")
+        
+        # Append to report file immediately
+        with open(output_file, 'a', encoding='utf-8') as f:
+            f.write(company_md)
     
     # Write final report
-    output_file = 'control_set_report_ULTRA.md'
-    print(f"\n📄 Writing final report to {output_file}...")
-    with open(output_file, 'w', encoding='utf-8') as f:
-        f.write(''.join(report_content))
+    # Final report logic removed as we are appending real-time
     
     print(f"\n✅ COMPLETE! Processed {len(companies)} companies")
     print(f"📊 Report saved: {output_file}")
@@ -403,11 +406,22 @@ def format_company_result(query, result_data, rank):
         exp = match.get('explanation_details', {})
         string_score = exp.get('string_score', 0.0)
         semantic_norm = exp.get('normalized_semantic_score', exp.get('semantic_score', 0.0))
+        acronym_fidelity = exp.get('acronym_fidelity', 0.0)
         location_boost = exp.get('location_boost', 0.0)
         popularity_boost = exp.get('popularity_boost', 0.0)
+        
         contrib_string = string_score * 0.7
         contrib_semantic = semantic_norm * 0.3
-        base_score = contrib_string + contrib_semantic
+        
+        # Base Score (respecting exact match/overrides if possible)
+        base_score = match.get('name_score', contrib_string + contrib_semantic / 100.0 if match.get('name_score') else contrib_string + contrib_semantic)
+        if match.get('match_type') == 'exact':
+             base_score = 1.0 # Exact match base is always 1.0
+             
+        # Fidelity contribution
+        fidelity_boost = 0.0
+        if acronym_fidelity > 0.8 and match.get('match_type') != 'acronym_expansion':
+             fidelity_boost = acronym_fidelity * 0.15
         
         # Content Generation
         html_parts = []
@@ -420,11 +434,17 @@ def format_company_result(query, result_data, rank):
         html_parts.append(f"        <tr style='text-align: left; border-bottom: 1px solid #ccc;'><th>Component</th><th>Raw</th><th>Weight</th><th>Contrib</th></tr>")
         html_parts.append(f"        <tr><td>String Similarity</td><td>{string_score:.4f}</td><td>70%</td><td>{contrib_string:.4f}</td></tr>")
         html_parts.append(f"        <tr><td>Semantic Similarity (Norm)</td><td>{semantic_norm:.4f}</td><td>30%</td><td>{contrib_semantic:.4f}</td></tr>")
-        html_parts.append(f"        <tr style='border-top: 1px solid #eee;'><td><em>Base Score</em></td><td></td><td></td><td><em>{base_score:.4f}</em></td></tr>")
+
+        if fidelity_boost > 0:
+            html_parts.append(f"        <tr><td>Fidelity Boost (Acronym)</td><td>{acronym_fidelity:.4f}</td><td>15% max</td><td>+{fidelity_boost:.4f}</td></tr>")
+        
+        html_parts.append(f"        <tr style='border-top: 1px solid #eee;'><td><em>Base Name Score</em></td><td></td><td></td><td><em>{base_score:.4f}</em></td></tr>")
+        
         if location_boost > 0:
-            html_parts.append(f"        <tr><td>Location Boost</td><td></td><td>5% max</td><td>+{location_boost:.4f}</td></tr>")
+            html_parts.append(f"        <tr><td>Location Boost</td><td></td><td>5-20%</td><td>+{location_boost:.4f}</td></tr>")
         if popularity_boost > 0:
             html_parts.append(f"        <tr><td>Frequency Boost</td><td></td><td></td><td>+{popularity_boost:.4f}</td></tr>")
+            
         html_parts.append(f"        <tr style='border-top: 1px solid #ccc;'><td><strong>Final Score</strong></td><td></td><td></td><td><strong>{match_score/100:.4f}</strong></td></tr>")
         html_parts.append(f"      </table>")
         
