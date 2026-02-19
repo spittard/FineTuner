@@ -607,18 +607,53 @@ from CompanyMatcher import CompanyMatcher
 # Initialize matcher
 matcher = CompanyMatcher()
 
-# Build/load index from file (uses caching)
+# OPTION 1: Standard Build (Name Only)
 matcher.build_index(filepath='companies.json')
 
-# Single query
-results = matcher.match("Hartford Hospital", top_k=10)
-for r in results:
-    print(f"{r['name']}: {r['score']*100:.1f}% ({r['match_type']})")
+# OPTION 2: Location-Aware Build (Name + City + State + ID)
+# Use this when your data source includes location info
+data = [
+    {"ID": 101, "Company Name": "Acme Corp", "City": "New York", "State": "NY", "Count": 100},
+    {"ID": 102, "Company Name": "Acme Inc", "City": "Chicago", "State": "IL", "Count": 50}
+]
+matcher.build_index_with_location(data=data)  # Or filepath='companies_with_location.json'
 
-# Batch queries (more efficient)
-queries = ["Company A", "Company B", "Company C"]
-all_results = matcher.batch_match(queries, top_k=10)
+# --- QUERYING ---
+
+# 1. Standard Search
+results = matcher.match("Acme Corp", top_k=5)
+
+# 2. Location-Aware Search
+results = matcher.match_with_location("Acme", city="NYC", state="NY", top_k=5)
+
+for r in results:
+    print(f"{r['name']} ({r['score']*100:.1f}%)")
+    if 'city' in r:
+        print(f"  Location: {r['city']}, {r['state']}")
+        print(f"  DB ID: {r.get('id')}")
 ```
+
+---
+
+## Location-Aware Matching (New in v3.0)
+
+When location data is available, the matcher can use City and State to disambiguate between similar companies.
+
+### How It Works
+1. **Fuzzy Normalization**: "NYC" → "New York", "Calif" → "CA", "Chi-Town" → "Chicago"
+2. **Hybrid Scoring**: `Final Score = (Name Score × 0.8) + (Location Score × 0.2)`
+3. **Exact Match Handling**: If names match exactly, location acts as a 5% tie-breaker boost.
+
+### Example
+Query: **"First National Bank"** in **"Houston, TX"**
+
+| Candidate | Location | Name Match | Location Match | Final Score |
+|-----------|----------|------------|----------------|-------------|
+| First National Bank | Houston, TX | 100% | 100% | **105.0%** (Rank #1) |
+| First National Bank | New York, NY | 100% | 0% | 100.0% |
+| First National Bank | Chicago, IL | 100% | 0% | 100.0% |
+
+Without location data, all three would be tied at 100%.
 
 ---
 
@@ -629,4 +664,5 @@ all_results = matcher.batch_match(queries, top_k=10)
 | 1.0 | Dec 2025 | Initial implementation with semantic search |
 | 1.1 | Dec 2025 | Added hybrid re-ranking (70% string / 30% semantic) |
 | 2.0 | Dec 2025 | Added generic term weighting, category mismatch penalty, short string cap, proper noun detection |
+| 3.0 | Jan 2026 | Added Location-Aware Matching (City/State), fuzzy location normalization, ID tracking |
 

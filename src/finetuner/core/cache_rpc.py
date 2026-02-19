@@ -17,6 +17,10 @@ import sys
 import threading
 from typing import Optional, List, Dict, Any
 
+# Use locally cached models — no HuggingFace network calls needed
+os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
+os.environ.setdefault("HF_DATASETS_OFFLINE", "1")
+
 # Pyro5 for efficient RPC
 try:
     import Pyro5.api

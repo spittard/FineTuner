@@ -201,8 +201,8 @@ def format_company_section(query, matches, rank_idx):
         sem = f"{match.get('normalized_semantic_score', match.get('semantic_score', 0.0)):.3f}"
         acro = f"{match.get('acronym_fidelity', 0.0):.2f}"
         
-        # Get short summary rationale
-        insight = RationaleService.get_short_summary(query, name, match.get('explanation_details', {}))
+        # Get summary rationale
+        insight = RationaleService.generate_concise_rationale(query, name, match.get('explanation_details', {}), match.get('raw_score', 0.0))
         
         md.append(f"| {i} | {name} | {score} | {string} | {sem} | {acro} | {insight} |\n")
     
@@ -241,8 +241,10 @@ def main():
     
     # Initialize SearchService
     service = SearchService()
-    if not service.load_company_data():
-        print("❌ Error: Failed to load company data.")
+    # In RPC mode, we check status instead of explicit load
+    status = service.get_status()
+    if status.get('status') != 'ready':
+        print(f"❌ Error: Search service not ready: {status.get('message')}")
         return
     
     # Load control set from Root
@@ -255,7 +257,19 @@ def main():
         control_data = json.load(f)
     
     queries = [item['Company Name'] for item in control_data]
-    print(f"✅ Loaded {len(queries)} queries from control set.")
+    
+    # Check for limit
+    limit = 15 # Default limit for this run as requested
+    if len(sys.argv) > 1:
+        try:
+            limit = int(sys.argv[1])
+        except ValueError:
+            pass
+            
+    if limit:
+        queries = queries[:limit]
+        
+    print(f"✅ Loaded {len(queries)} queries from control set (Limit: {limit}).")
     
     output_file = 'control_set_report_ULTRA.md'
     report_parts = [generate_report_header()]

@@ -1,302 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company Name Matcher - Find Similar Companies</title>
+    <title>Company Matching Control Set Report (Location-Aware)</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: #111111;
+            --accent-color: #bb86fc;
+            /* Purple */
+            --text-color: #e0e0e0;
+            --text-muted: #888;
+            --border-color: #333;
+            --success-color: #4ade80;
+            --warning-color: #fbbf24;
+            --danger-color: #f87171;
+        }
+
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
-        
+
         .main-container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            margin: 2rem auto;
+            background: var(--bg-color);
+            margin: 0 auto;
             max-width: 1200px;
-            overflow: hidden;
+            padding: 20px;
         }
-        
+
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            text-align: center;
+            padding: 1rem 0 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2rem;
         }
-        
+
         .header h1 {
-            font-size: 2.5rem;
-            font-weight: 300;
+            font-size: 1.8rem;
+            font-weight: 700;
             margin: 0;
+            color: white;
         }
-        
+
         .header p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin: 0.5rem 0 0 0;
-            opacity: 0.9;
+            color: var(--text-muted);
         }
-        
+
+        .section-padding {
+            padding: 1rem 0;
+        }
+
+        .intro-details {
+            margin-bottom: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: var(--card-bg);
+        }
+
+        .intro-details summary {
+            padding: 10px 15px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .intro-content {
+            padding: 15px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
         .search-section {
+            background: var(--card-bg);
             padding: 2rem;
-            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
         }
-        
-        .search-form {
-            max-width: 600px;
-            margin: 0 auto;
+
+        .form-label {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
         }
-        
-        .form-control {
-            border-radius: 10px;
-            border: 2px solid #e9ecef;
-            padding: 0.75rem 1rem;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
+
+        .form-control,
+        .form-select {
+            background-color: #1a1a1a;
+            border: 1px solid var(--border-color);
+            color: white;
+            padding: 0.6rem;
         }
-        
-        .form-control:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+
+        .form-control:focus,
+        .form-select:focus {
+            background-color: #222;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.2rem rgba(187, 134, 252, 0.25);
+            color: white;
         }
-        
+
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-color: var(--accent-color);
             border: none;
-            border-radius: 10px;
+            color: black;
+            font-weight: 700;
             padding: 0.75rem 2rem;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            transition: all 0.2s;
         }
-        
+
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            background-color: #d1a3ff;
+            transform: translateY(-1px);
+            color: black;
         }
-        
-        .results-section {
-            padding: 2rem;
-        }
-        
-        .results-table {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-        
-        .table {
-            margin: 0;
-        }
-        
-        .table thead th {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+
+        .match-card {
             border: none;
-            padding: 1rem;
-            font-weight: 500;
-            text-align: center;
+            margin-bottom: 5px;
         }
-        
-        .table tbody tr {
-            transition: all 0.3s ease;
+
+        .match-card summary {
+            padding: 5px 0;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 1rem;
+            display: list-item;
+            list-style-position: inside;
         }
-        
-        .table tbody tr:hover {
-            background-color: #f8f9fa;
-            transform: scale(1.01);
-        }
-        
-        .table tbody td {
-            padding: 1rem;
-            border: none;
-            border-bottom: 1px solid #e9ecef;
-            vertical-align: middle;
-        }
-        
-        .rank-badge {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+        .match-card summary b {
             color: white;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
+        }
+
+        .match-details-inner {
+            padding: 1rem 0 1rem 2rem;
+            border-left: 1px solid #333;
+            margin-left: 5px;
+        }
+
+        .section-header {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        .score-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .results-summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .results-summary-table th {
+            text-align: left;
+            border-bottom: 2px solid var(--accent-color);
+            padding: 10px;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .results-summary-table td {
+            padding: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .results-summary-table .match-row:hover {
+            background: #222;
+        }
+
+        .results-summary-table .match-row.selected {
+            background: #1a1a3e;
+        }
+
+
+        .score-table th {
+            text-align: left;
+            border-bottom: 1px solid #333;
+            padding: 8px;
+            color: var(--text-muted);
+        }
+
+        .score-table td {
+            padding: 8px;
+            border-bottom: 1px solid #222;
+        }
+
+        .row-base-score {
+            color: var(--text-muted);
+        }
+
+        .row-final-score {
+            font-weight: 700;
+            color: var(--success-color) !important;
+        }
+
+        .formula-box {
+            background: #000;
+            color: var(--success-color);
+            padding: 1rem;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.85rem;
+            border: 1px solid #222;
+            border-radius: 4px;
+        }
+
+        .rationale-box {
+            background: #0a0a0a;
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid #222;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .status-bar {
+            padding: 1rem 0;
+            font-size: 0.8rem;
+            color: var(--text-muted);
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin: 0 auto;
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
         }
-        
-        .likeness-score {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #667eea;
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            color: #6c757d;
-        }
-        
-        .spinner-border {
-            color: #667eea;
-        }
-        
-        .error-message {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-            border-radius: 10px;
-            padding: 1rem;
-            margin: 1rem 0;
-            text-align: center;
-        }
-        
-        .success-message {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            border-radius: 10px;
-            padding: 1rem;
-            margin: 1rem 0;
-            text-align: center;
-        }
-        
+
         .status-indicator {
             display: inline-block;
-            width: 12px;
-            height: 12px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            margin-right: 8px;
+            margin-right: 5px;
         }
-        
+
         .status-ready {
-            background-color: #28a745;
+            background-color: var(--success-color);
         }
-        
+
         .status-not-ready {
-            background-color: #dc3545;
+            background-color: var(--danger-color);
         }
-        
-        .btn-outline-secondary {
-            border-color: #6c757d;
-            color: #6c757d;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline-secondary:hover {
-            background-color: #6c757d;
-            border-color: #6c757d;
-            color: white;
-        }
-        
-        .btn-outline-secondary:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-        
+
         @media (max-width: 768px) {
-            .main-container {
-                margin: 1rem;
-                border-radius: 15px;
+            .search-section {
+                padding: 1rem;
             }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .table-responsive {
-                border-radius: 15px;
+
+            .btn-primary {
+                width: 100%;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="main-container">
             <!-- Header -->
             <div class="header">
-                <h1><i class="fas fa-building me-3"></i>Company Name Matcher</h1>
-                <p>Find similar companies using pattern matching algorithms</p>
+                <h1>Company Matching Control Set Report</h1>
+                <p>Location-Aware Hybrid Semantic & Lexical Re-ranking Pipeline</p>
             </div>
-            
+
+            <!-- Intro Sections -->
+            <div class="section-padding bg-light border-bottom">
+                <details class="intro-details">
+                    <summary>Matching Scenarios Handled</summary>
+                    <div class="intro-content">
+                        <ul class="mb-0">
+                            <li><strong>Exact Matches:</strong> 100% string identity across names.</li>
+                            <li><strong>Acronym Expansions:</strong> Resolving "NIH" to "National Institutes of Health"
+                                via fidelity scoring.</li>
+                            <li><strong>Location-Aware:</strong> Distinguishing "Pizza Hut (London)" from "Pizza Hut
+                                (Miami)" using geographic constraints.</li>
+                            <li><strong>Popularity/Frequency Bias:</strong> Boosting entities that appear more
+                                frequently in the master dataset.</li>
+                            <li><strong>Semantic Semantic:</strong> Finding "Association for Managers" when searching
+                                for "Management Group".</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="intro-details">
+                    <summary>Advanced Scoring Formula</summary>
+                    <div class="intro-content">
+                        <div class="formula-box">
+                            Final Score = (StringSimilarity * 0.5 + SemanticSimilarity * 0.25 + ConceptAlignment * 0.25)
+                            * Weight + LocationBoost + PopularityBoost
+                        </div>
+                        <p class="mb-0 small text-muted">The system uses a 50/25/25 weight distribution for the primary
+                            "Name Score," then applies additive boosts for location matches and frequency-based
+                            popularity.</p>
+                    </div>
+                </details>
+            </div>
+
             <!-- Search Section -->
-            <div class="search-section">
-                <div class="search-form">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label for="companyQuery" class="form-label">Company Name to Search</label>
-                            <input type="text" class="form-control" id="companyQuery" 
-                                   placeholder="Enter company name to search for" required>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="topK" class="form-label">Number of Results</label>
-                            <select class="form-control" id="topK">
-                                <option value="5">5 results</option>
-                                <option value="10" selected>10 results</option>
-                                <option value="15">15 results</option>
-                                <option value="20">20 results</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label">&nbsp;</label>
-                            <button type="button" class="btn btn-primary w-100" onclick="searchCompanies()">
-                                <i class="fas fa-search me-2"></i>Search
-                            </button>
-                        </div>
+            <div class="search-section section-padding">
+                <div class="row g-3">
+                    <div class="col-md-5">
+                        <label for="companyQuery" class="form-label">Company Name</label>
+                        <input type="text" class="form-control" id="companyQuery" placeholder="IBM, Pfizer, etc."
+                            required>
                     </div>
-                    
-                    <!-- Status Indicator -->
-                    <div class="mt-3 text-center">
-                        <span id="statusIndicator" class="status-indicator status-not-ready"></span>
-                        <span id="statusText">Checking system status...</span>
-                        <div class="mt-2">
-                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="reloadData()" id="reloadBtn" style="display: none;">
-                                <i class="fas fa-sync-alt me-1"></i>Reload Data
-                            </button>
-                            <button type="button" class="btn btn-outline-warning btn-sm ms-2" onclick="clearCache()" id="clearCacheBtn" style="display: none;">
-                                <i class="fas fa-broom me-1"></i>Clear Cache
-                            </button>
-                            <span id="lastUpdated" class="text-muted small ms-2"></span>
-                        </div>
+                    <div class="col-md-3">
+                        <label for="city" class="form-label">City (Optional)</label>
+                        <input type="text" class="form-control" id="city" placeholder="Bethesda">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="state" class="form-label">State (Optional)</label>
+                        <input type="text" class="form-control" id="state" placeholder="MD">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="topK" class="form-label">Limit</label>
+                        <select class="form-select" id="topK">
+                            <option value="5">Top 5</option>
+                            <option value="10" selected>Top 10</option>
+                            <option value="20">Top 20</option>
+                        </select>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <button type="button" class="btn btn-primary d-flex align-items-center justify-content-center"
+                            onclick="searchCompanies()">
+                            <i class="fas fa-search me-2"></i>Analyze & Match
+                        </button>
                     </div>
                 </div>
             </div>
-            
-            <!-- Results Section -->
-            <div class="results-section" id="resultsSection" style="display: none;">
-                <h3 class="text-center mb-4">Search Results</h3>
-                
-                <!-- Results Table -->
-                <div class="table-responsive">
-                    <table class="table results-table">
-                        <thead>
-                            <tr>
-                                <th style="width: 80px;">Rank</th>
-                                <th>Company Name</th>
-                                <th style="width: 120px;">Likeness %</th>
-                                <th>Match Rationale</th>
-                            </tr>
-                        </thead>
-                        <tbody id="resultsTableBody">
-                            <!-- Results will be populated here -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            
+
             <!-- Loading Section -->
             <div class="loading" id="loadingSection" style="display: none;">
-                <div class="spinner-border" role="status">
+                <div class="spinner-border text-primary" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
-                <p class="mt-3">Finding matches...</p>
+                <p class="mt-3 text-muted">Executing matching pipeline...</p>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h4 class="mb-4 fw-bold">Match Results</h4>
+                <div id="resultsContainer">
+                    <!-- Results will be populated here as <details> cards -->
+                </div>
+            </div>
+
+            <!-- Status Bar -->
+            <div class="status-bar">
+                <div>
+                    <span id="statusIndicator" class="status-indicator status-not-ready"></span>
+                    <span id="statusText" class="text-muted">Initializing system...</span>
+                </div>
+                <div id="lastUpdated" class="text-muted"></div>
+                <div>
+                    <button class="btn btn-link btn-sm p-0 text-decoration-none me-3" onclick="reloadData()">Reload
+                        Data</button>
+                    <button class="btn btn-link btn-sm p-0 text-decoration-none text-danger"
+                        onclick="clearCache()">Clear Cache</button>
+                </div>
             </div>
         </div>
     </div>
@@ -304,11 +385,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Check system status on page load
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             checkStatus();
-            
-            // Set up periodic status checking every 10 seconds
-            setInterval(checkStatus, 10000);
+            setInterval(checkStatus, 30000);
         });
 
         function checkStatus() {
@@ -317,229 +396,188 @@
                 .then(data => {
                     const indicator = document.getElementById('statusIndicator');
                     const statusText = document.getElementById('statusText');
-                    const reloadBtn = document.getElementById('reloadBtn');
                     const lastUpdated = document.getElementById('lastUpdated');
-                    
+
                     if (data.status === 'ready') {
                         indicator.className = 'status-indicator status-ready';
-                        statusText.textContent = `System ready - ${data.companies_loaded} companies loaded`;
-                        reloadBtn.style.display = 'inline-block'; // Show reload button
-                        
-                        // Show clear cache button
-                        const clearCacheBtn = document.getElementById('clearCacheBtn');
-                        clearCacheBtn.style.display = 'inline-block';
-                        
-                        // Format the last updated time
+                        statusText.textContent = `${data.companies_loaded.toLocaleString()} companies indexed`;
                         if (data.last_updated) {
                             const date = new Date(data.last_updated * 1000);
-                            lastUpdated.textContent = `Last updated: ${date.toLocaleString()}`;
-                        } else {
-                            lastUpdated.textContent = '';
+                            lastUpdated.textContent = date.toLocaleTimeString();
                         }
                     } else {
                         indicator.className = 'status-indicator status-not-ready';
-                        statusText.textContent = 'System not ready - ' + data.error;
-                        reloadBtn.style.display = 'none'; // Hide reload button
-                        
-                        // Hide clear cache button
-                        const clearCacheBtn = document.getElementById('clearCacheBtn');
-                        clearCacheBtn.style.display = 'none';
-                        
-                        lastUpdated.textContent = ''; // Clear last updated time
+                        statusText.textContent = 'System offline';
                     }
                 })
-                .catch(error => {
-                    console.error('Error checking status:', error);
-                    const indicator = document.getElementById('statusIndicator');
-                    const statusText = document.getElementById('statusText');
-                    indicator.className = 'status-indicator status-not-ready';
-                    statusText.textContent = 'Error checking system status';
-                    const reloadBtn = document.getElementById('reloadBtn');
-                    reloadBtn.style.display = 'none'; // Hide reload button on error
-                    
-                    // Hide clear cache button on error
-                    const clearCacheBtn = document.getElementById('clearCacheBtn');
-                    clearCacheBtn.style.display = 'none';
-                });
+                .catch(console.error);
         }
 
         function searchCompanies() {
             const query = document.getElementById('companyQuery').value.trim();
             const topK = document.getElementById('topK').value;
-            
-            if (!query) {
-                alert('Please enter a company name.');
-                return;
-            }
-            
-            // Show loading
+            const city = document.getElementById('city').value.trim();
+            const state = document.getElementById('state').value.trim();
+
+            if (!query) return;
+
             document.getElementById('loadingSection').style.display = 'block';
             document.getElementById('resultsSection').style.display = 'none';
-            
-            // Prepare form data
+
             const formData = new FormData();
             formData.append('query', query);
             formData.append('top_k', topK);
-            
-            // Make search request
-            fetch('/search', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('loadingSection').style.display = 'none';
-                
-                if (data.success) {
-                    displayResults(data);
-                } else {
-                    showError(data.error);
-                }
-            })
-            .catch(error => {
-                document.getElementById('loadingSection').style.display = 'none';
-                console.error('Search error:', error);
-                showError('Search failed. Please try again.');
-            });
+            if (city) formData.append('city', city);
+            if (state) formData.append('state', state);
+
+            fetch('/search', { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('loadingSection').style.display = 'none';
+                    if (data.success) {
+                        displayResults(data);
+                    } else {
+                        alert('Error: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('loadingSection').style.display = 'none';
+                    console.error('Search error:', error);
+                });
         }
 
         function displayResults(data) {
-            const tableBody = document.getElementById('resultsTableBody');
-            tableBody.innerHTML = '';
-            
+            const container = document.getElementById('resultsContainer');
+            container.innerHTML = '';
+
+            // Build a summary table for all matches
+            let summaryTableHtml = `
+                <table class="results-summary-table">
+                    <thead>
+                        <tr>
+                            <th style="width:40px;"></th>
+                            <th style="width:50px;">Rank</th>
+                            <th>Company Name</th>
+                            <th style="width:180px;">Location</th>
+                            <th style="width:100px; text-align:right;">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
             data.results.forEach(result => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td class="text-center">
-                        <div class="rank-badge">${result.rank}</div>
-                    </td>
-                    <td>
-                        <strong>${result.company_name}</strong>
-                    </td>
-                    <td class="text-center">
-                        <span class="likeness-score">${result.likeness_percent}%</span>
-                    </td>
-                    <td>${result.match_rationale}</td>
+                const indicatorIcon = result.likeness_percent >= 90 ? '🟢' : result.likeness_percent >= 60 ? '🟡' : '🔴';
+                const locParts = [];
+                if (result.city) locParts.push(result.city);
+                if (result.state) locParts.push(result.state);
+                const locationStr = locParts.join(', ');
+
+                summaryTableHtml += `
+                    <tr class="match-row" data-rank="${result.rank}">
+                        <td style="text-align:center;">${indicatorIcon}</td>
+                        <td><strong>#${result.rank}</strong></td>
+                        <td><strong>${result.company_name}</strong></td>
+                        <td>${locationStr ? `(${locationStr})` : ''}</td>
+                        <td style="text-align:right;"><strong>${result.likeness_percent}%</strong></td>
+                    </tr>
                 `;
-                tableBody.appendChild(row);
             });
-            
+
+            summaryTableHtml += `
+                    </tbody>
+                </table>
+            `;
+
+            container.innerHTML = summaryTableHtml;
+
+            // Add detailed breakdown section below
+            const detailsSection = document.createElement('div');
+            detailsSection.id = 'matchDetailsSection';
+            detailsSection.style.marginTop = '2rem';
+            container.appendChild(detailsSection);
+
+            // Add click handlers to rows
+            container.querySelectorAll('.match-row').forEach(row => {
+                row.style.cursor = 'pointer';
+                row.addEventListener('click', () => {
+                    const rank = parseInt(row.dataset.rank);
+                    const result = data.results.find(r => r.rank === rank);
+                    if (result) showMatchDetails(result, detailsSection);
+                });
+            });
+
+            // Auto-show first match details
+            if (data.results.length > 0) {
+                showMatchDetails(data.results[0], detailsSection);
+            }
+
             document.getElementById('resultsSection').style.display = 'block';
         }
 
-        function showError(message) {
-            const resultsSection = document.getElementById('resultsSection');
-            resultsSection.innerHTML = `
-                <div class="error-message">
-                    <i class="fas fa-exclamation-triangle me-2"></i>
-                    ${message}
-                </div>
-            `;
-            resultsSection.style.display = 'block';
-        }
+        function showMatchDetails(result, container) {
+            const indicatorIcon = result.likeness_percent >= 90 ? '🟢' : result.likeness_percent >= 60 ? '🟡' : '🔴';
+            const locParts = [];
+            if (result.city) locParts.push(result.city);
+            if (result.state) locParts.push(result.state);
+            const locationStr = locParts.join(', ');
 
-        function showSuccess(message) {
-            const resultsSection = document.getElementById('resultsSection');
-            resultsSection.innerHTML = `
-                <div class="success-message">
-                    <i class="fas fa-check-circle me-2"></i>
-                    ${message}
+            const stringContrib = result.string_score * 0.5;
+            const semContrib = result.normalized_semantic_score * 0.25;
+            const conceptContrib = (result.explanation_details.concept_alignment || 0) * 0.25;
+            const baseNameScore = stringContrib + semContrib + conceptContrib;
+
+            let html = `
+                <h4 style="margin-bottom:1rem;">${indicatorIcon} #${result.rank} - ${result.company_name} ${locationStr ? `(${locationStr})` : ''}</h4>
+                
+                <div class="section-header">Scoring Breakdown</div>
+                <table class="score-table">
+                    <thead><tr><th>Component</th><th>Raw Value</th><th>Weight</th><th>Contribution</th></tr></thead>
+                    <tbody>
+                        <tr><td>String Similarity</td><td>${result.string_score.toFixed(4)}</td><td>50%</td><td>${stringContrib.toFixed(4)}</td></tr>
+                        <tr><td>Semantic Similarity (Norm)</td><td>${result.normalized_semantic_score.toFixed(4)}</td><td>25%</td><td>${semContrib.toFixed(4)}</td></tr>
+                        <tr><td>Concept Alignment</td><td>${(result.explanation_details.concept_alignment || 0).toFixed(4)}</td><td>25%</td><td>${conceptContrib.toFixed(4)}</td></tr>
+                        <tr class="row-base-score"><td><em>Base Name Score</em></td><td></td><td></td><td><em>${baseNameScore.toFixed(4)}</em></td></tr>
+                        ${result.location_boost > 0 ? `<tr><td>Location Boost</td><td>MATCH</td><td>5%</td><td>+${result.location_boost.toFixed(4)}</td></tr>` : ''}
+                        ${result.popularity_boost > 0 ? `<tr><td>Frequency Boost</td><td>POPULAR</td><td>Bonus</td><td>+${result.popularity_boost.toFixed(4)}</td></tr>` : ''}
+                        <tr class="row-final-score"><td><strong>Final Score</strong></td><td></td><td></td><td><strong>${(result.likeness_percent / 100).toFixed(4)}</strong></td></tr>
+                    </tbody>
+                </table>
+
+                <div class="section-header">Score Calculation Formula</div>
+                <div class="formula-box">
+                    Base Score = (${result.string_score.toFixed(2)} × 0.50) + (${result.normalized_semantic_score.toFixed(2)} × 0.25) + (${(result.explanation_details.concept_alignment || 0).toFixed(2)} × 0.25)<br>
+                    ${result.location_boost > 0 ? `Location Boost = ${(result.location_score || 0).toFixed(2)} × 0.05 = +${result.location_boost.toFixed(4)}<br>` : ''}
+                    ${result.popularity_boost > 0 ? `Popularity Boost = +${result.popularity_boost.toFixed(4)}<br>` : ''}
+                    <br>
+                    Final Score = Base Score ${result.location_boost > 0 ? '+ Location Boost' : ''} ${result.popularity_boost > 0 ? '+ Popularity Boost' : ''} = ${(result.likeness_percent / 100).toFixed(4)}
                 </div>
+
+                <div class="section-header">Match Rationale (Narrative)</div>
+                <div class="rationale-box">${result.match_rationale}</div>
             `;
-            resultsSection.style.display = 'block';
+
+            container.innerHTML = html;
         }
 
         function reloadData() {
-            const reloadBtn = document.getElementById('reloadBtn');
-            const originalText = reloadBtn.innerHTML;
-            
-            // Show loading state
-            reloadBtn.disabled = true;
-            reloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Reloading...';
-            
-            // Make reload request
-            fetch('/reload', {
-                method: 'POST'
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Show success message
-                    const statusText = document.getElementById('statusText');
-                    statusText.textContent = data.message;
-                    
-                    // Update last updated time
-                    const lastUpdated = document.getElementById('lastUpdated');
-                    const now = new Date();
-                    lastUpdated.textContent = `Last updated: ${now.toLocaleString()}`;
-                    
-                    // Show temporary success message
-                    showSuccess('Data reloaded successfully!');
-                } else {
-                    showError('Failed to reload data: ' + data.error);
-                }
-            })
-            .catch(error => {
-                console.error('Reload error:', error);
-                showError('Reload failed. Please try again.');
-            })
-            .finally(() => {
-                // Restore button state
-                reloadBtn.disabled = false;
-                reloadBtn.innerHTML = originalText;
-            });
+            fetch('/reload', { method: 'POST' })
+                .then(r => r.json())
+                .then(d => { if (d.success) checkStatus(); alert(d.message); })
+                .catch(console.error);
         }
 
         function clearCache() {
-            const clearCacheBtn = document.getElementById('clearCacheBtn');
-            const originalText = clearCacheBtn.innerHTML;
-            
-            // Show loading state
-            clearCacheBtn.disabled = true;
-            clearCacheBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Clearing...';
-            
-            // Make clear cache request
-            fetch('/clear-cache', {
-                method: 'POST'
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Show success message
-                    const statusText = document.getElementById('statusText');
-                    statusText.textContent = data.message;
-                    
-                    // Update last updated time
-                    const lastUpdated = document.getElementById('lastUpdated');
-                    const now = new Date();
-                    lastUpdated.textContent = `Last updated: ${now.toLocaleString()}`;
-                    
-                    // Show temporary success message
-                    showSuccess('Cache cleared and data reloaded successfully!');
-                    
-                    // Hide results if any
-                    document.getElementById('resultsSection').style.display = 'none';
-                } else {
-                    showError('Failed to clear cache: ' + data.error);
-                }
-            })
-            .catch(error => {
-                console.error('Clear cache error:', error);
-                showError('Cache clear failed. Please try again.');
-            })
-            .finally(() => {
-                // Restore button state
-                clearCacheBtn.disabled = false;
-                clearCacheBtn.innerHTML = originalText;
-            });
+            if (!confirm('This will rebuild the entire index. Continue?')) return;
+            fetch('/clear-cache', { method: 'POST' })
+                .then(r => r.json())
+                .then(d => { if (d.success) checkStatus(); alert(d.message); })
+                .catch(console.error);
         }
 
-        // Allow Enter key to trigger search
-        document.getElementById('companyQuery').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchCompanies();
-            }
+        document.getElementById('companyQuery').addEventListener('keypress', e => {
+            if (e.key === 'Enter') searchCompanies();
         });
     </script>
 </body>
+
 </html>

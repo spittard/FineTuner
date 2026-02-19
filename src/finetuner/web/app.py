@@ -1,11 +1,9 @@
 from flask import Flask, render_template, request, jsonify
-from finetuner.core.matcher import CompanyMatcher
 from finetuner.web.services.rationale_service import RationaleService
 import json
 import os
 import time
 
-# Try to import tqdm for progress bars
 from finetuner.web.services.search_service import SearchService
 
 # Global service instance
@@ -14,12 +12,8 @@ search_service = SearchService()
 app = Flask(__name__)
 
 # Enable auto-reloading for development
-app.config['TEMPLATES_AUTO_RELOAD'] = False
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-
-# Helper functions for enhanced rationale generation
-# Helper functions for enhanced rationale generation have been moved to RationaleService
-
 
 
 @app.route('/')
@@ -31,9 +25,6 @@ def index():
 def search():
     """Handle company search requests with optional location filtering"""
     try:
-        # Load company data if not already loaded
-        search_service.load_company_data()
-        
         # Get search query
         query = request.form.get('query', '').strip()
         if not query:
@@ -46,8 +37,11 @@ def search():
         city = request.form.get('city', '').strip() or None
         state = request.form.get('state', '').strip() or None
         
-        # Perform search using service
+        # Perform search using service (RPC-based)
         results = search_service.search(query, top_k=top_k, city=city, state=state)
+        
+        # Get status for location data info
+        status = search_service.get_status()
         
         response_data = {
             'success': True,
@@ -55,7 +49,7 @@ def search():
             'results': results,
             'total_matches': len(results),
             'location_filter_used': bool(city or state),
-            'has_location_data': search_service.matcher.has_location_data if search_service.matcher else False
+            'has_location_data': status.get('has_location_data', False)
         }
         
         # Include location filter in response if used
@@ -76,19 +70,19 @@ def search():
 
 @app.route('/reload', methods=['POST'])
 def reload_data():
-    """Force reload of company data"""
+    """Force reload of company data (not applicable in RPC mode)"""
     try:
-        if search_service.load_company_data(force_reload=True):
-            loaded_count = len(search_service.matcher.original_company_names) if search_service.matcher else 0
+        status = search_service.get_status()
+        if status.get('status') == 'ready':
             return jsonify({
                 'success': True,
-                'message': f'Data reloaded successfully. {loaded_count} companies loaded.',
-                'companies_loaded': loaded_count
+                'message': f"Data available via RPC. {status.get('companies_loaded', 0):,} companies loaded.",
+                'companies_loaded': status.get('companies_loaded', 0)
             })
         else:
             return jsonify({
                 'success': False,
-                'error': 'Failed to reload company data'
+                'error': status.get('error', 'RPC server not ready')
             }), 500
     except Exception as e:
         return jsonify({
@@ -98,20 +92,15 @@ def reload_data():
 
 @app.route('/clear-cache', methods=['POST'])
 def clear_cache():
-    """Clear cache and force fresh data loading - ensures CLI/webapp consistency"""
+    """Clear cache (managed by RPC server in RPC mode)"""
     try:
-        if search_service.clear_cache():
-            loaded_count = len(search_service.matcher.original_company_names) if search_service.matcher else 0
-            return jsonify({
-                'success': True,
-                'message': f'Cache cleared and data reloaded. {loaded_count} companies loaded.',
-                'companies_loaded': loaded_count
-            })
-        else:
-            return jsonify({
-                'success': False,
-                'error': 'Failed to reload company data after cache clear'
-            }), 500
+        search_service.clear_cache()
+        status = search_service.get_status()
+        return jsonify({
+            'success': True,
+            'message': f"Cache managed by RPC server. {status.get('companies_loaded', 0):,} companies available.",
+            'companies_loaded': status.get('companies_loaded', 0)
+        })
     except Exception as e:
         return jsonify({
             'success': False,
@@ -126,7 +115,7 @@ def get_cache_info():
         if cache_info is None:
             return jsonify({
                 'success': False,
-                'error': 'No matcher initialized'
+                'error': 'No cache info available'
             }), 400
         
         return jsonify({
@@ -142,7 +131,7 @@ def get_cache_info():
 
 @app.route('/status')
 def status():
-    """Check if company data is loaded"""
+    """Check if company data is loaded via RPC"""
     return jsonify(search_service.get_status())
 
 if __name__ == '__main__':

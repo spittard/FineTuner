@@ -1,0 +1,37 @@
+Testing Concept Alignment Scoring...
+      Loading embeddings from cache... [OK] (0.0s)
+      Loading FAISS index from cache... [OK] (0.0s)
+      Loading company names from cache... 
+      [PERF] Loaded 2 precomputed similarity scores
+      [PERF] Loaded 1 precomputed acronym fidelity scores
+[OK] (0.0s)
+      Verifying cache metadata... [OK] (0.0s)
+   Cache loaded successfully: b9e464b117bc6486... (total: 0.0s)
+   Loaded 4 companies from cache
+Using cached index for 4 companies
+
+QUERY: 'Apple'
+1. Apple Inc.
+   Final Score: 0.9500
+   String Score: 0.9000
+   Concept Align: 0.9442
+   Match Type: hybrid
+
+2. Apple Orchard Farm
+   Final Score: 0.9500
+   String Score: 0.7500
+   Concept Align: 0.8366
+   Match Type: hybrid
+
+3. IBM
+   Final Score: 0.3457
+   String Score: 0.0000
+   Concept Align: 0.8506
+   Match Type: hybrid
+
+4. International Business Machines
+   Final Score: 0.3012
+   String Score: 0.0625
+   Concept Align: 0.8139
+   Match Type: hybrid
+

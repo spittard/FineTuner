@@ -41,12 +41,15 @@ def enrich_rpc_results(query, raw_matches):
             "semantic_score": match.get('semantic_score', 0.0),
             "normalized_semantic_score": match.get('normalized_semantic_score', 0.0),
             "acronym_fidelity": match.get('acronym_fidelity', 0.0),
+            "concept_alignment": match.get('concept_alignment', 0.0),
+            "lexical_boost": match.get('lexical_boost', 0.0),
             "match_type": match.get('match_type', 'hybrid'),
             "location_score": match.get('location_score', 0.0),
             "count": match.get('count', 0),
             "popularity_boost": match.get('popularity_boost', 0.0),
             "location_boost": match.get('location_boost', 0.0),
-            "match_city": match.get('city', '')
+            "match_city": match.get('city', ''),
+            "concept_signature": match.get('concept_signature')
         }
 
         # 2. Generate Rationale using RationaleService
@@ -154,7 +157,7 @@ def main():
     report_header = generate_report_header()
     
     # Initialize report file with header
-    output_file = 'control_set_report_ULTRA.md'
+    output_file = 'concept_verification_report.md'
     print(f"📄 Initializing report output to {output_file}...")
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(report_header)
@@ -271,8 +274,8 @@ def generate_report_header():
     # Scoring formula
     header.append("## Advanced Scoring Formula\n\n")
     header.append("```\n")
-    header.append("Base Score = (String Similarity × 70%) + (Semantic Similarity × 30%)\n")
-    header.append("Fidelity Boost = Acronym Fidelity × 15%\n")
+    header.append("Base Score = (String Sim × 50%) + (Semantic Sim × 25%) + (Concept Align × 25%)\n")
+    header.append("Fidelity Boost = Acronym Fidelity × 15% (Dynamic)\n")
     header.append("Location Boost = Location Score × 5% (Post-Inference)\n")
     header.append("Final Score = Base Score + Fidelity Boost + Location Boost + Popularity Boost\n")
     header.append("```\n\n")
@@ -410,17 +413,20 @@ def format_company_result(query, result_data, rank):
         location_boost = exp.get('location_boost', 0.0)
         popularity_boost = exp.get('popularity_boost', 0.0)
         
-        contrib_string = string_score * 0.7
-        contrib_semantic = semantic_norm * 0.3
+        contrib_string = string_score * 0.5
+        contrib_semantic = semantic_norm * 0.25
+        concept_align = exp.get('concept_alignment', 0.0)
+        contrib_concept = concept_align * 0.25
+        lexical_boost = exp.get('lexical_boost', 0.0)
         
         # Base Score (respecting exact match/overrides if possible)
-        base_score = match.get('name_score', contrib_string + contrib_semantic / 100.0 if match.get('name_score') else contrib_string + contrib_semantic)
+        base_score = match.get('name_score', contrib_string + contrib_semantic + contrib_concept)
         if match.get('match_type') == 'exact':
              base_score = 1.0 # Exact match base is always 1.0
              
         # Fidelity contribution
         fidelity_boost = 0.0
-        if acronym_fidelity > 0.8 and match.get('match_type') != 'acronym_expansion':
+        if acronym_fidelity > 0.8 and match.get('match_type') not in ['acronym_expansion', 'acronym_reverse']:
              fidelity_boost = acronym_fidelity * 0.15
         
         # Content Generation
@@ -432,8 +438,12 @@ def format_company_result(query, result_data, rank):
         html_parts.append(f"      <b>📊 Score Breakdown:</b><br>")
         html_parts.append(f"      <table style='width: 100%; max-width: 600px; border-collapse: collapse; font-size: 0.9em; margin-top: 5px; margin-bottom: 15px;'>")
         html_parts.append(f"        <tr style='text-align: left; border-bottom: 1px solid #ccc;'><th>Component</th><th>Raw</th><th>Weight</th><th>Contrib</th></tr>")
-        html_parts.append(f"        <tr><td>String Similarity</td><td>{string_score:.4f}</td><td>70%</td><td>{contrib_string:.4f}</td></tr>")
-        html_parts.append(f"        <tr><td>Semantic Similarity (Norm)</td><td>{semantic_norm:.4f}</td><td>30%</td><td>{contrib_semantic:.4f}</td></tr>")
+        html_parts.append(f"        <tr><td>String Similarity</td><td>{string_score:.4f}</td><td>50%</td><td>{contrib_string:.4f}</td></tr>")
+        html_parts.append(f"        <tr><td>Semantic Similarity (Norm)</td><td>{semantic_norm:.4f}</td><td>25%</td><td>{contrib_semantic:.4f}</td></tr>")
+        html_parts.append(f"        <tr><td>Concept Alignment</td><td>{concept_align:.4f}</td><td>25%</td><td>{contrib_concept:.4f}</td></tr>")
+
+        if lexical_boost > 0:
+            html_parts.append(f"        <tr><td>Lexical Alignment Boost</td><td></td><td>Floor</td><td>+{lexical_boost:.4f}</td></tr>")
 
         if fidelity_boost > 0:
             html_parts.append(f"        <tr><td>Fidelity Boost (Acronym)</td><td>{acronym_fidelity:.4f}</td><td>15% max</td><td>+{fidelity_boost:.4f}</td></tr>")

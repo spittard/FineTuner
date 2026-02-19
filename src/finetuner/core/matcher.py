@@ -1,6 +1,12 @@
+import os
+
+# Must be set before sentence-transformers is imported so it never attempts
+# to reach HuggingFace. The model is fully cached locally.
+os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
+os.environ.setdefault("HF_DATASETS_OFFLINE", "1")
+
 from sentence_transformers import SentenceTransformer
 import numpy as np
-import os
 import pickle
 import hashlib
 from finetuner.utils.text_preprocessor import TextPreprocessor
@@ -30,6 +36,14 @@ class CompanyMatcher:
     """
     # Cache version - increment this when logic changes to invalidate old caches
     CACHE_VERSION = "v4.1_location_decoupled"
+
+    # Semantic Anchors for Concept Probing (Nutritional Label)
+    CONCEPT_ANCHORS = {
+        "Geography": ["Pennsylvania", "London", "Canada", "California", "New York", "Texas", "Chicago", "Illinois", "Ohio", "Miami", "Paris"],
+        "Industry": ["Automotive", "Medical", "Technology", "Construction", "Legal", "Food", "Finance", "Education", "Insurance", "Retail", "Manufacturing"],
+        "Structure": ["Corporate", "Non-Profit", "Government", "Small Business"],
+        "Nature": ["Global", "Local", "Industrial", "Consumer", "Professional"]
+    }
     
     def __init__(self, model_name='paraphrase-MiniLM-L3-v2'):
         self.model = SentenceTransformer(model_name)
@@ -54,6 +68,12 @@ class CompanyMatcher:
         # Persistence settings
         self.cache_dir = "company_matcher_cache"
         self.ensure_cache_dir()
+
+        # Precompute anchor vectors once
+        self._anchor_vectors = None
+        self._anchor_names = []
+        for cat, anchors in self.CONCEPT_ANCHORS.items():
+            self._anchor_names.extend(anchors)
     
     def ensure_cache_dir(self):
         """Ensure the cache directory exists"""
@@ -431,6 +451,50 @@ class CompanyMatcher:
 
 
 
+    def _ensure_anchors_loaded(self):
+        """Lazy load anchor vectors into GPU/CPU memory"""
+        if self._anchor_vectors is None:
+            self._anchor_vectors = self.model.encode(self._anchor_names, convert_to_numpy=True)
+            # Normalize for fast dot-product similarity
+            norms = np.linalg.norm(self._anchor_vectors, axis=1, keepdims=True)
+            self._anchor_vectors = self._anchor_vectors / (norms + 1e-10)
+
+    def _get_concept_signature(self, vector):
+        """
+        Convert a raw embedding into a 'Concept Signature' (Nutritional Label).
+        
+        Args:
+            vector: Normalized vector of the company name
+            
+        Returns:
+            numpy array of similarity scores against anchors
+        """
+        self._ensure_anchors_loaded()
+        
+        # Ensure vector is normalized and 2D
+        if len(vector.shape) == 1:
+            vector = vector.reshape(1, -1)
+        v_norm = vector / (np.linalg.norm(vector) + 1e-10)
+        
+        # Calculate dot product (cosine similarity since both are normalized)
+        # Result is 1 x NumAnchors
+        signature = np.dot(v_norm, self._anchor_vectors.T)[0]
+        return signature
+
+    def _calculate_signature_correlation(self, sig1, sig2):
+        """
+        Calculate how well two 'Nutritional Labels' align.
+        Focuses on high-value spikes (Top 3 concepts).
+        """
+        # Pearson correlation or simple dot product of signatures
+        # Sig1 and Sig2 are already similarity scores (-1 to 1)
+        # We focus on the POSITIVE alignment (what they BOTH taste like)
+        correlation = np.dot(np.maximum(0, sig1), np.maximum(0, sig2).T)
+        
+        # Normalize by magnitude of spikes
+        mag = (np.linalg.norm(np.maximum(0, sig1)) * np.linalg.norm(np.maximum(0, sig2)))
+        return float(correlation / (mag + 1e-10))
+
     def _create_fast_lookup_sets(self):
         """Create fast lookup sets for exact matching (called after building index)"""
         # SKIP if already loaded from cache
@@ -448,14 +512,14 @@ class CompanyMatcher:
         for name in tqdm(self.original_company_names, desc="   Lowercase set", total=total, unit="names", ncols=80, disable=not HAS_TQDM):
             self._company_names_lower_set.add(name.lower())
         
-        # Create reverse lookup dictionary: lowercase_name -> index (for O(1) index lookup)
+        # Create reverse lookup dictionary: lowercase_name -> list of indices (for O(1) index lookup)
         print("   Step 2/3: Creating reverse lookup dictionary...")
         self._company_names_lower_to_index = {}
         for i, name in enumerate(tqdm(self.original_company_names, desc="   Reverse lookup", total=total, unit="names", ncols=80, disable=not HAS_TQDM)):
             name_lower = name.lower()
-            # Store first occurrence (in case of duplicates, which shouldn't happen)
             if name_lower not in self._company_names_lower_to_index:
-                self._company_names_lower_to_index[name_lower] = i
+                self._company_names_lower_to_index[name_lower] = []
+            self._company_names_lower_to_index[name_lower].append(i)
         
         # Create word-based lookup for faster partial matching
         print("   Step 3/3: Creating word-based lookup dictionary...")
@@ -900,8 +964,25 @@ class CompanyMatcher:
                     # Check if candidate is a literal expansion of this acronym
                     acronym_fidelity = self._get_cached_acronym_fidelity(query, query_idx, idx)
                 
-                # Weighted Combination
-                name_score = (string_score * 0.7) + (sem_score_norm * 0.3)
+                # --- CONCEPT PROBING ---
+                concept_alignment = 0.0
+                cand_sig = None
+                query_sig = None
+                
+                # Check for cached anchors or ensure loaded
+                self._ensure_anchors_loaded()
+                
+                if self._anchor_vectors is not None:
+                     cand_vec = self.vector_store.embeddings[idx].reshape(1, -1)
+                     cand_sig = self._get_concept_signature(cand_vec)
+                     # Batch query vector access
+                     q_vec = query_vecs_dict[query_idx]
+                     query_sig = self._get_concept_signature(q_vec)
+                     concept_alignment = self._calculate_signature_correlation(query_sig, cand_sig)
+
+                # Weighted Combination: 50/25/25
+                base_score = (string_score * 0.5) + (sem_score_norm * 0.25) + (concept_alignment * 0.25)
+                name_score = base_score
                 
                 # BOOST for acronym fidelity
                 if acronym_fidelity > 0.8 and len(query_acronym) > 2:
@@ -912,19 +993,28 @@ class CompanyMatcher:
                 t_tokens = set(TextPreprocessor.clean_company_name(company_name).split())
                 is_full_overlap = q_tokens.issubset(t_tokens) if q_tokens else False
                 
-                # TIERED LEXICAL OVERRIDES
+                # TIERED LEXICAL BOOSTS (Replacing hard floors for transparency)
+                lexical_boost = 0.0
                 if string_score >= 0.92 or is_full_overlap:
-                    # Near-perfect lexical match OR 100% token coverage
-                    name_score = max(name_score, 0.95)
+                    if name_score < 0.95:
+                        lexical_boost = 0.95 - name_score
+                        name_score = 0.95
                 elif string_score >= 0.80:
-                    name_score = max(name_score, 0.90)
+                    if name_score < 0.90:
+                        lexical_boost = 0.90 - name_score
+                        name_score = 0.90
                 
                 final_score = name_score
                 
                 candidates.append({
                     "name": company_name,
                     "score": final_score,
+                    "name_score": name_score,
+                    "lexical_boost": lexical_boost,
+                    "concept_alignment": concept_alignment,
+                    "concept_signature": cand_sig.tolist() if cand_sig is not None else None,
                     "semantic_score": original_semantic_score,
+                    "normalized_semantic_score": sem_score_norm,
                     "string_score": string_score,
                     "index": idx,
                     "match_type": "hybrid"
@@ -997,8 +1087,19 @@ class CompanyMatcher:
             explanation["string_score"] = match_details.get("string_score", 0.0)
             explanation["semantic_score"] = match_details.get("semantic_score", 0.0)
             explanation["normalized_semantic_score"] = match_details.get("normalized_semantic_score", 0.0)
+            explanation["concept_alignment"] = match_details.get("concept_alignment", 0.0)
             explanation["location_score"] = match_details.get("location_score", 0.0)
             explanation["final_score"] = match_details.get("score", 0.0)
+            
+            # Additional reporting fields
+            explanation["lexical_boost"] = match_details.get("lexical_boost", 0.0)
+            explanation["acronym_fidelity"] = match_details.get("acronym_fidelity", 0.0)
+            explanation["concept_signature"] = match_details.get("concept_signature")
+            explanation["location_boost"] = match_details.get("location_boost", 0.0)
+            explanation["popularity_boost"] = match_details.get("popularity_boost", 0.0)
+            explanation["match_city"] = match_details.get("city", "")
+            explanation["match_state"] = match_details.get("state", "")
+            explanation["count"] = match_details.get("count", 0)
         
         return explanation
 
@@ -1309,6 +1410,9 @@ class CompanyMatcher:
         # RETRIEVAL (Semantic Search)
         # Location baking removed from query - we search by name only
         query_vec = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
+        
+        # GENERATE CONCEPT SIGNATURE FOR QUERY
+        query_sig = self._get_concept_signature(query_vec)
             
         semantic_scores, semantic_indices = self.vector_store.search(query_vec, candidate_k)
         
@@ -1337,7 +1441,9 @@ class CompanyMatcher:
             # Get query index if query is in database (for cache lookup)
             query_idx = None
             if hasattr(self, '_company_names_lower_to_index') and query_lower in self._company_names_lower_to_index:
-                query_idx = self._company_names_lower_to_index[query_lower]
+                # Use the first index for common scores (string/acronym) as they won't vary by location
+                val = self._company_names_lower_to_index[query_lower]
+                query_idx = val[0] if isinstance(val, list) else val
             
             # Calculate string similarity (using cache if available)
             string_score = self._get_cached_similarity(query, query_idx, idx)
@@ -1353,8 +1459,14 @@ class CompanyMatcher:
                 # Check if candidate is a literal expansion of this acronym
                 acronym_fidelity = self._get_cached_acronym_fidelity(query, query_idx, idx)
             
-            # Base score: 70% string, 30% semantic
-            name_score = (string_score * 0.7) + (sem_score_norm * 0.3)
+            # --- CONCEPT PROBING (The "Common Sense" Filter) ---
+            target_vec = self.vector_store.embeddings[idx].reshape(1, -1)
+            target_sig = self._get_concept_signature(target_vec)
+            concept_alignment = self._calculate_signature_correlation(query_sig, target_sig)
+
+            # Base score: 50% string, 25% semantic, 25% concept alignment
+            # This balances literal characters, generalized meaning, and specific concept "flavor"
+            name_score = (string_score * 0.5) + (sem_score_norm * 0.25) + (concept_alignment * 0.25)
             
             # BOOST for acronym fidelity
             if acronym_fidelity > 0.8 and len(query_acronym) > 2:
@@ -1365,13 +1477,18 @@ class CompanyMatcher:
             t_tokens = set(TextPreprocessor.clean_company_name(company_name).split())
             is_full_overlap = q_tokens.issubset(t_tokens) if q_tokens else False
             
-            # TIERED LEXICAL OVERRIDES (Ensures literal matches consistently outrank semantic noise)
+            # TIERED LEXICAL BOOSTS (Ensures literal matches consistently outrank semantic noise)
+            lexical_boost = 0.0
             if string_score >= 0.92 or is_full_overlap:
                 # Near-perfect lexical match OR 100% token coverage
-                name_score = max(name_score, 0.95)
+                if name_score < 0.95:
+                    lexical_boost = 0.95 - name_score
+                    name_score = 0.95
             elif string_score >= 0.80: 
                 # Strong lexical match - high priority
-                name_score = max(name_score, 0.90)
+                if name_score < 0.90:
+                    lexical_boost = 0.90 - name_score
+                    name_score = 0.90
             
             # BOOST for high token coverage (all query words found in target)
             # (Merged into tiered logic above)
@@ -1451,10 +1568,13 @@ class CompanyMatcher:
                 "id": record_id,
                 "score": final_score,
                 "name_score": name_score,
+                "lexical_boost": lexical_boost,
                 "acronym_fidelity": acronym_fidelity,
                 "semantic_score": original_semantic_score,
                 "normalized_semantic_score": sem_score_norm,
                 "string_score": string_score,
+                "concept_alignment": concept_alignment,
+                "concept_signature": target_sig.tolist() if target_sig is not None else None,
                 "location_score": location_score,
                 "location_boost": loc_boost_val,
                 "popularity_boost": freq_boost_val,
@@ -1465,12 +1585,19 @@ class CompanyMatcher:
                 "match_type": "exact" if query_lower == company_name.lower() else "hybrid"
             })
         
-        # --- PHASE 3: EXACT MATCH OVERRIDE ---
+        # --- PHASE 3: EXACT MATCH OVERRIDE (OPTIMIZED) ---
         # Find ALL companies with exact name match (there may be multiple in different locations)
-        if is_exact_match:
-            for i, name in enumerate(self.original_company_names):
-                if name.lower() != query_lower:
-                    continue
+        if is_exact_match and hasattr(self, '_company_names_lower_to_index'):
+            # Pre-index existing candidates for fast duplicate check
+            existing_lookup = {}
+            for idx, c in enumerate(candidates):
+                key = (c['name'], c.get('city', ''), c.get('state', ''))
+                existing_lookup[key] = idx
+
+            val = self._company_names_lower_to_index.get(query_lower, [])
+            matching_indices = val if isinstance(val, list) else [val]
+            for i in matching_indices:
+                name = self.original_company_names[i]
                 
                 # Get location data and ID for this exact match
                 exact_city = ""
@@ -1497,22 +1624,18 @@ class CompanyMatcher:
                 if exact_count > 1 and self.max_company_count > 0:
                     exact_freq_boost = (math.log1p(exact_count) / math.log1p(self.max_company_count)) * 0.02
 
-                # Deduplicate within this loop to avoid adding identical exact matches
-                # (e.g. multiple entries for same company with same/no location)
-                is_duplicate = False
-                for existing in candidates:
-                    if existing['name'] == name and existing.get('city') == exact_city and existing.get('state') == exact_state:
-                        # Update existing with exact score and type
-                        existing['score'] = 1.0 + (exact_loc_score * 0.05) + exact_freq_boost
-                        existing['name_score'] = 1.0
-                        existing['location_score'] = exact_loc_score
-                        existing['location_boost'] = exact_loc_score * 0.05
-                        existing['popularity_boost'] = exact_freq_boost
-                        existing['match_type'] = "exact"
-                        is_duplicate = True
-                        break
-                
-                if not is_duplicate:
+                # Deduplicate fast using the pre-indexed candidates
+                key = (name, exact_city, exact_state)
+                if key in existing_lookup:
+                    existing = candidates[existing_lookup[key]]
+                    # Update existing with exact score and type
+                    existing['score'] = 1.0 + (exact_loc_score * 0.05) + exact_freq_boost
+                    existing['name_score'] = 1.0
+                    existing['location_score'] = exact_loc_score
+                    existing['location_boost'] = exact_loc_score * 0.05
+                    existing['popularity_boost'] = exact_freq_boost
+                    existing['match_type'] = "exact"
+                    continue
                     # Exact match score = 1.0 + location boost (5%) + frequency boost (2%)
                     exact_final_score = 1.0 + (exact_loc_score * 0.05) + exact_freq_boost
                     
@@ -1535,10 +1658,8 @@ class CompanyMatcher:
                     })
                     found_indices.add(i)
         
-        # Sort by final score, with secondary priority to "exact" match types
-        # This ensures that if an acronym expansion and an exact match both score 100%,
-        # the exact match is always Rank 1.
-        candidates.sort(key=lambda x: (round(x["score"], 4), 1 if x.get("match_type") == "exact" else 0), reverse=True)
+        # Sort by final score, then concept alignment, with secondary priority to "exact" match types
+        candidates.sort(key=lambda x: (round(x["score"], 4), round(x.get("concept_alignment", 0), 4), 1 if x.get("match_type") == "exact" else 0), reverse=True)
         
         # Return top_k
         results = candidates[:top_k]
@@ -1563,9 +1684,11 @@ class CompanyMatcher:
         
         name_lower = company_name.lower()
         if hasattr(self, '_company_names_lower_to_index'):
-            idx = self._company_names_lower_to_index.get(name_lower)
-            if idx is not None and idx < len(self.company_counts):
-                return self.company_counts[idx]
+            val = self._company_names_lower_to_index.get(name_lower)
+            if val is not None:
+                idx = val[0] if isinstance(val, list) else val
+                if idx < len(self.company_counts):
+                    return self.company_counts[idx]
         return 0
     
     def get_company_location(self, company_name):
@@ -1583,7 +1706,9 @@ class CompanyMatcher:
         
         name_lower = company_name.lower()
         if hasattr(self, '_company_names_lower_to_index'):
-            idx = self._company_names_lower_to_index.get(name_lower)
-            if idx is not None and idx < len(self.company_locations):
-                return self.company_locations[idx]
+            val = self._company_names_lower_to_index.get(name_lower)
+            if val is not None:
+                idx = val[0] if isinstance(val, list) else val
+                if idx < len(self.company_locations):
+                    return self.company_locations[idx]
         return {"city": "", "state": ""}
