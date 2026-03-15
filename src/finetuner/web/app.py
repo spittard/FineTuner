@@ -6,6 +6,33 @@ import time
 
 from finetuner.web.services.search_service import SearchService
 
+# Paths to plugging data files (project root, 4 levels up from this file)
+_PROJECT_ROOT = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), '..', '..', '..')
+)
+PLUGGING_RECORDS_JSON = os.path.join(_PROJECT_ROOT, 'plugging_records.json')
+PLUGGING_MATCHES_JSON = os.path.join(_PROJECT_ROOT, 'plugging_matches.json')
+TIER_CONFIG_JSON      = os.path.join(_PROJECT_ROOT, 'tier_config.json')
+
+_DEFAULT_TIER_CONFIG = {'high': 85, 'medium': 70}
+
+def _load_tier_config():
+    if os.path.exists(TIER_CONFIG_JSON):
+        try:
+            with open(TIER_CONFIG_JSON, 'r', encoding='utf-8') as f:
+                cfg = json.load(f)
+            h = int(cfg.get('high',   _DEFAULT_TIER_CONFIG['high']))
+            m = int(cfg.get('medium', _DEFAULT_TIER_CONFIG['medium']))
+            if 1 <= m < h <= 100:
+                return {'high': h, 'medium': m}
+        except Exception:
+            pass
+    return dict(_DEFAULT_TIER_CONFIG)
+
+def _save_tier_config(cfg):
+    with open(TIER_CONFIG_JSON, 'w', encoding='utf-8') as f:
+        json.dump(cfg, f)
+
 # Global service instance
 search_service = SearchService()
 
@@ -133,6 +160,109 @@ def get_cache_info():
 def status():
     """Check if company data is loaded via RPC"""
     return jsonify(search_service.get_status())
+
+
+# ── Plugging Records routes ───────────────────────────────────────────────────
+
+@app.route('/plugging')
+def plugging():
+    """Plugging Records browser page"""
+    return render_template('plugging.html')
+
+
+@app.route('/api/plugging-records')
+def get_plugging_records():
+    """Return list of plugging records, annotated with best_score/tier from pre-computed matches."""
+    if not os.path.exists(PLUGGING_RECORDS_JSON):
+        return jsonify({'error': f'plugging_records.json not found at {PLUGGING_RECORDS_JSON}'}), 404
+
+    with open(PLUGGING_RECORDS_JSON, 'r', encoding='utf-8') as f:
+        records = json.load(f)
+
+    # Build a lookup of best pre-computed scores keyed by row_id (string for JSON safety)
+    precomputed = {}
+    if os.path.exists(PLUGGING_MATCHES_JSON):
+        try:
+            with open(PLUGGING_MATCHES_JSON, 'r', encoding='utf-8') as f:
+                matches_data = json.load(f)
+            for entry in matches_data:
+                rid = str(entry.get('row_id', ''))
+                best_matches = entry.get('matches', [])
+                if best_matches:
+                    best_score = best_matches[0].get('score', 0)
+                    precomputed[rid] = round(best_score * 100, 1)
+        except Exception:
+            pass  # Missing / corrupt — just skip pre-computed scores
+
+    cfg = _load_tier_config()
+    def tier(pct):
+        if pct is None:
+            return 'unknown'
+        if pct >= cfg['high']:
+            return 'High'
+        if pct >= cfg['medium']:
+            return 'Medium'
+        return 'Low'
+
+    out = []
+    for rec in records:
+        rid = str(rec.get('ID', rec.get('row_id', '')))
+        score_pct = precomputed.get(rid)
+        out.append({
+            'row_id':    rid,
+            'company':   rec.get('Company Name', rec.get('Company', rec.get('query_company', ''))),
+            'city':      rec.get('City', rec.get('query_city', '')),
+            'state':     rec.get('State', rec.get('query_state', '')),
+            'best_score': score_pct,
+            'tier':      tier(score_pct),
+        })
+
+    return jsonify({'records': out, 'total': len(out)})
+
+
+@app.route('/api/plugging-match', methods=['POST'])
+def plugging_match():
+    """Live-match a single plugging record against the RPC index."""
+    try:
+        data = request.get_json(force=True) or {}
+        company = (data.get('company') or '').strip()
+        city    = (data.get('city')    or '').strip() or None
+        state   = (data.get('state')   or '').strip() or None
+        top_k   = int(data.get('top_k', 5))
+
+        if not company:
+            return jsonify({'error': 'company is required'}), 400
+
+        results = search_service.search(company, top_k=top_k, city=city, state=state)
+        return jsonify({'success': True, 'results': results})
+
+    except Exception as exc:
+        import traceback
+        print(f"plugging_match error: {exc}\n{traceback.format_exc()}")
+        return jsonify({'error': str(exc)}), 500
+
+
+@app.route('/api/tier-config', methods=['GET'])
+def get_tier_config():
+    """Return current tier thresholds."""
+    return jsonify(_load_tier_config())
+
+
+@app.route('/api/tier-config', methods=['POST'])
+def set_tier_config():
+    """Update tier thresholds. Expects JSON {high: int, medium: int}."""
+    data = request.get_json(force=True) or {}
+    try:
+        h = int(data['high'])
+        m = int(data['medium'])
+    except (KeyError, ValueError, TypeError):
+        return jsonify({'error': 'high and medium must be integers'}), 400
+    if not (1 <= m < h <= 100):
+        return jsonify({'error': f'Must satisfy 1 ≤ medium ({m}) < high ({h}) ≤ 100'}), 400
+    cfg = {'high': h, 'medium': m}
+    _save_tier_config(cfg)
+    return jsonify({'success': True, 'config': cfg})
+
 
 if __name__ == '__main__':
     # Enable auto-reloading for development

@@ -1,0 +1,21 @@
+{
+    "_comment": "Embedding model used to build the FAISS index and run searches. Changing this requires a full cache rebuild. Available locally-cached models are listed below.",
+    "active_model": "all-MiniLM-L6-v2",
+    "available_models": [
+        {
+            "name": "paraphrase-MiniLM-L3-v2",
+            "params": "17M",
+            "notes": "Original model. Fast, low-memory. Paraphrase-focused — conflates directional/geographic prefixes (Northwest vs Southwest)."
+        },
+        {
+            "name": "all-MiniLM-L6-v2",
+            "params": "22M",
+            "notes": "General-purpose 6-layer MiniLM. Better token resolution than L3. Locally cached."
+        },
+        {
+            "name": "all-mpnet-base-v2",
+            "params": "110M",
+            "notes": "Recommended. MPNet 12-layer — preserves specific word distinctions within similar phrases. Better directional/geographic disambiguation."
+        }
+    ]
+}

@@ -1,0 +1,220 @@
+"""
+Batch-match plugging records against the reference FAISS index via RPC.
+
+Reads:   plugging_records.json   (from extract_plugging_records.py)
+Writes:  plugging_matches.json   (one entry per plugging record)
+
+Supports checkpointing: re-running resumes from where it left off.
+
+Usage:
+    python match_plugging_records.py
+    python match_plugging_records.py --top-k 5 --checkpoint-every 200
+"""
+
+import os
+import sys
+import json
+import time
+import argparse
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'src')))
+
+from finetuner.core.cache_rpc import connect, is_server_running
+
+INPUT_FILE = "plugging_records.json"
+OUTPUT_FILE = "plugging_matches.json"
+CHECKPOINT_EVERY = 100
+TOP_K = 5
+
+
+def load_checkpoint(output_file: str) -> dict:
+    """Load existing results for resume support. Returns dict keyed by row ID."""
+    if not os.path.exists(output_file):
+        return {}
+    try:
+        with open(output_file, 'r', encoding='utf-8') as f:
+            existing = json.load(f)
+        # Index by row_id for fast lookup
+        return {str(entry['row_id']): entry for entry in existing if 'row_id' in entry}
+    except Exception as e:
+        print(f"WARNING: Could not load checkpoint ({e}), starting fresh.")
+        return {}
+
+
+def save_results(results: list, output_file: str):
+    """Save results list to JSON file."""
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(results, f, indent=2, ensure_ascii=False)
+
+
+def main():
+    parser = argparse.ArgumentParser(description='Batch-match plugging records against reference index')
+    parser.add_argument('--input', default=INPUT_FILE, help=f'Input file (default: {INPUT_FILE})')
+    parser.add_argument('--output', default=OUTPUT_FILE, help=f'Output file (default: {OUTPUT_FILE})')
+    parser.add_argument('--top-k', type=int, default=TOP_K, help=f'Matches per record (default: {TOP_K})')
+    parser.add_argument('--checkpoint-every', type=int, default=CHECKPOINT_EVERY,
+                        help=f'Save checkpoint every N records (default: {CHECKPOINT_EVERY})')
+    parser.add_argument('--limit', type=int, default=None,
+                        help='Process only the first N records (for quick testing)')
+    parser.add_argument('--no-resume', action='store_true',
+                        help='Ignore existing output and start fresh')
+    args = parser.parse_args()
+
+    print("=" * 60)
+    print("Plugging Records Batch Matcher")
+    print(f"  Input:            {args.input}")
+    print(f"  Output:           {args.output}")
+    print(f"  Top-K matches:    {args.top_k}")
+    print(f"  Checkpoint every: {args.checkpoint_every}")
+    print("=" * 60)
+
+    # Load input
+    if not os.path.exists(args.input):
+        print(f"ERROR: Input file not found: {args.input}")
+        print("       Run extract_plugging_records.py first.")
+        sys.exit(1)
+
+    with open(args.input, 'r', encoding='utf-8') as f:
+        plugging_records = json.load(f)
+
+    print(f"\nLoaded {len(plugging_records):,} plugging records from {args.input}")
+
+    if args.limit:
+        plugging_records = plugging_records[:args.limit]
+        print(f"Limiting to first {args.limit} records (--limit flag)")
+
+    # Connect to RPC server
+    if not is_server_running():
+        print("ERROR: RPC cache server is not running (port 9876).")
+        print("       Start it with: python run_cache_server.py")
+        sys.exit(1)
+
+    print("Connecting to RPC cache server...")
+    server = connect()
+    server._pyroTimeout = 120.0
+
+    loaded = server.list_loaded_caches()
+    if not loaded:
+        print("ERROR: No caches are loaded in the RPC server.")
+        print("       Load a cache first via the server, then retry.")
+        sys.exit(1)
+
+    cache_key = loaded[0]
+    cache_info = server.get_cache_info(cache_key)
+    print(f"Using cache: {cache_key}")
+    if cache_info:
+        print(f"  Companies in index: {cache_info.get('num_companies', 'unknown'):,}")
+        print(f"  Location data:      {cache_info.get('has_location_data', False)}")
+
+    # Load checkpoint (already processed records)
+    if args.no_resume:
+        done = {}
+    else:
+        done = load_checkpoint(args.output)
+        if done:
+            print(f"\nResuming: {len(done):,} records already processed, skipping.")
+
+    # Collect results (preserve existing + add new)
+    results = list(done.values())
+
+    # Filter to unprocessed
+    pending = [r for r in plugging_records if str(r.get('ID', '')) not in done]
+    total = len(plugging_records)
+    skipped = total - len(pending)
+
+    print(f"\nProcessing {len(pending):,} remaining records ({skipped:,} skipped from checkpoint)...")
+    print()
+
+    start_time = time.time()
+    processed = 0
+    errors = 0
+
+    for i, record in enumerate(pending):
+        row_id = record.get('ID')
+        company = record.get('Company Name', '')
+        city = record.get('City', '')
+        state = record.get('State', '')
+
+        elapsed = time.time() - start_time
+        rate = processed / elapsed if elapsed > 0 else 0
+        remaining = len(pending) - i
+        eta = remaining / rate if rate > 0 else 0
+
+        print(f"[{skipped + i + 1}/{total}] ({elapsed:.0f}s, ETA: {eta:.0f}s) "
+              f"Row {row_id}: {company} — {city}, {state}")
+
+        try:
+            result = server.search(
+                company,
+                top_k=args.top_k,
+                city=city if city else None,
+                state=state if state else None
+            )
+
+            matches = result.get('results', [])
+
+            entry = {
+                'row_id': row_id,
+                'query_company': company,
+                'query_city': city,
+                'query_state': state,
+                'matches': [
+                    {
+                        'rank': rank + 1,
+                        'name': m.get('name', ''),
+                        'city': m.get('city', ''),
+                        'state': m.get('state', ''),
+                        'id': m.get('id'),
+                        'score': m.get('score', 0.0),
+                        'string_score': m.get('string_score', 0.0),
+                        'semantic_score': m.get('semantic_score', 0.0),
+                        'location_score': m.get('location_score', 0.0),
+                        'count': m.get('count', 0),
+                        'match_type': m.get('match_type', ''),
+                        'acronym_fidelity': m.get('acronym_fidelity', 0.0),
+                        'concept_alignment': m.get('concept_alignment', 0.0),
+                    }
+                    for rank, m in enumerate(matches)
+                ]
+            }
+            results.append(entry)
+            processed += 1
+
+        except Exception as e:
+            print(f"  ERROR processing row {row_id}: {e}")
+            errors += 1
+            results.append({
+                'row_id': row_id,
+                'query_company': company,
+                'query_city': city,
+                'query_state': state,
+                'matches': [],
+                'error': str(e)
+            })
+
+        # Checkpoint
+        if (processed + errors) % args.checkpoint_every == 0:
+            save_results(results, args.output)
+            print(f"   [checkpoint] {len(results):,} records saved to {args.output}")
+
+    # Final save
+    save_results(results, args.output)
+
+    total_time = time.time() - start_time
+    file_mb = os.path.getsize(args.output) / (1024 * 1024)
+
+    print()
+    print("=" * 60)
+    print("DONE")
+    print(f"  Total records:    {total:,}")
+    print(f"  Processed now:    {processed:,}")
+    print(f"  Errors:           {errors:,}")
+    print(f"  Output:           {args.output} ({file_mb:.1f} MB)")
+    print(f"  Total time:       {total_time:.1f}s")
+    if processed > 0:
+        print(f"  Rate:             {processed / total_time:.1f} records/sec")
+    print("=" * 60)
+
+
+if __name__ == "__main__":
+    main()

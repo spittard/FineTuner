@@ -1,0 +1,1120 @@
+{
+  "model_a": {
+    "model": "all-MiniLM-L6-v2",
+    "wins": 36,
+    "total": 46,
+    "by_category": {
+      "Directional": {
+        "wins": 4,
+        "total": 7
+      },
+      "Acronym": {
+        "wins": 5,
+        "total": 6
+      },
+      "Exact": {
+        "wins": 4,
+        "total": 4
+      },
+      "Suffix": {
+        "wins": 3,
+        "total": 3
+      },
+      "Partial": {
+        "wins": 4,
+        "total": 4
+      },
+      "Semantic": {
+        "wins": 3,
+        "total": 5
+      },
+      "International": {
+        "wins": 2,
+        "total": 3
+      },
+      "Noise": {
+        "wins": 3,
+        "total": 5
+      },
+      "Person": {
+        "wins": 2,
+        "total": 2
+      },
+      "Geographic": {
+        "wins": 2,
+        "total": 3
+      },
+      "Edge": {
+        "wins": 4,
+        "total": 4
+      }
+    },
+    "results": [
+      {
+        "desc": "NW vs SW \u2014 core failure case",
+        "category": "Directional",
+        "correct": true,
+        "sim_good": 0.8428676724433899,
+        "sim_bad": 0.7173767685890198,
+        "gap": 0.12549090385437012,
+        "query": "NWACUHO - Northwest Association of College & University Housing Officers",
+        "good": "Northwest Association of College and University Housing Officers",
+        "bad": "Southwest Association College University Housing Officers"
+      },
+      {
+        "desc": "NE vs SW medical",
+        "category": "Directional",
+        "correct": false,
+        "sim_good": 0.7413924932479858,
+        "sim_bad": 0.8147335052490234,
+        "gap": -0.0733410120010376,
+        "query": "Northeast Medical Group",
+        "good": "Northeast Medical Associates",
+        "bad": "Southwest Medical Group"
+      },
+      {
+        "desc": "North vs South Texas",
+        "category": "Directional",
+        "correct": false,
+        "sim_good": 0.6432568430900574,
+        "sim_bad": 0.9289138913154602,
+        "gap": -0.28565704822540283,
+        "query": "North Texas Food Bank",
+        "good": "North Texas Community Foundation",
+        "bad": "South Texas Food Bank"
+      },
+      {
+        "desc": "Pacific NW vs SW diabetes institute (SME #52)",
+        "category": "Directional",
+        "correct": true,
+        "sim_good": 0.8917516469955444,
+        "sim_bad": 0.8348293900489807,
+        "gap": 0.05692225694656372,
+        "query": "Pacific Northwest Diabetes Research Inst",
+        "good": "Pacific Northwest Diabetes Research Institute",
+        "bad": "Pacific Southwest Diabetes Research Institute"
+      },
+      {
+        "desc": "Southern Vermont geo-specificity (SME #74)",
+        "category": "Directional",
+        "correct": true,
+        "sim_good": 0.860943615436554,
+        "sim_bad": 0.854971706867218,
+        "gap": 0.0059719085693359375,
+        "query": "Southern Vermont Deerfield Valley Chamber of commerce",
+        "good": "Deerfield Valley Chamber of Commerce",
+        "bad": "Northern Vermont Chamber of Commerce"
+      },
+      {
+        "desc": "North vs South Shore (SME #56)",
+        "category": "Directional",
+        "correct": false,
+        "sim_good": 0.8713064789772034,
+        "sim_bad": 0.9286438822746277,
+        "gap": -0.057337403297424316,
+        "query": "North Shore Senior Center",
+        "good": "North Shore Senior Services",
+        "bad": "South Shore Senior Center"
+      },
+      {
+        "desc": "South vs North Chicago swim (SME #59)",
+        "category": "Directional",
+        "correct": true,
+        "sim_good": 0.933312177658081,
+        "sim_bad": 0.9178683757781982,
+        "gap": 0.015443801879882812,
+        "query": "Chicago South Swim Club",
+        "good": "Chicago South Shore Swim Club",
+        "bad": "Chicago North Swim Club"
+      },
+      {
+        "desc": "NIH \u2192 National Institutes of Health (SME #1)",
+        "category": "Acronym",
+        "correct": true,
+        "sim_good": 0.19799533486366272,
+        "sim_bad": 0.14843466877937317,
+        "gap": 0.04956066608428955,
+        "query": "NIH",
+        "good": "National Institutes of Health",
+        "bad": "Nordic Institute of Health"
+      },
+      {
+        "desc": "IBM expansion (SME #108)",
+        "category": "Acronym",
+        "correct": true,
+        "sim_good": 0.5283148884773254,
+        "sim_bad": 0.3477233946323395,
+        "gap": 0.18059149384498596,
+        "query": "IBM",
+        "good": "International Business Machines",
+        "bad": "International Business Management"
+      },
+      {
+        "desc": "PDMA expansion (SME #6 / #107)",
+        "category": "Acronym",
+        "correct": false,
+        "sim_good": 0.1964629739522934,
+        "sim_bad": 0.2339130938053131,
+        "gap": -0.037450119853019714,
+        "query": "PDMA",
+        "good": "Product Development and Management Association",
+        "bad": "Public Data Management Authority"
+      },
+      {
+        "desc": "ABA expansion (SME #106)",
+        "category": "Acronym",
+        "correct": true,
+        "sim_good": 0.3618624210357666,
+        "sim_bad": 0.3146989941596985,
+        "gap": 0.047163426876068115,
+        "query": "ABA",
+        "good": "American Bar Association",
+        "bad": "Australian Banking Association"
+      },
+      {
+        "desc": "GE expansion (SME #109)",
+        "category": "Acronym",
+        "correct": true,
+        "sim_good": 0.4519173204898834,
+        "sim_bad": 0.350122332572937,
+        "gap": 0.10179498791694641,
+        "query": "GE",
+        "good": "General Electric",
+        "bad": "General Entertainment"
+      },
+      {
+        "desc": "NFC Forum \u2014 acronym exact match (SME #27 / Serge #8)",
+        "category": "Acronym",
+        "correct": true,
+        "sim_good": 1.0,
+        "sim_bad": 0.7576338648796082,
+        "gap": 0.24236613512039185,
+        "query": "NFC Forum",
+        "good": "NFC Forum",
+        "bad": "NFL Forum"
+      },
+      {
+        "desc": "Exact match beats similar (SME #2)",
+        "category": "Exact",
+        "correct": true,
+        "sim_good": 1.0,
+        "sim_bad": 0.9720405340194702,
+        "gap": 0.027959465980529785,
+        "query": "Ohio University",
+        "good": "Ohio University",
+        "bad": "Ohio State University"
+      },
+      {
+        "desc": "Exact beats longer variant (SME #9 / Serge #1)",
+        "category": "Exact",
+        "correct": true,
+        "sim_good": 1.0000001192092896,
+        "sim_bad": 0.7447515726089478,
+        "gap": 0.2552485466003418,
+        "query": "Next Level Events",
+        "good": "Next Level Events",
+        "bad": "Next Level Site Selection & Events"
+      },
+      {
+        "desc": "Exact with suffix (SME #12 / Serge #2)",
+        "category": "Exact",
+        "correct": true,
+        "sim_good": 1.0000001192092896,
+        "sim_bad": 0.5979098081588745,
+        "gap": 0.40209031105041504,
+        "query": "DermaQuest Inc",
+        "good": "DermaQuest Inc",
+        "bad": "DermaCare Inc"
+      },
+      {
+        "desc": "1-char diff Ellwood vs Elmwood (SME #13)",
+        "category": "Exact",
+        "correct": true,
+        "sim_good": 1.0,
+        "sim_bad": 0.8175533413887024,
+        "gap": 0.1824466586112976,
+        "query": "Ellwood Group Inc",
+        "good": "Ellwood Group Inc",
+        "bad": "Elmwood Group Inc"
+      },
+      {
+        "desc": "Suffix omission still matches (Serge #2)",
+        "category": "Suffix",
+        "correct": true,
+        "sim_good": 0.844272255897522,
+        "sim_bad": 0.4742658734321594,
+        "gap": 0.37000638246536255,
+        "query": "DermaQuest",
+        "good": "DermaQuest Inc",
+        "bad": "DermaCare"
+      },
+      {
+        "desc": "Typo + suffix drop (SME #64)",
+        "category": "Suffix",
+        "correct": true,
+        "sim_good": 0.40988588333129883,
+        "sim_bad": 0.3306596577167511,
+        "gap": 0.07922622561454773,
+        "query": "Amedysis",
+        "good": "Amedisys Incorporated",
+        "bad": "Amedicare Inc"
+      },
+      {
+        "desc": "Suffix stripped (SME #81)",
+        "category": "Suffix",
+        "correct": true,
+        "sim_good": 0.9570881128311157,
+        "sim_bad": 0.8758395314216614,
+        "gap": 0.08124858140945435,
+        "query": "Acacia Pharma Group",
+        "good": "Acacia Pharma Group Inc.",
+        "bad": "Acacia Healthcare Group"
+      },
+      {
+        "desc": "Western vs Eastern university (SME #3)",
+        "category": "Partial",
+        "correct": true,
+        "sim_good": 1.0,
+        "sim_bad": 0.7559566497802734,
+        "gap": 0.24404335021972656,
+        "query": "Western University",
+        "good": "Western University",
+        "bad": "Eastern University"
+      },
+      {
+        "desc": "Token reorder (SME-style)",
+        "category": "Partial",
+        "correct": true,
+        "sim_good": 0.8170216679573059,
+        "sim_bad": 0.6332332491874695,
+        "gap": 0.18378841876983643,
+        "query": "JP Morgan Chase",
+        "good": "JPMorgan Chase & Co",
+        "bad": "Morgan Stanley"
+      },
+      {
+        "desc": "Kruger vs Kroger 1-char (SME #4)",
+        "category": "Partial",
+        "correct": true,
+        "sim_good": 0.9143558144569397,
+        "sim_bad": 0.5817857384681702,
+        "gap": 0.33257007598876953,
+        "query": "Kruger Products",
+        "good": "Kruger Products Inc",
+        "bad": "Kroger Products"
+      },
+      {
+        "desc": "Mitsubishi Motors vs Electric (SME #98 / Serge #4)",
+        "category": "Partial",
+        "correct": true,
+        "sim_good": 0.808853805065155,
+        "sim_bad": 0.7825753092765808,
+        "gap": 0.02627849578857422,
+        "query": "Mitsubishi Motor Sales of America, Incorporated",
+        "good": "Mitsubishi Motors North America Inc",
+        "bad": "Mitsubishi Electric America Inc"
+      },
+      {
+        "desc": "Hospital school of nursing vs allied health (SME #18 / Serge #3)",
+        "category": "Semantic",
+        "correct": false,
+        "sim_good": 0.8182018995285034,
+        "sim_bad": 0.9321723580360413,
+        "gap": -0.11397045850753784,
+        "query": "Hartford Hospital School of Nursing",
+        "good": "Hartford Hospital School of Allied Health",
+        "bad": "Hartford Community College School of Nursing"
+      },
+      {
+        "desc": "Seafood/nutrition domain (SME #16)",
+        "category": "Semantic",
+        "correct": false,
+        "sim_good": 0.426144003868103,
+        "sim_bad": 0.6595386266708374,
+        "gap": -0.23339462280273438,
+        "query": "Seafood Nutrition Partnership",
+        "good": "National Fisheries Institute",
+        "bad": "Organic Food Partnership"
+      },
+      {
+        "desc": "Health tech institute (SME #90)",
+        "category": "Semantic",
+        "correct": true,
+        "sim_good": 0.700133204460144,
+        "sim_bad": 0.5563150644302368,
+        "gap": 0.14381814002990723,
+        "query": "Institute of Health Technology Transformation",
+        "good": "Health Technology Assessment International",
+        "bad": "Institute of Financial Technology"
+      },
+      {
+        "desc": "Medical condition org (SME #20)",
+        "category": "Semantic",
+        "correct": true,
+        "sim_good": 0.7122297883033752,
+        "sim_bad": 0.48494061827659607,
+        "gap": 0.22728917002677917,
+        "query": "Spina Bifida Coalition of Cincinnati",
+        "good": "Spina Bifida Association of America",
+        "bad": "Cincinnati Children's Hospital Coalition"
+      },
+      {
+        "desc": "Security forum (SME #31)",
+        "category": "Semantic",
+        "correct": true,
+        "sim_good": 0.8950271606445312,
+        "sim_bad": 0.5909641981124878,
+        "gap": 0.30406296253204346,
+        "query": "Global Interagency Security Forum",
+        "good": "Global Security Forum",
+        "bad": "International Business Forum"
+      },
+      {
+        "desc": "Sibir Airlines Russian name (SME #17)",
+        "category": "International",
+        "correct": false,
+        "sim_good": 0.10007451474666595,
+        "sim_bad": 0.17076119780540466,
+        "gap": -0.07068668305873871,
+        "query": "AVIAKOMPANIYA SIBIR, PAO",
+        "good": "S7 Airlines",
+        "bad": "Aeroflot Russian Airlines"
+      },
+      {
+        "desc": "VW China vs America (SME #72 / Serge #4-adjacent)",
+        "category": "International",
+        "correct": true,
+        "sim_good": 0.8119587898254395,
+        "sim_bad": 0.7759581208229065,
+        "gap": 0.03600066900253296,
+        "query": "Volkswagen Group China",
+        "good": "Volkswagen Group of America",
+        "bad": "BMW Group China"
+      },
+      {
+        "desc": "Telefonica brand (SME #69)",
+        "category": "International",
+        "correct": true,
+        "sim_good": 0.673031747341156,
+        "sim_bad": 0.6472023725509644,
+        "gap": 0.02582937479019165,
+        "query": "Telefonica Global Solutions",
+        "good": "Telefonica S.A.",
+        "bad": "T-Mobile Global Solutions"
+      },
+      {
+        "desc": "Personal event query (SME #7 / Serge #10)",
+        "category": "Noise",
+        "correct": false,
+        "sim_good": 0.4327629804611206,
+        "sim_bad": 0.5624518394470215,
+        "gap": -0.12968885898590088,
+        "query": "Nicolas/Sanchez Wedding",
+        "good": "Wedding Planning Services",
+        "bad": "Nicolas & Sanchez Law Firm"
+      },
+      {
+        "desc": "Prefixed junk \u2014 core name still extractable (SME #97 / Serge #11)",
+        "category": "Noise",
+        "correct": true,
+        "sim_good": 0.6935716867446899,
+        "sim_bad": 0.6142619848251343,
+        "gap": 0.07930970191955566,
+        "query": "X DO NOT USE - FRANCIS PARKER SCHOOL",
+        "good": "Francis Parker School",
+        "bad": "Parker School"
+      },
+      {
+        "desc": "Conference ID garbage in query (SME #54)",
+        "category": "Noise",
+        "correct": false,
+        "sim_good": 0.18183335661888123,
+        "sim_bad": 0.22137120366096497,
+        "gap": -0.03953784704208374,
+        "query": "NaLA 2024 fall conference M01709226216947 02-29-24 12:03:46",
+        "good": "National Association of Landscape Architects",
+        "bad": "National Library Association"
+      },
+      {
+        "desc": "Internal meeting label (SME #19)",
+        "category": "Noise",
+        "correct": true,
+        "sim_good": 0.2819748818874359,
+        "sim_bad": 0.19985711574554443,
+        "gap": 0.08211776614189148,
+        "query": "Internal J&J Meeting and Breakfast",
+        "good": "Johnson & Johnson",
+        "bad": "Internal Revenue Service"
+      },
+      {
+        "desc": "Internal session label (SME #55)",
+        "category": "Noise",
+        "correct": true,
+        "sim_good": 0.6140536665916443,
+        "sim_bad": 0.5019147396087646,
+        "gap": 0.11213892698287964,
+        "query": "Donnelley Work Session",
+        "good": "RR Donnelley",
+        "bad": "Donnelley Financial Solutions"
+      },
+      {
+        "desc": "Person name with company variant (SME #25)",
+        "category": "Person",
+        "correct": true,
+        "sim_good": 0.8761147260665894,
+        "sim_bad": 0.6326715350151062,
+        "gap": 0.24344319105148315,
+        "query": "Denise Roberge",
+        "good": "Denise Roberge Ltd",
+        "bad": "Denise Richards Enterprises"
+      },
+      {
+        "desc": "Individual consultant name (SME #43)",
+        "category": "Person",
+        "correct": true,
+        "sim_good": 0.7800146341323853,
+        "sim_bad": 0.6533393859863281,
+        "gap": 0.12667524814605713,
+        "query": "Stephen Rourke",
+        "good": "Stephen Rourke Consulting",
+        "bad": "Rourke & Associates"
+      },
+      {
+        "desc": "Municipal department (SME #47)",
+        "category": "Geographic",
+        "correct": true,
+        "sim_good": 0.9160178899765015,
+        "sim_bad": 0.8550153970718384,
+        "gap": 0.061002492904663086,
+        "query": "City of Dallas-Parks & Recreation",
+        "good": "City of Dallas Parks and Recreation Department",
+        "bad": "Dallas County Parks & Recreation"
+      },
+      {
+        "desc": "LSU swim program (SME #96)",
+        "category": "Geographic",
+        "correct": false,
+        "sim_good": 0.7618200778961182,
+        "sim_bad": 0.9111686944961548,
+        "gap": -0.14934861660003662,
+        "query": "Louisiana State University Swim",
+        "good": "Louisiana State University",
+        "bad": "University of Louisiana Swimming"
+      },
+      {
+        "desc": "B&G Club with community centre suffix (SME #61)",
+        "category": "Geographic",
+        "correct": true,
+        "sim_good": 0.7179503440856934,
+        "sim_bad": 0.6494632363319397,
+        "gap": 0.06848710775375366,
+        "query": "Boys and Girls Club of Dawson Community Centre",
+        "good": "Boys & Girls Club of America",
+        "bad": "Dawson Community College"
+      },
+      {
+        "desc": "Numeric-only query (SME #51)",
+        "category": "Edge",
+        "correct": true,
+        "sim_good": 0.643523633480072,
+        "sim_bad": 0.6087958812713623,
+        "gap": 0.03472775220870972,
+        "query": "1960",
+        "good": "Class of 1960 Reunion",
+        "bad": "1960 Media Group"
+      },
+      {
+        "desc": "Email address as query (SME #60)",
+        "category": "Edge",
+        "correct": true,
+        "sim_good": 0.6326318979263306,
+        "sim_bad": 0.4686198830604553,
+        "gap": 0.16401201486587524,
+        "query": "Edna, Dabra@SAP.IO",
+        "good": "SAP SE",
+        "bad": "SAP Labs India"
+      },
+      {
+        "desc": "Technical WG acronym (SME #11)",
+        "category": "Edge",
+        "correct": true,
+        "sim_good": 0.5508147478103638,
+        "sim_bad": 0.2485557645559311,
+        "gap": 0.3022589832544327,
+        "query": "Interim WG Meeting - BIER",
+        "good": "IETF BIER Working Group",
+        "bad": "Beer Industry Working Group"
+      },
+      {
+        "desc": "Law firm with CIS suffix (SME #83)",
+        "category": "Edge",
+        "correct": true,
+        "sim_good": 0.5989810824394226,
+        "sim_bad": 0.4771377444267273,
+        "gap": 0.12184333801269531,
+        "query": "Linklaters CIS",
+        "good": "Linklaters LLP",
+        "bad": "CIS Consulting Group"
+      }
+    ]
+  },
+  "model_b": {
+    "model": "all-MiniLM-L12-v2",
+    "wins": 36,
+    "total": 46,
+    "by_category": {
+      "Directional": {
+        "wins": 5,
+        "total": 7
+      },
+      "Acronym": {
+        "wins": 5,
+        "total": 6
+      },
+      "Exact": {
+        "wins": 4,
+        "total": 4
+      },
+      "Suffix": {
+        "wins": 3,
+        "total": 3
+      },
+      "Partial": {
+        "wins": 4,
+        "total": 4
+      },
+      "Semantic": {
+        "wins": 3,
+        "total": 5
+      },
+      "International": {
+        "wins": 2,
+        "total": 3
+      },
+      "Noise": {
+        "wins": 3,
+        "total": 5
+      },
+      "Person": {
+        "wins": 2,
+        "total": 2
+      },
+      "Geographic": {
+        "wins": 1,
+        "total": 3
+      },
+      "Edge": {
+        "wins": 4,
+        "total": 4
+      }
+    },
+    "results": [
+      {
+        "desc": "NW vs SW \u2014 core failure case",
+        "category": "Directional",
+        "correct": true,
+        "sim_good": 0.886515736579895,
+        "sim_bad": 0.8225020170211792,
+        "gap": 0.06401371955871582,
+        "query": "NWACUHO - Northwest Association of College & University Housing Officers",
+        "good": "Northwest Association of College and University Housing Officers",
+        "bad": "Southwest Association College University Housing Officers"
+      },
+      {
+        "desc": "NE vs SW medical",
+        "category": "Directional",
+        "correct": true,
+        "sim_good": 0.8449888229370117,
+        "sim_bad": 0.822685718536377,
+        "gap": 0.022303104400634766,
+        "query": "Northeast Medical Group",
+        "good": "Northeast Medical Associates",
+        "bad": "Southwest Medical Group"
+      },
+      {
+        "desc": "North vs South Texas",
+        "category": "Directional",
+        "correct": false,
+        "sim_good": 0.6245421171188354,
+        "sim_bad": 0.8998591303825378,
+        "gap": -0.2753170132637024,
+        "query": "North Texas Food Bank",
+        "good": "North Texas Community Foundation",
+        "bad": "South Texas Food Bank"
+      },
+      {
+        "desc": "Pacific NW vs SW diabetes institute (SME #52)",
+        "category": "Directional",
+        "correct": true,
+        "sim_good": 0.9253243803977966,
+        "sim_bad": 0.8313741683959961,
+        "gap": 0.09395021200180054,
+        "query": "Pacific Northwest Diabetes Research Inst",
+        "good": "Pacific Northwest Diabetes Research Institute",
+        "bad": "Pacific Southwest Diabetes Research Institute"
+      },
+      {
+        "desc": "Southern Vermont geo-specificity (SME #74)",
+        "category": "Directional",
+        "correct": true,
+        "sim_good": 0.88604336977005,
+        "sim_bad": 0.836158275604248,
+        "gap": 0.049885094165802,
+        "query": "Southern Vermont Deerfield Valley Chamber of commerce",
+        "good": "Deerfield Valley Chamber of Commerce",
+        "bad": "Northern Vermont Chamber of Commerce"
+      },
+      {
+        "desc": "North vs South Shore (SME #56)",
+        "category": "Directional",
+        "correct": false,
+        "sim_good": 0.8630224466323853,
+        "sim_bad": 0.8983947038650513,
+        "gap": -0.035372257232666016,
+        "query": "North Shore Senior Center",
+        "good": "North Shore Senior Services",
+        "bad": "South Shore Senior Center"
+      },
+      {
+        "desc": "South vs North Chicago swim (SME #59)",
+        "category": "Directional",
+        "correct": true,
+        "sim_good": 0.9365450143814087,
+        "sim_bad": 0.923315167427063,
+        "gap": 0.013229846954345703,
+        "query": "Chicago South Swim Club",
+        "good": "Chicago South Shore Swim Club",
+        "bad": "Chicago North Swim Club"
+      },
+      {
+        "desc": "NIH \u2192 National Institutes of Health (SME #1)",
+        "category": "Acronym",
+        "correct": true,
+        "sim_good": 0.2691624164581299,
+        "sim_bad": 0.15570664405822754,
+        "gap": 0.11345577239990234,
+        "query": "NIH",
+        "good": "National Institutes of Health",
+        "bad": "Nordic Institute of Health"
+      },
+      {
+        "desc": "IBM expansion (SME #108)",
+        "category": "Acronym",
+        "correct": true,
+        "sim_good": 0.5630172491073608,
+        "sim_bad": 0.2840745747089386,
+        "gap": 0.27894267439842224,
+        "query": "IBM",
+        "good": "International Business Machines",
+        "bad": "International Business Management"
+      },
+      {
+        "desc": "PDMA expansion (SME #6 / #107)",
+        "category": "Acronym",
+        "correct": false,
+        "sim_good": 0.2633371651172638,
+        "sim_bad": 0.2655007839202881,
+        "gap": -0.002163618803024292,
+        "query": "PDMA",
+        "good": "Product Development and Management Association",
+        "bad": "Public Data Management Authority"
+      },
+      {
+        "desc": "ABA expansion (SME #106)",
+        "category": "Acronym",
+        "correct": true,
+        "sim_good": 0.36183589696884155,
+        "sim_bad": 0.31854134798049927,
+        "gap": 0.043294548988342285,
+        "query": "ABA",
+        "good": "American Bar Association",
+        "bad": "Australian Banking Association"
+      },
+      {
+        "desc": "GE expansion (SME #109)",
+        "category": "Acronym",
+        "correct": true,
+        "sim_good": 0.5272146463394165,
+        "sim_bad": 0.3392585813999176,
+        "gap": 0.1879560649394989,
+        "query": "GE",
+        "good": "General Electric",
+        "bad": "General Entertainment"
+      },
+      {
+        "desc": "NFC Forum \u2014 acronym exact match (SME #27 / Serge #8)",
+        "category": "Acronym",
+        "correct": true,
+        "sim_good": 1.0000001192092896,
+        "sim_bad": 0.6191173195838928,
+        "gap": 0.38088279962539673,
+        "query": "NFC Forum",
+        "good": "NFC Forum",
+        "bad": "NFL Forum"
+      },
+      {
+        "desc": "Exact match beats similar (SME #2)",
+        "category": "Exact",
+        "correct": true,
+        "sim_good": 1.0,
+        "sim_bad": 0.9641750454902649,
+        "gap": 0.03582495450973511,
+        "query": "Ohio University",
+        "good": "Ohio University",
+        "bad": "Ohio State University"
+      },
+      {
+        "desc": "Exact beats longer variant (SME #9 / Serge #1)",
+        "category": "Exact",
+        "correct": true,
+        "sim_good": 1.0000001192092896,
+        "sim_bad": 0.7235833406448364,
+        "gap": 0.2764167785644531,
+        "query": "Next Level Events",
+        "good": "Next Level Events",
+        "bad": "Next Level Site Selection & Events"
+      },
+      {
+        "desc": "Exact with suffix (SME #12 / Serge #2)",
+        "category": "Exact",
+        "correct": true,
+        "sim_good": 1.0,
+        "sim_bad": 0.6745578050613403,
+        "gap": 0.32544219493865967,
+        "query": "DermaQuest Inc",
+        "good": "DermaQuest Inc",
+        "bad": "DermaCare Inc"
+      },
+      {
+        "desc": "1-char diff Ellwood vs Elmwood (SME #13)",
+        "category": "Exact",
+        "correct": true,
+        "sim_good": 1.0,
+        "sim_bad": 0.7444007992744446,
+        "gap": 0.2555992007255554,
+        "query": "Ellwood Group Inc",
+        "good": "Ellwood Group Inc",
+        "bad": "Elmwood Group Inc"
+      },
+      {
+        "desc": "Suffix omission still matches (Serge #2)",
+        "category": "Suffix",
+        "correct": true,
+        "sim_good": 0.8536907434463501,
+        "sim_bad": 0.5670135021209717,
+        "gap": 0.2866772413253784,
+        "query": "DermaQuest",
+        "good": "DermaQuest Inc",
+        "bad": "DermaCare"
+      },
+      {
+        "desc": "Typo + suffix drop (SME #64)",
+        "category": "Suffix",
+        "correct": true,
+        "sim_good": 0.5378751754760742,
+        "sim_bad": 0.512556791305542,
+        "gap": 0.025318384170532227,
+        "query": "Amedysis",
+        "good": "Amedisys Incorporated",
+        "bad": "Amedicare Inc"
+      },
+      {
+        "desc": "Suffix stripped (SME #81)",
+        "category": "Suffix",
+        "correct": true,
+        "sim_good": 0.954208493232727,
+        "sim_bad": 0.8422145843505859,
+        "gap": 0.11199390888214111,
+        "query": "Acacia Pharma Group",
+        "good": "Acacia Pharma Group Inc.",
+        "bad": "Acacia Healthcare Group"
+      },
+      {
+        "desc": "Western vs Eastern university (SME #3)",
+        "category": "Partial",
+        "correct": true,
+        "sim_good": 1.0,
+        "sim_bad": 0.7426305413246155,
+        "gap": 0.2573694586753845,
+        "query": "Western University",
+        "good": "Western University",
+        "bad": "Eastern University"
+      },
+      {
+        "desc": "Token reorder (SME-style)",
+        "category": "Partial",
+        "correct": true,
+        "sim_good": 0.8208656907081604,
+        "sim_bad": 0.5351440906524658,
+        "gap": 0.2857216000556946,
+        "query": "JP Morgan Chase",
+        "good": "JPMorgan Chase & Co",
+        "bad": "Morgan Stanley"
+      },
+      {
+        "desc": "Kruger vs Kroger 1-char (SME #4)",
+        "category": "Partial",
+        "correct": true,
+        "sim_good": 0.8573105335235596,
+        "sim_bad": 0.471505343914032,
+        "gap": 0.3858051896095276,
+        "query": "Kruger Products",
+        "good": "Kruger Products Inc",
+        "bad": "Kroger Products"
+      },
+      {
+        "desc": "Mitsubishi Motors vs Electric (SME #98 / Serge #4)",
+        "category": "Partial",
+        "correct": true,
+        "sim_good": 0.8875992298126221,
+        "sim_bad": 0.835882306098938,
+        "gap": 0.05171692371368408,
+        "query": "Mitsubishi Motor Sales of America, Incorporated",
+        "good": "Mitsubishi Motors North America Inc",
+        "bad": "Mitsubishi Electric America Inc"
+      },
+      {
+        "desc": "Hospital school of nursing vs allied health (SME #18 / Serge #3)",
+        "category": "Semantic",
+        "correct": false,
+        "sim_good": 0.8650553822517395,
+        "sim_bad": 0.9101235866546631,
+        "gap": -0.045068204402923584,
+        "query": "Hartford Hospital School of Nursing",
+        "good": "Hartford Hospital School of Allied Health",
+        "bad": "Hartford Community College School of Nursing"
+      },
+      {
+        "desc": "Seafood/nutrition domain (SME #16)",
+        "category": "Semantic",
+        "correct": false,
+        "sim_good": 0.4726128578186035,
+        "sim_bad": 0.6424162983894348,
+        "gap": -0.1698034405708313,
+        "query": "Seafood Nutrition Partnership",
+        "good": "National Fisheries Institute",
+        "bad": "Organic Food Partnership"
+      },
+      {
+        "desc": "Health tech institute (SME #90)",
+        "category": "Semantic",
+        "correct": true,
+        "sim_good": 0.7124460935592651,
+        "sim_bad": 0.5498088598251343,
+        "gap": 0.16263723373413086,
+        "query": "Institute of Health Technology Transformation",
+        "good": "Health Technology Assessment International",
+        "bad": "Institute of Financial Technology"
+      },
+      {
+        "desc": "Medical condition org (SME #20)",
+        "category": "Semantic",
+        "correct": true,
+        "sim_good": 0.8257676959037781,
+        "sim_bad": 0.486977219581604,
+        "gap": 0.3387904763221741,
+        "query": "Spina Bifida Coalition of Cincinnati",
+        "good": "Spina Bifida Association of America",
+        "bad": "Cincinnati Children's Hospital Coalition"
+      },
+      {
+        "desc": "Security forum (SME #31)",
+        "category": "Semantic",
+        "correct": true,
+        "sim_good": 0.8488731980323792,
+        "sim_bad": 0.5856766104698181,
+        "gap": 0.26319658756256104,
+        "query": "Global Interagency Security Forum",
+        "good": "Global Security Forum",
+        "bad": "International Business Forum"
+      },
+      {
+        "desc": "Sibir Airlines Russian name (SME #17)",
+        "category": "International",
+        "correct": false,
+        "sim_good": 0.13346520066261292,
+        "sim_bad": 0.21485474705696106,
+        "gap": -0.08138954639434814,
+        "query": "AVIAKOMPANIYA SIBIR, PAO",
+        "good": "S7 Airlines",
+        "bad": "Aeroflot Russian Airlines"
+      },
+      {
+        "desc": "VW China vs America (SME #72 / Serge #4-adjacent)",
+        "category": "International",
+        "correct": true,
+        "sim_good": 0.8427414894104004,
+        "sim_bad": 0.7628675699234009,
+        "gap": 0.07987391948699951,
+        "query": "Volkswagen Group China",
+        "good": "Volkswagen Group of America",
+        "bad": "BMW Group China"
+      },
+      {
+        "desc": "Telefonica brand (SME #69)",
+        "category": "International",
+        "correct": true,
+        "sim_good": 0.668685257434845,
+        "sim_bad": 0.6664619445800781,
+        "gap": 0.0022233128547668457,
+        "query": "Telefonica Global Solutions",
+        "good": "Telefonica S.A.",
+        "bad": "T-Mobile Global Solutions"
+      },
+      {
+        "desc": "Personal event query (SME #7 / Serge #10)",
+        "category": "Noise",
+        "correct": false,
+        "sim_good": 0.4430270791053772,
+        "sim_bad": 0.5280411839485168,
+        "gap": -0.08501410484313965,
+        "query": "Nicolas/Sanchez Wedding",
+        "good": "Wedding Planning Services",
+        "bad": "Nicolas & Sanchez Law Firm"
+      },
+      {
+        "desc": "Prefixed junk \u2014 core name still extractable (SME #97 / Serge #11)",
+        "category": "Noise",
+        "correct": true,
+        "sim_good": 0.5082474946975708,
+        "sim_bad": 0.4753665030002594,
+        "gap": 0.0328809916973114,
+        "query": "X DO NOT USE - FRANCIS PARKER SCHOOL",
+        "good": "Francis Parker School",
+        "bad": "Parker School"
+      },
+      {
+        "desc": "Conference ID garbage in query (SME #54)",
+        "category": "Noise",
+        "correct": false,
+        "sim_good": 0.36809152364730835,
+        "sim_bad": 0.39675214886665344,
+        "gap": -0.028660625219345093,
+        "query": "NaLA 2024 fall conference M01709226216947 02-29-24 12:03:46",
+        "good": "National Association of Landscape Architects",
+        "bad": "National Library Association"
+      },
+      {
+        "desc": "Internal meeting label (SME #19)",
+        "category": "Noise",
+        "correct": true,
+        "sim_good": 0.30989503860473633,
+        "sim_bad": 0.13232216238975525,
+        "gap": 0.17757287621498108,
+        "query": "Internal J&J Meeting and Breakfast",
+        "good": "Johnson & Johnson",
+        "bad": "Internal Revenue Service"
+      },
+      {
+        "desc": "Internal session label (SME #55)",
+        "category": "Noise",
+        "correct": true,
+        "sim_good": 0.5259530544281006,
+        "sim_bad": 0.5181734561920166,
+        "gap": 0.007779598236083984,
+        "query": "Donnelley Work Session",
+        "good": "RR Donnelley",
+        "bad": "Donnelley Financial Solutions"
+      },
+      {
+        "desc": "Person name with company variant (SME #25)",
+        "category": "Person",
+        "correct": true,
+        "sim_good": 0.8687583208084106,
+        "sim_bad": 0.5167844891548157,
+        "gap": 0.35197383165359497,
+        "query": "Denise Roberge",
+        "good": "Denise Roberge Ltd",
+        "bad": "Denise Richards Enterprises"
+      },
+      {
+        "desc": "Individual consultant name (SME #43)",
+        "category": "Person",
+        "correct": true,
+        "sim_good": 0.8084040284156799,
+        "sim_bad": 0.620094358921051,
+        "gap": 0.1883096694946289,
+        "query": "Stephen Rourke",
+        "good": "Stephen Rourke Consulting",
+        "bad": "Rourke & Associates"
+      },
+      {
+        "desc": "Municipal department (SME #47)",
+        "category": "Geographic",
+        "correct": true,
+        "sim_good": 0.8868784308433533,
+        "sim_bad": 0.8658548593521118,
+        "gap": 0.021023571491241455,
+        "query": "City of Dallas-Parks & Recreation",
+        "good": "City of Dallas Parks and Recreation Department",
+        "bad": "Dallas County Parks & Recreation"
+      },
+      {
+        "desc": "LSU swim program (SME #96)",
+        "category": "Geographic",
+        "correct": false,
+        "sim_good": 0.7435207366943359,
+        "sim_bad": 0.9074191451072693,
+        "gap": -0.16389840841293335,
+        "query": "Louisiana State University Swim",
+        "good": "Louisiana State University",
+        "bad": "University of Louisiana Swimming"
+      },
+      {
+        "desc": "B&G Club with community centre suffix (SME #61)",
+        "category": "Geographic",
+        "correct": false,
+        "sim_good": 0.5674951672554016,
+        "sim_bad": 0.6991015076637268,
+        "gap": -0.1316063404083252,
+        "query": "Boys and Girls Club of Dawson Community Centre",
+        "good": "Boys & Girls Club of America",
+        "bad": "Dawson Community College"
+      },
+      {
+        "desc": "Numeric-only query (SME #51)",
+        "category": "Edge",
+        "correct": true,
+        "sim_good": 0.5992120504379272,
+        "sim_bad": 0.5745082497596741,
+        "gap": 0.024703800678253174,
+        "query": "1960",
+        "good": "Class of 1960 Reunion",
+        "bad": "1960 Media Group"
+      },
+      {
+        "desc": "Email address as query (SME #60)",
+        "category": "Edge",
+        "correct": true,
+        "sim_good": 0.550777018070221,
+        "sim_bad": 0.47777289152145386,
+        "gap": 0.07300412654876709,
+        "query": "Edna, Dabra@SAP.IO",
+        "good": "SAP SE",
+        "bad": "SAP Labs India"
+      },
+      {
+        "desc": "Technical WG acronym (SME #11)",
+        "category": "Edge",
+        "correct": true,
+        "sim_good": 0.603105366230011,
+        "sim_bad": 0.3096478581428528,
+        "gap": 0.2934575080871582,
+        "query": "Interim WG Meeting - BIER",
+        "good": "IETF BIER Working Group",
+        "bad": "Beer Industry Working Group"
+      },
+      {
+        "desc": "Law firm with CIS suffix (SME #83)",
+        "category": "Edge",
+        "correct": true,
+        "sim_good": 0.6149056553840637,
+        "sim_bad": 0.5083104372024536,
+        "gap": 0.10659521818161011,
+        "query": "Linklaters CIS",
+        "good": "Linklaters LLP",
+        "bad": "CIS Consulting Group"
+      }
+    ]
+  }
+}

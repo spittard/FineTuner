@@ -242,7 +242,7 @@ class CacheIndexServer:
                 )
                 
                 load_time = time.time() - start_time
-                print(f"[CacheServer] ✓ Loaded {cache_key} ({len(matcher.original_company_names):,} companies, {memory_mb:.0f}MB) in {load_time:.1f}s")
+                print(f"[CacheServer] [OK] Loaded {cache_key} ({len(matcher.original_company_names):,} companies, {memory_mb:.0f}MB) in {load_time:.1f}s")
                 return True
                 
             except Exception as e:

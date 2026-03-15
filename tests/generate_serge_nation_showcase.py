@@ -264,7 +264,7 @@ def main():
     
     total_time = time.time() - start_time
     print(f"\n{'='*60}")
-    print(f"✅ Serge Nation Showcase: {output_path}")
+    print(f"[DONE] Serge Nation Showcase: {output_path}")
     print(f"   Scenarios: {len(SHOWCASE_QUERIES)}")
     print(f"   Time: {total_time:.1f}s")
     print(f"{'='*60}")

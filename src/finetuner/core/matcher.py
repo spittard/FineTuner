@@ -1,14 +1,9 @@
-import os
-
-# Must be set before sentence-transformers is imported so it never attempts
-# to reach HuggingFace. The model is fully cached locally.
-os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
-os.environ.setdefault("HF_DATASETS_OFFLINE", "1")
-
 from sentence_transformers import SentenceTransformer
 import numpy as np
+import os
 import pickle
 import hashlib
+import json
 from finetuner.utils.text_preprocessor import TextPreprocessor
 from finetuner.core.vector_store import VectorStore
 
@@ -21,6 +16,41 @@ except ImportError:
     # Simple fallback that just returns the iterable unchanged
     def tqdm(iterable, desc=None, total=None, unit=None, ncols=None, **kwargs):
         return iterable
+
+
+def _to_loc_str(v):
+    """Normalize location field to string for use as hash key. Handles list values from cache."""
+    if isinstance(v, list):
+        return (v[0] if v else "") or ""
+    return str(v) if v else ""
+
+
+def _iter_indices(val):
+    """Yield integer indices from value that may be int, list of ints, or nested list (from pickle)."""
+    if val is None:
+        return
+    if isinstance(val, (list, tuple)):
+        for x in val:
+            if isinstance(x, (list, tuple)):
+                yield from _iter_indices(x)
+            else:
+                yield int(x)
+    else:
+        yield int(val)
+
+
+def _load_active_model() -> str:
+    """Read active embedding model from model_config.json (project root)."""
+    config_path = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'model_config.json')
+    if os.path.exists(config_path):
+        try:
+            with open(config_path) as f:
+                cfg = json.load(f)
+                return cfg.get('active_model', 'all-MiniLM-L6-v2')
+        except Exception:
+            pass
+    return 'all-MiniLM-L6-v2'
+
 
 class CompanyMatcher:
     """
@@ -1104,10 +1134,64 @@ class CompanyMatcher:
         return explanation
 
     # ========================================================================
+    # CHUNKED ENCODING (for checkpoint/resume during large rebuilds)
+    # ========================================================================
+
+    def encode_chunk_to_file(self, chunk_texts, path, batch_size=512):
+        """Encode a chunk of texts and save embeddings to .npy. Uses sort-by-length for optimal padding."""
+        if not chunk_texts:
+            np.save(path, np.array([]).reshape(0, 384))
+            return True
+        n_texts = len(chunk_texts)
+        sort_idx = sorted(range(n_texts), key=lambda i: len(chunk_texts[i]))
+        sorted_text = [chunk_texts[i] for i in sort_idx]
+        emb_list = []
+        for i in range(0, n_texts, batch_size):
+            batch = sorted_text[i : i + batch_size]
+            emb = self.model.encode(batch, convert_to_numpy=True,
+                                    normalize_embeddings=False, show_progress_bar=False)
+            emb_list.append(emb)
+        sorted_all = np.vstack(emb_list)
+        restore = np.empty(n_texts, dtype=np.int64)
+        for new_pos, orig_pos in enumerate(sort_idx):
+            restore[orig_pos] = new_pos
+        embeddings = sorted_all[restore]
+        try:
+            np.save(path, embeddings)
+        except OSError as e:
+            raise OSError(
+                f"Failed to save chunk to {path}: {e}\n"
+                "Check disk space, antivirus, or use --work-dir on a different drive."
+            ) from e
+        return True
+
+    def build_index_from_chunk_dir(self, work_dir, cache_key):
+        """Load chunk .npy files, merge, build FAISS, and save cache. Expects company_* attrs to be set."""
+        import re
+        import glob as _glob
+        chunks_dir = os.path.join(work_dir, "chunks")
+        raw = _glob.glob(os.path.join(chunks_dir, "chunk_*.npy"))
+        chunk_files = sorted(raw, key=lambda p: int(re.search(r"chunk_(\d+)", os.path.basename(p)).group(1)))
+        if not chunk_files:
+            print("   ERROR: No chunk files found in " + chunks_dir)
+            return False
+        print(f"   Loading {len(chunk_files)} chunks...")
+        parts = [np.array(np.load(p, mmap_mode="r"), dtype=np.float32) for p in chunk_files]
+        merged = np.vstack(parts)
+        print(f"   Merged embeddings shape: {merged.shape}")
+        self.vector_store.build_index(merged)
+        self._create_fast_lookup_sets()
+        self._create_acronym_index()
+        print("   Saving to cache...")
+        self.save_to_cache(cache_key, None, None, self.company_names, self.original_company_names,
+                          locations=self.company_locations, counts=self.company_counts, ids=self.company_ids)
+        return True
+
+    # ========================================================================
     # LOCATION-AWARE MATCHING METHODS
     # ========================================================================
     
-    def build_index_with_location(self, filepath=None, data=None):
+    def build_index_with_location(self, filepath=None, data=None, work_dir=None):
         """
         Build index from data that includes location information and IDs.
         
@@ -1115,6 +1199,7 @@ class CompanyMatcher:
             filepath: Path to JSON file with format:
                 [{"ID": 123, "Company Name": "...", "City": "...", "State": "...", "Count": N}, ...]
             data: List of dicts with same format (alternative to filepath)
+            work_dir: If set, use checkpointed chunk encoding (resume on restart)
             
         Returns:
             True if successful, False otherwise
@@ -1224,6 +1309,30 @@ class CompanyMatcher:
             self.company_names.append(name.strip().lower())
         print(f"   [OK] Preprocessed in {time.time() - preprocess_start:.1f}s")
         
+        # --- CHECKPOINTED ENCODING (when work_dir is set) ---
+        if work_dir:
+            chunks_dir = os.path.join(work_dir, "chunks")
+            os.makedirs(chunks_dir, exist_ok=True)
+            chunk_size = 20000
+            total_chunks = (len(baking_text) + chunk_size - 1) // chunk_size
+            # Pre-check: if all chunks exist, skip encoding entirely (resume path)
+            existing = sum(1 for i in range(total_chunks)
+                          if os.path.exists(os.path.join(chunks_dir, f"chunk_{i}.npy")))
+            if existing == total_chunks:
+                print(f"   RESUMING: All {total_chunks} chunks present — skipping encoding (no recompute)")
+            else:
+                print(f"   Checkpointed encoding: {existing}/{total_chunks} chunks done, ~{chunk_size:,} companies/chunk")
+            for chunk_idx, start in enumerate(range(0, len(baking_text), chunk_size)):
+                chunk_path = os.path.join(chunks_dir, f"chunk_{chunk_idx}.npy")
+                if os.path.exists(chunk_path):
+                    print(f"   Skipping chunk {chunk_idx} (already encoded)")
+                    continue
+                chunk_texts = baking_text[start:start + chunk_size]
+                print(f"   Encoding chunk {chunk_idx + 1}/{total_chunks} ({len(chunk_texts):,} companies)...")
+                self.encode_chunk_to_file(chunk_texts, chunk_path, batch_size=512)
+            print("   All chunks encoded. Building index from chunks...")
+            return self.build_index_from_chunk_dir(work_dir, cache_key)
+        
         # Generate embeddings using multi-process pool for dramatic speedup
         print(f"Generating embeddings using multi-process pool...")
         overall_start = time.time()
@@ -1317,6 +1426,9 @@ class CompanyMatcher:
             List of match results with location and count info
         """
         query_lower = query.lower().strip()
+        # Normalize city/state in case they come as lists (e.g. from DB or JSON)
+        city = _to_loc_str(city) if city else None
+        state = _to_loc_str(state) if state else None
         use_location = (city or state) and self.has_location_data
         
         candidates = []
@@ -1337,7 +1449,7 @@ class CompanyMatcher:
                  acronym_matches = self.acronym_index.get(potential_acronym.upper())
                  
              if acronym_matches:
-                 for idx in acronym_matches:
+                 for idx in _iter_indices(acronym_matches):
                      if idx not in found_indices:
                          company_name = self.original_company_names[idx]
                          # TIE-BREAKER: Use fidelity score and semantic check
@@ -1370,8 +1482,10 @@ class CompanyMatcher:
         if generated_acronym and len(generated_acronym) > 2 and hasattr(self, 'acronym_index'):
             # Check if this acronym exists as a company name
             if hasattr(self, '_company_names_lower_to_index'):
-                idx = self._company_names_lower_to_index.get(generated_acronym.lower())
+                val = self._company_names_lower_to_index.get(generated_acronym.lower())
+                idx = val[0] if isinstance(val, list) and val else val
                 if idx is not None:
+                    idx = int(idx)
                     if idx not in found_indices:
                         company_name = self.original_company_names[idx]
                         # TIE-BREAKER: Use fidelity score and semantic check
@@ -1501,8 +1615,8 @@ class CompanyMatcher:
             
             if self.has_location_data and idx < len(self.company_locations):
                 loc = self.company_locations[idx]
-                target_city = loc.get("city", "")
-                target_state = loc.get("state", "")
+                target_city = _to_loc_str(loc.get("city", ""))
+                target_state = _to_loc_str(loc.get("state", ""))
                 
                 if idx < len(self.company_counts):
                     record_count = self.company_counts[idx]
@@ -1591,12 +1705,11 @@ class CompanyMatcher:
             # Pre-index existing candidates for fast duplicate check
             existing_lookup = {}
             for idx, c in enumerate(candidates):
-                key = (c['name'], c.get('city', ''), c.get('state', ''))
+                key = (c['name'], _to_loc_str(c.get('city', '')), _to_loc_str(c.get('state', '')))
                 existing_lookup[key] = idx
 
             val = self._company_names_lower_to_index.get(query_lower, [])
-            matching_indices = val if isinstance(val, list) else [val]
-            for i in matching_indices:
+            for i in _iter_indices(val):
                 name = self.original_company_names[i]
                 
                 # Get location data and ID for this exact match
@@ -1606,8 +1719,8 @@ class CompanyMatcher:
                 exact_id = None
                 if self.has_location_data and i < len(self.company_locations):
                     loc = self.company_locations[i]
-                    exact_city = loc.get("city", "")
-                    exact_state = loc.get("state", "")
+                    exact_city = _to_loc_str(loc.get("city", ""))
+                    exact_state = _to_loc_str(loc.get("state", ""))
                     if i < len(self.company_counts):
                         exact_count = self.company_counts[i]
                 if self.company_ids and i < len(self.company_ids):
@@ -1625,7 +1738,7 @@ class CompanyMatcher:
                     exact_freq_boost = (math.log1p(exact_count) / math.log1p(self.max_company_count)) * 0.02
 
                 # Deduplicate fast using the pre-indexed candidates
-                key = (name, exact_city, exact_state)
+                key = (name, _to_loc_str(exact_city), _to_loc_str(exact_state))
                 if key in existing_lookup:
                     existing = candidates[existing_lookup[key]]
                     # Update existing with exact score and type

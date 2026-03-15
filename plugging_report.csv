@@ -1,0 +1,201 @@
+row_id,query_company,query_city,query_state,match_rank,match_name,match_city,match_state,match_row_id,score,tier,match_type,string_score,semantic_score,location_score
+7878957,Visit Salt Lake,San Francisco,CA,1,Visit Salt Lake,Mill Valley,CA,6811132,1.0200,High,Exact,1.0000,1.0000,0.4000
+7878957,Visit Salt Lake,San Francisco,CA,2,Visit Salt Lake,Salt Lake City,UT,2352864,1.0057,High,Exact,1.0000,1.0000,0.0000
+7878957,Visit Salt Lake,San Francisco,CA,3,Visit Salt Lake,Washington,DC,5456269,1.0049,High,Exact,1.0000,1.0000,0.0000
+7878957,Visit Salt Lake,San Francisco,CA,4,Visit Salt Lake,,,2371772,1.0000,High,Exact,1.0000,1.0000,0.0000
+7879015,"Servant Keeper, LLC",Elizabethtown,KY,1,Servant Keeper Events,Springfield,VA,4357456,0.7600,Medium,Lexical,0.8182,0.6831,0.0000
+7879015,"Servant Keeper, LLC",Elizabethtown,KY,2,Servant Keeper Events,Overland Park,KS,4753431,0.7600,Medium,Lexical,0.8182,0.6831,0.0000
+7879015,"Servant Keeper, LLC",Elizabethtown,KY,3,Servant Keeper Events,Parsippany,NJ,4514126,0.7600,Medium,Lexical,0.8182,0.6831,0.0000
+7879015,"Servant Keeper, LLC",Elizabethtown,KY,4,Servant Keeper Events,Oklahoma City,OK,4465796,0.7600,Medium,Lexical,0.8182,0.6831,0.0000
+7879342,NWACUHO - Northwest Association of College & University Housing Officers,Fairbanks,AK,1,Western Association of College University Housing Officers - WACUHO,,,7798891,0.6846,Low,Semantic,0.7812,0.8801,0.0000
+7879342,NWACUHO - Northwest Association of College & University Housing Officers,Fairbanks,AK,2,Western Association of College and University Housing Officers (WACUHO),Riverside,CA,735453,0.6824,Low,Semantic,0.7812,0.8699,0.0000
+7879342,NWACUHO - Northwest Association of College & University Housing Officers,Fairbanks,AK,3,Northwest Association of College and University Housing Officers,Ashland,OR,5193470,0.6799,Low,Semantic,0.7670,0.8429,0.0000
+7879342,NWACUHO - Northwest Association of College & University Housing Officers,Fairbanks,AK,4,Northwest Association of College and University Housing Officers,Woodville,WI,4501109,0.6718,Low,Semantic,0.7670,0.8429,0.0000
+7879999,meeting Source Prestige Global,Arlington Heights,IL,1,Prestige | Global Meeting Source,Arlington Heights,IL,7122777,0.9692,High,Semantic,0.8636,0.8891,1.0000
+7879999,meeting Source Prestige Global,Arlington Heights,IL,2,Prestige Global Meeting Source [PRIMARY],Arlington Heights,IL,7632211,0.9600,High,Semantic,0.8636,0.8957,1.0000
+7879999,meeting Source Prestige Global,Arlington Heights,IL,3,Prestige Global Meeting Source HQ,Arlington Heights,IL,7887630,0.9600,High,Semantic,0.8636,0.9151,1.0000
+7879999,meeting Source Prestige Global,Arlington Heights,IL,4,Prestige Global Meeting Source - MN & MO,Arlington Heights,IL,6905885,0.9600,High,Semantic,0.7917,0.7980,1.0000
+7880589,Women of Power Conference,,,1,The Power Conference to ADVANCE Women,,,7343883,0.9500,High,Semantic,0.7917,0.9091,0.0000
+7880589,Women of Power Conference,,,2,Power of Women in Business Conference,Chicago,IL,3687699,0.9500,High,Semantic,0.7917,0.7968,0.0000
+7880589,Women of Power Conference,,,3,Power of Women in Business Conference,,,3685780,0.9500,High,Semantic,0.7917,0.7968,0.0000
+7880589,Women of Power Conference,,,4,Women With Power,Mount  Vernon,WA,1219492,0.9087,High,Lexical,0.8833,0.7151,0.0000
+7880640,Corporation Of Hamilton,Hamilton,Bermuda,1,Corporation Of Hamilton,Pembroke,Bermuda,7880904,1.0239,High,Exact,1.0000,1.0000,0.4000
+7880640,Corporation Of Hamilton,Hamilton,Bermuda,2,Corporation Of Hamilton,,Bermuda,7880906,1.0200,High,Exact,1.0000,1.0000,0.4000
+7880640,Corporation Of Hamilton,Hamilton,Bermuda,3,Corporation of Hamilton,,,7880903,1.0000,High,Exact,1.0000,1.0000,0.0000
+7880640,Corporation Of Hamilton,Hamilton,Bermuda,4,Hamilton Re,Hamilton,Bermuda,7881658,0.9600,High,Lexical,0.8182,0.6400,1.0000
+7880903,Corporation of Hamilton,,,1,Corporation Of Hamilton,,Bermuda,7880906,1.0000,High,Exact,1.0000,1.0000,0.0000
+7880903,Corporation of Hamilton,,,2,Corporation of Hamilton,,,7880903,1.0000,High,Exact,1.0000,1.0000,0.0000
+7880903,Corporation of Hamilton,,,3,Corporation Of Hamilton,Hamilton,Bermuda,7880640,1.0000,High,Exact,1.0000,1.0000,0.0000
+7880903,Corporation of Hamilton,,,4,Hamilton Corporation,Mount Laurel,NJ,1048065,0.9988,High,Exact,1.0000,0.9598,0.0000
+7880904,Corporation Of Hamilton,Pembroke,Bermuda,1,Corporation Of Hamilton,,Bermuda,7880906,1.0200,High,Exact,1.0000,1.0000,0.4000
+7880904,Corporation Of Hamilton,Pembroke,Bermuda,2,Corporation Of Hamilton,Hamilton,Bermuda,7880640,1.0200,High,Exact,1.0000,1.0000,0.4000
+7880904,Corporation Of Hamilton,Pembroke,Bermuda,3,Corporation of Hamilton,,,7880903,1.0000,High,Exact,1.0000,1.0000,0.0000
+7880904,Corporation Of Hamilton,Pembroke,Bermuda,4,Hamilton Re,Pembroke,Bermuda,6194603,0.9692,High,Lexical,0.8182,0.6400,1.0000
+7880905,Corporation Of Hamilton,Pembroke,Bermuda,1,Corporation Of Hamilton,,Bermuda,7880906,1.0200,High,Exact,1.0000,1.0000,0.4000
+7880905,Corporation Of Hamilton,Pembroke,Bermuda,2,Corporation Of Hamilton,Hamilton,Bermuda,7880640,1.0200,High,Exact,1.0000,1.0000,0.4000
+7880905,Corporation Of Hamilton,Pembroke,Bermuda,3,Corporation of Hamilton,,,7880903,1.0000,High,Exact,1.0000,1.0000,0.0000
+7880905,Corporation Of Hamilton,Pembroke,Bermuda,4,Hamilton Re,Pembroke,Bermuda,6194603,0.9692,High,Lexical,0.8182,0.6400,1.0000
+7880906,Corporation Of Hamilton,,Bermuda,1,Corporation Of Hamilton,,Bermuda,7880906,1.0200,High,Exact,1.0000,1.0000,0.4000
+7880906,Corporation Of Hamilton,,Bermuda,2,Corporation Of Hamilton,Hamilton,Bermuda,7880640,1.0200,High,Exact,1.0000,1.0000,0.4000
+7880906,Corporation Of Hamilton,,Bermuda,3,Corporation of Hamilton,,,7880903,1.0000,High,Exact,1.0000,1.0000,0.0000
+7880906,Corporation Of Hamilton,,Bermuda,4,Hamilton Re,Pembroke,Bermuda,6194603,0.8492,Medium,Lexical,0.8182,0.6400,0.4000
+7881526,ALM Global (EMEA) Ltd,,,1,"ALM Global, LLC",Toronto,ON,6851262,0.9110,High,Semantic,0.8182,0.8531,0.0000
+7881526,ALM Global (EMEA) Ltd,,,2,"Alm Global, LLC",New York,NY,6851260,0.9110,High,Semantic,0.8182,0.8531,0.0000
+7881526,ALM Global (EMEA) Ltd,,,3,"ALM Global, LLC",Carrollton,TX,7885072,0.9000,High,Semantic,0.8182,0.8531,0.0000
+7881526,ALM Global (EMEA) Ltd,,,4,"ALM Global, LLC",Fultonham,NY,6954168,0.9000,High,Semantic,0.8182,0.8531,0.0000
+7882317,Supreme Court,Hamilton,Bermuda,1,Supreme Court,Richmond,VA,1272,1.0049,High,Exact,1.0000,1.0000,0.0000
+7882317,Supreme Court,Hamilton,Bermuda,2,SUPREME COURT,Wilmington,DE,1380789,1.0039,High,Exact,1.0000,1.0000,0.0000
+7882317,Supreme Court,Hamilton,Bermuda,3,Supreme Court,Tallahassee,FL,1880730,1.0000,High,Exact,1.0000,1.0000,0.0000
+7882317,Supreme Court,Hamilton,Bermuda,4,Supreme Court,Topeka,KS,383056,1.0000,High,Exact,1.0000,1.0000,0.0000
+7882747,Supreme Court,Hamilton,Bermuda,1,Supreme Court,Richmond,VA,1272,1.0049,High,Exact,1.0000,1.0000,0.0000
+7882747,Supreme Court,Hamilton,Bermuda,2,SUPREME COURT,Wilmington,DE,1380789,1.0039,High,Exact,1.0000,1.0000,0.0000
+7882747,Supreme Court,Hamilton,Bermuda,3,Supreme Court,Tallahassee,FL,1880730,1.0000,High,Exact,1.0000,1.0000,0.0000
+7882747,Supreme Court,Hamilton,Bermuda,4,Supreme Court,Topeka,KS,383056,1.0000,High,Exact,1.0000,1.0000,0.0000
+7883989,Sacred Heart School,Saint Charles,MO,1,Sacred Heart School,Lake Saint Louis,MO,7718566,1.0388,High,Exact,1.0000,1.0000,0.7750
+7883989,Sacred Heart School,Saint Charles,MO,2,Sacred Heart School,Poplar Bluff,MO,2634553,1.0200,High,Exact,1.0000,1.0000,0.4000
+7883989,Sacred Heart School,Saint Charles,MO,3,Sacred Heart School,Chicago,IL,868845,1.0049,High,Exact,1.0000,1.0000,0.0000
+7883989,Sacred Heart School,Saint Charles,MO,4,Sacred Heart School,Rancho Mirage,CA,782621,1.0039,High,Exact,1.0000,1.0000,0.0000
+7890224,Blood Cancer United Inc - United States,Rye Brook,NY,1,Blood Cancer United Inc - United States,Cleveland,OH,7890164,1.0000,High,Exact,1.0000,1.0000,0.0000
+7890224,Blood Cancer United Inc - United States,Rye Brook,NY,2,Blood Cancer United Inc - United States,Sarasota,FL,7890158,1.0000,High,Exact,1.0000,1.0000,0.0000
+7890224,Blood Cancer United Inc - United States,Rye Brook,NY,3,Blood Cancer United Inc - United States,,CT,7890170,1.0000,High,Exact,1.0000,1.0000,0.0000
+7890224,Blood Cancer United Inc - United States,Rye Brook,NY,4,Blood Cancer United Inc - United States,Benicia,CA,7890185,1.0000,High,Exact,1.0000,1.0000,0.0000
+7893800,Perfect Planning Events,Woodbridge,VA,1,Perfect Planning Events,McLean,VA,4357315,1.0200,High,Exact,1.0000,1.0000,0.4000
+7893800,Perfect Planning Events,Woodbridge,VA,2,Perfect Planning Events,,,4324539,1.0000,High,Exact,1.0000,1.0000,0.0000
+7893800,Perfect Planning Events,Woodbridge,VA,3,Pefect Planning Events,Woodbridge,VA,5214613,0.8753,High,Semantic,0.7729,0.8036,1.0000
+7893800,Perfect Planning Events,Woodbridge,VA,4,Picture Perfect Events & Glamorous Event Planning,Columbus,OH,4751014,0.7600,Medium,Semantic,0.7308,0.7892,0.0000
+7894018,"CU Cooperative Systems, Inc. dba CO-OP Solutions",Rancho Cucamonga,CA,1,"CU Cooperative Systems, Inc. dba CO-OP Solutions",Durham,CT,7894031,1.0000,High,Exact,1.0000,1.0000,0.0000
+7894018,"CU Cooperative Systems, Inc. dba CO-OP Solutions",Rancho Cucamonga,CA,2,"CU Cooperative Systems, Inc. dba CO-OP Financial Services",Rancho Cucamonga,CA,6266789,0.9200,High,Semantic,0.8333,0.8961,1.0000
+7894018,"CU Cooperative Systems, Inc. dba CO-OP Solutions",Rancho Cucamonga,CA,3,"CU Cooperative Systems, Inc (dba CO-OP Financial Services)",Rancho Cucamonga,CA,4218934,0.8843,High,Semantic,0.7629,0.8854,1.0000
+7894018,"CU Cooperative Systems, Inc. dba CO-OP Solutions",Rancho Cucamonga,CA,4,CU Cooperative Systems,Ontario,CA,164225,0.6828,Low,Semantic,0.6231,0.7995,0.4000
+7894031,"CU Cooperative Systems, Inc. dba CO-OP Solutions",Durham,CT,1,"CU Cooperative Systems, Inc. dba CO-OP Solutions",Rancho Cucamonga,CA,7894018,1.0000,High,Exact,1.0000,1.0000,0.0000
+7894031,"CU Cooperative Systems, Inc. dba CO-OP Solutions",Durham,CT,2,"CU Cooperative Systems, Inc. dba CO-OP Financial Services",Rancho Cucamonga,CA,6266789,0.7200,Medium,Semantic,0.8333,0.8961,0.0000
+7894031,"CU Cooperative Systems, Inc. dba CO-OP Solutions",Durham,CT,3,"CU Cooperative Systems, Inc (dba CO-OP Financial Services)",Rancho Cucamonga,CA,4218934,0.6843,Low,Semantic,0.7629,0.8854,0.0000
+7894031,"CU Cooperative Systems, Inc. dba CO-OP Solutions",Durham,CT,4,Cooperative Systems,Hartford,CT,1830687,0.6042,Low,Semantic,0.5464,0.5911,0.4000
+7895262,USSD,Denver,CO,1,USSD,Dener,CO,3434635,1.0473,High,Exact,1.0000,1.0000,0.9455
+7895262,USSD,Denver,CO,2,USSD,,,2171050,1.0000,High,Exact,1.0000,1.0000,0.0000
+7895262,USSD,Denver,CO,3,USSD,Atlanta,GA,7741806,1.0000,High,Exact,1.0000,1.0000,0.0000
+7895262,USSD,Denver,CO,4,USSD,Oceanside,CA,2576769,1.0000,High,Exact,1.0000,1.0000,0.0000
+7895819,Lanthrop Gpm,Columbia,SC,1,Lathrop GPM,Dallas,TX,7183190,0.6258,Low,Lexical,0.7438,0.7305,0.0000
+7895819,Lanthrop Gpm,Columbia,SC,2,Lathrop GPM,,,7069996,0.6258,Low,Lexical,0.7438,0.7305,0.0000
+7895819,Lanthrop Gpm,Columbia,SC,3,Lathrop GPM,Chicago,IL,6931569,0.6258,Low,Lexical,0.7438,0.7305,0.0000
+7895819,Lanthrop Gpm,Columbia,SC,4,Lathrop GPM,Minneapolis,MN,7066773,0.6258,Low,Lexical,0.7438,0.7305,0.0000
+7896046,Emergency Medical Services/DSHS,Austin,TX,1,Emergency Medical Service,Austin,TX,767820,0.8732,High,Semantic,0.7875,0.8053,1.0000
+7896046,Emergency Medical Services/DSHS,Austin,TX,2,Texas Emergency Medical Services,Austin,TX,319185,0.7970,Medium,Lexical,0.7027,0.6733,1.0000
+7896046,Emergency Medical Services/DSHS,Austin,TX,3,Emergency Medical Service,Dallas,TX,658150,0.7532,Medium,Semantic,0.7875,0.8053,0.4000
+7896046,Emergency Medical Services/DSHS,Austin,TX,4,Emergency Service Partners,Austin,TX,176906,0.7458,Medium,Semantic,0.5542,0.6768,1.0000
+7898313,"Roy H. Long Realty Company, Inc. dba Long Realty",Tucson,AZ,1,"Roy H. Long Realty Company, Inc. dba Long Realty",Phoenix,AZ,7898311,1.0200,High,Exact,1.0000,1.0000,0.4000
+7898313,"Roy H. Long Realty Company, Inc. dba Long Realty",Tucson,AZ,2,Long Realty Company,Tucson,AZ,66538,0.7822,Medium,Semantic,0.5885,0.7160,1.0000
+7898313,"Roy H. Long Realty Company, Inc. dba Long Realty",Tucson,AZ,3,Long Realty,Tucson,AZ,7388583,0.7307,Medium,Lexical,0.5885,0.5436,1.0000
+7898313,"Roy H. Long Realty Company, Inc. dba Long Realty",Tucson,AZ,4,Long Realty Company,Oro Valley,AZ,4101809,0.6553,Low,Semantic,0.5885,0.7160,0.4000
+7899551,First Alliance Church,Lexington,KY,1,First Alliance Church,Lexington,NC,3190491,1.0339,High,Exact,1.0000,1.0000,0.6000
+7899551,First Alliance Church,Lexington,KY,2,First Alliance Church,Toledo,OH,7118014,1.0000,High,Exact,1.0000,1.0000,0.0000
+7899551,First Alliance Church,Lexington,KY,3,First Alliance Church Group,Franklin,NC,1783657,0.7833,Medium,Exact,1.0000,0.9352,0.0000
+7899551,First Alliance Church,Lexington,KY,4,Alliance First Church of Washington,,,1706719,0.7600,Medium,Lexical,0.8636,0.8550,0.0000
+7904800,First Baptist Church,CORSICANA,TX,1,First Baptist Church,Kingsland,TX,1085564,1.0239,High,Exact,1.0000,1.0000,0.4000
+7904800,First Baptist Church,CORSICANA,TX,2,First Baptist Church,Dallas,TX,1813168,1.0239,High,Exact,1.0000,1.0000,0.4000
+7904800,First Baptist Church,CORSICANA,TX,3,First Baptist Church,Salado,TX,1951537,1.0239,High,Exact,1.0000,1.0000,0.4000
+7904800,First Baptist Church,CORSICANA,TX,4,First Baptist Church,Bryan,TX,3810487,1.0239,High,Exact,1.0000,1.0000,0.4000
+7904949,FIRST Global Agency on behalf of Nick West,New York,NY,1,FIRST Global Agency  on Behalf of Nick West McKinsey & Company,New York,NY,7878637,0.9600,High,Semantic,0.8182,0.8233,1.0000
+7904949,FIRST Global Agency on behalf of Nick West,New York,NY,2,FIRST Global Agency on Behalf of Nikki Kelley,New York,NY,7925131,0.8468,Medium,Lexical,0.7812,0.7021,1.0000
+7904949,FIRST Global Agency on behalf of Nick West,New York,NY,3,FIRST Global Agency on Behalf of Cherron Gardner,New York,NY,7913701,0.8308,Medium,Lexical,0.7812,0.6397,1.0000
+7904949,FIRST Global Agency on behalf of Nick West,New York,NY,4,FIRST Global Agency on Behalf of Myla Clark,New York,NY,7913853,0.8298,Medium,Lexical,0.7812,0.6273,1.0000
+7913800,HB,Buffalo,NY,1,HB,New York,NY,6857915,1.0249,High,Exact,1.0000,1.0000,0.4000
+7913800,HB,Buffalo,NY,2,HB,Port Washington,NY,6858016,1.0239,High,Exact,1.0000,1.0000,0.4000
+7913800,HB,Buffalo,NY,3,HB,Forest Hills,NY,6857898,1.0239,High,Exact,1.0000,1.0000,0.4000
+7913800,HB,Buffalo,NY,4,HB,Warners,NY,6857973,1.0200,High,Exact,1.0000,1.0000,0.4000
+7918771,X-Camp Academy,Saratoga,CA,1,Camp Erio Marketing Academy,,,5868550,0.7200,Medium,Lexical,0.8030,0.6440,0.0000
+7918771,X-Camp Academy,Saratoga,CA,2,The Solar Academy Boot Camp- Orlando,San Diego,CA,7204538,0.7028,Medium,Lexical,0.7361,0.6779,0.4000
+7918771,X-Camp Academy,Saratoga,CA,3,XCA,,,,0.6900,Low,Exact,1.0000,1.0000,0.0000
+7918771,X-Camp Academy,Saratoga,CA,4,CAMP,Sacramento,CA,4084769,0.6359,Low,Semantic,0.6000,0.6188,0.4000
+7918774,WAHUPA Educational Services,,,1,Wahupa Educational Service,San Diego,CA,2333826,0.9955,High,Exact,1.0000,0.9850,0.0000
+7918774,WAHUPA Educational Services,,,2,Educational Resource Services,Louisville,KY,2810366,0.7363,Medium,Lexical,0.6625,0.6021,0.0000
+7918774,WAHUPA Educational Services,,,3,Educational Resource Services,Midland,MI,732617,0.7318,Medium,Lexical,0.6625,0.6021,0.0000
+7918774,WAHUPA Educational Services,,,4,Community Educational Services,San Francisco,CA,576251,0.7303,Medium,Lexical,0.6625,0.6227,0.0000
+7918779,Southern University Upward Bound,Baton Rouge,LA,1,Southern University Upward Bound,,,7918579,1.0000,High,Exact,1.0000,1.0000,0.0000
+7918779,Southern University Upward Bound,Baton Rouge,LA,2,Southern University Upward Bound North,Minden,LA,1883702,0.8400,Medium,Semantic,0.8312,0.8983,0.4000
+7918779,Southern University Upward Bound,Baton Rouge,LA,3,Southern University at Shreveport Upward Bound South,Shreveport,LA,1146615,0.8400,Medium,Semantic,0.7308,0.7947,0.4000
+7918779,Southern University Upward Bound,Baton Rouge,LA,4,Southern University Shreveport Upward Bound North,Minden,LA,1883703,0.8400,Medium,Lexical,0.7917,0.7612,0.4000
+7918783,Washington School for Girls,Washington,DC,1,Washington Metropolitan High School,Washington,DC,3019980,0.8520,High,Semantic,0.7438,0.7501,1.0000
+7918783,Washington School for Girls,Washington,DC,2,George Washington High School,Washington,DC,2652094,0.8372,Medium,Lexical,0.7438,0.7191,1.0000
+7918783,Washington School for Girls,Washington,DC,3,Graduate School Washington DC,Washington,DC,2127757,0.8350,Medium,Lexical,0.7438,0.6947,1.0000
+7918783,Washington School for Girls,Washington,DC,4,Washington International School,Washington,DC,595676,0.8327,Medium,Semantic,0.6761,0.7871,1.0000
+7918787,Saint Joseph High School,Metuchen,NJ,1,Saint Joseph High School,Lebanon,NJ,3929327,1.0200,High,Exact,1.0000,1.0000,0.4000
+7918787,Saint Joseph High School,Metuchen,NJ,2,Saint Joseph High School,Santa Maria,CA,1662307,1.0049,High,Exact,1.0000,1.0000,0.0000
+7918787,Saint Joseph High School,Metuchen,NJ,3,Saint Joseph High School,North Palm Beach,FL,779742,1.0039,High,Exact,1.0000,1.0000,0.0000
+7918787,Saint Joseph High School,Metuchen,NJ,4,Saint Joseph High School,Lakewood,CA,294275,1.0039,High,Exact,1.0000,1.0000,0.0000
+7918803,Wisconsin Evangelical Lutheran Church,Waukesha,WI,1,Wisconsin Evangelical Lutheran Church,,,7909856,1.0000,High,Exact,1.0000,1.0000,0.0000
+7918803,Wisconsin Evangelical Lutheran Church,Waukesha,WI,2,Calvary Evangelical Lutheran Church,Sheboygan,WI,2140297,0.8000,Medium,Lexical,0.8250,0.7916,0.4000
+7918803,Wisconsin Evangelical Lutheran Church,Waukesha,WI,3,WELS -Wisconsin Evangelical Lutheran Synod,Milwaukee,WI,3422495,0.8000,Medium,Lexical,0.8182,0.7290,0.4000
+7918803,Wisconsin Evangelical Lutheran Church,Waukesha,WI,4,Wisconsin Lutheran Seminary,Mequon,WI,1749875,0.7345,Medium,Semantic,0.7083,0.8806,0.4000
+7918805,Soluz LLC,Dorado,PR,1,Soluz LLC,San Juan,PR,7051502,1.0200,High,Exact,1.0000,1.0000,0.4000
+7918805,Soluz LLC,Dorado,PR,2,Soluz Training,,,7396355,0.7600,Medium,Lexical,0.8182,0.6423,0.0000
+7918805,Soluz LLC,Dorado,PR,3,Solenis LLC,Catano,PR,6376854,0.4895,Low,Acronym,0.2455,0.5735,0.4000
+7918805,Soluz LLC,Dorado,PR,4,"Solenis, LLC",,PR,6765898,0.4885,Low,Acronym,0.2455,0.5729,0.4000
+7918806,She's Still Missing,Bedford,TX,1,SSM,,,,0.6900,Low,Exact,1.0000,1.0000,0.0000
+7918806,She's Still Missing,Bedford,TX,2,Missing Childrens Tour,0,TX,1457228,0.5683,Low,Lexical,0.5278,0.4170,0.4000
+7918806,She's Still Missing,Bedford,TX,3,Compassion Productions | She's Still There,,,4990355,0.5305,Low,Lexical,0.6229,0.4789,0.0000
+7918806,She's Still Missing,Bedford,TX,4,Missing Person's Search,,,6279265,0.5002,Low,Lexical,0.5278,0.5070,0.0000
+7918807,Work N Roll,,,1,Work N Progress,El Segundo,CA,5498341,0.8077,Medium,Lexical,0.7729,0.7088,0.0000
+7918807,Work N Roll,,,2,Work N Gear,Weymouth,MA,453962,0.8030,Medium,Lexical,0.7729,0.6858,0.0000
+7918807,Work N Roll,,,3,Roll N Lock,Pompano Beach,FL,1608149,0.7933,Medium,Lexical,0.7729,0.6648,0.0000
+7918807,Work N Roll,,,4,Work-N-Gear,,,1157685,0.7866,Medium,Lexical,0.7729,0.6192,0.0000
+7918809,Quadcode,Kato Polemidia,Cyprus,1,Quad,Sterling,VA,951867,0.4607,Low,Semantic,0.3273,0.6701,0.0000
+7918809,Quadcode,Kato Polemidia,Cyprus,2,Quad,Chicago,IL,5459588,0.4607,Low,Semantic,0.3273,0.6701,0.0000
+7918809,Quadcode,Kato Polemidia,Cyprus,3,Quad,Pewaukee,WI,7611561,0.4607,Low,Semantic,0.3273,0.6701,0.0000
+7918809,Quadcode,Kato Polemidia,Cyprus,4,Quad,,,7010778,0.4607,Low,Semantic,0.3273,0.6701,0.0000
+7918810,Worldwide Elections,,,1,CAMPAIGN  ELECTIONS,ARLINGTON,VA,3049507,0.7831,Medium,Lexical,0.7438,0.7056,0.0000
+7918810,Worldwide Elections,,,2,Campaigns & Elections,Arlington,VA,739262,0.7784,Medium,Lexical,0.7438,0.6540,0.0000
+7918810,Worldwide Elections,,,3,Elections BC,Calgary,AB,959559,0.7774,Medium,Lexical,0.7438,0.6729,0.0000
+7918810,Worldwide Elections,,,4,Elections Canada,Ottawa,ON,175734,0.7771,Medium,Lexical,0.7438,0.6721,0.0000
+7918811,Universidad de Georgetown,,,1,Club Egresados Universidad de Georgetown,Bogota,Cundinamarca,2916154,0.9500,High,Semantic,0.7500,0.8626,0.0000
+7918811,Universidad de Georgetown,,,2,Universidad de Columbia,New York,NY,2620510,0.8529,High,Semantic,0.7729,0.8450,0.0000
+7918811,Universidad de Georgetown,,,3,Universidad de Columbia,,,4110262,0.8447,Medium,Semantic,0.7729,0.8450,0.0000
+7918811,Universidad de Georgetown,,,4,Universidad de Monterey,"Mexico City, DF",Estado de Mexico,834632,0.8357,Medium,Semantic,0.7729,0.7833,0.0000
+7918827,Relaunch to Rich,,,1,Learn To Be Rich,Fort Collins,CO,1902621,0.7556,Medium,Lexical,0.7027,0.6599,0.0000
+7918827,Relaunch to Rich,,,2,Think to Grow Rich,,,5915645,0.7377,Medium,Lexical,0.7027,0.5904,0.0000
+7918827,Relaunch to Rich,,,3,Dare to Be Rich,Yakima,WA,3806494,0.7222,Medium,Lexical,0.7027,0.5208,0.0000
+7918827,Relaunch to Rich,,,4,Dare to be Rich,,,3508612,0.7222,Medium,Lexical,0.7027,0.5208,0.0000
+7918830,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Huntington Beach,CA,1,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Granite Bay,CA,7918831,1.0200,High,Exact,1.0000,1.0000,0.4000
+7918830,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Huntington Beach,CA,2,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Addison,TX,7918832,1.0000,High,Exact,1.0000,1.0000,0.0000
+7918830,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Huntington Beach,CA,3,GL Travel,Huntington Beach,CA,6891805,0.7516,Medium,Semantic,0.5885,0.6326,1.0000
+7918830,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Huntington Beach,CA,4,Green Light Tour & Travel,San Francisco,CA,3447711,0.6413,Low,Semantic,0.5100,0.8436,0.4000
+7918831,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Granite Bay,CA,1,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Huntington Beach,CA,7918830,1.0200,High,Exact,1.0000,1.0000,0.4000
+7918831,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Granite Bay,CA,2,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Addison,TX,7918832,1.0000,High,Exact,1.0000,1.0000,0.0000
+7918831,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Granite Bay,CA,3,GL Travel,Granite Bay,CA,6524842,0.7516,Medium,Semantic,0.5885,0.6326,1.0000
+7918831,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Granite Bay,CA,4,Green Light Tour & Travel,San Francisco,CA,3447711,0.6413,Low,Semantic,0.5100,0.8436,0.4000
+7918832,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Addison,TX,1,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Huntington Beach,CA,7918830,1.0000,High,Exact,1.0000,1.0000,0.0000
+7918832,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Addison,TX,2,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Granite Bay,CA,7918831,1.0000,High,Exact,1.0000,1.0000,0.0000
+7918832,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Addison,TX,3,GL Travel,Addison,TX,7750551,0.7516,Medium,Semantic,0.5885,0.6326,1.0000
+7918832,"Greenlight Tour & Travel, Inc.  d/b/a GL Travel",Addison,TX,4,The Tour Company Inc.,Addison,TX,7379554,0.6732,Low,Semantic,0.3825,0.6327,1.0000
+7918845,SCFP - Syndicat canadien de la fonction publique,Quebec City,QC,1,SCFP - Syndicat canadien de la fonction publique,Montreal,QC,3185402,1.0263,High,Exact,1.0000,1.0000,0.4000
+7918845,SCFP - Syndicat canadien de la fonction publique,Quebec City,QC,2,SCFP - Syndicat canadien de la fonction publique,Montréal,QC,2570368,1.0200,High,Exact,1.0000,1.0000,0.4000
+7918845,SCFP - Syndicat canadien de la fonction publique,Quebec City,QC,3,SCFP - Syndicat canadien de la fonction publique,Chateauguay,QC,7147593,1.0200,High,Exact,1.0000,1.0000,0.4000
+7918845,SCFP - Syndicat canadien de la fonction publique,Quebec City,QC,4,SCFP - Syndicat canadien de la fonction publique,Puslinch,ON,7865098,1.0000,High,Exact,1.0000,1.0000,0.0000
+7918850,Social Fresh,Naucalpan,Estado de Mexico,1,Social Fresh,Charlotte,NC,4365194,1.0039,High,Exact,1.0000,1.0000,0.0000
+7918850,Social Fresh,Naucalpan,Estado de Mexico,2,Social Fresh,New York,NY,2291872,1.0039,High,Exact,1.0000,1.0000,0.0000
+7918850,Social Fresh,Naucalpan,Estado de Mexico,3,Social Fresh,Morristown,NJ,7863987,1.0000,High,Exact,1.0000,1.0000,0.0000
+7918850,Social Fresh,Naucalpan,Estado de Mexico,4,Social 2021,Naucalpan,Estado de Mexico,7804993,0.8169,Medium,Lexical,0.7438,0.6349,1.0000
+7918851,"The Inner Circle of NY Political Journalists, Inc.",New York,NY,1,The INNER Circle of City Hall Journalists,New York,NY,5458955,0.8373,Medium,Lexical,0.7612,0.7149,1.0000
+7918851,"The Inner Circle of NY Political Journalists, Inc.",New York,NY,2,"American Society of Journalists and Authors, Inc.",New York,NY,677482,0.6434,Low,Semantic,0.2399,0.7627,1.0000
+7918851,"The Inner Circle of NY Political Journalists, Inc.",New York,NY,3,New York Association of Black Journalists (NYABJ),New York,NY,4526496,0.6349,Low,Semantic,0.2476,0.7193,1.0000
+7918851,"The Inner Circle of NY Political Journalists, Inc.",New York,NY,4,American Society of Journalists,New York,NY,3828691,0.6292,Low,Semantic,0.2347,0.7242,1.0000
+7918858,Stout Real Estate,,,1,Hospitality & Real Estate,Kohler,WI,2141059,0.9164,High,Lexical,0.8097,0.5516,0.0000
+7918858,Stout Real Estate,,,2,Epic Real Estate,Las Vegas,NV,6414651,0.9142,High,Lexical,0.8097,0.5865,0.0000
+7918858,Stout Real Estate,,,3,The Real Estate Council,Dallas,TX,858319,0.9142,High,Lexical,0.8097,0.5345,0.0000
+7918858,Stout Real Estate,,,4,Town Real Estate,New York,NY,3134458,0.9110,High,Lexical,0.8097,0.5725,0.0000
+7918860,Rayna Properties,,,1,Scannell Properties,Indianapolis,IN,3320657,0.7418,Medium,Lexical,0.7438,0.5285,0.0000
+7918860,Rayna Properties,,,2,Scannell Properties,Phoenix,AZ,7860111,0.7328,Medium,Lexical,0.7438,0.5285,0.0000
+7918860,Rayna Properties,,,3,Scannell Properties,,,4340650,0.7328,Medium,Lexical,0.7438,0.5285,0.0000
+7918860,Rayna Properties,,,4,RAYNA TOURISM,,,7909065,0.7321,Medium,Lexical,0.7438,0.6422,0.0000
+7918896,SNAMO - AVEO Table + Bar,Springfield,MA,1,SNAMO - AVEO Table + Bar,Boston,MA,7359319,1.0200,High,Exact,1.0000,1.0000,0.4000
+7918896,SNAMO - AVEO Table + Bar,Springfield,MA,2,SNAMO - AVEO Table + Bar,Sunnyvale,CA,7750571,1.0000,High,Exact,1.0000,1.0000,0.0000
+7918896,SNAMO - AVEO Table + Bar,Springfield,MA,3,SNAMO - AVEO Table + Bar,Allentown,PA,7692898,1.0000,High,Exact,1.0000,1.0000,0.0000
+7918896,SNAMO - AVEO Table + Bar,Springfield,MA,4,SNAMO - AVEO Table + Bar,Redondo Beach,CA,7734130,1.0000,High,Exact,1.0000,1.0000,0.0000
+7918897,SNAMO - AVEO Table + Bar,Princeton,NJ,1,SNAMO - AVEO Table + Bar,Newark,NJ,7185264,1.0200,High,Exact,1.0000,1.0000,0.4000
+7918897,SNAMO - AVEO Table + Bar,Princeton,NJ,2,SNAMO - AVEO Table + Bar,Camden,NJ,7377712,1.0200,High,Exact,1.0000,1.0000,0.4000
+7918897,SNAMO - AVEO Table + Bar,Princeton,NJ,3,SNAMO - AVEO Table + Bar,Sunnyvale,CA,7750571,1.0000,High,Exact,1.0000,1.0000,0.0000
+7918897,SNAMO - AVEO Table + Bar,Princeton,NJ,4,SNAMO - AVEO Table + Bar,Allentown,PA,7692898,1.0000,High,Exact,1.0000,1.0000,0.0000
+7918909,North End Teleservices,Omaha,NE,1,NET,,,,0.6900,Low,Exact,1.0000,1.0000,0.0000
+7918909,North End Teleservices,Omaha,NE,2,The North End,,,4960492,0.6030,Low,Lexical,0.7159,0.6510,0.0000
+7918909,North End Teleservices,Omaha,NE,3,TPG TeleManagement Inc.,Omaha,NE,3592367,0.5705,Low,Semantic,0.1636,0.5451,1.0000
+7918909,North End Teleservices,Omaha,NE,4,TPG Telemanagement Inc,Omaha,NE,3463809,0.5662,Low,Semantic,0.1636,0.5434,1.0000

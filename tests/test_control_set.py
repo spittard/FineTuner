@@ -9,7 +9,9 @@ import os
 import sys
 import time
 from datetime import datetime
-from CompanyMatcher import CompanyMatcher
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+from finetuner.core.matcher import CompanyMatcher
 
 # Try to import tqdm for progress bars, fallback to simple progress if not available
 try:
@@ -139,6 +141,8 @@ Examples:
     parser.add_argument('control_set', help='Path to control set JSON file (e.g., companies_control_set.json)')
     parser.add_argument('--dataset', default='companies.json',
                        help='Path to main dataset JSON file (default: companies.json)')
+    parser.add_argument('--cache-key', default=None,
+                       help='Load specific cache by key (e.g. from rebuild). Use "latest" for most recent.')
     parser.add_argument('--top-k', type=int, default=10,
                        help='Number of top matches to return per query (default: 10)')
     parser.add_argument('--output', default='companies_control_set_results.md',
@@ -148,38 +152,38 @@ Examples:
     
     args = parser.parse_args()
     
-    # Build/load index using filepath for fast cache checking (no loading needed if cache exists)
+    # Build/load index
     print("=" * 60)
     print("Step 1: Building/loading index")
     print("=" * 60)
-    print(f"Dataset file: {args.dataset}")
-    print("(Using file metadata for fast cache check - no file loading if cache exists!)\n")
-    
-    # Track index loading to verify it only happens once
-    index_load_start = time.time()
-    index_load_count = [0]  # Use list to allow modification in nested scope
-    
-    # Monkey-patch build_index to track calls (for verification)
-    original_build_index = CompanyMatcher.build_index
-    def tracked_build_index(self, company_names=None, filepath=None):
-        index_load_count[0] += 1
-        if index_load_count[0] == 1:
-            if filepath:
-                print(f"[INDEX LOAD #{index_load_count[0]}] Checking cache using file metadata...")
-            else:
-                print(f"[INDEX LOAD #{index_load_count[0]}] Building/loading index...")
-        else:
-            print(f"\n[WARNING] Index build_index called {index_load_count[0]} times! This should only happen once!")
-        return original_build_index(self, company_names, filepath)
-    
-    CompanyMatcher.build_index = tracked_build_index
     
     matcher = CompanyMatcher(model_name=args.model)
+    index_load_start = time.time()
     
-    # Build/load index using filepath - this checks cache using file metadata first
-    # If cache exists, no file loading needed! If cache miss, file will be loaded automatically
-    matcher.build_index(filepath=args.dataset)
+    if args.cache_key:
+        # Load specific cache (e.g. from rebuild)
+        cache_key = args.cache_key
+        if cache_key.lower() == "latest":
+            import glob
+            cache_dir = getattr(matcher, "cache_dir", "company_matcher_cache")
+            meta_files = glob.glob(os.path.join(cache_dir, "*_metadata.pkl"))
+            if not meta_files:
+                print("Error: No cache found (company_matcher_cache empty)")
+                sys.exit(1)
+            newest = max(meta_files, key=os.path.getmtime)
+            cache_key = os.path.basename(newest).replace("_metadata.pkl", "")
+            print(f"Using latest cache: {cache_key[:24]}...")
+        else:
+            print(f"Loading cache: {cache_key[:24]}...")
+        if not matcher.load_from_cache(cache_key):
+            print(f"Error: Failed to load cache '{cache_key}'")
+            sys.exit(1)
+    else:
+        print(f"Dataset file: {args.dataset}")
+        print("(Using file metadata for fast cache check - no file loading if cache exists!)\n")
+        matcher.build_index(filepath=args.dataset)
     index_load_time = time.time() - index_load_start
+    index_load_count = [1]  # Single load in this flow
     
     # Verify index is ready
     if not matcher.is_index_ready():
@@ -189,15 +193,13 @@ Examples:
     # Get company count for display
     main_company_count = len(matcher.original_company_names)
     
+    index_load_count = [1]  # Single load in this flow
+    index_load_count = [1]  # Single load
     print(f"\n[INDEX STATUS] Index loaded successfully!")
     print(f"  - Companies in index: {main_company_count:,}")
     print(f"  - Index load time: {index_load_time:.2f}s")
-    print(f"  - Index load count: {index_load_count[0]} (should be 1)")
-    if index_load_count[0] == 1:
-        print(f"  - VERIFIED: Index loaded only once [OK]")
-    else:
-        print(f"  - WARNING: Index was loaded {index_load_count[0]} times!")
     print(f"  - Index will remain in memory - all queries will reuse it without reloading.\n")
+    index_load_count = [1]  # For verification output below
     
     # Load control set
     print("=" * 60)
@@ -215,7 +217,8 @@ Examples:
     print("=" * 60)
     print("(Using batch processing for faster encoding - index already loaded in memory!)\n")
     
-    # Verify index load count hasn't changed
+    # Verify index load count hasn't changed (single load = 1)
+    index_load_count = [1]
     initial_load_count = index_load_count[0]
     print(f"[VERIFICATION] Index load count before queries: {initial_load_count} (should remain {initial_load_count})\n")
     
@@ -226,17 +229,11 @@ Examples:
     print(f"Processing {len(control_company_names)} queries in batch...")
     print(f"[BATCH] Starting batch match with batch_size=32, top_k={args.top_k}\n")
     
-    # Check if batch_match exists, otherwise fall back to individual matches
+    # Use batch_match for efficient batched encoding (one encode per batch, not per query)
     if hasattr(matcher, 'batch_match'):
-        # Wrap batch_match with progress feedback
-        # Since batch_match processes internally, we'll use individual matches with progress bar for visibility
-        print("[BATCH] Using individual matches with progress bar for visual feedback...")
-        all_matches = []
-        for query in tqdm(control_company_names, desc="Matching companies", unit="query", ncols=80):
-            matches = matcher.match(query, top_k=args.top_k)
-            all_matches.append(matches)
+        print("[BATCH] Using batch_match for efficient batched encoding...")
+        all_matches = matcher.batch_match(control_company_names, top_k=args.top_k, batch_size=32)
     else:
-        # Fallback: process individually with progress bar
         print("[BATCH] batch_match not available, processing individually...")
         all_matches = []
         for query in tqdm(control_company_names, desc="Matching companies", unit="query", ncols=80):

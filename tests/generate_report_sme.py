@@ -144,14 +144,14 @@ def main():
         if (i + 1) % 10 == 0:
             with open(output_path, 'w', encoding='utf-8') as f:
                 f.write(report_content)
-            print(f"   ✓ Checkpoint saved")
+            print(f"   [saved] Checkpoint written")
     
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(report_content)
     
     total_time = time.time() - start_time
     print(f"\n{'='*60}")
-    print(f"✅ Report: {output_path}")
+    print(f"[DONE] Report: {output_path}")
     print(f"   Time: {total_time:.1f}s ({len(control_set)} queries)")
     print(f"{'='*60}")
 

@@ -67,8 +67,11 @@ if HAS_PYRO:
             """List currently loaded cache keys."""
             return list(self._server.loaded_caches.keys())
         
-        def load_cache(self, cache_key: str, model_name: str = 'paraphrase-MiniLM-L3-v2') -> bool:
-            """Load a cache into memory."""
+        def load_cache(self, cache_key: str, model_name: str = None) -> bool:
+            """Load a cache into memory. Uses active model from model_config.json if not specified."""
+            if model_name is None:
+                from finetuner.core.matcher import _load_active_model
+                model_name = _load_active_model()
             with self._lock:
                 return self._server.load_cache(cache_key, model_name)
         
