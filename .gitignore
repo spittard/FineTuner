@@ -78,3 +78,20 @@ rebuild_work/
 
 # ONNX exported models
 onnx_models/
+
+# Scratch / backups / snapshots (not source of truth)
+*.bak_*
+*.before_*.csv
+*.before_*.md
+.audit_state.json
+.claude/
+nul
+control_set_verify_*.txt
+companies_control_set_results.baseline_*.md
+companies_control_set_results.buggy_*.md
+plugging_matches_sample.json
+plugging_matches_top*.json
+plugging_report_sample.*
+plugging_report_top*.csv
+plugging_report_top*.md
+plugging_report_layout_demo.html
