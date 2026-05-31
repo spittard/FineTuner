@@ -1,0 +1,28 @@
+---
+description: Honest scope and proof — no false full-SME or full-corpus review claims; upfront limits before long runs
+alwaysApply: true
+---
+
+# Agent accountability
+
+## Claims you may not make without proof this session
+
+- “Reviewed every row,” “SME-validated the full report,” “each result checked,” “all matches make sense,” unless you did that here with a **traceable** method (e.g. per-`row_id` log + rubric).
+- That **heuristic scripts** equal human SME review. Name the **script**, **inputs**, **counts**, **flag types**; state that **rules ≠ ground truth**.
+
+## Before long operations (RPC load, full rematch, full `generate_plugging_report`, pipelines)
+
+1. Say what the run **will** and **will not** verify.
+2. If deliverables need **human SME sign-off**, say so **before** the run; propose **bounded** review (flagged rows, audit Gate A list, stratified sample) instead of implying full manual pass.
+3. Final reply must list: **outputs (paths)** · **checks run + outcomes** · **what remains unverified**.
+
+## Scripts
+
+- `scripts/sme_assess_plugging_matches.py` — **triage** flags only.
+- `scripts/analyze_plugging_report_scenarios.py` — **aggregate buckets** only.
+
+Neither substitutes for per-row SME judgment on the whole corpus.
+
+## One-line guard
+
+Only claim what this session **ran** and can **show**; always say what was **not** done.

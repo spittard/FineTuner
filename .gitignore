@@ -69,6 +69,10 @@ companies_with_location.json
 companies_sample_100k.json
 companies_sample_1m.json
 
+# Cursor <-> local Claude handoff (generated; keep examples in bridge/*.example.md)
+bridge/TO_CLAUDE.md
+bridge/FROM_CLAUDE.last.txt
+
 # Phased rebuild work directory
 rebuild_work/
 

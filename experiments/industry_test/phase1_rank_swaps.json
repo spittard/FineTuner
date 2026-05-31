@@ -1,0 +1,385 @@
+{
+  "lambda_sic": 0.05,
+  "lambda_mkt": 0.02,
+  "swap_count": 63,
+  "swaps": [
+    {
+      "row_id": 7878957,
+      "query_company": "Visit Salt Lake",
+      "old_top_id": 2371772,
+      "new_top_id": 7878957
+    },
+    {
+      "row_id": 7920185,
+      "query_company": "RevMed",
+      "old_top_id": 7926224,
+      "new_top_id": 7920185
+    },
+    {
+      "row_id": 7920530,
+      "query_company": "Wood Partners",
+      "old_top_id": 6839334,
+      "new_top_id": 2620264
+    },
+    {
+      "row_id": 7921425,
+      "query_company": "Wood and Company",
+      "old_top_id": 6824293,
+      "new_top_id": 6225472
+    },
+    {
+      "row_id": 7921807,
+      "query_company": "PepperStone",
+      "old_top_id": 7922935,
+      "new_top_id": 7921807
+    },
+    {
+      "row_id": 7922159,
+      "query_company": "SNUG Incorporated",
+      "old_top_id": 1191423,
+      "new_top_id": 7922159
+    },
+    {
+      "row_id": 7922350,
+      "query_company": "SEGD Society for Experiential Graphic Design",
+      "old_top_id": 7003975,
+      "new_top_id": 7922350
+    },
+    {
+      "row_id": 7922372,
+      "query_company": "SEGD Society for Experiential Graphic Design",
+      "old_top_id": 7003975,
+      "new_top_id": 7922372
+    },
+    {
+      "row_id": 7922529,
+      "query_company": "When Brown Girls Lead",
+      "old_top_id": 7923671,
+      "new_top_id": 7922529
+    },
+    {
+      "row_id": 7923097,
+      "query_company": "Team Offsite",
+      "old_top_id": 6245990,
+      "new_top_id": 7923097
+    },
+    {
+      "row_id": 7923146,
+      "query_company": "Sentinelone",
+      "old_top_id": 7763981,
+      "new_top_id": 4724493
+    },
+    {
+      "row_id": 7923433,
+      "query_company": "The Westfield Group A",
+      "old_top_id": 1188570,
+      "new_top_id": 7923433
+    },
+    {
+      "row_id": 7923821,
+      "query_company": "SMCTG Tour Inc",
+      "old_top_id": 7923848,
+      "new_top_id": 7923821
+    },
+    {
+      "row_id": 7923991,
+      "query_company": "Triple Crown Travel",
+      "old_top_id": 1796805,
+      "new_top_id": 2416876
+    },
+    {
+      "row_id": 7924056,
+      "query_company": "Unique Weddings and Events",
+      "old_top_id": 1492993,
+      "new_top_id": 7924056
+    },
+    {
+      "row_id": 7924461,
+      "query_company": "ARC",
+      "old_top_id": 894023,
+      "new_top_id": 7924461
+    },
+    {
+      "row_id": 7924721,
+      "query_company": "WSP",
+      "old_top_id": 3259377,
+      "new_top_id": 7924721
+    },
+    {
+      "row_id": 7924993,
+      "query_company": "Team Travel Source",
+      "old_top_id": 7375342,
+      "new_top_id": 2551073
+    },
+    {
+      "row_id": 7925053,
+      "query_company": "United Suicide Survivors International",
+      "old_top_id": 7925931,
+      "new_top_id": 7925053
+    },
+    {
+      "row_id": 7925537,
+      "query_company": "Calix, Inc.",
+      "old_top_id": 7798347,
+      "new_top_id": 7925537
+    },
+    {
+      "row_id": 7925554,
+      "query_company": "CSGI",
+      "old_top_id": 6878557,
+      "new_top_id": 7925554
+    },
+    {
+      "row_id": 7925711,
+      "query_company": "Talkdesk",
+      "old_top_id": 5159900,
+      "new_top_id": 7925711
+    },
+    {
+      "row_id": 7925715,
+      "query_company": "Team Offsite",
+      "old_top_id": 6245990,
+      "new_top_id": 7925715
+    },
+    {
+      "row_id": 7925890,
+      "query_company": "Groups360",
+      "old_top_id": 7788264,
+      "new_top_id": 4177053
+    },
+    {
+      "row_id": 7925893,
+      "query_company": "Groups360",
+      "old_top_id": 7788264,
+      "new_top_id": 7925893
+    },
+    {
+      "row_id": 7925895,
+      "query_company": "Groups360",
+      "old_top_id": 7788264,
+      "new_top_id": 4733375
+    },
+    {
+      "row_id": 7925961,
+      "query_company": "Hotelplanner - Business Meeting",
+      "old_top_id": 7925961,
+      "new_top_id": 7882618
+    },
+    {
+      "row_id": 7926054,
+      "query_company": "Coldwell Banker Bermuda Realty",
+      "old_top_id": 4672963,
+      "new_top_id": 7881189
+    },
+    {
+      "row_id": 7926173,
+      "query_company": "Spotlight",
+      "old_top_id": 6763246,
+      "new_top_id": 7926173
+    },
+    {
+      "row_id": 7926343,
+      "query_company": "Basis",
+      "old_top_id": 6917679,
+      "new_top_id": 3500405
+    },
+    {
+      "row_id": 7926399,
+      "query_company": "IFS Institute",
+      "old_top_id": 537895,
+      "new_top_id": 7926399
+    },
+    {
+      "row_id": 7926449,
+      "query_company": "Davies Group",
+      "old_top_id": 6914812,
+      "new_top_id": 1806874
+    },
+    {
+      "row_id": 7926539,
+      "query_company": "Groups360",
+      "old_top_id": 7788264,
+      "new_top_id": 7903560
+    },
+    {
+      "row_id": 7926541,
+      "query_company": "Groups360",
+      "old_top_id": 7788264,
+      "new_top_id": 3746124
+    },
+    {
+      "row_id": 7926644,
+      "query_company": "ACTA",
+      "old_top_id": 1067710,
+      "new_top_id": 7926644
+    },
+    {
+      "row_id": 7926693,
+      "query_company": "Endeavor Business Media",
+      "old_top_id": 7209629,
+      "new_top_id": 4981026
+    },
+    {
+      "row_id": 7926710,
+      "query_company": "Johnson Meeting Group",
+      "old_top_id": 1221137,
+      "new_top_id": 7926710
+    },
+    {
+      "row_id": 7926742,
+      "query_company": "Merus",
+      "old_top_id": 5736628,
+      "new_top_id": 7926742
+    },
+    {
+      "row_id": 7926959,
+      "query_company": "Insider Expeditions",
+      "old_top_id": 6780788,
+      "new_top_id": 7926959
+    },
+    {
+      "row_id": 7926976,
+      "query_company": "Kingdom Builders",
+      "old_top_id": 5018865,
+      "new_top_id": 7926976
+    },
+    {
+      "row_id": 7927046,
+      "query_company": "Scout-vn",
+      "old_top_id": 3388858,
+      "new_top_id": 2810732
+    },
+    {
+      "row_id": 7927050,
+      "query_company": "Sevita Health",
+      "old_top_id": 7458808,
+      "new_top_id": 7927050
+    },
+    {
+      "row_id": 7927064,
+      "query_company": "Texas Association for Education and Rehabilitation of the Blind",
+      "old_top_id": 7927832,
+      "new_top_id": 7927064
+    },
+    {
+      "row_id": 7927077,
+      "query_company": "Tornado travels",
+      "old_top_id": 719566,
+      "new_top_id": 1676806
+    },
+    {
+      "row_id": 7927170,
+      "query_company": "hanike",
+      "old_top_id": 7927680,
+      "new_top_id": 7927170
+    },
+    {
+      "row_id": 7927207,
+      "query_company": "Octane",
+      "old_top_id": 6265718,
+      "new_top_id": 7927207
+    },
+    {
+      "row_id": 7927250,
+      "query_company": "Groups360",
+      "old_top_id": 7788264,
+      "new_top_id": 7927250
+    },
+    {
+      "row_id": 7927255,
+      "query_company": "Murrelektronik, Inc.",
+      "old_top_id": 6320113,
+      "new_top_id": 1789683
+    },
+    {
+      "row_id": 7927460,
+      "query_company": "Groups360",
+      "old_top_id": 7788264,
+      "new_top_id": 7927460
+    },
+    {
+      "row_id": 7927462,
+      "query_company": "Groups360",
+      "old_top_id": 7788264,
+      "new_top_id": 3385908
+    },
+    {
+      "row_id": 7927497,
+      "query_company": "Sherwin- WIlliams",
+      "old_top_id": 7927497,
+      "new_top_id": 33115
+    },
+    {
+      "row_id": 7927529,
+      "query_company": "Nielsen IQ",
+      "old_top_id": 6860907,
+      "new_top_id": 7927529
+    },
+    {
+      "row_id": 7927581,
+      "query_company": "Foley",
+      "old_top_id": 7012252,
+      "new_top_id": 7927581
+    },
+    {
+      "row_id": 7927584,
+      "query_company": "Everon",
+      "old_top_id": 7655376,
+      "new_top_id": 7927584
+    },
+    {
+      "row_id": 7927596,
+      "query_company": "Brightspring Health Services",
+      "old_top_id": 6756528,
+      "new_top_id": 7927596
+    },
+    {
+      "row_id": 7927607,
+      "query_company": "Arizent",
+      "old_top_id": 6143644,
+      "new_top_id": 7927607
+    },
+    {
+      "row_id": 7927652,
+      "query_company": "TAG Global Travel",
+      "old_top_id": 6763491,
+      "new_top_id": 7927652
+    },
+    {
+      "row_id": 7927700,
+      "query_company": "FIT4MOM",
+      "old_top_id": 5454401,
+      "new_top_id": 7927700
+    },
+    {
+      "row_id": 7927732,
+      "query_company": "CP Group",
+      "old_top_id": 2103348,
+      "new_top_id": 7927732
+    },
+    {
+      "row_id": 7927739,
+      "query_company": "FC Concierge",
+      "old_top_id": 7927847,
+      "new_top_id": 7927739
+    },
+    {
+      "row_id": 7927747,
+      "query_company": "Groups360",
+      "old_top_id": 7788264,
+      "new_top_id": 7927747
+    },
+    {
+      "row_id": 7927749,
+      "query_company": "Groups360",
+      "old_top_id": 7788264,
+      "new_top_id": 6906641
+    },
+    {
+      "row_id": 7927750,
+      "query_company": "Groups360",
+      "old_top_id": 7788264,
+      "new_top_id": 6906641
+    }
+  ]
+}

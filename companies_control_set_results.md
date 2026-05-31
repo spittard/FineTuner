@@ -1,718 +1,971 @@
 # Company Match Control Set Results
-Generated: 2026-03-14 18:52:58
-Total Companies Tested: 109
----
-
-## Summary Statistics
-
-- **Exact Matches**: 4 (3.7%)
-- **High Confidence (>=0.9)**: 10 (9.2%)
-- **Medium Confidence (0.7-0.9)**: 76 (69.7%)
-- **Low Confidence (<0.7)**: 23 (21.1%)
-
+Generated: 2026-05-31 16:52:08
+Total Companies Tested: 111
 ---
 
 ## Detailed Results
 
-### 1. NIH
+### 1. NIH — Bethesda, MD
 
-**Top Match**: 2017 NIH Regional Seminar (NIH/OER) - Outbound
+**Top Match**: NIH
 
-- **Score**: 0.9500 (95.00%)
-- **Match Type**: hybrid
-- **String Score**: 0.6000
-- **Semantic Score**: 0.3416
+- **Match location**: Bethesda, MD
+- **Final Score**: 1.0000 (100.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (100.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Bethesda, MD matches the query geography well (location score 1.00).<br>• <b>Entity Frequency:</b> ⚪ <b>Neutral</b> — Found 197 occurrences, which is common but not dominant.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Food 28.8%<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 2017 NIH Regional Seminar (NIH/OER) - Outbound | 95.00% | 0.6000 | 0.3416 | hybrid |
-| 2 | Aaah | 55.85% | 0.1286 | 0.6626 | hybrid |
-| 3 | *N | 52.10% | 0.1800 | 0.4928 | hybrid |
-| 4 | A Night Of | 52.08% | 0.3375 | 0.2882 | hybrid |
-| 5 | *NIH* *NIDA* | 50.80% | 0.1636 | 0.5057 | hybrid |
-| 6 | 3Mundi | 48.36% | 0.2000 | 0.3617 | hybrid |
-| 7 | 2H | 47.89% | 0.1800 | 0.3980 | hybrid |
-| 8 | AAAI | 47.63% | 0.1286 | 0.4381 | hybrid |
-| 9 | AAHAP | 47.40% | 0.1125 | 0.4617 | hybrid |
-| 10 | 7N | 47.26% | 0.1800 | 0.3671 | hybrid |
-
----
-
-### 2. Ohio University
-
-**Top Match**: A.R.M. of Ohio
-
-- **Score**: 0.9000 (90.00%)
-- **Match Type**: hybrid
-- **String Score**: 0.8500
-- **Semantic Score**: 0.6971
-
-**Top 10 Matches:**
-
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A.R.M. of Ohio | 90.00% | 0.8500 | 0.6971 | hybrid |
-| 2 | AAA Ohio | 90.00% | 0.8500 | 0.6854 | hybrid |
-| 3 | AAA Ohio | 90.00% | 0.8500 | 0.6854 | hybrid |
-| 4 | AAA Ohio | 90.00% | 0.8500 | 0.6854 | hybrid |
-| 5 | AAA OHIO | 90.00% | 0.8500 | 0.6854 | hybrid |
-| 6 | AAA Ohio | 90.00% | 0.8500 | 0.6854 | hybrid |
-| 7 | AAA Ohio | 90.00% | 0.8500 | 0.6854 | hybrid |
-| 8 | AAA Ohio | 90.00% | 0.8500 | 0.6854 | hybrid |
-| 9 | !!Diocese of Ohio | 90.00% | 0.8500 | 0.5401 | hybrid |
-| 10 | 12U Ohio Elite | 83.35% | 0.7727 | 0.7417 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | NIH | 100.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | NIH - CSR | 98.4% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | NIH | 98.4% | <div style='border: 1px solid #00ff00; border-left... |
+| 4 | NIH - NIDDK | 98.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 5 | Foundation for NIH | 97.9% | <div style='border: 1px solid #00ff00; border-left... |
+| 6 | NIH - NICHD | 97.9% | <div style='border: 1px solid #00ff00; border-left... |
+| 7 | NIH National Institute of Health | 97.8% | <div style='border: 1px solid #00ff00; border-left... |
+| 8 | NIH - NIAID | 97.7% | <div style='border: 1px solid #00ff00; border-left... |
+| 9 | NIH - NINDS | 97.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 10 | CSR NIH | 97.5% | <div style='border: 1px solid #00ff00; border-left... |
+| 11 | NIH - NCRR | 97.4% | <div style='border: 1px solid #00ff00; border-left... |
+| 12 | NIH - NEI | 97.3% | <div style='border: 1px solid #00ff00; border-left... |
+| 13 | NIH - NIAMS | 97.3% | <div style='border: 1px solid #00ff00; border-left... |
+| 14 | NIH - NIBIB | 97.3% | <div style='border: 1px solid #00ff00; border-left... |
+| 15 | NIH - Bib | 97.3% | <div style='border: 1px solid #00ff00; border-left... |
+| 16 | NIH- | 97.2% | <div style='border: 1px solid #00ff00; border-left... |
+| 17 | NIH OD | 97.2% | <div style='border: 1px solid #00ff00; border-left... |
+| 18 | NIH - Niaaa | 97.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 19 | NIH-NIDDK | 97.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 20 | Foundation NIH | 97.1% | <div style='border: 1px solid #00ff00; border-left... |
 
 ---
 
-### 3. Western University
+### 2. Ohio University — Athens, OH
 
-**Top Match**: 8U Western State Champions
+**Top Match**: Ohio University
 
-- **Score**: 0.8000 (80.00%)
-- **Match Type**: hybrid
-- **String Score**: 0.7083
-- **Semantic Score**: 0.5969
+- **Match location**: Athens, OH
+- **Final Score**: 1.0000 (100.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (100.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Athens, OH matches the query geography well (location score 1.00).<br>• <b>Entity Frequency:</b> ⚪ <b>Neutral</b> — Found 119 occurrences, which is common but not dominant.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ Ohio 81.8%, ✅ Illinois 39.4%, ✅ Chicago 33.9%, ✅ California 31.9%, ✅ Miami 27.6%<br>• Industry: ✅ Education 41.9%<br>• Nature: ✅ Professional 27.6%<br>• Insight: The model detects a strong 'Ohio' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 8U Western State Champions | 80.00% | 0.7083 | 0.5969 | hybrid |
-| 2 | AAA  Western Region | 79.47% | 0.7727 | 0.4595 | hybrid |
-| 3 | AAF Western Region | 79.06% | 0.7727 | 0.4850 | hybrid |
-| 4 | *West Virginia University | 78.67% | 0.5795 | 0.7320 | hybrid |
-| 5 | 2017 HPN Western Conference | 77.74% | 0.7083 | 0.5293 | hybrid |
-| 6 | AAF Western Region Conference | 77.34% | 0.7083 | 0.5156 | hybrid |
-| 7 | 4D University | 76.47% | 0.6375 | 0.6048 | hybrid |
-| 8 | 4D University | 76.47% | 0.6375 | 0.6048 | hybrid |
-| 9 | 87th Far Western | 75.79% | 0.7727 | 0.4117 | hybrid |
-| 10 | !Duke University | 75.72% | 0.6375 | 0.5579 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Ohio University | 100.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Ohio University Athletics | 97.8% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Ohio University Alumni Association | 97.8% | <div style='border: 1px solid #00ff00; border-left... |
+| 4 | Ohio University Foundation | 97.7% | <div style='border: 1px solid #00ff00; border-left... |
+| 5 | Ohio University Athletics Department | 97.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 6 | The Ohio University Foundation | 97.2% | <div style='border: 1px solid #00ff00; border-left... |
+| 7 | Ohio University College of Business | 97.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 8 | OHIO UNIVERSITY DEPARTMENT OF INTERCOLLEGIATE ATHLETICS | 97.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 9 | Ohio University Press | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 10 | OHIO UNIVERSITY-COM | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 11 | Ohio university Alumi | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 12 | Ohio University Hockey | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 13 | Ohio University Credit Union | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 14 | Ohio University Division of University Advancement | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 15 | College of Business Ohio University | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 16 | Ohio University Office of Development | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 17 | Ohio University School of Journalism | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 18 | Ohio University School of Telecommunications | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 19 | Ohio University Marching Band | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 20 | Ohio University School of Communication Studies | 96.5% | <div style='border: 1px solid #00ff00; border-left... |
 
 ---
 
-### 4. Kruger Products
+### 3. Western University — London, ON
 
-**Top Match**: 3S Products
+**Top Match**: Western University
 
-- **Score**: 0.8473 (84.73%)
-- **Match Type**: hybrid
-- **String Score**: 0.7438
-- **Semantic Score**: 0.4845
+- **Match location**: London, ON
+- **Final Score**: 1.0000 (100.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (100.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at London, ON matches the query geography well (location score 1.00).<br>• <b>Entity Frequency:</b> ⚪ <b>Neutral</b> — Found 284 occurrences, which is common but not dominant.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ London 32.9%, ✅ Ohio 31.9%, ✅ California 27.5%<br>• Industry: ✅ Education 46.3%<br>• Nature: ✅ Professional 32.0%, ✅ Local 27.3%<br>• Insight: The model detects a strong 'Education' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 3S Products | 84.73% | 0.7438 | 0.4845 | hybrid |
-| 2 | A & W Products Company | 83.47% | 0.7438 | 0.4568 | hybrid |
-| 3 | A.P.P. Products | 83.16% | 0.7438 | 0.4546 | hybrid |
-| 4 | A&W Products | 83.14% | 0.7438 | 0.4498 | hybrid |
-| 5 | A & C Products | 82.32% | 0.7438 | 0.4336 | hybrid |
-| 6 | 3B Products | 81.98% | 0.7438 | 0.4276 | hybrid |
-| 7 | !!Kendro Products | 81.18% | 0.7438 | 0.4184 | hybrid |
-| 8 | A&I Products | 80.78% | 0.7438 | 0.3816 | hybrid |
-| 9 | A&E Products | 80.07% | 0.7438 | 0.3919 | hybrid |
-| 10 | A&E Products | 80.07% | 0.7438 | 0.3919 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Western University | 100.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Ivey Business School Western University | 97.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Western University Education | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 4 | Western University Faculty | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 5 | Western University, Western Law | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 6 | Western University of Ontario | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 7 | WESTERN UNIVERSITY - CANADA | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 8 | Western University London Ontario | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 9 | University Students Council of Western University | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 10 | Western Alumni | 92.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Western University | 91.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | Western University | 90.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Western University Education | 88.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Western College | 84.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | America University | 78.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | University College London | 67.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | University Kings College | 66.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Western University | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Western University | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Western University | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+
+---
+
+### 4. Kruger Products — Bentonville, AR
+
+**Top Match**: Kruger Products
+
+- **Match location**: Bentonville, AR
+- **Final Score**: 1.0000 (100.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (100.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Bentonville, AR matches the query geography well (location score 1.00).<br>• <b>Entity Frequency:</b> ⚪ <b>Neutral</b> — Found 127 occurrences, which is common but not dominant.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Food 27.4%<br>
+
+**Top 20 Matches:**
+
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Kruger Products | 100.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Kruger Products USA Inc | 97.3% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Kruger Products USA, Inc. | 97.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 4 | Kruger Products USA | 96.6% | <div style='border: 1px solid #00ff00; border-left... |
+| 5 | Kruger Products USA, Inc. | 88.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Kruger | 76.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | GE Consumer Products | 71.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Scott Products | 63.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Kruger Products | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 10 | Kruger Products USA Inc. | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | Yogi Products | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | Kruger Products US Sales Meeting | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | Assembled Products | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | Scott Products | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | Scott Products | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | Kruger Products | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | Kruger Products | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | Kruger Products | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Kruger Products | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Kruger Products | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 5. Vision America
 
-**Top Match**: Vision 2000
+**Top Match**: Vision America
 
-- **Score**: 0.8751 (87.51%)
-- **Match Type**: hybrid
-- **String Score**: 0.7438
-- **Semantic Score**: 0.6507
+- **Final Score**: 0.9410 (94.1%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.1%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ New York 34.7%, ✅ Canada 28.8%, ✅ Miami 28.8%, ✅ California 28.2%, ✅ Paris 26.3%<br>• Structure: ✅ Government 26.1%<br>• Nature: ✅ Global 42.9%, ✅ Consumer 32.2%<br>• Insight: The model detects a strong 'Global' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | Vision 2000 | 87.51% | 0.7438 | 0.6507 | hybrid |
-| 2 | 2020 Vision | 85.64% | 0.7438 | 0.6282 | hybrid |
-| 3 | A Vision Ventures | 83.69% | 0.7438 | 0.6190 | hybrid |
-| 4 | A Vision Experience | 83.62% | 0.7438 | 0.6032 | hybrid |
-| 5 | 20 Vision | 83.13% | 0.7438 | 0.5630 | hybrid |
-| 6 | 1st Vision | 82.20% | 0.7438 | 0.5428 | hybrid |
-| 7 | 1st Vision | 82.20% | 0.7438 | 0.5428 | hybrid |
-| 8 | A Fluent Vision | 81.81% | 0.7438 | 0.5445 | hybrid |
-| 9 | 5D Vision | 81.72% | 0.7438 | 0.5390 | hybrid |
-| 10 | 2020 Vision Club | 81.70% | 0.6761 | 0.6234 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Vision America | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | VISION AMERICA | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Vision America | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 4 | Vision America | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 5 | Vision America | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 6 | Vision America | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 7 | Vision America | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 8 | Vision action america | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Vision America Action | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Vision America Action | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Vision Benefits of America | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | Vision Council of America | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | VISION COUNCIL OF AMERICA | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Vision Council Of America | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Vision Council of America | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Vision Council of America | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Vision Council of America | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | The Vision Council of America | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | Hanwha Vision America | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | VISION AMERICA OF BIRMINGHAM | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
 ### 6. PDMA Association
 
-**Top Match**: *Unknown Association
+**Top Match**: PDMA Association
 
-- **Score**: 0.7986 (79.86%)
-- **Match Type**: hybrid
-- **String Score**: 0.6375
-- **Semantic Score**: 0.5118
+- **Match location**: Mount Laurel, NJ
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Mount Laurel, NJ. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | *Unknown Association | 79.86% | 0.6375 | 0.5118 | hybrid |
-| 2 | 3T Association | 77.80% | 0.6375 | 0.4857 | hybrid |
-| 3 | A-3 Association | 77.48% | 0.6375 | 0.4530 | hybrid |
-| 4 | 2016 Association | 77.25% | 0.6375 | 0.4623 | hybrid |
-| 5 | 2018 Association | 76.37% | 0.6375 | 0.4457 | hybrid |
-| 6 | AAINA Association | 75.98% | 0.6375 | 0.4308 | hybrid |
-| 7 | 2012 Association | 75.53% | 0.6375 | 0.4337 | hybrid |
-| 8 | 2012 Association | 75.53% | 0.6375 | 0.4337 | hybrid |
-| 9 | 2012 Association | 75.53% | 0.6375 | 0.4337 | hybrid |
-| 10 | 2012 Association | 75.53% | 0.6375 | 0.4337 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | PDMA Association | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Association Headquarters-PDMA | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | PDMA ALLIANCE | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | PDMA Alliance | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | PDMA ALLIANCE | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | PDMA Alliance | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | PDMA ALLIANCE | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | PDMA ALLIANCE | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | PDMA Alliance | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | PDMA Alliance Inc. | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | PDMA ALLIANCE, INC | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | Buzzeo PDMA | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | PDMA | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | PDMA | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | PDMA | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | PDMA | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | PDMA | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | PDMA | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | PDMA | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | PDMA | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
 ### 7. Nicolas/Sanchez Wedding
 
-**Top Match**: 1- Nicolas Wedding
+**Top Match**: Nicolas/Sanchez Wedding
 
-- **Score**: 0.8033 (80.33%)
-- **Match Type**: hybrid
-- **String Score**: 0.6761
-- **Semantic Score**: 0.7839
+- **Match location**: Port Chester, NY
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 GOOD (88%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Port Chester, NY. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 1- Nicolas Wedding | 80.33% | 0.6761 | 0.7839 | hybrid |
-| 2 | 1- Nicolas Wedding | 80.33% | 0.6761 | 0.7839 | hybrid |
-| 3 | 1- Nicolas Wedding | 80.33% | 0.6761 | 0.7839 | hybrid |
-| 4 | A. Cruz Wedding | 74.93% | 0.6375 | 0.7236 | hybrid |
-| 5 | !Phillips/Grajack Wedding | 72.58% | 0.6375 | 0.6295 | hybrid |
-| 6 | 2019 Wedding | 72.43% | 0.6375 | 0.5935 | hybrid |
-| 7 | A PEDRO AND INES WEDDING | 72.38% | 0.5795 | 0.6604 | hybrid |
-| 8 | 2019 Wedding | 72.00% | 0.6375 | 0.5935 | hybrid |
-| 9 | 2019 Wedding | 72.00% | 0.6375 | 0.5935 | hybrid |
-| 10 | 1- D'Addario Wedding | 71.16% | 0.5795 | 0.6346 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Nicolas/Sanchez Wedding | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Sanchez Wedding | 84.0% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Sanchez/Flores Wedding | 80.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Garcia Sanchez Wedding | 80.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Sanchez Wedding Reception | 79.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Sanchez/Fuentes Wedding | 79.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Merida/Sanchez Wedding | 78.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Sanchez/Ramos Wedding | 78.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Sanchez/Hoos Wedding | 77.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Sanchez/Ramirez Wedding | 77.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Povedo/Sanchez Wedding | 77.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Sanchez/Ferree Wedding | 77.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Sanchez/Gonzalez Wedding | 77.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Sanchez/Justin Wedding | 77.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Phillips/Sanchez Wedding | 77.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Castillo Sanchez Wedding | 77.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Solares/Sanchez Wedding | 76.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Sanchez/Puerto Wedding | 76.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Sanchez/Naranjo Wedding | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Rodriguez/ Sanchez Wedding | 75.7% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
-### 8. Kehilat Ariel Synagogue
+### 8. Kehilat Ariel Synagogue — Los Angeles, CA
 
-**Top Match**: AA Synagogue
+**Top Match**: Ohel Moshe Synagogue
 
-- **Score**: 0.7036 (70.36%)
-- **Match Type**: hybrid
-- **String Score**: 0.4318
-- **Semantic Score**: 0.5850
+- **Match location**: Los Angeles, CA
+- **Final Score**: 0.7057 (70.6%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #ffaa00; border-left: 10px solid #ffaa00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#ffaa00;'>⚠️ MODERATE MATCH (70.6%)</span><br><span style='color:#eee; font-size:1.1em;'>Partial Composite Match</span></div><br><br><b>Relationship:</b> This is a <b>Hybrid Word Overlap</b>. The system detected shared keywords ('synagogue') despite differences in overall string structure.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟠 FAIR (48%) — Based on partial character alignment.<br>• <b>Semantic Link:</b> 🟡 MODERATE (66%) — Detected via moderate meaning-based connection.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (92%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Los Angeles, CA matches the query geography well (location score 1.00).<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | AA Synagogue | 70.36% | 0.4318 | 0.5850 | hybrid |
-| 2 | $United Synagogue of Conservative Judaism, (The) | 61.87% | 0.3958 | 0.4657 | hybrid |
-| 3 | A Christian Ministry in the Na | 50.72% | 0.1423 | 0.4698 | hybrid |
-| 4 | 01598 Arielle Corporate | 50.24% | 0.1761 | 0.4320 | hybrid |
-| 5 | (Israelite) Church of God | 49.27% | 0.1074 | 0.4776 | hybrid |
-| 6 | !The Jewish Meeting Place! --Come and Schmooze a while. | 48.12% | 0.0466 | 0.5201 | hybrid |
-| 7 | 4HIM COVENANT CHURCH | 47.63% | 0.0964 | 0.4639 | hybrid |
-| 8 | AAA of San Bernadino | 47.38% | 0.1615 | 0.3719 | hybrid |
-| 9 | (HD) Shachah Ministries International | 47.06% | 0.1364 | 0.4135 | hybrid |
-| 10 | (HD) Shachah Ministries International | 47.06% | 0.1364 | 0.4135 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Ohel Moshe Synagogue | 70.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 2 | Synagogue 3000 | 70.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | Sephardic Temple-Synagogue | 69.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | KAS | 69.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Camp Ariel | 67.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Kehilat Ariel Synagogue | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 7 | Kehilat Ariel Messianic Synagogue | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 8 | Ohr Shalom Synagogue | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 9 | Beth Ariel Messianic Congregation | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 10 | University Synagogue | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | Kahili synagogue | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | Bet AM Shalom Synagogue | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | Kehilla Community Synagogue | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | Kehilat Ariel | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | Kehilat Ariel Passover | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | Synagogue Temple Aliyah | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | Beth Ariel Fellowship | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | Temple Sinai Synagogue | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Temple Sinai Synagogue | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Ariel Events | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 9. Next Level Events
 
-**Top Match**: A Step Ahead Events
+**Top Match**: Next Level Events
 
-- **Score**: 0.7342 (73.42%)
-- **Match Type**: hybrid
-- **String Score**: 0.4750
-- **Semantic Score**: 0.6606
+- **Final Score**: 0.9410 (94.1%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.1%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Nature: ✅ Global 30.7%<br>• Insight: The model detects a strong 'Global' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A Step Ahead Events | 73.42% | 0.4750 | 0.6606 | hybrid |
-| 2 | A Step Ahead Events | 73.17% | 0.4750 | 0.6606 | hybrid |
-| 3 | A Step Ahead Events | 72.23% | 0.4750 | 0.6606 | hybrid |
-| 4 | A Step Ahead Events | 72.23% | 0.4750 | 0.6606 | hybrid |
-| 5 | A Step Ahead Events | 72.23% | 0.4750 | 0.6606 | hybrid |
-| 6 | A STEP AHEAD EVENTS | 72.23% | 0.4750 | 0.6606 | hybrid |
-| 7 | A Step Ahead Events | 72.23% | 0.4750 | 0.6606 | hybrid |
-| 8 | A Step Ahead Events | 72.23% | 0.4750 | 0.6606 | hybrid |
-| 9 | A Step Ahead Events | 72.23% | 0.4750 | 0.6606 | hybrid |
-| 10 | A Step Ahead Events | 72.23% | 0.4750 | 0.6606 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Next Level Events | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Next Level Events | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Next Level Events | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 4 | NEXT LEVEL EVENTS | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 5 | Next Level Events | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 6 | Next Level Events | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 7 | NEXT LEVEL EVENTS | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 8 | Next Level Events | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 9 | Next Level Events | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 10 | Next Level Events | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 11 | Next Level Events | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 12 | Next Level Plus Events | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | The Next Level Events and Services | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Next Level Marketing & Events | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Next Level Site Selections & Events | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Next Level Site Selections and Events | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Next Level Site Selections and Events | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | Next Level Site Selection & Events | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | Next Level Events & Marketing | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | Next Level Site Selection & Events | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
 ### 10. Site Foundation Golf Tournament
 
-**Top Match**: 7 Eleven Golf Tournament
+**Top Match**: Site Foundation Golf Tournament
 
-- **Score**: 0.8558 (85.58%)
-- **Match Type**: hybrid
-- **String Score**: 0.7438
-- **Semantic Score**: 0.7326
+- **Match location**: Miami, FL
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Miami, FL. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 7 Eleven Golf Tournament | 85.58% | 0.7438 | 0.7326 | hybrid |
-| 2 | 4H Youth Development Golf Tournament | 82.22% | 0.6761 | 0.7188 | hybrid |
-| 3 | AACC Golf Tournament | 81.81% | 0.6761 | 0.7329 | hybrid |
-| 4 | 2018 Charity Golf Tournament Committee | 80.26% | 0.6761 | 0.7283 | hybrid |
-| 5 | 1st Tee World Golf Foundation | 78.88% | 0.6761 | 0.6414 | hybrid |
-| 6 | (k) International Foundation for Junior Golf | 78.00% | 0.6198 | 0.6809 | hybrid |
-| 7 | 3rd Annual Super Holiday Golf Tournament | 77.65% | 0.6198 | 0.7017 | hybrid |
-| 8 | *Ron Young Invitational Golf Tournament | 77.44% | 0.6761 | 0.5967 | hybrid |
-| 9 | 1st Annual Golf Tournament 'FORE' Degenerates | 76.72% | 0.6198 | 0.6727 | hybrid |
-| 10 | 5th Annual BFO-Toronto Memorial Golf Tournament Organizing Committee | 73.23% | 0.4958 | 0.7283 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Site Foundation Golf Tournament | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Hearth Foundation Golf Tournament | 82.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Tournament Golf Foundation Incorporated | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | The Job Foundation - Golf Tournament | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | The Job Foundation - Golf Tournament | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | The Job Foundation - Golf Tournament | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | The Job Foundation - Golf Tournament | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | The Job Foundation - Golf Tournament | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | The Job Foundation - Golf Tournament | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Colorado Open Golf foundation | 78.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Caribbean Golf Invitational Foundation | 78.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Caribbean Golf Invitational Foundation | 78.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Natl Football Foundation Golf Tournament | 78.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Natl Football Foundation Golf Tournament | 78.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Hi Kid Foundation Golf Tournament | 78.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | International Junior Golf Tournament | 77.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Golf League Amateur Golf Tournament | 77.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | National Christian Foundation Golf | 77.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Ghetto Open Golf Tournament | 77.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | YOUTH WORLD GOLF TOURNAMENT | 77.2% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 11. Interim WG Meeting - BIER
 
-**Top Match**: AACP 2012 Interim Meeting
+**Top Match**: Interim WG Meeting - BIER
 
-- **Score**: 0.8252 (82.52%)
-- **Match Type**: hybrid
-- **String Score**: 0.7083
-- **Semantic Score**: 0.5744
+- **Match location**: Salem, OR
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Salem, OR. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | AACP 2012 Interim Meeting | 82.52% | 0.7083 | 0.5744 | hybrid |
-| 2 | AACP 2012 Interim Meeting | 82.52% | 0.7083 | 0.5744 | hybrid |
-| 3 | 2017 CBRE SPG Meeting | 69.80% | 0.4500 | 0.5819 | hybrid |
-| 4 | 2026 management offsite meeting | 69.37% | 0.4500 | 0.5719 | hybrid |
-| 5 | 44th MMPDS Coordination Meeting | 68.36% | 0.4500 | 0.5516 | hybrid |
-| 6 | 2016 Staff Meeting - BOD | 68.34% | 0.4500 | 0.5418 | hybrid |
-| 7 | 12.24 EAL Meeting XQNBCB6RQ3Z | 68.13% | 0.4500 | 0.5281 | hybrid |
-| 8 | AAA Allied Group Meeting Apr2015 | 68.12% | 0.4500 | 0.5346 | hybrid |
-| 9 | AAA Business Manager's Meeting | 67.84% | 0.4500 | 0.5451 | hybrid |
-| 10 | 2021 B&C Annual Meeting JKNWLV6KDST | 67.77% | 0.4091 | 0.5800 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Interim WG Meeting - BIER | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Legislative Interim Meeting | 68.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | BI Meeting | 64.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Bi Annual Meeting | 62.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Bi Annual Meeting | 62.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Biz meeting | 61.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Biz meeting | 61.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Biz meeting | 61.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | ETW Meeting Management | 61.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | HRW MEETING | 61.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | HRW Meeting | 61.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | HRW Meeting Services | 60.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | HRW Meeting Services | 60.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Bim Business & Inventive Meeting | 60.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Bim Object Meeting | 60.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | HRC Advisory Board meeting | 60.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | B Planning Meeting Management | 60.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | WMS Meeting | 60.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | WG Consulting | 60.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | WG Consulting | 60.1% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 12. DermaQuest Inc
 
-**Top Match**: A QUESTRO INC
+**Top Match**: DermaQuest Inc
 
-- **Score**: 0.5948 (59.48%)
-- **Match Type**: hybrid
-- **String Score**: 0.2647
-- **Semantic Score**: 0.4676
+- **Match location**: Hayward, CA
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Hayward, CA. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A QUESTRO INC | 59.48% | 0.2647 | 0.4676 | hybrid |
-| 2 | A.N. Deringer Inc. | 59.35% | 0.2000 | 0.5529 | hybrid |
-| 3 | A Questro Inc. | 58.95% | 0.2647 | 0.4707 | hybrid |
-| 4 | A Questro Inc. | 58.95% | 0.2647 | 0.4707 | hybrid |
-| 5 | A.N. Deringer, Inc. | 58.09% | 0.2000 | 0.5277 | hybrid |
-| 6 | A.N. Deringer, Incorporated | 57.17% | 0.2000 | 0.5032 | hybrid |
-| 7 | 45DEGREES INC. | 56.82% | 0.2368 | 0.4529 | hybrid |
-| 8 | A. N. Deringer, Inc | 56.55% | 0.1636 | 0.5338 | hybrid |
-| 9 | 3DM West, Inc. | 54.48% | 0.2273 | 0.4189 | hybrid |
-| 10 | 3Degrees Inc. | 54.24% | 0.2500 | 0.3823 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | DermaQuest Inc | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Dermaquest, Incorporated | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Dermaquest Skin Care | 89.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Dermaquest Skin Therapy | 89.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Equest | 53.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 6 | eQuest | 53.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 7 | eQUEST | 53.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 8 | eQuest | 53.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 9 | eQUEST | 53.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 10 | EQuest | 53.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | TrialQuest | 53.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | Adaquest | 51.5% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | ENTREQUEST | 51.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | entreQuest | 51.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | EntreQuest | 51.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | ENTREQUEST | 51.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | Interquest | 51.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | Interquest | 51.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Interquest | 51.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Interquest | 51.1% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
-### 13. Ellwood Group Inc
+### 13. Ellwood Group Inc — Chicago, IL
 
-**Top Match**: 9Wood, Inc
+**Top Match**: Ellwood Associates
 
-- **Score**: 0.6140 (61.40%)
-- **Match Type**: hybrid
-- **String Score**: 0.3000
-- **Semantic Score**: 0.5894
+- **Match location**: Chicago, IL
+- **Final Score**: 0.9718 (97.2%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (97.2%)</span><br><span style='color:#eee; font-size:1.1em;'>High Lexical Similarity</span></div><br><br><b>Relationship:</b> This is a <b>Hybrid Word Overlap</b>. The system detected shared keywords ('ellwood') despite differences in overall string structure.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (90%) — Based on strong character overlap.<br>• <b>Semantic Link:</b> 🟢 GOOD (77%) — Detected via strong contextual link.<br>• <b>Concept Alignment:</b> 🟢 GOOD (85%) — Reflects related business categories.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Chicago, IL matches the query geography well (location score 1.00).<br>• <b>Entity Popularity:</b> 🟢 <b>+0.6% Boost</b> — Higher confidence due to 2 occurrences in master set.<br><br><br><b>Concept Analysis:</b><br>• Nature: ✅ Professional 31.6%<br>• Insight: The model detects a strong 'Professional' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 9Wood, Inc | 61.40% | 0.3000 | 0.5894 | hybrid |
-| 2 | Woodland Group | 55.14% | 0.2400 | 0.5520 | hybrid |
-| 3 | 4Good Inc. | 54.85% | 0.2250 | 0.5227 | hybrid |
-| 4 | A.L. Wood | 54.62% | 0.2922 | 0.4418 | hybrid |
-| 5 | A.L. Holdings Group, Inc. | 54.36% | 0.1000 | 0.6690 | hybrid |
-| 6 | !LORD CORPORATION | 52.96% | 0.2250 | 0.4696 | hybrid |
-| 7 | $Hanley-Wood, LLC | 52.55% | 0.2153 | 0.4770 | hybrid |
-| 8 | A.Lassonde Inc. | 52.46% | 0.1800 | 0.4886 | hybrid |
-| 9 | A. Lassonde Inc. | 52.43% | 0.1929 | 0.4886 | hybrid |
-| 10 | A Miller Group, Incorporated | 52.10% | 0.1385 | 0.5668 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Ellwood Associates | 97.2% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | EGI | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | Lockwood Group | 62.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Glenwood | 61.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | The Lockwood Group | 60.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Polywood Inc | 59.4% | <div style='border: 1px solid #ff6600; border-left... |
+| 7 | Starwood | 58.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 8 | Rockwood | 56.5% | <div style='border: 1px solid #ff6600; border-left... |
+| 9 | Knollwood Golf Group | 56.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 10 | Elwood Packaging Inc. | 55.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | WEDGEWOOD Alliance | 55.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | Starwood Capital Group | 54.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | Brentwood Management Group | 54.5% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | STARWOOD CORPORATE | 52.4% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | Starwood Meetings Line | 52.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | Ellwood Group Inc | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | ABATE/ELLWOOD WEDDING GROUP | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | Ellwood TX Forge | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Ellwood TX Forge Houston | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Ellwood Specialty Steel | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 14. American Miniature Horse Registry
 
-**Top Match**: 2024 American Horse Publications GKN4DCLWW68
+**Top Match**: American Miniature Horse Registry
 
-- **Score**: 0.7929 (79.29%)
-- **Match Type**: hybrid
-- **String Score**: 0.6761
-- **Semantic Score**: 0.5647
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 2024 American Horse Publications GKN4DCLWW68 | 79.29% | 0.6761 | 0.5647 | hybrid |
-| 2 | AAEP- American Association of Equine Pra | 66.59% | 0.4432 | 0.5020 | hybrid |
-| 3 | 9th & 10th Horse Calvary Association | 61.44% | 0.4432 | 0.4962 | hybrid |
-| 4 | 4-H Saddle Horse Club | 59.69% | 0.4432 | 0.3919 | hybrid |
-| 5 | A Deer A Horse | 59.61% | 0.4062 | 0.4352 | hybrid |
-| 6 | 200 Red Horse Squadron | 59.26% | 0.4875 | 0.3608 | hybrid |
-| 7 | 9th and 10th Horse Cavalry Association of Buffalo Soliders | 58.65% | 0.3750 | 0.4835 | hybrid |
-| 8 | 1 800 Registry | 57.40% | 0.4432 | 0.3118 | hybrid |
-| 9 | 1 800 Registry | 57.40% | 0.4432 | 0.3118 | hybrid |
-| 10 | 2015 AMERICAN ASSOCIATION OF ORTHODONTISTS AFFILIATES | 57.39% | 0.4432 | 0.3006 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | American Miniature Horse Registry | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | American Miniature Horse Association | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | American Miniature Horse Association Headquarters | 79.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Miniature Horse & Pony Show | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | American Hackney Horse Society | 74.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | American Horse Publications Association | 73.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | American Shire Horse Association | 73.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | The American Quarter Horse Association | 73.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | American Horse Show Association | 72.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Arabian Horse Registry of America, Inc. | 72.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | American Youth Horse Council | 72.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | American Youth Horse Council | 72.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | American Youth Horse Council | 72.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | American Youth Horse Council | 72.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | American Youth Horse Council | 72.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | American Youth Horse Council | 72.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | American Saddle Horse Association | 72.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | American Saddle Horse Association | 72.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | American Saddle Horse Association | 72.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | American Youth & Horse Council | 72.0% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 15. YADA ENTERPRISES, INC
 
-**Top Match**: AADAP, Inc.
+**Top Match**: YADA ENTERPRISES, INC
 
-- **Score**: 0.6388 (63.88%)
-- **Match Type**: hybrid
-- **String Score**: 0.3000
-- **Semantic Score**: 0.6000
+- **Match location**: Redfield, SD
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Redfield, SD. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Structure: ✅ Corporate 28.8%, ✅ Small Business 26.2%<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | AADAP, Inc. | 63.88% | 0.3000 | 0.6000 | hybrid |
-| 2 | A.D.A.M, Inc | 61.03% | 0.3375 | 0.4729 | hybrid |
-| 3 | A.D.A.M., Inc. | 60.95% | 0.3375 | 0.4713 | hybrid |
-| 4 | A1A, Inc. | 60.03% | 0.2571 | 0.5510 | hybrid |
-| 5 | AAI Ltd. Corp | 59.30% | 0.2571 | 0.5419 | hybrid |
-| 6 | A1A, Inc. | 59.26% | 0.2571 | 0.5510 | hybrid |
-| 7 | AADA | 59.16% | 0.3375 | 0.4669 | hybrid |
-| 8 | AADA | 59.16% | 0.3375 | 0.4669 | hybrid |
-| 9 | AADA | 59.16% | 0.3375 | 0.4669 | hybrid |
-| 10 | AADA | 59.16% | 0.3375 | 0.4669 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | YADA ENTERPRISES, INC | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Yada Yada | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | yada yada studio | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Yada Sisters | 89.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Yama Enterprises | 65.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Yager Enterprises | 58.4% | <div style='border: 1px solid #ff6600; border-left... |
+| 7 | Yasuda Corporation Limited | 58.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 8 | Yamagada Corporation | 58.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 9 | YAMASA CORPORATION | 57.4% | <div style='border: 1px solid #ff6600; border-left... |
+| 10 | Yamwa Corporation | 56.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | Yata LLC | 56.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | Yam Holdings | 54.8% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | YAP INC | 54.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | Yafah One Enterprises | 54.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | Yamato Corporation | 54.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | Ya | 53.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | Yamagata Enterprises | 53.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | MASDA Corporation | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Yapa | 52.8% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | DAG Enterprises | 52.8% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 16. Seafood Nutrition Partnership
 
-**Top Match**: 21st Century Seafood
+**Top Match**: Seafood Nutrition Partnership
 
-- **Score**: 0.7220 (72.20%)
-- **Match Type**: hybrid
-- **String Score**: 0.5278
-- **Semantic Score**: 0.5890
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Food 48.1%<br>• Insight: The model detects a strong 'Food' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 21st Century Seafood | 72.20% | 0.5278 | 0.5890 | hybrid |
-| 2 | 1035 Affiliate Seafood 2018 | 70.14% | 0.4798 | 0.5535 | hybrid |
-| 3 | 1035 Affiliates Seafood Show 2016 | 69.32% | 0.4398 | 0.5917 | hybrid |
-| 4 | 1035 Affiliates Seafood Show 2016 | 69.32% | 0.4398 | 0.5917 | hybrid |
-| 5 | 1035 Affiliates Seafood Show 2016 | 69.32% | 0.4398 | 0.5917 | hybrid |
-| 6 | 1035 Affiliates Seafood Show 2016 | 69.32% | 0.4398 | 0.5917 | hybrid |
-| 7 | 1035 Affiliate Seafood 2018 | 69.24% | 0.4798 | 0.5535 | hybrid |
-| 8 | 1035 Affiliate Seafood 2018 | 69.24% | 0.4798 | 0.5535 | hybrid |
-| 9 | 1035 Affiliate Seafood 2018 | 69.24% | 0.4798 | 0.5535 | hybrid |
-| 10 | 1035 Affiliate Seafood 2019 | 69.17% | 0.4798 | 0.5549 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Seafood Nutrition Partnership | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Seafood Nutrition Partnership | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Seafood Nutrition Partnership | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 4 | Seafood Nutrition Partnership | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 5 | Sustainable Seafood Partnership | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Sustainable Seafood Partnership | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Sports Nutrition Partnership | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | SEAFOOD NUTRITION | 83.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Seafood Products Association | 67.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Solutions for Seafood | 66.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Solutions for Seafood | 66.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Seafood Choices Alliance | 66.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Food Nutrition Service | 65.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Pet Nutrition Alliance | 65.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Pet Nutrition Alliance | 65.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Handy Seafood | 65.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Seafood Show | 65.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Seafood Show | 65.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Seafood Choices Alliances | 64.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Seafood Choices Alliances | 64.8% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 17. AVIAKOMPANIYA SIBIR, PAO
 
-**Top Match**: AAHA Servco
+**Top Match**: AVIAKOMPANIYA SIBIR, PAO
 
-- **Score**: 0.5568 (55.68%)
-- **Match Type**: hybrid
-- **String Score**: 0.1684
-- **Semantic Score**: 0.4956
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | AAHA Servco | 55.68% | 0.1684 | 0.4956 | hybrid |
-| 2 | ?Aimalama Komike Ho?okele | 55.59% | 0.1761 | 0.5058 | hybrid |
-| 3 | ?Aimalama Komike Ho?okele | 55.59% | 0.1761 | 0.5058 | hybrid |
-| 4 | 15 años Mariana Ojeda | 52.98% | 0.1332 | 0.4939 | hybrid |
-| 5 | 2015 Asamblea Mujeres Presbiteriana | 52.89% | 0.1315 | 0.4847 | hybrid |
-| 6 | 2015 Asamblea Mujeres Presbiteriana | 52.89% | 0.1315 | 0.4847 | hybrid |
-| 7 | Aakom Kiyii Health Services | 52.06% | 0.1875 | 0.4144 | hybrid |
-| 8 | (LPPKN) Lembaga Penduduk dan Pembangunan Keluarga Negara | 51.90% | 0.0732 | 0.5243 | hybrid |
-| 9 | aakofii THE DESIGNER | 51.68% | 0.1888 | 0.4043 | hybrid |
-| 10 | aakofii THE DESIGNER | 51.68% | 0.1888 | 0.4043 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | AVIAKOMPANIYA SIBIR, PAO | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | AVIAKOMPANIYA MIZHNARODNI AVIA | 64.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | AVIAKOMPANIYA MIZHNARODNI AVIA | 64.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | AVIAKOMPANIYA AEROSVIT, PRYVAT | 51.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 5 | Faizan Kabir | 44.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 6 | Kabira | 44.4% | <div style='border: 1px solid #ff6600; border-left... |
+| 7 | Kabira | 44.4% | <div style='border: 1px solid #ff6600; border-left... |
+| 8 | Kabira | 44.4% | <div style='border: 1px solid #ff6600; border-left... |
+| 9 | Zina Basil | 43.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 10 | Shibir  Desai | 43.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | Oloibiri Round Table | 43.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | Kahala Nui | 43.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | Kahala Nui | 43.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | Darya Varia | 42.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | Caterina Zizzo | 42.8% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | Diakonia Movement | 42.5% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | Salaha Kabir | 42.5% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | Anum Virani | 42.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Avia Sis | 42.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Diakonia Travel | 41.9% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
-### 18. Hartford Hospital School of Nursing
+### 18. Hartford Hospital School of Nursing — Hartford, CT
 
-**Top Match**: 50th Nursing School Reunion
+**Top Match**: Hartford Public High School
 
-- **Score**: 0.7169 (71.69%)
-- **Match Type**: hybrid
-- **String Score**: 0.6375
-- **Semantic Score**: 0.4878
+- **Match location**: Hartford, Ct
+- **Final Score**: 0.9264 (92.6%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00cc00; border-left: 10px solid #00cc00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00cc00;'>✅ STRONG MATCH (92.6%)</span><br><span style='color:#eee; font-size:1.1em;'>High Lexical Similarity</span></div><br><br><b>Relationship:</b> This is a <b>Hybrid Word Overlap</b>. The system detected shared keywords ('hartford, school') despite differences in overall string structure.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 GOOD (85%) — Based on strong character overlap.<br>• <b>Semantic Link:</b> 🟡 MODERATE (66%) — Detected via moderate meaning-based connection.<br>• <b>Concept Alignment:</b> 🟢 GOOD (83%) — Reflects related business categories.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Hartford, Ct matches the query geography well (location score 1.00).<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ New York 34.1%, ✅ Illinois 32.7%, ✅ London 32.6%, ✅ Chicago 30.0%, ✅ Pennsylvania 28.5%, ✅ Ohio 26.1%<br>• Industry: ✅ Education 40.0%<br>• Nature: ✅ Local 27.4%<br>• Insight: The model detects a strong 'Education' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 50th Nursing School Reunion | 71.69% | 0.6375 | 0.4878 | hybrid |
-| 2 | AAA West Hartford CT | 70.62% | 0.6000 | 0.5142 | hybrid |
-| 3 | AAA Auto Club of Hartford | 70.00% | 0.6000 | 0.4571 | hybrid |
-| 4 | 1989 Nursing class | 69.65% | 0.4091 | 0.6433 | hybrid |
-| 5 | AAA Hartford Cincinnati | 67.41% | 0.5455 | 0.4778 | hybrid |
-| 6 | 1965 Presbyterian Hospital Nurses | 66.65% | 0.4500 | 0.5012 | hybrid |
-| 7 | *******The American School of Oncology | 65.74% | 0.4500 | 0.4967 | hybrid |
-| 8 | 4th Annual Nursing Leadership | 65.55% | 0.4500 | 0.4983 | hybrid |
-| 9 | 47153 Thomas Jefferson University Hospital | 65.05% | 0.4091 | 0.5215 | hybrid |
-| 10 | 50th Reunion of Grady School of Nursing | 65.02% | 0.5795 | 0.4480 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Hartford Public High School | 92.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 2 | East Hartford Middle School | 91.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Hartford Public High School | 91.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | West Hartford Public School | 91.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Hartford Hospital | 88.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Hartford Elementary School | 82.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Hartford School District | 82.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Hartford Art School | 80.0% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Hartford School of Insurance | 79.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Hartford Healthcare | 76.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Hartford Hospital Women's Health Service | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Hartford Schools | 73.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Hartford Healthcare Credit Union | 73.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Hartford Public Schools | 73.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Hartford College for Women | 73.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Hartford | 73.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | HARTFORD PUBLIC SCHOOLS ADM | 72.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | West Hartford Public Schools | 72.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Hartford University | 71.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Hartford Board of Education | 71.7% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 19. Internal J&J Meeting and Breakfast
 
-**Top Match**: 2013 IBM Internal Meetings
+**Top Match**: Internal J&J Meeting and Breakfast
 
-- **Score**: 0.7386 (73.86%)
-- **Match Type**: hybrid
-- **String Score**: 0.6000
-- **Semantic Score**: 0.5234
+- **Match location**: Cincinnati, OH
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (97%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Cincinnati, OH. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 2013 IBM Internal Meetings | 73.86% | 0.6000 | 0.5234 | hybrid |
-| 2 | 2013 IBM Internal Meetings | 73.86% | 0.6000 | 0.5234 | hybrid |
-| 3 | 2013 IBM Internal Meetings | 73.86% | 0.6000 | 0.5234 | hybrid |
-| 4 | 2013 IBM Internal Meetings | 73.86% | 0.6000 | 0.5234 | hybrid |
-| 5 | 2013 IBM Internal Meetings | 73.86% | 0.6000 | 0.5234 | hybrid |
-| 6 | 2013 IBM Internal Meetings | 73.86% | 0.6000 | 0.5234 | hybrid |
-| 7 | 2013 IBM Internal Meetings | 73.86% | 0.6000 | 0.5234 | hybrid |
-| 8 | 2013 IBM Internal Meetings | 73.86% | 0.6000 | 0.5234 | hybrid |
-| 9 | 2013 IBM Internal Meetings | 73.86% | 0.6000 | 0.5234 | hybrid |
-| 10 | 2013 IBM Internal Meetings | 73.86% | 0.6000 | 0.5234 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Internal J&J Meeting and Breakfast | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Internal J&J Meeting and Breakfast | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | ASCO Internal Pre Meeting | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Atea Internal Meeting | 73.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Breakfast Meeting | 72.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Governing Magazine Breakfast Meeting | 70.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | GMCVB Breakfast & Meeting | 70.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Internal Meeting Request | 70.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Breakfast Meeting - Dellwood | 69.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Breakfast Meeting NYC | 69.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Greg Tolliver Breakfast Meeting | 69.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Bisnow Breakfast Meeting | 69.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Bisnow Breakfast Meeting | 69.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Breakfast Meeting Oct2018 | 69.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Internal Meeting | 68.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Internal Meeting | 68.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Internal Meeting | 68.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Internal Meeting | 68.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Internal Meeting | 68.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Internal Meeting | 68.8% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
-### 20. Spina Bifida Coalition of Cincinnati
+### 20. Spina Bifida Coalition of Cincinnati — Cincinnati, OH
 
-**Top Match**: AAA Allied Group Cincinnati
+**Top Match**: Spina Bifida Coalition of Cincinnati
 
-- **Score**: 0.7078 (70.78%)
-- **Match Type**: hybrid
-- **String Score**: 0.4432
-- **Semantic Score**: 0.5268
+- **Match location**: Cincinnati, OH
+- **Final Score**: 1.0000 (100.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (100.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Cincinnati, OH matches the query geography well (location score 1.00).<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ Ohio 35.0%<br>• Insight: The model detects a strong 'Ohio' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | AAA Allied Group Cincinnati | 70.78% | 0.4432 | 0.5268 | hybrid |
-| 2 | AAA Corp Travel Cincinnati | 68.23% | 0.4432 | 0.4634 | hybrid |
-| 3 | AAA Corp Travel Cincinnati | 67.35% | 0.4432 | 0.4634 | hybrid |
-| 4 | (CCoVA) Community Coalition of Virginia | 67.29% | 0.4875 | 0.3984 | hybrid |
-| 5 | **National Coalition Building Institute - NCBI | 65.80% | 0.4432 | 0.4457 | hybrid |
-| 6 | AAA Cincinnati | 64.85% | 0.4062 | 0.4390 | hybrid |
-| 7 | AAF Cincinnati | 64.63% | 0.4062 | 0.4324 | hybrid |
-| 8 | 340B Coalition USA | 64.54% | 0.4432 | 0.4009 | hybrid |
-| 9 | **National Community Reinvestment Coalition | 64.49% | 0.4875 | 0.3727 | hybrid |
-| 10 | AAA Hartford Cincinnati | 64.02% | 0.4432 | 0.3870 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Spina Bifida Coalition of Cincinnati | 100.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Spina Bifida Association of Cincinnati, Inc. | 92.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | SBCC | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Greater Cincinnati Good Food Coalition | 73.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Alliance Cincinnati | 71.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | AAA Allied Group Cincinnati | 69.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Public Allies Cincinnati | 68.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | IxDA Cincinnati | 68.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | AAA Cincinnati | 68.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | AAA Hartford Cincinnati | 68.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Health Alliance of Greater Cincinnati | 68.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Assistance League of Greater Cincinnati | 67.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | AASR Valley of Cincinnati | 67.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | FC Cincinnati | 67.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | AAF Cincinnati | 67.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | AAA Corp Travel Cincinnati | 66.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Cincinnati Association for Rational Thought | 66.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Cincinnati Reds 2008 | 66.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Cincinnati Cyclones | 66.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Cincinnati Development Fund | 66.1% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 21. THE SOCA GROUP ORGANIZATION
 
-**Top Match**: A National Latina Organization
+**Top Match**: THE SOCA GROUP ORGANIZATION
 
-- **Score**: 0.8126 (81.26%)
-- **Match Type**: hybrid
-- **String Score**: 0.6761
-- **Semantic Score**: 0.5992
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Structure: ✅ Corporate 36.0%, ✅ Government 32.3%<br>• Nature: ✅ Global 25.2%<br>• Insight: The model detects a strong 'Corporate' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A National Latina Organization | 81.26% | 0.6761 | 0.5992 | hybrid |
-| 2 | **ADSEI Organization | 80.61% | 0.7438 | 0.4875 | hybrid |
-| 3 | #SSS Secret Soca Society | 79.23% | 0.6198 | 0.6348 | hybrid |
-| 4 | #SSS Secret Soca Society | 79.23% | 0.6198 | 0.6348 | hybrid |
-| 5 | #SSS Secret Soca Society | 79.23% | 0.6198 | 0.6348 | hybrid |
-| 6 | #SSS Secret Soca Society | 79.23% | 0.6198 | 0.6348 | hybrid |
-| 7 | #SSS Secret Soca Society | 79.23% | 0.6198 | 0.6348 | hybrid |
-| 8 | #SSS Secret Soca Society | 79.23% | 0.6198 | 0.6348 | hybrid |
-| 9 | **GENERIC ORGANIZATION | 78.31% | 0.7438 | 0.4315 | hybrid |
-| 10 | **GENERIC ORGANIZATION | 78.31% | 0.7438 | 0.4315 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | THE SOCA GROUP ORGANIZATION | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Team SOCA | 81.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Team SOCA | 81.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Soca Society | 81.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | System Organization Group | 80.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | System Organization Group | 80.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | SOCA Convention | 80.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Soca Takeover | 79.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Organization Management Group | 78.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Organization Management Group | 78.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Organization Management Group | 78.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Organization Management Group | 78.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Organization Management Group | 78.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Four Organization | 78.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Soca Passion | 78.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Soca Passion | 78.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Soccer Organization | 78.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | SOCA Citroen | 78.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Organization Resources | 78.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | ORGANIZATION DEVELOPMENT | 78.3% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 22. Shiroyama Junior High School
 
-**Top Match**: A Maceo Smith High School
+**Top Match**: Shiroyama Junior High School
 
-- **Score**: 0.8241 (82.41%)
-- **Match Type**: hybrid
-- **String Score**: 0.7083
-- **Semantic Score**: 0.5912
+- **Match location**: Koka, Shiga
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Koka, Shiga. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Education 33.6%<br>• Insight: The model detects a strong 'Education' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A Maceo Smith High School | 82.41% | 0.7083 | 0.5912 | hybrid |
-| 2 | 1971 Ayer High School | 82.38% | 0.7083 | 0.5967 | hybrid |
-| 3 | A.H. Parker High School | 82.14% | 0.7083 | 0.5856 | hybrid |
-| 4 | A. H. Parker High School | 82.14% | 0.7083 | 0.5856 | hybrid |
-| 5 | 20th High School Reuion | 82.12% | 0.7083 | 0.5863 | hybrid |
-| 6 | A.I. DUPONT HIGH SCHOOL | 82.04% | 0.7083 | 0.5903 | hybrid |
-| 7 | 4th Hamilton High School | 81.96% | 0.7083 | 0.5924 | hybrid |
-| 8 | A F Adderley High School | 81.57% | 0.7083 | 0.5453 | hybrid |
-| 9 | Aabuthnott Gallimore High School | 81.51% | 0.7083 | 0.5840 | hybrid |
-| 10 | A L Brown High School | 80.88% | 0.7083 | 0.5608 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Shiroyama Junior High School | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Haga Junior High School | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Junior High School 22 | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Junior High School 45 | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | South Junior High School | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Jubail Junior High School | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Waverly Junior High School | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Clara Junior High School | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Durand Junior High School | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Hardin Junior High School | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Walters Junior High School | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | CARROLL JUNIOR HIGH SCHOOL | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | HANAZONO JUNIOR HIGH SCHOOL | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Clinton Junior High School | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Lakeview Junior High School | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Kirby Junior High School | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Wonder Junior High School | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | Brooks Junior High School | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | Kenmore Junior High School | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | Ferriday Junior High School | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
-### 23. National Home Health
+### 23. National Home Health — Washington, DC
 
-**Top Match**: 202 Home Health Care Center
+**Top Match**: National Home Health Care
 
-- **Score**: 0.8232 (82.32%)
-- **Match Type**: hybrid
-- **String Score**: 0.7361
-- **Semantic Score**: 0.5459
+- **Match location**: Washington, DC
+- **Final Score**: 0.9720 (97.2%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (97.2%)</span><br><span style='color:#eee; font-size:1.1em;'>High Semantic Similarity</span></div><br><br><b>Relationship:</b> This is a <b>Lexical Substring Match</b>. The query appears as a direct fragment within the candidate name, suggesting a strong partial identity.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 GOOD (82%) — Based on partial character alignment.<br>• <b>Semantic Link:</b> 🟢 GOOD (89%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (98%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Washington, DC matches the query geography well (location score 1.00).<br>• <b>Entity Popularity:</b> 🟢 <b>+0.6% Boost</b> — Higher confidence due to 2 occurrences in master set.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Medical 33.8%, ✅ Insurance 31.7%<br>• Insight: The model detects a strong 'Medical' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 202 Home Health Care Center | 82.32% | 0.7361 | 0.5459 | hybrid |
-| 2 | 3Hc Home Health and Hospice Care | 80.68% | 0.7361 | 0.5255 | hybrid |
-| 3 | A Amazing Home Care | 79.78% | 0.6333 | 0.6025 | hybrid |
-| 4 | 24 Hour Home Care Health Facility | 78.72% | 0.6795 | 0.5299 | hybrid |
-| 5 | A1 Home Care | 76.49% | 0.6333 | 0.5460 | hybrid |
-| 6 | A Place at Home | 73.52% | 0.6333 | 0.4592 | hybrid |
-| 7 | 24 Hr. Home Care | 73.49% | 0.5758 | 0.5147 | hybrid |
-| 8 | A Home for Everyone | 73.29% | 0.6333 | 0.4596 | hybrid |
-| 9 | A Place Called Home | 73.23% | 0.6333 | 0.4828 | hybrid |
-| 10 | 24 Hour Home Care | 73.20% | 0.5758 | 0.5102 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | National Home Health Care | 97.2% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Legacy Home Health Care | 93.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | National Association of Home Care | 92.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | National Association for Home Care | 81.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | 202 Home Health Care Center | 79.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | National Health Council | 78.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | National Health Policy Group | 78.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | NATIONAL ASSOCIATION OF HEALTH | 78.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | National Health Museum | 77.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | National Health Council | 77.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | home | 75.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | National Health Insurance Services | 73.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Community Health Centers | 70.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | American Public Health | 70.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | National HealthCare | 70.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | American Health Resources | 70.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | HEALTH LEADS USA | 70.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Citizens for Health | 70.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Americas Health | 69.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | DC Health | 67.7% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 24. American News Women's Club
 
-**Top Match**: 20ish & 30ish Women's Books & Brews Club
+**Top Match**: American News Women's Club
 
-- **Score**: 0.7262 (72.62%)
-- **Match Type**: hybrid
-- **String Score**: 0.6198
-- **Semantic Score**: 0.4925
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (95%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ New York 27.3%<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 20ish & 30ish Women's Books & Brews Club | 72.62% | 0.6198 | 0.4925 | hybrid |
-| 2 | 1,000 Plus Club of the American Cancer Society | 72.37% | 0.6198 | 0.4339 | hybrid |
-| 3 | 50+ Ladies Book Club | 71.50% | 0.4875 | 0.5651 | hybrid |
-| 4 | 10TH CONGRESSIONAL REPUBLICAN WOMENS CLUB | 71.12% | 0.4432 | 0.6188 | hybrid |
-| 5 | 50th Anniversary Womens Democratic Club | 70.22% | 0.4432 | 0.5953 | hybrid |
-| 6 | 2003 Women's Golf Association | 69.17% | 0.4875 | 0.5214 | hybrid |
-| 7 | $Mission Beach Woman's Club | 69.16% | 0.4875 | 0.5195 | hybrid |
-| 8 | President's Club 2019 | 68.86% | 0.4432 | 0.5033 | hybrid |
-| 9 | 2015 Women's Leadership Conference | 68.85% | 0.4875 | 0.5221 | hybrid |
-| 10 | 2018 Women's Leadership Conference | 68.69% | 0.4875 | 0.5263 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | American News Women's Club | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Danish-American Women's Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | American Slavic Women's Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | American Women's Club | 82.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | American Women Club | 81.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | DC Democratic Women's Club | 77.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Los Prados Women's Club | 76.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Indo American Press Club | 75.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | UM Women's Club | 75.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Black Women's Democratic Club | 75.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Black Women's Democratic Club | 75.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Greater Federation of Women's Club | 75.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | San Jose Women's Club | 75.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | San Jose Women's Club | 75.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | San Jose Women's Club | 75.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | San Jose Women's Club | 75.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | San Jose Women's Club | 75.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | General Federation of Women's Club | 75.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | American Girl Club | 74.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | American Girl Club | 74.8% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 25. Denise Roberge
 
-**Top Match**: 2002 Denise Social
+**Top Match**: Denise Roberge
 
-- **Score**: 0.8309 (83.09%)
-- **Match Type**: hybrid
-- **String Score**: 0.6761
-- **Semantic Score**: 0.6696
+- **Match location**: Palm Desert, CA
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Palm Desert, CA. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 2002 Denise Social | 83.09% | 0.6761 | 0.6696 | hybrid |
-| 2 | 1598 Denise Sy Inquiries | 74.07% | 0.6198 | 0.5272 | hybrid |
-| 3 | 2003/2004 Denise Social Inquiry Account | 67.42% | 0.5721 | 0.4599 | hybrid |
-| 4 | 373 DENISE ZOHR'S INQUIRIES /  INQUIRY ACCOUNT | 65.43% | 0.4958 | 0.4480 | hybrid |
-| 5 | 3709 DENISE O'DELL'S INQUIRY ACCOUNT | 63.67% | 0.5721 | 0.3899 | hybrid |
-| 6 | 3709 DENISE O'DELL'S INQUIRY ACCOUNT | 62.64% | 0.5721 | 0.3899 | hybrid |
-| 7 | 3709 DENISE O'DELL'S INQUIRY ACCOUNT | 62.64% | 0.5721 | 0.3899 | hybrid |
-| 8 | 3709 DENISE O'DELL'S INQUIRY ACCOUNT | 62.64% | 0.5721 | 0.3899 | hybrid |
-| 9 | 1039 DENISE O'DELLS INQUIRY ACCOUNT | 62.62% | 0.5721 | 0.3891 | hybrid |
-| 10 | “by Denise Brown benefitting the Lupus Foundation of America, Florida Chapter” | 57.67% | 0.4375 | 0.3303 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Denise Roberge | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Denise Long | 76.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | Sandra Denise | 75.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Denise Gour | 75.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Denise M. | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Denise Michelle | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Denise O | 74.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Charmaine Denise | 74.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Denise White | 74.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Tamara Denise | 74.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Denise | 74.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Denise | 74.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Denise Mohr | 73.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Denise Wallack | 73.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Denise Martin | 73.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Denise Inquiries | 73.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Denise Benyak | 73.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Denise Lawrence | 73.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | CeCi Denise | 73.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | CeCi Denise | 73.2% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 26. Synergy Soccer Club
 
-**Top Match**: 88 XTREME SOCCER CLUB
+**Top Match**: Synergy Soccer Club
 
-- **Score**: 0.8400 (84.00%)
-- **Match Type**: hybrid
-- **String Score**: 0.7361
-- **Semantic Score**: 0.5537
+- **Match location**: Burlington, VT
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Burlington, VT. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 88 XTREME SOCCER CLUB | 84.00% | 0.7361 | 0.5537 | hybrid |
-| 2 | 3 Rivers Soccer Club | 83.46% | 0.7361 | 0.5396 | hybrid |
-| 3 | 3 Rivers Soccer Club | 83.46% | 0.7361 | 0.5396 | hybrid |
-| 4 | 2012 Celtic Soccer Club | 82.50% | 0.7361 | 0.5163 | hybrid |
-| 5 | '92 Blast Girls Soccer Club | 80.38% | 0.6748 | 0.5406 | hybrid |
-| 6 | 95 Juventus Soccer Club | 79.93% | 0.7361 | 0.4757 | hybrid |
-| 7 | 90 Charlotte Soccer Club Blue | 78.55% | 0.6748 | 0.4943 | hybrid |
-| 8 | \t. Louis Scott Gallagher Soccer Club | 77.12% | 0.6229 | 0.5213 | hybrid |
-| 9 | * Boise Nationals Soccer Club | 76.32% | 0.6748 | 0.4594 | hybrid |
-| 10 | AAA Club Alliance | 75.50% | 0.5278 | 0.5624 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Synergy Soccer Club | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Synergy Football Club | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | SYNERGY FOOTBALL CLUB | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Synergy Volleyball Club | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Kitsap Soccer Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Alliance Soccer Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Alliance Soccer Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Alliance Soccer Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Alliance Soccer Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Advantage Soccer Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Polish Soccer Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | Beadling Soccer Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Menace Soccer Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Agape Soccer Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Nordic Soccer Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Nordic Soccer Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Challenge Soccer Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | AF Soccer Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | Union Soccer Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | Classic Soccer Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
 ### 27. NFC Forum
 
-**Top Match**: 2014 Forum
+**Top Match**: NFC Forum
 
-- **Score**: 0.8556 (85.56%)
-- **Match Type**: hybrid
-- **String Score**: 0.7438
-- **Semantic Score**: 0.5296
+- **Final Score**: 0.9410 (94.1%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.1%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 2014 Forum | 85.56% | 0.7438 | 0.5296 | hybrid |
-| 2 | AAG Forum | 83.43% | 0.7438 | 0.4951 | hybrid |
-| 3 | 50s Forum | 82.26% | 0.7438 | 0.4613 | hybrid |
-| 4 | 49er Forum Group | 81.20% | 0.7438 | 0.4521 | hybrid |
-| 5 | 9th Annual Telecommunications Forum | 79.80% | 0.6198 | 0.5404 | hybrid |
-| 6 | 2021 Utility Forum | 79.79% | 0.6761 | 0.4898 | hybrid |
-| 7 | 2027 US Forum | 79.32% | 0.6761 | 0.4921 | hybrid |
-| 8 | ***EVENTS FORUM | 79.00% | 0.7438 | 0.4054 | hybrid |
-| 9 | 2018 Executive Forum | 78.78% | 0.6761 | 0.4718 | hybrid |
-| 10 | 2027 NAEM Forum | 77.23% | 0.6761 | 0.4502 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | NFC Forum | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | NFC Forum | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | NFC Forum | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 4 | NFC Forum | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 5 | NFC Forum | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 6 | NFC FORUM | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 7 | NFC Forum         . | 90.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | NFC Forum         . | 90.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | NFC Forum Members | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | NFC Orientation | 77.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | NFC | 76.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | NFC | 76.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | NFC | 76.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | NFC | 76.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | NFC | 76.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | NFC Fighting | 76.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | NFC Amenity | 76.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | NFC Amenity | 76.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | NFC Life | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | NFC Tabagators | 74.4% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
@@ -720,337 +973,462 @@ Total Companies Tested: 109
 
 **Top Match**: A Better Choice Limousine & Concierge
 
-- **Score**: 1.0000 (100.00%)
-- **Match Type**: exact
-- **String Score**: 1.0000
-- **Semantic Score**: 1.0000
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ Paris 25.4%<br>• Industry: ✅ Automotive 39.0%<br>• Nature: ✅ Consumer 26.8%<br>• Insight: Confirms the model's inherent knowledge of industry concepts.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A Better Choice Limousine & Concierge | 100.00% | 1.0000 | 1.0000 | exact |
-| 2 | A Better Choice | 64.78% | 0.6562 | 0.3922 | hybrid |
-| 3 | A Formal Limousine Services | 63.13% | 0.4432 | 0.6951 | hybrid |
-| 4 | A LIST LUXURY CONCIERGE | 60.43% | 0.4432 | 0.5749 | hybrid |
-| 5 | 1st Class Limousine | 60.36% | 0.4432 | 0.6029 | hybrid |
-| 6 | A1 American Limousine Service, LLC | 59.55% | 0.4875 | 0.5200 | hybrid |
-| 7 | A1 American Limousine Service, LLC | 59.55% | 0.4875 | 0.5200 | hybrid |
-| 8 | Aadvanced Limousine | 59.44% | 0.4062 | 0.6491 | hybrid |
-| 9 | Aadvanced Limousine | 59.44% | 0.4062 | 0.6491 | hybrid |
-| 10 | A Travel Concierge | 59.02% | 0.4062 | 0.6084 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | A Better Choice Limousine & Concierge | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | First Choice Limousine Services | 81.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Better Choice Travel | 70.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Better Choice Travel | 70.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Better Choice Company | 70.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Better Choice Company | 70.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | A Better Choice | 69.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Prestige Limousine | 68.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Executive Limousine | 67.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Limousine Livery | 67.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Capital Travel Limousine | 66.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Luxury Limousine and Entertainment | 66.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | A Formal Limousine Services | 66.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | My Limousine Service | 66.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | My Limousine Service | 66.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Limousine & Chauffeured Transportation S | 65.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Mint Life Limousine | 65.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Alliance Limousine | 65.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | 1st Class Limousine | 65.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Capital Travel & Limousine | 65.7% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 29. Danish Sisterhood of America
 
-**Top Match**: 21st Century Sisterhood
+**Top Match**: Danish Sisterhood of America
 
-- **Score**: 0.7479 (74.79%)
-- **Match Type**: hybrid
-- **String Score**: 0.5278
-- **Semantic Score**: 0.6340
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (97%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Nature: ✅ Global 29.4%<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 21st Century Sisterhood | 74.79% | 0.5278 | 0.6340 | hybrid |
-| 2 | Global Sisterhood | 71.19% | 0.4798 | 0.6071 | hybrid |
-| 3 | 2012 Sisterhood Conference | 67.17% | 0.5278 | 0.4535 | hybrid |
-| 4 | aaAcoustical Society of America | 65.86% | 0.5278 | 0.4081 | hybrid |
-| 5 | aaAcoustical Society of America | 65.86% | 0.5278 | 0.4081 | hybrid |
-| 6 | 20's and 30's Soulful Sisterhood | 64.73% | 0.4798 | 0.4559 | hybrid |
-| 7 | A Way Home America | 63.75% | 0.5278 | 0.3191 | hybrid |
-| 8 | ***HelmsBriscoe North America | 63.44% | 0.5278 | 0.3039 | hybrid |
-| 9 | ***HelmsBriscoe North America | 63.35% | 0.5278 | 0.3039 | hybrid |
-| 10 | ***HelmsBriscoe North America | 62.98% | 0.5278 | 0.3039 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Danish Sisterhood of America | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | The Danish Sisterhood of America | 90.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Danish Sisterhood and Brotherhood of America | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Danish Brotherhood & Danish Sisterhood of America | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | DANISH BROTHERHOOD AND DANISH SISTERHOOD OF AMERICA | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Danish Sisterhood of America National Board Mtg | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Danish Sisterhood of the Americas | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | The Dansih Sisterhood of America | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | The Dansih Sisterhood of America | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | The Dansih Sisterhood of America | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Danish Sisterhood of Amercia | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | Danish Brotherhood of America | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | DANISH SISTERHOOD | 83.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | The Danish Sisterhood | 82.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Danish Sisterhood Thyra Lodge #19 | 70.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Danish Brotherhood in America | 70.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | DSA | 69.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Global Sisterhood | 67.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Global Sisterhood | 67.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | 21st Century Sisterhood | 67.1% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
-### 30. Brooklyn Comics Club
+### 30. Brooklyn Comics Club — Brooklyn, NY
 
-**Top Match**: AAA Club South
+**Top Match**: Cathedral Club of Brooklyn
 
-- **Score**: 0.7361 (73.61%)
-- **Match Type**: hybrid
-- **String Score**: 0.5278
-- **Semantic Score**: 0.5171
+- **Match location**: Brooklyn, NY
+- **Final Score**: 0.9348 (93.5%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00cc00; border-left: 10px solid #00cc00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00cc00;'>✅ STRONG MATCH (93.5%)</span><br><span style='color:#eee; font-size:1.1em;'>Moderate Lexical Similarity</span></div><br><br><b>Relationship:</b> This is a <b>Hybrid Word Overlap</b>. The system detected shared keywords ('brooklyn, club') despite differences in overall string structure.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 GOOD (81%) — Based on partial character alignment.<br>• <b>Semantic Link:</b> 🟡 MODERATE (62%) — Detected via moderate meaning-based connection.<br>• <b>Concept Alignment:</b> 🟢 GOOD (89%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Brooklyn, NY matches the query geography well (location score 1.00).<br>• <b>Entity Popularity:</b> 🟢 <b>+0.9% Boost</b> — Higher confidence due to 5 occurrences in master set.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ New York 42.5%, ✅ London 34.0%, ✅ Paris 25.3%<br>• Insight: The model detects a strong 'New York' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | AAA Club South | 73.61% | 0.5278 | 0.5171 | hybrid |
-| 2 | AAA Club Alliance | 73.44% | 0.5278 | 0.4852 | hybrid |
-| 3 | AAA Club Allied | 72.70% | 0.5278 | 0.4891 | hybrid |
-| 4 | 20th Century Club | 72.66% | 0.5278 | 0.4910 | hybrid |
-| 5 | AAA Club Alliance | 72.50% | 0.5278 | 0.4852 | hybrid |
-| 6 | AAA Club Alliance | 72.50% | 0.5278 | 0.4852 | hybrid |
-| 7 | AAA Club Alliance | 72.50% | 0.5278 | 0.4852 | hybrid |
-| 8 | AAA Club Alliance | 72.50% | 0.5278 | 0.4852 | hybrid |
-| 9 | AAA Club Alliance | 72.50% | 0.5278 | 0.4852 | hybrid |
-| 10 | AAA Club Alliance | 72.50% | 0.5278 | 0.4852 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Cathedral Club of Brooklyn | 93.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 2 | Brooklyn Barbell Club | 92.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Brooklyn Wallyball Club | 92.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Rotary Club of Brooklyn | 92.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Brooklyn Book Club Meetup | 81.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | North Brooklyn Comic Book Club | 81.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | South Brooklyn Running Club | 80.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Brooklyn College Diversity Club | 80.1% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Brooklyn Bridge Rotary Club | 78.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Brooklyn Magazine | 74.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Brooklyn Film Festival | 73.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Brooklyn Book Festival | 72.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Brooklyn Music Week | 72.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Brooklyn Sports & Entertainment | 72.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Brooklyn Arts | 72.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Brooklyn Borough Hall | 72.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Brooklyn Comedy Meetup | 72.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Downtown Brooklyn Partnership | 72.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Brooklyn General Store | 72.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Brooklyn Sports & Entertainment Group | 72.4% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 31. Global Interagency Security Forum
 
-**Top Match**: 2025 Global Leaders Forum
+**Top Match**: Global Interagency Security Forum
 
-- **Score**: 0.8025 (80.25%)
-- **Match Type**: hybrid
-- **String Score**: 0.7083
-- **Semantic Score**: 0.4958
+- **Match location**: Upper St. Clair, 
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Upper St. Clair. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Nature: ✅ Global 29.4%<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 2025 Global Leaders Forum | 80.25% | 0.7083 | 0.4958 | hybrid |
-| 2 | 2015 Tax Forum & 2015 Global Operations Forum | 76.45% | 0.6439 | 0.4898 | hybrid |
-| 3 | 2024 Southeast IT & Security Leaders Forum GNNQH2PRLGK | 74.98% | 0.5994 | 0.5531 | hybrid |
-| 4 | 1035 Affiliate NAR Global Forum | 74.55% | 0.6439 | 0.4467 | hybrid |
-| 5 | 1035 Affiliate NAR Global Forum | 74.55% | 0.6439 | 0.4467 | hybrid |
-| 6 | **International Security Management Association | 73.65% | 0.5000 | 0.5940 | hybrid |
-| 7 | 1035 Affiliate NAR Global Forum | 73.59% | 0.6439 | 0.4467 | hybrid |
-| 8 | 1035 Affiliate NAR Global Forum | 73.59% | 0.6439 | 0.4467 | hybrid |
-| 9 | 1035 Affiliate NAR Global Forum | 73.59% | 0.6439 | 0.4467 | hybrid |
-| 10 | 4th Annual Global Digital Health Forum | 72.75% | 0.5903 | 0.4899 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Global Interagency Security Forum | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | International Security Forum | 80.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Security Network Forum | 79.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Infrastructure Security and Resilience Forum | 79.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Security Forum | 78.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Security Forum | 78.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | The Cyber Security Forum Initiative | 78.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Halifax International Security Forum | 77.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | BITS Security Forum | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Cyber Security Collaboration Forum | 75.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Global Network Security | 75.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Global Counter Terrorism Forum | 75.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Global Counter Terrorism Forum | 75.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Global Counter Terrorism Forum | 75.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Homeland Security Leadership Forum | 75.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Information Security Forum | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | INFORMATION SECURITY FORUM | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Information Security Forum | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Information Security Forum | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | INFORMATION SECURITY FORUM | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 32. Lancet Software
 
-**Top Match**: A1A Software
+**Top Match**: Lancet Software
 
-- **Score**: 0.8128 (81.28%)
-- **Match Type**: hybrid
-- **String Score**: 0.7438
-- **Semantic Score**: 0.4141
+- **Match location**: Burnsville, MN
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Burnsville, MN. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Technology 38.8%<br>• Nature: ✅ Professional 30.2%<br>• Insight: The model detects a strong 'Technology' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A1A Software | 81.28% | 0.7438 | 0.4141 | hybrid |
-| 2 | A1A Software | 81.28% | 0.7438 | 0.4141 | hybrid |
-| 3 | A1A Software | 81.28% | 0.7438 | 0.4141 | hybrid |
-| 4 | A- Ware Software | 79.57% | 0.7438 | 0.3768 | hybrid |
-| 5 | A3 SOFTWARE | 79.56% | 0.7438 | 0.3734 | hybrid |
-| 6 | **Endeca Software | 79.10% | 0.7438 | 0.3702 | hybrid |
-| 7 | $Lawson Software | 78.97% | 0.7438 | 0.3949 | hybrid |
-| 8 | A2X Software Limited | 78.36% | 0.7438 | 0.3893 | hybrid |
-| 9 | @LAST SOFTWARE | 78.17% | 0.7438 | 0.3718 | hybrid |
-| 10 | 3C Software | 77.33% | 0.7438 | 0.3118 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Lancet Software | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Lancet Technology | 80.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Lancet Technology, Incorporated | 77.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Lancet Technology, Incorporated | 77.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | CAS Software | 76.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | BRICT Software | 75.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Griffin Software | 74.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Med Software | 74.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | FRS Software | 74.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | FRS Software | 74.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | FRS Software | 74.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | JAT Software | 74.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Agile Software | 74.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | PROFESSIONAL SOFTWARE | 74.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Tech Software | 74.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Software Professionals | 74.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Software Technology | 73.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Software Technology | 73.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Inedit Software | 73.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | MAGIC SOFTWARE | 73.8% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
-### 33. Our Lady of the Lakes Catholic Church and School
+### 33. Our Lady of the Lakes Catholic Church and School — Miami Lakes, FL
 
-**Top Match**: 1st Church of Our Lord Jesus Christ
+**Top Match**: Our Lady of the Lakes Catholic Church and School
 
-- **Score**: 0.7124 (71.24%)
-- **Match Type**: hybrid
-- **String Score**: 0.5146
-- **Semantic Score**: 0.5366
+- **Match location**: Miami Lakes, FL
+- **Final Score**: 1.0000 (100.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (100.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (92%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Miami Lakes, FL matches the query geography well (location score 1.00).<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 1st Church of Our Lord Jesus Christ | 71.24% | 0.5146 | 0.5366 | hybrid |
-| 2 | 2Rivers Church | 54.82% | 0.1261 | 0.5692 | hybrid |
-| 3 | &Orlando Church,The | 54.30% | 0.1731 | 0.5068 | hybrid |
-| 4 | A Place Of Destiny Church | 54.28% | 0.1700 | 0.5141 | hybrid |
-| 5 | 1st Arkansas Judicial Church of God In Christ | 54.23% | 0.1761 | 0.4960 | hybrid |
-| 6 | 1st Calvery Baptist Church | 54.09% | 0.1548 | 0.5100 | hybrid |
-| 7 | A Local Church | 53.60% | 0.1505 | 0.5351 | hybrid |
-| 8 | *URGENT REQUEST* St. Joseph Catholic Chaldean Parish | 53.48% | 0.2233 | 0.4470 | hybrid |
-| 9 | Second Baptist Church of Doylestown | 53.39% | 0.1679 | 0.5001 | hybrid |
-| 10 | 2nd Saturday Church Service (Oct, Nov, Dec) | 53.35% | 0.1745 | 0.4899 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Our Lady of the Lakes Catholic Church and School | 100.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Our Lady of the Lakes Catholic Church | 93.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Our Lady of the Lakes Catholic School | 92.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Our Lady of The Lakes Catholic Church | 90.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Our Lady of the Lakes Catholic School Miami | 90.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Our Lady of Lourdes Catholic Church & School | 90.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Our Lady of the Lakes Catholic School | 90.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Our Lady of The Lakes Church | 83.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Our Lady of the Lakes | 73.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Mother of Christ Catholic Church | 64.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Riverland Baptist Church | 56.4% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | Episcopal Church Women | 55.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | Community Christian Church | 54.8% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | Episcopal Church | 53.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | Bethany Church | 53.4% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | Our Lady of the Lakes Catholic School | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | Our Lady of the Lakes Catholic Church | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | Lakes Church | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Christ Church School | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Nativity Catholic School | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 34. Broadway Bound International
 
-**Top Match**: 5000 Broadway Productions, Incorporated
+**Top Match**: Broadway Bound International
 
-- **Score**: 0.7551 (75.51%)
-- **Match Type**: hybrid
-- **String Score**: 0.5542
-- **Semantic Score**: 0.5797
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ New York 31.6%, ✅ London 30.0%, ✅ Paris 28.2%<br>• Nature: ✅ Global 35.9%<br>• Insight: The model detects a strong 'Global' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 5000 Broadway Productions, Incorporated | 75.51% | 0.5542 | 0.5797 | hybrid |
-| 2 | 379 Broadway | 73.66% | 0.5038 | 0.5750 | hybrid |
-| 3 | 379 Broadway | 73.66% | 0.5038 | 0.5750 | hybrid |
-| 4 | 5000 Broadway Productons | 71.50% | 0.5542 | 0.5221 | hybrid |
-| 5 | 19 Broadway Bar & Nightclub | 70.39% | 0.5038 | 0.5249 | hybrid |
-| 6 | 1633 Broadway | 70.26% | 0.5038 | 0.5163 | hybrid |
-| 7 | 430 Arena International | 66.28% | 0.4750 | 0.4263 | hybrid |
-| 8 | 430 Arena International | 66.28% | 0.4750 | 0.4263 | hybrid |
-| 9 | 365 Touring International, Inc. | 66.15% | 0.4750 | 0.4197 | hybrid |
-| 10 | **York International | 66.14% | 0.4318 | 0.4753 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Broadway Bound International | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Broadway Bound International | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Broadway Bound | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Broadway Bound | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Broadway Bound | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Broadway Bound West | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Bound Four Broadway | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Broadway Bound Kids | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Broadway Bound Studio | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Broadway Bound Dance | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Broadway Bound Kidz | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | BROADWAY BOUND DANCE CENTRE | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Broadway Bound Childrens Theatre | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Broadway Bound Dance Center | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Broadway Bound Dance Academy | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Broadway Asia International | 80.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | BBI | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Broadway Tours c/o Upward Bound Travel | 72.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Its All About Kids Broadway Bound | 71.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Broadway Across American | 70.6% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 35. E. H. Wachs
 
-**Top Match**: A E PI FRATERNITY
+**Top Match**: E. H. Wachs
 
-- **Score**: 0.6035 (60.35%)
-- **Match Type**: hybrid
-- **String Score**: 0.4750
-- **Semantic Score**: 0.3689
+- **Match location**: Chicago, IL
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Chicago, IL. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A E PI FRATERNITY | 60.35% | 0.4750 | 0.3689 | hybrid |
-| 2 | A. R. E. | 59.65% | 0.4798 | 0.3435 | hybrid |
-| 3 | Daryl H Miles | 59.24% | 0.4750 | 0.3361 | hybrid |
-| 4 | A E I C | 59.07% | 0.4750 | 0.3304 | hybrid |
-| 5 | A E I C | 59.07% | 0.4750 | 0.3304 | hybrid |
-| 6 | 4-H COUNCIL | 58.51% | 0.4750 | 0.3188 | hybrid |
-| 7 | 4-H Council | 58.51% | 0.4750 | 0.3188 | hybrid |
-| 8 | 4-H Council | 58.51% | 0.4750 | 0.3188 | hybrid |
-| 9 | A H M | 58.33% | 0.4318 | 0.3585 | hybrid |
-| 10 | A. E. Ehrke & Company | 58.18% | 0.4798 | 0.3462 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | E. H. Wachs | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | E. H. Wachs | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | EHW | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | E.H. Wachs | 74.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Wachs Services | 68.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Wachs Services | 68.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | E H Smith | 66.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | E + H | 65.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Wachs Water Services | 65.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Elen Wachs | 64.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Wachs and Adelberg Wedding | 61.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Wachs / Russell Wedding | 61.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Aecon-Wachs | 60.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Aecon-Wachs | 60.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | James E. Shepard | 58.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | H. H. Brown | 58.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | H. H. Brown | 58.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | H. H. Brown | 58.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | H. H. Brown | 58.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | H H Brown | 56.4% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 36. Marine Corps Fox 2/5
 
-**Top Match**: 6th US Marine Corps
+**Top Match**: Marine Corps Fox 2/5
 
-- **Score**: 0.8614 (86.14%)
-- **Match Type**: hybrid
-- **String Score**: 0.7792
-- **Semantic Score**: 0.6226
+- **Match location**: Broussard, LA
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (96%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Broussard, LA. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 6th US Marine Corps | 86.14% | 0.7792 | 0.6226 | hybrid |
-| 2 | 25th US Marine Corps | 84.41% | 0.7792 | 0.5817 | hybrid |
-| 3 | ***********US Marine Corps (Duplicate) | 81.85% | 0.7792 | 0.5176 | hybrid |
-| 4 | 12th Marine Corps. (San Diego) | 81.26% | 0.7083 | 0.5865 | hybrid |
-| 5 | 6th Marine Corps District | 80.17% | 0.7792 | 0.4889 | hybrid |
-| 6 | 9TH MARINE CORPS DISTRICT | 79.97% | 0.7792 | 0.4559 | hybrid |
-| 7 | 9th Marine Corps District | 79.97% | 0.7792 | 0.4559 | hybrid |
-| 8 | 35th Marine Corps | 79.80% | 0.7083 | 0.5479 | hybrid |
-| 9 | 12th Marine Corps District | 79.55% | 0.7792 | 0.4660 | hybrid |
-| 10 | 1ST MARINE CORPS DISTRICT | 79.20% | 0.7792 | 0.4640 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Marine Corps Fox 2/5 | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Marine Corps Military Ball | 80.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | United State Marine Corps | 80.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | 25th US Marine Corps | 80.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Marine Corps Support Facility | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | American US Marine Corps | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | US Marine Corps HMM163 | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | United States Marine Corps | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | United States Marine Corps | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | United States Marine Corps | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | NOAA US Marine Corps | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | US Marine Corps Veterans | 80.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Young US Marine Corps | 80.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Marine Corps Personnel Support | 80.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | MARINE CORPS PERSONNEL SUPPORT | 80.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | US Marine Corps League | 80.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Navy Marine Corps Ball | 80.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | Marine Corps War Games | 80.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | US Marine Corps Intelligence | 80.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | US Marine Corps Intelligence | 80.2% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
 ### 37. Fantasia Turistica
 
-**Top Match**: A Mais Turismo
+**Top Match**: Fantasia Turistica
 
-- **Score**: 0.5644 (56.44%)
-- **Match Type**: hybrid
-- **String Score**: 0.2483
-- **Semantic Score**: 0.4094
+- **Match location**: Guadalajara, Jalisco
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (98%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Guadalajara, Jalisco. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A Mais Turismo | 56.44% | 0.2483 | 0.4094 | hybrid |
-| 2 | ****Turista Travel | 55.81% | 0.1750 | 0.4570 | hybrid |
-| 3 | A Mais Turismo | 55.72% | 0.2483 | 0.4094 | hybrid |
-| 4 | A VICTORIOUS BEAUTY | 55.38% | 0.1286 | 0.4818 | hybrid |
-| 5 | A VICTORIOUS BEAUTY | 54.66% | 0.1286 | 0.4818 | hybrid |
-| 6 | Maria Ford | 54.42% | 0.1607 | 0.4571 | hybrid |
-| 7 | IIIyansa Muse | 54.06% | 0.2032 | 0.3906 | hybrid |
-| 8 | Maya Rene | 53.39% | 0.1385 | 0.4484 | hybrid |
-| 9 | Aaisha  Dossal | 52.74% | 0.2032 | 0.3975 | hybrid |
-| 10 | Aaisha  Dossal | 52.74% | 0.2032 | 0.3975 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Fantasia Turistica | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Fantasia Travels | 80.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Fantasia Travels | 80.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Fantasia Travels | 80.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Fantasia Travel | 80.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Fantasia | 79.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Fantasia | 79.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Fantasia | 79.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Fantasia | 79.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Fantasia | 79.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Fantasia | 79.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | FANTASIA | 79.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Ferrari Fantasia | 78.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Fantasia Accessry | 77.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Franquia Fantasia | 76.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Fantasia Veneziana | 76.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Noreen Fantasia | 74.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Fantasia by Stohler | 72.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Fantasia Home Parties | 72.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Fantasia Travel PreCruise Group | 70.0% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 38. Esoterix
 
-**Top Match**: A I Metrix
+**Top Match**: Esoterix
 
-- **Score**: 0.6093 (60.93%)
-- **Match Type**: hybrid
-- **String Score**: 0.2557
-- **Semantic Score**: 0.6189
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A I Metrix | 60.93% | 0.2557 | 0.6189 | hybrid |
-| 2 | ***Cicatrix e.V. | 55.02% | 0.1488 | 0.6467 | hybrid |
-| 3 | 3D Matrix | 50.73% | 0.1925 | 0.4702 | hybrid |
-| 4 | 3D Matrix | 50.73% | 0.1925 | 0.4702 | hybrid |
-| 5 | 3D Matrix | 50.73% | 0.1925 | 0.4702 | hybrid |
-| 6 | 3 ESI Enersight | 50.23% | 0.1630 | 0.4665 | hybrid |
-| 7 | **Escuela | 50.17% | 0.1588 | 0.4790 | hybrid |
-| 8 | A Turismo | 49.86% | 0.1800 | 0.4306 | hybrid |
-| 9 | A.K. Asteria | 49.40% | 0.2273 | 0.3688 | hybrid |
-| 10 | **Citrix | 48.20% | 0.2250 | 0.3784 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Esoterix | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Esoterix Headquarters | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Esoterix Integrated Genetics | 89.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Esoterix Integrated Genetics | 89.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Esoterix Genetic Laboratories, LLC | 89.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | ESOTERIX GENETC LABORATORIES, LLC | 89.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Esoterix Clinical Trials Services | 89.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Verix | 54.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 9 | Verix | 54.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 10 | Verix | 54.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | Metametrix | 53.8% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | Centrix | 53.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | Centrix | 53.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | Centrix | 53.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | Centrix | 53.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | CENTRIX | 53.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | CENTRIX | 53.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | Corix | 52.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Corix | 52.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Corix | 52.7% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 39. Coker Group
 
-**Top Match**: A & R Group
+**Top Match**: Coker Group
 
-- **Score**: 0.5489 (54.89%)
-- **Match Type**: hybrid
-- **String Score**: 0.1500
-- **Semantic Score**: 0.5716
+- **Final Score**: 0.9410 (94.1%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.1%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Nature: ✅ Consumer 26.2%<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A & R Group | 54.89% | 0.1500 | 0.5716 | hybrid |
-| 2 | 2gether Group | 53.78% | 0.1500 | 0.5289 | hybrid |
-| 3 | 1st Choice Group | 53.46% | 0.1636 | 0.5309 | hybrid |
-| 4 | AA Biker Group | 53.33% | 0.1888 | 0.4934 | hybrid |
-| 5 | Bayer Group | 53.03% | 0.1800 | 0.5161 | hybrid |
-| 6 | A1 Glover Group | 53.00% | 0.1753 | 0.5032 | hybrid |
-| 7 | 4ever Group | 52.93% | 0.1800 | 0.4916 | hybrid |
-| 8 | $Brickman Group, (The) | 52.87% | 0.1227 | 0.5861 | hybrid |
-| 9 | 4R Restaurant Group | 52.31% | 0.0909 | 0.5822 | hybrid |
-| 10 | 4C Group | 52.19% | 0.1286 | 0.5321 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Coker Group | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Coker Group | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Coker Group | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 4 | Coker Group | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 5 | Coker Group | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 6 | Coker Group | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 7 | The Coker Group | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | The Coker Group | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | The Coker Group | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Coker Capital | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Coker Coaters | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | Coker Capital | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Coker Capital | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Coker College | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Coker Grp | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Coker Law | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Jackson & Coker | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | Betty Coker | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | Coker University | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | Kristen Coker | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
 ### 40. GILEAD IT
 
-**Top Match**: AAA IT
+**Top Match**: GILEAD IT
 
-- **Score**: 0.7740 (77.40%)
-- **Match Type**: hybrid
-- **String Score**: 0.7438
-- **Semantic Score**: 0.3974
+- **Match location**: Foster City, CA
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (93%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Foster City, CA. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | AAA IT | 77.40% | 0.7438 | 0.3974 | hybrid |
-| 2 | 2020 Jam On It | 64.25% | 0.6198 | 0.2416 | hybrid |
-| 3 | **Gileads Sciences | 63.90% | 0.3000 | 0.5895 | hybrid |
-| 4 | A Gilded Life | 56.47% | 0.3316 | 0.3865 | hybrid |
-| 5 | $Millipore | 45.69% | 0.1200 | 0.3776 | hybrid |
-| 6 | A2Agile | 44.96% | 0.1800 | 0.2929 | hybrid |
-| 7 | **Golden Books | 44.87% | 0.1636 | 0.3164 | hybrid |
-| 8 | A GRAND AFFAIR | 44.82% | 0.2143 | 0.2571 | hybrid |
-| 9 | A. Girardin Inc. | 44.62% | 0.2118 | 0.2527 | hybrid |
-| 10 | A Gilded Life Craft Project | 44.41% | 0.1818 | 0.2948 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | GILEAD IT | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Gilead Productions | 80.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Gilead | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Gilead | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Gilead | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Gilead | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Gilead | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Gilead | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Gilead | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Gilead | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | GILEAD | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | Gilead | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Gilead | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | GILEAD | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Gilead | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Gilead | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | GILEAD | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | Gilead | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | Gilead | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | Gilead | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
@@ -1058,259 +1436,358 @@ Total Companies Tested: 109
 
 **Top Match**: 4143 Affiliate INDA 2016
 
-- **Score**: 1.0000 (100.00%)
-- **Match Type**: exact
-- **String Score**: 1.0000
-- **Semantic Score**: 1.0000
+- **Match location**: Apex, NC
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Apex, NC. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 4143 Affiliate INDA 2016 | 100.00% | 1.0000 | 1.0000 | exact |
-| 2 | 1528 Affiliate INDA 2016 | 91.42% | 0.9000 | 0.8412 | hybrid |
-| 3 | 1528 Affiliate INDA 2016 | 90.24% | 0.9000 | 0.8412 | hybrid |
-| 4 | 1528 Affiliate INDA 2016 | 90.24% | 0.9000 | 0.8412 | hybrid |
-| 5 | 4143 Affiliate Aan 2017 | 83.59% | 0.7438 | 0.8670 | hybrid |
-| 6 | 1528 Affiliate AFA 2016 | 81.77% | 0.7438 | 0.7613 | hybrid |
-| 7 | 1528 Affiliate ALA 2016 | 81.22% | 0.7438 | 0.7367 | hybrid |
-| 8 | 430 Affiliate ALA 2016 | 80.71% | 0.7438 | 0.7605 | hybrid |
-| 9 | 1035 AFSA Affiliate 2016 | 80.45% | 0.7438 | 0.7140 | hybrid |
-| 10 | 1528 Affiliate AFA 2016 | 80.45% | 0.7438 | 0.7613 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | 4143 Affiliate INDA 2016 | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | 1528 Affiliate INDA 2016 | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | 1528 Affiliate INDA 2016 | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | 1528 Affiliate INDA 2016 | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | 4143 Affiliate Aan 2017 | 80.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | 430 Affiliate ALA 2016 | 75.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | 00430 Affiliate 2016 Cardiometabolic | 73.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | 00430 Affiliate 2016 Cardiometabolic | 73.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | 00430 Affiliate 2016 Cardiometabolic | 73.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | 00430 Affiliate 2016 Cardiometabolic | 73.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | 430 Affiliate NALP 2016 | 73.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | 430 Affiliate NALP 2016 | 73.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | 430 NAVBO Affiliate 2016 | 73.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | 1035 Affiliate CASE 2016 | 73.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | 1035 Affiliate CASE 2016 | 73.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | 1035 Affiliate CASE 2016 | 73.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | 2016 Google Affiliate | 72.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | AACR AFFILIATE 2016 | 72.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | AACR AFFILIATE 2016 | 72.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | AACR AFFILIATE 2016 | 72.5% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 42. Pipe and Plant Solutions
 
-**Top Match**: A&B Pipe and Supply, Inc.
+**Top Match**: Pipe and Plant Solutions
 
-- **Score**: 0.6985 (69.85%)
-- **Match Type**: hybrid
-- **String Score**: 0.5542
-- **Semantic Score**: 0.4445
+- **Match location**: Oakland, CA
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Oakland, CA. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A&B Pipe and Supply, Inc. | 69.85% | 0.5542 | 0.4445 | hybrid |
-| 2 | 365 Plant Based | 67.56% | 0.5542 | 0.3805 | hybrid |
-| 3 | 1 Plant Operations 2017 Meeting | 66.54% | 0.4618 | 0.4316 | hybrid |
-| 4 | 2 Plant | 64.16% | 0.5038 | 0.3892 | hybrid |
-| 5 | Association of Oil Pipe Lines | 63.87% | 0.5038 | 0.4646 | hybrid |
-| 6 | A.R. Romark Solutions | 63.72% | 0.4750 | 0.3923 | hybrid |
-| 7 | A.E. Electrical Solutions | 62.75% | 0.4750 | 0.3704 | hybrid |
-| 8 | * Acquatic Plant Management Society, Inc. | 61.58% | 0.4618 | 0.3546 | hybrid |
-| 9 | #1 Unbridled Solutions | 61.51% | 0.4750 | 0.3297 | hybrid |
-| 10 | 3M LEAN SOLUTIONS | 61.04% | 0.4750 | 0.3469 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Pipe and Plant Solutions | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Pipe & Plant | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Advanced Pipe Solutions | 81.0% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Infra Pipe Solutions | 76.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Infra Pipe Solutions | 76.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Plant Solutions Limited | 74.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | TV Pipe Solutions | 73.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | PPS | 69.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Pipe | 67.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Pipe | 67.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Pipe | 67.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Pipe | 67.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Pipe | 67.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Plant Operations | 66.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Plumbers & Pipe Fitters | 66.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Plant with Purpose | 65.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Pipe Products | 65.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Pipe Line Contractors | 65.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Plumber & Pipe Fitters | 64.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Plant Impact | 64.5% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 43. Stephen Rourke
 
-**Top Match**: ***Philip Morris Benelux
+**Top Match**: Stephen Rourke
 
-- **Score**: 0.5454 (54.54%)
-- **Match Type**: hybrid
-- **String Score**: 0.1136
-- **Semantic Score**: 0.5247
+- **Match location**: Baltimore, MD
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Baltimore, MD. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | ***Philip Morris Benelux | 54.54% | 0.1136 | 0.5247 | hybrid |
-| 2 | A. O. Touristik | 54.28% | 0.1875 | 0.4476 | hybrid |
-| 3 | Chardelle Moore | 53.63% | 0.1552 | 0.4581 | hybrid |
-| 4 | A. Keith Young | 52.94% | 0.1875 | 0.4158 | hybrid |
-| 5 | 8th Ellison Pierce | 52.84% | 0.1278 | 0.4684 | hybrid |
-| 6 | ***JOHN HANCOCK*** | 52.30% | 0.1452 | 0.4616 | hybrid |
-| 7 | A Scot | 51.58% | 0.0847 | 0.4801 | hybrid |
-| 8 | ***Silberhorn Susanne | 50.51% | 0.1800 | 0.3743 | hybrid |
-| 9 | A Serious Man | 50.45% | 0.1957 | 0.3489 | hybrid |
-| 10 | A T Kearny | 50.33% | 0.1636 | 0.3740 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Stephen Rourke | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Rourke | 79.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | Rourke Publishing | 77.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Rourke Rooms | 74.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Damon Rourke | 71.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Stephen Oh | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Stephen Shea | 71.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Rourke and Ashley | 70.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Stephen McConnell | 70.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | O Rourke & Associates | 70.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Stephen Young | 70.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Stephen Lane | 69.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Rourke & Blumenthal | 69.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Rourke Manufacturing | 69.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Rourke Manufacturing | 69.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Stephen Yong | 69.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Rourke Mortgage Group | 69.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Stephen Scott | 69.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Stephen Nacht | 69.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Stephen James | 68.9% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
-### 44. MIT Initiative on the Digital Economy
+### 44. MIT Initiative on the Digital Economy — Cambridge, MA
 
-**Top Match**: 2024 San Diego Digital Government Summit
+**Top Match**: MIT Lean Advancement Initiative
 
-- **Score**: 0.5626 (56.26%)
-- **Match Type**: hybrid
-- **String Score**: 0.2064
-- **Semantic Score**: 0.5131
+- **Match location**: Cambridge, MA
+- **Final Score**: 0.7416 (74.2%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #ffaa00; border-left: 10px solid #ffaa00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#ffaa00;'>⚠️ MODERATE MATCH (74.2%)</span><br><span style='color:#eee; font-size:1.1em;'>Moderate Semantic Similarity</span></div><br><br><b>Relationship:</b> This is a <b>Hybrid Word Overlap</b>. The system detected shared keywords ('initiative, mit') despite differences in overall string structure.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟡 MODERATE (52%) — Based on partial character alignment.<br>• <b>Semantic Link:</b> 🟢 GOOD (73%) — Detected via strong contextual link.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (93%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Cambridge, MA matches the query geography well (location score 1.00).<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Technology 31.8%<br>• Insight: The model detects a strong 'Technology' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 2024 San Diego Digital Government Summit | 56.26% | 0.2064 | 0.5131 | hybrid |
-| 2 | ***ELO Digital Office GmbH | 56.02% | 0.2213 | 0.4405 | hybrid |
-| 3 | A series of digital marketing Masterclas | 56.00% | 0.1920 | 0.4774 | hybrid |
-| 4 | : Chan Zuckerberg Initiative Foundation | 55.97% | 0.2149 | 0.4480 | hybrid |
-| 5 | Affiliated Digital Media /Trill OG | 55.15% | 0.2639 | 0.3829 | hybrid |
-| 6 | ****MIT Investment Management Company | 54.77% | 0.1452 | 0.5001 | hybrid |
-| 7 | 3I-INFOTECH Investment Services | 54.45% | 0.1278 | 0.4863 | hybrid |
-| 8 | 9th Integrating Online & Print Communication | 54.28% | 0.2342 | 0.3861 | hybrid |
-| 9 | 4Life Sistemas - Marketing Digital | 54.12% | 0.1944 | 0.4262 | hybrid |
-| 10 | 4Life Sistemas - Marketing Digital | 54.12% | 0.1944 | 0.4262 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | MIT Lean Advancement Initiative | 74.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 2 | MIT ENERGY INITIATIVE | 74.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | MIT Office of Digital Learning | 73.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Lean Aerospace Initiative @ MIT | 71.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | MIT Office of Digital Learning (formerly OEIT) | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | MIT Information Services and Technology | 66.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | MIT Information Systems | 64.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | MIT On The Road | 64.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | MIT Global Initiatives | 64.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | MIT Dept of Economic | 62.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | MIT Administrative Pro Day | 62.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | MIT Development Services | 62.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | MIT Resource Development | 62.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | MIT China Program | 61.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | MIT Corporate Development | 61.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | MIT Industrial Liaison Program | 61.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | MIT Enterprise Forum | 61.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | MITOffice of Digital Learning | 61.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | MIT Administrative Professional Day | 60.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | MIT Tech | 60.9% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 45. Urx Community USA
 
-**Top Match**: 3RNet USA
+**Top Match**: Urx Community USA
 
-- **Score**: 0.6806 (68.06%)
-- **Match Type**: hybrid
-- **String Score**: 0.5038
-- **Semantic Score**: 0.4509
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ Pennsylvania 33.1%, ✅ California 30.5%, ✅ Texas 30.1%, ✅ New York 27.3%, ✅ Canada 26.9%<br>• Nature: ✅ Local 30.5%<br>• Insight: The model detects a strong 'Pennsylvania' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 3RNet USA | 68.06% | 0.5038 | 0.4509 | hybrid |
-| 2 | 3xLOGIC USA | 67.83% | 0.5038 | 0.4546 | hybrid |
-| 3 | AACSB International USA | 67.02% | 0.5542 | 0.3721 | hybrid |
-| 4 | AA USA | 66.87% | 0.5038 | 0.4240 | hybrid |
-| 5 | 2020 Group USA | 66.07% | 0.5038 | 0.3826 | hybrid |
-| 6 | 365 Sports USA Inc. | 66.06% | 0.5542 | 0.3634 | hybrid |
-| 7 | 365 Sports USA Inc. | 66.06% | 0.5542 | 0.3634 | hybrid |
-| 8 | 365 Sports USA Inc. | 66.06% | 0.5542 | 0.3634 | hybrid |
-| 9 | 365 Sports USA Inc. | 66.06% | 0.5542 | 0.3634 | hybrid |
-| 10 | 365 Sports USA Inc. | 66.06% | 0.5542 | 0.3634 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Urx Community USA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Community Alliance USA | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | UiPath Community USA | 73.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Community Brands USA | 73.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Community Information Exchange USA | 72.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | USA Community Service Commission | 72.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Community Development Society USA | 72.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Community Leaders of America USA | 72.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Santa Fe Community USA | 72.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Support Driven Community USA | 70.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Community Shelter Board USA | 70.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Oregon Community Trees USA | 70.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Community Investment Network USA | 69.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | National Community Development Association USA | 68.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Florida Urological Society USA | 66.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Sites USA | 65.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Sites USA | 65.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Urenco USA | 64.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | URENCO USA | 64.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | URENCO USA | 64.8% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 46. Spredfast Engage
 
-**Top Match**: 8 Engage
+**Top Match**: Spredfast Engage
 
-- **Score**: 0.8636 (86.36%)
-- **Match Type**: hybrid
-- **String Score**: 0.7438
-- **Semantic Score**: 0.6377
+- **Match location**: Austin, TX
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Austin, TX. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br>• <b>Entity Popularity:</b> 🟢 <b>+0.6% Boost</b> — Higher confidence due to 2 occurrences in master set.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 8 Engage | 86.36% | 0.7438 | 0.6377 | hybrid |
-| 2 | 109584 HPN - 2029 CPA Engage | 63.66% | 0.5721 | 0.3278 | hybrid |
-| 3 | 3Red Partners | 50.51% | 0.2000 | 0.4372 | hybrid |
-| 4 | 3 Sprod | 47.43% | 0.1636 | 0.3968 | hybrid |
-| 5 | 3 Sprod | 47.43% | 0.1636 | 0.3968 | hybrid |
-| 6 | *Sprague and Associates | 46.49% | 0.1800 | 0.3774 | hybrid |
-| 7 | 5th Employee Engagement | 45.88% | 0.1888 | 0.3526 | hybrid |
-| 8 | 2sur2 sprl | 45.76% | 0.1080 | 0.4462 | hybrid |
-| 9 | A Savvy Event | 45.65% | 0.1731 | 0.3247 | hybrid |
-| 10 | A Savvy Event | 45.38% | 0.1731 | 0.3247 | hybrid |
-
----
-
-### 47. City of Dallas-Parks & Recreation
-
-**Top Match**: 289 Water Resort Parks & Recreation
-
-- **Score**: 0.7922 (79.22%)
-- **Match Type**: hybrid
-- **String Score**: 0.6761
-- **Semantic Score**: 0.5224
-
-**Top 10 Matches:**
-
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 289 Water Resort Parks & Recreation | 79.22% | 0.6761 | 0.5224 | hybrid |
-| 2 | 289 Water Resort Parks & Recreation | 79.22% | 0.6761 | 0.5224 | hybrid |
-| 3 | 289 Water Resort Parks & Recreation | 79.22% | 0.6761 | 0.5224 | hybrid |
-| 4 | 289 Water Resort Parks & Recreation | 79.22% | 0.6761 | 0.5224 | hybrid |
-| 5 | 289 Water Resort Parks & Recreation | 79.22% | 0.6761 | 0.5224 | hybrid |
-| 6 | 289 Water Resort Parks & Recreation | 79.22% | 0.6761 | 0.5224 | hybrid |
-| 7 | 30 + Travel Club of Dallas | 70.56% | 0.4432 | 0.6077 | hybrid |
-| 8 | 30 + Travel Club of Dallas | 70.56% | 0.4432 | 0.6077 | hybrid |
-| 9 | EATS Park City | 70.15% | 0.4432 | 0.5799 | hybrid |
-| 10 | 2014 SHERATON DALLAS INHOUSE EVENTS | 69.38% | 0.4432 | 0.5449 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Spredfast Engage | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Spredfast Events | 79.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | Spredfast Events | 79.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Spredfast | 78.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Spredfast Product | 72.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Engage & Resonate | 70.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | 8 Engage | 70.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Engage Creative | 70.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Engage Point | 69.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Engage Point | 69.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Engage Point | 69.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Engage Point | 69.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Engage Point | 69.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Engage Systems | 69.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Engage Smart | 69.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Engage Smart | 69.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Engage Strategies | 69.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Arrange and Engage | 69.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Arrange and Engage | 69.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Arrange and Engage | 69.3% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
-### 48. Kai Pono Builders, Inc.
+### 47. City of Dallas-Parks & Recreation — Dallas, TX
 
-**Top Match**: 84th Construction Builders
+**Top Match**: City of Dallas-Parks & Recreation
 
-- **Score**: 0.7192 (71.92%)
-- **Match Type**: hybrid
-- **String Score**: 0.5146
-- **Semantic Score**: 0.4821
+- **Match location**: Dallas, TX
+- **Final Score**: 1.0000 (100.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (100.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (93%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Dallas, TX matches the query geography well (location score 1.00).<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ Texas 42.3%, ✅ Chicago 33.1%, ✅ Miami 27.5%, ✅ New York 25.6%, ✅ California 25.1%<br>• Industry: ✅ Retail 30.3%<br>• Nature: ✅ Local 33.7%<br>• Insight: The model detects a strong 'Texas' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 84th Construction Builders | 71.92% | 0.5146 | 0.4821 | hybrid |
-| 2 | “The Builders Club” | 71.33% | 0.5146 | 0.4739 | hybrid |
-| 3 | â??The Builders Clubâ? | 70.47% | 0.5146 | 0.4503 | hybrid |
-| 4 | $Associated Builders and Contractors | 69.70% | 0.5146 | 0.4491 | hybrid |
-| 5 | A & R Builders | 69.05% | 0.4678 | 0.4634 | hybrid |
-| 6 | 01386 HOME BUILDERS ASSOCIATION | 66.72% | 0.4678 | 0.4295 | hybrid |
-| 7 | 2016 Kona Kai | 64.99% | 0.5146 | 0.3781 | hybrid |
-| 8 | 2016 Kona Kai | 64.99% | 0.5146 | 0.3781 | hybrid |
-| 9 | 2016 Kona Kai | 64.99% | 0.5146 | 0.3781 | hybrid |
-| 10 | 2018 Kona Kai Club Activities | 62.83% | 0.4288 | 0.4259 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | City of Dallas-Parks & Recreation | 100.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Dallas Parks and Recreation Dept | 92.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Dallas Parks and Recreation Department | 92.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | City of Dallas Park & Recreation | 92.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | PARKS FOR DOWNTOWN DALLAS | 87.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | DALLAS PARK & RECREATION DEPARTMENT | 85.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | City Career Fair Dallas | 83.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | City Year Dallas | 82.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Dallas Parks Foundation | 81.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Dallas City Council | 80.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Dallas City Hall | 80.1% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | City of Dallas WIC Program | 80.1% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | CITY OF DALLAS POLICE DEPARTMENT | 79.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | City of Dallas, Texas. | 78.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | City of Dallas Convention and Event Services | 78.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | DALLAS CITY ATTORNEY | 76.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Downtown Dallas | 72.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Destination Dallas | 72.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Urban League of Greater Dallas | 72.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Dallas Urban League | 72.3% | <div style='border: 1px solid #ffaa00; border-left... |
+
+---
+
+### 48. Kai Pono Builders, Inc. — Honolulu, HI
+
+**Top Match**: Kai Pono Builders
+
+- **Match location**: Honolulu, HI
+- **Final Score**: 0.9710 (97.1%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (97.1%)</span><br><span style='color:#eee; font-size:1.1em;'>High Lexical Similarity</span></div><br><br><b>Relationship:</b> This is a <b>Hybrid Word Overlap</b>. The system detected shared keywords ('kai, pono') despite differences in overall string structure.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (94%) — Based on strong character overlap.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (98%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Honolulu, HI matches the query geography well (location score 1.00).<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Construction 31.5%<br>• Insight: The model detects a strong 'Construction' influence in the company's semantic vector.<br>
+
+**Top 20 Matches:**
+
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Kai Pono Builders | 97.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Kai Hawaii Company | 69.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | NA Kama Kai | 68.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Associated Builders & Contractors Hawaii | 68.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | KAI Hawaii Structural & Forensic Engineers | 65.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | SW IN-HOUSE KAI MARKET | 63.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | KAI Hawaii | 63.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Hawaii Kai Boat Club | 61.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | NEW HOPE HAWAII KAI | 60.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Pono Corporation | 53.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | Kai Pono Builders, Inc. | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | Kaipona Builders, Incorporated | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | HI Meeting Builders | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | Hawaii Meeting Builders | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | Kingdom Builders | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | KAI Media & Marketing, LLC | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | HONUA KAI | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | NA Kama Kai | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | POIPU KAI ASSOCIATION | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Pono Kai | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 49. MUSICFIRST COALITION
 
-**Top Match**: 340B Coalition
+**Top Match**: MUSICFIRST COALITION
 
-- **Score**: 0.8281 (82.81%)
-- **Match Type**: hybrid
-- **String Score**: 0.7438
-- **Semantic Score**: 0.5316
+- **Match location**: Washington, DC
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Washington, DC. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 340B Coalition | 82.81% | 0.7438 | 0.5316 | hybrid |
-| 2 | Coalition Kingdom DJs | 81.99% | 0.6761 | 0.5992 | hybrid |
-| 3 | A Coalition of Charities | 78.13% | 0.7438 | 0.4627 | hybrid |
-| 4 | 30 Percent Coalition | 77.89% | 0.6761 | 0.4976 | hybrid |
-| 5 | 340B Coalition USA | 77.21% | 0.6761 | 0.4840 | hybrid |
-| 6 | 340B Coalition Conf | 76.98% | 0.6761 | 0.4851 | hybrid |
-| 7 | 7-Eleven Coalition | 76.55% | 0.6761 | 0.4579 | hybrid |
-| 8 | 7-ELEVEN NATIONAL COALITION | 72.59% | 0.6198 | 0.4345 | hybrid |
-| 9 | 7 Eleven Natl Coalition | 72.57% | 0.6198 | 0.4317 | hybrid |
-| 10 | **National Community Reinvestment Coalition | 72.08% | 0.6198 | 0.4256 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | MUSICFIRST COALITION | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | music FIRST Coalition | 77.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | Musicfirst | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Future of Music Coalition | 75.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | MAINSTREAM COALITION | 73.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Unconventional Coalition | 73.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Unconventional Coalition | 73.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Venue Coalition | 72.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Venue Coalition | 72.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Coalition BEATS Music Program | 71.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Coalition Entertainment Group | 71.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Human Coalition | 71.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Human Coalition | 71.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Human Coalition | 71.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Human Coalition | 71.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Human Coalition | 71.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Human Coalition | 71.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | District New Music Coalition | 71.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Coalition of Music Stores | 71.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | CLASS Coalition | 71.4% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 50. Frontier Power Products
 
-**Top Match**: A N P Power Company
+**Top Match**: Frontier Power Products
 
-- **Score**: 0.7251 (72.51%)
-- **Match Type**: hybrid
-- **String Score**: 0.5278
-- **Semantic Score**: 0.5066
+- **Match location**: Delta, BC
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Delta, BC. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Technology 30.8%<br>• Nature: ✅ Industrial 26.6%<br>• Insight: The model detects a strong 'Technology' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A N P Power Company | 72.51% | 0.5278 | 0.5066 | hybrid |
-| 2 | A N P Power Company | 72.51% | 0.5278 | 0.5066 | hybrid |
-| 3 | A N P Power Company | 72.51% | 0.5278 | 0.5066 | hybrid |
-| 4 | A.O. Smith Electrical Products | 71.52% | 0.4798 | 0.5300 | hybrid |
-| 5 | A&M Green Power | 71.36% | 0.5278 | 0.4516 | hybrid |
-| 6 | A&M Green Power | 71.36% | 0.5278 | 0.4516 | hybrid |
-| 7 | A&M Green Power | 71.36% | 0.5278 | 0.4516 | hybrid |
-| 8 | 3rd Power Inc. | 66.82% | 0.4798 | 0.4172 | hybrid |
-| 9 | (IEEE) Power and Energy Society | 66.60% | 0.4798 | 0.4167 | hybrid |
-| 10 | 8th Power of Branding | 66.33% | 0.5278 | 0.3763 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Frontier Power Products | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Frontier Business Products | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Worldwide Power Products | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Frontier Natural Products | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Worldwide Power Products | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Western Power Products | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Canada Power Products Corporation | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Allied Power Products | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Pacific Power Products | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Pacific Power Products | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Power Service Products | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | Advanced Power Products | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Western Power Products Inc | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Advance Power Products | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Zenith Power Products LLC | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Muncie Power Products | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Power Management Products | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | Residential and Power Products | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | Superior Power Products Limited | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | Residential and Power Products | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
@@ -1318,1533 +1795,2172 @@ Total Companies Tested: 109
 
 **Top Match**: 1960
 
-- **Score**: 1.0000 (100.00%)
-- **Match Type**: exact
-- **String Score**: 1.0000
-- **Semantic Score**: 1.0000
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ Pennsylvania 30.6%, ✅ Chicago 28.6%, ✅ London 28.2%<br>• Industry: ✅ Construction 32.2%, ✅ Food 31.0%, ✅ Legal 28.4%, ✅ Retail 27.7%, ✅ Automotive 26.6%, ✅ Manufacturing 25.2%<br>• Structure: ✅ Government 34.9%, ✅ Corporate 25.0%<br>• Nature: ✅ Consumer 40.9%, ✅ Industrial 40.8%, ✅ Global 37.8%, ✅ Professional 35.6%<br>• Insight: The model detects a strong 'Consumer' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 1960 | 100.00% | 1.0000 | 1.0000 | exact |
-| 2 | 1960 | 100.00% | 1.0000 | 1.0000 | exact |
-| 3 | 1960 | 100.00% | 1.0000 | 1.0000 | exact |
-| 4 | 1960 | 100.00% | 1.0000 | 1.0000 | exact |
-| 5 | 1960 Family Practice | 96.56% | 0.7500 | 0.5975 | hybrid |
-| 6 | 1960 Hope Center | 95.00% | 0.7500 | 0.5595 | hybrid |
-| 7 | 1960 Hope Center | 95.00% | 0.7500 | 0.5595 | hybrid |
-| 8 | 921 FM 1960 West | 95.00% | 0.6923 | 0.4565 | hybrid |
-| 9 | 4606 Fm 1960 Rd W. Ste 555 Houston | 95.00% | 0.5294 | 0.3759 | hybrid |
-| 10 | 1419 FM 1960 East | 95.00% | 0.6923 | 0.5442 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | 1960 | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | 1960 | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | 1960 | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 4 | 1960 | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 5 | District 1960 | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Playhouse 1960 | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | NFA Class of 1960 | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | PAGE CLASS OF 1960 | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | 1960 Family Practice | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | 1960 Hope Center | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | 1960 Hope Center | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | West Point Class of 1960 | 89.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | 60 | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | 1961 | 66.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | 1966 | 65.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | 1963 | 65.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | 1950 | 65.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | 1964 | 64.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | 1964 | 64.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | 1964 | 64.6% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
-### 52. Pacific Northwest Diabetes Research Inst
+### 52. Pacific Northwest Diabetes Research Inst — Seattle, WA
 
-**Top Match**: $Juvenile Diabetes Research Foundation International
+**Top Match**: Pacific Northwest Diabetes Research Inst
 
-- **Score**: 0.6998 (69.98%)
-- **Match Type**: hybrid
-- **String Score**: 0.5610
-- **Semantic Score**: 0.6390
+- **Match location**: Seattle, WA
+- **Final Score**: 1.0000 (100.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (100.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (95%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Seattle, WA matches the query geography well (location score 1.00).<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ Canada 25.9%<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | $Juvenile Diabetes Research Foundation International | 69.98% | 0.5610 | 0.6390 | hybrid |
-| 2 | (JDRF) Juveline Diabetes Research Foundation | 66.30% | 0.5610 | 0.6316 | hybrid |
-| 3 | (B) Juvenile Diabetes Research | 64.20% | 0.5100 | 0.6057 | hybrid |
-| 4 | AACC Pacific Northwest Section | 62.39% | 0.5100 | 0.3622 | hybrid |
-| 5 | 54th Annual Conference of the Research Society for the Study of Diabetes in Indi | 61.22% | 0.3740 | 0.6612 | hybrid |
-| 6 | 48th Annual Pacific Northwest Update in Obstetrics and Gynecology | 58.10% | 0.4315 | 0.3317 | hybrid |
-| 7 | 2014 AMERICAN DIABETES ASSOCIATION AFFILIATES | 54.35% | 0.2341 | 0.6272 | hybrid |
-| 8 | 2014 AMERICAN DIABETES ASSOCIATION AFFILIATES | 54.35% | 0.2341 | 0.6272 | hybrid |
-| 9 | 2014 AMERICAN DIABETES ASSOCIATION AFFILIATES | 54.35% | 0.2341 | 0.6272 | hybrid |
-| 10 | 2014 AMERICAN DIABETES ASSOCIATION AFFILIATES | 54.35% | 0.2341 | 0.6272 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Pacific Northwest Diabetes Research Inst | 100.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Pacific Northwest Diabetes Research | 90.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Pacific Northwest Research Institute | 75.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Pacific Northwest | 68.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Pacific Northwest Gastroenterology Society | 66.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Pacific Northwest Society of Pathologist | 64.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Pacific Northwest Vegan Singles | 64.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Pacific Northwest Golf Association | 63.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Pacific Northwest Public Purchasing Association | 63.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Pacific Northwest Swimming | 63.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Pacific Northwest Charities | 62.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Pacific Northwest Journeys | 61.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Pacific Northwest Conference | 61.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Pacific Northwest ISA | 60.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | PACIFIC NORTHWEST APPAREL | 60.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Washington Diabetes Network | 57.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | Washington State Diabetes Network | 56.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | Pacific Health Assn | 56.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Pacific Medical Centers | 54.5% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Washington Association of Diabetes Educa | 54.2% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 53. Mentors & Mentees
 
-**Top Match**: 3 Mentors
+**Top Match**: Mentors & Mentees
 
-- **Score**: 0.8674 (86.74%)
-- **Match Type**: hybrid
-- **String Score**: 0.7438
-- **Semantic Score**: 0.6647
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 3 Mentors | 86.74% | 0.7438 | 0.6647 | hybrid |
-| 2 | 3 Mentors | 86.74% | 0.7438 | 0.6647 | hybrid |
-| 3 | 3 Mentors | 85.63% | 0.7438 | 0.6647 | hybrid |
-| 4 | 3 Mentors | 85.63% | 0.7438 | 0.6647 | hybrid |
-| 5 | 3-Mentors | 85.19% | 0.7438 | 0.6261 | hybrid |
-| 6 | 3-MENTORS | 84.09% | 0.7438 | 0.6261 | hybrid |
-| 7 | 3-MENTORS | 84.09% | 0.7438 | 0.6261 | hybrid |
-| 8 | 3-MENTORS | 84.09% | 0.7438 | 0.6261 | hybrid |
-| 9 | 3-Mentors | 84.09% | 0.7438 | 0.6261 | hybrid |
-| 10 | 3-Mentors | 84.09% | 0.7438 | 0.6261 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Mentors & Mentees | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | RE Mentors | 80.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | 3 Mentors | 80.1% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | 3 Mentors | 80.1% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | 3 Mentors | 80.1% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | 3 Mentors | 80.1% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | TRUE Mentors | 80.0% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | TRUE MENTORS | 80.0% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Master Mentors | 79.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | SCORE Mentors | 78.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Score Mentors | 78.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | College Mentors | 78.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | 3-Mentors | 77.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | 3-MENTORS | 77.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | 3-MENTORS | 77.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | 3-Mentors | 77.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | 3-MENTORS | 77.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | 3-Mentors | 77.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | 3-Mentors | 77.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | MAX Mentors | 77.4% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 54. NaLA 2024 fall conference M01709226216947 02-29-24 12:03:46
 
-**Top Match**: 2024 CPF Conference - CRDF Global M01712246836200 04-04-24 12:07:23
+**Top Match**: NaLA 2024 fall conference M01709226216947 02-29-24 12:03:46
 
-- **Score**: 0.6630 (66.30%)
-- **Match Type**: hybrid
-- **String Score**: 0.4750
-- **Semantic Score**: 0.5979
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 2024 CPF Conference - CRDF Global M01712246836200 04-04-24 12:07:23 | 66.30% | 0.4750 | 0.5979 | hybrid |
-| 2 | 2024 Indivior Fall POA M01720466309085 07-08-24 15:18:30 | 65.63% | 0.4750 | 0.5712 | hybrid |
-| 3 | 2024 Top Gun and Rising Star Conference  M01713476475763 04-18-24 17:41:19 | 64.44% | 0.3958 | 0.6683 | hybrid |
-| 4 | 2024 TALWD Annual Conference M01698696224714 10-30-23 16:03:51 | 62.95% | 0.2901 | 0.7642 | hybrid |
-| 5 | 2025 Doeren Mayhew Conference M01723650115309 08-14-24 11:41:56 | 61.97% | 0.2717 | 0.7617 | hybrid |
-| 6 | 2025 RESNET Conference M01721162342649 07-16-24 16:39:09 | 61.73% | 0.2466 | 0.7911 | hybrid |
-| 7 | 2025 CFO Conference M01742397237118 03-19-25 11:14:09 | 61.44% | 0.2484 | 0.7823 | hybrid |
-| 8 | 2025 Leader's Conference M01727717769595 09-30-24 13:36:10 | 60.96% | 0.2500 | 0.7636 | hybrid |
-| 9 | 2023 M&A East Conference M01666192423368 10-19-22 11:13:49 | 60.67% | 0.2692 | 0.7380 | hybrid |
-| 10 | 2025 North Carolina Conference M01739909644360 02-18-25 15:14:12 | 60.62% | 0.2774 | 0.7273 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | NaLA 2024 fall conference M01709226216947 02-29-24 12:03:46 | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | NaLA 2023 fall conference M01674569043113 01-24-23 09:04:06 | 76.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | NaLA 2023 fall conference M01674661235470 01-25-23 10:40:54 | 75.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | TCN Worldwide 2025 Fall Conference M01712007730091 04-01-24 17:42:23 | 60.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Request for Availability of a Conference Room M01733155625999 12-02-24 11:07:12 | 57.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 6 | Rutgers Conference event M01707750307779 02-12-24 10:05:11 | 56.8% | <div style='border: 1px solid #ff6600; border-left... |
+| 7 | NALSC 2024 Annual Conference M01680804350265 04-06-23 14:05:56 | 56.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 8 | SGAUS Annual Conference M01709140758384 02-28-24 12:19:25 | 56.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 9 | CAADS 2024 Fall Conference (Flexible Dates) | 55.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 10 | National Conference - Fall 2024 #88417B | 54.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | National Conference Fall 2024 - 88417BV2 | 54.8% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | Region II Conference M01706895307768 02-02-24 12:35:11 | 54.4% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | 2025 North Carolina Conference M01739909644360 02-18-25 15:14:12 | 53.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | CIO Conference Fall 2024 | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | Conference '25 M01707151610157 02-05-24 11:46:55 | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | 2024 TALWD Annual Conference M01698696224714 10-30-23 16:03:51 | 52.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | CWG US Conference 2022 M01639062306301 12-09-21 10:05:10 | 51.8% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | 2025 CFO Conference M01742397237118 03-19-25 11:14:09 | 51.8% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | HBMA 2024 Fall Conference | 51.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Fall Series 2025 M01738617336927 02-03-25 16:15:38 | 51.6% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 55. Donnelley Work Session
 
-**Top Match**: $RR Donnelley
+**Top Match**: Donnelley Work Session
 
-- **Score**: 0.7274 (72.74%)
-- **Match Type**: hybrid
-- **String Score**: 0.4798
-- **Semantic Score**: 0.5742
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Nature: ✅ Professional 26.7%<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | $RR Donnelley | 72.74% | 0.4798 | 0.5742 | hybrid |
-| 2 | $R.R. Donnelley & Sons Company | 68.19% | 0.5278 | 0.4406 | hybrid |
-| 3 | 74th Scientific Session | 65.78% | 0.5278 | 0.4058 | hybrid |
-| 4 | 828 Design Session | 64.23% | 0.5278 | 0.3650 | hybrid |
-| 5 | 85th Legislative Session | 62.33% | 0.5278 | 0.3332 | hybrid |
-| 6 | 3 - NNOHA Collaborative - Learning Session 3 | 62.14% | 0.4398 | 0.3957 | hybrid |
-| 7 | 2023 LAB Group Learning Session | 59.82% | 0.4798 | 0.3326 | hybrid |
-| 8 | 8395882 - Devon M Work Crew Extended Stay | 59.45% | 0.3770 | 0.4102 | hybrid |
-| 9 | 0 Donnell Tours" | 58.55% | 0.2605 | 0.5060 | hybrid |
-| 10 | 111076 HPN - 2026 Summer Session | 57.62% | 0.4398 | 0.3215 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Donnelley Work Session | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | SMDS Work Session | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | DWS | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Experience Session 5 | 63.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | HP Content Work Session | 63.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Donnelley Financial Services | 62.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Donnelley Financial Services | 62.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Professional Development Session | 62.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Donnelley (software company) | 61.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | engagement session | 61.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | KinderCare Working Session | 60.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Session One | 60.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Strategy Session | 60.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Strategy Session | 60.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Pro Session | 60.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Session M | 60.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Session M | 60.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Session M | 60.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Session M | 60.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Session M | 60.1% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 56. North Shore Senior Center
 
-**Top Match**: 36th Street North Event Center
+**Top Match**: North Shore Senior Center
 
-- **Score**: 0.8690 (86.90%)
-- **Match Type**: hybrid
-- **String Score**: 0.7727
-- **Semantic Score**: 0.6046
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ Pennsylvania 31.0%<br>• Insight: The model detects a strong 'Pennsylvania' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 36th Street North Event Center | 86.90% | 0.7727 | 0.6046 | hybrid |
-| 2 | 2019 DoubleTree North Shore - Social | 84.12% | 0.7727 | 0.5293 | hybrid |
-| 3 | 1420 North Lake Shore Drive Apartments | 83.30% | 0.7083 | 0.5958 | hybrid |
-| 4 | 2020 Doubletree North Shore Social | 81.87% | 0.7727 | 0.4765 | hybrid |
-| 5 | 2020 Doubletree North Shore Social | 81.87% | 0.7727 | 0.4765 | hybrid |
-| 6 | 2020 Doubletree North Shore Social | 81.87% | 0.7727 | 0.4765 | hybrid |
-| 7 | 2020 Doubletree North Shore Social | 81.87% | 0.7727 | 0.4765 | hybrid |
-| 8 | 2020 Doubletree North Shore Social | 81.87% | 0.7727 | 0.4765 | hybrid |
-| 9 | 2020 Doubletree North Shore Social | 81.87% | 0.7727 | 0.4765 | hybrid |
-| 10 | 2020 Doubletree North Shore Social | 81.87% | 0.7727 | 0.4765 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | North Shore Senior Center | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | North Shore Senior Center | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Coastal North Town Center | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | North Shore Cancer Center | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | North Shore Elder Services | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | North SHore Community College | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | North Shore Community Bank | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Glen Cove Senior Center | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | North Shore Community College | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | North Bay Regional Center | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | North Shore Green House | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | North Shore Teen Initiative | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | NORTH SHORE HARBOR CTR | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | North Shore Round Up | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | North Shore Country Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | YOUNG LIFE NORTH SHORE | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | North Shore Country Day | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | Jersey Shore Dream Center | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | North Shore Winter Club | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | North Shore Aquatic Complex | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
 ### 57. Singles Who Like Food & Fun
 
-**Top Match**: 55+ Singles Fun Events & Dating
+**Top Match**: Singles Who Like Food & Fun
 
-- **Score**: 0.7518 (75.18%)
-- **Match Type**: hybrid
-- **String Score**: 0.5610
-- **Semantic Score**: 0.5673
+- **Match location**: Boston, MA
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Boston, MA. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Food 48.4%<br>• Nature: ✅ Consumer 32.0%<br>• Insight: The model detects a strong 'Food' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 55+ Singles Fun Events & Dating | 75.18% | 0.5610 | 0.5673 | hybrid |
-| 2 | 50+ food and fun in Prince William | 64.79% | 0.5100 | 0.3877 | hybrid |
-| 3 | 30's-40's Fun Singles of the East Bay | 61.52% | 0.5100 | 0.3922 | hybrid |
-| 4 | 40+ Foodies Having Fun | 58.14% | 0.2119 | 0.5455 | hybrid |
-| 5 | A DATE FOR EIGHT- Eight singles meet for dinner and fun! | 57.90% | 0.2083 | 0.5634 | hybrid |
-| 6 | 40+ Singles Gourmet Dining Under $25 | 53.33% | 0.2270 | 0.4492 | hybrid |
-| 7 | 20's & 30's Healthy-ish Foodie Meetup! | 53.30% | 0.1610 | 0.4958 | hybrid |
-| 8 | ***Fun Activities with Singles*** (20s, 30s, 40s) | 52.63% | 0.1042 | 0.5711 | hybrid |
-| 9 | **Fun With Singles** (20s, 30s, 40s) | 52.31% | 0.1387 | 0.5334 | hybrid |
-| 10 | 20-somethings friends & fun in SF | 52.12% | 0.2296 | 0.4220 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Singles Who Like Food & Fun | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Fun Asian Singles | 65.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | LGBT Food N' Fun Social Group | 65.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Fun Social Singles 35+ | 63.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Food, Fun, Culture and Travel Adventures Meetup | 63.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Food, Fun, Culture and Travel Adventures Meetup | 63.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Food Fun & Fellowship | 62.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Fun and Awesome Adventures for Singles and Couples | 61.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Christian Singles Fun Events | 61.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | American Singles Who Love Asian | 61.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Singles Who Dance | 60.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | 55+ Singles Fun Events & Dating | 60.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | OC Fun Loving Singles Over 50 | 60.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | OC Fun Loving Singles Over 50 | 60.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Whos Who Singles | 59.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | Triangle Food and Fun | 59.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | Like Food Chicago | 58.4% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | Fantastic Adult Singles Are Like Fine Wine | 57.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Who's Who Singles Group | 57.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Singles Love Or Like it Toronto Social | 56.2% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 58. Zen Meetings & Events
 
-**Top Match**: A To Z Meetings & Events
+**Top Match**: Zen Meetings & Events
 
-- **Score**: 0.8514 (85.14%)
-- **Match Type**: hybrid
-- **String Score**: 0.7027
-- **Semantic Score**: 0.7452
+- **Final Score**: 0.9410 (94.1%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.1%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A To Z Meetings & Events | 85.14% | 0.7027 | 0.7452 | hybrid |
-| 2 | A2Z Meetings & Events | 84.79% | 0.7729 | 0.6461 | hybrid |
-| 3 | A2Z Meetings & Events | 84.79% | 0.7729 | 0.6461 | hybrid |
-| 4 | A& Meetings & Events | 84.19% | 0.7729 | 0.6632 | hybrid |
-| 5 | A2Z Meetings & Events | 83.70% | 0.7729 | 0.6461 | hybrid |
-| 6 | A2Z Meetings & Events | 83.70% | 0.7729 | 0.6461 | hybrid |
-| 7 | A2Z Meetings & Events | 83.70% | 0.7729 | 0.6461 | hybrid |
-| 8 | A Plus Meetings & Events | 83.56% | 0.7729 | 0.6117 | hybrid |
-| 9 | A+ Meetings & Events | 83.38% | 0.7729 | 0.6352 | hybrid |
-| 10 | A to Z Meetings and Events | 83.35% | 0.7027 | 0.7285 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Zen Meetings & Events | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Zen Meetings & Events | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Zen Meetings & Events | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 4 | Zen Meetings & Events | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 5 | Zen Meetings & Events | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 6 | Zen Events Group | 79.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Mr. Zen Events | 77.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Mr. Zen Events | 77.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Meetings Events Communication | 77.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | UHG Meetings & Events | 76.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | UHG Meetings & Events | 76.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | HRG Meetings & Events | 75.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | HRG Meetings and Events | 75.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | HRG Meetings and Events | 75.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | VIP MEETINGS & EVENTS | 75.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | HRG Events & Meetings | 75.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | HRG Events & Meetings | 75.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | HRG Events & Meetings | 75.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | HRG Events & Meetings | 75.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Hrg Events & Meetings | 75.4% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
-### 59. Chicago South Swim Club
+### 59. Chicago South Swim Club — Chicago, IL
 
-**Top Match**: AAA Chicago Motor Club
+**Top Match**: Chicago South Swim Club
 
-- **Score**: 0.8695 (86.95%)
-- **Match Type**: hybrid
-- **String Score**: 0.7792
-- **Semantic Score**: 0.6492
+- **Match location**: Chicago, IL
+- **Final Score**: 1.0000 (100.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (100.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Chicago, IL matches the query geography well (location score 1.00).<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ Chicago 46.8%<br>• Insight: The model detects a strong 'Chicago' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | AAA Chicago Motor Club | 86.95% | 0.7792 | 0.6492 | hybrid |
-| 2 | 100 Club of Chicago | 83.10% | 0.7083 | 0.6069 | hybrid |
-| 3 | 100 Club Chicago | 82.16% | 0.7083 | 0.6102 | hybrid |
-| 4 | AAA Club South | 81.73% | 0.6439 | 0.6685 | hybrid |
-| 5 | AAA Auto Club South | 81.07% | 0.7083 | 0.5745 | hybrid |
-| 6 | AAA-Auto Club South | 81.02% | 0.7083 | 0.5741 | hybrid |
-| 7 | AAA - Auto Club South | 81.02% | 0.7083 | 0.5741 | hybrid |
-| 8 | College greens swim and racquet club | 80.00% | 0.7083 | 0.5542 | hybrid |
-| 9 | - Outdoors Club South - Huntsville | 79.88% | 0.7083 | 0.5424 | hybrid |
-| 10 | **Bell South-Pinnacle Club | 79.40% | 0.7083 | 0.5302 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Chicago South Swim Club | 100.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Chicago City Soccer Club | 81.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Metropolitan Club Chicago | 81.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Chicago Adventure Travel Club | 81.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Chicago Bears Football Club | 81.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Chicago Wolfpack Aquatic Club | 81.0% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Chicago Stars Football Club | 81.0% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | City Club Chicago | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | CHICAGO VOLLEYBALL CLUB | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | University of Chicago Track Club | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | University Club Chicago | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | Chicago Yacht Club | 80.0% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Dance Lovers Club of Chicago | 79.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Uptown Chicago Tennis Club | 79.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | City Club of Chicago | 79.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Chicago Wolf Pack Swim Team | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Chicago Flute Club | 78.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Digital Nonprofit Chicago Club | 78.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Arts Club of Chicago | 78.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Library Club Chicago | 78.0% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 60. Edna, Dabra@SAP.IO
 
-**Top Match**: ***SAP AG
+**Top Match**: Edna, Dabra@SAP.IO
 
-- **Score**: 0.5344 (53.44%)
-- **Match Type**: hybrid
-- **String Score**: 0.1080
-- **Semantic Score**: 0.5601
+- **Match location**: Palo Alto, CA
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Palo Alto, CA. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | ***SAP AG | 53.44% | 0.1080 | 0.5601 | hybrid |
-| 2 | $SAP America, Inc. | 53.40% | 0.1286 | 0.5308 | hybrid |
-| 3 | ;mcafferata@furlong-fox.com.ar | 53.33% | 0.1023 | 0.5225 | hybrid |
-| 4 | 3166-Dia Sarah Prospects | 52.30% | 0.1538 | 0.4519 | hybrid |
-| 5 | @luismthebarber @devynjulao | 52.20% | 0.1047 | 0.5385 | hybrid |
-| 6 | 3166-Dia Sarah Prospects | 52.13% | 0.1538 | 0.4519 | hybrid |
-| 7 | 3166-Dia Sarah Prospects | 51.46% | 0.1538 | 0.4519 | hybrid |
-| 8 | 3166-Dia Sarah Prospects | 51.46% | 0.1538 | 0.4519 | hybrid |
-| 9 | 3166-Dia Sarah Prospects | 51.46% | 0.1538 | 0.4519 | hybrid |
-| 10 | 3166-Dia Sarah Prospects | 51.46% | 0.1538 | 0.4519 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Edna, Dabra@SAP.IO | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Edna Travel | 78.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | Edna Owusu | 77.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | City of Edna | 77.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Edna ISD | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Edna ISD | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Edna Rose | 75.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | EDNA VILLALOBOS | 71.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Edna  Celebration of Life | 70.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Edna Hibel Corporation | 70.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Viajes Edna S.A. | 69.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Edna Cordero | 69.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Edna Beech Group | 69.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | EDNA LUMBER COMPANY | 68.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Edna Sawyer | 68.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Edna 80th Celebration | 64.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Edna Grace 90th Birthday | 62.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Nadia Saputo | 49.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Sapien | 48.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | SAP Brasil | 48.6% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 61. Boys and Girls Club of Dawson Community Centre
 
-**Top Match**: Boys & Girls Club of the Low Country
+**Top Match**: Boys and Girls Club of Dawson Community Centre
 
-- **Score**: 0.8395 (83.95%)
-- **Match Type**: hybrid
-- **String Score**: 0.6955
-- **Semantic Score**: 0.6993
+- **Match location**: Verdun, QC
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Verdun, QC. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Nature: ✅ Local 28.0%<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | Boys & Girls Club of the Low Country | 83.95% | 0.6955 | 0.6993 | hybrid |
-| 2 | A. G.  GASTON BOYS & GIRLS CLUB | 78.85% | 0.6955 | 0.5465 | hybrid |
-| 3 | A.G. Gaston Boys & Girls Club | 77.84% | 0.6955 | 0.5465 | hybrid |
-| 4 | 6288 City Centre Toastmasters Club (Mississauga) | 66.03% | 0.5383 | 0.4371 | hybrid |
-| 5 | '92 Blast Girls Soccer Club | 65.44% | 0.4894 | 0.4934 | hybrid |
-| 6 | 713 Community Empowerment Group/Prom Girls Rock | 65.08% | 0.5067 | 0.4444 | hybrid |
-| 7 | 713 Community Empowerment Group/Prom Girls Rock | 65.08% | 0.5067 | 0.4444 | hybrid |
-| 8 | 1st Community Bank Travel Club | 64.72% | 0.4606 | 0.5361 | hybrid |
-| 9 | 2016 Area Council/ Youth of the Year - Indiana Alliance of Boys & Girls Clubs 07-23-15 18:07:22 | 61.69% | 0.2991 | 0.6594 | hybrid |
-| 10 | 519 the Church Street Community Centre | 61.61% | 0.4606 | 0.4196 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Boys and Girls Club of Dawson Community Centre | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Pacific Youth Foundation Boys & Girls Club | 76.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | Boys and Girls Club Services of Greater Victoria | 75.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Pacific Youth Fndtn Boys & Girls Club | 74.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | EX3 Teen Center-Boys & Girls Club | 73.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Boys & Girls Club in Orange County | 73.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Boys & Girls Club in Orange County | 73.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Boys & Girls Club of Central Orange Coast | 73.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Boys & Girls Club of Central Orange Coast | 73.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Boys & Girls Club of Central Orange Coast | 73.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Boys and Girls Club of South Coast BC | 72.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Boys and Girls Club of Capital Area | 72.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Redmond Kirkland Boys & Girls Club | 72.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Boys and Girls Club of West Palm Beach | 72.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | West End Boys and Girls Club | 72.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Boys & Girls Club Metro Phoenix Area | 71.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | West Valley Boys & Girls Club | 71.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | West Valley Boys & Girls Club | 71.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Regional Boys and Girls Club | 71.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Boys and Girls Club of Green Bay | 71.5% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 62. Beissbarth
 
-**Top Match**: 2BENTERPRISES
+**Top Match**: Beissbarth
 
-- **Score**: 0.5726 (57.26%)
-- **Match Type**: hybrid
-- **String Score**: 0.1957
-- **Semantic Score**: 0.4824
+- **Match location**: Nashville, TN
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Nashville, TN. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 2BENTERPRISES | 57.26% | 0.1957 | 0.4824 | hybrid |
-| 2 | 2BEnterprises | 57.26% | 0.1957 | 0.4824 | hybrid |
-| 3 | *CBIREST* | 56.95% | 0.1895 | 0.4701 | hybrid |
-| 4 | *Bar Mitzvah | 55.61% | 0.1860 | 0.4605 | hybrid |
-| 5 | 2ndQuadrant | 55.49% | 0.1286 | 0.4995 | hybrid |
-| 6 | 2ndQuadrant | 55.49% | 0.1286 | 0.4995 | hybrid |
-| 7 | 2Ndquadrant | 55.49% | 0.1286 | 0.4995 | hybrid |
-| 8 | 50Barz | 55.14% | 0.1687 | 0.4657 | hybrid |
-| 9 | 1Berkshire | 54.35% | 0.1895 | 0.4083 | hybrid |
-| 10 | 83Bar | 54.30% | 0.1800 | 0.4287 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Beissbarth | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Beissbarth GmbH | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Bitbar | 52.8% | <div style='border: 1px solid #ff6600; border-left... |
+| 4 | Breitbart | 52.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 5 | BREITBART | 52.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 6 | Beiss Barth | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 7 | Ubar | 51.4% | <div style='border: 1px solid #ff6600; border-left... |
+| 8 | Versabar | 50.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 9 | Versabar | 50.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 10 | COBAR | 50.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | Rebar | 50.5% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | Brietbart | 50.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | Goodbar | 50.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | Ziebart | 50.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | Ziebart | 50.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | Ziebart | 50.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | Ziebart | 50.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | ABBARCH | 50.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | NettBar | 50.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | BESST | 49.9% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 63. US Night Vision
 
-**Top Match**: A Night For Sight
+**Top Match**: US Night Vision
 
-- **Score**: 0.7569 (75.69%)
-- **Match Type**: hybrid
-- **String Score**: 0.5278
-- **Semantic Score**: 0.6664
+- **Match location**: Roseville, CA
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Roseville, CA. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br>• <b>Entity Popularity:</b> 🟢 <b>+0.6% Boost</b> — Higher confidence due to 2 occurrences in master set.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ Miami 26.6%<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A Night For Sight | 75.69% | 0.5278 | 0.6664 | hybrid |
-| 2 | Vision 2000 | 72.00% | 0.4798 | 0.6072 | hybrid |
-| 3 | A Vision Experience | 71.35% | 0.4798 | 0.6349 | hybrid |
-| 4 | 20 Vision | 70.73% | 0.4798 | 0.5940 | hybrid |
-| 5 | A Night of Clarity | 70.37% | 0.4798 | 0.5878 | hybrid |
-| 6 | A Night of Clarity | 70.37% | 0.4798 | 0.5878 | hybrid |
-| 7 | 5D Vision | 70.22% | 0.4798 | 0.5920 | hybrid |
-| 8 | 2020 Vision Club | 70.10% | 0.5278 | 0.5316 | hybrid |
-| 9 | ***World Vision Belgium | 69.76% | 0.5278 | 0.5156 | hybrid |
-| 10 | A Night Under the STARS | 69.60% | 0.5278 | 0.5148 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | US Night Vision | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | ITT Night Vision | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | WORLD VISION US | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | PM Night Vision | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | ITT Night Vision | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | ITT Night Vision | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | World Vision US | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | WORLD VISION US | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | WORLD VISION US | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | WORLD VISION US | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | WORLD VISION US | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | World Vision US | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | WORLD VISION US | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | WORLD VISION US | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | WORLD VISION US | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Night Vision Entertainment | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Night Vision Entertainment | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | Night Vision Entertainment | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | US Vision Care | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | NIGHT VISION SYSTEMS INC | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
 ### 64. Amedysis, Incorporated
 
-**Top Match**: $AMSOIL Corporation
+**Top Match**: Amedysis, Incorporated
 
-- **Score**: 0.6129 (61.29%)
-- **Match Type**: hybrid
-- **String Score**: 0.2571
-- **Semantic Score**: 0.5899
+- **Match location**: Baton Rouge, LA
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Baton Rouge, LA. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Medical 28.1%<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | $AMSOIL Corporation | 61.29% | 0.2571 | 0.5899 | hybrid |
-| 2 | A.E.S. CORPORATION | 56.86% | 0.2700 | 0.4631 | hybrid |
-| 3 | A.M. Surgical, Incorporated | 55.39% | 0.1818 | 0.5232 | hybrid |
-| 4 | A.M. Best Company Inc. | 55.22% | 0.2338 | 0.4427 | hybrid |
-| 5 | A&E Medical Corporation | 55.02% | 0.2273 | 0.4793 | hybrid |
-| 6 | A.D.A.M, Inc | 55.01% | 0.1636 | 0.5138 | hybrid |
-| 7 | A.M. Best Company | 54.81% | 0.2338 | 0.4216 | hybrid |
-| 8 | A.D.A.M., Inc. | 54.75% | 0.1636 | 0.5064 | hybrid |
-| 9 | Aamec, Incorporated | 54.70% | 0.2250 | 0.4560 | hybrid |
-| 10 | A. M. G. Medical Inc | 54.68% | 0.1667 | 0.5256 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Amedysis, Incorporated | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Amedysis, Incorporated | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Amedysis, Inc. | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Amedysis Home Health | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Medysis | 63.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Unysis Corporation | 57.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 7 | Lysis | 56.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 8 | Vysis, Inc. | 55.8% | <div style='border: 1px solid #ff6600; border-left... |
+| 9 | Dialysis Corporation | 55.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 10 | Avysis | 55.5% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | Affiliated Dialysis | 55.4% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | INVENYSIS | 55.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | Personalysis Corporation | 54.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | Intelysis | 54.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | Cardialysis | 53.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | Alysis Technology | 52.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | M Dialysis, Inc. | 51.5% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | Innovative Dialysis | 51.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Dialysis Centers Incorporated | 51.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | DYSIS MEDICAL INC. | 50.1% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 65. Taiyo Air Service Co.,Ltd
 
-**Top Match**: 48290-Flying Country Air Service Co. Ltd.
+**Top Match**: Taiyo Air Service Co.,Ltd
 
-- **Score**: 0.8544 (85.44%)
-- **Match Type**: hybrid
-- **String Score**: 0.7244
-- **Semantic Score**: 0.6056
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (96%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 48290-Flying Country Air Service Co. Ltd. | 85.44% | 0.7244 | 0.6056 | hybrid |
-| 2 | 16th Air Service Squadron | 76.73% | 0.7438 | 0.4211 | hybrid |
-| 3 | !!*World Air Service | 76.48% | 0.6761 | 0.4691 | hybrid |
-| 4 | 55th Fighter Group/442nd Air Service Group Associa | 72.13% | 0.6198 | 0.4221 | hybrid |
-| 5 | 55th Fighter Group/442nd Air Service Group Association | 71.52% | 0.6198 | 0.4151 | hybrid |
-| 6 | Beijing Yinjian international Travel Service Co., Ltd. | 70.75% | 0.4773 | 0.5528 | hybrid |
-| 7 | 6911th RGM US Air Force Security Service | 69.91% | 0.5721 | 0.4408 | hybrid |
-| 8 | 6911th RGM U.S. Air Force Security Service | 69.75% | 0.5721 | 0.4378 | hybrid |
-| 9 | 6911th RGM U.S. Air Force Security Service | 69.75% | 0.5721 | 0.4378 | hybrid |
-| 10 | 21 Air, LLC | 67.47% | 0.4062 | 0.5528 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Taiyo Air Service Co.,Ltd | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Taiyo Air Services Co. | 83.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Fuyo Air Service Co. Ltd. | 80.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | CITS Taikoo Air Service Ltd | 76.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Tec Air Service Co. Ltd. (tokyo) | 75.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Union Air Service Co. Ltd. (Japan) | 74.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Nikka Air Service Co., Ltd | 73.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | ON THE WAY AIR SERVICE CO LTD | 72.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | On the Way Air Service Co Ltd | 72.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Air Craft Service International | 72.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Air Craft Service International | 72.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | GUANGZHOU GZL AIR SERVICE CO., LTD. | 71.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | AIR SERVICE CORP | 71.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | BEIJING KAIHUA AIR SERVICE CO.,LTD. | 71.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Air Systems Service & Construction | 71.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Air Systems Service & Construction | 71.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Jet Air Service Co.ltd.(Tokyo) | 71.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Ailevon Air Service Consulting | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Flying Country Air Service Co., Ltd. | 70.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Z - China Air Service Ltd | 70.7% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
-### 66. National Conference on Race & Ethnicity in American Higher E
+### 66. National Conference on Race & Ethnicity in American Higher E — Norman, OK
 
-**Top Match**: AAAIM - Association of Asian American In
+**Top Match**: National Conference on Race & Ethnicity in American Higher E
 
-- **Score**: 0.5709 (57.09%)
-- **Match Type**: hybrid
-- **String Score**: 0.1731
-- **Semantic Score**: 0.5472
+- **Match location**: Norman, OK
+- **Final Score**: 1.0000 (100.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (100.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (97%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Norman, OK matches the query geography well (location score 1.00).<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | AAAIM - Association of Asian American In | 57.09% | 0.1731 | 0.5472 | hybrid |
-| 2 | 4th International Conference on Education (EDU 2017) | 54.96% | 0.2240 | 0.4635 | hybrid |
-| 3 | *NATIONAL ASSOCIATION FOR MULTICULTURAL EDUCATION | 53.76% | 0.1224 | 0.5361 | hybrid |
-| 4 | ***Latino Research Conference | 53.34% | 0.1034 | 0.5492 | hybrid |
-| 5 | **National Association for the Advancement of Colored People | 53.27% | 0.1435 | 0.5460 | hybrid |
-| 6 | 2015 Women of Color Institute Annual Conference July 2015 | 52.78% | 0.1339 | 0.5036 | hybrid |
-| 7 | 2015 Women of Color Institute Annual Conference July 2015 | 52.78% | 0.1339 | 0.5036 | hybrid |
-| 8 | 2014 Students for Life of America National Conference | 52.77% | 0.1319 | 0.5000 | hybrid |
-| 9 | AAAA - AMERICAN ASSOCIATION FOR AFFIRMATIVE ACTION | 52.32% | 0.1317 | 0.5193 | hybrid |
-| 10 | 2018 SC African- American Tourism Conference | 52.26% | 0.1760 | 0.4666 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | National Conference on Race & Ethnicity in American Higher E | 100.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | National Conference On Race & Ethnicity In America Higher Ed | 93.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | National Conference on Race & Ethnicity in Am. Higher Educ | 93.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | NATIONAL CONFERENCE ON RACE AND ETHNICITY IN AMERICAN HIGHER | 92.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | NATIONAL CONF. ON RACE & ETHNICITY IN AMERICAN HIGHER EDUC. | 92.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | National Conference on Race & Ethnicity in AM Higher Education | 92.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | NATL CONF ON RACE & ETHNICITY IN AMERICAN HIGHER EDUCATION | 92.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | National Conference on Race & Ethnicity in Higher Education | 84.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | National Conference on Race & Ethnicity in America in Higher Education (NCORE) | 83.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | NCORE Nat. Conf. for Race & Ethnicity in American Higher Ed | 83.0% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | National Conference on Race Ethnicity | 82.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | National Conference on Race & Ethnicity | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | National Conference on Race and Ethnicity | 79.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | NATIONAL CONFERENCE ON RACE & ETHNICITY - NCORE | 78.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | NAT CONFERENCE ON RACE & ETHNICITY | 72.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | National Conference on Race & Ethnicity in AmericanHigher Ed | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | NAT CONFERENCE ON RACE & ETHNICITY | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | National Conference on Race & Ethnicity in AmericanHigher Ed | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | National Conference on Race Ethnicity | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | National Conference on Race and Ethnicity | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 67. Reminger Law Firm
 
-**Top Match**: !!Henderson/Franklin Law Firm
+**Top Match**: Reminger Law Firm
 
-- **Score**: 0.9000 (90.00%)
-- **Match Type**: hybrid
-- **String Score**: 0.8097
-- **Semantic Score**: 0.5477
+- **Match location**: Cleveland, OH
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Cleveland, OH. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br>• <b>Entity Popularity:</b> 🟢 <b>+0.6% Boost</b> — Higher confidence due to 2 occurrences in master set.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Legal 38.5%, ✅ Finance 25.9%, ✅ Automotive 25.6%<br>• Structure: ✅ Corporate 36.1%, ✅ Small Business 28.7%<br>• Nature: ✅ Professional 35.0%<br>• Insight: The model detects a strong 'Legal' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | !!Henderson/Franklin Law Firm | 90.00% | 0.8097 | 0.5477 | hybrid |
-| 2 | AALRR- Law Firm | 90.00% | 0.8097 | 0.5626 | hybrid |
-| 3 | 1- Law Firm | 90.00% | 0.8097 | 0.5845 | hybrid |
-| 4 | 4 L Law Firm Services | 82.51% | 0.6748 | 0.5792 | hybrid |
-| 5 | A Small Law Firm.com | 75.40% | 0.5278 | 0.5953 | hybrid |
-| 6 | 2023 Gurstel Law Firm Summit | 74.69% | 0.6748 | 0.4157 | hybrid |
-| 7 | 23rd Annual Law Firm Mktg Partner Forum | 73.41% | 0.5784 | 0.4844 | hybrid |
-| 8 | !!Law Firm Retreat | 70.90% | 0.5278 | 0.4865 | hybrid |
-| 9 | 3A Law Management | 70.57% | 0.5278 | 0.4936 | hybrid |
-| 10 | A.O.E. Law & Associates Inc. | 69.17% | 0.4798 | 0.4994 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Reminger Law Firm | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Reminger & Reminger Law Firm | 90.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | S Law Firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Withers Law Firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Speer Law firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Marr Law Firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Howry Law Firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | B Law Firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Arzinger Law Firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Gremminger Law Firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Alters Law Firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | LPR Law Firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Sharp Law Firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Sharp Law Firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Didier Law Firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Revo Law Firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Stacks Law Firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | B Law Firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | Heard Law Firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | Craft Law Firm | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
 ### 68. SEMMOA BOD
 
-**Top Match**: 2024 BOD Meeting
+**Top Match**: SEMMOA BOD
 
-- **Score**: 0.7477 (74.77%)
-- **Match Type**: hybrid
-- **String Score**: 0.6761
-- **Semantic Score**: 0.3862
+- **Match location**: Brighton, MI
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Brighton, MI. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 2024 BOD Meeting | 74.77% | 0.6761 | 0.3862 | hybrid |
-| 2 | 2011 INCPAS BOD Meeting | 73.21% | 0.6198 | 0.4011 | hybrid |
-| 3 | AACRAO February BoD Meeting 2026 | 71.86% | 0.5721 | 0.4429 | hybrid |
-| 4 | 2016 Staff Meeting - BOD | 69.47% | 0.6198 | 0.3562 | hybrid |
-| 5 | 2021 BOD- National Association DC | 66.98% | 0.5721 | 0.3248 | hybrid |
-| 6 | 2018 ACCA BOD & Industry Partners Forum | 66.93% | 0.5312 | 0.3991 | hybrid |
-| 7 | AACP 2016 BOD Meeting XGNTTZM9L28 | 66.23% | 0.5721 | 0.3254 | hybrid |
-| 8 | 110376 HPN - FEBRUARY 2026 BOD MEETING | 64.81% | 0.5312 | 0.3197 | hybrid |
-| 9 | 110376 HPN - FEBRUARY 2026 BOD MEETING | 64.81% | 0.5312 | 0.3197 | hybrid |
-| 10 | AABB BOD Meeting & NBF Leadership Forum | 63.53% | 0.5312 | 0.3376 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | SEMMOA BOD | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Semmoa | 77.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | SEMMOA AACM | 77.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | SEMMOA Coop | 74.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Bod Pro | 72.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | CSA BOD | 70.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | BOD | 68.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | BoD | 68.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Bod | 68.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | DP Bod | 67.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | BOD HD | 67.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | BOD HD | 67.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | BOD HD | 67.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | BOD HD | 67.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | World Bod | 66.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Tyonek BOD | 66.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | BOD Consulting | 66.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | BOD legal | 65.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Regions BOD | 65.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | BOD Meeting | 65.3% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 69. Telefonica Global Solutions
 
-**Top Match**: ***MEC Global Solutions
+**Top Match**: Telefonica Global Solutions
 
-- **Score**: 0.7626 (76.26%)
-- **Match Type**: hybrid
-- **String Score**: 0.6625
-- **Semantic Score**: 0.4782
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Technology 27.2%<br>• Nature: ✅ Global 40.2%<br>• Insight: The model detects a strong 'Global' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | ***MEC Global Solutions | 76.26% | 0.6625 | 0.4782 | hybrid |
-| 2 | 02 Telefonica | 74.21% | 0.5758 | 0.5612 | hybrid |
-| 3 | 02 Telefonica | 74.21% | 0.5758 | 0.5612 | hybrid |
-| 4 | *** Global Events Solutions | 73.29% | 0.6023 | 0.4786 | hybrid |
-| 5 | A & B Global Site Solutions | 70.91% | 0.6023 | 0.4325 | hybrid |
-| 6 | 5D Global Travel Solutions Pvt. Ltd. | 65.77% | 0.5521 | 0.3733 | hybrid |
-| 7 | 5D Global Travel Solutions Pvt. Ltd. | 65.77% | 0.5521 | 0.3733 | hybrid |
-| 8 | 2+1 Global Projects | 64.49% | 0.4750 | 0.4264 | hybrid |
-| 9 | (C) Systems Global | 64.39% | 0.4750 | 0.4161 | hybrid |
-| 10 | (C) Systems Global | 64.39% | 0.4750 | 0.4161 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Telefonica Global Solutions | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Telefonica Global Solutions | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Telefonica Global Solutions USA Inc. | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Telefonica Multinational Solutions | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Telefonica Multinational Solutions | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | TELEFONICA INTERNATIONAL USA | 78.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Telefonica International | 77.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Telefonica International USA Inc | 76.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Telefonica | 75.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | TGS | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Telefonica Internacional USA | 74.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Telefonica Digital - UK | 74.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Telefonica USA | 73.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Global Telecom Solutions | 73.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | 02 Telefonica | 72.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | 02 Telefonica | 72.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Telefonica España | 72.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Telefonica Data USA, Inc. | 72.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Telefonica Chile | 71.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Telefonica Chile | 71.4% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 70. Travel Leaders - Dube Travel
 
-**Top Match**: 1 Travel Leaders Group
+**Top Match**: Travel Leaders - Dube Travel
 
-- **Score**: 0.9000 (90.00%)
-- **Match Type**: hybrid
-- **String Score**: 0.8097
-- **Semantic Score**: 0.7577
+- **Match location**: Auburn, AL
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (98%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Auburn, AL. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ Paris 34.0%, ✅ London 25.9%<br>• Nature: ✅ Global 26.6%, ✅ Local 26.1%<br>• Insight: The model detects a strong 'Paris' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 1 Travel Leaders Group | 90.00% | 0.8097 | 0.7577 | hybrid |
-| 2 | 1 Travel Leaders group | 90.00% | 0.8097 | 0.7577 | hybrid |
-| 3 | 1 Travel Leaders group | 90.00% | 0.8097 | 0.7577 | hybrid |
-| 4 | 1 Travel Leaders Group | 90.00% | 0.8097 | 0.7577 | hybrid |
-| 5 | 1 Travel Leaders group | 90.00% | 0.8097 | 0.7577 | hybrid |
-| 6 | A Premier Travel Agency, Inc.   Travel Leaders | 82.15% | 0.7361 | 0.6682 | hybrid |
-| 7 | 1 Travel Leaders Worldwide Pro | 80.51% | 0.6748 | 0.7327 | hybrid |
-| 8 | 1 Travel Leaders Worldwide Pro | 80.51% | 0.6748 | 0.7327 | hybrid |
-| 9 | 1 Travel Leaders Worldwide Pro | 80.51% | 0.6748 | 0.7327 | hybrid |
-| 10 | 2026 Travel Leaders Network Regional Events | 73.56% | 0.6229 | 0.6011 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Travel Leaders - Dube Travel | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Dube Travel Leaders | 91.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Dube Travel Leaders | 91.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | dube Travel leaders | 91.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Dube / Travel Leaders | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Travel Leaders Go | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Travel Leaders Travel Quest | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Travel Leaders Travel Now | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Travel Leaders Network | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Travel Leaders Travel More | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Travel Leaders Travel Now | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | TRAVEL LEADERS INTERNATIONAL | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | TRAVEL LEADERS INTERNATIONAL | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Travel Leaders Network | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Travel Leaders Network | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Travel Leaders Network | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Travel Leaders Network | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | TRAVEL LEADERS NETWORK | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | Travel Leaders Network | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | Travel Leaders Network | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
 ### 71. Hi- Tours
 
-**Top Match**: A & I Tours
+**Top Match**: Hi- Tours
 
-- **Score**: 0.8538 (85.38%)
-- **Match Type**: hybrid
-- **String Score**: 0.7875
-- **Semantic Score**: 0.6666
+- **Match location**: Gurgaon, Haryana
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 GOOD (88%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Gurgaon, Haryana. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ London 34.3%<br>• Nature: ✅ Global 25.9%<br>• Insight: The vector is strongly pulled toward geographic anchors, resolving potential ambiguity.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A & I Tours | 85.38% | 0.7875 | 0.6666 | hybrid |
-| 2 | A & I Tours | 85.38% | 0.7875 | 0.6666 | hybrid |
-| 3 | 7M Tours | 84.91% | 0.7438 | 0.6635 | hybrid |
-| 4 | A Tours & Travel | 84.86% | 0.7438 | 0.7204 | hybrid |
-| 5 | A Plus Tours | 84.68% | 0.7438 | 0.6513 | hybrid |
-| 6 | A+ Tours | 84.66% | 0.7438 | 0.6744 | hybrid |
-| 7 | 32 Tours | 84.63% | 0.7438 | 0.6677 | hybrid |
-| 8 | 32 Tours | 84.63% | 0.7438 | 0.6677 | hybrid |
-| 9 | A+ Tours | 84.38% | 0.7438 | 0.6744 | hybrid |
-| 10 | &A Tours | 84.07% | 0.7438 | 0.6933 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Hi- Tours | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Hi tours | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Hi Tours | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Hi-Tours | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Hi Life Tours | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Hi Life Tours | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | HI LITE TOURS | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | HI LITE TOURS | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | HI 5 Live Tours | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Titan Hi Tours | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Hi Tours2 | 83.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | Hi Tour | 83.1% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Journey Tours | 81.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Journey Tours | 81.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Excursion Tours | 81.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Nice Tours | 80.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Nice Tours | 80.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | Nice Tours | 80.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | Nice Tours | 80.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | FRIENDLY TOURS | 80.9% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
 ### 72. Volkswagen Group China
 
-**Top Match**: A China Group
+**Top Match**: VOLKSWAGEN GROUP CHINA
 
-- **Score**: 0.8118 (81.18%)
-- **Match Type**: hybrid
-- **String Score**: 0.6300
-- **Semantic Score**: 0.7213
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Automotive 33.1%<br>• Insight: Confirms the model's inherent knowledge of industry concepts.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A China Group | 81.18% | 0.6300 | 0.7213 | hybrid |
-| 2 | 3M China Limited | 78.79% | 0.7438 | 0.5131 | hybrid |
-| 3 | 3M China Limited | 78.79% | 0.7438 | 0.5131 | hybrid |
-| 4 | *** Volkswagen AG | 77.69% | 0.6761 | 0.5680 | hybrid |
-| 5 | 3M China | 77.00% | 0.7438 | 0.4453 | hybrid |
-| 6 | A China Travel Pty Ltd | 76.50% | 0.6761 | 0.5193 | hybrid |
-| 7 | 2012 GSK China | 76.11% | 0.6761 | 0.5249 | hybrid |
-| 8 | *EAGLE OTAWA CHINA LTD | 74.42% | 0.6761 | 0.4664 | hybrid |
-| 9 | 04.28.17 VOLKSWAGEN SPAIN | 73.36% | 0.6761 | 0.4588 | hybrid |
-| 10 | 1000 Meetings - China | 72.70% | 0.6761 | 0.4384 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | VOLKSWAGEN GROUP CHINA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Volkswagen Group China | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Volkswagen China | 91.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | VOLKSWAGEN CHINA INVESTMENT COMPANY LTD | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Volkswagen China Investment Company.Ltd | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | FAW Volkswagen Automotive Co., Ltd. South China Branch | 89.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | FAW Volkswagen Automotive Co., Ltd. South China Branch | 89.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | FAW Volkswagen Automotive Co., Ltd. South China Branch | 89.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Volkswagen Group Japan | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | VOLKSWAGEN KOREA | 80.1% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Volkswagen Group Australia | 79.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Volkswagen Group Australia | 79.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Volkswagen Group Australia | 79.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Volkswagen Group Australia | 79.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Volkswagen Group Australia | 79.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Volkswagen Group Rus | 79.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | VOLKSWAGEN Group Rus | 79.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Grupo Volkswagen | 78.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Volvo Group China | 78.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Volvo Group China | 78.7% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 73. Sun Tx
 
-**Top Match**: A Place In The Sun
+**Top Match**: Sun Tx
 
-- **Score**: 0.8304 (83.04%)
-- **Match Type**: hybrid
-- **String Score**: 0.6761
-- **Semantic Score**: 0.5729
+- **Match location**: Dallas, TX
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Dallas, TX. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ Texas 45.5%<br>• Insight: The model detects a strong 'Texas' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A Place In The Sun | 83.04% | 0.6761 | 0.5729 | hybrid |
-| 2 | A Place In The Sun | 83.04% | 0.6761 | 0.5729 | hybrid |
-| 3 | A Place In The Sun | 83.04% | 0.6761 | 0.5729 | hybrid |
-| 4 | A PLACE IN THE SUN TOURS | 79.68% | 0.6198 | 0.5659 | hybrid |
-| 5 | 316 Sun Devils | 78.63% | 0.6761 | 0.4917 | hybrid |
-| 6 | A Touch of Sun Travel | 76.24% | 0.6761 | 0.4631 | hybrid |
-| 7 | *FUN SUN VACATIONS, LTD. | 76.13% | 0.6761 | 0.4644 | hybrid |
-| 8 | **Fun in the Sun | 76.01% | 0.6761 | 0.4407 | hybrid |
-| 9 | **Surf & Sun Cancun | 75.55% | 0.6761 | 0.4008 | hybrid |
-| 10 | 8049 TX-8 Beltway | 74.87% | 0.6198 | 0.4518 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Sun Tx | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Sun City Texas | 78.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | The Houston Sun | 76.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | sun coast | 75.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Sun Coast | 75.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | TX Dot | 74.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | TX DOT | 74.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Celebrate TX | 74.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Southern Sun | 74.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Hampton Sun | 73.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Sun Com | 73.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Sun Com | 73.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Sun American | 72.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Sun American | 72.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Sun American | 72.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | California Sun | 72.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Sun Outdoors | 72.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Sun Corp USA | 72.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Sun City | 72.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Sun City | 72.6% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
-### 74. Southern Vermont Deerfield Valley Chamber of commerce
+### 74. Southern Vermont Deerfield Valley Chamber of commerce — Deerfield, VT
 
-**Top Match**: 805 Startups & the Greater Conejo Valley Chamber
+**Top Match**: Vermont Chamber of Commerce
 
-- **Score**: 0.7152 (71.52%)
-- **Match Type**: hybrid
-- **String Score**: 0.5146
-- **Semantic Score**: 0.4677
+- **Match location**: Montpelier, VT
+- **Final Score**: 0.5300 (53.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #ff6600; border-left: 10px solid #ff6600; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#ff6600;'>⚠️ WEAK MATCH (53.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Moderate Semantic Similarity</span></div><br><br><b>Relationship:</b> This is a <b>Hybrid Word Overlap</b>. The system detected shared keywords ('chamber, commerce, of, vermont') despite differences in overall string structure.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟡 MODERATE (54%) — Based on partial character alignment.<br>• <b>Semantic Link:</b> 🟢 GOOD (84%) — Detected via strong contextual link.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (93%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟡 <b>Partial alignment</b> — Montpelier, VT has some overlap with the query (location score 0.40).<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ Pennsylvania 30.0%, ✅ Ohio 28.7%<br>• Industry: ✅ Retail 28.0%<br>• Structure: ✅ Small Business 27.0%<br>• Nature: ✅ Consumer 26.8%<br>• Insight: The model detects a strong 'Pennsylvania' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 805 Startups & the Greater Conejo Valley Chamber | 71.52% | 0.5146 | 0.4677 | hybrid |
-| 2 | Madlen Saddik, San Mateo Area Chamber of Commerce | 70.54% | 0.4678 | 0.4923 | hybrid |
-| 3 | 2005 Chamber of Commerce | 67.57% | 0.3958 | 0.5256 | hybrid |
-| 4 | **Jacksonville Chamber of Commerce | 67.06% | 0.3958 | 0.4894 | hybrid |
-| 5 | $Naples Area Chamber of Commerce | 65.09% | 0.4288 | 0.4442 | hybrid |
-| 6 | 805 Startups, City of Agoura Hills, & Greater Conejo Chamber of Commerce | 58.92% | 0.3958 | 0.3398 | hybrid |
-| 7 | 805 Startups, City of Agoura Hills, & Greater Conejo Chamber of Commerce | 58.92% | 0.3958 | 0.3398 | hybrid |
-| 8 | Deerfield Beach Historical Society, Event Organizer | 58.56% | 0.1970 | 0.5255 | hybrid |
-| 9 | 2013 Courtyard Mission Valley Social | 53.10% | 0.1925 | 0.4266 | hybrid |
-| 10 | AAA Southern New England-Westwood Branch | 52.99% | 0.2069 | 0.4032 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Vermont Chamber of Commerce | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 2 | Canadian Chamber of Commerce | 52.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 3 | Canadian Chamber of Commerce | 52.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 4 | Chamber of Commerce Mid-Ohio Valley | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 5 | Utah Valley Chamber of Commerce | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 6 | Chamber of Commerce of the Mid-Ohio Valley | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 7 | Deerfield Chamber of Commerce | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 8 | Deer Park Chamber of Commerce | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 9 | DEERFIELD BEACH CHAMBER OF COMMERCE | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 10 | Northwest Valley Chamber of Commerce | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | South Valley Chamber of Commerce | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | Deerfield Bannockburn Riverwoods Chamber of Commerce | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | Chamber of Commerce Southern New Jersey | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | Southern New Jersey Chamber of Commerce | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | Eagle Valley Chamber of Commerce | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | Southern California Black Chamber of Commerce | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | Southern California Black Chamber of Commerce | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | Indian Valley Chamber of Commerce | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | West Valley Black Chamber of Commerce | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Greater Conejo Valley Chamber of Commerce | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 75. DGR Ministries
 
-**Top Match**: JEG Ministries
+**Top Match**: DGR Ministries
 
-- **Score**: 0.8659 (86.59%)
-- **Match Type**: hybrid
-- **String Score**: 0.7438
-- **Semantic Score**: 0.6608
+- **Match location**: Houston, TX
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Houston, TX. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Finance 27.1%<br>• Structure: ✅ Government 32.6%, ✅ Corporate 30.9%, ✅ Small Business 29.7%<br>• Nature: ✅ Professional 32.0%<br>• Insight: The model detects a strong 'Government' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | JEG Ministries | 86.59% | 0.7438 | 0.6608 | hybrid |
-| 2 | A Portion Ministries | 86.45% | 0.7438 | 0.6545 | hybrid |
-| 3 | A18 Ministries | 86.12% | 0.7438 | 0.6166 | hybrid |
-| 4 | 12MN Ministries Inc | 86.07% | 0.7438 | 0.6330 | hybrid |
-| 5 | 10-10 Ministries | 85.69% | 0.7438 | 0.6346 | hybrid |
-| 6 | 10-10 Ministries | 85.69% | 0.7438 | 0.6346 | hybrid |
-| 7 | 521 Ministries | 85.04% | 0.7438 | 0.6226 | hybrid |
-| 8 | 12MN Ministries Inc | 84.96% | 0.7438 | 0.6330 | hybrid |
-| 9 | 12MN Ministries Inc | 84.96% | 0.7438 | 0.6330 | hybrid |
-| 10 | 12MN Ministries Inc | 84.96% | 0.7438 | 0.6330 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | DGR Ministries | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | DG Ministries | 81.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Power Ministries | 80.1% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Impact Ministries | 79.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Impact Ministries | 79.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Impact Ministries | 79.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Total Ministries | 79.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Progressive Ministries | 78.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Progressive Ministries | 78.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Progressive Ministries | 78.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Empowered Ministries | 78.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Chosen Ministries | 78.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Chosen Ministries | 78.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Partnership Ministries | 78.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Legacy Ministries | 78.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | CHIEF MINISTRIES | 78.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Customized Ministries | 78.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Customized Ministries | 78.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Caring Ministries | 78.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Sure ministries | 78.4% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 76. Impacto 6
 
-**Top Match**: 6 8
+**Top Match**: Impacto 6
 
-- **Score**: 0.7783 (77.83%)
-- **Match Type**: hybrid
-- **String Score**: 0.6375
-- **Semantic Score**: 0.4787
+- **Match location**: , Barcelona
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Barcelona. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 6 8 | 77.83% | 0.6375 | 0.4787 | hybrid |
-| 2 | 6 Star | 74.36% | 0.6375 | 0.4142 | hybrid |
-| 3 | 6 Star | 74.36% | 0.6375 | 0.4142 | hybrid |
-| 4 | 6 Concierge | 73.12% | 0.6375 | 0.3879 | hybrid |
-| 5 | 6 Sense | 73.04% | 0.6375 | 0.3553 | hybrid |
-| 6 | 6 Sense | 72.79% | 0.6375 | 0.3553 | hybrid |
-| 7 | 6 STAR INC | 71.98% | 0.6375 | 0.3646 | hybrid |
-| 8 | 6 STAR INC | 71.98% | 0.6375 | 0.3646 | hybrid |
-| 9 | 6 Sense | 71.86% | 0.6375 | 0.3553 | hybrid |
-| 10 | 6 Sense | 71.86% | 0.6375 | 0.3553 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Impacto 6 | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Impacto 52 | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Impacto 52 | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Impacto Strategies | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Triple Impacto | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Impacto Tactico | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Impacto EDL | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Impacto Vital | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Primer Impacto | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Kiin Impacto | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Impacto YOUTH | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | IMPACTO Youth | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Impacto Ejecutivo | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Impacto Empresarial | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Impacto Ejecutivo | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Impacto Logistica | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Impacto Positivo | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | Impacto de Fe | 79.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Impacto Inc. | 76.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Impacto Productive Products | 76.1% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 77. Neos Therapeutics, Inc.
 
-**Top Match**: $CV Therapeutics
+**Top Match**: Neos Therapeutics, Inc.
 
-- **Score**: 0.8016 (80.16%)
-- **Match Type**: hybrid
-- **String Score**: 0.7083
-- **Semantic Score**: 0.5506
+- **Match location**: Grand Prairie, TX
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 GOOD (87%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Grand Prairie, TX. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | $CV Therapeutics | 80.16% | 0.7083 | 0.5506 | hybrid |
-| 2 | 858 Therapeutics | 79.95% | 0.7083 | 0.5370 | hybrid |
-| 3 | 02494Celldex Therapeutics, Incorporated | 77.31% | 0.7083 | 0.5024 | hybrid |
-| 4 | 3F Therapeutics | 74.83% | 0.7083 | 0.4409 | hybrid |
-| 5 | 230SAGE Therapeutics | 73.35% | 0.7083 | 0.4195 | hybrid |
-| 6 | 230SAGE Therapeutics | 73.35% | 0.7083 | 0.4195 | hybrid |
-| 7 | 230SAGE Therapeutics | 73.35% | 0.7083 | 0.4195 | hybrid |
-| 8 | A. M. Todd Botanicals Therapeutics | 69.48% | 0.5903 | 0.4706 | hybrid |
-| 9 | *American Society for Clinical Pharmacology and Therapeutics | 68.67% | 0.5060 | 0.5207 | hybrid |
-| 10 | 4-Prime Therapeutics 2018 Client Summit #VXNCHVF5CGZ | 64.05% | 0.4722 | 0.4689 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Neos Therapeutics, Inc. | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Neos Therapeutics, Inc. | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Neos Therapeutics | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Neos Therapeutics | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Neos Therapeutics | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Neos Therapeutics | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Neos Therapeutics | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Neos Therapeutics | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Neos Therapeutics | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Neos Therapeutics | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Neos Therapeutics | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | Neos Therapeutics | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Neos Therapeutics | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Neos Therapeutics | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | NEOS Therapeutics | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Neos Therapeutics LP | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Neogene Therapeutics, Inc. | 80.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | Neogene Therapeutics, Inc. | 80.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | Neogene Therapeutics | 78.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | NEOS SPA | 73.6% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 78. International Tax Institute
 
-**Top Match**: ¿VERIDICAL TAX ADVISORS INC.
+**Top Match**: International Tax Institute
 
-- **Score**: 0.7419 (74.19%)
-- **Match Type**: hybrid
-- **String Score**: 0.6333
-- **Semantic Score**: 0.5768
+- **Match location**: New York, NY
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows New York, NY. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Finance 29.2%, ✅ Insurance 28.3%<br>• Structure: ✅ Government 33.8%, ✅ Corporate 26.4%, ✅ Non-Profit 25.2%<br>• Nature: ✅ Global 27.4%<br>• Insight: The model detects a strong 'Government' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | ¿VERIDICAL TAX ADVISORS INC. | 74.19% | 0.6333 | 0.5768 | hybrid |
-| 2 | $Tax Executives Institute | 72.10% | 0.4750 | 0.7571 | hybrid |
-| 3 | $National Association of Tax Professionals | 71.78% | 0.5758 | 0.6176 | hybrid |
-| 4 | A Instant Tax Service | 71.57% | 0.6333 | 0.5321 | hybrid |
-| 5 | 2024 Tax Conference | 70.02% | 0.6333 | 0.4617 | hybrid |
-| 6 | $Institute of International Education | 69.21% | 0.4750 | 0.6503 | hybrid |
-| 7 | A Class Tax Solutions | 68.74% | 0.6333 | 0.4833 | hybrid |
-| 8 | 1 Tax Pro | 68.55% | 0.6333 | 0.4409 | hybrid |
-| 9 | 1st Choice Tax Services | 67.77% | 0.5758 | 0.5139 | hybrid |
-| 10 | 2015 Tax Forum & 2015 Global Operations Forum | 67.02% | 0.5278 | 0.5218 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | International Tax Institute | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | International Tax Institute | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | INTERNATIONAL TAX INSTITUTE INC | 90.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | International Property Tax Institute | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | International Property Tax Institute | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | International Property Tax Institute | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | International Tax & Auditing Institute | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | International Property Tax Institute (IPTI) | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | National Tax Institute | 87.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | International Tax Form | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Tax Research Institute | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | International Tax Form | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Federal Tax Institute | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | International Tax Review | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Tax Executive Institute | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Professional Tax Institute | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | International Tax Review | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | International Tax Advisors | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | Tax Executives Institute | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | Bank Tax Institute | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
 ### 79. Mitsubishi M501G
 
-**Top Match**: **NEC-Mitsubishi Electronics Display of America, Inc.
+**Top Match**: Mitsubishi M501G
 
-- **Score**: 0.7368 (73.68%)
-- **Match Type**: hybrid
-- **String Score**: 0.5721
-- **Semantic Score**: 0.5210
+- **Match location**: Lake Mary, FL
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Lake Mary, FL. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Automotive 40.1%, ✅ Technology 25.2%<br>• Nature: ✅ Industrial 27.5%<br>• Insight: Confirms the model's inherent knowledge of industry concepts.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | **NEC-Mitsubishi Electronics Display of America, Inc. | 73.68% | 0.5721 | 0.5210 | hybrid |
-| 2 | **Mitsubishi | 61.96% | 0.2571 | 0.6092 | hybrid |
-| 3 | **NEC/Mitsubishi | 58.07% | 0.2625 | 0.5337 | hybrid |
-| 4 | **Mitsubishi Digital Electronics America, Inc. | 52.96% | 0.1636 | 0.5143 | hybrid |
-| 5 | 1stAveMachine Mar2016 Z6NMPGPH36N | 46.98% | 0.1364 | 0.4162 | hybrid |
-| 6 | 16003950 | 45.60% | 0.0600 | 0.4660 | hybrid |
-| 7 | A&M Touristik | 45.28% | 0.1862 | 0.3158 | hybrid |
-| 8 | A A M C O Transmissions Inc | 44.86% | 0.1071 | 0.3893 | hybrid |
-| 9 | **Toshiba | 44.73% | 0.1152 | 0.3968 | hybrid |
-| 10 | $Hubbell Lighting, Inc. | 44.69% | 0.1636 | 0.3150 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Mitsubishi M501G | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Mitsubishi Motors | 81.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Mitsubishi Motors | 81.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Mitsubishi Electronics | 81.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | NEC Mitsubishi | 81.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Mitsubishi Motor | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Mitsubishi Motor | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | MITSUBISHI MOTOR | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Mitsubishi Power | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Mitsubishi Power | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Mitsubishi Power | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | Mitsubishi Power | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Mitsubishi Power | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Mitsubishi Power | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Mitsubishi Power | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Mitsubishi Electric | 81.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Mitsubishi Engine | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | Mitsubishi Engine | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | Mitsubishi Materials | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | Mitsubishi Automation | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
 ### 80. Huskies Sports
 
-**Top Match**: (LABS) Sports
+**Top Match**: Huskies Sports
 
-- **Score**: 0.8483 (84.83%)
-- **Match Type**: hybrid
-- **String Score**: 0.7438
-- **Semantic Score**: 0.6395
+- **Match location**: Portland, OR
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Portland, OR. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br>• <b>Entity Popularity:</b> 🟢 <b>+0.6% Boost</b> — Higher confidence due to 2 occurrences in master set.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | (LABS) Sports | 84.83% | 0.7438 | 0.6395 | hybrid |
-| 2 | 2014 Sports | 83.19% | 0.7438 | 0.5561 | hybrid |
-| 3 | AA Sports | 82.81% | 0.7438 | 0.5490 | hybrid |
-| 4 | AA Sports | 82.81% | 0.7438 | 0.5490 | hybrid |
-| 5 | 2018 Sports | 82.61% | 0.7438 | 0.5402 | hybrid |
-| 6 | 2018 Sports | 82.61% | 0.7438 | 0.5402 | hybrid |
-| 7 | 2018 Sports | 82.61% | 0.7438 | 0.5402 | hybrid |
-| 8 | 2018 Sports | 82.61% | 0.7438 | 0.5402 | hybrid |
-| 9 | 2018 Sports | 82.61% | 0.7438 | 0.5402 | hybrid |
-| 10 | 2018 Sports | 82.61% | 0.7438 | 0.5402 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Huskies Sports | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Huskies Sports | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Huskies Basketball | 81.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Mass Huskies | 79.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Mass Huskies | 79.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Miami Huskies | 78.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | NH Huskies | 77.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Howard Huskies | 77.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Huskies Hockey League | 76.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Huskies Hockey Club | 76.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Bershire Huskies | 75.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Horizon Huskies | 75.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Huskies Elite Cheer | 75.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | HRS Huskies | 75.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | UConn Huskies Athletics | 74.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | The Huskies | 74.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | The Huskies | 74.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Dual State Huskies | 74.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Halton Huskies | 73.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Mid Huron Huskies | 72.5% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 81. Acacia Pharma Group Inc.
 
-**Top Match**: A.P Pharma, INC
+**Top Match**: Acacia Pharma Group Inc.
 
-- **Score**: 0.8436 (84.36%)
-- **Match Type**: hybrid
-- **String Score**: 0.7083
-- **Semantic Score**: 0.6528
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (93%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A.P Pharma, INC | 84.36% | 0.7083 | 0.6528 | hybrid |
-| 2 | AA Pharma | 79.60% | 0.7083 | 0.5391 | hybrid |
-| 3 | AA Pharma | 79.60% | 0.7083 | 0.5391 | hybrid |
-| 4 | AAi Pharma | 79.37% | 0.7083 | 0.5349 | hybrid |
-| 5 | AAI Pharma | 79.37% | 0.7083 | 0.5349 | hybrid |
-| 6 | ***essex pharma GmbH | 78.81% | 0.6439 | 0.6042 | hybrid |
-| 7 | !!UCB Pharma | 78.30% | 0.7083 | 0.5100 | hybrid |
-| 8 | ***Advitam Pharma | 77.59% | 0.7083 | 0.4949 | hybrid |
-| 9 | 5ASTELLAS PHARMA CANADA INC | 77.45% | 0.6439 | 0.5436 | hybrid |
-| 10 | 2L Pharma | 76.93% | 0.7083 | 0.4908 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Acacia Pharma Group Inc. | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | ACACIA PHARMA, Inc. | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | ACACIA PHARMA, Inc. | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Acacia Pharma | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Acacia Pharma | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Acacia Pharma | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Acacia Pharma | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Acacia pharma | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Acacia Pharma | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Acacia Pharma Ltd | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Acacia Pharma Ltd | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | Acacia Research Group | 76.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Acacia Partners | 75.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Acacia Network Inc. | 73.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Acacia Institute | 73.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Acacia Research Corp | 73.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Acacia Living, Inc. | 72.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Acacia Communications, Inc. | 72.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Acacia Systems | 71.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Acacia Travel Inc. | 71.2% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 82. Acumatica Summit 2017 Z7NWPDKS625
 
-**Top Match**: 2017 Directed Energy Summit
+**Top Match**: Acumatica Summit 2017 Z7NWPDKS625
 
-- **Score**: 0.7993 (79.93%)
-- **Match Type**: hybrid
-- **String Score**: 0.7083
-- **Semantic Score**: 0.5489
+- **Match location**: Seattle, WA
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Seattle, WA. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 2017 Directed Energy Summit | 79.93% | 0.7083 | 0.5489 | hybrid |
-| 2 | 2017 PACE Washington Summit | 79.17% | 0.7083 | 0.5338 | hybrid |
-| 3 | 2017 Marine Aviation Summit | 79.07% | 0.7083 | 0.5024 | hybrid |
-| 4 | 2017 Marine Aviation Summit | 78.05% | 0.7083 | 0.5024 | hybrid |
-| 5 | 2017 MISMO Fall Summit | 76.83% | 0.7083 | 0.4664 | hybrid |
-| 6 | 2017 CNCS Research Summit | 74.44% | 0.7083 | 0.4467 | hybrid |
-| 7 | 2017 CNCS Research Summit | 74.44% | 0.7083 | 0.4467 | hybrid |
-| 8 | 2017 CNCS Research Summit | 74.44% | 0.7083 | 0.4467 | hybrid |
-| 9 | 2022 DLA Summit Z7N3QCDY6KQ | 73.91% | 0.5000 | 0.6226 | hybrid |
-| 10 | 2017 Vectorworks Design Summit | 73.08% | 0.7083 | 0.4184 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Acumatica Summit 2017 Z7NWPDKS625 | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Acumatica Asia | 64.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | Acumatica Asia | 64.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Acumatica User Group Southeast | 62.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Acumatica Presidents Club 2024 | 60.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Acumatica The Cloud ERP | 60.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Contact Center Compliance Summit | 58.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 8 | Allied Power Safety Summit | 58.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 9 | Allied Power Safety Summit | 58.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 10 | IN3 Medical Device Summit | 58.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | ACUMATICA PRESIDENTS CLUB | 57.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | Emergency Management Summit 2026 | 57.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | Emergency Management Summit 2026 | 57.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | Acumatica - Sales Office | 57.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | Acumatica - Sales Office | 57.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | Acumatica - Sales Office | 57.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | Healthcare IT Connect Summit | 57.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | 2024 Lung Summit KQN5K6PH2MW | 57.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | IN Patient Safety Summit | 57.4% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Safety Summit 2024 | 57.1% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 83. Linklaters CIS
 
-**Top Match**: 2016 CIS Annual Conference 2196533
+**Top Match**: Linklaters CIS
 
-- **Score**: 0.7015 (70.15%)
-- **Match Type**: hybrid
-- **String Score**: 0.5721
-- **Semantic Score**: 0.4226
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 2016 CIS Annual Conference 2196533 | 70.15% | 0.5721 | 0.4226 | hybrid |
-| 2 | 430 Affiliate Ping CIS 2018 | 65.62% | 0.5721 | 0.3444 | hybrid |
-| 3 | ***Linklaters LLP | 64.35% | 0.3194 | 0.5568 | hybrid |
-| 4 | 196 Cis / Ping 2017 Affiliates | 61.82% | 0.5312 | 0.3227 | hybrid |
-| 5 | 196 Cis / Ping 2017 Affiliates | 61.82% | 0.5312 | 0.3227 | hybrid |
-| 6 | 196 Cis / Ping 2017 Affiliates | 61.82% | 0.5312 | 0.3227 | hybrid |
-| 7 | 196 Cis / Ping 2017 Affiliates | 61.82% | 0.5312 | 0.3227 | hybrid |
-| 8 | 196 Cis / Ping 2017 Affiliates | 61.82% | 0.5312 | 0.3227 | hybrid |
-| 9 | 196 Cis / Ping 2017 Affiliates | 61.82% | 0.5312 | 0.3227 | hybrid |
-| 10 | 3Links Technologies, Incorporated | 54.16% | 0.2483 | 0.4396 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Linklaters CIS | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | CIS Groups | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | One Cis | 79.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Cis Global | 79.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Cis 22 | 78.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | CIS Method | 78.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | CIS Method | 78.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Cis Partners | 78.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Cis Partners | 78.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | CIS Partners | 78.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | CIS | 78.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | CIS | 78.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Cis | 78.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | CIS | 78.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | CIS | 78.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | CIS | 78.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | CIS | 78.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Cis | 78.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | CIS | 78.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | CIS | 78.1% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 84. Christian Girls Family Ministry
 
-**Top Match**: A Better Way Family Ministry
+**Top Match**: Christian Girls Family Ministry
 
-- **Score**: 0.8477 (84.77%)
-- **Match Type**: hybrid
-- **String Score**: 0.7438
-- **Semantic Score**: 0.7181
+- **Match location**: Houston, TX
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Houston, TX. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A Better Way Family Ministry | 84.77% | 0.7438 | 0.7181 | hybrid |
-| 2 | A Better Way Family Ministry | 84.77% | 0.7438 | 0.7181 | hybrid |
-| 3 | Springs of Hope Christian Ministry | 84.61% | 0.7438 | 0.6930 | hybrid |
-| 4 | A Christian Ministry in the Na | 83.40% | 0.7438 | 0.6472 | hybrid |
-| 5 | 3P Christian Ministry | 80.48% | 0.6761 | 0.6714 | hybrid |
-| 6 | *New Creation Christian Church Marriage Ministry | 75.19% | 0.6198 | 0.6059 | hybrid |
-| 7 | A Christian Ministry in the National Parks (ACMNP) | 70.74% | 0.6198 | 0.4735 | hybrid |
-| 8 | A.M.E. Women in Ministry | 68.16% | 0.4875 | 0.6228 | hybrid |
-| 9 | 31 Women's Ministry | 67.48% | 0.4432 | 0.6412 | hybrid |
-| 10 | A Ministry for Protestant Women of the Chapel | 67.04% | 0.4432 | 0.6393 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Christian Girls Family Ministry | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Christian Girls Family Ministry Training | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Community Outreach Christian Ministry | 77.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Christian Family Fellowship Church | 77.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Christian Womens Ministry | 76.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Christian Family Bible Fellowship | 76.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | FRIENDSHIP CHRISTIAN CHURCH MINISTRY | 76.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Christian Friends Ministry | 76.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Christian Youth Ministry | 76.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Family Life Christian Church | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Family Life Christian Church | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Christian Marriage Ministry | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Family Life Christian Fellowship | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Family Life Christian Fellowship | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Family Life Christian Fellowship | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Family Life Christian Fellowship | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Family Life Christian Fellowship | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Family Life Christian Fellowship | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Family Life Christian Fellowship | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Family Life Christian Fellowship | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 85. Alosa Foundation
 
-**Top Match**: AACC Foundation
+**Top Match**: Alosa Foundation
 
-- **Score**: 0.8124 (81.24%)
-- **Match Type**: hybrid
-- **String Score**: 0.6375
-- **Semantic Score**: 0.7089
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Construction 30.6%<br>• Structure: ✅ Non-Profit 27.4%<br>• Insight: The model detects a strong 'Construction' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | AACC Foundation | 81.24% | 0.6375 | 0.7089 | hybrid |
-| 2 | AACMA FOUNDATION | 80.43% | 0.6375 | 0.6941 | hybrid |
-| 3 | AAG Foundation | 79.40% | 0.6375 | 0.6540 | hybrid |
-| 4 | AAE Foundation | 79.36% | 0.6375 | 0.6589 | hybrid |
-| 5 | 11 foundation | 78.79% | 0.6375 | 0.6327 | hybrid |
-| 6 | 2b Foundation | 78.67% | 0.6375 | 0.6025 | hybrid |
-| 7 | AAA Foundation | 78.57% | 0.6375 | 0.6365 | hybrid |
-| 8 | AAAA Foundation Inc. | 78.14% | 0.6375 | 0.6272 | hybrid |
-| 9 | AAFP Foundation | 78.09% | 0.6375 | 0.5944 | hybrid |
-| 10 | A&B Foundation | 77.50% | 0.6375 | 0.6139 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Alosa Foundation | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Alosa Foundation | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Alosa Health | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Alosa Health | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Formosa Foundation | 77.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Formosa Foundation | 77.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Llosa's foundation | 73.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | FIRST FOUNDATION | 73.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | FIRST Foundation | 73.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | First Foundation | 73.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | First Foundation | 73.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | First Foundation | 73.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | NEST Foundation | 72.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | New Foundation | 72.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | New Foundation | 72.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Scratch Foundation | 72.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | UH FOUNDATION | 72.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | UM Foundation | 72.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | UM Foundation | 72.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | CAP Foundation | 72.2% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
-### 86. La Chaine des Rotisseurs Wine Club of Newport Beach
+### 86. La Chaine des Rotisseurs Wine Club of Newport Beach — Newport Beach, CA
 
-**Top Match**: A LA CARTE TRAVEL CLUB
+**Top Match**: Newport Beach Wine Festival
 
-- **Score**: 0.6621 (66.21%)
-- **Match Type**: hybrid
-- **String Score**: 0.3520
-- **Semantic Score**: 0.6041
+- **Match location**: Newport Beach, CA
+- **Final Score**: 0.7077 (70.8%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #ffaa00; border-left: 10px solid #ffaa00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#ffaa00;'>⚠️ MODERATE MATCH (70.8%)</span><br><span style='color:#eee; font-size:1.1em;'>High Semantic Similarity</span></div><br><br><b>Relationship:</b> This is a <b>Hybrid Word Overlap</b>. The system detected shared keywords ('beach, newport, wine') despite differences in overall string structure.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟠 FAIR (40%) — Based on partial character alignment.<br>• <b>Semantic Link:</b> 🟢 GOOD (85%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 GOOD (89%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Newport Beach, CA matches the query geography well (location score 1.00).<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ California 28.4%<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A LA CARTE TRAVEL CLUB | 66.21% | 0.3520 | 0.6041 | hybrid |
-| 2 | Marriott Ko Olina Beach Club | 64.63% | 0.3791 | 0.5351 | hybrid |
-| 3 | 100 CLUB OF SOUTH PALM BEACH COUNTY INC | 63.77% | 0.4107 | 0.4808 | hybrid |
-| 4 | 100 CLUB OF SOUTH PALM BEACH COUNTY INC | 63.77% | 0.4107 | 0.4808 | hybrid |
-| 5 | 2021 MBR - Monarch Bay Beach Club | 63.54% | 0.4107 | 0.4804 | hybrid |
-| 6 | 2021 MBR - Monarch Bay Beach Club | 63.54% | 0.4107 | 0.4804 | hybrid |
-| 7 | 90 Plus Wine Club | 63.50% | 0.3520 | 0.5355 | hybrid |
-| 8 | A Book Club with a Wine Problem | 63.37% | 0.3791 | 0.5247 | hybrid |
-| 9 | 2020 MBR - Monarch Bay Beach Club | 62.28% | 0.4107 | 0.4538 | hybrid |
-| 10 | 2020 MBR - Monarch Bay Beach Club | 62.28% | 0.4107 | 0.4538 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Newport Beach Wine Festival | 70.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 2 | Newport Beach Wine and Food Festival | 70.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | Newport Beach Food and Wine Festival | 69.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | NEWPORT BEACH COUNTRY CLUB | 67.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Newport Beach Tennis Club | 67.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Newport Beach Vineyards & Winery | 64.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Newport Harbor Yacht Club | 63.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Wine Club | 58.4% | <div style='border: 1px solid #ff6600; border-left... |
+| 9 | Chaine Des Rotisseurf | 55.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 10 | Classic Wine of California | 55.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | La Chaine des Rotisseurs Wine Club of Newport Beach | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | La Chaine des Rotisseurs Bailliage de Newport Beach | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | La Chaine des Rotisseurs Bailliage de Newport Beach | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | La Chaine des Rotisseurs Wine Club of Ne | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | 90 Plus Wine Club | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | Newport Beach Wine & Food Festival | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | VINE LOVERS WINE CLUB | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | Newport Beach Country Club | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Barr Estate Winery Wine Club | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | CHAINE DES ROTISSEURS DINNER | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 87. Sumner & Ryan, LLC
 
-**Top Match**: 3J Ryan, Inc
+**Top Match**: Sumner & Ryan, LLC
 
-- **Score**: 0.8676 (86.76%)
-- **Match Type**: hybrid
-- **String Score**: 0.7438
-- **Semantic Score**: 0.5736
+- **Match location**: Great Falls, VA
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Great Falls, VA. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Structure: ✅ Corporate 26.1%<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 3J Ryan, Inc | 86.76% | 0.7438 | 0.5736 | hybrid |
-| 2 | 3 J Ryan Inc. | 82.89% | 0.6761 | 0.5594 | hybrid |
-| 3 | 3 J Ryan Inc. | 82.89% | 0.6761 | 0.5594 | hybrid |
-| 4 | 01012 WDD RYAN PROSPECTING | 70.94% | 0.6198 | 0.3997 | hybrid |
-| 5 | $Merrill Lynch and Co., Inc. | 57.26% | 0.2160 | 0.5237 | hybrid |
-| 6 | $Merrill Lynch | 56.34% | 0.2160 | 0.4986 | hybrid |
-| 7 | **Merrill Lynch | 55.42% | 0.2077 | 0.4846 | hybrid |
-| 8 | A Morton Thomas Associates Inc. | 54.52% | 0.1565 | 0.5204 | hybrid |
-| 9 | A.C. Houston Lumber Company | 53.90% | 0.1461 | 0.5097 | hybrid |
-| 10 | A. Morton Thomas & Associates, Inc. | 53.57% | 0.1565 | 0.5166 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Sumner & Ryan, LLC | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Ryan Moving LLC | 81.0% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Miller Ryan LLC | 80.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Ryan Companies | 79.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Ryan LLC | 79.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Ryan LLC | 79.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Ryan LLC | 79.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Ryan LLC | 79.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Ryan LLC | 79.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Ryan LLC | 79.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Ryan Specialty, LLC | 79.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Ryan Specialty, LLC | 79.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Sumner 360 | 78.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Sumner 360 | 78.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Ryan Racing LLC | 78.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Ryan Racing LLC | 78.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Ryan Racing LLC | 78.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Ryan Contracting | 77.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Ryan Consultants Group, LLC | 77.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Anderson and Ryan, LLC | 77.2% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 88. Tilt Creative & Production
 
-**Top Match**: A Creative Force
+**Top Match**: Tilt Creative & Production
 
-- **Score**: 0.7177 (71.77%)
-- **Match Type**: hybrid
-- **String Score**: 0.4798
-- **Semantic Score**: 0.4809
+- **Match location**: Richmond, VA
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Richmond, VA. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br>• <b>Entity Popularity:</b> 🟢 <b>+0.7% Boost</b> — Higher confidence due to 3 occurrences in master set.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Manufacturing 41.2%, ✅ Technology 36.5%, ✅ Construction 26.2%<br>• Nature: ✅ Industrial 34.1%, ✅ Consumer 29.3%, ✅ Professional 26.3%<br>• Insight: The model detects a strong 'Manufacturing' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A Creative Force | 71.77% | 0.4798 | 0.4809 | hybrid |
-| 2 | *PEAK CREATIVE MEDIA | 71.21% | 0.5278 | 0.4385 | hybrid |
-| 3 | A Creative Force | 70.85% | 0.4798 | 0.4809 | hybrid |
-| 4 | A Sharp Production | 70.00% | 0.4798 | 0.4417 | hybrid |
-| 5 | 4D Creative Media | 69.74% | 0.5278 | 0.4062 | hybrid |
-| 6 | AA Music Production | 69.30% | 0.5278 | 0.3609 | hybrid |
-| 7 | 2D Creative | 69.22% | 0.4798 | 0.4379 | hybrid |
-| 8 | 2D Creative | 69.22% | 0.4798 | 0.4379 | hybrid |
-| 9 | 2E Creative | 69.12% | 0.4798 | 0.4452 | hybrid |
-| 10 | A Very Good Production | 68.92% | 0.5278 | 0.3548 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Tilt Creative & Production | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Tilt Creative + Production | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Tilt Creative + Production | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Creative Production Design | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Creative Production Incentives | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Tilt Production | 81.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Absolute Creative Design & Production | 77.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Creative Production Group | 77.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Mob Scene Creative & Production | 75.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Upper Room Creative Production | 75.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Dazzle Creative Events Production | 74.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Mob Scene Creative + Production | 71.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Creative Works Studios | 66.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Creative Talent Endeavors | 66.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Creative Creations Catering | 65.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Shine Creative Solutions | 65.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Full Tilt Marketing | 65.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Full Tilt Marketing | 65.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Creative Motion Control | 65.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Creative Motion Control | 65.9% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 89. Cerberus Capital
 
-**Top Match**: *Cerberus Capital
+**Top Match**: Cerberus Capital
 
-- **Score**: 0.8925 (89.25%)
-- **Match Type**: hybrid
-- **String Score**: 0.7875
-- **Semantic Score**: 0.9375
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ Paris 32.8%<br>• Structure: ✅ Corporate 33.0%<br>• Insight: The model detects a strong 'Corporate' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | *Cerberus Capital | 89.25% | 0.7875 | 0.9375 | hybrid |
-| 2 | 17 Capital | 76.71% | 0.7438 | 0.5339 | hybrid |
-| 3 | 361 Capital | 76.53% | 0.7438 | 0.5236 | hybrid |
-| 4 | 11 Capital | 76.44% | 0.7438 | 0.5612 | hybrid |
-| 5 | 11 Capital | 76.44% | 0.7438 | 0.5612 | hybrid |
-| 6 | 11 Capital | 76.44% | 0.7438 | 0.5612 | hybrid |
-| 7 | **Prudential Capital | 76.43% | 0.7438 | 0.5774 | hybrid |
-| 8 | 180 Capital | 76.28% | 0.7438 | 0.5605 | hybrid |
-| 9 | 16 Capital | 76.08% | 0.7438 | 0.5477 | hybrid |
-| 10 | 16 Capital | 76.08% | 0.7438 | 0.5477 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Cerberus Capital | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Cerberus Capital | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Cerberus Capital Management | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Cerberus Capital Management L | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Cerberus Capital Management LP | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | YP-Cerberus Capital Mgmt | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | YP-Cerberus Capital Mgmt | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | *Cerberus Capital | 84.0% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | CEC Capital | 78.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Merus Capital | 76.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Merus Capital | 76.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Cerberus Capitol Management | 75.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Cerberus Law | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | CEC Capital Group | 74.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Monaco Capital | 74.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Celerity Capital | 74.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Cerberus Global Investments | 74.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Ecus Capital | 74.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Star Capital | 74.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Cerebro Capital | 73.7% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 90. Institute of Health Technology Transformation
 
-**Top Match**: 3 Med Health Institute
+**Top Match**: Institute of Health Technology Transformation
 
-- **Score**: 0.7764 (77.64%)
-- **Match Type**: hybrid
-- **String Score**: 0.6375
-- **Semantic Score**: 0.5737
+- **Match location**: Temecula, CA
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (98%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Temecula, CA. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Technology 52.9%, ✅ Medical 38.5%, ✅ Education 26.3%<br>• Nature: ✅ Professional 25.4%<br>• Insight: The model detects a strong 'Technology' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 3 Med Health Institute | 77.64% | 0.6375 | 0.5737 | hybrid |
-| 2 | $National Institute of Health | 77.33% | 0.5795 | 0.6431 | hybrid |
-| 3 | 3med health institute | 75.64% | 0.5795 | 0.5862 | hybrid |
-| 4 | 360 Neuro Health Institute | 75.30% | 0.6375 | 0.5108 | hybrid |
-| 5 | 2100 Health and Technology | 74.03% | 0.6761 | 0.4416 | hybrid |
-| 6 | 01010 MASSACHUSETTS INSTITUTE OF TECHNOLOGY | 73.87% | 0.7438 | 0.3720 | hybrid |
-| 7 | 430 Affiliate Massachusetts Institute of Technology 2014 | 69.81% | 0.6198 | 0.4253 | hybrid |
-| 8 | 3M Healthcare & Information Technology | 68.83% | 0.5250 | 0.4867 | hybrid |
-| 9 | **National Institutes of Health (NIH) | 67.99% | 0.4500 | 0.5600 | hybrid |
-| 10 | A T STILL UNIVERSITY OF HEALTH | 67.59% | 0.4500 | 0.5701 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Institute of Health Technology Transformation | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Institute for Health Technology Transformation | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | INSTITUTE FOR HEALTH & TECHNOLOGY TRANSFORMATION | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Health Technology | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Health Science Technology Education | 80.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Achieve Health Care Technology | 80.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Innovative Technology Conference- Health | 80.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Technology Health Experience | 80.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Health Technology Assessment International | 80.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Health Technology Assessment International | 80.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Health Technology Assessment international | 80.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | Health Technology Assessment international | 80.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Health Technology Assessment International | 80.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Health Technology Assessment International | 80.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Health Technology Assessment International | 80.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Unified Health Technology | 80.1% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Health Information Technology Summit | 80.0% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | Institute for Health Technology Studies | 80.0% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | HEALTH TECHNOLOGY ASSESSMENT INT | 79.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Health Technology Assessment | 79.6% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 91. The Jones Assembly
 
-**Top Match**: A.C. Jones
+**Top Match**: The Jones Assembly
 
-- **Score**: 0.8609 (86.09%)
-- **Match Type**: hybrid
-- **String Score**: 0.7438
-- **Semantic Score**: 0.6895
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Manufacturing 26.3%<br>• Structure: ✅ Government 25.1%<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A.C. Jones | 86.09% | 0.7438 | 0.6895 | hybrid |
-| 2 | A Better Jones | 83.64% | 0.7438 | 0.6261 | hybrid |
-| 3 | $Edward Jones | 81.37% | 0.7438 | 0.5665 | hybrid |
-| 4 | A&W Jones Management | 81.10% | 0.6761 | 0.6460 | hybrid |
-| 5 | 620 Jones | 80.49% | 0.7438 | 0.5656 | hybrid |
-| 6 | 620 Jones | 80.49% | 0.7438 | 0.5656 | hybrid |
-| 7 | 1316 JONES LLC | 80.31% | 0.7438 | 0.5449 | hybrid |
-| 8 | 1st Assembly | 80.04% | 0.7438 | 0.5315 | hybrid |
-| 9 | A. Jones Family Foundation | 79.97% | 0.6761 | 0.6331 | hybrid |
-| 10 | A. Jones Family Foundation | 79.97% | 0.6761 | 0.6331 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | The Jones Assembly | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | The Jones Assembly Presents | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | 1st Assembly | 79.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | General Assembly | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | General Assembly | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | General Assembly | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | General Assembly | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | General Assembly | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | General Assembly | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | General Assembly | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | General Assembly | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | General Assembly | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | General Assembly | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | General Assembly | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | General Assembly | 79.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | First Assembly | 78.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | First Assembly | 78.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Assembly Required | 77.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Advanced Assembly | 77.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | ACTS Assembly | 77.6% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 92. American Black Film Insitutute
 
-**Top Match**: AAFCA - African American Film Critics Assn
+**Top Match**: American Black Film Insitutute
 
-- **Score**: 0.7982 (79.82%)
-- **Match Type**: hybrid
-- **String Score**: 0.6198
-- **Semantic Score**: 0.6800
+- **Match location**: Brooklyn, NY
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Brooklyn, NY. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | AAFCA - African American Film Critics Assn | 79.82% | 0.6198 | 0.6800 | hybrid |
-| 2 | AAFCA - African American Film Critics Assn | 79.82% | 0.6198 | 0.6800 | hybrid |
-| 3 | AAFCA - African American Film Critics Assn | 79.82% | 0.6198 | 0.6800 | hybrid |
-| 4 | 100 Black Men American | 77.13% | 0.7438 | 0.4422 | hybrid |
-| 5 | A Silver Lining Short Film | 66.47% | 0.4875 | 0.5055 | hybrid |
-| 6 | 100 Black Men of America | 65.56% | 0.4875 | 0.4372 | hybrid |
-| 7 | 48 Hour Film Project Inc. | 65.41% | 0.4875 | 0.4728 | hybrid |
-| 8 | 100 Black Men of America, Inc. | 65.22% | 0.4875 | 0.4339 | hybrid |
-| 9 | 48 Hour Film Project | 64.42% | 0.4875 | 0.4336 | hybrid |
-| 10 | 100 Black Men of America | 64.08% | 0.4875 | 0.4372 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | American Black Film Insitutute | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | American Black Film Festival | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Black Women Film Preservation | 78.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | American Black Film Festival Ventures | 77.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | American Black Film Festival Ventures | 77.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Black Film Initiative | 76.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | BLACK FILM SPACE | 76.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | BLACK FILM SPACE | 76.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | International Black Film Festival | 75.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | American Standard Window Film | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | American Film Works | 75.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Black Women Film Network | 74.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | National Black Film Festival | 74.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | HOLLYWOOD BLACK FILM FESTIVAL | 74.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | HOLLYWOOD BLACK FILM FESTIVAL | 74.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | American Black Film Festival Honors | 73.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | The Black Women Film Network | 73.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | American Brightlight Film Productions | 73.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Independent Black Film Festival | 73.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | DC Black Film Festival | 72.7% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 93. Berk Tek
 
-**Top Match**: A TEK
+**Top Match**: Berk Tek
 
-- **Score**: 0.8096 (80.96%)
-- **Match Type**: hybrid
-- **String Score**: 0.6300
-- **Semantic Score**: 0.6659
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A TEK | 80.96% | 0.6300 | 0.6659 | hybrid |
-| 2 | A - Beka - Book | 57.43% | 0.2647 | 0.5192 | hybrid |
-| 3 | A Beka Book | 57.27% | 0.2647 | 0.5334 | hybrid |
-| 4 | A Beka Books | 56.50% | 0.2647 | 0.5148 | hybrid |
-| 5 | ***Ter Beke | 56.26% | 0.1895 | 0.6105 | hybrid |
-| 6 | A Beka Home Book | 54.26% | 0.2231 | 0.5136 | hybrid |
-| 7 | A Beka Academy | 53.23% | 0.2250 | 0.4677 | hybrid |
-| 8 | **Tek Systems | 51.45% | 0.1350 | 0.5845 | hybrid |
-| 9 | A T KEARNEY | 51.15% | 0.1588 | 0.5107 | hybrid |
-| 10 | _ber Content | 50.47% | 0.2700 | 0.3818 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Berk Tek | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Berk Tek | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | Berk Tek | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 4 | Berk Tek | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 5 | Berk-Tek | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Berk Tek / Leviton | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Berk Tek Legrand | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Berk Tck | 78.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Berk | 76.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | TEK Source | 75.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | World Tek | 75.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | World Tek | 75.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | World Tek | 75.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | World Tek | 75.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | New Tek | 75.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | New Tek | 75.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Tek Travel | 74.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Future TEK | 74.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Tek Interests | 73.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Del TEK | 73.2% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 94. Northbridge Travel
 
-**Top Match**: A Destination Travel
+**Top Match**: Northbridge Travel
 
-- **Score**: 0.8447 (84.47%)
-- **Match Type**: hybrid
-- **String Score**: 0.7438
-- **Semantic Score**: 0.4969
+- **Match location**: Northbridge, NSW
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Northbridge, NSW. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br>• <b>Entity Popularity:</b> 🟢 <b>+0.6% Boost</b> — Higher confidence due to 2 occurrences in master set.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ London 32.6%, ✅ Canada 26.0%<br>• Insight: The vector is strongly pulled toward geographic anchors, resolving potential ambiguity.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A Destination Travel | 84.47% | 0.7438 | 0.4969 | hybrid |
-| 2 | A Trip Travel | 83.48% | 0.7438 | 0.4945 | hybrid |
-| 3 | A Destination Travel | 82.89% | 0.7438 | 0.4969 | hybrid |
-| 4 | A Destination Travel | 82.89% | 0.7438 | 0.4969 | hybrid |
-| 5 | 2020 Travel | 82.05% | 0.7438 | 0.4723 | hybrid |
-| 6 | A Travel Towne | 81.35% | 0.7438 | 0.4611 | hybrid |
-| 7 | A Travel Haven | 81.04% | 0.7438 | 0.4445 | hybrid |
-| 8 | A Travel Haven | 81.04% | 0.7438 | 0.4445 | hybrid |
-| 9 | 1st Travel | 80.93% | 0.7438 | 0.4374 | hybrid |
-| 10 | A E Travel | 80.86% | 0.7875 | 0.4453 | hybrid |
-
----
-
-### 95. Kohler 2024
-
-**Top Match**: 2024 TASTINGS
-
-- **Score**: 0.7737 (77.37%)
-- **Match Type**: hybrid
-- **String Score**: 0.6375
-- **Semantic Score**: 0.5522
-
-**Top 10 Matches:**
-
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 2024 TASTINGS | 77.37% | 0.6375 | 0.5522 | hybrid |
-| 2 | 2024 NAAIM | 75.70% | 0.6375 | 0.5163 | hybrid |
-| 3 | 2024 Smerf | 75.61% | 0.6375 | 0.5136 | hybrid |
-| 4 | 2024 Smerf | 75.61% | 0.6375 | 0.5136 | hybrid |
-| 5 | 2024 Insaka | 75.38% | 0.6375 | 0.5169 | hybrid |
-| 6 | 2024 Summit | 75.33% | 0.6375 | 0.5053 | hybrid |
-| 7 | 2024 ASPLOS | 74.97% | 0.6375 | 0.4999 | hybrid |
-| 8 | 2024 Memorial | 74.81% | 0.6375 | 0.5005 | hybrid |
-| 9 | 2024 - SMERF | 74.72% | 0.6375 | 0.4971 | hybrid |
-| 10 | 2024 - SMERF | 74.72% | 0.6375 | 0.4971 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Northbridge Travel | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Northbridge Communities | 80.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Northbridge Environmental | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | WestBridge Travel | 80.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Northbridge | 79.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Northbridge | 79.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Northbridge | 79.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Northbridge | 79.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Northbridge | 79.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Northbridge | 79.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Northbridge | 79.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Bridge Travel | 79.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Bridge Travel | 79.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Bridge Travel | 79.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Northbridge Church | 79.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Northbridge Church | 79.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Seabridge Travel | 79.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Seabridge Travel | 79.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Seabridge Travel | 79.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Seabridge Travel | 79.5% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
-### 96. Louisiana State University Swim
+### 95. Kohler 2024 — Kohler, WI
 
-**Top Match**: $Southeastern Louisiana University Athletic Department
+**Top Match**: Kohler Company Sales
 
-- **Score**: 0.8011 (80.11%)
-- **Match Type**: hybrid
-- **String Score**: 0.6439
-- **Semantic Score**: 0.6306
+- **Match location**: Kohler, WI
+- **Final Score**: 0.9386 (93.9%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00cc00; border-left: 10px solid #00cc00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00cc00;'>✅ STRONG MATCH (93.9%)</span><br><span style='color:#eee; font-size:1.1em;'>High Lexical Similarity</span></div><br><br><b>Relationship:</b> This is a <b>Hybrid Word Overlap</b>. The system detected shared keywords ('kohler') despite differences in overall string structure.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 GOOD (85%) — Based on strong character overlap.<br>• <b>Semantic Link:</b> 🟡 MODERATE (63%) — Detected via moderate meaning-based connection.<br>• <b>Concept Alignment:</b> 🟢 GOOD (72%) — Reflects related business categories.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Kohler, WI matches the query geography well (location score 1.00).<br>• <b>Entity Popularity:</b> 🟢 <b>+1.3% Boost</b> — Higher confidence due to 13 occurrences in master set.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Retail 35.3%, ✅ Manufacturing 26.5%<br>• Structure: ✅ Small Business 34.3%, ✅ Corporate 25.6%, ✅ Non-Profit 25.5%<br>• Insight: The model detects a strong 'Retail' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | $Southeastern Louisiana University Athletic Department | 80.11% | 0.6439 | 0.6306 | hybrid |
-| 2 | *TEXAS STATE UNIVERSITY ATHLETICS | 77.80% | 0.7083 | 0.4909 | hybrid |
-| 3 | (DO NOT USE) University of Arizona Swim Team | 75.79% | 0.5449 | 0.6201 | hybrid |
-| 4 | .North Caroline State University | 73.86% | 0.7083 | 0.3961 | hybrid |
-| 5 | *Ohio State University | 73.82% | 0.6439 | 0.4726 | hybrid |
-| 6 | $Ohio State University, (The) | 73.41% | 0.7083 | 0.4020 | hybrid |
-| 7 | (HD) Alcorn State University | 72.99% | 0.7083 | 0.3842 | hybrid |
-| 8 | [INAUGURATION] State Republican Party of Louisiana | 72.20% | 0.7083 | 0.3721 | hybrid |
-| 9 | *Arizona State University Athletic Department | 72.05% | 0.6439 | 0.4345 | hybrid |
-| 10 | A&T State University | 71.81% | 0.6439 | 0.4436 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Kohler Company Sales | 93.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 2 | Kohler Company Marketing | 93.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Kohler Communications | 93.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Kohler Engines | 93.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Kohler Company Finance | 93.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Kohler Schools | 93.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Kohler Energy | 93.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Kohler Company Engineering | 93.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Kohler Company Accounting | 93.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Kohler Fixtures | 93.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Kohler Company - David Kohler | 93.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | Kohler ANZ | 93.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Kohler Company Kohler Learning | 93.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Kohler Company Purchasing | 93.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Kohler Interiors | 93.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Kohler Generator | 93.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Kohler-Canada | 93.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | Kohler Company Group Systems | 93.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | Kohler Company IT | 93.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | Kohler Company Transportation | 93.2% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
-### 97. X DO NOT USE - FRANCIS PARKER SCHOOL
+### 96. Louisiana State University Swim — Baton Rouge, LA
 
-**Top Match**: ** DO NOT USE ** Renaissance Learning, Inc
+**Top Match**: Louisiana State University System
 
-- **Score**: 0.7067 (70.67%)
-- **Match Type**: hybrid
-- **String Score**: 0.5494
-- **Semantic Score**: 0.4480
+- **Match location**: Baton Rouge, LA
+- **Final Score**: 0.9401 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00cc00; border-left: 10px solid #00cc00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00cc00;'>✅ STRONG MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Moderate Lexical Similarity</span></div><br><br><b>Relationship:</b> This is a <b>Hybrid Word Overlap</b>. The system detected shared keywords ('louisiana, state, university') despite differences in overall string structure.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 GOOD (82%) — Based on partial character alignment.<br>• <b>Semantic Link:</b> 🟡 MODERATE (70%) — Detected via moderate meaning-based connection.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (93%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Baton Rouge, LA matches the query geography well (location score 1.00).<br>• <b>Entity Popularity:</b> 🟢 <b>+1.4% Boost</b> — Higher confidence due to 16 occurrences in master set.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ California 35.3%, ✅ Texas 33.4%, ✅ Illinois 32.5%, ✅ Pennsylvania 26.9%, ✅ Ohio 26.4%<br>• Industry: ✅ Education 34.9%<br>• Insight: The model detects a strong 'California' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | ** DO NOT USE ** Renaissance Learning, Inc | 70.67% | 0.5494 | 0.4480 | hybrid |
-| 2 | * DO NOT USE * Knights of Peter Claver National | 69.28% | 0.5494 | 0.4195 | hybrid |
-| 3 | *EDUCATION GROUP -- 2018 - DO NOT USE | 68.55% | 0.5036 | 0.4608 | hybrid |
-| 4 | 7 Happiness Tours, Inc. ** DO NOT USE ** | 66.47% | 0.6043 | 0.2965 | hybrid |
-| 5 | ** DO NOT USE ** Renaissance Waverly Miscellaneous | 65.87% | 0.6043 | 0.2921 | hybrid |
-| 6 | ** DO NOT USE ** Renaissance Waverly Executive | 65.60% | 0.6043 | 0.2847 | hybrid |
-| 7 | *SOCIAL / CLUB -- 2009 - DO NOT USE | 65.38% | 0.6043 | 0.2835 | hybrid |
-| 8 | A.H. Parker High School | 65.29% | 0.3780 | 0.5562 | hybrid |
-| 9 | A. H. Parker High School | 65.29% | 0.3780 | 0.5562 | hybrid |
-| 10 | (DO NOT USE THIS ACCOUNT)University of Florida Department of | 64.56% | 0.5221 | 0.3270 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Louisiana State University System | 94.0% | <div style='border: 1px solid #00cc00; border-left... |
+| 2 | Louisiana State University CCT | 93.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Louisiana State University Foundation | 93.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Louisiana State University Football | 92.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Louisiana State University Trips | 92.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Louisiana State University Band | 92.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Louisiana State Univ Swim | 92.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Louisiana State University | 85.1% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Northwestern Louisiana State University | 83.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | Louisiana State University Baseball | 83.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Louisiana State University Education Alumni | 83.0% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | LSU Louisiana State University Athletics | 82.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Louisiana State Alumni Association | 82.0% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Louisiana State University (LSU) Admissions | 81.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | Louisiana State University Alumni Association | 81.3% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Louisiana State Univ Gymnastics | 81.1% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Louisiana State University Athletic Depa | 80.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | Louisiana State Department of Education | 80.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | Louisiana State University Law School | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | Louisiana State University Biological Sciences | 80.3% | <div style='border: 1px solid #00cc00; border-left... |
+
+---
+
+### 97. X DO NOT USE - FRANCIS PARKER SCHOOL — San Diego, CA
+
+**Top Match**: X DO NOT USE - FRANCIS PARKER SCHOOL
+
+- **Match location**: San Diego, CA
+- **Final Score**: 1.0000 (100.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (100.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at San Diego, CA matches the query geography well (location score 1.00).<br><br><br><b>Concept Analysis:</b><br>
+
+**Top 20 Matches:**
+
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | X DO NOT USE - FRANCIS PARKER SCHOOL | 100.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | X DO NOT USE - CLAIREMONT HIGH SCHOOL | 92.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Francis Parker School | 79.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Francis Parker High School | 72.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Francis Parker School English Department | 72.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Francis Parker | 69.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Francis Parker School of San Diego | 68.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Frances Parker School | 63.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Francis in the Schools | 55.1% | <div style='border: 1px solid #ff6600; border-left... |
+| 10 | X DO NOT USE - EL CAPITAN HIGH SCHOOL | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | Parker High School | 52.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | Parker University | 52.4% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | X DO NOT USE - FRANCIS PARKER SCHOOL | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | X DO NOT USE - FRANCIS PARKER SCHOOL | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | X DO NOT USE - FRANCIS PARKER SCHOOL | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | X DO NOT USE - FRANCIS PARKER SCHOOL | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | X DO NOT USE - FRANCIS PARKER SCHOOL | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | Duke Nicholas School of the Environment - Do Not Use | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | X DO NOT USE - FRANCIS PARKER SCHOOL | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | St. Francis Elementary School | 51.9% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 98. Mitsubishi Motor Sales of America, Incorporated
 
-**Top Match**: A&L Motor Sales
+**Top Match**: Mitsubishi Motor Sales of America, Incorporated
 
-- **Score**: 0.7917 (79.17%)
-- **Match Type**: hybrid
-- **String Score**: 0.6761
-- **Semantic Score**: 0.6122
+- **Match location**: Universal City, CA
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 GOOD (87%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Universal City, CA. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Automotive 41.3%, ✅ Manufacturing 25.2%<br>• Structure: ✅ Corporate 26.4%<br>• Nature: ✅ Industrial 28.5%<br>• Insight: Confirms the model's inherent knowledge of industry concepts.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A&L Motor Sales | 79.17% | 0.6761 | 0.6122 | hybrid |
-| 2 | **NEC-Mitsubishi Electronics Display of America, Inc. | 75.22% | 0.6761 | 0.5025 | hybrid |
-| 3 | **Mitsubishi Digital Electronics America, Inc. | 73.62% | 0.4875 | 0.7089 | hybrid |
-| 4 | 2010 Mutual of America National Sales Conference | 70.60% | 0.6198 | 0.4485 | hybrid |
-| 5 | (Q)Toyota Motor North America-Chicago Region | 68.21% | 0.6198 | 0.4122 | hybrid |
-| 6 | #1 American Honda Motor Company | 67.69% | 0.4875 | 0.5159 | hybrid |
-| 7 | #1 American Honda Motor Company | 66.60% | 0.4875 | 0.5159 | hybrid |
-| 8 | #1 American Honda Motor Company | 66.60% | 0.4875 | 0.5159 | hybrid |
-| 9 | #1 American Honda Motor Company | 66.60% | 0.4875 | 0.5159 | hybrid |
-| 10 | $American Honda Motor Corporation Incorporated | 66.60% | 0.4432 | 0.5831 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Mitsubishi Motor Sales of America, Incorporated | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Mitsubishi Motor Sales of America | 90.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Mitsubishi Motor Sales of America, Inc. | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Mitsubishi Motors Sales of America | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Mitsubishi Electronic Sales America | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Mitsubishi Motor Sales of Canada, Incorporated | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Mitsubishi Electric Sales of America | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | Mitsubishi Motor Sales of Caribbean | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | Mitsubishi Motor Sales Of Amer | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | MITSUBISHI MOTOR NORTH AMERICA, INC | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | Mitsubishi Motors Sales Caribbean | 81.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | Mitsubishi Electric Sales Canada | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | Mitsubishi Motor | 81.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | Mitsubishi Motor | 81.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | MITSUBISHI MOTOR | 81.2% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | Mitsubishi Motor Corporation | 80.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | Mitsubishi Motors N America Inc | 80.8% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | Mitsubishi Motor Company | 80.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | Mitsubishi Motor Company | 80.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | Mitsubishi Motor Company | 80.6% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
 ### 99. Energy Distribution Partners Holdings'
 
-**Top Match**: 2019 Affiliates of Solar Energy Trade Show, LLC
+**Top Match**: Energy Distribution Partners Holdings'
 
-- **Score**: 0.7101 (71.01%)
-- **Match Type**: hybrid
-- **String Score**: 0.4167
-- **Semantic Score**: 0.6519
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (95%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 2019 Affiliates of Solar Energy Trade Show, LLC | 71.01% | 0.4167 | 0.6519 | hybrid |
-| 2 | 8minute Solar Energy Company LLC | 70.23% | 0.4545 | 0.5998 | hybrid |
-| 3 | 8 Minute Energy Renewable LLC | 69.57% | 0.5000 | 0.5105 | hybrid |
-| 4 | *First Energy Corporation/Michael Reed Travel | 69.29% | 0.4545 | 0.5894 | hybrid |
-| 5 | $United States Department of Energy | 69.11% | 0.5000 | 0.5547 | hybrid |
-| 6 | *Halliburton Energy Services, Inc. | 68.92% | 0.4545 | 0.5782 | hybrid |
-| 7 | 3M Electronics & Energy Business Group | 68.47% | 0.5000 | 0.5223 | hybrid |
-| 8 | 8minute Solar Energy Company | 68.35% | 0.4545 | 0.5539 | hybrid |
-| 9 | $Association of Energy Services Professionals | 67.99% | 0.5000 | 0.5265 | hybrid |
-| 10 | Energy Global Consortium | 67.96% | 0.4545 | 0.5928 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Energy Distribution Partners Holdings' | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Energy Distribution Partners Holdings L.P. | 86.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Energy Distribution Partners (EDP) | 86.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Energy Distribution Partners | 84.1% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | Energy Distribution Holdings | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | Energy Distribution Holdings | 81.4% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Distribution Energy Financial Group | 78.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Energy Products Distribution | 77.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Total Energy Partners | 76.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Energy Product Distribution | 76.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Energy Product Distribution | 76.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Energy Distributors Partners | 76.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Energy Power Partners | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Energy Power Partners | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Energy Power Partners | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Energy Power Partners | 76.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Energy Trust Partners | 75.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Energy Trust Partners | 75.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Energy Trust Partners | 75.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Energy Impact Partners | 75.8% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 100. ThinkAdvisor
 
-**Top Match**: A Think Tank
+**Top Match**: ThinkAdvisor
 
-- **Score**: 0.5877 (58.77%)
-- **Match Type**: hybrid
-- **String Score**: 0.2231
-- **Semantic Score**: 0.4504
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Structure: ✅ Government 29.6%, ✅ Corporate 28.0%<br>• Nature: ✅ Global 33.4%<br>• Insight: The model detects a strong 'Global' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A Think Tank | 58.77% | 0.2231 | 0.4504 | hybrid |
-| 2 | *** Think Simple | 56.52% | 0.1667 | 0.4619 | hybrid |
-| 3 | 4 Minds | 56.19% | 0.1722 | 0.4446 | hybrid |
-| 4 | 4 Minds | 56.19% | 0.1722 | 0.4446 | hybrid |
-| 5 | A Mindful Society | 54.38% | 0.1515 | 0.4343 | hybrid |
-| 6 | A MINDFUL SOCIETY | 54.38% | 0.1515 | 0.4343 | hybrid |
-| 7 | 4UDR | 54.22% | 0.1125 | 0.4625 | hybrid |
-| 8 | 1 MIND Productions | 53.33% | 0.1293 | 0.4304 | hybrid |
-| 9 | A Definir | 53.26% | 0.1895 | 0.3676 | hybrid |
-| 10 | *TPASR* | 52.39% | 0.1895 | 0.3652 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | ThinkAdvisor | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Planadvisor | 59.8% | <div style='border: 1px solid #ff6600; border-left... |
+| 3 | NeXtAdvisors | 59.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 4 | TripAdvisor | 58.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 5 | Tripadvisor | 58.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 6 | Tripadvisor | 58.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 7 | TripAdvisor | 58.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 8 | TripAdvisor | 58.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 9 | TRIPADVISOR | 58.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 10 | Tripadvisor | 58.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | Tripadvisor | 58.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | Tripadvisor | 58.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | Tripadvisor | 58.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | Tripadvisor | 58.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | Tripadvisor | 58.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | Tripadvisor | 58.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | Tripadvisor | 58.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | Tripadvisor | 58.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Tripadvisor | 58.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Tripadvisor | 58.3% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 101. Jump on it Outreach
 
-**Top Match**: 205 Youth Outreach Program
+**Top Match**: Jump on it Outreach
 
-- **Score**: 0.7447 (74.47%)
-- **Match Type**: hybrid
-- **String Score**: 0.5250
-- **Semantic Score**: 0.5171
+- **Match location**: Houston, TX
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Houston, TX. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Education 28.2%<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 205 Youth Outreach Program | 74.47% | 0.5250 | 0.5171 | hybrid |
-| 2 | 7-Cities Outreach Va | 72.33% | 0.5250 | 0.4883 | hybrid |
-| 3 | 1 Body Outreach, Inc. | 71.71% | 0.4773 | 0.4984 | hybrid |
-| 4 | 2 Proclaim Outreach Ministies | 70.47% | 0.5250 | 0.4255 | hybrid |
-| 5 | 34th St, COG Outreach Ministry | 68.43% | 0.4773 | 0.4624 | hybrid |
-| 6 | 2020 Annual Mardi Gras Outreach | 63.96% | 0.4773 | 0.4061 | hybrid |
-| 7 | 2020 Annual Mardi Gras Outreach | 63.96% | 0.4773 | 0.4061 | hybrid |
-| 8 | 6th Annual It Conf | 63.79% | 0.4500 | 0.3732 | hybrid |
-| 9 | For more information, contact: DTE Outreach communityoutreach@downtoearth.org | 63.79% | 0.4038 | 0.4718 | hybrid |
-| 10 | For more information, contact: DTE Outreach communityoutreach@downtoearth.org | 63.79% | 0.4038 | 0.4718 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Jump on it Outreach | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Jump On It | 73.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Outreach | 71.1% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 102. The Association of Ringside Consultants (ARC)
 
-**Top Match**: A&D Meeting Planners and Consultants, LLC
+**Top Match**: The Association of Ringside Consultants (ARC)
 
-- **Score**: 0.7245 (72.45%)
-- **Match Type**: hybrid
-- **String Score**: 0.5250
-- **Semantic Score**: 0.5911
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Insurance 25.9%<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | A&D Meeting Planners and Consultants, LLC | 72.45% | 0.5250 | 0.5911 | hybrid |
-| 2 | (INDEPENDENT EDUCATIONAL CONSULTANTS ASSOCIATION) | 70.61% | 0.5250 | 0.5730 | hybrid |
-| 3 | 4th Annual N.A. Consultants Meeting | 69.83% | 0.4773 | 0.5934 | hybrid |
-| 4 | 21st Century Business Consultants | 69.71% | 0.5250 | 0.5295 | hybrid |
-| 5 | AAIC Wedding Consultants & Event Planners, Inc | 69.65% | 0.4773 | 0.5703 | hybrid |
-| 6 | *Kintetsu International Travel Consultants Company | 69.47% | 0.5250 | 0.5146 | hybrid |
-| 7 | 196 - INTERNATIONAL LACTATION CONSULTANTS ASSOCIATION 2016 AFFILIATES | 68.08% | 0.5721 | 0.4250 | hybrid |
-| 8 | 196 - INTERNATIONAL LACTATION CONSULTANTS ASSOCIATION 2016 AFFILIATES | 68.08% | 0.5721 | 0.4250 | hybrid |
-| 9 | 196 - INTERNATIONAL LACTATION CONSULTANTS ASSOCIATION 2016 AFFILIATES | 68.08% | 0.5721 | 0.4250 | hybrid |
-| 10 | A&R Consultants LLC | 67.99% | 0.4375 | 0.5906 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | The Association of Ringside Consultants (ARC) | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Business Referral Consultants Association | 75.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | z Association Management Consultants | 75.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Virginia Association of Legal Consultants | 75.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Oklahoma Association of Personnel Consultants | 74.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | Professional Consultants Association | 73.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Association Management Consultants | 73.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Association Management Consultants | 73.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Association Management Consultants | 73.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Association Management Consultants | 73.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Managing Consultants Association | 73.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Association for Certified Financial Consultants | 72.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Association Management Consultants, LLC | 72.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Association Management Consultants, LLC | 72.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Association Management Consultants, LLC | 72.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Association Management Consultants, LLC | 72.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Association of Ringside Physicians (ARP) | 71.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Association of Professional Consultants | 71.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | Association of IT Consultants | 71.3% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | American Association of Ringside Physicians | 71.2% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 103. SFA HASA
 
-**Top Match**: AAA-CAA
+**Top Match**: SFA HASA
 
-- **Score**: 0.5875 (58.75%)
-- **Match Type**: hybrid
-- **String Score**: 0.2400
-- **Semantic Score**: 0.4589
+- **Match location**: Baltimore, MD
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (99%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Baltimore, MD. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ California 49.4%, ✅ Miami 26.0%<br>• Insight: The model detects a strong 'California' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | AAA-CAA | 58.75% | 0.2400 | 0.4589 | hybrid |
-| 2 | AAA and CAA | 58.54% | 0.2400 | 0.4526 | hybrid |
-| 3 | AAFSA | 56.19% | 0.1662 | 0.4772 | hybrid |
-| 4 | *FORA Travel | 55.99% | 0.1800 | 0.4681 | hybrid |
-| 5 | *FORA Travel | 55.99% | 0.1800 | 0.4681 | hybrid |
-| 6 | *FORA Travel | 55.99% | 0.1800 | 0.4681 | hybrid |
-| 7 | *FORA Travel | 55.99% | 0.1800 | 0.4681 | hybrid |
-| 8 | *FORA Travel | 55.99% | 0.1800 | 0.4681 | hybrid |
-| 9 | GSA COLOMBIA | 55.98% | 0.1800 | 0.4612 | hybrid |
-| 10 | AAHSA | 55.63% | 0.2215 | 0.4142 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | SFA HASA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | SFA Leads | 81.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Sfa Charter | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | Sfa | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | SFA Partners | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | SFA | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | Sfa | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | SFA | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | SFA | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | SFA Partners | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | SFA Partners | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | Sfa Partners | 80.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | SFA Companies | 79.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | SFA Opportunity | 79.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | SFA Saniflo | 79.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | SFA Design | 78.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | SFA Designs | 77.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | Stalla SFA | 77.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | SFA Inc | 77.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | Test Sfa | 77.1% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
 ### 104. Grupo Duracell Ene 2025
 
-**Top Match**: 2025 C2HR CON V8NHNNMHJJL
+**Top Match**: Grupo Duracell Ene 2025
 
-- **Score**: 0.6973 (69.73%)
-- **Match Type**: hybrid
-- **String Score**: 0.4500
-- **Semantic Score**: 0.5681
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 2025 C2HR CON V8NHNNMHJJL | 69.73% | 0.4500 | 0.5681 | hybrid |
-| 2 | A&A Internacional Grupo S.A.S. | 67.60% | 0.5000 | 0.4534 | hybrid |
-| 3 | 2025 Wantreez Group | 66.86% | 0.3750 | 0.5894 | hybrid |
-| 4 | :: Grupo Athena No Seintos :: | 66.79% | 0.4545 | 0.5161 | hybrid |
-| 5 | 2025 FIFA Club World Cup | 66.78% | 0.4091 | 0.5593 | hybrid |
-| 6 | 2025 FIFA Club World Cup | 66.78% | 0.4091 | 0.5593 | hybrid |
-| 7 | ** Grupo Azteca | 66.40% | 0.4545 | 0.5087 | hybrid |
-| 8 | 2025 Hilton Sedona Social | 66.32% | 0.4500 | 0.5011 | hybrid |
-| 9 | 2025 Hilton Sedona Social | 66.32% | 0.4500 | 0.5011 | hybrid |
-| 10 | 2025 Hilton Sedona Social | 66.32% | 0.4500 | 0.5011 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Grupo Duracell Ene 2025 | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | Grupo Sevag MIA 2025 | 72.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 3 | Grupo GANNET Diciembre 2025 | 72.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 4 | Grupo Integra Oct 2025 | 72.0% | <div style='border: 1px solid #ffaa00; border-left... |
+| 5 | Grupo DUCATI Nov 2025 | 71.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 6 | GRUPO MAZDA FEB 2025 | 71.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 7 | Grupo Sigma Nov 2025 | 70.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 8 | Grupo Royal Sep 2025 | 68.8% | <div style='border: 1px solid #ffaa00; border-left... |
+| 9 | Grupo PopNoviembre 2025 | 67.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | Grupo Expertos en Convenciones Noviembre 2025. | 64.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | Grupo Expertos en Convenciones Noviembre 2025. | 64.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | Duracell Brasil | 62.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | Duracell Brasil | 62.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | Grupo GT5 Brasil | 61.2% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Grupo Gax Brasil | 60.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | Grupo Brasil DPE | 59.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | Grupo Brasil DPE | 59.7% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | 2025 Pokemon Affiliates | 59.5% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Grupo Febrero 2026 | 59.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Grupo Sitel de Mexico | 59.0% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
 ### 105. World Association of Medical Law
 
-**Top Match**: ***American Medical Association
+**Top Match**: World Association of Medical Law
 
-- **Score**: 0.7711 (77.11%)
-- **Match Type**: hybrid
-- **String Score**: 0.5795
-- **Semantic Score**: 0.6060
+- **Match location**: Marceline, MO
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows Marceline, MO. With no query city/state, location does not add to the numeric score; the cap above reflects unverified office choice when the name matches exactly.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Medical 59.0%, ✅ Legal 37.3%, ✅ Insurance 36.1%<br>• Nature: ✅ Professional 37.8%<br>• Insight: The model detects a strong 'Medical' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | ***American Medical Association | 77.11% | 0.5795 | 0.6060 | hybrid |
-| 2 | 12th Armenian Medical World Congress | 75.89% | 0.6761 | 0.4612 | hybrid |
-| 3 | 12th Armenian Medical World Congress | 75.89% | 0.6761 | 0.4612 | hybrid |
-| 4 | 2011 AFFILIATE AMERICAN MEDICAL ASSOCIATION | 74.92% | 0.5795 | 0.5579 | hybrid |
-| 5 | 1035 Affiliates World Medical Innovation | 74.84% | 0.6761 | 0.4385 | hybrid |
-| 6 | 1035 Affiliates World Medical Innovation | 73.88% | 0.6761 | 0.4385 | hybrid |
-| 7 | *American Agricultural Law Association | 72.98% | 0.7438 | 0.3927 | hybrid |
-| 8 | .Maine Medical Association | 71.76% | 0.5795 | 0.5078 | hybrid |
-| 9 | (WVAC Inc.) World Veterinary Association | 70.25% | 0.6761 | 0.3618 | hybrid |
-| 10 | AALL- American Association of Law Libraries | 70.04% | 0.6761 | 0.3587 | hybrid |
-
----
-
-### 106. ABA
-
-**Top Match**: 430 Affiliate ABA 2014
-
-- **Score**: 0.9500 (95.00%)
-- **Match Type**: hybrid
-- **String Score**: 0.6923
-- **Semantic Score**: 0.5724
-
-**Top 10 Matches:**
-
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | 430 Affiliate ABA 2014 | 95.00% | 0.6923 | 0.5724 | hybrid |
-| 2 | 2014 Affiliate- ABA White Collar Crime Conference | 95.00% | 0.5625 | 0.4788 | hybrid |
-| 3 | 2023 ABA State Bankers Assns Counsels Me | 95.00% | 0.5625 | 0.4552 | hybrid |
-| 4 | A Brodi Abroad | 91.99% | 0.5000 | 0.1994 | acronym_expansion |
-| 5 | A Belle Affair | 91.51% | 0.5000 | 0.1508 | acronym_expansion |
-| 6 | A Belle Affair | 91.51% | 0.5000 | 0.1508 | acronym_expansion |
-| 7 | A Beka Academy | 86.93% | 0.5000 | 0.2927 | acronym_expansion |
-| 8 | AAMC  BT ACCOUNT | 86.71% | 0.5000 | 0.2705 | acronym_expansion |
-| 9 | A Balancing Act | 86.49% | 0.5000 | 0.2491 | acronym_expansion |
-| 10 | A Balancing Act | 86.49% | 0.5000 | 0.2491 | acronym_expansion |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | World Association of Medical Law | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | World Association For Medical Law | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | World Association for Medical Law | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 4 | World Association for Medical Law | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | World Medical Association | 82.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | World Medical Association | 82.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | World Medical Association | 82.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | World Medical Association | 82.9% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | American Veterinary Medical Law Association | 78.5% | <div style='border: 1px solid #ffaa00; border-left... |
+| 10 | World Wide Medical Exchange | 77.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 11 | World Law Institute | 77.7% | <div style='border: 1px solid #ffaa00; border-left... |
+| 12 | World Association of Academic Doctors | 77.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 13 | World Association of Academic Doctors | 77.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 14 | World Association of Academic Doctors | 77.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 15 | Pacific Medical Law | 76.9% | <div style='border: 1px solid #ffaa00; border-left... |
+| 16 | World Wide Medical | 76.1% | <div style='border: 1px solid #ffaa00; border-left... |
+| 17 | Medical World Publications | 75.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 18 | National Medical Research Association | 75.6% | <div style='border: 1px solid #ffaa00; border-left... |
+| 19 | World Organization for Medical Aid | 75.4% | <div style='border: 1px solid #ffaa00; border-left... |
+| 20 | New World Medical | 75.1% | <div style='border: 1px solid #ffaa00; border-left... |
 
 ---
 
-### 107. PDMA
+### 106. CU Cooperative Systems, Inc. dba CO-OP Solutions — Rancho Cucamonga, CA
 
-**Top Match**: *****PDC
+**Top Match**: CU Cooperative Systems, Inc. dba CO-OP Financial Services
 
-- **Score**: 0.5689 (56.89%)
-- **Match Type**: hybrid
-- **String Score**: 0.1500
-- **Semantic Score**: 0.7019
+- **Match location**: Rancho Cucamonga, CA
+- **Final Score**: 0.9268 (92.7%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00cc00; border-left: 10px solid #00cc00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00cc00;'>✅ STRONG MATCH (92.7%)</span><br><span style='color:#eee; font-size:1.1em;'>Moderate Lexical Similarity</span></div><br><br><b>Relationship:</b> This is a <b>Hybrid Word Overlap</b>. The system detected shared keywords ('co-op, cooperative, cu, dba, inc., systems,') despite differences in overall string structure.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 GOOD (83%) — Based on partial character alignment.<br>• <b>Semantic Link:</b> 🟢 GOOD (76%) — Detected via strong contextual link.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (97%) — Reflects highly aligned industries.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Rancho Cucamonga, CA matches the query geography well (location score 1.00).<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Finance 34.8%<br>• Structure: ✅ Corporate 31.4%<br>• Insight: The model detects a strong 'Finance' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | *****PDC | 56.89% | 0.1500 | 0.7019 | hybrid |
-| 2 | AAMA | 56.54% | 0.2250 | 0.5556 | hybrid |
-| 3 | AAMA | 56.36% | 0.2250 | 0.5556 | hybrid |
-| 4 | AAMA | 55.63% | 0.2250 | 0.5556 | hybrid |
-| 5 | AAMA | 55.63% | 0.2250 | 0.5556 | hybrid |
-| 6 | AAMA | 55.63% | 0.2250 | 0.5556 | hybrid |
-| 7 | AAMA | 55.63% | 0.2250 | 0.5556 | hybrid |
-| 8 | AAMA | 55.63% | 0.2250 | 0.5556 | hybrid |
-| 9 | AAMA | 55.63% | 0.2250 | 0.5556 | hybrid |
-| 10 | *TMA | 53.78% | 0.2250 | 0.5082 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | CU Cooperative Systems, Inc. dba CO-OP Financial Services | 92.7% | <div style='border: 1px solid #00cc00; border-left... |
+| 2 | CU Cooperative Systems, Inc (dba CO-OP Financial Services) | 85.1% | <div style='border: 1px solid #00cc00; border-left... |
+| 3 | Cooperative Financial Services | 59.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 4 | CU Direct Corporation | 56.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 5 | Co-op Solutions | 54.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 6 | CU Direct Corp. | 53.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 7 | CU Cooperative Systems | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 8 | Digital Solutions Cooperative Affiliates | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 9 | Digital Solutions Cooperative Affiliates | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 10 | Digital Solutions Cooperative Affiliates | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | CUDL Direct Corporation | 52.2% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | CU Direct Corporation | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | CU Cooperative Systems, Inc. | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | Cooperative Systems | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | Cooperative Systems | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | CU Cooperative Systems, Inc | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | CU Direct Lending | 48.6% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | COOPERATIVE SERVICES | 48.3% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Cooperative Strategies LLC | 47.9% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Digital Solutions Cooperative Affiliates | 47.8% | <div style='border: 1px solid #ff6600; border-left... |
 
 ---
 
-### 108. IBM
+### 107. CU Cooperative Systems, Inc. dba CO-OP Solutions — Durham, CT
+
+**Top Match**: Co-op Solutions
+
+- **Match location**: Durham, CT
+- **Final Score**: 0.5402 (54.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #ff6600; border-left: 10px solid #ff6600; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#ff6600;'>⚠️ WEAK MATCH (54.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Partial Composite Match</span></div><br><br><b>Relationship:</b> This is a <b>Hybrid Word Overlap</b>. The system detected shared keywords ('co-op, solutions') despite differences in overall string structure.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🔴 WEAK (18%) — Based on partial character alignment.<br>• <b>Semantic Link:</b> 🟡 MODERATE (52%) — Detected via moderate meaning-based connection.<br>• <b>Concept Alignment:</b> 🟢 GOOD (82%) — Reflects related business categories.<br>• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at Durham, CT matches the query geography well (location score 1.00).<br><br><br><b>Concept Analysis:</b><br>• Structure: ✅ Non-Profit 27.3%<br>
+
+**Top 20 Matches:**
+
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | Co-op Solutions | 54.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 2 | Cooperative Systems | 53.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 3 | CU Cooperative Systems, Inc (dba CO-OP Financial Services) | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 4 | CU Cooperative Systems, Inc. dba CO-OP Financial Services | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 5 | CU Cooperative Systems, Inc. | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 6 | CU Cooperative Systems | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 7 | Cooperative Systems | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 8 | CU Cooperative Systems, Inc | 52.0% | <div style='border: 1px solid #ff6600; border-left... |
+| 9 | Digital Solutions Cooperative Affiliates | 47.8% | <div style='border: 1px solid #ff6600; border-left... |
+| 10 | Digital Solutions Cooperative Affiliates | 47.8% | <div style='border: 1px solid #ff6600; border-left... |
+| 11 | Digital Solutions Cooperative Affiliates | 47.8% | <div style='border: 1px solid #ff6600; border-left... |
+| 12 | Digital Solutions Cooperative Affiliates | 47.8% | <div style='border: 1px solid #ff6600; border-left... |
+| 13 | Digital Solutions Cooperative Affiliates | 47.5% | <div style='border: 1px solid #ff6600; border-left... |
+| 14 | Digital Solutions Cooperative Affiliates | 47.5% | <div style='border: 1px solid #ff6600; border-left... |
+| 15 | Digital Solutions Cooperative Affiliates | 47.5% | <div style='border: 1px solid #ff6600; border-left... |
+| 16 | Digital Solutions Cooperative Affiliates | 47.5% | <div style='border: 1px solid #ff6600; border-left... |
+| 17 | Digital Solutions Cooperative Affiliates | 47.5% | <div style='border: 1px solid #ff6600; border-left... |
+| 18 | Digital Solutions Cooperative Affiliates | 47.5% | <div style='border: 1px solid #ff6600; border-left... |
+| 19 | Digital Solutions Cooperative Affiliates | 47.5% | <div style='border: 1px solid #ff6600; border-left... |
+| 20 | Digital Solutions Cooperative Affiliates | 47.5% | <div style='border: 1px solid #ff6600; border-left... |
+
+---
+
+### 108. ABA
+
+**Top Match**: ABA
+
+- **Final Score**: 0.9410 (94.1%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.1%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Entity Frequency:</b> ⚪ <b>Neutral</b> — Found 3 occurrences, which is common but not dominant.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ California 30.9%, ✅ London 28.2%<br>• Industry: ✅ Construction 49.3%, ✅ Legal 48.2%, ✅ Food 34.0%, ✅ Medical 31.6%, ✅ Retail 29.0%, ✅ Automotive 27.7%, ✅ Education 27.4%, ✅ Manufacturing 26.1%, ✅ Technology 25.7%<br>• Structure: ✅ Government 37.2%, ✅ Corporate 29.8%<br>• Nature: ✅ Industrial 45.1%, ✅ Consumer 44.0%, ✅ Local 39.5%, ✅ Professional 37.9%, ✅ Global 35.2%<br>• Insight: The model detects a strong 'Construction' influence in the company's semantic vector.<br>
+
+**Top 20 Matches:**
+
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | ABA | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | ABA | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | ABA | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 4 | ABA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 5 | ABA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 6 | ABA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 7 | ABA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 8 | ABA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 9 | ABA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 10 | ABA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 11 | ABA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 12 | ABA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 13 | ABA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 14 | ABA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 15 | ABA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 16 | ABA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 17 | ABA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 18 | ABA Today | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | ABA Today | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | ABA Today | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+
+---
+
+### 109. PDMA
+
+**Top Match**: PDMA
+
+- **Final Score**: 0.9410 (94.1%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.1%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>
+
+**Top 20 Matches:**
+
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | PDMA | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | PDMA | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | PDMA | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 4 | PDMA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 5 | PDMA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 6 | PDMA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 7 | PDMA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 8 | PDMA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 9 | PDMA | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 10 | PDMA inc | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | PDMA Association | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | PdMA Corporation | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | PDMA ALLIANCE | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | PDMA Alliance | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | PDMA ALLIANCE | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | PDMA Alliance | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | PDMA ALLIANCE | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | PDMA ALLIANCE | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | PDMA Alliance | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | Buzzeo PDMA | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+
+---
+
+### 110. IBM
 
 **Top Match**: IBM
 
-- **Score**: 1.0000 (100.00%)
-- **Match Type**: exact
-- **String Score**: 1.0000
-- **Semantic Score**: 1.0000
+- **Final Score**: 0.9400 (94.0%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.0%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br><br><br><b>Concept Analysis:</b><br>• Industry: ✅ Technology 42.3%, ✅ Manufacturing 34.6%<br>• Structure: ✅ Corporate 34.2%<br>• Nature: ✅ Industrial 30.2%, ✅ Professional 25.8%<br>• Insight: The model detects a strong 'Technology' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | IBM | 100.00% | 1.0000 | 1.0000 | exact |
-| 2 | IBM | 100.00% | 1.0000 | 1.0000 | exact |
-| 3 | 2019 IBM Global Think Conference Affiliates | 96.56% | 0.6000 | 0.5345 | hybrid |
-| 4 | 2019 IBM Affiliates | 96.24% | 0.7500 | 0.6986 | hybrid |
-| 5 | 2019 IBM Affiliates | 96.24% | 0.7500 | 0.6986 | hybrid |
-| 6 | 2019 IBM Affiliates | 96.24% | 0.7500 | 0.6986 | hybrid |
-| 7 | 2019 IBM Affiliates | 96.24% | 0.7500 | 0.6986 | hybrid |
-| 8 | 2019 IBM Affiliates | 96.24% | 0.7500 | 0.6986 | hybrid |
-| 9 | 2019 IBM Affiliates | 96.24% | 0.7500 | 0.6986 | hybrid |
-| 10 | 2019 IBM Global Think Conference Affiliates | 96.24% | 0.6000 | 0.5345 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | IBM | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | IBM | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | IBM | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 4 | IBM Incorporated | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 5 | IBM Corporation | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 6 | IBM Corp | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 7 | IBM Corp | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 8 | IBM Corp | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 9 | IBM Corp | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 10 | IBM Corp | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 11 | IBM Corp | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 12 | IBM Corp | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 13 | IBM Corp | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 14 | IBM Corp | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 15 | IBM Corp | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 16 | IBM Corp | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 17 | IBM Enterprises | 89.6% | <div style='border: 1px solid #00cc00; border-left... |
+| 18 | IBM Group | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 19 | IBM Intel | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
+| 20 | IBM Enterprise | 89.5% | <div style='border: 1px solid #00cc00; border-left... |
 
 ---
 
-### 109. GE
+### 111. GE
 
-**Top Match**: #1 GE Capital
+**Top Match**: GE
 
-- **Score**: 0.9500 (95.00%)
-- **Match Type**: hybrid
-- **String Score**: 0.7500
-- **Semantic Score**: 0.6525
+- **Final Score**: 0.9410 (94.1%) 
+- **Top Match Rationale**:
+  > <div style='border: 1px solid #00ff00; border-left: 10px solid #00ff00; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 4px;'><span style='font-size:1.4em; font-weight:bold; color:#00ff00;'>✅ EXCELLENT MATCH (94.1%)</span><br><span style='color:#eee; font-size:1.1em;'>Exact Name Match</span></div><br><br><b>Relationship:</b> This is an <b>Exact Identity Match</b>. The query and candidate name are character-identical, representing a perfect lexical link.<br><br><b>Evidence Analysis:</b><br>• <b>Name Similarity:</b> 🟢 EXCELLENT (100%) — Based on identical legal names.<br>• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report tier) until you add city/state that agrees with the record. Same legal names may exist in multiple locations; showing ~99% on one row would wrongly imply we verified which site you meant. <b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>• <b>Semantic Link:</b> 🟢 EXCELLENT (100%) — Detected via synonymous concepts.<br>• <b>Concept Alignment:</b> 🟢 EXCELLENT (100%) — Reflects highly aligned industries.<br>• <b>Entity Frequency:</b> ⚪ <b>Neutral</b> — Found 2 occurrences, which is common but not dominant.<br><br><br><b>Concept Analysis:</b><br>• Geography: ✅ Illinois 37.0%, ✅ Chicago 30.1%<br>• Industry: ✅ Education 32.1%, ✅ Medical 28.6%, ✅ Retail 25.6%<br>• Nature: ✅ Consumer 27.6%, ✅ Professional 25.8%<br>• Insight: The model detects a strong 'Illinois' influence in the company's semantic vector.<br>
 
-**Top 10 Matches:**
+**Top 20 Matches:**
 
-| Rank | Company Name | Score | String | Semantic | Type |
-|------|--------------|-------|--------|----------|------|
-| 1 | #1 GE Capital | 95.00% | 0.7500 | 0.6525 | hybrid |
-| 2 | #1 GE Capital | 95.00% | 0.7500 | 0.6525 | hybrid |
-| 3 | 2023 GE Healthcare PDx NSM DYND8YT97PX | 95.00% | 0.6000 | 0.4482 | hybrid |
-| 4 | **** GE Healthcare-dupe | 95.00% | 0.6923 | 0.5902 | hybrid |
-| 5 | *** GE Fanuc Intelligent Platforms | 95.00% | 0.6429 | 0.4764 | hybrid |
-| 6 | 3 GE Healthcare for Software Overflow | 95.00% | 0.6000 | 0.4461 | hybrid |
-| 7 | Synchrony Financial/GE | 90.00% | 0.8182 | 0.4896 | hybrid |
-| 8 | 2022 ACN/GE International Planning Event | 68.98% | 0.6429 | 0.3811 | hybrid |
-| 9 | ***Gevers | 56.77% | 0.1800 | 0.6199 | hybrid |
-| 10 | . Gd | 53.32% | 0.2250 | 0.4749 | hybrid |
+| Rank | Company Name | Score | Rationale |
+|------|--------------|-------|-----------|
+| 1 | GE | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 2 | GE | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 3 | GE | 94.1% | <div style='border: 1px solid #00ff00; border-left... |
+| 4 | GE | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 5 | GE | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 6 | GE | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 7 | GE | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 8 | GE | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 9 | ge | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 10 | GE | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 11 | GE | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 12 | GE | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 13 | GE | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 14 | GE | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 15 | GE | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 16 | GE | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 17 | GE | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 18 | GE | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 19 | GE | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
+| 20 | GE | 94.0% | <div style='border: 1px solid #00ff00; border-left... |
 
 ---
 

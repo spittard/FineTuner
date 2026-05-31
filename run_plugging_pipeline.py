@@ -35,6 +35,7 @@ Usage:
 import os
 import sys
 import time
+import hashlib
 import subprocess
 import argparse
 import signal
@@ -147,11 +148,31 @@ def wait_for_rpc_ready(timeout: int = RPC_STARTUP_TIMEOUT) -> bool:
     return False
 
 
+def _reference_json_loc_cache_key():
+    """
+    Key for the location index built from the current companies_with_location.json
+    (same hash as CompanyMatcher.get_cache_key_from_file + _loc, without loading the model).
+    """
+    p = os.path.normpath(REFERENCE_JSON)
+    if not os.path.isfile(p):
+        return None
+    try:
+        sys.path.insert(0, os.path.join(ROOT, "src"))
+        from finetuner.core.matcher import CompanyMatcher
+    except Exception:
+        return None
+    st = os.stat(p)
+    # Must match CompanyMatcher() default in build_index_with_location and pipeline build script
+    default_model = "paraphrase-MiniLM-L3-v2"
+    content = f"{os.path.abspath(p)}|{st.st_size}|{st.st_mtime}|{default_model}|{CompanyMatcher.CACHE_VERSION}"
+    return hashlib.md5(content.encode()).hexdigest() + "_loc"
+
+
 def load_cache_into_rpc() -> str:
     """
     Load the best available location-aware cache into the RPC server.
-    Prefers the largest valid cache already on disk to avoid rebuilding.
-    Only triggers a full build when no usable cache exists.
+    Prefers the cache that matches the current companies_with_location.json (file hash);
+    then the largest company count. Only triggers a full build when no usable cache exists.
     Returns the cache key that was loaded.
     """
     banner("Step 3b — Build / load FAISS cache")
@@ -159,6 +180,10 @@ def load_cache_into_rpc() -> str:
 
     srv = connect()
     srv._pyroTimeout = RPC_STARTUP_TIMEOUT
+
+    preferred = _reference_json_loc_cache_key()
+    if preferred:
+        print(f"  Reference JSON cache key (if present on disk): {preferred}")
 
     # ── 1. Already loaded? ─────────────────────────────────────────────────
     loaded = srv.list_loaded_caches()
@@ -179,6 +204,23 @@ def load_cache_into_rpc() -> str:
                   and isinstance(c.get('num_companies'), int)
                   and c['num_companies'] > 0]
     loc_caches.sort(key=lambda c: c.get('num_companies', 0), reverse=True)
+
+    if loc_caches and preferred:
+        for c in loc_caches:
+            if c.get("cache_key") == preferred and c.get("complete", True):
+                print(f"  Preferring cache that matches {os.path.basename(REFERENCE_JSON)}: {preferred}")
+                cache_key = preferred
+                n = c.get("num_companies", 0)
+                print(f"  Loading into RPC server ({n:,} companies)...")
+                ok = srv.load_cache(cache_key)
+                if ok:
+                    info = srv.get_cache_info(cache_key)
+                    if info:
+                        print(f"  Loaded: {info.get('num_companies', '?'):,} companies, "
+                              f"location={info.get('has_location_data', False)}")
+                    print(f"  >>> Index loaded into RPC: {cache_key}")
+                    return cache_key
+                print(f"  WARNING: Load failed for preferred {cache_key}, trying largest cache...")
 
     if loc_caches:
         best = loc_caches[0]
@@ -217,7 +259,7 @@ def load_cache_into_rpc() -> str:
         print("ERROR: Index build failed.")
         sys.exit(1)
 
-    # After build, pick the new best cache
+    # After build, pick the cache for the current reference JSON (or largest)
     available = srv.list_available_caches()
     loc_caches = [c for c in available
                   if c.get('has_location_data', False)
@@ -228,7 +270,12 @@ def load_cache_into_rpc() -> str:
         print("ERROR: No cache found after build.")
         sys.exit(1)
 
+    after_preferred = _reference_json_loc_cache_key()
     cache_key = loc_caches[0]['cache_key']
+    for c in loc_caches:
+        if after_preferred and c.get("cache_key") == after_preferred and c.get("complete", True):
+            cache_key = after_preferred
+            break
     print(f"  Loading newly-built cache: {cache_key}")
     ok = srv.load_cache(cache_key)
     if not ok:
@@ -323,7 +370,7 @@ def main():
                 print(f"ERROR: {PLUGGING_JSON} not found. Remove --skip-plugging-extract.")
                 sys.exit(1)
             import json
-            with open(PLUGGING_JSON) as f:
+            with open(PLUGGING_JSON, encoding="utf-8") as f:
                 n = len(json.load(f))
             print(f"  Using existing file: {PLUGGING_JSON} ({n:,} records)")
 
@@ -345,7 +392,7 @@ def main():
                 print(f"ERROR: {MATCHES_JSON} not found. Remove --skip-match.")
                 sys.exit(1)
             import json
-            with open(MATCHES_JSON) as f:
+            with open(MATCHES_JSON, encoding="utf-8") as f:
                 n = len(json.load(f))
             print(f"  Using existing file: {MATCHES_JSON} ({n:,} matched records)")
 

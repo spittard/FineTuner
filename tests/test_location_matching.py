@@ -13,6 +13,7 @@ import tempfile
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 
 from finetuner.core.matcher import CompanyMatcher
+from finetuner.utils.text_preprocessor import TextPreprocessor
 
 
 def create_test_data_with_location():
@@ -152,6 +153,35 @@ def test_count_data():
     return True
 
 
+def test_duplicate_legal_name_location_wins_over_popularity():
+    """
+    Same display name, two geos: query city+state must pick the matching office, not
+    a higher-count sibling (CO-OP / multi-site case).
+    """
+    test_data = [
+        {"Company Name": "DupCo MultiSite LLC", "City": "Rochester", "State": "NY", "Count": 1},
+        {"Company Name": "DupCo MultiSite LLC", "City": "Los Angeles", "State": "CA", "Count": 99999},
+    ]
+    matcher = CompanyMatcher()
+    matcher.build_index_with_location(data=test_data)
+
+    r = matcher.match_with_location(
+        "DupCo MultiSite LLC", city="Rochester", state="NY", top_k=3
+    )
+    assert r, "expected matches"
+    top = r[0]
+    assert top["name"] == "DupCo MultiSite LLC", top
+    assert TextPreprocessor.normalize_state(top.get("state", "")) == TextPreprocessor.normalize_state("NY"), top
+    assert "rochester" in (top.get("city") or "").lower(), top
+
+    r2 = matcher.match_with_location(
+        "DupCo MultiSite LLC", city="Los Angeles", state="CA", top_k=3
+    )
+    top2 = r2[0]
+    assert TextPreprocessor.normalize_state(top2.get("state", "")) == TextPreprocessor.normalize_state("CA"), top2
+    return True
+
+
 def test_backwards_compatibility():
     """Test that regular matching still works without location data"""
     print("\n" + "="*70)
@@ -198,6 +228,7 @@ def run_all_tests():
         ("Basic Matching with Location", test_basic_matching_with_location),
         ("Location-Aware Matching", test_location_aware_matching),
         ("Record Count Data", test_count_data),
+        ("Duplicate name: location beats popularity", test_duplicate_legal_name_location_wins_over_popularity),
         ("Backwards Compatibility", test_backwards_compatibility),
     ]
     

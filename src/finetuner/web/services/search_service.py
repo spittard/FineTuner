@@ -62,10 +62,9 @@ class SearchService:
         
         client = self._get_rpc_client()
         
-        # Allow up to 120s for searches — first query on a 4M+ entry index
-        # involves FAISS retrieval + full re-ranking and can take 20-60s.
+        # Allow up to 300s for searches — 4M+ index + acronym / heavy paths can exceed 120s.
         if hasattr(client, '_pyroTimeout'):
-            client._pyroTimeout = 120.0
+            client._pyroTimeout = 300.0
             
         # Call RPC search
         print(f"Searching via RPC for: {query}")
@@ -106,8 +105,12 @@ class SearchService:
                 'name_score': match.get('name_score', 0.0),
             }
             
-            rationale = RationaleService.generate_match_rationale(query, name, explanation, score)
-            concise_rationale = RationaleService.generate_concise_rationale(query, name, explanation, score)
+            rationale = RationaleService.generate_match_rationale(
+                query, name, explanation, score, query_city=city, query_state=state
+            )
+            concise_rationale = RationaleService.generate_concise_rationale(
+                query, name, explanation, score, query_city=city, query_state=state
+            )
             
             result_entry = {
                 'rank': i,
@@ -264,3 +267,20 @@ class SearchService:
         except Exception as e:
             print(f"Failed to list caches: {e}")
             return []
+
+    def load_company_data(self, *args, **kwargs) -> bool:
+        """
+        Verify the RPC cache server is reachable and has at least one index loaded.
+        (Legacy name kept for control-set scripts; does not load data in RPC mode.)
+        """
+        if not self._ensure_server_running():
+            print("RPC cache server not running. Start with: python -m finetuner.core.cache_rpc --serve")
+            return False
+        st = self.get_status()
+        if st.get("status") == "not_ready" and st.get("error"):
+            print(st.get("message", st.get("error")))
+            return False
+        if not st.get("loaded_caches"):
+            print("No cache loaded on the server. Load a cache (e.g. run_cache_server / cache UI) then retry.")
+            return False
+        return True

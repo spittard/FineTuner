@@ -86,12 +86,13 @@ def main():
     # Connect to RPC server
     if not is_server_running():
         print("ERROR: RPC cache server is not running (port 9876).")
-        print("       Start it with: python run_cache_server.py")
+        print("       Start it with: python -m finetuner.core.cache_rpc --serve")
         sys.exit(1)
 
     print("Connecting to RPC cache server...")
     server = connect()
-    server._pyroTimeout = 120.0
+    # Large index / long queries can exceed default Pyro timeout
+    server._pyroTimeout = float(os.environ.get("PLUGGING_RPC_TIMEOUT", "900.0"))
 
     loaded = server.list_loaded_caches()
     if not loaded:
@@ -141,15 +142,19 @@ def main():
         eta = remaining / rate if rate > 0 else 0
 
         print(f"[{skipped + i + 1}/{total}] ({elapsed:.0f}s, ETA: {eta:.0f}s) "
-              f"Row {row_id}: {company} — {city}, {state}")
-
+              f"Row {row_id}: {company} — {city}, {state}", flush=True)
+        # Progress line prints *before* RPC; a single search can take minutes on a full index,
+        # so we emit a heartbeat + timing so the terminal does not look hung.
+        print("   RPC search…", end="", flush=True)
         try:
+            t_rpc = time.time()
             result = server.search(
                 company,
                 top_k=args.top_k,
                 city=city if city else None,
                 state=state if state else None
             )
+            print(f" {time.time() - t_rpc:.1f}s", flush=True)
 
             matches = result.get('results', [])
 
@@ -166,13 +171,18 @@ def main():
                         'state': m.get('state', ''),
                         'id': m.get('id'),
                         'score': m.get('score', 0.0),
+                        'name_score': m.get('name_score', 0.0),
                         'string_score': m.get('string_score', 0.0),
                         'semantic_score': m.get('semantic_score', 0.0),
+                        'normalized_semantic_score': m.get('normalized_semantic_score', m.get('semantic_score', 0.0)),
                         'location_score': m.get('location_score', 0.0),
+                        'location_boost': m.get('location_boost', 0.0),
                         'count': m.get('count', 0),
                         'match_type': m.get('match_type', ''),
                         'acronym_fidelity': m.get('acronym_fidelity', 0.0),
                         'concept_alignment': m.get('concept_alignment', 0.0),
+                        'lexical_boost': m.get('lexical_boost', 0.0),
+                        'popularity_boost': m.get('popularity_boost', 0.0),
                     }
                     for rank, m in enumerate(matches)
                 ]
@@ -181,7 +191,7 @@ def main():
             processed += 1
 
         except Exception as e:
-            print(f"  ERROR processing row {row_id}: {e}")
+            print(f" ERROR: {e}", flush=True)
             errors += 1
             results.append({
                 'row_id': row_id,
@@ -195,7 +205,7 @@ def main():
         # Checkpoint
         if (processed + errors) % args.checkpoint_every == 0:
             save_results(results, args.output)
-            print(f"   [checkpoint] {len(results):,} records saved to {args.output}")
+            print(f"   [checkpoint] {len(results):,} records saved to {args.output}", flush=True)
 
     # Final save
     save_results(results, args.output)

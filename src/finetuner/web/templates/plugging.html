@@ -191,7 +191,11 @@
             <h1>Plugging Records</h1>
             <p>Records with PluggingStatus = 'P' — matched against the reference index via RPC</p>
         </div>
-        <a href="/" class="nav-link-back"><i class="fas fa-search me-1"></i>Company Search</a>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;justify-content:flex-end;">
+            <a href="/plugging-report/sample" class="nav-link-back"><i class="fas fa-flask me-1"></i>SME report (sample)</a>
+            <a href="/plugging-report" class="nav-link-back"><i class="fas fa-file-alt me-1"></i>SME report (full)</a>
+            <a href="/" class="nav-link-back"><i class="fas fa-search me-1"></i>Company Search</a>
+        </div>
     </div>
 
     <!-- Filter bar -->
@@ -291,7 +295,7 @@
 // ── State ─────────────────────────────────────────────────────────────────────
 let allRecords = [];
 let matchCache = new Map();   // row_id -> results array
-let tierConfig = {high: 85, medium: 70};  // loaded from server on boot
+let tierConfig = {high: 98, medium: 88};  // loaded from server on boot; defaults match tier_config.json
 
 // ── Boot ──────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {

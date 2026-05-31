@@ -1,0 +1,23 @@
+---
+description: Plugging pipeline — assess every row to file, manufacture egregious cases, test before full rematch, you run the loop
+alwaysApply: true
+---
+
+# Plugging closed loop (mandatory when this work appears)
+
+Whenever work touches **plugging** (`plugging_matches.json`, `plugging_report*`, `plugging_records.json`, `match_plugging_records.py`, `tests/generate_plugging_report.py`, `audit_scoring.py`, or matcher/rationale changes aimed at plugging quality), follow:
+
+**`docs/CLAUDE_PLUGGING_CLOSED_LOOP.md`**
+
+## Non-negotiables
+
+1. **Assess every row** to disk: run `python scripts/assess_plugging_report_full.py` → `plugging_report_assessment.csv` (and summary `.md`). Do not imply human read of 3k rows; say **automated full-row coverage**.
+2. **Manufacture egregious cases** before a full rematch: `python scripts/export_plugging_egregious_cases.py`, then `RUN_PLUGGING_REGRESSION=1` + `pytest tests/test_plugging_egregious_regression.py` with RPC up.
+3. **You** rotate artifacts, run `match_plugging_records.py --no-resume`, regenerate the report, `audit_scoring.py`, and `tests/verify_control_set.py` — do not hand off “next steps” to the user if the environment can run them.
+4. After **any** `matcher.py` scoring change used by RPC: **restart** the cache/RPC server before rematch or regression RPC tests.
+
+Honesty and long-run limits stay in **`.cursor/rules/agent-accountability.mdc`**.
+
+## Local Claude terminal (optional)
+
+To delegate a bounded task to **Claude Code CLI** on the same machine: write **`bridge/TO_CLAUDE.md`**, run **`scripts/bridge_run_claude.ps1`**, read **`bridge/FROM_CLAUDE.last.txt`**. See **`bridge/README.md`** and **`docs/CURSOR_CLAUDE_LOCAL_BRIDGE.md`**.

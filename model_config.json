@@ -1,6 +1,6 @@
 {
     "_comment": "Embedding model used to build the FAISS index and run searches. Changing this requires a full cache rebuild. Available locally-cached models are listed below.",
-    "active_model": "all-MiniLM-L6-v2",
+    "active_model": "paraphrase-MiniLM-L3-v2",
     "available_models": [
         {
             "name": "paraphrase-MiniLM-L3-v2",

@@ -1,0 +1,3218 @@
+row_id,swapped,query_sic,old_top1_sic,new_top1_sic
+7878957,True,,CVBs,
+7879015,False,,,
+7879342,False,,,
+7879999,False,,,
+7880589,False,,,
+7880640,False,,,
+7880903,False,,,
+7880904,False,,,
+7880905,False,,,
+7880906,False,,,
+7881526,False,Media,Media,Media
+7882317,False,,,
+7882747,False,,,
+7883989,False,Education-Other,Education-Other,Education-Other
+7890224,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7893800,False,3rd Pty,3rd Pty,3rd Pty
+7894018,False,Financial,Financial,Financial
+7894031,False,Financial,Financial,Financial
+7895262,False,,,
+7895819,False,Legal,Legal,Legal
+7896046,False,Services-General,Services-General,Services-General
+7898313,False,Real Estate,Real Estate,Real Estate
+7899551,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7904800,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7904949,False,Financial,Financial,Financial
+7913800,False,3rd Pty,,
+7918771,False,Education-Other,Education-Other,Education-Other
+7918774,False,Education-Other,Education-Other,Education-Other
+7918779,False,Education-Collegiate,Education-Collegiate,Education-Collegiate
+7918783,False,Education-Other,Education-Other,Education-Other
+7918787,False,Education-Other,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni
+7918803,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7918805,False,Education-Other,Education-Other,Education-Other
+7918806,False,Education-Other,Education-Other,Education-Other
+7918807,False,Education-Other,Education-Other,Education-Other
+7918809,False,Education-Other,Education-Other,Education-Other
+7918810,False,Education-Other,Education-Other,Education-Other
+7918811,False,Education-Other,Education-Other,Education-Other
+7918827,False,Education-Other,Education-Other,Education-Other
+7918830,False,Education-Other,Education-Other,Education-Other
+7918831,False,Education-Other,Education-Other,Education-Other
+7918832,False,Education-Other,Education-Other,Education-Other
+7918845,False,SMERF-Unions,SMERF-Unions,SMERF-Unions
+7918850,False,SMERF-Social,SMERF-Social,SMERF-Social
+7918851,False,Publishing,Publishing,Publishing
+7918858,False,Real Estate,Real Estate,Real Estate
+7918860,False,Real Estate,Real Estate,Real Estate
+7918896,False,Food & Beverage,Food & Beverage,Food & Beverage
+7918897,False,Food & Beverage,Food & Beverage,Food & Beverage
+7918909,False,Communications,Communications,Communications
+7918915,False,Communications,Communications,Communications
+7918916,False,Communications,Communications,Communications
+7918920,False,Communications,Communications,Communications
+7918921,False,Communications,Communications,Communications
+7918928,False,Entertainment,Entertainment,Entertainment
+7918954,False,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets
+7918984,False,,,
+7919032,False,,,
+7919049,False,,,
+7919062,False,,,
+7919066,False,,,
+7919089,False,,,
+7919131,False,,,
+7919141,False,,,
+7919153,False,,,
+7919156,False,,,
+7919293,False,,,
+7919295,False,,,
+7919297,False,,,
+7919298,False,,,
+7919301,False,,,
+7919302,False,,,
+7919307,False,,,
+7919309,False,,,
+7919311,False,,,
+7919312,False,Transportation,Transportation,Transportation
+7919313,False,,,
+7919314,False,,,
+7919320,False,,,
+7919333,False,,,
+7919334,False,,,
+7919430,False,,,
+7919432,False,,,
+7919434,False,,,
+7919436,False,,,
+7919441,False,,,
+7919442,False,3rd Pty,3rd Pty,3rd Pty
+7919444,False,,,
+7919451,False,Education-Other,Education-Other,Education-Other
+7919452,False,,,
+7919453,False,,,
+7919455,False,,,
+7919457,False,SMERF-Social,SMERF-Social,SMERF-Social
+7919459,False,,,
+7919461,False,,,
+7919476,False,,,
+7919487,False,3rd Pty,3rd Pty,3rd Pty
+7919495,False,,,
+7919498,False,,,
+7919525,False,,,
+7919614,False,,,
+7919615,False,,,
+7919647,False,,,
+7919659,False,,,
+7919660,False,Education-Other,Education-Other,Education-Other
+7919661,False,,,
+7919662,False,,,
+7919668,False,,,
+7919671,False,,,
+7919672,False,,,
+7919683,False,,,
+7919688,False,,,
+7919700,False,,,
+7919701,False,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni
+7919702,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7919704,False,,,
+7919706,False,,,
+7919707,False,3rd Pty,3rd Pty,3rd Pty
+7919716,False,,,
+7919727,False,SMERF-Social,SMERF-Social,SMERF-Social
+7919737,False,,,
+7919738,False,3rd Pty,3rd Pty,3rd Pty
+7919755,False,,,
+7919760,False,,,
+7919762,False,,,
+7919764,False,,,
+7919765,False,,,
+7919767,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7919771,False,,,
+7919773,False,,,
+7919787,False,SMERF-Cultural,SMERF-Cultural,SMERF-Cultural
+7919789,False,,,
+7919790,False,Technology,Technology,Technology
+7919791,False,,,
+7919792,False,,,
+7919794,False,,,
+7919797,False,,,
+7919801,False,,,
+7919804,False,,,
+7919805,False,,,
+7919808,False,,,
+7919809,False,,,
+7919810,False,Manufacturing,Manufacturing,Manufacturing
+7919821,False,,,
+7919824,False,,,
+7919828,False,Technology,Technology,Technology
+7919829,False,,,
+7919832,False,,,
+7919833,False,,,
+7919836,False,Utilities,Utilities,Utilities
+7919839,False,,,
+7919840,False,,,
+7919841,False,,,
+7919843,False,,Technology,Technology
+7919849,False,Media,Media,Media
+7919850,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7919852,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7919855,False,,,
+7919859,False,,,
+7919861,False,,,
+7919863,False,,,
+7919866,False,,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni
+7919874,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7919875,False,Education-Other,Education-Other,Education-Other
+7919876,False,3rd Pty,3rd Pty,3rd Pty
+7919877,False,,,
+7919882,False,,,
+7919886,False,,,
+7919889,False,,,
+7919895,False,,,
+7919896,False,,,
+7919897,False,Chemicals / Oil,Chemicals / Oil,Chemicals / Oil
+7919899,False,,,
+7919902,False,,,
+7919907,False,,,
+7919910,False,,,
+7919911,False,,,
+7919912,False,,,
+7919914,False,,,
+7919915,False,,,
+7919963,False,,,
+7919966,False,,,
+7919971,False,,,
+7919976,False,,,
+7919977,False,,,
+7919996,False,,,
+7919997,False,,,
+7919998,False,,,
+7920000,False,,,
+7920010,False,,,
+7920012,False,,,
+7920014,False,,,
+7920015,False,,,
+7920016,False,,,
+7920017,False,,,
+7920020,False,,,
+7920021,False,,,
+7920022,False,,,
+7920025,False,,,
+7920026,False,,,
+7920030,False,,,
+7920034,False,,,
+7920037,False,,,
+7920042,False,Medical/Health,Medical/Health,Medical/Health
+7920043,False,,,
+7920049,False,3rd Pty,3rd Pty,3rd Pty
+7920051,False,,,
+7920059,False,,,
+7920066,False,,,
+7920068,False,,,
+7920072,False,3rd Pty,3rd Pty,3rd Pty
+7920082,False,,,
+7920083,False,,,
+7920114,False,,,
+7920120,False,,,
+7920121,False,,,
+7920123,False,,,
+7920124,False,,,
+7920128,False,,,
+7920131,False,,,
+7920132,False,Communications,Communications,Communications
+7920133,False,,,
+7920139,False,,,
+7920141,False,,,
+7920142,False,,,
+7920145,False,,,
+7920148,False,,,
+7920150,False,,,
+7920154,False,,,
+7920158,False,,,
+7920160,False,,,
+7920164,False,,,
+7920166,False,3rd Pty,3rd Pty,3rd Pty
+7920167,False,,,
+7920175,False,,,
+7920176,False,,,
+7920179,False,,,
+7920185,True,,,
+7920186,False,SMERF-Social,SMERF-Social,SMERF-Social
+7920187,False,SMERF-Social,SMERF-Social,SMERF-Social
+7920188,False,,,
+7920189,False,3rd Pty,3rd Pty,3rd Pty
+7920190,False,,,
+7920192,False,,,
+7920196,False,,,
+7920198,False,Technology,Technology,Technology
+7920199,False,,,
+7920202,False,,,
+7920203,False,,Consumer Products,Consumer Products
+7920206,False,,,
+7920212,False,,,
+7920219,False,,,
+7920220,False,,,
+7920221,False,,,
+7920225,False,,,
+7920344,False,SMERF-Social,SMERF-Social,SMERF-Social
+7920346,False,3rd Pty,3rd Pty,3rd Pty
+7920350,False,Medical/Health,Medical/Health,Medical/Health
+7920355,False,Tour Groups,Tour Groups,Tour Groups
+7920365,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7920367,False,Insurance,Insurance,Insurance
+7920368,False,,,
+7920371,False,,,
+7920373,False,,,
+7920377,False,,,
+7920422,False,,,
+7920475,False,,,
+7920486,False,,,
+7920487,False,,,
+7920490,False,,,
+7920494,False,,,
+7920496,False,,,
+7920497,False,,,
+7920498,False,,,
+7920499,False,,,
+7920500,False,,,
+7920501,False,,,
+7920502,False,,,
+7920503,False,,,
+7920504,False,,,
+7920506,False,,,
+7920509,False,Financial,Financial,Financial
+7920510,False,,,
+7920514,False,Food & Beverage,Food & Beverage,Food & Beverage
+7920515,False,,Tour Groups,Tour Groups
+7920518,False,Technology,Technology,Technology
+7920519,False,SMERF-Social,SMERF-Social,SMERF-Social
+7920520,False,,,
+7920521,False,,,
+7920524,False,,,
+7920527,False,,,
+7920529,False,,,
+7920530,True,Real Estate,,Real Estate
+7920531,False,,,
+7920533,False,,,
+7920552,False,,,
+7920555,False,,,
+7920581,False,,,
+7920634,False,,,
+7920637,False,,,
+7920646,False,,,
+7920654,False,Education-Other,Education-Other,Education-Other
+7920658,False,,,
+7920659,False,,,
+7920661,False,,,
+7920662,False,,,
+7920676,False,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni
+7920677,False,Education-Collegiate,Education-Collegiate,Education-Collegiate
+7920678,False,3rd Pty,3rd Pty,3rd Pty
+7920696,False,,,
+7920701,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7920705,False,,,
+7920707,False,,,
+7920714,False,,,
+7920715,False,,,
+7920716,False,,,
+7920717,False,,,
+7920734,False,,,
+7920738,False,,,
+7920746,False,Education-Other,Education-Other,Education-Other
+7920747,False,,,
+7920748,False,,,
+7920750,False,,,
+7920753,False,,,
+7920754,False,,,
+7920762,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7920763,False,3rd Pty,3rd Pty,3rd Pty
+7920764,False,,,
+7920775,False,,,
+7920790,False,Tour Groups,Tour Groups,Tour Groups
+7920803,False,,,
+7920807,False,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni
+7920811,False,,,
+7920813,False,,,
+7920817,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7920818,False,,,
+7920819,False,,,
+7920821,False,,,
+7920823,False,,,
+7920825,False,Consulting,Consulting,Consulting
+7920839,False,,,
+7920842,False,,,
+7920848,False,Entertainment,Entertainment,Entertainment
+7920853,False,,,
+7920858,False,,,
+7920859,False,,,
+7920865,False,,,
+7920871,False,,,
+7920872,False,,,
+7920874,False,Sports-Prof,Sports-Prof,Sports-Prof
+7920875,False,Technology,Technology,Technology
+7920877,False,Technology,Technology,Technology
+7920925,False,,,
+7920972,False,House Account,House Account,House Account
+7920973,False,In-House,In-House,In-House
+7920974,False,In-House,In-House,In-House
+7920985,False,House Account,House Account,House Account
+7920986,False,House Account,House Account,House Account
+7920987,False,House Account,House Account,House Account
+7920988,False,House Account,House Account,House Account
+7921024,False,Communications,Communications,Communications
+7921025,False,,,
+7921047,False,,,
+7921092,False,,,
+7921108,False,,,
+7921235,False,,,
+7921237,False,Media,Media,Media
+7921252,False,Financial,Financial,Financial
+7921253,False,House Account,House Account,House Account
+7921254,False,House Account,House Account,House Account
+7921255,False,House Account,House Account,House Account
+7921257,False,House Account,House Account,House Account
+7921258,False,,,
+7921261,False,Media,Media,Media
+7921272,False,Advertising,Advertising,Advertising
+7921274,False,Advertising,Advertising,Advertising
+7921288,False,Advertising,Advertising,Advertising
+7921301,False,Agriculture,Agriculture,Agriculture
+7921302,False,Construction/Archit,Construction/Archit,Construction/Archit
+7921303,False,Construction/Archit,Construction/Archit,Construction/Archit
+7921305,False,,,
+7921308,False,,,
+7921310,False,Construction/Archit,Construction/Archit,Construction/Archit
+7921315,False,Technology,Technology,Technology
+7921329,False,Technology,Technology,Technology
+7921330,False,Technology,Technology,Technology
+7921332,False,Technology,Technology,Technology
+7921334,False,Technology,Technology,Technology
+7921337,False,Technology,Technology,Technology
+7921341,False,,,
+7921344,False,Technology,Technology,Technology
+7921347,False,Construction/Archit,Construction/Archit,Construction/Archit
+7921353,False,Technology,Technology,Technology
+7921356,False,Construction/Archit,Construction/Archit,Construction/Archit
+7921358,False,Construction/Archit,Construction/Archit,Construction/Archit
+7921361,False,Construction/Archit,Construction/Archit,Construction/Archit
+7921362,False,Construction/Archit,Construction/Archit,Construction/Archit
+7921372,False,,,
+7921379,False,Entertainment,Entertainment,Entertainment
+7921391,False,Entertainment,Entertainment,Entertainment
+7921394,False,Tour Groups,Tour Groups,Tour Groups
+7921418,False,Utilities,Construction/Archit,Construction/Archit
+7921419,False,Financial,Financial,Financial
+7921421,False,Financial,Financial,Financial
+7921422,False,Financial,Financial,Financial
+7921423,False,Financial,Financial,Financial
+7921425,True,Financial,,
+7921426,False,Services-General,Services-General,Services-General
+7921427,False,,,
+7921428,False,Financial,Financial,Financial
+7921429,False,Financial,Financial,Financial
+7921431,False,Financial,Financial,Financial
+7921435,False,Financial,Financial,Financial
+7921440,False,Financial,Financial,Financial
+7921441,False,Financial,Financial,Financial
+7921449,False,Financial,Financial,Financial
+7921455,False,Financial,Financial,Financial
+7921481,False,Financial,Financial,Financial
+7921484,False,Food & Beverage,Food & Beverage,Food & Beverage
+7921485,False,Food & Beverage,Food & Beverage,Food & Beverage
+7921487,False,Food & Beverage,Food & Beverage,Food & Beverage
+7921488,False,Food & Beverage,Food & Beverage,Food & Beverage
+7921501,False,Food & Beverage,Food & Beverage,Food & Beverage
+7921503,False,Food & Beverage,Food & Beverage,Food & Beverage
+7921596,False,Food & Beverage,Food & Beverage,Food & Beverage
+7921630,False,,,
+7921632,False,Government,Government,Government
+7921633,False,Government,Government,Government
+7921639,False,Technology,Technology,Technology
+7921649,False,Government,Government,Government
+7921654,False,Consulting,Consulting,Consulting
+7921656,False,Consulting,Consulting,Consulting
+7921658,False,Consulting,Consulting,Consulting
+7921660,False,Consulting,Consulting,Consulting
+7921661,False,Technology,Technology,Technology
+7921663,False,Consulting,Consulting,Consulting
+7921664,False,Consulting,Consulting,Consulting
+7921667,False,Medical/Health,Medical/Health,Medical/Health
+7921677,False,Medical/Health,Medical/Health,Medical/Health
+7921680,False,Medical/Health,Medical/Health,Medical/Health
+7921688,False,Medical/Health,Medical/Health,Medical/Health
+7921689,False,Medical/Health,Medical/Health,Medical/Health
+7921690,False,Medical/Health,Medical/Health,Medical/Health
+7921695,False,Medical/Health,Medical/Health,Medical/Health
+7921747,False,Medical/Health,Medical/Health,Medical/Health
+7921765,False,Insurance,Insurance,Insurance
+7921766,False,Insurance,Insurance,Insurance
+7921770,False,Insurance,Insurance,Insurance
+7921774,False,,,
+7921777,False,,,
+7921778,False,,,
+7921797,False,Manufacturing,Manufacturing,Manufacturing
+7921798,False,,,
+7921799,False,Manufacturing,Manufacturing,Manufacturing
+7921802,False,Consumer Products,Consumer Products,Consumer Products
+7921803,False,Technology,Technology,Technology
+7921807,True,Manufacturing,,Manufacturing
+7921826,False,Manufacturing,Manufacturing,Manufacturing
+7921827,False,Manufacturing,Manufacturing,Manufacturing
+7921828,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7921832,False,Manufacturing,Manufacturing,Manufacturing
+7921835,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7921847,False,Manufacturing,Manufacturing,Manufacturing
+7921848,False,Manufacturing,Manufacturing,Manufacturing
+7922143,False,Services-General,Services-General,Services-General
+7922149,False,Services-General,Services-General,Services-General
+7922152,False,Tour Groups,Tour Groups,Tour Groups
+7922158,False,Services-General,Services-General,Services-General
+7922159,True,Services-General,Technology,Services-General
+7922160,False,SMERF-Social,SMERF-Social,SMERF-Social
+7922163,False,SMERF-Social,SMERF-Social,SMERF-Social
+7922167,False,SMERF-Social,SMERF-Social,SMERF-Social
+7922173,False,SMERF-Social,SMERF-Social,SMERF-Social
+7922197,False,Services-General,Services-General,Services-General
+7922218,False,Services-General,Services-General,Services-General
+7922267,False,Services-General,Services-General,Services-General
+7922271,False,Services-General,Services-General,Services-General
+7922272,False,Services-General,Services-General,Services-General
+7922275,False,SMERF-Social,SMERF-Social,SMERF-Social
+7922276,False,Services-General,Services-General,Services-General
+7922277,False,Entertainment,Entertainment,Entertainment
+7922279,False,Services-General,Services-General,Services-General
+7922280,False,Services-General,Services-General,Services-General
+7922281,False,Services-General,Services-General,Services-General
+7922286,False,,,
+7922294,False,Services-General,Services-General,Services-General
+7922339,False,Technology,Technology,Technology
+7922350,True,Technology,,Technology
+7922364,False,Technology,Technology,Technology
+7922365,False,Technology,Technology,Technology
+7922367,False,Technology,Technology,Technology
+7922370,False,Technology,Technology,Technology
+7922372,True,Technology,,Technology
+7922374,False,Technology,Technology,Technology
+7922375,False,Technology,Technology,Technology
+7922377,False,Technology,Technology,Technology
+7922384,False,Aerospace & Engineering,Aerospace & Engineering,Aerospace & Engineering
+7922387,False,Aerospace & Engineering,Aerospace & Engineering,Aerospace & Engineering
+7922388,False,Aerospace & Engineering,Aerospace & Engineering,Aerospace & Engineering
+7922404,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7922423,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7922424,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7922437,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7922440,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7922464,False,Tour Groups,Tour Groups,Tour Groups
+7922482,False,Tour Groups,Tour Groups,Tour Groups
+7922485,False,Tour Groups,Tour Groups,Tour Groups
+7922486,False,Tour Groups,Tour Groups,Tour Groups
+7922491,False,Tour Groups,Tour Groups,Tour Groups
+7922492,False,Tour Groups,Tour Groups,Tour Groups
+7922496,False,Tour Groups,Tour Groups,Tour Groups
+7922498,False,Tour Groups,Tour Groups,Tour Groups
+7922506,False,3rd Pty,3rd Pty,3rd Pty
+7922529,True,Medical/Health,,Medical/Health
+7922535,False,SMERF-Cultural,SMERF-Cultural,SMERF-Cultural
+7922537,False,SMERF-Cultural,SMERF-Cultural,SMERF-Cultural
+7922557,False,,,
+7922603,False,Manufacturing,Manufacturing,Manufacturing
+7922614,False,Manufacturing,Manufacturing,Manufacturing
+7922615,False,Manufacturing,Manufacturing,Manufacturing
+7922616,False,Manufacturing,Manufacturing,Manufacturing
+7922617,False,Manufacturing,Manufacturing,Manufacturing
+7922630,False,Manufacturing,Manufacturing,Manufacturing
+7922633,False,Manufacturing,Manufacturing,Manufacturing
+7922642,False,Manufacturing,Manufacturing,Manufacturing
+7922647,False,Manufacturing,Manufacturing,Manufacturing
+7922654,False,,,
+7922658,False,Manufacturing,Manufacturing,Manufacturing
+7922669,False,Travel/Transport,Travel/Transport,Travel/Transport
+7922685,False,Services-General,Services-General,Services-General
+7922689,False,Services-General,Services-General,Services-General
+7922695,False,Media,Media,Media
+7922699,False,Medical/Health,Medical/Health,Medical/Health
+7922700,False,Medical/Health,Medical/Health,Medical/Health
+7922702,False,Medical/Health,Medical/Health,Medical/Health
+7922703,False,Manufacturing,Manufacturing,Manufacturing
+7922704,False,Manufacturing,Manufacturing,Manufacturing
+7922713,False,Services-General,Services-General,Services-General
+7922719,False,Technology,Technology,Technology
+7922721,False,,,
+7922726,False,Utilities,Utilities,Utilities
+7922729,False,Automotive,Automotive,Automotive
+7922737,False,Agriculture,Agriculture,Agriculture
+7922740,False,Agriculture,Agriculture,Agriculture
+7922743,False,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni
+7922749,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7922751,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7922756,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7922758,False,SMERF-Social,SMERF-Social,SMERF-Social
+7922760,False,SMERF-Social,SMERF-Social,SMERF-Social
+7922761,False,,,
+7922769,False,Insurance,Insurance,Insurance
+7922777,False,,,
+7922782,False,,,
+7922786,False,,,
+7922802,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7922828,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7922830,False,SMERF-Social,SMERF-Social,SMERF-Social
+7922834,False,Food & Beverage,Food & Beverage,Food & Beverage
+7922837,False,,,
+7922844,False,,,
+7922847,False,,,
+7922856,False,,,
+7922860,False,Tour Groups,Tour Groups,Tour Groups
+7922864,False,,,
+7922865,False,,Consulting,Consulting
+7922870,False,,,
+7922883,False,Tour Groups,Tour Groups,Tour Groups
+7922887,False,,Medical/Health,Medical/Health
+7922899,False,Tour Groups,Tour Groups,Tour Groups
+7922905,False,Consulting,Consulting,Consulting
+7922908,False,,,
+7922919,False,,,
+7922923,False,,,
+7922929,False,,,
+7922931,False,,,
+7922934,False,Entertainment,Entertainment,Entertainment
+7922935,False,,,
+7922948,False,3rd Pty,3rd Pty,3rd Pty
+7922953,False,,,
+7922959,False,,,
+7922972,False,,,
+7922977,False,,,
+7922994,False,,,
+7923043,False,Media,Media,Media
+7923048,False,Hospitality,Hospitality,Hospitality
+7923053,False,Technology,Technology,Technology
+7923056,False,,,
+7923058,False,,,
+7923063,False,Travel/Transport,Travel/Transport,Travel/Transport
+7923064,False,Tour Groups,Tour Groups,Tour Groups
+7923088,False,Financial,Financial,Financial
+7923089,False,,,
+7923090,False,,,
+7923091,False,,,
+7923092,False,,,
+7923093,False,Medical/Health,Medical/Health,Medical/Health
+7923094,False,Financial,Financial,Financial
+7923095,False,Food & Beverage,Food & Beverage,Food & Beverage
+7923096,False,Financial,Financial,Financial
+7923097,True,,,
+7923098,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7923101,False,,,
+7923102,False,Advertising,Advertising,Advertising
+7923103,False,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni
+7923104,False,In-House,In-House,In-House
+7923105,False,In-House,In-House,In-House
+7923116,False,,Chemicals / Oil,Chemicals / Oil
+7923117,False,3rd Pty,3rd Pty,3rd Pty
+7923118,False,,,
+7923119,False,,,
+7923120,False,Education-Other,Education-Other,Education-Other
+7923121,False,,,
+7923122,False,Communications,Communications,Communications
+7923123,False,,,
+7923124,False,Consulting,Consulting,Consulting
+7923125,False,,,
+7923126,False,Automotive,Automotive,Automotive
+7923128,False,Consumer Products,Consumer Products,Consumer Products
+7923129,False,,,
+7923130,False,Medical/Health,Medical/Health,Medical/Health
+7923131,False,Technology,Technology,Technology
+7923132,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7923141,False,Technology,Technology,Technology
+7923146,True,,Technology,Technology
+7923151,False,Construction/Archit,Construction/Archit,Construction/Archit
+7923196,False,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets
+7923198,False,,Technology,Technology
+7923199,False,Technology,Technology,Technology
+7923205,False,,,
+7923207,False,Agriculture,Agriculture,Agriculture
+7923208,False,,,
+7923209,False,,,
+7923210,False,,Tour Groups,Tour Groups
+7923220,False,,,
+7923221,False,Insurance,Insurance,Insurance
+7923224,False,,,
+7923225,False,House Account,House Account,House Account
+7923229,False,,,
+7923230,False,,,
+7923231,False,,,
+7923235,False,Government,Government,Government
+7923250,False,Utilities,Utilities,Utilities
+7923252,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7923253,False,Technology,Technology,Technology
+7923254,False,Communications,Communications,Communications
+7923255,False,House Account,House Account,House Account
+7923262,False,Medical/Health,Medical/Health,Medical/Health
+7923271,False,Financial,Financial,Financial
+7923277,False,Technology,Technology,Technology
+7923281,False,,,
+7923282,False,Education-Other,Education-Other,Education-Other
+7923284,False,Sports-Amateur,Sports-Prof,Sports-Prof
+7923285,False,Education-Collegiate,Education-Collegiate,Education-Collegiate
+7923286,False,Transportation,Transportation,Transportation
+7923287,False,Transportation,Transportation,Transportation
+7923288,False,Entertainment,Entertainment,Entertainment
+7923289,False,Agriculture,Agriculture,Agriculture
+7923290,False,,,
+7923315,False,,,
+7923341,False,,,
+7923344,False,Real Estate,Real Estate,Real Estate
+7923346,False,,,
+7923350,False,3rd Pty,3rd Pty,3rd Pty
+7923351,False,3rd Pty,3rd Pty,3rd Pty
+7923352,False,3rd Pty,3rd Pty,3rd Pty
+7923353,False,3rd Pty,3rd Pty,3rd Pty
+7923354,False,Advertising,Advertising,Advertising
+7923355,False,Manufacturing,Manufacturing,Manufacturing
+7923356,False,Technology,Technology,Technology
+7923357,False,Entertainment,Entertainment,Entertainment
+7923358,False,Agriculture,Agriculture,Agriculture
+7923359,False,Agriculture,Agriculture,Agriculture
+7923360,False,Agriculture,Agriculture,Agriculture
+7923361,False,,,
+7923362,False,,,
+7923363,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7923366,False,,Entertainment,Entertainment
+7923367,False,Tour Groups,Tour Groups,Tour Groups
+7923368,False,,,
+7923388,False,,,
+7923408,False,,,
+7923424,False,,,
+7923427,False,Technology,Technology,Technology
+7923428,False,Agriculture,Agriculture,Agriculture
+7923429,False,3rd Pty,3rd Pty,3rd Pty
+7923430,False,Technology,Technology,Technology
+7923432,False,,,
+7923433,True,3rd Pty,Real Estate,3rd Pty
+7923434,False,Financial,Financial,Financial
+7923436,False,Legal,Legal,Legal
+7923437,False,Financial,Financial,Financial
+7923438,False,Financial,Financial,Financial
+7923439,False,3rd Pty,3rd Pty,3rd Pty
+7923440,False,Medical/Health,Medical/Health,Medical/Health
+7923441,False,,,
+7923442,False,SMERF-Social,SMERF-Social,SMERF-Social
+7923443,False,Consulting,Consulting,Consulting
+7923445,False,Education-Other,Education-Other,Education-Other
+7923446,False,Real Estate,Real Estate,Real Estate
+7923447,False,,,
+7923465,False,,Real Estate,Real Estate
+7923466,False,,,
+7923469,False,Manufacturing,Manufacturing,Manufacturing
+7923492,False,,,
+7923495,False,,,
+7923502,False,,,
+7923505,False,,,
+7923521,False,,,
+7923522,False,Medical/Health,Medical/Health,Medical/Health
+7923523,False,3rd Pty,3rd Pty,3rd Pty
+7923524,False,,,
+7923525,False,,,
+7923528,False,,,
+7923529,False,,,
+7923530,False,Medical/Health,Medical/Health,Medical/Health
+7923531,False,Tour Groups,Tour Groups,Tour Groups
+7923532,False,,Tour Groups,Tour Groups
+7923533,False,,,
+7923534,False,,,
+7923535,False,,,
+7923536,False,,,
+7923537,False,Technology,Technology,Technology
+7923538,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7923545,False,,,
+7923596,False,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets
+7923601,False,,,
+7923606,False,,,
+7923628,False,,,
+7923638,False,Government,Government,Government
+7923642,False,,,
+7923651,False,Education-Other,Education-Other,Education-Other
+7923652,False,Medical/Health,Medical/Health,Medical/Health
+7923653,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7923654,False,Technology,Technology,Technology
+7923655,False,,,
+7923656,False,,,
+7923657,False,,,
+7923658,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7923659,False,Travel/Transport,Travel/Transport,Travel/Transport
+7923660,False,3rd Pty,3rd Pty,3rd Pty
+7923661,False,,,
+7923662,False,3rd Pty,3rd Pty,3rd Pty
+7923663,False,Medical/Health,Medical/Health,Medical/Health
+7923664,False,3rd Pty,3rd Pty,3rd Pty
+7923671,False,,,
+7923672,False,,,
+7923673,False,,,
+7923677,False,,,
+7923678,False,,,
+7923684,False,,,
+7923688,False,,,
+7923693,False,,,
+7923716,False,,,
+7923724,False,Medical/Health,Medical/Health,Medical/Health
+7923725,False,,,
+7923726,False,,,
+7923727,False,,,
+7923729,False,Education-Other,Education-Other,Education-Other
+7923730,False,,,
+7923731,False,,,
+7923732,False,,,
+7923733,False,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets
+7923734,False,Advertising,Advertising,Advertising
+7923748,False,,,
+7923749,False,,,
+7923750,False,,,
+7923751,False,,,
+7923752,False,,,
+7923753,False,,,
+7923754,False,,,
+7923755,False,,,
+7923756,False,,,
+7923757,False,,,
+7923758,False,,Consulting,Consulting
+7923759,False,,,
+7923760,False,,,
+7923761,False,,,
+7923762,False,Medical/Health,Medical/Health,Medical/Health
+7923763,False,,,
+7923764,False,,,
+7923765,False,Communications,Communications,Communications
+7923766,False,Medical/Health,Medical/Health,Medical/Health
+7923782,False,,,
+7923791,False,,,
+7923802,False,Financial,Financial,Financial
+7923804,False,,,
+7923805,False,,,
+7923806,False,,,
+7923807,False,,,
+7923808,False,,,
+7923818,False,,,
+7923819,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7923820,False,,,
+7923821,True,,,
+7923822,False,,Technology,Technology
+7923823,False,,,
+7923824,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7923825,False,,,
+7923826,False,Medical/Health,Medical/Health,Medical/Health
+7923827,False,,Tour Groups,Tour Groups
+7923828,False,,,
+7923830,False,,,
+7923831,False,,,
+7923832,False,,,
+7923833,False,,,
+7923834,False,,,
+7923835,False,,,
+7923836,False,,,
+7923837,False,,,
+7923838,False,,,
+7923839,False,,,
+7923840,False,,,
+7923841,False,,Financial,Financial
+7923842,False,Consulting,Consulting,Consulting
+7923843,False,3rd Pty,3rd Pty,3rd Pty
+7923844,False,Aerospace & Engineering,Aerospace & Engineering,Aerospace & Engineering
+7923846,False,,,
+7923848,False,,,
+7923870,False,Airlines,Airlines,Airlines
+7923871,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7923873,False,Education-Other,Education-Other,Education-Other
+7923874,False,Education-Other,Education-Other,Education-Other
+7923878,False,Consulting,Consulting,Consulting
+7923880,False,Education-Other,Education-Other,Education-Other
+7923881,False,Education-Other,Education-Other,Education-Other
+7923882,False,Education-Collegiate,Education-Collegiate,Education-Collegiate
+7923883,False,Education-Other,Education-Other,Education-Other
+7923884,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7923886,False,Education-Other,Education-Other,Education-Other
+7923887,False,Education-Other,Education-Other,Education-Other
+7923888,False,Insurance,Insurance,Insurance
+7923890,False,Automotive,Automotive,Automotive
+7923955,False,Communications,Communications,Communications
+7923964,False,Transportation,Transportation,Transportation
+7923967,False,Entertainment,Entertainment,Entertainment
+7923968,False,Entertainment,Entertainment,Entertainment
+7923973,False,Entertainment,Entertainment,Entertainment
+7923978,False,,,
+7923979,False,,,
+7923982,False,,,
+7923986,False,,,
+7923987,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7923991,True,,Sports-Prof,3rd Pty
+7923992,False,,,
+7923995,False,,,
+7923999,False,,,
+7924004,False,,,
+7924005,False,,,
+7924006,False,,,
+7924007,False,,,
+7924008,False,,,
+7924009,False,Aerospace & Engineering,Aerospace & Engineering,Aerospace & Engineering
+7924013,False,Sports-Prof,Sports-Prof,Sports-Prof
+7924014,False,Sports-Prof,Sports-Prof,Sports-Prof
+7924016,False,,,
+7924018,False,,,
+7924026,False,,,
+7924027,False,,,
+7924028,False,Government,Government,Government
+7924029,False,,,
+7924031,False,3rd Pty,3rd Pty,3rd Pty
+7924032,False,,,
+7924033,False,,,
+7924041,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7924043,False,Entertainment,Entertainment,Entertainment
+7924048,False,SMERF-Social,SMERF-Social,SMERF-Social
+7924053,False,,,
+7924056,True,,SMERF-Social,
+7924058,False,,,
+7924059,False,Education-Other,Education-Other,Education-Other
+7924061,False,,,
+7924062,False,,,
+7924063,False,Education-Collegiate,Education-Collegiate,Education-Collegiate
+7924064,False,,,
+7924066,False,Education-Other,Education-Other,Education-Other
+7924067,False,,,
+7924073,False,Government,Government,Government
+7924074,False,,,
+7924078,False,,,
+7924081,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7924083,False,,,
+7924084,False,Education-Collegiate,Education-Collegiate,Education-Collegiate
+7924087,False,,,
+7924088,False,,,
+7924091,False,,,
+7924094,False,Education-Other,Education-Other,Education-Other
+7924095,False,,,
+7924097,False,Real Estate,Real Estate,Real Estate
+7924098,False,,,
+7924099,False,,,
+7924101,False,SMERF-Social,SMERF-Social,SMERF-Social
+7924102,False,,,
+7924103,False,,,
+7924104,False,,,
+7924105,False,,,
+7924106,False,,,
+7924117,False,Construction/Archit,Construction/Archit,Construction/Archit
+7924118,False,,,
+7924119,False,,,
+7924120,False,,,
+7924121,False,,,
+7924122,False,Education-Other,Education-Other,Education-Other
+7924123,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7924124,False,,,
+7924125,False,,,
+7924129,False,SMERF-Social,SMERF-Social,SMERF-Social
+7924130,False,,,
+7924133,False,,,
+7924134,False,,,
+7924138,False,,,
+7924139,False,Technology,Technology,Technology
+7924140,False,,,
+7924141,False,,Manufacturing,Manufacturing
+7924145,False,,,
+7924147,False,,,
+7924149,False,,,
+7924150,False,,,
+7924151,False,,,
+7924160,False,,,
+7924162,False,,,
+7924163,False,,,
+7924164,False,Communications,Communications,Communications
+7924165,False,,,
+7924166,False,Medical/Health,Medical/Health,Medical/Health
+7924167,False,Manufacturing,Manufacturing,Manufacturing
+7924172,False,Construction/Archit,Construction/Archit,Construction/Archit
+7924174,False,,,
+7924179,False,,,
+7924183,False,,,
+7924184,False,,,
+7924186,False,3rd Pty,3rd Pty,3rd Pty
+7924187,False,Education-Other,Education-Other,Education-Other
+7924188,False,3rd Pty,3rd Pty,3rd Pty
+7924190,False,Financial,Financial,Financial
+7924195,False,,,
+7924198,False,SMERF-Social,SMERF-Social,SMERF-Social
+7924200,False,,,
+7924201,False,Automotive,Automotive,Automotive
+7924203,False,3rd Pty,3rd Pty,3rd Pty
+7924204,False,Advertising,Advertising,Advertising
+7924205,False,,,
+7924207,False,,,
+7924212,False,,,
+7924214,False,Technology,Technology,Technology
+7924216,False,,,
+7924218,False,Technology,Technology,Technology
+7924221,False,,,
+7924222,False,,,
+7924225,False,,,
+7924226,False,Medical/Health,Medical/Health,Medical/Health
+7924234,False,,,
+7924235,False,3rd Pty,3rd Pty,3rd Pty
+7924237,False,Insurance,Insurance,Insurance
+7924239,False,,,
+7924240,False,,,
+7924241,False,,,
+7924243,False,,,
+7924244,False,,,
+7924245,False,,,
+7924247,False,Consumer Products,Consumer Products,Consumer Products
+7924248,False,,,
+7924250,False,,,
+7924251,False,,,
+7924253,False,SMERF-Social,SMERF-Social,SMERF-Social
+7924254,False,,,
+7924256,False,,,
+7924266,False,,,
+7924274,False,,,
+7924291,False,,,
+7924292,False,,,
+7924293,False,,,
+7924294,False,,,
+7924295,False,,,
+7924296,False,Medical/Health,Medical/Health,Medical/Health
+7924297,False,,,
+7924301,False,,,
+7924302,False,,,
+7924303,False,,,
+7924304,False,,,
+7924305,False,,,
+7924306,False,Medical/Health,Medical/Health,Medical/Health
+7924307,False,,,
+7924308,False,,,
+7924309,False,,,
+7924310,False,,,
+7924361,False,,,
+7924362,False,,,
+7924363,False,,,
+7924364,False,,,
+7924368,False,Technology,Technology,Technology
+7924382,False,,,
+7924385,False,Medical/Health,Medical/Health,Medical/Health
+7924388,False,,,
+7924389,False,,,
+7924400,False,Insurance,Insurance,Insurance
+7924402,False,,,
+7924403,False,,,
+7924404,False,,,
+7924406,False,,,
+7924407,False,Technology,Technology,Technology
+7924409,False,,,
+7924411,False,,,
+7924412,False,Technology,Technology,Technology
+7924413,False,,,
+7924414,False,,,
+7924416,False,,,
+7924417,False,,Entertainment,Entertainment
+7924418,False,Communications,Communications,Communications
+7924419,False,,,
+7924420,False,,,
+7924421,False,,,
+7924423,False,,,
+7924424,False,,,
+7924425,False,,,
+7924427,False,,,
+7924433,False,,,
+7924434,False,,,
+7924435,False,,,
+7924436,False,Financial,Financial,Financial
+7924437,False,,Pharmaceuticals,Pharmaceuticals
+7924438,False,3rd Pty,3rd Pty,3rd Pty
+7924439,False,,,
+7924440,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7924444,False,,,
+7924447,False,,,
+7924451,False,,,
+7924454,False,,,
+7924456,False,,,
+7924459,False,Education-Collegiate,Education-Collegiate,Education-Collegiate
+7924460,False,,,
+7924461,True,,Government,
+7924466,False,,,
+7924467,False,,,
+7924468,False,,,
+7924469,False,,,
+7924470,False,,,
+7924472,False,3rd Pty,3rd Pty,3rd Pty
+7924480,False,,,
+7924482,False,,,
+7924483,False,Tour Groups,Tour Groups,Tour Groups
+7924484,False,,,
+7924485,False,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni
+7924486,False,,,
+7924487,False,Medical/Health,Medical/Health,Medical/Health
+7924493,False,,,
+7924494,False,,,
+7924495,False,,,
+7924497,False,,,
+7924500,False,SMERF-Social,SMERF-Social,SMERF-Social
+7924505,False,,,
+7924506,False,,,
+7924507,False,,,
+7924508,False,,,
+7924509,False,,,
+7924510,False,,,
+7924511,False,,,
+7924512,False,Legal,Legal,Legal
+7924513,False,,,
+7924514,False,,,
+7924515,False,,,
+7924516,False,,,
+7924517,False,,,
+7924518,False,,,
+7924519,False,,,
+7924520,False,,,
+7924521,False,Services-General,Services-General,Services-General
+7924522,False,,,
+7924529,False,Medical/Health,Medical/Health,Medical/Health
+7924530,False,,,
+7924531,False,,,
+7924532,False,Technology,Technology,Technology
+7924533,False,,,
+7924534,False,Entertainment,Entertainment,Entertainment
+7924535,False,,,
+7924536,False,,,
+7924537,False,,,
+7924538,False,,,
+7924539,False,,,
+7924540,False,,,
+7924541,False,,,
+7924542,False,,,
+7924543,False,,,
+7924544,False,,,
+7924545,False,,,
+7924546,False,,,
+7924547,False,,,
+7924548,False,,,
+7924549,False,Media,Media,Media
+7924550,False,,,
+7924551,False,,,
+7924552,False,,,
+7924553,False,,,
+7924554,False,,,
+7924556,False,,,
+7924557,False,,,
+7924560,False,,,
+7924562,False,,,
+7924564,False,,,
+7924565,False,,,
+7924566,False,,,
+7924567,False,,,
+7924568,False,,,
+7924569,False,,,
+7924570,False,Tour Groups,Tour Groups,Tour Groups
+7924571,False,,,
+7924575,False,,,
+7924577,False,Technology,Technology,Technology
+7924578,False,Technology,Technology,Technology
+7924593,False,,,
+7924598,False,,,
+7924599,False,,,
+7924606,False,,,
+7924608,False,,,
+7924612,False,Communications,Communications,Communications
+7924614,False,Aerospace & Engineering,Aerospace & Engineering,Aerospace & Engineering
+7924622,False,,,
+7924623,False,House Account,House Account,House Account
+7924625,False,,,
+7924626,False,,Advertising,Advertising
+7924630,False,,,
+7924631,False,,,
+7924632,False,,,
+7924634,False,Consulting,Consulting,Consulting
+7924641,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7924642,False,,,
+7924646,False,Tour Groups,Tour Groups,Tour Groups
+7924647,False,SMERF-Social,SMERF-Social,SMERF-Social
+7924650,False,,,
+7924652,False,Medical/Health,Medical/Health,Medical/Health
+7924684,False,Tour Groups,,
+7924695,False,Advertising,Advertising,Advertising
+7924696,False,Advertising,Advertising,Advertising
+7924698,False,Construction/Archit,Construction/Archit,Construction/Archit
+7924699,False,Advertising,Advertising,Advertising
+7924706,False,Agriculture,Agriculture,Agriculture
+7924713,False,Technology,Technology,Technology
+7924719,False,Technology,Technology,Technology
+7924720,False,Manufacturing,Manufacturing,Manufacturing
+7924721,True,Technology,Aerospace & Engineering,Technology
+7924722,False,Technology,Technology,Technology
+7924723,False,Technology,Technology,Technology
+7924724,False,Technology,Technology,Technology
+7924725,False,Technology,Aerospace & Engineering,Aerospace & Engineering
+7924726,False,Technology,Technology,Technology
+7924727,False,Technology,,
+7924728,False,Technology,Technology,Technology
+7924729,False,Construction/Archit,Construction/Archit,Construction/Archit
+7924732,False,3rd Pty,3rd Pty,3rd Pty
+7924733,False,Entertainment,Entertainment,Entertainment
+7924742,False,Entertainment,Entertainment,Entertainment
+7924746,False,Government,Government,Government
+7924747,False,Government,Government,Government
+7924748,False,SMERF-Military,Government,Government
+7924749,False,SMERF-Military,SMERF-Military,SMERF-Military
+7924750,False,SMERF-Military,Government,Government
+7924752,False,services-general,services-general,services-general
+7924753,False,Manufacturing,Manufacturing,Manufacturing
+7924754,False,Construction/Archit,Construction/Archit,Construction/Archit
+7924755,False,Utilities,Utilities,Utilities
+7924758,False,Financial,Financial,Financial
+7924759,False,Financial,Financial,Financial
+7924760,False,Financial,Financial,Financial
+7924761,False,,,
+7924763,False,,,
+7924770,False,Financial,Financial,Financial
+7924772,False,Financial,Financial,Financial
+7924781,False,Food & Beverage,Food & Beverage,Food & Beverage
+7924782,False,,,
+7924799,False,,,
+7924800,False,Government,Government,Government
+7924802,False,Government,Government,Government
+7924805,False,Government,Government,Government
+7924808,False,Manufacturing,Manufacturing,Manufacturing
+7924809,False,Government,Government,Government
+7924815,False,Medical/Health,Medical/Health,Medical/Health
+7924817,False,Tour Groups,Tour Groups,Tour Groups
+7924818,False,Medical/Health,Medical/Health,Medical/Health
+7924821,False,Medical/Health,Medical/Health,Medical/Health
+7924824,False,Medical/Health,Medical/Health,Medical/Health
+7924825,False,Medical/Health,Medical/Health,Medical/Health
+7924826,False,Medical/Health,Medical/Health,Medical/Health
+7924829,False,Medical/Health,Medical/Health,Medical/Health
+7924830,False,Medical/Health,Medical/Health,Medical/Health
+7924831,False,Medical/Health,Medical/Health,Medical/Health
+7924838,False,Insurance,Insurance,Insurance
+7924839,False,,,
+7924840,False,Insurance,Insurance,Insurance
+7924841,False,Insurance,Insurance,Insurance
+7924843,False,Legal,Legal,Legal
+7924845,False,Legal,Legal,Legal
+7924847,False,Technology,Technology,Technology
+7924851,False,Manufacturing,Manufacturing,Manufacturing
+7924852,False,Manufacturing,Manufacturing,Manufacturing
+7924853,False,Medical/Health,Medical/Health,Medical/Health
+7924854,False,Manufacturing,Manufacturing,Manufacturing
+7924855,False,Manufacturing,Manufacturing,Manufacturing
+7924856,False,Manufacturing,Manufacturing,Manufacturing
+7924858,False,Manufacturing,Manufacturing,Manufacturing
+7924859,False,Manufacturing,Manufacturing,Manufacturing
+7924860,False,Manufacturing,Manufacturing,Manufacturing
+7924862,False,,,
+7924868,False,Services-General,Services-General,Services-General
+7924870,False,,,
+7924872,False,Services-General,Services-General,Services-General
+7924873,False,Services-General,Services-General,Services-General
+7924915,False,SMERF-Social,SMERF-Social,SMERF-Social
+7924916,False,Services-General,Services-General,Services-General
+7924919,False,,,
+7924921,False,Technology,Technology,Technology
+7924922,False,Services-General,Services-General,Services-General
+7924942,False,Services-General,Services-General,Services-General
+7924943,False,Services-General,Services-General,Services-General
+7924944,False,Services-General,Services-General,Services-General
+7924945,False,,,
+7924951,False,Technology,Technology,Technology
+7924957,False,Technology,Technology,Technology
+7924961,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7924965,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7924967,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7924968,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7924973,False,Travel/Transport,Travel/Transport,Travel/Transport
+7924974,False,Travel/Transport,Travel/Transport,Travel/Transport
+7924976,False,Tour Groups,Tour Groups,Tour Groups
+7924979,False,Tour Groups,Tour Groups,Tour Groups
+7924981,False,Tour Groups,Tour Groups,Tour Groups
+7924982,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7924989,False,3rd Pty,3rd Pty,3rd Pty
+7924992,False,Tour Groups,Tour Groups,Tour Groups
+7924993,True,3rd Pty,,3rd Pty
+7924994,False,Tour Groups,Tour Groups,Tour Groups
+7924998,False,Tour Groups,Tour Groups,Tour Groups
+7924999,False,Tour Groups,Tour Groups,Tour Groups
+7925000,False,Tour Groups,Tour Groups,Tour Groups
+7925006,False,Manufacturing,Manufacturing,Manufacturing
+7925007,False,Medical/Health,Medical/Health,Medical/Health
+7925011,False,Technology,Technology,Technology
+7925012,False,Technology,Technology,Technology
+7925020,False,Manufacturing,Manufacturing,Manufacturing
+7925023,False,,,
+7925024,False,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets
+7925025,False,Retail Stores/Wholesale Outlets,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7925027,False,Construction/Archit,Construction/Archit,Construction/Archit
+7925029,False,Construction/Archit,Construction/Archit,Construction/Archit
+7925030,False,Services-General,Services-General,Services-General
+7925033,False,Services-General,Services-General,Services-General
+7925034,False,Entertainment,Entertainment,Entertainment
+7925035,False,,,
+7925040,False,Medical/Health,Medical/Health,Medical/Health
+7925043,False,,,
+7925045,False,"Embassies, Consulates","Embassies, Consulates","Embassies, Consulates"
+7925048,False,Insurance,Insurance,Insurance
+7925049,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7925053,True,SMERF-Clubs/Non-Profit,,SMERF-Clubs/Non-Profit
+7925054,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7925055,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7925056,False,Food & Beverage,Food & Beverage,Food & Beverage
+7925065,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7925067,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7925068,False,,,
+7925073,False,SMERF-Social,SMERF-Social,SMERF-Social
+7925089,False,,,
+7925092,False,3rd Pty,3rd Pty,3rd Pty
+7925093,False,3rd Pty,3rd Pty,3rd Pty
+7925094,False,,,
+7925095,False,,,
+7925099,False,,,
+7925100,False,,Tour Groups,Tour Groups
+7925105,False,,,
+7925106,False,Tour Groups,Tour Groups,Tour Groups
+7925110,False,Tour Groups,Tour Groups,Tour Groups
+7925113,False,,,
+7925114,False,Financial,Financial,Financial
+7925118,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7925123,False,,,
+7925127,False,,,
+7925131,False,,,
+7925132,False,,,
+7925291,False,,,
+7925292,False,Consulting,Consulting,Consulting
+7925293,False,,,
+7925294,False,,,
+7925295,False,,,
+7925296,False,,,
+7925297,False,Financial,Financial,Financial
+7925298,False,,,
+7925299,False,,,
+7925300,False,Advertising,Advertising,Advertising
+7925301,False,Real Estate,Real Estate,Real Estate
+7925302,False,Insurance,Insurance,Insurance
+7925303,False,Government,Government,Government
+7925304,False,,,
+7925305,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7925306,False,Tour Groups,Tour Groups,Tour Groups
+7925307,False,Government,Government,Government
+7925308,False,Tour Groups,Tour Groups,Tour Groups
+7925309,False,Medical/Health,Medical/Health,Medical/Health
+7925310,False,Manufacturing,Manufacturing,Manufacturing
+7925311,False,Tour Groups,Tour Groups,Tour Groups
+7925312,False,3rd Pty,3rd Pty,3rd Pty
+7925313,False,,,
+7925314,False,Medical/Health,Medical/Health,Medical/Health
+7925315,False,,,
+7925316,False,,,
+7925317,False,,,
+7925318,False,,Pharmaceuticals,Pharmaceuticals
+7925319,False,,,
+7925320,False,,,
+7925321,False,,,
+7925322,False,"Embassies, Consulates","Embassies, Consulates","Embassies, Consulates"
+7925323,False,,,
+7925324,False,,,
+7925325,False,Financial,Financial,Financial
+7925326,False,,3rd Pty,3rd Pty
+7925327,False,,,
+7925328,False,Publishing,Publishing,Publishing
+7925329,False,,,
+7925330,False,Financial,Financial,Financial
+7925331,False,,,
+7925332,False,,,
+7925333,False,,,
+7925334,False,,,
+7925335,False,Medical/Health,Medical/Health,Medical/Health
+7925336,False,Financial,Financial,Financial
+7925337,False,Aerospace & Engineering,Aerospace & Engineering,Aerospace & Engineering
+7925338,False,,,
+7925341,False,Technology,Technology,Technology
+7925342,False,Construction/Archit,"Embassies, Consulates","Embassies, Consulates"
+7925343,False,Medical/Health,Medical/Health,Medical/Health
+7925344,False,Technology,Technology,Technology
+7925345,False,3rd Pty,3rd Pty,3rd Pty
+7925346,False,,,
+7925347,False,,,
+7925348,False,Tour Groups,Tour Groups,Tour Groups
+7925349,False,,,
+7925350,False,,,
+7925351,False,Financial,,
+7925352,False,Technology,Technology,Technology
+7925353,False,Technology,Technology,Technology
+7925380,False,Technology,Technology,Technology
+7925387,False,Consulting,Consulting,Consulting
+7925388,False,,,
+7925389,False,,,
+7925391,False,Consulting,Consulting,Consulting
+7925392,False,,Technology,Technology
+7925393,False,,,
+7925394,False,Medical/Health,Medical/Health,Medical/Health
+7925395,False,,,
+7925396,False,,,
+7925397,False,Entertainment,,
+7925398,False,Construction/Archit,Construction/Archit,Construction/Archit
+7925399,False,House Account,House Account,House Account
+7925400,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7925410,False,Financial,Financial,Financial
+7925411,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7925412,False,Publishing,Publishing,Publishing
+7925414,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7925415,False,Aerospace & Engineering,Aerospace & Engineering,Aerospace & Engineering
+7925429,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7925430,False,,,
+7925431,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7925432,False,,,
+7925433,False,,,
+7925434,False,,,
+7925435,False,Medical/Health,Medical/Health,Medical/Health
+7925436,False,Services-General,Services-General,Services-General
+7925437,False,,,
+7925440,False,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets
+7925441,False,,,
+7925442,False,House Account,House Account,House Account
+7925448,False,House Account,House Account,House Account
+7925490,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7925491,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7925492,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7925493,False,Manufacturing,Manufacturing,Manufacturing
+7925494,False,Construction/Archit,Construction/Archit,Construction/Archit
+7925495,False,Construction/Archit,Construction/Archit,Construction/Archit
+7925496,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7925497,False,Government,Government,Government
+7925498,False,Government,Government,Government
+7925499,False,Construction/Archit,Construction/Archit,Construction/Archit
+7925500,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7925501,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7925503,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7925504,False,Technology,Technology,Technology
+7925505,False,Real Estate,Real Estate,Real Estate
+7925506,False,,,
+7925507,False,Tour Groups,Tour Groups,Tour Groups
+7925508,False,,,
+7925509,False,,,
+7925510,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7925511,False,Technology,Technology,Technology
+7925512,False,,,
+7925513,False,Automotive,Automotive,Automotive
+7925514,False,Chemicals / Oil,Chemicals / Oil,Chemicals / Oil
+7925515,False,Technology,Technology,Technology
+7925516,False,,,
+7925517,False,,,
+7925518,False,,,
+7925519,False,,,
+7925520,False,,,
+7925521,False,Services-General,Services-General,Services-General
+7925522,False,Consumer Products,Consumer Products,Consumer Products
+7925525,False,Food & Beverage,Food & Beverage,Food & Beverage
+7925526,False,,,
+7925527,False,3rd Pty,3rd Pty,3rd Pty
+7925528,False,Manufacturing,Manufacturing,Manufacturing
+7925530,False,,,
+7925531,False,,,
+7925532,False,Education-Other,Education-Other,Education-Other
+7925533,False,Insurance,Insurance,Insurance
+7925534,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7925535,False,Legal,Legal,Legal
+7925536,False,Medical/Health,Medical/Health,Medical/Health
+7925537,True,Communications,Technology,Communications
+7925538,False,Financial,Financial,Financial
+7925539,False,,,
+7925540,False,,,
+7925541,False,Financial,Financial,Financial
+7925547,False,Financial,Financial,Financial
+7925548,False,Technology,Technology,Technology
+7925549,False,,,
+7925550,False,Entertainment,Entertainment,Entertainment
+7925551,False,,,
+7925552,False,,,
+7925553,False,Tour Groups,Tour Groups,Tour Groups
+7925554,True,Communications,Technology,Communications
+7925556,False,Technology,Technology,Technology
+7925557,False,Medical/Health,Medical/Health,Medical/Health
+7925558,False,,,
+7925559,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7925560,False,Real Estate,Real Estate,Real Estate
+7925561,False,,,
+7925562,False,Food & Beverage,Food & Beverage,Food & Beverage
+7925563,False,Manufacturing,Manufacturing,Manufacturing
+7925564,False,,,
+7925565,False,Agriculture,Agriculture,Agriculture
+7925566,False,Consulting,Consulting,Consulting
+7925567,False,Financial,Financial,Financial
+7925568,False,,,
+7925569,False,Technology,Technology,Technology
+7925570,False,Technology,Technology,Technology
+7925571,False,Utilities,Utilities,Utilities
+7925572,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7925573,False,,,
+7925574,False,,,
+7925575,False,Education-Other,Education-Other,Education-Other
+7925576,False,,,
+7925578,False,Financial,Financial,Financial
+7925579,False,Utilities,Utilities,Utilities
+7925580,False,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets
+7925581,False,Communications,Communications,Communications
+7925582,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7925583,False,Tour Groups,Tour Groups,Tour Groups
+7925584,False,Tour Groups,Tour Groups,Tour Groups
+7925585,False,3rd Pty,3rd Pty,3rd Pty
+7925586,False,,,
+7925587,False,,,
+7925588,False,,,
+7925589,False,Agriculture,Agriculture,Agriculture
+7925590,False,,,
+7925591,False,,,
+7925592,False,Hospitality,Hospitality,Hospitality
+7925593,False,Construction/Archit,Construction/Archit,Construction/Archit
+7925594,False,Consulting,Consulting,Consulting
+7925595,False,Medical/Health,Medical/Health,Medical/Health
+7925596,False,Consumer Products,Consumer Products,Consumer Products
+7925597,False,,,
+7925598,False,,Technology,Technology
+7925599,False,,,
+7925600,False,,,
+7925604,False,,,
+7925605,False,,,
+7925606,False,3rd Pty,3rd Pty,3rd Pty
+7925607,False,,,
+7925608,False,Food & Beverage,Food & Beverage,Food & Beverage
+7925609,False,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni
+7925610,False,Construction/Archit,Construction/Archit,Construction/Archit
+7925611,False,,,
+7925612,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7925613,False,Technology,Technology,Technology
+7925614,False,,,
+7925615,False,Technology,Technology,Technology
+7925616,False,Medical/Health,Medical/Health,Medical/Health
+7925617,False,Communications,Communications,Communications
+7925618,False,,,
+7925619,False,Agriculture,Agriculture,Agriculture
+7925620,False,Insurance,Insurance,Insurance
+7925621,False,Construction/Archit,Construction/Archit,Construction/Archit
+7925622,False,Technology,Technology,Technology
+7925623,False,,,
+7925629,False,House Account,House Account,House Account
+7925630,False,,,
+7925635,False,Construction/Archit,Construction/Archit,Construction/Archit
+7925636,False,Entertainment,Entertainment,Entertainment
+7925637,False,Financial,Financial,Financial
+7925638,False,Education-Other,Education-Other,Education-Other
+7925639,False,,,
+7925640,False,Insurance,Insurance,Insurance
+7925641,False,Technology,Technology,Technology
+7925642,False,,,
+7925643,False,Education-Other,Education-Other,Education-Other
+7925644,False,Medical/Health,Medical/Health,Medical/Health
+7925651,False,,,
+7925652,False,Financial,Financial,Financial
+7925657,False,Real Estate,Real Estate,Real Estate
+7925658,False,Government,Government,Government
+7925659,False,Technology,Technology,Technology
+7925660,False,Tour Groups,Tour Groups,Tour Groups
+7925661,False,Services-General,Services-General,Services-General
+7925667,False,,,
+7925668,False,,,
+7925669,False,,,
+7925670,False,Technology,Technology,Technology
+7925674,False,Technology,Technology,Technology
+7925675,False,3rd Pty,3rd Pty,3rd Pty
+7925676,False,Manufacturing,Manufacturing,Manufacturing
+7925677,False,Technology,Technology,Technology
+7925678,False,Construction/Archit,Construction/Archit,Construction/Archit
+7925679,False,Education-Other,Education-Other,Education-Other
+7925680,False,,,
+7925681,False,Financial,Financial,Financial
+7925682,False,Technology,Technology,Technology
+7925693,False,Medical/Health,Medical/Health,Medical/Health
+7925694,False,,,
+7925695,False,Education-Other,Education-Other,Education-Other
+7925696,False,Financial,Financial,Financial
+7925697,False,Education-Other,Education-Other,Education-Other
+7925698,False,,,
+7925699,False,Technology,Technology,Technology
+7925711,True,Technology,,Technology
+7925712,False,,,
+7925713,False,Technology,Technology,Technology
+7925714,False,Legal,Legal,Legal
+7925715,True,,,
+7925716,False,Financial,,
+7925717,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7925718,False,Entertainment,Entertainment,Entertainment
+7925719,False,,,
+7925720,False,SMERF-Social,SMERF-Social,SMERF-Social
+7925721,False,Utilities,Utilities,Utilities
+7925722,False,Construction/Archit,Construction/Archit,Construction/Archit
+7925723,False,Education-Other,Education-Other,Education-Other
+7925724,False,Agriculture,Agriculture,Agriculture
+7925725,False,,,
+7925726,False,,,
+7925727,False,,,
+7925728,False,,,
+7925729,False,Education-Collegiate,Education-Collegiate,Education-Collegiate
+7925730,False,,,
+7925731,False,,,
+7925732,False,Services-General,Services-General,Services-General
+7925733,False,,,
+7925734,False,Hospitality,Hospitality,Hospitality
+7925735,False,,,
+7925759,False,,,
+7925760,False,Technology,Technology,Technology
+7925761,False,Real Estate,Real Estate,Real Estate
+7925762,False,,,
+7925763,False,3rd Pty,3rd Pty,3rd Pty
+7925764,False,,,
+7925765,False,Tour Groups,Tour Groups,Tour Groups
+7925766,False,,,
+7925767,False,,,
+7925768,False,,,
+7925769,False,3rd Pty,3rd Pty,3rd Pty
+7925770,False,3rd Pty,3rd Pty,3rd Pty
+7925771,False,3rd Pty,3rd Pty,3rd Pty
+7925772,False,3rd Pty,3rd Pty,3rd Pty
+7925773,False,,,
+7925774,False,,,
+7925775,False,Education-Other,Education-Other,Education-Other
+7925776,False,,,
+7925777,False,,,
+7925778,False,,,
+7925779,False,Financial,Financial,Financial
+7925786,False,SMERF-Social,SMERF-Social,SMERF-Social
+7925789,False,SMERF-Social,SMERF-Social,SMERF-Social
+7925797,False,Tour Groups,Tour Groups,Tour Groups
+7925798,False,,,
+7925799,False,Education-Other,Education-Other,Education-Other
+7925800,False,Services-General,Services-General,Services-General
+7925801,False,Services-General,Services-General,Services-General
+7925802,False,,,
+7925803,False,,,
+7925804,False,,,
+7925805,False,,,
+7925806,False,,,
+7925807,False,,,
+7925808,False,,,
+7925810,False,Education-Other,Education-Other,Education-Other
+7925811,False,,,
+7925812,False,,,
+7925813,False,,,
+7925814,False,,,
+7925815,False,,,
+7925816,False,,,
+7925817,False,,,
+7925819,False,Technology,Technology,Technology
+7925820,False,,,
+7925821,False,,,
+7925822,False,,,
+7925823,False,,,
+7925824,False,,,
+7925825,False,,,
+7925826,False,,,
+7925827,False,Tour Groups,Tour Groups,Tour Groups
+7925830,False,3rd Pty,3rd Pty,3rd Pty
+7925831,False,Transportation,Transportation,Transportation
+7925832,False,Publishing,Publishing,Publishing
+7925833,False,,,
+7925834,False,SMERF-Social,SMERF-Social,SMERF-Social
+7925835,False,SMERF-Social,SMERF-Social,SMERF-Social
+7925836,False,SMERF-Social,SMERF-Social,SMERF-Social
+7925837,False,SMERF-Social,SMERF-Social,SMERF-Social
+7925838,False,SMERF-Social,SMERF-Social,SMERF-Social
+7925839,False,SMERF-Social,SMERF-Social,SMERF-Social
+7925840,False,,,
+7925841,False,,,
+7925842,False,Consulting,Consulting,Consulting
+7925843,False,Education-Other,Education-Other,Education-Other
+7925844,False,,,
+7925845,False,,,
+7925846,False,Advertising,Advertising,Advertising
+7925849,False,,,
+7925850,False,,,
+7925851,False,Consulting,Consulting,Consulting
+7925854,False,SMERF-Social,SMERF-Social,SMERF-Social
+7925855,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7925856,False,Technology,Technology,Technology
+7925857,False,Technology,Technology,Technology
+7925858,False,Legal,Legal,Legal
+7925859,False,Manufacturing,Manufacturing,Manufacturing
+7925863,False,,,
+7925868,False,Services-General,Services-General,Services-General
+7925869,False,Technology,Technology,Technology
+7925870,False,,,
+7925871,False,,,
+7925872,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7925874,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7925875,False,Sports-Not Yet Classified,3rd Pty,3rd Pty
+7925876,False,,,
+7925877,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7925878,False,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets
+7925879,False,SMERF-Social,SMERF-Social,SMERF-Social
+7925880,False,Construction/Archit,Construction/Archit,Construction/Archit
+7925881,False,Construction/Archit,Construction/Archit,Construction/Archit
+7925882,False,Media,Media,Media
+7925883,False,Medical/Health,Medical/Health,Medical/Health
+7925884,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7925887,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7925888,False,CVBs,CVBs,CVBs
+7925889,False,,,
+7925890,True,,,Consulting
+7925891,False,,,
+7925892,False,,,
+7925893,True,,,
+7925894,False,,,
+7925895,True,,,Consulting
+7925896,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7925897,False,Food & Beverage,Food & Beverage,Food & Beverage
+7925898,False,,,
+7925899,False,Tour Groups,Tour Groups,Tour Groups
+7925900,False,Consulting,Consulting,Consulting
+7925901,False,Services-General,Services-General,Services-General
+7925902,False,Food & Beverage,Food & Beverage,Food & Beverage
+7925903,False,Food & Beverage,Food & Beverage,Food & Beverage
+7925904,False,Food & Beverage,Food & Beverage,Food & Beverage
+7925905,False,,,
+7925906,False,,,
+7925911,False,3rd Pty,3rd Pty,3rd Pty
+7925912,False,House Account,House Account,House Account
+7925913,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7925914,False,,,
+7925915,False,,,
+7925916,False,,,
+7925917,False,,,
+7925918,False,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets
+7925919,False,Tour Groups,Tour Groups,Tour Groups
+7925920,False,,,
+7925922,False,,,
+7925923,False,,,
+7925924,False,,,
+7925929,False,,,
+7925930,False,,,
+7925931,False,,,
+7925932,False,,,
+7925933,False,,,
+7925934,False,,,
+7925935,False,,,
+7925936,False,Medical/Health,Medical/Health,Medical/Health
+7925937,False,,,
+7925938,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7925939,False,,,
+7925940,False,,,
+7925941,False,,,
+7925942,False,,,
+7925943,False,,,
+7925944,False,,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7925945,False,,,
+7925946,False,,,
+7925947,False,,,
+7925948,False,,,
+7925949,False,,,
+7925950,False,,,
+7925951,False,,,
+7925952,False,,,
+7925953,False,Insurance,Insurance,Insurance
+7925954,False,,,
+7925955,False,,,
+7925956,False,,,
+7925958,False,Financial,Financial,Financial
+7925959,False,,,
+7925960,False,,,
+7925961,True,,,3rd Pty
+7925962,False,Manufacturing,Manufacturing,Manufacturing
+7925963,False,,,
+7925964,False,,,
+7925965,False,Financial,Financial,Financial
+7925966,False,Consulting,Consulting,Consulting
+7925967,False,,,
+7925968,False,,,
+7925969,False,SMERF-Social,SMERF-Social,SMERF-Social
+7925970,False,,,
+7925971,False,,,
+7925972,False,Media,Media,Media
+7925976,False,,,
+7925977,False,,,
+7926001,False,,,
+7926002,False,,,
+7926003,False,,,
+7926004,False,,,
+7926005,False,,,
+7926006,False,Sports-Prof,Sports-Prof,Sports-Prof
+7926007,False,,,
+7926008,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7926009,False,Insurance,Insurance,Insurance
+7926010,False,Insurance,Insurance,Insurance
+7926012,False,,,
+7926013,False,,,
+7926018,False,,,
+7926019,False,,,
+7926020,False,,,
+7926022,False,,,
+7926023,False,,,
+7926024,False,,,
+7926029,False,,,
+7926030,False,,,
+7926031,False,Insurance,Insurance,Insurance
+7926032,False,,,
+7926033,False,,,
+7926034,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7926036,False,,,
+7926038,False,,,
+7926039,False,,,
+7926040,False,,,
+7926042,False,SMERF-Social,SMERF-Social,SMERF-Social
+7926043,False,Medical/Health,Medical/Health,Medical/Health
+7926044,False,,,
+7926045,False,Financial,Financial,Financial
+7926046,False,,,
+7926054,True,Real Estate,Real Estate,Real Estate
+7926056,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7926057,False,,,
+7926058,False,,,
+7926060,False,,,
+7926061,False,Education-Other,Education-Other,Education-Other
+7926062,False,SMERF-Social,SMERF-Social,SMERF-Social
+7926063,False,SMERF-Social,SMERF-Social,SMERF-Social
+7926064,False,SMERF-Social,SMERF-Social,SMERF-Social
+7926065,False,SMERF-Social,SMERF-Social,SMERF-Social
+7926069,False,SMERF-Social,SMERF-Social,SMERF-Social
+7926071,False,,,
+7926072,False,,,
+7926074,False,,,
+7926077,False,,,
+7926080,False,,,
+7926081,False,,,
+7926082,False,,,
+7926083,False,,,
+7926085,False,,,
+7926088,False,,,
+7926089,False,,,
+7926091,False,,,
+7926092,False,,,
+7926093,False,,,
+7926097,False,,,
+7926099,False,Education-Other,Education-Other,Education-Other
+7926100,False,Financial,Financial,Financial
+7926102,False,,,
+7926103,False,,,
+7926104,False,,,
+7926105,False,,,
+7926106,False,,,
+7926107,False,Entertainment,Entertainment,Entertainment
+7926108,False,,,
+7926109,False,,,
+7926114,False,,,
+7926117,False,Technology,Technology,Technology
+7926118,False,,,
+7926120,False,,,
+7926121,False,,,
+7926122,False,,,
+7926124,False,,,
+7926125,False,,,
+7926126,False,,,
+7926128,False,,,
+7926133,False,,,
+7926135,False,,,
+7926136,False,,,
+7926138,False,,,
+7926139,False,,,
+7926154,False,,,
+7926155,False,,,
+7926157,False,,,
+7926158,False,,,
+7926159,False,,,
+7926160,False,,,
+7926161,False,,,
+7926162,False,,,
+7926163,False,,,
+7926164,False,,,
+7926171,False,,,
+7926173,True,Retail Stores/Wholesale Outlets,,Retail Stores/Wholesale Outlets
+7926174,False,,,
+7926175,False,,,
+7926176,False,,,
+7926177,False,Consulting,Consulting,Consulting
+7926178,False,,,
+7926179,False,,,
+7926180,False,,,
+7926181,False,,,
+7926183,False,,,
+7926184,False,,,
+7926185,False,,,
+7926186,False,,,
+7926187,False,,,
+7926188,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7926189,False,,,
+7926190,False,Tour Groups,Tour Groups,Tour Groups
+7926191,False,,,
+7926192,False,,,
+7926193,False,Financial,Financial,Financial
+7926194,False,,,
+7926195,False,,,
+7926196,False,,,
+7926197,False,Insurance,Insurance,Insurance
+7926198,False,,,
+7926199,False,,,
+7926200,False,,,
+7926201,False,Consumer Products,Consumer Products,Consumer Products
+7926202,False,,,
+7926203,False,,,
+7926204,False,Tour Groups,Tour Groups,Tour Groups
+7926205,False,,,
+7926206,False,,,
+7926207,False,,,
+7926208,False,,,
+7926209,False,,,
+7926210,False,Medical/Health,Medical/Health,Medical/Health
+7926211,False,Financial,Financial,Financial
+7926212,False,,,
+7926213,False,,,
+7926220,False,,,
+7926223,False,,,
+7926227,False,Publishing,Publishing,Publishing
+7926228,False,Insurance,Insurance,Insurance
+7926229,False,,,
+7926230,False,,,
+7926231,False,,,
+7926232,False,,,
+7926233,False,,,
+7926234,False,,,
+7926235,False,Technology,Technology,Technology
+7926236,False,,,
+7926237,False,,,
+7926238,False,,,
+7926239,False,,,
+7926240,False,,,
+7926241,False,,,
+7926242,False,,,
+7926243,False,,,
+7926244,False,,,
+7926245,False,,,
+7926246,False,,,
+7926247,False,,,
+7926248,False,,,
+7926249,False,,,
+7926250,False,,,
+7926251,False,,Medical/Health,Medical/Health
+7926252,False,,,
+7926253,False,,,
+7926254,False,,,
+7926255,False,Medical/Health,Medical/Health,Medical/Health
+7926256,False,,,
+7926257,False,,,
+7926258,False,,,
+7926259,False,Technology,Technology,Technology
+7926260,False,,,
+7926261,False,Consulting,Consulting,Consulting
+7926262,False,Utilities,Utilities,Utilities
+7926263,False,,,
+7926264,False,,,
+7926265,False,,,
+7926266,False,Insurance,Insurance,Insurance
+7926267,False,,,
+7926268,False,,,
+7926269,False,,,
+7926270,False,,,
+7926271,False,,,
+7926272,False,,,
+7926273,False,,,
+7926274,False,,,
+7926275,False,,,
+7926277,False,3rd Pty,3rd Pty,3rd Pty
+7926278,False,,,
+7926279,False,,,
+7926280,False,,,
+7926281,False,Legal,Legal,Legal
+7926282,False,Chemicals / Oil,Chemicals / Oil,Chemicals / Oil
+7926283,False,,,
+7926284,False,Legal,Legal,Legal
+7926285,False,Medical/Health,Medical/Health,Medical/Health
+7926286,False,,,
+7926289,False,,,
+7926290,False,,,
+7926291,False,,,
+7926292,False,,,
+7926293,False,,,
+7926294,False,,,
+7926295,False,,,
+7926296,False,,Technology,Technology
+7926297,False,,,
+7926298,False,,,
+7926299,False,,,
+7926300,False,Legal,Legal,Legal
+7926301,False,,,
+7926302,False,,,
+7926303,False,,,
+7926304,False,,,
+7926305,False,,,
+7926306,False,,,
+7926307,False,,,
+7926308,False,Medical/Health,Medical/Health,Medical/Health
+7926309,False,,,
+7926310,False,,,
+7926311,False,,,
+7926313,False,,,
+7926314,False,,,
+7926315,False,,,
+7926316,False,Government,Government,Government
+7926317,False,Media,Media,Media
+7926318,False,,,
+7926319,False,,,
+7926320,False,,,
+7926321,False,,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7926322,False,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets
+7926323,False,,,
+7926324,False,,,
+7926325,False,,,
+7926326,False,,,
+7926327,False,,,
+7926328,False,,,
+7926329,False,,,
+7926330,False,,,
+7926331,False,,,
+7926332,False,,,
+7926333,False,,,
+7926334,False,,,
+7926335,False,,,
+7926336,False,,,
+7926337,False,,,
+7926339,False,,,
+7926340,False,,,
+7926341,False,,,
+7926342,False,Food & Beverage,Food & Beverage,Food & Beverage
+7926343,True,Government,,Government
+7926344,False,,,
+7926345,False,,,
+7926346,False,,,
+7926347,False,,,
+7926348,False,Medical/Health,Medical/Health,Medical/Health
+7926349,False,,,
+7926350,False,Medical/Health,Medical/Health,Medical/Health
+7926351,False,,,
+7926352,False,,,
+7926353,False,,,
+7926354,False,,,
+7926355,False,travel/transport,travel/transport,travel/transport
+7926356,False,,,
+7926357,False,,,
+7926358,False,Technology,Technology,Technology
+7926359,False,Insurance,Insurance,Insurance
+7926360,False,,,
+7926361,False,,,
+7926362,False,,,
+7926363,False,Medical/Health,Medical/Health,Medical/Health
+7926364,False,,,
+7926365,False,Insurance,Insurance,Insurance
+7926366,False,,,
+7926367,False,,,
+7926368,False,,,
+7926370,False,,,
+7926371,False,,,
+7926372,False,,,
+7926373,False,,,
+7926374,False,Communications,Communications,Communications
+7926375,False,,,
+7926376,False,,,
+7926377,False,,,
+7926378,False,,,
+7926379,False,,,
+7926380,False,,,
+7926381,False,,,
+7926382,False,,,
+7926383,False,,,
+7926384,False,,,
+7926385,False,,,
+7926386,False,,,
+7926387,False,,,
+7926389,False,,,
+7926390,False,,,
+7926395,False,,,
+7926396,False,,,
+7926397,False,,,
+7926398,False,,,
+7926399,True,Technology,Financial,Technology
+7926400,False,,,
+7926401,False,Education-Other,Education-Other,Education-Other
+7926402,False,Construction/Archit,Construction/Archit,Construction/Archit
+7926403,False,Medical/Health,Medical/Health,Medical/Health
+7926404,False,,,
+7926406,False,,,
+7926407,False,SMERF-Social,SMERF-Social,SMERF-Social
+7926408,False,,,
+7926409,False,Insurance,Insurance,Insurance
+7926410,False,Medical/Health,Medical/Health,Medical/Health
+7926412,False,,,
+7926413,False,,,
+7926415,False,,,
+7926416,False,,,
+7926417,False,,,
+7926418,False,Technology,Technology,Technology
+7926419,False,,,
+7926420,False,,,
+7926422,False,,,
+7926423,False,,,
+7926424,False,,,
+7926425,False,,,
+7926426,False,,,
+7926427,False,,,
+7926428,False,,,
+7926437,False,Medical/Health,Medical/Health,Medical/Health
+7926438,False,,,
+7926439,False,,,
+7926440,False,,,
+7926441,False,,,
+7926442,False,,,
+7926443,False,,,
+7926444,False,,,
+7926445,False,Technology,Technology,Technology
+7926446,False,,,
+7926447,False,,,
+7926448,False,,,
+7926449,True,Publishing,,Publishing
+7926451,False,services-general,services-general,services-general
+7926452,False,,,
+7926453,False,,,
+7926454,False,,,
+7926455,False,,,
+7926456,False,,,
+7926457,False,,,
+7926458,False,,,
+7926459,False,,,
+7926460,False,,,
+7926461,False,,,
+7926462,False,,,
+7926463,False,,,
+7926464,False,,,
+7926465,False,,,
+7926466,False,Consulting,Consulting,Consulting
+7926467,False,,,
+7926469,False,,,
+7926470,False,Financial,Financial,Financial
+7926471,False,,,
+7926472,False,,,
+7926473,False,,,
+7926474,False,,,
+7926475,False,,,
+7926476,False,,,
+7926477,False,,,
+7926478,False,Medical/Health,Medical/Health,Medical/Health
+7926479,False,,,
+7926480,False,Publishing,Publishing,Publishing
+7926481,False,,,
+7926482,False,,,
+7926483,False,,,
+7926484,False,,,
+7926485,False,Construction/Archit,Construction/Archit,Construction/Archit
+7926486,False,,Tour Groups,Tour Groups
+7926487,False,,,
+7926488,False,,,
+7926489,False,,,
+7926490,False,,,
+7926491,False,,,
+7926492,False,SMERF-Social,SMERF-Social,SMERF-Social
+7926493,False,Real Estate,Real Estate,Real Estate
+7926494,False,,,
+7926495,False,,,
+7926496,False,3rd Pty,3rd Pty,3rd Pty
+7926497,False,3rd Pty,3rd Pty,3rd Pty
+7926498,False,,,
+7926499,False,,3rd Pty,3rd Pty
+7926500,False,,,
+7926501,False,3rd Pty,3rd Pty,3rd Pty
+7926502,False,,,
+7926503,False,,,
+7926504,False,,,
+7926505,False,Technology,Technology,Technology
+7926506,False,Technology,Technology,Technology
+7926507,False,3rd Pty,3rd Pty,3rd Pty
+7926508,False,3rd Pty,3rd Pty,3rd Pty
+7926509,False,3rd Pty,3rd Pty,3rd Pty
+7926510,False,,,
+7926511,False,,,
+7926512,False,,,
+7926513,False,Services-General,Services-General,Services-General
+7926514,False,Technology,Technology,Technology
+7926515,False,,,
+7926516,False,,,
+7926517,False,Tour Groups,Tour Groups,Tour Groups
+7926518,False,Technology,Technology,Technology
+7926519,False,,,
+7926523,False,,,
+7926524,False,,,
+7926525,False,,,
+7926526,False,,,
+7926527,False,,,
+7926528,False,,,
+7926529,False,,,
+7926530,False,,,
+7926531,False,,,
+7926532,False,,,
+7926533,False,,,
+7926534,False,,,
+7926535,False,,,
+7926536,False,,,
+7926537,False,,,
+7926538,False,Chemicals / Oil,Chemicals / Oil,Chemicals / Oil
+7926539,True,,,Entertainment
+7926540,False,,,
+7926541,True,,,Consulting
+7926542,False,Financial,Financial,Financial
+7926543,False,,,
+7926544,False,,,
+7926545,False,,,
+7926546,False,,,
+7926548,False,Financial,Financial,Financial
+7926549,False,,,
+7926550,False,,,
+7926551,False,SMERF-Social,SMERF-Social,SMERF-Social
+7926552,False,,,
+7926553,False,Financial,Financial,Financial
+7926554,False,,,
+7926555,False,,,
+7926556,False,,,
+7926557,False,,,
+7926559,False,,,
+7926560,False,,,
+7926561,False,Consulting,Financial,Financial
+7926563,False,Financial,Financial,Financial
+7926564,False,,,
+7926565,False,Technology,Technology,Technology
+7926566,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7926567,False,Medical/Health,Medical/Health,Medical/Health
+7926568,False,,,
+7926569,False,,,
+7926570,False,,,
+7926571,False,Technology,Technology,Technology
+7926574,False,Construction/Archit,Construction/Archit,Construction/Archit
+7926576,False,,,
+7926577,False,,,
+7926578,False,,,
+7926581,False,Services-General,Services-General,Services-General
+7926584,False,,,
+7926587,False,,,
+7926588,False,,,
+7926589,False,,,
+7926593,False,,,
+7926594,False,,,
+7926595,False,,,
+7926596,False,,,
+7926598,False,,,
+7926602,False,,,
+7926604,False,Manufacturing,Manufacturing,Manufacturing
+7926605,False,,,
+7926606,False,,,
+7926607,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7926608,False,,,
+7926609,False,Insurance,Insurance,Insurance
+7926610,False,,,
+7926611,False,,,
+7926612,False,,,
+7926613,False,,,
+7926614,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7926637,False,Financial,Financial,Financial
+7926638,False,Technology,Technology,Technology
+7926639,False,,,
+7926640,False,Accounting,Accounting,Accounting
+7926641,False,Accounting,Accounting,Accounting
+7926642,False,Financial,Financial,Financial
+7926643,False,,,
+7926644,True,Sports-Not Yet Classified,Technology,Sports-Not Yet Classified
+7926645,False,Chemicals / Oil,Chemicals / Oil,Chemicals / Oil
+7926646,False,Communications,Communications,Communications
+7926647,False,Technology,Technology,Technology
+7926648,False,Consulting,Consulting,Consulting
+7926649,False,Entertainment,Entertainment,Entertainment
+7926650,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7926651,False,Medical/Health,Medical/Health,Medical/Health
+7926652,False,Medical/Health,Medical/Health,Medical/Health
+7926653,False,Technology,Technology,Technology
+7926654,False,Technology,Technology,Technology
+7926655,False,,,
+7926656,False,3rd Pty,3rd Pty,3rd Pty
+7926657,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7926658,False,Insurance,Insurance,Insurance
+7926659,False,Education-Other,Education-Other,Education-Other
+7926660,False,,,
+7926661,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7926662,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7926663,False,Construction/Archit,Construction/Archit,Construction/Archit
+7926664,False,,,
+7926665,False,Entertainment,Entertainment,Entertainment
+7926666,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7926667,False,,,
+7926668,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7926669,False,,,
+7926670,False,Education-Other,Education-Other,Education-Other
+7926671,False,Consumer Products,Consumer Products,Consumer Products
+7926672,False,Technology,Technology,Technology
+7926673,False,,,
+7926674,False,Legal,Legal,Legal
+7926675,False,Legal,Legal,Legal
+7926676,False,Technology,Technology,Technology
+7926677,False,Consulting,Consulting,Consulting
+7926678,False,Technology,Technology,Technology
+7926679,False,Education-Collegiate,Education-Collegiate,Education-Collegiate
+7926680,False,Technology,Technology,Technology
+7926681,False,Manufacturing,Manufacturing,Manufacturing
+7926682,False,Technology,Technology,Technology
+7926683,False,Services-General,Services-General,Services-General
+7926684,False,Utilities,Utilities,Utilities
+7926693,True,Advertising,Communications,Advertising
+7926694,False,Technology,Technology,Technology
+7926695,False,,,
+7926696,False,,,
+7926697,False,Insurance,Insurance,Insurance
+7926698,False,,,
+7926699,False,Financial,Financial,Financial
+7926700,False,Financial,Financial,Financial
+7926701,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7926702,False,,,
+7926703,False,Technology,Technology,Technology
+7926704,False,Aerospace & Engineering,Aerospace & Engineering,Aerospace & Engineering
+7926705,False,Education-Collegiate,Education-Collegiate,Education-Collegiate
+7926706,False,Technology,Technology,Technology
+7926707,False,Entertainment,Entertainment,Entertainment
+7926708,False,,,
+7926709,False,,,
+7926710,True,Technology,3rd Pty,Technology
+7926724,False,Media,Media,Media
+7926735,False,Education-Other,Education-Other,Education-Other
+7926736,False,Government,Government,Government
+7926737,False,Technology,Technology,Technology
+7926738,False,,,
+7926739,False,Medical/Health,Medical/Health,Medical/Health
+7926740,False,Technology,Technology,Technology
+7926741,False,Tour Groups,Tour Groups,Tour Groups
+7926742,True,Communications,Pharmaceuticals,Communications
+7926743,False,Medical/Health,Medical/Health,Medical/Health
+7926744,False,Medical/Health,Medical/Health,Medical/Health
+7926745,False,Medical/Health,Medical/Health,Medical/Health
+7926746,False,Services-General,Services-General,Services-General
+7926747,False,Manufacturing,Manufacturing,Manufacturing
+7926748,False,Technology,Technology,Technology
+7926749,False,Financial,Financial,Financial
+7926750,False,,,
+7926751,False,Technology,Technology,Technology
+7926752,False,Technology,Technology,Technology
+7926753,False,Education-Other,Education-Other,Education-Other
+7926754,False,Technology,Technology,Technology
+7926755,False,Services-General,Services-General,Services-General
+7926756,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7926757,False,Consulting,Consulting,Consulting
+7926758,False,Medical/Health,Medical/Health,Medical/Health
+7926759,False,Technology,Technology,Technology
+7926760,False,,,
+7926761,False,,,
+7926762,False,Services-General,Services-General,Services-General
+7926763,False,,,
+7926764,False,Medical/Health,Medical/Health,Medical/Health
+7926765,False,Consulting,Consulting,Consulting
+7926766,False,3rd Pty,3rd Pty,3rd Pty
+7926767,False,Legal,Legal,Legal
+7926768,False,Education-Other,Education-Other,Education-Other
+7926769,False,Consulting,Consulting,Consulting
+7926770,False,Consulting,Consulting,Consulting
+7926771,False,,,
+7926772,False,,,
+7926773,False,Insurance,Insurance,Insurance
+7926774,False,Insurance,Insurance,Insurance
+7926775,False,,,
+7926776,False,,,
+7926781,False,Technology,Technology,Technology
+7926788,False,Construction/Archit,Construction/Archit,Construction/Archit
+7926789,False,Consulting,Consulting,Consulting
+7926790,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7926791,False,SMERF-Clubs/Non-Profit,Education-Other,Education-Other
+7926792,False,Financial,Financial,Financial
+7926793,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7926794,False,Manufacturing,Manufacturing,Manufacturing
+7926795,False,Technology,Technology,Technology
+7926796,False,,,
+7926797,False,,,
+7926798,False,Manufacturing,Manufacturing,Manufacturing
+7926799,False,Education-Other,Education-Other,Education-Other
+7926800,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7926801,False,Aerospace & Engineering,Aerospace & Engineering,Aerospace & Engineering
+7926802,False,Services-General,Services-General,Services-General
+7926803,False,,,
+7926804,False,Tour Groups,Tour Groups,Tour Groups
+7926805,False,Automotive,Automotive,Automotive
+7926806,False,Services-General,Services-General,Services-General
+7926807,False,Services-General,Services-General,Services-General
+7926808,False,Technology,Technology,Technology
+7926809,False,Communications,Communications,Communications
+7926810,False,Medical/Health,Medical/Health,Medical/Health
+7926811,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7926812,False,Technology,Technology,Technology
+7926813,False,Consulting,Consulting,Consulting
+7926814,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7926815,False,,,
+7926816,False,,,
+7926817,False,Manufacturing,Manufacturing,Manufacturing
+7926818,False,Tour Groups,Tour Groups,Tour Groups
+7926819,False,Technology,Technology,Technology
+7926820,False,,,
+7926822,False,3rd Pty,3rd Pty,3rd Pty
+7926823,False,3rd Pty,3rd Pty,3rd Pty
+7926824,False,,,
+7926825,False,Technology,Technology,Technology
+7926826,False,,,
+7926827,False,,,
+7926828,False,Tour Groups,Tour Groups,Tour Groups
+7926833,False,,,
+7926834,False,Technology,Technology,Technology
+7926835,False,Consulting,Consulting,Consulting
+7926836,False,3rd Pty,3rd Pty,3rd Pty
+7926837,False,3rd Pty,3rd Pty,3rd Pty
+7926838,False,,,
+7926839,False,,3rd Pty,3rd Pty
+7926840,False,Tour Groups,Tour Groups,Tour Groups
+7926844,False,,,
+7926845,False,,,
+7926846,False,,,
+7926847,False,,,
+7926848,False,,,
+7926849,False,,,
+7926850,False,,,
+7926851,False,Consulting,Consulting,Consulting
+7926852,False,,,
+7926853,False,,,
+7926854,False,,,
+7926855,False,,,
+7926856,False,,,
+7926857,False,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni
+7926858,False,,,
+7926859,False,,,
+7926860,False,,,
+7926861,False,Technology,Technology,Technology
+7926862,False,Financial,Financial,Financial
+7926863,False,,,
+7926864,False,Agriculture,Agriculture,Agriculture
+7926865,False,,,
+7926866,False,,,
+7926867,False,Medical/Health,Medical/Health,Medical/Health
+7926868,False,,,
+7926869,False,,,
+7926870,False,Hospitality,Hospitality,Hospitality
+7926871,False,,,
+7926872,False,,,
+7926873,False,Medical/Health,Medical/Health,Medical/Health
+7926874,False,,,
+7926875,False,Food & Beverage,Food & Beverage,Food & Beverage
+7926876,False,,,
+7926877,False,,,
+7926878,False,,,
+7926879,False,Education-Collegiate,Education-Collegiate,Education-Collegiate
+7926880,False,,,
+7926881,False,,,
+7926882,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7926883,False,,,
+7926892,False,3rd Pty,3rd Pty,3rd Pty
+7926893,False,,,
+7926894,False,,,
+7926895,False,,,
+7926896,False,,,
+7926897,False,,,
+7926898,False,,,
+7926899,False,,,
+7926900,False,Publishing,Publishing,Publishing
+7926901,False,Financial,Financial,Financial
+7926902,False,,Technology,Technology
+7926903,False,,,
+7926904,False,,Technology,Technology
+7926905,False,,,
+7926906,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7926907,False,,,
+7926909,False,Medical/Health,Medical/Health,Medical/Health
+7926910,False,Technology,Technology,Technology
+7926911,False,,,
+7926912,False,,,
+7926913,False,,,
+7926914,False,,,
+7926915,False,,,
+7926918,False,,,
+7926919,False,,,
+7926920,False,,,
+7926921,False,,,
+7926922,False,,,
+7926923,False,,,
+7926924,False,Technology,Technology,Technology
+7926925,False,,,
+7926926,False,,,
+7926927,False,,,
+7926928,False,Education-Other,Education-Other,Education-Other
+7926929,False,,,
+7926930,False,,,
+7926931,False,,,
+7926932,False,,,
+7926933,False,,,
+7926934,False,,,
+7926935,False,,,
+7926936,False,,,
+7926937,False,3rd Pty,3rd Pty,3rd Pty
+7926938,False,,,
+7926939,False,,,
+7926940,False,,,
+7926941,False,,,
+7926942,False,,,
+7926943,False,,,
+7926944,False,,,
+7926945,False,,,
+7926946,False,,,
+7926947,False,,,
+7926948,False,,,
+7926949,False,SMERF-Social,SMERF-Social,SMERF-Social
+7926950,False,Real Estate,Real Estate,Real Estate
+7926951,False,Agriculture,Agriculture,Agriculture
+7926952,False,,,
+7926953,False,,,
+7926954,False,Food & Beverage,Food & Beverage,Food & Beverage
+7926955,False,,,
+7926956,False,,,
+7926957,False,Utilities,Utilities,Utilities
+7926958,False,,,
+7926959,True,Tour Groups,,Tour Groups
+7926960,False,,,
+7926961,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7926962,False,,Medical/Health,Medical/Health
+7926963,False,,,
+7926964,False,,,
+7926965,False,,,
+7926966,False,,,
+7926967,False,Education-Other,Education-Other,Education-Other
+7926968,False,,,
+7926969,False,Medical/Health,Medical/Health,Medical/Health
+7926970,False,Education-Other,Education-Other,Education-Other
+7926971,False,,,
+7926972,False,,,
+7926973,False,,,
+7926974,False,Insurance,Insurance,Insurance
+7926975,False,Food & Beverage,Food & Beverage,Food & Beverage
+7926976,True,SMERF-Not Yet Classified,SMERF-Religious,SMERF-Not Yet Classified
+7926977,False,,,
+7926978,False,,,
+7926979,False,,,
+7926980,False,,,
+7926981,False,,,
+7926982,False,,,
+7926983,False,,,
+7926984,False,,,
+7926985,False,,,
+7926986,False,Medical/Health,Medical/Health,Medical/Health
+7926987,False,Education-Collegiate,Education-Collegiate,Education-Collegiate
+7926988,False,SMERF-Social,SMERF-Social,SMERF-Social
+7926989,False,,,
+7926990,False,,,
+7926991,False,,,
+7926992,False,,,
+7926993,False,Aerospace & Engineering,Aerospace & Engineering,Aerospace & Engineering
+7926994,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7926995,False,,,
+7926996,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7926997,False,,,
+7926998,False,,,
+7926999,False,,,
+7927000,False,,,
+7927001,False,,,
+7927002,False,,,
+7927003,False,,,
+7927004,False,,,
+7927005,False,,,
+7927006,False,,,
+7927007,False,,,
+7927008,False,Sports-Prof,Sports-Prof,Sports-Prof
+7927009,False,,,
+7927010,False,,,
+7927011,False,,,
+7927012,False,,,
+7927013,False,,,
+7927014,False,Manufacturing,Manufacturing,Manufacturing
+7927015,False,,,
+7927016,False,,,
+7927017,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7927018,False,,,
+7927019,False,,,
+7927020,False,Services-General,Services-General,Services-General
+7927021,False,,,
+7927022,False,Services-General,Services-General,Services-General
+7927023,False,,,
+7927024,False,Entertainment,Entertainment,Entertainment
+7927029,False,,,
+7927030,False,,,
+7927031,False,,,
+7927032,False,,,
+7927033,False,Food & Beverage,Food & Beverage,Food & Beverage
+7927036,False,,,
+7927038,False,,,
+7927042,False,,,
+7927043,False,,,
+7927044,False,,,
+7927045,False,,,
+7927046,True,,Sports-Amateur,
+7927047,False,,,
+7927048,False,,,
+7927049,False,SMERF-Unions,SMERF-Unions,SMERF-Unions
+7927050,True,Technology,Technology,Technology
+7927051,False,,,
+7927052,False,,,
+7927053,False,,,
+7927054,False,Aerospace & Engineering,Aerospace & Engineering,Aerospace & Engineering
+7927055,False,,,
+7927056,False,,,
+7927057,False,,,
+7927058,False,,,
+7927059,False,,,
+7927060,False,,,
+7927061,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7927062,False,,,
+7927063,False,,3rd Pty,3rd Pty
+7927064,True,,,
+7927065,False,,,
+7927066,False,,,
+7927067,False,,,
+7927068,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7927069,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7927070,False,,,
+7927071,False,Education-Other,Education-Other,Education-Other
+7927072,False,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni
+7927073,False,SMERF-Cultural,SMERF-Cultural,SMERF-Cultural
+7927074,False,,,
+7927075,False,,,
+7927076,False,3rd Pty,3rd Pty,3rd Pty
+7927077,True,,,
+7927078,False,,,
+7927079,False,Financial,Financial,Financial
+7927080,False,Financial,Financial,Financial
+7927081,False,,,
+7927082,False,,,
+7927083,False,,,
+7927085,False,,,
+7927086,False,Utilities,Utilities,Utilities
+7927087,False,,,
+7927088,False,Chemicals / Oil,Chemicals / Oil,Chemicals / Oil
+7927089,False,,,
+7927090,False,Government,Government,Government
+7927091,False,,,
+7927092,False,,,
+7927093,False,,,
+7927094,False,Agriculture,Agriculture,Agriculture
+7927095,False,,,
+7927096,False,,,
+7927097,False,,,
+7927098,False,,,
+7927099,False,,,
+7927100,False,,,
+7927101,False,,,
+7927102,False,,,
+7927103,False,,,
+7927104,False,,,
+7927105,False,,,
+7927106,False,,,
+7927107,False,,,
+7927108,False,,,
+7927109,False,3rd Pty,3rd Pty,3rd Pty
+7927110,False,,,
+7927111,False,,,
+7927112,False,,,
+7927122,False,Technology,Technology,Technology
+7927123,False,,,
+7927124,False,Real Estate,Real Estate,Real Estate
+7927125,False,Communications,Communications,Communications
+7927126,False,,,
+7927127,False,Financial,Financial,Financial
+7927128,False,Transportation,Transportation,Transportation
+7927129,False,,,
+7927130,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7927148,False,SMERF-Social,SMERF-Social,SMERF-Social
+7927150,False,SMERF-Social,SMERF-Social,SMERF-Social
+7927152,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7927153,False,Technology,Technology,Technology
+7927154,False,,,
+7927155,False,,,
+7927156,False,,Utilities,Utilities
+7927157,False,Construction/Archit,Construction/Archit,Construction/Archit
+7927158,False,,,
+7927159,False,Technology,Technology,Technology
+7927160,False,,,
+7927161,False,Technology,Technology,Technology
+7927162,False,,,
+7927163,False,Financial,Financial,Financial
+7927165,False,,,
+7927166,False,,,
+7927167,False,,Insurance,Insurance
+7927168,False,Manufacturing,Manufacturing,Manufacturing
+7927169,False,,,
+7927170,True,,,
+7927171,False,Services-General,Services-General,Services-General
+7927172,False,Tour Groups,Tour Groups,Tour Groups
+7927173,False,,,
+7927174,False,,,
+7927175,False,,,
+7927176,False,,,
+7927177,False,,,
+7927178,False,,,
+7927179,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7927180,False,,,
+7927181,False,,,
+7927182,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7927183,False,Incentive,Incentive,Incentive
+7927184,False,,,
+7927185,False,,,
+7927187,False,SMERF-Social,SMERF-Social,SMERF-Social
+7927189,False,,,
+7927193,False,,,
+7927194,False,,,
+7927195,False,,,
+7927196,False,,,
+7927202,False,,,
+7927205,False,,,
+7927206,False,,,
+7927207,True,SMERF-Clubs/Non-Profit,,SMERF-Clubs/Non-Profit
+7927208,False,Communications,Communications,Communications
+7927212,False,Medical/Health,Medical/Health,Medical/Health
+7927214,False,Services-General,Services-General,Services-General
+7927220,False,Services-General,Services-General,Services-General
+7927222,False,Services-General,Services-General,Services-General
+7927226,False,Financial,Financial,Financial
+7927227,False,,,
+7927228,False,SMERF-Social,SMERF-Social,SMERF-Social
+7927236,False,,,
+7927237,False,,,
+7927238,False,Medical/Health,Medical/Health,Medical/Health
+7927240,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7927241,False,,,
+7927242,False,,,
+7927243,False,Construction/Archit,Construction/Archit,Construction/Archit
+7927244,False,,,
+7927245,False,Insurance,Insurance,Insurance
+7927246,False,,,
+7927247,False,Consulting,Consulting,Consulting
+7927248,False,,,
+7927249,False,,,
+7927250,True,,,
+7927251,False,,,
+7927252,False,Medical/Health,Medical/Health,Medical/Health
+7927253,False,Financial,Financial,Financial
+7927254,False,Medical/Health,Medical/Health,Medical/Health
+7927255,True,,,
+7927256,False,,,
+7927257,False,,,
+7927258,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7927259,False,Manufacturing,Manufacturing,Manufacturing
+7927260,False,,,
+7927262,False,Technology,Technology,Technology
+7927263,False,Manufacturing,Manufacturing,Manufacturing
+7927265,False,,,
+7927266,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7927267,False,Legal,Legal,Legal
+7927268,False,,,
+7927270,False,,,
+7927271,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7927272,False,,,
+7927273,False,,3rd Pty,3rd Pty
+7927274,False,3rd Pty,3rd Pty,3rd Pty
+7927275,False,3rd Pty,3rd Pty,3rd Pty
+7927276,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7927277,False,Education-Other,Education-Other,Education-Other
+7927278,False,Education-Other,Education-Other,Education-Other
+7927279,False,Education-Other,Education-Other,Education-Other
+7927280,False,Education-Other,Education-Other,Education-Other
+7927281,False,Education-Other,Education-Other,Education-Other
+7927282,False,Government,Government,Government
+7927283,False,SMERF-Military,SMERF-Military,SMERF-Military
+7927284,False,Government,Government,Government
+7927285,False,,,
+7927286,False,Entertainment,Entertainment,Entertainment
+7927287,False,,,
+7927294,False,SMERF-Social,SMERF-Social,SMERF-Social
+7927295,False,SMERF-Social,SMERF-Social,SMERF-Social
+7927297,False,Technology,Technology,Technology
+7927298,False,Medical/Health,Medical/Health,Medical/Health
+7927299,False,SMERF-Not Yet Classified,SMERF-Not Yet Classified,SMERF-Not Yet Classified
+7927300,False,Sports-Amateur,Sports-Amateur,Sports-Amateur
+7927302,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7927303,False,,,
+7927304,False,Education-Collegiate,Education-Collegiate,Education-Collegiate
+7927305,False,,,
+7927306,False,Consulting,Consulting,Consulting
+7927309,False,Manufacturing,Manufacturing,Manufacturing
+7927311,False,Construction/Archit,Construction/Archit,Construction/Archit
+7927312,False,Construction/Archit,Construction/Archit,Construction/Archit
+7927314,False,,,
+7927316,False,,,
+7927317,False,,,
+7927318,False,,,
+7927319,False,Financial,Financial,Financial
+7927320,False,,,
+7927321,False,,,
+7927322,False,,,
+7927323,False,,,
+7927324,False,,,
+7927325,False,,,
+7927326,False,,,
+7927327,False,,,
+7927328,False,,,
+7927329,False,,,
+7927330,False,Insurance,Insurance,Insurance
+7927331,False,,,
+7927332,False,,,
+7927333,False,,,
+7927334,False,,,
+7927335,False,,,
+7927336,False,,,
+7927337,False,,,
+7927339,False,,,
+7927340,False,,,
+7927341,False,,,
+7927342,False,,,
+7927343,False,,,
+7927344,False,,,
+7927345,False,,,
+7927346,False,,,
+7927347,False,,,
+7927348,False,,,
+7927349,False,,,
+7927350,False,,,
+7927351,False,,,
+7927352,False,,,
+7927353,False,,,
+7927354,False,,,
+7927355,False,,,
+7927356,False,,,
+7927357,False,,,
+7927358,False,Education-Collegiate,Education-Collegiate,Education-Collegiate
+7927359,False,,,
+7927360,False,,,
+7927361,False,Medical/Health,Medical/Health,Medical/Health
+7927362,False,,,
+7927363,False,,,
+7927364,False,,,
+7927365,False,,,
+7927366,False,Manufacturing,Manufacturing,Manufacturing
+7927367,False,,,
+7927368,False,,,
+7927369,False,,,
+7927370,False,,,
+7927371,False,,,
+7927372,False,,,
+7927374,False,Education-Collegiate,Education-Collegiate,Education-Collegiate
+7927375,False,,,
+7927376,False,Government,Government,Government
+7927377,False,,,
+7927378,False,,,
+7927379,False,,,
+7927380,False,,,
+7927381,False,,,
+7927382,False,Consulting,Consulting,Consulting
+7927383,False,Communications,Communications,Communications
+7927384,False,Agriculture,Agriculture,Agriculture
+7927385,False,,,
+7927386,False,,,
+7927387,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7927388,False,,,
+7927389,False,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets
+7927390,False,Financial,Financial,Financial
+7927391,False,Media,Media,Media
+7927392,False,,,
+7927393,False,Education-Collegiate,Education-Collegiate,Education-Collegiate
+7927394,False,3rd Pty,3rd Pty,3rd Pty
+7927395,False,,3rd Pty,3rd Pty
+7927396,False,Tour Groups,Tour Groups,Tour Groups
+7927397,False,3rd Pty,3rd Pty,3rd Pty
+7927398,False,Government,Government,Government
+7927399,False,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni
+7927400,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7927401,False,,Technology,Technology
+7927402,False,,,
+7927403,False,Tour Groups,Tour Groups,Tour Groups
+7927404,False,Consumer Products,Consumer Products,Consumer Products
+7927405,False,,,
+7927406,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7927407,False,,,
+7927408,False,,,
+7927409,False,,,
+7927410,False,,,
+7927411,False,,,
+7927412,False,,,
+7927413,False,,,
+7927414,False,,,
+7927415,False,,,
+7927416,False,,,
+7927417,False,Education-Collegiate,Education-Collegiate,Education-Collegiate
+7927418,False,,,
+7927419,False,,,
+7927420,False,,,
+7927421,False,,,
+7927422,False,,House Account,House Account
+7927423,False,Medical/Health,Medical/Health,Medical/Health
+7927424,False,,,
+7927425,False,,,
+7927426,False,,,
+7927427,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7927429,False,,,
+7927431,False,,,
+7927432,False,,,
+7927434,False,,,
+7927438,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7927439,False,3rd Pty,3rd Pty,3rd Pty
+7927440,False,,,
+7927441,False,Tour Groups,Tour Groups,Tour Groups
+7927442,False,,,
+7927443,False,,,
+7927444,False,,,
+7927445,False,,,
+7927446,False,,,
+7927447,False,,,
+7927454,False,3rd Pty,3rd Pty,3rd Pty
+7927455,False,,,
+7927456,False,,,
+7927457,False,,,
+7927458,False,,,
+7927459,False,,,
+7927460,True,,,
+7927461,False,,,
+7927462,True,,,Consulting
+7927463,False,,,
+7927464,False,,,
+7927465,False,Technology,Technology,Technology
+7927466,False,,,
+7927467,False,Entertainment,Entertainment,Entertainment
+7927468,False,,,
+7927469,False,Medical/Health,Medical/Health,Medical/Health
+7927470,False,,,
+7927471,False,,,
+7927472,False,Manufacturing,Manufacturing,Manufacturing
+7927473,False,Food & Beverage,Food & Beverage,Food & Beverage
+7927474,False,Manufacturing,Manufacturing,Manufacturing
+7927475,False,,,
+7927476,False,,,
+7927477,False,financial,financial,financial
+7927478,False,financial,financial,financial
+7927479,False,,,
+7927480,False,,,
+7927481,False,,Pharmaceuticals,Pharmaceuticals
+7927482,False,Medical/Health,Medical/Health,Medical/Health
+7927483,False,,,
+7927484,False,,,
+7927485,False,Medical/Health,Medical/Health,Medical/Health
+7927486,False,,,
+7927487,False,,,
+7927488,False,,,
+7927489,False,,,
+7927490,False,,,
+7927491,False,Consulting,Consulting,Consulting
+7927492,False,,,
+7927493,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7927494,False,,,
+7927495,False,,,
+7927496,False,Medical/Health,Medical/Health,Medical/Health
+7927497,True,Chemicals / Oil,Chemicals / Oil,Chemicals / Oil
+7927498,False,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets
+7927499,False,,,
+7927500,False,Medical/Health,Medical/Health,Medical/Health
+7927501,False,Financial,Financial,Financial
+7927502,False,Medical/Health,Medical/Health,Medical/Health
+7927503,False,,,
+7927504,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7927505,False,,,
+7927506,False,Technology,Technology,Technology
+7927507,False,Consulting,Consulting,Consulting
+7927508,False,,,
+7927509,False,,,
+7927510,False,,,
+7927511,False,,,
+7927512,False,House Account,House Account,House Account
+7927513,False,Medical/Health,Medical/Health,Medical/Health
+7927514,False,,,
+7927515,False,,Manufacturing,Manufacturing
+7927516,False,,,
+7927517,False,Services-General,Services-General,Services-General
+7927518,False,Consumer Products,Consumer Products,Consumer Products
+7927519,False,3rd Pty,3rd Pty,3rd Pty
+7927520,False,,,
+7927521,False,Services-General,Services-General,Services-General
+7927522,False,,,
+7927523,False,Medical/Health,Medical/Health,Medical/Health
+7927524,False,Food & Beverage,Food & Beverage,Food & Beverage
+7927525,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7927526,False,,,
+7927527,False,3rd Pty,3rd Pty,3rd Pty
+7927528,False,Medical/Health,Medical/Health,Medical/Health
+7927529,True,Media,,Media
+7927530,False,,,
+7927531,False,,,
+7927532,False,,,
+7927533,False,,,
+7927534,False,,,
+7927535,False,,,
+7927536,False,,,
+7927537,False,,,
+7927538,False,,,
+7927539,False,,,
+7927540,False,,,
+7927541,False,,,
+7927546,False,,,
+7927547,False,,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets
+7927548,False,,,
+7927549,False,,,
+7927550,False,Education-Other,Education-Other,Education-Other
+7927551,False,Consulting,Consulting,Consulting
+7927552,False,Technology,Technology,Technology
+7927553,False,,,
+7927556,False,,,
+7927557,False,Real Estate,Real Estate,Real Estate
+7927558,False,Automotive,Automotive,Automotive
+7927559,False,Consulting,Consulting,Consulting
+7927560,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7927561,False,,,
+7927562,False,Medical/Health,Medical/Health,Medical/Health
+7927563,False,,,
+7927564,False,,Legal,Legal
+7927565,False,,,
+7927566,False,,,
+7927567,False,Medical/Health,Medical/Health,Medical/Health
+7927568,False,Construction/Archit,Construction/Archit,Construction/Archit
+7927569,False,Entertainment,Entertainment,Entertainment
+7927570,False,Manufacturing,Manufacturing,Manufacturing
+7927571,False,Medical/Health,Medical/Health,Medical/Health
+7927572,False,,,
+7927573,False,,Medical/Health,Medical/Health
+7927574,False,Technology,Technology,Technology
+7927575,False,Medical/Health,Medical/Health,Medical/Health
+7927576,False,,,
+7927577,False,,Technology,Technology
+7927578,False,Medical/Health,Medical/Health,Medical/Health
+7927579,False,,,
+7927580,False,Advertising,Advertising,Advertising
+7927581,True,,SMERF-Social,
+7927582,False,,,
+7927583,False,,Legal,Legal
+7927584,True,Services-General,,Services-General
+7927585,False,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni,SMERF-Fraternal/Alumni
+7927586,False,Financial,Financial,Financial
+7927587,False,Medical/Health,Medical/Health,Medical/Health
+7927588,False,,,
+7927589,False,,,
+7927590,False,,,
+7927591,False,Technology,Technology,Technology
+7927592,False,Technology,Financial,Financial
+7927593,False,,,
+7927594,False,Accounting,Accounting,Accounting
+7927595,False,Aerospace & Engineering,Aerospace & Engineering,Aerospace & Engineering
+7927596,True,Education-Other,Medical/Health,Education-Other
+7927597,False,,Communications,Communications
+7927598,False,,,
+7927599,False,,,
+7927600,False,Medical/Health,Medical/Health,Medical/Health
+7927601,False,Medical/Health,Medical/Health,Medical/Health
+7927602,False,Technology,Technology,Technology
+7927603,False,,,
+7927604,False,Food & Beverage,Food & Beverage,Food & Beverage
+7927605,False,,,
+7927606,False,Manufacturing,Manufacturing,Manufacturing
+7927607,True,Publishing,Consulting,Publishing
+7927608,False,,,
+7927609,False,Services-General,Services-General,Services-General
+7927610,False,,,
+7927611,False,,,
+7927612,False,,,
+7927613,False,Automotive,Automotive,Automotive
+7927614,False,,,
+7927615,False,Technology,Technology,Technology
+7927616,False,,,
+7927617,False,,,
+7927618,False,smerf-clubs/non-profit,smerf-clubs/non-profit,smerf-clubs/non-profit
+7927619,False,Technology,Technology,Technology
+7927620,False,Hospitality,Hospitality,Hospitality
+7927621,False,,,
+7927623,False,,,
+7927624,False,,,
+7927628,False,Construction/Archit,Construction/Archit,Construction/Archit
+7927629,False,Technology,Technology,Technology
+7927630,False,Technology,Technology,Technology
+7927631,False,,,
+7927632,False,Utilities,Utilities,Utilities
+7927633,False,Government,Government,Government
+7927634,False,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit,SMERF-Clubs/Non-Profit
+7927635,False,Legal,Legal,Legal
+7927636,False,Manufacturing,Manufacturing,Manufacturing
+7927637,False,,,
+7927638,False,Services-General,Services-General,Services-General
+7927643,False,Services-General,Services-General,Services-General
+7927646,False,Technology,Technology,Technology
+7927647,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7927648,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7927649,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7927650,False,Sports-Not Yet Classified,Sports-Not Yet Classified,Sports-Not Yet Classified
+7927652,True,3rd Pty,Tour Groups,3rd Pty
+7927653,False,Tour Groups,Tour Groups,Tour Groups
+7927654,False,Tour Groups,Tour Groups,Tour Groups
+7927655,False,Tour Groups,Tour Groups,Tour Groups
+7927656,False,Construction/Archit,Construction/Archit,Construction/Archit
+7927657,False,Medical/Health,Medical/Health,Medical/Health
+7927658,False,Manufacturing,Manufacturing,Manufacturing
+7927659,False,,,
+7927660,False,Agriculture,Agriculture,Agriculture
+7927661,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7927662,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7927663,False,,,
+7927664,False,SMERF-Social,SMERF-Social,SMERF-Social
+7927665,False,SMERF-Social,SMERF-Social,SMERF-Social
+7927666,False,SMERF-Unions,SMERF-Unions,SMERF-Unions
+7927667,False,Construction/Archit,Construction/Archit,Construction/Archit
+7927668,False,,,
+7927669,False,3rd Pty,3rd Pty,3rd Pty
+7927670,False,3rd Pty,3rd Pty,3rd Pty
+7927671,False,3rd Pty,3rd Pty,3rd Pty
+7927672,False,3rd Pty,3rd Pty,3rd Pty
+7927673,False,3rd Pty,3rd Pty,3rd Pty
+7927674,False,3rd Pty,3rd Pty,3rd Pty
+7927675,False,,,
+7927676,False,,,
+7927677,False,Tour Groups,Tour Groups,Tour Groups
+7927678,False,Entertainment,Entertainment,Entertainment
+7927679,False,,,
+7927680,False,,,
+7927682,False,,,
+7927683,False,Consumer Products,Consumer Products,Consumer Products
+7927684,False,,,
+7927685,False,3rd Pty,3rd Pty,3rd Pty
+7927686,False,,,
+7927687,False,Tour Groups,Tour Groups,Tour Groups
+7927688,False,,,
+7927689,False,,,
+7927690,False,,,
+7927691,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7927692,False,Consulting,Consulting,Consulting
+7927693,False,Advertising,Advertising,Advertising
+7927694,False,,,
+7927695,False,Technology,Technology,Technology
+7927696,False,,,
+7927697,False,Services-General,Retail Stores/Wholesale Outlets,Retail Stores/Wholesale Outlets
+7927698,False,,,
+7927699,False,SMERF-Religious,SMERF-Religious,SMERF-Religious
+7927700,True,Medical/Health,,Medical/Health
+7927701,False,Technology,Technology,Technology
+7927702,False,,,
+7927703,False,,,
+7927704,False,,,
+7927705,False,,,
+7927706,False,Consumer Products,Consumer Products,Consumer Products
+7927707,False,Technology,Technology,Technology
+7927708,False,,,
+7927709,False,,,
+7927710,False,,,
+7927711,False,,,
+7927713,False,Technology,Technology,Technology
+7927714,False,,,
+7927715,False,3rd Pty,3rd Pty,3rd Pty
+7927716,False,,,
+7927717,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7927718,False,3rd Pty,3rd Pty,3rd Pty
+7927719,False,,,
+7927720,False,,,
+7927722,False,Financial,Financial,Financial
+7927723,False,,,
+7927724,False,Financial,Financial,Financial
+7927725,False,,,
+7927726,False,,,
+7927727,False,Financial,Financial,Financial
+7927728,False,Technology,Technology,Technology
+7927729,False,Media,Media,Media
+7927730,False,,,
+7927731,False,,,
+7927732,True,,SMERF-Clubs/Non-Profit,
+7927733,False,,,
+7927734,False,,,
+7927735,False,Transportation,Transportation,Transportation
+7927736,False,medical/Health,medical/Health,medical/Health
+7927737,False,,,
+7927738,False,,,
+7927739,True,,,
+7927740,False,,,
+7927741,False,,,
+7927742,False,,,
+7927743,False,,,
+7927744,False,,,
+7927745,False,,,
+7927746,False,,,
+7927747,True,,,
+7927748,False,,,
+7927749,True,,,Consulting
+7927750,True,,,Consulting
+7927751,False,Legal,Legal,Legal
+7927752,False,,,
+7927773,False,,,
+7927774,False,,,
+7927775,False,Technology,Technology,Technology
+7927776,False,,,
+7927777,False,technology,technology,technology
+7927778,False,,,
+7927779,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7927780,False,,,
+7927781,False,,,
+7927782,False,,,
+7927784,False,,,
+7927785,False,Automotive,Automotive,Automotive
+7927786,False,,,
+7927801,False,,,
+7927802,False,,,
+7927803,False,,,
+7927804,False,,,
+7927805,False,Government,Government,Government
+7927806,False,,,
+7927807,False,,,
+7927808,False,,Legal,Legal
+7927809,False,Pharmaceuticals,Pharmaceuticals,Pharmaceuticals
+7927810,False,,,
+7927811,False,,,
+7927812,False,,,
+7927813,False,,,
+7927814,False,,,
+7927815,False,,,
+7927816,False,Consulting,Consulting,Consulting
+7927817,False,,,
+7927821,False,Manufacturing,Manufacturing,Manufacturing
+7927822,False,3rd Pty,3rd Pty,3rd Pty
+7927823,False,,,
+7927824,False,3rd Pty,3rd Pty,3rd Pty
+7927825,False,,,
+7927826,False,,,
+7927827,False,,,
+7927828,False,,,
+7927829,False,,,
+7927830,False,,,
+7927831,False,,,
+7927832,False,,,
+7927833,False,,,
+7927834,False,Food & Beverage,Food & Beverage,Food & Beverage
+7927835,False,,,
+7927836,False,,,
+7927837,False,,Tour Groups,Tour Groups
+7927838,False,Tour Groups,Tour Groups,Tour Groups
+7927839,False,Tour Groups,Tour Groups,Tour Groups
+7927840,False,,,
+7927841,False,,,
+7927842,False,,,
+7927843,False,,,
+7927845,False,,,
+7927846,False,,,
+7927847,False,,,
+7927848,False,,,
+7927849,False,,,
+7927850,False,,,
+7927851,False,,,
+7927852,False,,,
+7927853,False,,,
+7927854,False,,,
+7927855,False,,,
+7927856,False,,,
+7927857,False,,,
+7927859,False,3rd Pty,3rd Pty,3rd Pty
+7927860,False,,,
+7927861,False,Tour Groups,Tour Groups,Tour Groups
+7927862,False,,,
+7927864,False,,3rd Pty,3rd Pty
+7927865,False,,,
+7927866,False,3rd Pty,3rd Pty,3rd Pty
+7927867,False,,,
+7927868,False,,,
+7927869,False,3rd Pty,3rd Pty,3rd Pty
+7927870,False,,,
+7927871,False,3rd Pty,3rd Pty,3rd Pty
+7927872,False,,,

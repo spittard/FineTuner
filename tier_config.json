@@ -1,1 +1,6 @@
-{"high": 99, "medium": 70}
+{
+  "high": 95,
+  "good": 85,
+  "medium": 70,
+  "no_match": 55
+}

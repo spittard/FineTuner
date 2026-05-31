@@ -118,31 +118,36 @@ Examples:
         if not os.path.exists(load_file):
             print(f"Error: File not found: {load_file}")
             sys.exit(1)
-            
+
         print(f"\nAuto-loading from: {load_file}")
-        
-        # Determine cache key
+
+        from finetuner.core.matcher import CompanyMatcher, _load_active_model
+
+        active_model = _load_active_model()
+        cache_key = None
+        keys_to_try = []
+
         if args.cache_key:
-            cache_key = args.cache_key
+            keys_to_try = [args.cache_key]
         else:
-            # Try to find matching cache
-            from finetuner.core.matcher import CompanyMatcher
-            temp_matcher = CompanyMatcher()
+            temp_matcher = CompanyMatcher(model_name=active_model)
             file_cache_key = temp_matcher.get_cache_key_from_file(load_file)
             if file_cache_key:
-                # Try location version first
-                cache_key = file_cache_key + "_loc"
-                if not server.load_cache(cache_key):
-                    # Fall back to non-location version
-                    cache_key = file_cache_key
-                    if not server.load_cache(cache_key):
-                        print(f"Warning: No matching cache found for {load_file}")
-                        print("         Cache will be built on demand")
-                        cache_key = None
+                keys_to_try = [file_cache_key + "_loc", file_cache_key]
             else:
                 print(f"Warning: Could not determine cache key for {load_file}")
-                cache_key = None
-        
+
+        for ck in keys_to_try:
+            if server.load_cache(ck, model_name=active_model):
+                cache_key = ck
+                print(f"[OK] Loaded cache: {cache_key} (model={active_model})")
+                break
+
+        if keys_to_try and cache_key is None:
+            print(f"Warning: No cache on disk matched {load_file} for model {active_model}.")
+            print("         Use --cache-key <key> to load an existing index (see --list-caches).")
+            print("         Otherwise the index will be built on first use (full embedding run).")
+
         # Set up file watching if requested
         if args.watch and cache_key:
             server.watch_source(load_file, cache_key)

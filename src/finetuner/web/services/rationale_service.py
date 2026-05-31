@@ -1,5 +1,6 @@
 import re
 import logging
+import unicodedata
 
 logger = logging.getLogger(__name__)
 
@@ -10,7 +11,7 @@ class RationaleService:
     """
     
     @staticmethod
-    def generate_match_rationale(query, company_name, explanation, score):
+    def generate_match_rationale(query, company_name, explanation, score, query_city=None, query_state=None):
         """
         Generate match rationale explaining WHY a candidate is a good or bad match.
         
@@ -19,9 +20,15 @@ class RationaleService:
         2. Match Classification - What type of match
         3. Evidence - Score breakdown with interpretations
         4. Concept Analysis - Industry/category breakdown (if available)
+        
+        query_city / query_state: when the search used location, EXCELLENT is driven by the
+        unified 0-1 score (name+location), not by exact name alone.
         """
         query_lower = query.lower()
         company_lower = company_name.lower()
+        query_had_location = bool(
+            (str(query_city or "").strip()) or (str(query_state or "").strip())
+        )
         
         # Extract all scores
         string_score = explanation.get('string_score', 0.0)
@@ -32,17 +39,21 @@ class RationaleService:
         pop_boost = explanation.get('popularity_boost', 0.0)
         match_type = explanation.get('match_type', 'hybrid')
         
-        # Calculate final score percentage
-        score_pct = round(score * 100)
+        # One decimal matches search_service / plugging report (e.g. 99.9% vs rounding to 100%).
+        score_pct = round(float(score) * 100, 1)
         
         # --- VERDICT BANNER ---
-        verdict = RationaleService._get_verdict_banner(score_pct, string_score, sem_score, query_lower, company_lower, match_type)
+        verdict = RationaleService._get_verdict_banner(
+            score_pct, string_score, sem_score, query_lower, company_lower, match_type, query_had_location
+        )
         
         # --- MATCH CLASSIFICATION ---
         classification = RationaleService._get_match_classification(query, company_name, match_type, fidelity)
         
         # --- EVIDENCE TABLE ---
-        evidence = RationaleService._build_evidence_section(explanation, query, company_name)
+        evidence = RationaleService._build_evidence_section(
+            explanation, query, company_name, query_city, query_state
+        )
         
         # --- CONCEPT ANALYSIS ---
         concept_section = ""
@@ -58,10 +69,11 @@ class RationaleService:
         return rationale
     
     @staticmethod
-    def _get_verdict_banner(score_pct, string_score, sem_score, query_lower, company_lower, match_type):
+    def _get_verdict_banner(score_pct, string_score, sem_score, query_lower, company_lower, match_type, query_had_location=False):
         """Generate single-line verdict banner: [ICON] [STRENGTH] MATCH ([PERCENT]%) - [REASON]"""
-        # Determine verdict level
-        if score_pct >= 95 or query_lower == company_lower:
+        # With query location, EXCELLENT comes from unified name+location score, not name alone.
+        # score_pct uses one decimal so ~99.9% exact + no query geo is not shown as 100%.
+        if score_pct >= 95 or (query_lower == company_lower and not query_had_location):
             icon = "✅"
             level = "EXCELLENT"
             color = "#00ff00"
@@ -129,16 +141,26 @@ class RationaleService:
         return f"<b>Relationship:</b> This is a <b>Pure Semantic Match</b>. There is no direct text overlap; the connection is based entirely on the underlying business context and meaning."
     
     @staticmethod
-    def _build_evidence_section(explanation, query, company_name):
+    def _build_evidence_section(explanation, query, company_name, query_city=None, query_state=None):
         """Build the evidence section with descriptive interpretations for each component."""
         string_score = explanation.get('string_score', 0.0)
         sem_score = explanation.get('normalized_semantic_score', explanation.get('semantic_score', 0.0))
         concept_align = explanation.get('concept_alignment', 0.0)
-        loc_boost = explanation.get('location_boost', 0.0)
+        loc_boost = float(explanation.get('location_boost') or 0.0)
+        location_score = float(explanation.get('location_score') or 0.0)
         pop_boost = explanation.get('popularity_boost', 0.0)
         record_count = explanation.get('count', 0)
         city = explanation.get('city', '')
         state = explanation.get('state', '')
+        query_has_geo = bool(str(query_city or "").strip() or str(query_state or "").strip())
+
+        def normalized_legal_key(s):
+            if s is None:
+                return ""
+            t = unicodedata.normalize("NFKC", str(s)).casefold().strip()
+            return re.sub(r"\s+", " ", t)
+
+        query_exact_name = normalized_legal_key(query) == normalized_legal_key(company_name)
         
         def pick_badge(val):
             if val >= 0.9: return "🟢 EXCELLENT"
@@ -150,9 +172,25 @@ class RationaleService:
         evidence = "<b>Evidence Analysis:</b><br>"
         
         # Name Similarity
-        ns_reason = "identical strings" if string_score >= 1.0 else "strong character overlap" if string_score >= 0.85 else "partial character alignment"
+        if query_exact_name:
+            ns_reason = "identical legal names"
+        elif string_score >= 0.98:
+            ns_reason = "token-equivalent or reordered lexical forms"
+        elif string_score >= 0.85:
+            ns_reason = "strong character overlap"
+        else:
+            ns_reason = "partial character alignment"
         evidence += f"• <b>Name Similarity:</b> {pick_badge(string_score)} ({string_score:.0%}) — Based on {ns_reason}.<br>"
-        
+
+        if query_exact_name and not query_has_geo:
+            evidence += (
+                "• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report "
+                "tier) until you add city/state that agrees with the record. Same legal names may exist in multiple "
+                "locations; showing ~99% on one row would wrongly imply we verified which site you meant. "
+                "<b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. "
+                "Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>"
+            )
+
         # Semantic Link
         sl_reason = "synonymous concepts" if sem_score >= 0.85 else "strong contextual link" if sem_score >= 0.7 else "moderate meaning-based connection"
         evidence += f"• <b>Semantic Link:</b> {pick_badge(sem_score)} ({sem_score:.0%}) — Detected via {sl_reason}.<br>"
@@ -162,12 +200,42 @@ class RationaleService:
             ca_reason = "highly aligned industries" if concept_align >= 0.85 else "related business categories"
             evidence += f"• <b>Concept Alignment:</b> {pick_badge(concept_align)} ({concept_align:.0%}) — Reflects {ca_reason}.<br>"
         
-        # Location
+        # Location (wording matches matcher: hybrid uses 0.8/0.2 blend; exact uses multiplicative geo)
         location_str = ", ".join(filter(None, [city, state]))
-        if loc_boost > 0:
-            evidence += f"• <b>Location Match:</b> 🟢 <b>+{loc_boost*100:.1f}% Boost</b> — Geographic criteria confirmed in {location_str}.<br>"
+        if query_has_geo:
+            if location_score >= 0.65:
+                evidence += (
+                    f"• <b>Location vs query:</b> 🟢 <b>Strong alignment</b> — Candidate at {location_str} "
+                    f"matches the query geography well (location score {location_score:.2f}).<br>"
+                )
+            elif location_score >= 0.35:
+                evidence += (
+                    f"• <b>Location vs query:</b> 🟡 <b>Partial alignment</b> — {location_str} "
+                    f"has some overlap with the query (location score {location_score:.2f}).<br>"
+                )
+            elif location_score > 0.0:
+                evidence += (
+                    f"• <b>Location vs query:</b> 🟠 <b>Weak signal</b> — {location_str} "
+                    f"(location score {location_score:.2f}).<br>"
+                )
+            elif location_str:
+                evidence += (
+                    f"• <b>Location vs query:</b> ⚠️ <b>No alignment</b> — Candidate at {location_str} "
+                    f"does not match the query city/state.<br>"
+                )
+            else:
+                evidence += "• <b>Location vs query:</b> ⚪ No candidate city/state on file.<br>"
+        elif loc_boost > 0:
+            evidence += (
+                f"• <b>Location (reference only):</b> 🟢 +{loc_boost*100:.1f} pts on 0–1 scale — "
+                f"Candidate in {location_str}.<br>"
+            )
         elif location_str:
-            evidence += f"• <b>Location Data:</b> ⚪ <b>Neutral</b> — Found {location_str} but no boost was warranted.<br>"
+            evidence += (
+                f"• <b>Location Data:</b> ⚪ <b>Reference</b> — Candidate shows {location_str}. With no query "
+                f"city/state, location does not add to the numeric score; the cap above reflects unverified office "
+                f"choice when the name matches exactly.<br>"
+            )
         
         # Popularity
         if pop_boost > 0:
@@ -178,14 +246,17 @@ class RationaleService:
         return evidence
     
     @staticmethod
-    def generate_concise_rationale(query, company_name, explanation, score):
+    def generate_concise_rationale(query, company_name, explanation, score, query_city=None, query_state=None):
         """Generate a 1-line concise summary."""
         query_lower = query.lower()
         company_lower = company_name.lower()
-        score_pct = round(score * 100)
-        
+        query_had_location = bool(
+            (str(query_city or "").strip()) or (str(query_state or "").strip())
+        )
+        score_pct = round(float(score) * 100, 1)
+
         # Determine verdict
-        if score_pct >= 90 or query_lower == company_lower:
+        if score_pct >= 90 or (query_lower == company_lower and not query_had_location):
             verdict = "Excellent Match"
         elif score_pct >= 75:
             verdict = "Strong Match"
@@ -599,103 +670,229 @@ class RationaleService:
         return analysis
 
     @staticmethod
-    def generate_detailed_score_breakdown(match_data, query):
+    def generate_detailed_score_breakdown(match_data, query, query_city=None, query_state=None):
         """
-        Generate comprehensive score breakdown showing all components.
-        
-        Args:
-            match_data: Dictionary containing all match information including scores
-            query: Original query string
-            
-        Returns:
-            Formatted string with complete score breakdown
+        Score breakdown aligned with the unified ``CompanyMatcher._rank_and_user_facing_score``.
+
+        Single user-facing score in [0, 1]. All raw inputs are clamped to [0, 1] so no row
+        contributes a value above 100%.
+
+        Score paths:
+        - Hybrid + query geo: ``0.8*name + 0.2*location + min(freq, 0.05)``
+        - Exact + query geo: ``max(name * (0.2 + 0.8*location), 0.8*name + 0.2*location + min(freq, 0.05))``
+        - No query geo: ``name + min(freq, 0.05)``, then rescale unless 100% gate; **exact**
+          name only is capped at ``EXACT_WHEN_QUERY_HAS_NO_GEO_CAP`` (~94%) so one office line
+          cannot show ~99% when the user did not specify a location.
+        - Final ``score = min(score, 0.999)`` unless the 100% gate qualifies.
         """
         breakdown = "## Complete Score Breakdown\n\n"
-        
-        # Extract all score components
-        final_score = match_data.get('raw_score', match_data.get('score', 0.0))
-        string_score = match_data.get('string_score', 0.0)
-        semantic_score_raw = match_data.get('semantic_score', 0.0)
-        semantic_score_norm = match_data.get('normalized_semantic_score', semantic_score_raw)
-        acronym_fidelity = match_data.get('acronym_fidelity', 0.0)
-        location_score = match_data.get('location_score', 0.0)
-        name_score = match_data.get('name_score', 0.0)
-        
-        # Score components table
+
+        def clamp01(v):
+            try:
+                fv = float(v)
+            except (TypeError, ValueError):
+                return 0.0
+            if fv < 0.0:
+                return 0.0
+            if fv > 1.0:
+                return 1.0
+            return fv
+
+        final_score = clamp01(match_data.get("score", 0.0))
+        string_score = clamp01(match_data.get("string_score", 0.0))
+        semantic_score_norm = clamp01(
+            match_data.get("normalized_semantic_score", match_data.get("semantic_score", 0.0))
+        )
+        acronym_fidelity = clamp01(match_data.get("acronym_fidelity", 0.0))
+        location_score = clamp01(match_data.get("location_score", 0.0))
+        lexical_boost = clamp01(match_data.get("lexical_boost", 0.0))
+        pop_boost = clamp01(match_data.get("popularity_boost", 0.0))
+        record_count = int(match_data.get("count", 0) or 0)
+        mt = (match_data.get("match_type") or "hybrid").lower()
+
+        query_city_text = str(query_city or "").strip()
+        query_state_text = str(query_state or "").strip()
+        query_has_geo = bool(query_city_text or query_state_text)
+
+        def normalized_legal_key(s):
+            if s is None:
+                return ""
+            t = unicodedata.normalize("NFKC", str(s)).casefold().strip()
+            return re.sub(r"\s+", " ", t)
+
+        def normalize_city(city):
+            c = str(city or "").strip().lower()
+            c = c.replace("city of ", "").replace(" town of ", " ")
+            c = c.replace(" city", "").replace(" town", "")
+            return re.sub(r"\s+", " ", c).strip()
+
+        state_map = {
+            "al": "alabama", "ak": "alaska", "az": "arizona", "ar": "arkansas", "ca": "california",
+            "co": "colorado", "ct": "connecticut", "de": "delaware", "fl": "florida", "ga": "georgia",
+            "hi": "hawaii", "id": "idaho", "il": "illinois", "in": "indiana", "ia": "iowa", "ks": "kansas",
+            "ky": "kentucky", "la": "louisiana", "me": "maine", "md": "maryland", "ma": "massachusetts",
+            "mi": "michigan", "mn": "minnesota", "ms": "mississippi", "mo": "missouri", "mt": "montana",
+            "ne": "nebraska", "nv": "nevada", "nh": "new hampshire", "nj": "new jersey",
+            "nm": "new mexico", "ny": "new york", "nc": "north carolina", "nd": "north dakota",
+            "oh": "ohio", "ok": "oklahoma", "or": "oregon", "pa": "pennsylvania", "ri": "rhode island",
+            "sc": "south carolina", "sd": "south dakota", "tn": "tennessee", "tx": "texas", "ut": "utah",
+            "vt": "vermont", "va": "virginia", "wa": "washington", "wv": "west virginia", "wi": "wisconsin",
+            "wy": "wyoming", "dc": "district of columbia",
+        }
+        state_reverse_map = {v: k for k, v in state_map.items()}
+
+        def normalize_state(state):
+            s = str(state or "").strip().lower()
+            if not s:
+                return ""
+            if len(s) == 2 and s in state_map:
+                return s
+            return state_reverse_map.get(s, s)
+
+        string_contrib = string_score * 0.5
+        sem_contrib = semantic_score_norm * 0.25
+        concept_align = clamp01(match_data.get("concept_alignment", 0.0))
+        concept_contrib = concept_align * 0.25
+
         breakdown += "| Component | Raw Value | Weight | Contribution |\n"
         breakdown += "|-----------|-----------|--------|-------------|\n"
-        
-        # String similarity
-        string_contrib = string_score * 0.5
         breakdown += f"| String Similarity | {string_score:.4f} | 50% | {string_contrib:.4f} |\n"
-        
-        # Semantic similarity
-        sem_contrib = semantic_score_norm * 0.25
         breakdown += f"| Semantic Similarity (Normalized) | {semantic_score_norm:.4f} | 25% | {sem_contrib:.4f} |\n"
-        
-        # Concept Alignment
-        concept_align = match_data.get('concept_alignment', 0.0)
-        concept_contrib = concept_align * 0.25
         breakdown += f"| Concept Alignment (Scanner) | {concept_align:.4f} | 25% | {concept_contrib:.4f} |\n"
-        
-        breakdown += f"| Semantic Similarity (Raw) | {semantic_score_raw:.4f} | - | - |\n"
-        
-        # Base name score
-        # Use name_score from match_data if available (it accounts for exact matches and tiered overrides)
-        base_score = match_data.get('name_score', string_contrib + sem_contrib)
-        
-        # Account for tiered overrides in the breakdown
-        if match_data.get('match_type') == 'exact' and base_score < 1.0:
-             base_score = 1.0
-             
-        breakdown += f"| **Base Score (Name)** | **{base_score:.4f}** | - | - |\n"
-        
-        # Acronym fidelity boost
+
+        display_name = clamp01(
+            match_data.get("name_score", string_contrib + sem_contrib + concept_contrib)
+        )
+        if mt == "exact" and display_name < 1.0:
+            display_name = 1.0
+
+        breakdown += (
+            f"| **Name score (matcher)** | **{display_name:.4f}** | - | "
+            f"After acronym / lexical tiers |\n"
+        )
+        if lexical_boost > 1e-6:
+            breakdown += (
+                f"| Lexical tier (in name score) | <={lexical_boost:.4f} | policy | "
+                f"near-name visibility floor |\n"
+            )
+
         if acronym_fidelity > 0.0:
-            # Check if this was a Phase 0 acronym expansion or a boost
-            if match_data.get('match_type') == 'acronym_expansion' or match_data.get('match_type') == 'acronym_reverse':
-                 breakdown += f"| Acronym Fidelity contribution | {acronym_fidelity:.4f} | Built-in | (Included in Base) |\n"
+            if mt in ("acronym_expansion", "acronym_reverse"):
+                breakdown += (
+                    f"| Acronym Fidelity | {acronym_fidelity:.4f} | built-in | "
+                    f"(included in name score) |\n"
+                )
             else:
-                 acronym_boost = acronym_fidelity * 0.15
-                 # Check if it was actually applied (if base_score + boost > base_score)
-                 breakdown += f"| Acronym Fidelity Boost | {acronym_fidelity:.4f} | 15% max | +{acronym_boost:.4f} |\n"
-        
-        # Location boost
-        loc_boost_val = match_data.get('location_boost', 0.0)
-        if loc_boost_val > 0.0:
-            breakdown += f"| Location Context Boost | {location_score:.4f} | 5-20% | +{loc_boost_val:.4f} |\n"
-        
-        # Frequency boost - Explicit Visualization
-        pop_boost = match_data.get('popularity_boost', 0.0)
-        record_count = match_data.get('count', 0)
-        if pop_boost > 0.0 or record_count > 1:
-            breakdown += f"| Frequency Impact | {record_count:,} records | ~2-5% | +{pop_boost:.4f} |\n"
-        
-        # Final score
+                ab = acronym_fidelity * 0.15
+                breakdown += f"| Acronym Fidelity Boost | {acronym_fidelity:.4f} | 15% max | +{ab:.4f} |\n"
+
+        if mt == "acronym_expansion":
+            breakdown += "| Acronym Path | expansion | fixed formula | 0.35 + 0.55*fidelity + 0.10*semantic |\n"
+            breakdown += f"| Acronym Fidelity | {acronym_fidelity:.4f} | x0.55 | {(acronym_fidelity * 0.55):.4f} |\n"
+            breakdown += f"| Semantic in acronym path | {semantic_score_norm:.4f} | x0.10 | {(semantic_score_norm * 0.10):.4f} |\n"
+        elif mt == "acronym_reverse":
+            breakdown += "| Acronym Path | reverse | fixed formula | 0.45 + 0.20*fidelity + 0.10*semantic |\n"
+            breakdown += f"| Acronym Fidelity | {acronym_fidelity:.4f} | x0.20 | {(acronym_fidelity * 0.20):.4f} |\n"
+            breakdown += f"| Semantic in acronym path | {semantic_score_norm:.4f} | x0.10 | {(semantic_score_norm * 0.10):.4f} |\n"
+        elif query_has_geo and mt == "exact":
+            mult = 0.2 + 0.8 * location_score
+            multiplicative = display_name * mult
+            ft = min(pop_boost, 0.05)
+            hybrid_blend = display_name * 0.8 + location_score * 0.2 + ft
+            breakdown += f"| Location score | {location_score:.4f} | - | vs query city/state |\n"
+            breakdown += (
+                f"| Multiplicative path | {multiplicative:.4f} | name x (0.2+0.8xloc) | "
+                f"used when stronger |\n"
+            )
+            breakdown += (
+                f"| Hybrid blend path | {hybrid_blend:.4f} | 0.8xname + 0.2xloc + freq | "
+                f"used when stronger |\n"
+            )
+        elif query_has_geo and mt != "exact":
+            wn = display_name * 0.8
+            wl = location_score * 0.2
+            breakdown += f"| Name in final blend | {display_name:.4f} | x0.80 | {wn:.4f} |\n"
+            breakdown += f"| Location in final blend | {location_score:.4f} | x0.20 | {wl:.4f} |\n"
+            freq_term = min(pop_boost, 0.05)
+            if pop_boost > 1e-9:
+                breakdown += f"| Frequency add (capped) | — | <=+0.05 | +{freq_term:.4f} |\n"
+        elif pop_boost > 1e-9 or record_count > 1:
+            breakdown += f"| Frequency Impact | {record_count:,} records | — | +{pop_boost:.4f} |\n"
+
         breakdown += f"| **FINAL SCORE** | **{final_score:.4f}** | - | **{final_score*100:.1f}%** |\n\n"
-        
-        # Formula explanation
-        breakdown += "### Score Calculation Formula\n\n"
-        breakdown += "```\n"
-        breakdown += "Base Score = (String Sim × 0.50) + (Semantic Sim × 0.25) + (Concept Alignment × 0.25)\n"
-        
-        if acronym_fidelity > 0.0:
-            breakdown += f"Acronym Boost = Acronym Fidelity × 0.15 = {acronym_fidelity:.4f} × 0.15 = {acronym_fidelity * 0.15:.4f}\n"
-        
-        if location_score > 0.0:
-            breakdown += f"Location Boost = Location Score × 0.05 = {location_score:.4f} × 0.05 = {location_score * 0.05:.4f}\n"
-        
-        breakdown += f"\nFinal Score = Base Score"
-        if acronym_fidelity > 0.0:
-            breakdown += " + Acronym Boost"
-        if location_score > 0.0:
-            breakdown += " + Location Boost"
-        breakdown += f" = {final_score:.4f}\n"
+
+        breakdown += "### Score Calculation Formula\n\n```\n"
+        breakdown += (
+            "Component blend (name input) = "
+            "Stringx0.50 + Semantic(norm)x0.25 + Conceptx0.25, then acronym / lexical rules.\n"
+        )
+        if mt == "acronym_expansion":
+            recon = min(1.0, 0.35 + (acronym_fidelity * 0.55) + (semantic_score_norm * 0.10))
+            breakdown += (
+                "Acronym expansion final = min(1.0, 0.35 + 0.55xacronym_fidelity + 0.10xsemantic)\n"
+                f"    = min(1.0, 0.35 + 0.55x{acronym_fidelity:.4f} + 0.10x{semantic_score_norm:.4f}) = {recon:.4f}\n"
+            )
+        elif mt == "acronym_reverse":
+            recon = min(0.80, 0.45 + (acronym_fidelity * 0.20) + (semantic_score_norm * 0.10))
+            breakdown += (
+                "Acronym reverse final = min(0.80, 0.45 + 0.20xacronym_fidelity + 0.10xsemantic)\n"
+                f"    = min(0.80, 0.45 + 0.20x{acronym_fidelity:.4f} + 0.10x{semantic_score_norm:.4f}) = {recon:.4f}\n"
+            )
+        elif query_has_geo and mt == "exact":
+            mult_factor = 0.2 + 0.8 * location_score
+            multiplicative = display_name * mult_factor
+            ft = min(pop_boost, 0.05)
+            hybrid_blend = display_name * 0.8 + location_score * 0.2 + ft
+            recon = min(1.0, max(multiplicative, hybrid_blend))
+            breakdown += (
+                "Final = min(1.0, max(name x (0.2 + 0.8 x location), "
+                "0.8 x name + 0.2 x location + min(freq, 0.05)))\n"
+                f"    = min(1.0, max({multiplicative:.4f}, {hybrid_blend:.4f})) = {recon:.4f}\n"
+            )
+        elif query_has_geo and mt != "exact":
+            ft = min(pop_boost, 0.05)
+            recon = min(1.0, display_name * 0.8 + location_score * 0.2 + ft)
+            breakdown += (
+                "Final = min(1.0, 0.8 x name + 0.2 x location + min(frequency_boost, 0.05))\n"
+                f"    = min(1.0, {display_name:.4f} x 0.8 + {location_score:.4f} x 0.2 + {ft:.4f}) = {recon:.4f}\n"
+            )
+        else:
+            recon = min(1.0, display_name + pop_boost)
+            breakdown += (
+                "Final = min(1.0, name_score + frequency_boost)  (no query city/state)\n"
+                f"    = min(1.0, {display_name:.4f} + {pop_boost:.4f}) = {recon:.4f}\n"
+            )
+
+        query_name_exact = normalized_legal_key(query) == normalized_legal_key(
+            match_data.get("name") or match_data.get("company_name", "")
+        )
+        target_city_text = str(match_data.get("city") or "").strip()
+        target_state_text = str(match_data.get("state") or "").strip()
+        target_has_geo = bool(target_city_text or target_state_text)
+        exact_geo_full_match = (
+            bool(query_city_text and query_state_text and target_city_text and target_state_text)
+            and normalize_city(query_city_text) == normalize_city(target_city_text)
+            and normalize_state(query_state_text) == normalize_state(target_state_text)
+        )
+        both_sides_no_location = (not query_has_geo) and (not target_has_geo)
+        qualifies_for_100 = query_name_exact and exact_geo_full_match
+        if not qualifies_for_100:
+            recon = min(recon, 0.999)
+            breakdown += (
+                f"100% gate: exact_name={query_name_exact}, exact_geo={exact_geo_full_match}, "
+                f"both_no_location={both_sides_no_location} (informational; does not unlock 1.0) "
+                f"-> capped at {recon:.4f}\n"
+            )
         breakdown += "```\n\n"
-        
-        # Component analysis
+        if abs(recon - final_score) > 0.025:
+            breakdown += (
+                f"*Formula snapshot **{recon:.4f}** vs stored final **{final_score:.4f}**: "
+                f"this row was matched before the unified single-score change; rerun `match_plugging_records.py` "
+                f"to refresh stored scores.*\n\n"
+            )
+
         breakdown += "### Component Analysis\n\n"
-        
+
         if string_score >= 0.95:
             breakdown += "- **String Similarity (EXCELLENT):** Nearly perfect lexical match - words align very closely\n"
         elif string_score >= 0.80:
@@ -706,7 +903,7 @@ class RationaleService:
             breakdown += "- **String Similarity (FAIR):** Some lexical similarity - partial word overlap\n"
         else:
             breakdown += "- **String Similarity (WEAK):** Low lexical match - minimal word overlap\n"
-        
+
         if semantic_score_norm >= 0.90:
             breakdown += "- **Semantic Similarity (EXCELLENT):** Very strong meaning-based connection\n"
         elif semantic_score_norm >= 0.70:
@@ -717,23 +914,41 @@ class RationaleService:
             breakdown += "- **Semantic Similarity (FAIR):** Some meaning-based connection\n"
         else:
             breakdown += "- **Semantic Similarity (WEAK):** Weak meaning-based connection\n"
-        
+
         if acronym_fidelity > 0.0:
             if acronym_fidelity >= 0.90:
-                breakdown += f"- **Acronym Fidelity (EXCELLENT):** {acronym_fidelity:.2f} - Highly likely literal acronym expansion\n"
+                breakdown += (
+                    f"- **Acronym Fidelity (EXCELLENT):** {acronym_fidelity:.2f} - "
+                    f"Highly likely literal acronym expansion\n"
+                )
             elif acronym_fidelity >= 0.70:
-                breakdown += f"- **Acronym Fidelity (GOOD):** {acronym_fidelity:.2f} - Probable acronym expansion\n"
+                breakdown += (
+                    f"- **Acronym Fidelity (GOOD):** {acronym_fidelity:.2f} - Probable acronym expansion\n"
+                )
             else:
-                breakdown += f"- **Acronym Fidelity (MODERATE):** {acronym_fidelity:.2f} - Possible acronym connection\n"
-        
-        if location_score > 0.0:
+                breakdown += (
+                    f"- **Acronym Fidelity (MODERATE):** {acronym_fidelity:.2f} - Possible acronym connection\n"
+                )
+
+        if query_has_geo:
             if location_score >= 0.90:
-                breakdown += f"- **Location Match (EXCELLENT):** {location_score:.2f} - Strong geographic match\n"
+                breakdown += (
+                    f"- **Location vs query (EXCELLENT):** {location_score:.2f} - strong geographic match\n"
+                )
             elif location_score >= 0.50:
-                breakdown += f"- **Location Match (GOOD):** {location_score:.2f} - Good geographic alignment\n"
+                breakdown += (
+                    f"- **Location vs query (GOOD):** {location_score:.2f} - good alignment\n"
+                )
+            elif location_score > 0.0:
+                breakdown += (
+                    f"- **Location vs query (PARTIAL):** {location_score:.2f} - limited overlap\n"
+                )
             else:
-                breakdown += f"- **Location Match (PARTIAL):** {location_score:.2f} - Some geographic relevance\n"
-        
+                breakdown += (
+                    "- **Location vs query:** No overlap — final score still blends name with "
+                    "this zero location signal when the query includes city/state.\n"
+                )
+
         return breakdown
 
     @staticmethod

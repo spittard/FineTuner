@@ -133,8 +133,9 @@ class TextPreprocessor:
     def generate_acronym(cls, text):
         """
         Generates an acronym from a given text (e.g. 'American Bar Association' -> 'ABA').
-        Considers only capitalized words in the input.
-        Returns None if text has fewer than 2 words.
+        Takes the first letter of each significant word (case-insensitive), skipping
+        common stopwords ('the', 'of', 'and', 'for', 'in', 'at', 'by', 'to').
+        Returns None if fewer than 2 eligible words remain.
         """
         if not text: return None
         
@@ -446,16 +447,49 @@ class TextPreprocessor:
 
     @classmethod
     def calculate_location_score(cls, query_city, query_state, target_city, target_state):
-        """Calculate location similarity score."""
+        """Calculate location similarity score with sub-case differentiation.
+
+        State-only outcomes are split so the score reflects WHY the city did not
+        contribute, instead of always landing at 0.40 in the report:
+          * State matches AND candidate has no city info  -> 0.55 (no contradiction)
+          * State matches AND city is a near-typo (SequenceMatcher ratio >= 0.8)
+                                                          -> 0.65 (likely same place)
+          * State matches AND city is clearly different    -> 0.40 (active contradiction)
+          * Both city AND state match exactly              -> 1.00
+          * No state agreement                             -> 0.00 (or proportional)
+        """
         q_state = cls.normalize_state(query_state)
         t_state = cls.normalize_state(target_state)
-        
+        q_city = cls.normalize_city(query_city) if query_city else ""
+        t_city = cls.normalize_city(target_city) if target_city else ""
+
         state_score = 0.0
         if q_state and t_state:
-            if q_state == t_state: state_score = 1.0
+            if q_state == t_state:
+                state_score = 1.0
             else:
                 state_ratio = difflib.SequenceMatcher(None, q_state, t_state).ratio()
-                if state_ratio > 0.8: state_score = state_ratio
-                
+                if state_ratio > 0.8:
+                    state_score = state_ratio
+
+        # Different normalized states with no fuzzy state agreement: do not let
+        # city substring tricks (e.g. "reston" inside "moorestown") inflate ls.
+        if q_state and t_state and q_state != t_state and state_score < 0.01:
+            return 0.0
+
         city_score = cls.calculate_city_similarity(query_city, target_city)
+
+        # Sub-case override when state matches exactly but city contribution is
+        # binary "missing" or "different".
+        if state_score >= 0.999:
+            if q_city and not t_city:
+                return 0.55  # candidate has no city info — partial match, no contradiction
+            if q_city and t_city and city_score < 0.5:
+                seq = difflib.SequenceMatcher(None, q_city, t_city).ratio()
+                if seq >= 0.8:
+                    return 0.65  # near-typo (Denver vs Dener)
+                return 0.40  # different city — active contradiction
+            if not q_city and not t_city:
+                return state_score  # neither side has city — pure state match
+
         return (city_score * 0.6) + (state_score * 0.4)

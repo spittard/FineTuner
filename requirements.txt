@@ -6,3 +6,4 @@ tqdm==4.66.1
 pyodbc
 Pyro5
 watchdog
+markdown>=3.5

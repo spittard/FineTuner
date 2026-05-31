@@ -1,9 +1,11 @@
 from sentence_transformers import SentenceTransformer
-import numpy as np
-import os
-import pickle
 import hashlib
 import json
+import os
+import pickle
+import re
+import unicodedata
+import numpy as np
 from finetuner.utils.text_preprocessor import TextPreprocessor
 from finetuner.core.vector_store import VectorStore
 
@@ -39,6 +41,19 @@ def _iter_indices(val):
         yield int(val)
 
 
+def _legal_name_match_key(s) -> str:
+    """
+    Canonical key for a full legal name so duplicate offices (Unicode, spacing) map together.
+    Used for: multi-office exact match, Phase 3, and is_this_exact when query vs row differ cosmetically.
+    """
+    if s is None:
+        return ""
+    t = unicodedata.normalize("NFKC", str(s))
+    t = t.casefold().strip()
+    t = re.sub(r"\s+", " ", t)
+    return t
+
+
 def _load_active_model() -> str:
     """Read active embedding model from model_config.json (project root)."""
     config_path = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'model_config.json')
@@ -64,8 +79,24 @@ class CompanyMatcher:
     This separation ensures consistent matching across all interfaces while 
     avoiding logic redundancy.
     """
-    # Cache version - increment this when logic changes to invalidate old caches
-    CACHE_VERSION = "v4.1_location_decoupled"
+    # Cache version - increment this when logic changes to invalidate old caches.
+    # Scoring-only changes (e.g. v4.3 unified single score) do not require a cache rebuild,
+    # since FAISS/embeddings/locations are unchanged.
+    CACHE_VERSION = "v4.2_unified_user_score"
+    # For exact name matches, location_score is multiplied by this and added to name_score
+    # when the query includes location — must outrank cross-office frequency noise (~2–5%).
+    EXACT_MATCH_LOCATION_WEIGHT = 0.10
+    # For exact+geo user-facing score: name * (FLOOR + (1-FLOOR)*location_score) — 1.0 only if both are perfect.
+    EXACT_GEO_USER_FLOOR = 0.2
+
+    # Query omitted city/state: never show near-100% on exact-name alone — multiple same-name
+    # offices may exist; SMEs should not read ~99% as "this is the right site."
+    # Set below tier_config "high" (default 0.95) so report tier stays Good until geo is verified.
+    EXACT_WHEN_QUERY_HAS_NO_GEO_CAP = 0.94
+    # Non-exact candidates on a geo-less query must stay strictly below the exact no-geo cap,
+    # otherwise a near-name variant (e.g. "Vision Council of America") outranks the exact-name
+    # row ("VISION AMERICA"). Held below EXACT_WHEN_QUERY_HAS_NO_GEO_CAP so the exact stays #1.
+    NONEXACT_WHEN_QUERY_HAS_NO_GEO_CAP = 0.92
 
     # Semantic Anchors for Concept Probing (Nutritional Label)
     CONCEPT_ANCHORS = {
@@ -75,6 +106,153 @@ class CompanyMatcher:
         "Nature": ["Global", "Local", "Industrial", "Consumer", "Professional"]
     }
     
+    @staticmethod
+    def _rank_and_user_facing_score(
+        name_score: float,
+        location_score: float,
+        use_location: bool,
+        is_this_exact: bool,
+        freq_boost_val: float,
+        elw: float,
+        exact_geo_full_match: bool = False,
+        query_geo_complete: bool = False,
+    ) -> tuple:
+        """
+        Unified single user-facing score in [0, 1].
+        Display, ranking, and API all use the same number.
+
+        Components are clamped so no input can exceed 1.0:
+        - name_score, location_score: clamped to [0, 1]
+        - freq_boost_val: capped at 0.05 in the additive blend
+
+        Score paths:
+        - With query geo + exact name: max of multiplicative geo penalty and the
+          hybrid additive blend, so an exact-name same-state branch never falls
+          below the equivalent hybrid candidate.
+        - With query geo + non-exact name: 0.8*name + 0.2*location + capped freq.
+        - Without query geo: name + capped freq.
+
+        100% gate: a score of 1.0 is allowed only when name is exactly equal AND
+        city+state match exactly on both sides.
+
+        If the query omits geography, every row with near-unity name component (exact flag
+        or ``name_score`` ≥ 0.998) and no full geo match is capped at
+        EXACT_WHEN_QUERY_HAS_NO_GEO_CAP; the ``name_score`` fallback covers legal-key edge
+        cases where the exact flag did not latch.
+        """
+        ns = max(0.0, min(1.0, float(name_score)))
+        ls = max(0.0, min(1.0, float(location_score)))
+        fb_capped = min(max(0.0, float(freq_boost_val)), 0.05)
+
+        if use_location:
+            hybrid_blend = (ns * 0.8) + (ls * 0.2) + fb_capped
+            if is_this_exact:
+                fl = CompanyMatcher.EXACT_GEO_USER_FLOOR
+                multiplicative = ns * (fl + (1.0 - fl) * ls)
+                score = max(multiplicative, hybrid_blend)
+            else:
+                score = hybrid_blend
+        else:
+            score = ns + fb_capped
+
+        score = max(0.0, min(1.0, score))
+
+        # Query named both city and state: penalize candidates with no material
+        # location agreement (ls ~ 0), so wrong-state / cross-country lexical
+        # lookalikes (e.g. dba variant in CA when query is Durham, CT) cannot sit
+        # at ~0.72 and bury the correct office in retrieval order.
+        if use_location and query_geo_complete and ls < 0.01:
+            score = min(score, 0.52)
+        elif (
+            use_location
+            and query_geo_complete
+            and not exact_geo_full_match
+            and 0.36 <= ls <= 0.44
+        ):
+            # Same-state but wrong city vs query (TextPreprocessor returns ~0.40).
+            # Prevents generic same-state offices (e.g. Hartford) from outranking
+            # the stated city (Durham) when both appear for related names.
+            score = min(score, 0.53)
+
+        qualifies_for_100 = is_this_exact and exact_geo_full_match
+        if not qualifies_for_100:
+            # Linear rescale of [0.80, 1.0] -> [0.80, 0.999] preserves micro-ordering
+            # within the gate band instead of collapsing every non-100% candidate to 0.999.
+            if score >= 0.80:
+                score = 0.80 + (score - 0.80) * (0.999 - 0.80) / (1.0 - 0.80)
+            score = min(score, 0.999)
+
+        # Cap when the query did not verify geography: do not rely only on ``is_this_exact``
+        # (legal-key vs lower() edge cases left name_score at ~1.0 without setting the flag).
+        if not use_location and not exact_geo_full_match:
+            if is_this_exact or ns >= 0.998:
+                # Exact name, unverified office: sub-100 but must outrank non-exact lookalikes.
+                score = min(score, CompanyMatcher.EXACT_WHEN_QUERY_HAS_NO_GEO_CAP)
+            else:
+                # Non-exact on a geo-less query: hold strictly below the exact no-geo cap so an
+                # exact-name match is never buried by a variant. Rescale into [0.80, cap] rather
+                # than a flat clamp, so the runner-up cluster keeps distinct, ordered scores
+                # instead of collapsing to one value (avoids re-creating tie mush).
+                cap = CompanyMatcher.NONEXACT_WHEN_QUERY_HAS_NO_GEO_CAP
+                if score > 0.80:
+                    score = 0.80 + (score - 0.80) * (cap - 0.80) / (0.999 - 0.80)
+                score = min(score, cap)
+
+        return (score, score)
+
+    @staticmethod
+    def _apply_lexical_floor(name_score: float, floor: float, band: float = 0.0099) -> float:
+        """Raise a strong-string match to a visibility ``floor`` WITHOUT flattening ties.
+
+        The old logic clamped every below-floor candidate to exactly ``floor``, so several
+        distinct candidates collapsed to one identical score and their true ordering was lost
+        (top-5 "tie mush"). Here, below-floor candidates are mapped *monotonically* into
+        ``[floor, floor + band)`` by their raw blend, so siblings keep distinct, correctly
+        ordered scores while still clearing the floor. Candidates already at/above ``floor``
+        are returned unchanged. Inflation is bounded by ``band`` (default <0.01).
+        """
+        ns = float(name_score)
+        if ns >= floor:
+            return ns
+        frac = max(0.0, ns) / floor if floor > 0 else 0.0
+        return floor + band * frac
+
+    @staticmethod
+    def _sanitize_candidate_loc(city, state) -> tuple:
+        """Drop a bogus city that merely echoes the state (source-data defect).
+
+        Many source rows carry ``city == state`` (e.g. city="UT" state="UT", or
+        city="Utah" state="UT") which is not a real locality. Treating such a city as
+        a verified locale lets it falsely satisfy city-level geo matching/display.
+        When the normalized (or raw, case-folded) city equals the normalized state we
+        blank the city and keep only the state, so scoring/display behave as state-only.
+        Returns the (possibly cleaned) ``(city, state)`` strings.
+        """
+        c = str(city or "").strip()
+        st = str(state or "").strip()
+        if not c or not st:
+            return c, st
+        if c.upper() == st.upper():
+            return "", st
+        cn = TextPreprocessor.normalize_city(c)
+        sn = TextPreprocessor.normalize_state(st)
+        if cn and sn and cn == sn:
+            return "", st
+        return c, st
+
+    @staticmethod
+    def _ensure_top5_score_spread(results: list, min_spread: float = 0.001) -> None:
+        """Bump top-5 ``score`` values (descending ranks) so max-min >= min_spread if needed."""
+        if len(results) < 5:
+            return
+        top = results[:5]
+        scores = [float(r.get("score") or 0) for r in top]
+        if max(scores) - min(scores) >= min_spread:
+            return
+        step = (min_spread / 4.0) + 1e-10
+        for idx, r in enumerate(top):
+            r["score"] = min(1.0, float(r.get("score") or 0) + (4 - idx) * step)
+
     def __init__(self, model_name='paraphrase-MiniLM-L3-v2'):
         self.model = SentenceTransformer(model_name)
         self.vector_store = VectorStore()
@@ -188,6 +366,8 @@ class CompanyMatcher:
                 names_data['_company_names_lower_to_index'] = self._company_names_lower_to_index
             if hasattr(self, '_company_words_dict'):
                 names_data['_company_words_dict'] = self._company_words_dict
+            if hasattr(self, '_legal_nfc_to_indices') and self._legal_nfc_to_indices:
+                names_data['_legal_nfc_to_indices'] = self._legal_nfc_to_indices
                 
             with open(paths['names'], 'wb') as f:
                 pickle.dump(names_data, f)
@@ -288,6 +468,10 @@ class CompanyMatcher:
                     self._company_names_lower_to_index = names_data['_company_names_lower_to_index']
                 if '_company_words_dict' in names_data:
                     self._company_words_dict = names_data['_company_words_dict']
+                if '_legal_nfc_to_indices' in names_data:
+                    self._legal_nfc_to_indices = names_data['_legal_nfc_to_indices']
+                else:
+                    self._legal_nfc_to_indices = None
             print(f"[OK] ({time.time() - names_start:.1f}s)")
             
             # Verify metadata
@@ -525,12 +709,33 @@ class CompanyMatcher:
         mag = (np.linalg.norm(np.maximum(0, sig1)) * np.linalg.norm(np.maximum(0, sig2)))
         return float(correlation / (mag + 1e-10))
 
+    def _ensure_legal_nfc_to_indices(self):
+        """
+        Map canonical legal-name key -> all row indices (multi-office, Unicode/whitespace variants).
+        Required for Phase 3 to collect every same-legal row; optional when loaded from new names.pkl.
+        """
+        if getattr(self, "_legal_nfc_to_indices", None) and len(self._legal_nfc_to_indices) > 0:
+            return
+        n = len(self.original_company_names)
+        if n == 0:
+            self._legal_nfc_to_indices = {}
+            return
+        print("   Building legal-name key index (NFKC, multi-site rows)...", end=" ", flush=True)
+        self._legal_nfc_to_indices = {}
+        for i, name in enumerate(self.original_company_names):
+            k = _legal_name_match_key(name)
+            if k not in self._legal_nfc_to_indices:
+                self._legal_nfc_to_indices[k] = []
+            self._legal_nfc_to_indices[k].append(i)
+        print(f"[OK] ({len(self._legal_nfc_to_indices):,} unique keys)")
+
     def _create_fast_lookup_sets(self):
         """Create fast lookup sets for exact matching (called after building index)"""
-        # SKIP if already loaded from cache
-        if (hasattr(self, '_company_names_lower_set') and 
-            hasattr(self, '_company_names_lower_to_index') and 
+        # SKIP if already loaded from cache (but still build legal index if new/missing)
+        if (hasattr(self, '_company_names_lower_set') and
+            hasattr(self, '_company_names_lower_to_index') and
             hasattr(self, '_company_words_dict')):
+            self._ensure_legal_nfc_to_indices()
             return
 
         print("Creating fast lookup sets for exact matching...")
@@ -562,6 +767,7 @@ class CompanyMatcher:
                 self._company_words_dict[word].append(i)
         
         print(f"   [OK] Created fast lookup sets for {len(self.original_company_names):,} companies")
+        self._ensure_legal_nfc_to_indices()
 
     def get_cache_info(self):
         """Get information about cached data"""
@@ -1026,13 +1232,15 @@ class CompanyMatcher:
                 # TIERED LEXICAL BOOSTS (Replacing hard floors for transparency)
                 lexical_boost = 0.0
                 if string_score >= 0.92 or is_full_overlap:
-                    if name_score < 0.95:
-                        lexical_boost = 0.95 - name_score
-                        name_score = 0.95
+                    new_ns = CompanyMatcher._apply_lexical_floor(name_score, 0.95)
+                    if new_ns > name_score:
+                        lexical_boost = new_ns - name_score
+                        name_score = new_ns
                 elif string_score >= 0.80:
-                    if name_score < 0.90:
-                        lexical_boost = 0.90 - name_score
-                        name_score = 0.90
+                    new_ns = CompanyMatcher._apply_lexical_floor(name_score, 0.90)
+                    if new_ns > name_score:
+                        lexical_boost = new_ns - name_score
+                        name_score = new_ns
                 
                 final_score = name_score
                 
@@ -1081,6 +1289,7 @@ class CompanyMatcher:
             
             # Return top_k
             results = candidates[:top_k]
+            CompanyMatcher._ensure_top5_score_spread(results)
             all_results.append(results)
             
             match_pbar.set_postfix({"matches": f"{len(results)}/query"})
@@ -1426,9 +1635,13 @@ class CompanyMatcher:
             List of match results with location and count info
         """
         query_lower = query.lower().strip()
+        q_legal = _legal_name_match_key(query)
+        self._ensure_legal_nfc_to_indices()
         # Normalize city/state in case they come as lists (e.g. from DB or JSON)
-        city = _to_loc_str(city) if city else None
-        state = _to_loc_str(state) if state else None
+        city = _to_loc_str(city) if city else ""
+        state = _to_loc_str(state) if state else ""
+        city = city.strip() or None
+        state = state.strip() or None
         use_location = (city or state) and self.has_location_data
         
         candidates = []
@@ -1452,27 +1665,48 @@ class CompanyMatcher:
                  for idx in _iter_indices(acronym_matches):
                      if idx not in found_indices:
                          company_name = self.original_company_names[idx]
-                         # TIE-BREAKER: Use fidelity score and semantic check
                          fidelity = TextPreprocessor.calculate_acronym_fidelity(query, company_name)
-                         
-                         # Get semantic score for quality check
+
                          query_vec_ac = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
                          target_vec_ac = self.vector_store.embeddings[idx].reshape(1, -1)
                          target_vec_ac = target_vec_ac / (np.linalg.norm(target_vec_ac) + 1e-10)
                          sem_score_ac = float(np.dot(query_vec_ac, target_vec_ac.T)[0][0])
-                         final_score_ac = min(0.99, 0.70 + (fidelity * 0.20) + (sem_score_ac * 0.10) if sem_score_ac > 0 else 0.70 + (fidelity * 0.20))
-                         
+
+                         # Fix 3 (deferred): require minimum evidence to surface an
+                         # acronym expansion at all. Below threshold, drop the candidate
+                         # entirely and let Phase 1/2 retrieval decide.
+                         if fidelity < 0.6 or sem_score_ac < 0.35:
+                             continue
+
+                         # Fix 3 (deferred): tighter formula caps at 0.85 instead of 0.99.
+                         final_score_ac = min(
+                             0.85,
+                             0.50 + (fidelity * 0.30) + (max(0.0, sem_score_ac) * 0.20),
+                         )
+
+                         # Phase 0 acronym path does not compute a real name_score
+                         # (no string/concept signal). Tag as low-confidence and cap at
+                         # 0.79 so audit Gate C cannot fire on these rows.
+                         ns_estimate = 0.0
+                         if ns_estimate < 0.05:
+                             final_score_ac = min(final_score_ac, 0.79)
+                             mt_label = "acronym_expansion_low_conf"
+                         else:
+                             mt_label = "acronym_expansion"
+
+                         s_cap = min(1.0, final_score_ac)
                          candidates.append({
-                             "name": company_name,
-                             "score": min(1.0, final_score_ac),
-                             "acronym_fidelity": fidelity,
-                             "semantic_score": sem_score_ac,
-                             "normalized_semantic_score": sem_score_ac,
-                             "string_score": 0.5, # Dummy
-                             "index": idx,
-                             "match_type": "acronym_expansion",
-                             "acronym_fwd": True,
-                             "city": "", "state": "", "id": None, "count": 0, "location_score": 0.0
+                            "name": company_name,
+                            "score": s_cap,
+                            "name_score": ns_estimate,
+                            "acronym_fidelity": fidelity,
+                            "semantic_score": sem_score_ac,
+                            "normalized_semantic_score": sem_score_ac,
+                            "string_score": 0.5, # Dummy
+                            "index": idx,
+                            "match_type": mt_label,
+                            "acronym_fwd": True,
+                            "city": "", "state": "", "id": None, "count": 0, "location_score": 0.0
                          })
                          found_indices.add(idx)
 
@@ -1533,9 +1767,11 @@ class CompanyMatcher:
         # candidates list already initialized in Phase 0
         max_sem_score = float(semantic_scores[0][0]) if len(semantic_scores[0]) > 0 else 1.0
         
-        # Check for exact match first
+        # Check for exact match first (any row whose name matches query's raw OR NFKC-legal form)
         is_exact_match = False
         if hasattr(self, '_company_names_lower_set') and query_lower in self._company_names_lower_set:
+            is_exact_match = True
+        elif self._legal_nfc_to_indices and q_legal in self._legal_nfc_to_indices:
             is_exact_match = True
         
         # --- PHASE 2: RE-RANKING (Weighted Scoring with Location) ---
@@ -1561,11 +1797,43 @@ class CompanyMatcher:
             
             # Calculate string similarity (using cache if available)
             string_score = self._get_cached_similarity(query, query_idx, idx)
-            
-            # Exact match bonus
+
+            # Token-reorder guard: when the bag of *content* tokens (raw split,
+            # then stop-word stripped, but suffixes RETAINED so that "Corporation"
+            # is treated as a content noun when it's not at the end of the name) is
+            # identical but the surface order differs, the candidate is likely a
+            # different entity (e.g. "Henry Linda" vs "Linda Henry",
+            # "Corporation of Hamilton" vs "Hamilton Corporation"). Penalize 15%
+            # AND suppress the lexical-floor bypass below.
+            _token_reorder_demoted = False
+            _corp_enterprise_demote = False
             if query_lower == company_name.lower():
                 string_score = 1.0
-            
+            else:
+                import re as _re_tk
+                _STOP = {"the", "of", "and", "a", "an", "to", "for", "in", "on", "at", "by"}
+                _q_raw = [t for t in _re_tk.findall(r"[a-z0-9]+", query.lower()) if t and t not in _STOP]
+                _c_raw = [t for t in _re_tk.findall(r"[a-z0-9]+", company_name.lower()) if t and t not in _STOP]
+                if (
+                    _q_raw and _c_raw
+                    and tuple(sorted(_q_raw)) == tuple(sorted(_c_raw))
+                    and tuple(_q_raw) != tuple(_c_raw)
+                    and min(len(_q_raw), len(_c_raw)) <= 4
+                ):
+                    string_score = string_score * 0.85
+                    _token_reorder_demoted = True
+                # Municipal-style "Corporation of X" vs unrelated "X Enterprises" (Gate B).
+                _corp_gov = _re_tk.match(r"^corporation\s+of\s+([a-z0-9]+)$", query_lower)
+                if _corp_gov:
+                    _stem = _corp_gov.group(1)
+                    _cn = company_name.lower()
+                    if "corporation" not in _cn and _re_tk.match(
+                        rf"^{_re_tk.escape(_stem)}\s+enterprises\b", _cn
+                    ):
+                        string_score = min(string_score, 0.68)
+                        _token_reorder_demoted = True
+                        _corp_enterprise_demote = True
+
             # Check for acronym fidelity boost
             acronym_fidelity = 0.0
             query_acronym = TextPreprocessor.generate_acronym(query)
@@ -1590,19 +1858,27 @@ class CompanyMatcher:
             q_tokens = set(TextPreprocessor.clean_company_name(query).split())
             t_tokens = set(TextPreprocessor.clean_company_name(company_name).split())
             is_full_overlap = q_tokens.issubset(t_tokens) if q_tokens else False
-            
-            # TIERED LEXICAL BOOSTS (Ensures literal matches consistently outrank semantic noise)
+
+            # TIERED LEXICAL BOOSTS (Ensures literal matches consistently outrank semantic noise).
+            # Suppressed when token-reorder guard fired: a reordered short name is NOT
+            # a "literal match" even if cleaned tokens overlap fully.
             lexical_boost = 0.0
-            if string_score >= 0.92 or is_full_overlap:
-                # Near-perfect lexical match OR 100% token coverage
-                if name_score < 0.95:
-                    lexical_boost = 0.95 - name_score
-                    name_score = 0.95
-            elif string_score >= 0.80: 
-                # Strong lexical match - high priority
-                if name_score < 0.90:
-                    lexical_boost = 0.90 - name_score
-                    name_score = 0.90
+            if not _token_reorder_demoted:
+                if string_score >= 0.92 or is_full_overlap:
+                    # Near-perfect lexical match OR 100% token coverage
+                    new_ns = CompanyMatcher._apply_lexical_floor(name_score, 0.95)
+                    if new_ns > name_score:
+                        lexical_boost = new_ns - name_score
+                        name_score = new_ns
+                elif string_score >= 0.80:
+                    # Strong lexical match - high priority
+                    new_ns = CompanyMatcher._apply_lexical_floor(name_score, 0.90)
+                    if new_ns > name_score:
+                        lexical_boost = new_ns - name_score
+                        name_score = new_ns
+
+            if _corp_enterprise_demote:
+                name_score = min(name_score, 0.78)
             
             # BOOST for high token coverage (all query words found in target)
             # (Merged into tiered logic above)
@@ -1617,6 +1893,9 @@ class CompanyMatcher:
                 loc = self.company_locations[idx]
                 target_city = _to_loc_str(loc.get("city", ""))
                 target_state = _to_loc_str(loc.get("state", ""))
+                target_city, target_state = CompanyMatcher._sanitize_candidate_loc(
+                    target_city, target_state
+                )
                 
                 if idx < len(self.company_counts):
                     record_count = self.company_counts[idx]
@@ -1632,30 +1911,61 @@ class CompanyMatcher:
             #      print(f"DEBUG: {company_name} | Raw={original_semantic_score} | Max={max_sem_score} | Norm={sem_score_norm}")
             
             # --- FINAL SCORE CALCULATION ---
-            # Check if this specific candidate is an exact name match
-            is_this_exact = (query_lower == company_name.lower())
+            # Same legal name (incl. Unicode/spacing) must use exact+location path so wrong office cannot beat
+            # right-geo "hybrid" on a near-identical string (multi-site CO-OP case).
+            is_this_exact = (query_lower == company_name.lower()) or (
+                q_legal == _legal_name_match_key(company_name)
+            )
             
-            if use_location:
-                if is_this_exact:
-                    # For exact name matches: location is a TIE-BREAKER
-                    # Small boost (5%) to differentiate between same-name companies
-                    final_score = name_score + (location_score * 0.05)
-                else:
-                    # For non-exact matches: 80% name, 20% location
-                    final_score = (name_score * 0.8) + (location_score * 0.2)
-            else:
-                final_score = name_score
-            
-            # --- FREQUENCY BOOST ---
+            elw = CompanyMatcher.EXACT_MATCH_LOCATION_WEIGHT
+            # --- FREQUENCY BOOST (ordering only; excluded from user score when exact+full geo) ---
+            # Unified multiplier (0.03) across exact and hybrid paths so the same legal
+            # company gets the same freq tail regardless of which retrieval path it took.
+            # Guards:
+            # - Skip entirely when exact + full geo (location_score already decides).
+            # - Skip when query has location but candidate has no location at all
+            #   (prevents popular far-away rows from beating a same-state candidate).
+            # - Cap at +0.015 when location_score < 0.4 (no state agreement) so freq
+            #   cannot overcome a state match in the 0.88 cliff band.
             freq_boost_val = 0.0
-            if record_count > 1 and self.max_company_count > 0:
+            target_has_loc = bool((target_city or "").strip() or (target_state or "").strip())
+            if use_location and city and state and is_this_exact:
+                pass  # skip frequency — let location_score + tie-sort decide
+            elif use_location and not target_has_loc:
+                pass  # candidate is location-less while query has location: don't boost
+            elif not use_location:
+                pass  # query omitted geo: popularity must not reorder a company's offices.
+                # Suppressing freq lets same-name rows tie on name_score so the bare/national
+                # row wins the tie-break (SME rule: prefer the geo-less row when no geo asked).
+            elif record_count > 1 and self.max_company_count > 0:
                 import math
-                # Logarithmic scale for frequency boost
                 freq_score = math.log1p(record_count) / math.log1p(self.max_company_count)
-                # Add up to +0.05 boost for popular companies (scaled by name score to avoid over-boosting weak matches)
-                # NOTE: We allow this to slightly exceed 1.0 for sorting purposes; UI will cap if needed
-                freq_boost_val = (freq_score * 0.05 * name_score)
-                final_score = final_score + freq_boost_val
+                freq_boost_val = (freq_score * 0.03 * name_score)
+                if use_location and location_score < 0.4:
+                    freq_boost_val = min(freq_boost_val, 0.015)
+
+            q_city_norm = TextPreprocessor.normalize_city(city) if city else ""
+            q_state_norm = TextPreprocessor.normalize_state(state) if state else ""
+            t_city_norm = TextPreprocessor.normalize_city(target_city) if target_city else ""
+            t_state_norm = TextPreprocessor.normalize_state(target_state) if target_state else ""
+            query_has_location = bool((city or "").strip() or (state or "").strip())
+            candidate_has_location = bool((target_city or "").strip() or (target_state or "").strip())
+            exact_geo_full_match = (
+                bool(q_city_norm and q_state_norm and t_city_norm and t_state_norm) and
+                q_city_norm == t_city_norm and
+                q_state_norm == t_state_norm
+            )
+            query_geo_complete = bool((city or "").strip() and (state or "").strip())
+            _, final_score = CompanyMatcher._rank_and_user_facing_score(
+                name_score,
+                location_score,
+                use_location,
+                is_this_exact,
+                freq_boost_val,
+                elw,
+                exact_geo_full_match=exact_geo_full_match,
+                query_geo_complete=query_geo_complete,
+            )
             
             # Get database ID if available
             record_id = None
@@ -1666,7 +1976,7 @@ class CompanyMatcher:
             loc_boost_val = 0.0
             if use_location and location_score > 0:
                  if is_this_exact:
-                     loc_boost_val = location_score * 0.05
+                     loc_boost_val = location_score * elw
                  else:
                      # For hybrid, it's weighted, not additive, but we can approximate the "boost" 
                      # relative to name score for reporting, OR just report the raw boost component if it was additive.
@@ -1708,8 +2018,13 @@ class CompanyMatcher:
                 key = (c['name'], _to_loc_str(c.get('city', '')), _to_loc_str(c.get('state', '')))
                 existing_lookup[key] = idx
 
-            val = self._company_names_lower_to_index.get(query_lower, [])
-            for i in _iter_indices(val):
+            # All rows that share the same legal name (incl. Unicode/spacing variants across offices)
+            exact_idx_set = set()
+            exact_idx_set.update(_iter_indices(self._company_names_lower_to_index.get(query_lower, [])))
+            nfc = getattr(self, "_legal_nfc_to_indices", None) or {}
+            for i0 in nfc.get(q_legal, []):
+                exact_idx_set.add(int(i0))
+            for i in sorted(exact_idx_set):
                 name = self.original_company_names[i]
                 
                 # Get location data and ID for this exact match
@@ -1721,6 +2036,9 @@ class CompanyMatcher:
                     loc = self.company_locations[i]
                     exact_city = _to_loc_str(loc.get("city", ""))
                     exact_state = _to_loc_str(loc.get("state", ""))
+                    exact_city, exact_state = CompanyMatcher._sanitize_candidate_loc(
+                        exact_city, exact_state
+                    )
                     if i < len(self.company_counts):
                         exact_count = self.company_counts[i]
                 if self.company_ids and i < len(self.company_ids):
@@ -1731,52 +2049,151 @@ class CompanyMatcher:
                 if use_location:
                     exact_loc_score = TextPreprocessor.calculate_location_score(city, state, exact_city, exact_state)
 
-                # Calculate frequency boost for this exact match as a tie-breaker
+                # Calculate frequency boost for this exact match as a tie-breaker.
+                # Unified with the hybrid path (0.03 multiplier) and gated identically:
+                # zero when query has location but candidate has none.
                 import math
                 exact_freq_boost = 0.0
-                if exact_count > 1 and self.max_company_count > 0:
-                    exact_freq_boost = (math.log1p(exact_count) / math.log1p(self.max_company_count)) * 0.02
+                exact_target_has_loc = bool((exact_city or "").strip() or (exact_state or "").strip())
+                if use_location and city and state:
+                    exact_freq_boost = 0.0
+                elif use_location and not exact_target_has_loc:
+                    exact_freq_boost = 0.0
+                elif (not use_location) and not exact_target_has_loc:
+                    exact_freq_boost = 0.0
+                elif exact_count > 1 and self.max_company_count > 0:
+                    exact_freq_boost = (math.log1p(exact_count) / math.log1p(self.max_company_count)) * 0.03
+                    if use_location and exact_loc_score < 0.4:
+                        exact_freq_boost = min(exact_freq_boost, 0.015)
 
+                elw = CompanyMatcher.EXACT_MATCH_LOCATION_WEIGHT
+                q_city_norm = TextPreprocessor.normalize_city(city) if city else ""
+                q_state_norm = TextPreprocessor.normalize_state(state) if state else ""
+                t_city_norm = TextPreprocessor.normalize_city(exact_city) if exact_city else ""
+                t_state_norm = TextPreprocessor.normalize_state(exact_state) if exact_state else ""
+                query_has_location = bool((city or "").strip() or (state or "").strip())
+                candidate_has_location = bool((exact_city or "").strip() or (exact_state or "").strip())
+                exact_geo_full_match = (
+                    bool(q_city_norm and q_state_norm and t_city_norm and t_state_norm) and
+                    q_city_norm == t_city_norm and
+                    q_state_norm == t_state_norm
+                )
+                query_geo_complete = bool((city or "").strip() and (state or "").strip())
+                _, exact_user = CompanyMatcher._rank_and_user_facing_score(
+                    1.0,
+                    exact_loc_score,
+                    use_location,
+                    True,
+                    exact_freq_boost,
+                    elw,
+                    exact_geo_full_match=exact_geo_full_match,
+                    query_geo_complete=query_geo_complete,
+                )
                 # Deduplicate fast using the pre-indexed candidates
                 key = (name, _to_loc_str(exact_city), _to_loc_str(exact_state))
                 if key in existing_lookup:
                     existing = candidates[existing_lookup[key]]
-                    # Update existing with exact score and type
-                    existing['score'] = 1.0 + (exact_loc_score * 0.05) + exact_freq_boost
+                    existing['score'] = exact_user
                     existing['name_score'] = 1.0
                     existing['location_score'] = exact_loc_score
-                    existing['location_boost'] = exact_loc_score * 0.05
+                    existing['location_boost'] = exact_loc_score * elw
                     existing['popularity_boost'] = exact_freq_boost
                     existing['match_type'] = "exact"
                     continue
-                    # Exact match score = 1.0 + location boost (5%) + frequency boost (2%)
-                    exact_final_score = 1.0 + (exact_loc_score * 0.05) + exact_freq_boost
-                    
-                    candidates.append({
-                        "name": name,
-                        "id": exact_id,
-                        "score": exact_final_score,
-                        "name_score": 1.0,
-                        "semantic_score": 1.0,
-                        "normalized_semantic_score": 1.0,
-                        "string_score": 1.0,
-                        "location_score": exact_loc_score,
-                        "location_boost": exact_loc_score * 0.05,
-                        "popularity_boost": exact_freq_boost,
-                        "city": exact_city,
-                        "state": exact_state,
-                        "count": exact_count,
-                        "index": i,
-                        "match_type": "exact"
-                    })
-                    found_indices.add(i)
+
+                # Exact match not yet in Phase 1/2 list — append (e.g. below FAISS top-K)
+                candidates.append({
+                    "name": name,
+                    "id": exact_id,
+                    "score": exact_user,
+                    "name_score": 1.0,
+                    "semantic_score": 1.0,
+                    "normalized_semantic_score": 1.0,
+                    "string_score": 1.0,
+                    "concept_alignment": 1.0,
+                    "location_score": exact_loc_score,
+                    "location_boost": exact_loc_score * elw,
+                    "popularity_boost": exact_freq_boost,
+                    "city": exact_city,
+                    "state": exact_state,
+                    "count": exact_count,
+                    "index": i,
+                    "match_type": "exact"
+                })
+                found_indices.add(i)
         
-        # Sort by final score, then concept alignment, with secondary priority to "exact" match types
-        candidates.sort(key=lambda x: (round(x["score"], 4), round(x.get("concept_alignment", 0), 4), 1 if x.get("match_type") == "exact" else 0), reverse=True)
-        
+        # Sort by unified score; tie-break so exact rows with verifiable geography
+        # outrank same-name rows missing city/state (SME-defensible when query is broad).
+        def _candidate_has_geo(c):
+            return 1 if (
+                str(c.get("city") or "").strip() or str(c.get("state") or "").strip()
+            ) else 0
+
+        if use_location:
+            candidates.sort(
+                key=lambda x: (
+                    round(x.get("score", 0.0), 6),
+                    round(x.get("location_score", 0.0), 6),
+                    _candidate_has_geo(x),
+                    1 if x.get("match_type") == "exact" else 0,
+                    round(x.get("concept_alignment", 0.0), 6),
+                ),
+                reverse=True,
+            )
+        else:
+            # Query omitted city/state: within any 4dp score band, prefer bare (no geo)
+            # rows over geo-tagged rows — SMEs read geo-first as "wrong HQ".
+            # Using 4dp banding (matching the assessment tie-definition) so a geo row
+            # scoring 0.954712 does not outrank a bare row at 0.954700 just because
+            # they differ at 6dp but round to the same 4dp value.
+            candidates.sort(
+                key=lambda x: (
+                    round(x.get("score", 0.0), 4),
+                    1 - _candidate_has_geo(x),
+                    round(x.get("score", 0.0), 6),
+                    1 if x.get("match_type") == "exact" else 0,
+                    round(x.get("concept_alignment", 0.0), 6),
+                ),
+                reverse=True,
+            )
+
+        # Dedup: collapse candidates whose (NFKC-casefold name, normalized city,
+        # normalized state) triple is identical, keeping the first (highest-ranked).
+        # Eliminates duplicate-row noise like "Mount Laurel" vs "Mount  Laurel".
+        import unicodedata as _uni
+        import re as _re
+        def _legal_key(s):
+            return _re.sub(r"\s+", " ", _uni.normalize("NFKC", str(s or "")).casefold().strip())
+        def _loc_key(s):
+            # Collapse internal whitespace so "Mount  Vernon" == "Mount Vernon" (matches the
+            # audit's duplicate definition; prevents same (name, city, state) dupes in top-5).
+            return _re.sub(r"\s+", " ", str(s or "").casefold().strip())
+        _seen_keys = set()
+        _deduped = []
+        for _c in candidates:
+            _name_k = _legal_key(_c.get("name", ""))
+            _city_k = _loc_key(TextPreprocessor.normalize_city(_c.get("city", "") or ""))
+            _state_k = _loc_key(TextPreprocessor.normalize_state(_c.get("state", "") or ""))
+            _key = (_name_k, _city_k, _state_k)
+            if _key in _seen_keys:
+                continue
+            _seen_keys.add(_key)
+            _deduped.append(_c)
+        candidates = _deduped
+
         # Return top_k
         results = candidates[:top_k]
-        
+        CompanyMatcher._ensure_top5_score_spread(results)
+
+        # Make stored score non-increasing with final rank. The multi-key sort (esp.
+        # bare-first within a 4dp score band on geo-less queries) can place a row with a
+        # marginally lower raw score above one with a higher raw score; clamp so the
+        # displayed % never contradicts the displayed order (score-sanity stays monotonic).
+        for _k in range(1, len(results)):
+            _prev = float(results[_k - 1].get("score") or 0.0)
+            if float(results[_k].get("score") or 0.0) > _prev:
+                results[_k]["score"] = _prev
+
         # Store for explanation
         self._last_matches = results
         

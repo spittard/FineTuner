@@ -359,6 +359,20 @@
     "Company Name": "World Association of Medical Law"
   },
   {
+    "Company Name": "CU Cooperative Systems, Inc. dba CO-OP Solutions",
+    "City": "Rancho Cucamonga",
+    "State": "CA",
+    "control_match_state": "CA",
+    "control_match_city": "Rancho Cucamonga"
+  },
+  {
+    "Company Name": "CU Cooperative Systems, Inc. dba CO-OP Solutions",
+    "City": "Durham",
+    "State": "CT",
+    "control_match_state": "CT",
+    "control_match_city": "Durham"
+  },
+  {
     "Company Name": "ABA"
   },
   {
