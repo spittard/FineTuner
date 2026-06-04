@@ -10,7 +10,7 @@ def main():
     server = "TLG-DATA3\\TLG_DEV"
     database = "SQLWebRefTable"
     table = "AcctRef.Master"
-    output_file = "companies_with_location_industry.json"
+    output_file = "companies_with_location_enriched.json"
 
     print(f"Initializing CreateDataSet...")
     with CreateDataSet("sqlserver") as dataset_creator:
@@ -26,7 +26,7 @@ def main():
             return
 
         print(f"Extraction started (this may take several minutes)...")
-        success = dataset_creator.create_dataset_with_location_industry(
+        success = dataset_creator.create_dataset_with_location_enriched(
             table,
             output_file,
             company_column="Original",
@@ -34,6 +34,7 @@ def main():
             state_column="State",
             row_column="Row",
             sic_column="SIC",
+            segment_column="MarketSegment",
             exclude_plugging=True,
             plugging_column="PluggingStatus",
         )
@@ -41,7 +42,7 @@ def main():
         if success:
             print(f"\nSUCCESS: Data extracted to {output_file}")
             print("NOTE: Plugging records (PluggingStatus='P') were excluded.")
-            print("      SIC values of TBD/N/A/UNKNOWN are stored as empty string.")
+            print("      SIC/MarketSegment values of TBD/N/A/UNKNOWN are stored as empty string.")
         else:
             print("FAILED: Extraction failed")
 

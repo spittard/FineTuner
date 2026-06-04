@@ -99,6 +99,8 @@ plugging_report_layout_demo.html
 # Large extracted data files (generated; re-run extract scripts to rebuild)
 companies_with_location_industry.json
 companies_with_location_industry.zip
+companies_with_location_enriched.json
+companies_with_location_enriched.zip
 
 # Plugging eval scratch / A-B artifacts
 plugging_eval_baseline.csv

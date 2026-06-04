@@ -238,19 +238,19 @@ class CreateDataSet:
             traceback.print_exc()
             return []
 
-    def extract_data_with_location_industry(self, table_name: str, company_column: str = "Original",
-                                              city_column: str = "City", state_column: str = "State",
-                                              row_column: str = "Row", sic_column: str = "SIC",
-                                              max_rows: Optional[int] = None,
-                                              exclude_plugging: bool = False,
-                                              plugging_column: str = "PluggingStatus") -> List[Dict[str, Any]]:
+    def extract_data_with_location_enriched(self, table_name: str, company_column: str = "Original",
+                                             city_column: str = "City", state_column: str = "State",
+                                             row_column: str = "Row", sic_column: str = "SIC",
+                                             segment_column: str = "MarketSegment",
+                                             max_rows: Optional[int] = None,
+                                             exclude_plugging: bool = False,
+                                             plugging_column: str = "PluggingStatus") -> List[Dict[str, Any]]:
         """
-        Extract company data with location, record counts, row ID, and SIC industry code.
-
-        Same as extract_data_with_location but adds MIN(SIC) per group.
+        Extract company data with location, record counts, row ID, SIC, and MarketSegment.
 
         Returns:
-            List of dicts: [{"ID": N, "Company Name": ..., "City": ..., "State": ..., "Count": N, "SIC": ...}, ...]
+            List of dicts: [{"ID": N, "Company Name": ..., "City": ..., "State": ...,
+                             "Count": N, "SIC": ..., "MarketSegment": ...}, ...]
         """
         if not self.connection:
             print("ERROR: No database connection. Call connect() first.")
@@ -275,7 +275,8 @@ class CreateDataSet:
             select_cols = (
                 f"MIN([{row_column}]) as RowID, [{company_column}], [{city_column}], [{state_column}], "
                 f"COUNT(*) as RecordCount, "
-                f"LTRIM(RTRIM(MIN(CAST([{sic_column}] AS NVARCHAR(100))))) as SICCode"
+                f"LTRIM(RTRIM(MIN(CAST([{sic_column}] AS NVARCHAR(100))))) as SICCode, "
+                f"LTRIM(RTRIM(MIN(CAST([{segment_column}] AS NVARCHAR(100))))) as SegmentCode"
             )
             group_by = f"[{company_column}], [{city_column}], [{state_column}]"
 
@@ -291,7 +292,7 @@ class CreateDataSet:
             cursor.close()
 
             print(f"   Query returned {len(results):,} rows")
-            print("   Formatting data with location + SIC...")
+            print("   Formatting data with location + SIC + MarketSegment...")
             formatted_data = []
             empty_labels = {"", "TBD", "tbd", "N/A", "NONE", "UNKNOWN"}
             for i, row in enumerate(results):
@@ -301,6 +302,9 @@ class CreateDataSet:
                 sic = (row[5] or "").strip()
                 if sic in empty_labels:
                     sic = ""
+                segment = (row[6] or "").strip()
+                if segment in empty_labels:
+                    segment = ""
                 formatted_data.append({
                     "ID": row[0],
                     "Company Name": company_name,
@@ -308,40 +312,47 @@ class CreateDataSet:
                     "State": row[3].strip() if row[3] else "",
                     "Count": row[4] if row[4] else 0,
                     "SIC": sic,
+                    "MarketSegment": segment,
                 })
                 if (i + 1) % 100000 == 0:
                     print(f"   Processed {i + 1:,} rows...")
 
             limit_info = f" (limited to {max_rows:,} rows)" if max_rows else ""
             n_sic = sum(1 for r in formatted_data if r["SIC"])
-            print(f"   Extracted {len(formatted_data):,} records{limit_info}; {n_sic:,} have a SIC value")
+            n_seg = sum(1 for r in formatted_data if r["MarketSegment"])
+            print(f"   Extracted {len(formatted_data):,} records{limit_info}; {n_sic:,} have SIC, {n_seg:,} have MarketSegment")
             return formatted_data
 
         except Exception as e:
-            print(f"ERROR: Error extracting data with location+industry: {e}")
+            print(f"ERROR: Error extracting enriched data: {e}")
             import traceback
             traceback.print_exc()
             return []
 
-    def create_dataset_with_location_industry(self, table_name: str, output_file: str,
+    # Keep old name as alias for backwards compatibility
+    def extract_data_with_location_industry(self, *args, **kwargs):
+        return self.extract_data_with_location_enriched(*args, **kwargs)
+
+    def create_dataset_with_location_enriched(self, table_name: str, output_file: str,
                                                company_column: str = "Original",
                                                city_column: str = "City",
                                                state_column: str = "State",
                                                row_column: str = "Row",
                                                sic_column: str = "SIC",
+                                               segment_column: str = "MarketSegment",
                                                max_rows: Optional[int] = None,
                                                exclude_plugging: bool = False,
                                                plugging_column: str = "PluggingStatus") -> bool:
-        """Complete workflow: extract data with location + SIC and save to JSON."""
-        print(f"Starting dataset creation with location + industry data...")
+        """Complete workflow: extract data with location + SIC + MarketSegment and save to JSON."""
+        print(f"Starting dataset creation with location + SIC + MarketSegment...")
         print(f"   Table: {table_name}  |  Output: {output_file}")
         print(f"   Exclude Plugging: {exclude_plugging}")
         if max_rows:
             print(f"   Max rows: {max_rows:,}")
 
-        data = self.extract_data_with_location_industry(
+        data = self.extract_data_with_location_enriched(
             table_name, company_column, city_column, state_column,
-            row_column=row_column, sic_column=sic_column,
+            row_column=row_column, sic_column=sic_column, segment_column=segment_column,
             max_rows=max_rows, exclude_plugging=exclude_plugging,
             plugging_column=plugging_column,
         )
