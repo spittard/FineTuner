@@ -1,0 +1,415 @@
+[
+  {
+    "id": "7918858",
+    "query": "Stout Real Estate",
+    "city": "",
+    "state": "",
+    "source": "gate_a"
+  },
+  {
+    "id": "7923131",
+    "query": "Xylix Sexure",
+    "city": "Salt Lake City",
+    "state": "UT",
+    "source": "us_state",
+    "expected_top1_contains": "xylix"
+  },
+  {
+    "id": "7923760",
+    "query": "Applecart",
+    "city": "New York",
+    "state": "NY",
+    "source": "us_state",
+    "expected_top1_contains": "applecart"
+  },
+  {
+    "id": "7926161",
+    "query": "West Coast 2027",
+    "city": "",
+    "state": "",
+    "source": "gate_a"
+  },
+  {
+    "id": "7927825",
+    "query": "Sojourn Travel Advisors",
+    "city": "",
+    "state": "",
+    "source": "gate_a"
+  },
+  {
+    "id": "7918860",
+    "query": "Rayna Properties",
+    "city": "",
+    "state": "",
+    "source": "intl_geo",
+    "intl_city": "Dubai"
+  },
+  {
+    "id": "7918916",
+    "query": "Prosper Capital",
+    "city": "",
+    "state": "",
+    "source": "intl_geo",
+    "intl_city": "Santo Domingo"
+  },
+  {
+    "id": "7919765",
+    "query": "Snap Inc",
+    "city": "Media City",
+    "state": "Dubai",
+    "source": "intl_geo",
+    "intl_city": "Dubai"
+  },
+  {
+    "id": "7919797",
+    "query": "PR6055184 - Labor Summit 2026 - PepsiCo",
+    "city": "",
+    "state": "",
+    "source": "intl_geo",
+    "intl_city": "Sao Paulo"
+  },
+  {
+    "id": "7919833",
+    "query": "Varian Inc.",
+    "city": "Jundiai",
+    "state": "Sao Paulo",
+    "source": "intl_geo",
+    "intl_city": "Sao Paulo"
+  },
+  {
+    "id": "7919859",
+    "query": "PANAMORL - RIO DE JANEIRO - JUN 2026 - NOVO GRO",
+    "city": "",
+    "state": "",
+    "source": "intl_geo",
+    "intl_city": "Guatemala"
+  },
+  {
+    "id": "7920015",
+    "query": "Oceandusk/World Cup 2026/3-4 star/21 June/Atlanta",
+    "city": "",
+    "state": "",
+    "source": "intl_geo",
+    "intl_city": "Dubai"
+  },
+  {
+    "id": "7920030",
+    "query": "Voyage Tours – US Group",
+    "city": "",
+    "state": "",
+    "source": "intl_geo",
+    "intl_city": "Dubai"
+  },
+  {
+    "id": "7920158",
+    "query": "Reunião de Liderança JAN - SP",
+    "city": "",
+    "state": "",
+    "source": "intl_geo",
+    "intl_city": "Sao Paulo"
+  },
+  {
+    "id": "7920160",
+    "query": "RENASE / EV 0037/26 Super Rodada -Somos Educação / Hilton São Paulo Morumbi",
+    "city": "",
+    "state": "",
+    "source": "intl_geo",
+    "intl_city": "Sao Paulo"
+  },
+  {
+    "id": "7921827",
+    "query": "Smurfit Westrock",
+    "city": "Buenos Aires",
+    "state": "Buenos Aires, CF",
+    "source": "intl_geo",
+    "intl_city": "Sao Paulo"
+  },
+  {
+    "id": "7922267",
+    "query": "RIOCC Empresarial 2026",
+    "city": "",
+    "state": "",
+    "source": "intl_geo",
+    "intl_city": "Sao Paulo"
+  },
+  {
+    "id": "7918909",
+    "query": "North End Teleservices",
+    "city": "Omaha",
+    "state": "NE",
+    "source": "sample"
+  },
+  {
+    "id": "7927568",
+    "query": "Meriton",
+    "city": "Irving",
+    "state": "TX",
+    "source": "sample"
+  },
+  {
+    "id": "7920422",
+    "query": "ACIU North America 2025 National Convention",
+    "city": "Saint Cloud",
+    "state": "FL",
+    "source": "sample"
+  },
+  {
+    "id": "7923678",
+    "query": "Ventur3",
+    "city": "Bellevue",
+    "state": "WA",
+    "source": "sample"
+  },
+  {
+    "id": "7927265",
+    "query": "Shawna Barnts",
+    "city": "Omaha",
+    "state": "NE",
+    "source": "sample"
+  },
+  {
+    "id": "7925883",
+    "query": "KabaFusion",
+    "city": "Boca Raton",
+    "state": "FL",
+    "source": "sample"
+  },
+  {
+    "id": "7924123",
+    "query": "Antioch Church",
+    "city": "MONROE",
+    "state": "NC",
+    "source": "sample"
+  },
+  {
+    "id": "7925916",
+    "query": "SompoRe",
+    "city": "New York",
+    "state": "NY",
+    "source": "sample"
+  },
+  {
+    "id": "7924535",
+    "query": "Appledore Marine Engineering",
+    "city": "Portsmouth",
+    "state": "NH",
+    "source": "sample"
+  },
+  {
+    "id": "7925554",
+    "query": "CSGI",
+    "city": "Englewood",
+    "state": "CO",
+    "source": "sample"
+  },
+  {
+    "id": "7924839",
+    "query": "AgentSync",
+    "city": "Santa Barbara",
+    "state": "CA",
+    "source": "sample"
+  },
+  {
+    "id": "7925858",
+    "query": "Asmar Schor McKenna",
+    "city": "Washington",
+    "state": "DC",
+    "source": "sample"
+  },
+  {
+    "id": "7927710",
+    "query": "Shark Ninja APAC Holding Pte Ltd",
+    "city": "Needham Heights",
+    "state": "MA",
+    "source": "sample"
+  },
+  {
+    "id": "7921394",
+    "query": "WhirlWind Tours",
+    "city": "New York",
+    "state": "NY",
+    "source": "sample"
+  },
+  {
+    "id": "7922934",
+    "query": "Pepa Entertainment",
+    "city": "Lima",
+    "state": "",
+    "source": "sample"
+  },
+  {
+    "id": "7926533",
+    "query": "DALPC*",
+    "city": "San Diego",
+    "state": "CA",
+    "source": "sample"
+  },
+  {
+    "id": "7919866",
+    "query": "Notre Dame International Alumni Association",
+    "city": "WARREN",
+    "state": "",
+    "source": "sample"
+  },
+  {
+    "id": "7927165",
+    "query": "Suncoast Food Brokerage",
+    "city": "Wesley Chapel",
+    "state": "FL",
+    "source": "sample"
+  },
+  {
+    "id": "7923210",
+    "query": "Wedaways Travel",
+    "city": "Lisboa",
+    "state": "",
+    "source": "sample"
+  },
+  {
+    "id": "7923436",
+    "query": "Troutman Pepper",
+    "city": "New York",
+    "state": "NY",
+    "source": "sample"
+  },
+  {
+    "id": "7922482",
+    "query": "Viviana Viajes S.A. de C.V.",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7926915",
+    "query": "Dermody Properies 2027 Summit",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7922935",
+    "query": "PepperStone",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7926418",
+    "query": "Grover Gaming",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7927350",
+    "query": "Joe C. Annual Conference L8NMPHV5T43",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7923827",
+    "query": "Supernature",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7925599",
+    "query": "LHH Star Sales Event DVNFN33FTY6",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7926257",
+    "query": "Overflow Room Block Gavel Option 1",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7919436",
+    "query": "Niantic-2026 Jun-Staff/Production Room Block",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7922617",
+    "query": "Pferd Tools",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7927330",
+    "query": "Clover Health",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7926321",
+    "query": "President's Club 2023",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7927108",
+    "query": "Zillow New Construction Forum 2026 ZQNFP7GFDTY",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7926002",
+    "query": "EmpowHER Women’s Luncheon",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7920219",
+    "query": "SAT Mexico | Pinguim 2026 | Hilton Reforma | G2",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7923439",
+    "query": "UATP",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7926262",
+    "query": "NJUNS - National Joint Utilities",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7922440",
+    "query": "NYCD Boldest Football Team",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7919771",
+    "query": "SAT Mexico | TRAXION CEO Summit 2026",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  },
+  {
+    "id": "7918827",
+    "query": "Relaunch to Rich",
+    "city": "",
+    "state": "",
+    "source": "geoless"
+  }
+]

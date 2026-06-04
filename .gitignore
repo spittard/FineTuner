@@ -95,3 +95,19 @@ plugging_report_sample.*
 plugging_report_top*.csv
 plugging_report_top*.md
 plugging_report_layout_demo.html
+
+# Large extracted data files (generated; re-run extract scripts to rebuild)
+companies_with_location_industry.json
+companies_with_location_industry.zip
+
+# Plugging eval scratch / A-B artifacts
+plugging_eval_baseline.csv
+plugging_eval_after_regen.csv
+plugging_eval_after_tiebreak.csv
+plugging_industry_labels.csv
+plugging_industry_backtest.csv
+guard_blast_radius_ab.csv
+plugging_report.md.bak.csv
+plugging_matches.prebatch.bak.json
+plugging_matches.prelift.bak.json
+rotated/

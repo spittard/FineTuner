@@ -1,8 +1,25 @@
 import re
+import math
 import logging
 import unicodedata
 
 logger = logging.getLogger(__name__)
+
+# Geoless caps — MUST stay in sync with CompanyMatcher (src/finetuner/core/matcher.py).
+# Importing the matcher here would pull in torch/faiss into the lightweight report path,
+# so the values are mirrored. Update both places together if the matcher changes.
+EXACT_WHEN_QUERY_HAS_NO_GEO_CAP = 0.94
+NONEXACT_WHEN_QUERY_HAS_NO_GEO_CAP = 0.92
+
+
+def _geoless_exact_cap(record_count: int) -> float:
+    """Mirror of CompanyMatcher._geoless_exact_cap: an exact name with no query geo is
+    capped, and the cap decays as more records share the name (geography is the missing
+    tiebreaker), so very-ambiguous names can fall into the Medium tier."""
+    n = max(1, int(record_count or 1))
+    if n <= 1:
+        return EXACT_WHEN_QUERY_HAS_NO_GEO_CAP
+    return max(0.72, EXACT_WHEN_QUERY_HAS_NO_GEO_CAP - 0.075 * math.log1p(n - 1))
 
 class RationaleService:
     """
@@ -183,13 +200,27 @@ class RationaleService:
         evidence += f"• <b>Name Similarity:</b> {pick_badge(string_score)} ({string_score:.0%}) — Based on {ns_reason}.<br>"
 
         if query_exact_name and not query_has_geo:
-            evidence += (
-                "• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report "
-                "tier) until you add city/state that agrees with the record. Same legal names may exist in multiple "
-                "locations; showing ~99% on one row would wrongly imply we verified which site you meant. "
-                "<b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. "
-                "Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>"
-            )
+            try:
+                _rc = int(record_count or 1)
+            except (TypeError, ValueError):
+                _rc = 1
+            if _rc > 1:
+                evidence += (
+                    f"• <b>Exact name, no query geography:</b> <b>{_rc}</b> records share this exact name, and no "
+                    "city/state was supplied to pick between them — so the cap is lowered below the usual ~94% as "
+                    "ambiguity grows (very common names can fall into the Medium tier). Geography is the missing "
+                    "tiebreaker here: add city/state that agrees with one record to raise confidence. "
+                    "<b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. "
+                    "Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>"
+                )
+            else:
+                evidence += (
+                    "• <b>Exact name, no query geography:</b> The match is capped around <b>94%</b> (below the top report "
+                    "tier) until you add city/state that agrees with the record. This name is unique in the dataset, so "
+                    "geography cannot disambiguate further; the cap reflects that the office itself is still unverified. "
+                    "<b>100%</b> stays reserved for exact name <b>and</b> matching city <b>and</b> state on both sides. "
+                    "Among tied exacts, rows that list an office are still preferred in sort order when scores tie.<br>"
+                )
 
         # Semantic Link
         sl_reason = "synonymous concepts" if sem_score >= 0.85 else "strong contextual link" if sem_score >= 0.7 else "moderate meaning-based connection"
@@ -862,6 +893,24 @@ class RationaleService:
                 "Final = min(1.0, name_score + frequency_boost)  (no query city/state)\n"
                 f"    = min(1.0, {display_name:.4f} + {pop_boost:.4f}) = {recon:.4f}\n"
             )
+            # Geoless caps (MUST MATCH CompanyMatcher): with no query city/state, an exact /
+            # near-exact name is capped (and decayed by how many records share the name);
+            # other geoless matches cap at the non-exact ceiling. Without this the snapshot
+            # reconstructed ~0.999 and falsely flagged capped rows as "stale".
+            is_exact_like = (mt == "exact") or (display_name >= 0.998) or (string_score >= 0.999)
+            if is_exact_like:
+                geo_cap = _geoless_exact_cap(record_count)
+                recon = min(recon, geo_cap)
+                breakdown += (
+                    f"No query geo + exact name ({max(1, record_count)} record(s) share it) "
+                    f"-> capped at _geoless_exact_cap = {geo_cap:.4f}\n"
+                )
+            else:
+                recon = min(recon, NONEXACT_WHEN_QUERY_HAS_NO_GEO_CAP)
+                breakdown += (
+                    f"No query geo + non-exact name -> capped at "
+                    f"{NONEXACT_WHEN_QUERY_HAS_NO_GEO_CAP:.4f}\n"
+                )
 
         query_name_exact = normalized_legal_key(query) == normalized_legal_key(
             match_data.get("name") or match_data.get("company_name", "")
@@ -883,12 +932,33 @@ class RationaleService:
                 f"both_no_location={both_sides_no_location} (informational; does not unlock 1.0) "
                 f"-> capped at {recon:.4f}\n"
             )
-        breakdown += "```\n\n"
-        if abs(recon - final_score) > 0.025:
+        # Relative rank-lift (MUST MATCH CompanyMatcher): an exact-name match in the right
+        # state but wrong/blank city is lifted just above the best competing different-name row,
+        # so the closed-form reconstruction above reads lower than the stored score on these rows.
+        is_exact_like_geo = (mt == "exact") or (display_name >= 0.998) or (string_score >= 0.999)
+        same_state_as_query = bool(
+            query_state_text and target_state_text
+            and normalize_state(query_state_text) == normalize_state(target_state_text)
+        )
+        likely_relative_lift = (
+            query_has_geo and is_exact_like_geo and same_state_as_query
+            and not exact_geo_full_match and location_score < 0.9
+        )
+        if likely_relative_lift:
             breakdown += (
-                f"*Formula snapshot **{recon:.4f}** vs stored final **{final_score:.4f}**: "
-                f"this row was matched before the unified single-score change; rerun `match_plugging_records.py` "
-                f"to refresh stored scores.*\n\n"
+                "Exact name + same state + unverified city: the stored score is RAISED to rank just "
+                "above the best competing different-name match in this record (record-relative lift), "
+                "so an exact-name match is not buried by an unrelated name. This step depends on the "
+                "other candidates and is not captured by the closed-form reconstruction above.\n"
+            )
+        breakdown += "```\n\n"
+        if abs(recon - final_score) > 0.025 and not likely_relative_lift:
+            breakdown += (
+                f"*Note: the **{final_score:.4f}** stored score is authoritative. The formula above "
+                f"is a simplified reconstruction (**{recon:.4f}**) and can differ when the matcher applies "
+                f"secondary adjustments not shown here — e.g. a geographic-mismatch penalty when the query "
+                f"has a location but the candidate's city/state differs, a record-relative rank lift for "
+                f"exact-name same-state matches, or rank spacing within the top 5.*\n\n"
             )
 
         breakdown += "### Component Analysis\n\n"

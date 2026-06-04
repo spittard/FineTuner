@@ -47,6 +47,39 @@ def save_results(results: list, output_file: str):
         json.dump(results, f, indent=2, ensure_ascii=False)
 
 
+def build_entry(record: dict, matches: list) -> dict:
+    """Build a plugging result entry from a source record and its top matches."""
+    return {
+        'row_id': record.get('ID'),
+        'query_company': record.get('Company Name', ''),
+        'query_city': record.get('City', ''),
+        'query_state': record.get('State', ''),
+        'matches': [
+            {
+                'rank': rank + 1,
+                'name': m.get('name', ''),
+                'city': m.get('city', ''),
+                'state': m.get('state', ''),
+                'id': m.get('id'),
+                'score': m.get('score', 0.0),
+                'name_score': m.get('name_score', 0.0),
+                'string_score': m.get('string_score', 0.0),
+                'semantic_score': m.get('semantic_score', 0.0),
+                'normalized_semantic_score': m.get('normalized_semantic_score', m.get('semantic_score', 0.0)),
+                'location_score': m.get('location_score', 0.0),
+                'location_boost': m.get('location_boost', 0.0),
+                'count': m.get('count', 0),
+                'match_type': m.get('match_type', ''),
+                'acronym_fidelity': m.get('acronym_fidelity', 0.0),
+                'concept_alignment': m.get('concept_alignment', 0.0),
+                'lexical_boost': m.get('lexical_boost', 0.0),
+                'popularity_boost': m.get('popularity_boost', 0.0),
+            }
+            for rank, m in enumerate(matches)
+        ],
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(description='Batch-match plugging records against reference index')
     parser.add_argument('--input', default=INPUT_FILE, help=f'Input file (default: {INPUT_FILE})')
@@ -56,6 +89,8 @@ def main():
                         help=f'Save checkpoint every N records (default: {CHECKPOINT_EVERY})')
     parser.add_argument('--limit', type=int, default=None,
                         help='Process only the first N records (for quick testing)')
+    parser.add_argument('--batch-size', type=int, default=128,
+                        help='Queries per batched RPC search (default: 128). Set 1 to disable batching.')
     parser.add_argument('--no-resume', action='store_true',
                         help='Ignore existing output and start fresh')
     args = parser.parse_args()
@@ -130,82 +165,54 @@ def main():
     processed = 0
     errors = 0
 
-    for i, record in enumerate(pending):
-        row_id = record.get('ID')
-        company = record.get('Company Name', '')
-        city = record.get('City', '')
-        state = record.get('State', '')
+    batch_size = max(1, int(args.batch_size))
+    for bstart in range(0, len(pending), batch_size):
+        chunk = pending[bstart:bstart + batch_size]
+        items = [
+            [r.get('Company Name', ''), r.get('City', '') or '', r.get('State', '') or '']
+            for r in chunk
+        ]
 
         elapsed = time.time() - start_time
         rate = processed / elapsed if elapsed > 0 else 0
-        remaining = len(pending) - i
+        remaining = len(pending) - bstart
         eta = remaining / rate if rate > 0 else 0
 
-        print(f"[{skipped + i + 1}/{total}] ({elapsed:.0f}s, ETA: {eta:.0f}s) "
-              f"Row {row_id}: {company} — {city}, {state}", flush=True)
-        # Progress line prints *before* RPC; a single search can take minutes on a full index,
-        # so we emit a heartbeat + timing so the terminal does not look hung.
-        print("   RPC search…", end="", flush=True)
+        print(f"[{skipped + bstart + 1}-{skipped + bstart + len(chunk)}/{total}] "
+              f"({elapsed:.0f}s, ETA: {eta:.0f}s) batch of {len(chunk)}…", end="", flush=True)
         try:
             t_rpc = time.time()
-            result = server.search(
-                company,
-                top_k=args.top_k,
-                city=city if city else None,
-                state=state if state else None
-            )
-            print(f" {time.time() - t_rpc:.1f}s", flush=True)
+            batch_results = server.batch_search_loc(items, top_k=args.top_k)
+            dt = time.time() - t_rpc
+            print(f" {dt:.1f}s ({dt / max(1, len(chunk)):.2f}s/rec)", flush=True)
 
-            matches = result.get('results', [])
-
-            entry = {
-                'row_id': row_id,
-                'query_company': company,
-                'query_city': city,
-                'query_state': state,
-                'matches': [
-                    {
-                        'rank': rank + 1,
-                        'name': m.get('name', ''),
-                        'city': m.get('city', ''),
-                        'state': m.get('state', ''),
-                        'id': m.get('id'),
-                        'score': m.get('score', 0.0),
-                        'name_score': m.get('name_score', 0.0),
-                        'string_score': m.get('string_score', 0.0),
-                        'semantic_score': m.get('semantic_score', 0.0),
-                        'normalized_semantic_score': m.get('normalized_semantic_score', m.get('semantic_score', 0.0)),
-                        'location_score': m.get('location_score', 0.0),
-                        'location_boost': m.get('location_boost', 0.0),
-                        'count': m.get('count', 0),
-                        'match_type': m.get('match_type', ''),
-                        'acronym_fidelity': m.get('acronym_fidelity', 0.0),
-                        'concept_alignment': m.get('concept_alignment', 0.0),
-                        'lexical_boost': m.get('lexical_boost', 0.0),
-                        'popularity_boost': m.get('popularity_boost', 0.0),
-                    }
-                    for rank, m in enumerate(matches)
-                ]
-            }
-            results.append(entry)
-            processed += 1
+            for r, res in zip(chunk, batch_results):
+                matches = res.get('results', []) if isinstance(res, dict) else []
+                results.append(build_entry(r, matches))
+                processed += 1
 
         except Exception as e:
-            print(f" ERROR: {e}", flush=True)
-            errors += 1
-            results.append({
-                'row_id': row_id,
-                'query_company': company,
-                'query_city': city,
-                'query_state': state,
-                'matches': [],
-                'error': str(e)
-            })
+            # One bad batch should not lose the whole chunk — fall back to per-record.
+            print(f" BATCH ERROR: {e} — retrying per-record", flush=True)
+            for r in chunk:
+                try:
+                    res = server.search(
+                        r.get('Company Name', ''),
+                        top_k=args.top_k,
+                        city=(r.get('City') or None),
+                        state=(r.get('State') or None),
+                    )
+                    results.append(build_entry(r, res.get('results', [])))
+                    processed += 1
+                except Exception as e2:
+                    errors += 1
+                    entry = build_entry(r, [])
+                    entry['error'] = str(e2)
+                    results.append(entry)
 
-        # Checkpoint
-        if (processed + errors) % args.checkpoint_every == 0:
-            save_results(results, args.output)
-            print(f"   [checkpoint] {len(results):,} records saved to {args.output}", flush=True)
+        # Checkpoint after every batch.
+        save_results(results, args.output)
+        print(f"   [checkpoint] {len(results):,} records saved to {args.output}", flush=True)
 
     # Final save
     save_results(results, args.output)

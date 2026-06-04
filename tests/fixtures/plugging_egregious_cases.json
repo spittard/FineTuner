@@ -3,127 +3,1086 @@
   "source_records": "plugging_records.json",
   "max_cases": 120,
   "exported": 120,
-  "note": "Manually constructed from assessment CSV (Python shell unavailable at time of export). Cases sorted by score desc then CSV line order. Score = 1000*(sev==high)+50*(priority_code_count). Priority codes: NO_QUERY_GEO_BARE_ROW_NOT_FIRST, GATE_A_TOP5_TIE_CLUSTER, HIGH_SCORE_NON_EXACT_NAME, NO_QUERY_GEO_RANK1_HAS_LOCATION, HYBRID_SEMANTIC_LED_AT_CEILING.",
   "cases": [
-    {"row_id": 7918774, "query_company": "WAHUPA Educational Services", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;HIGH_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Top-1 name is not the same cleaned string as the query (query_and_top1_names_related_non_equal) but score is 0.9986. Check display tier / rescale vs SME copy (99.9% implies exact name only when geo omitted). Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."},
-    {"row_id": 7880903, "query_company": "Corporation of Hamilton", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "GATE_A_TOP5_TIE_CLUSTER;NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7919451, "query_company": "The Washington Institute", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "GATE_A_TOP5_TIE_CLUSTER;NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7922482, "query_company": "Viviana Viajes S.A. de C.V.", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "GATE_A_TOP5_TIE_CLUSTER;NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923205, "query_company": "The Wine Marathon", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9547; rationale should justify suffix/token gaps. Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."},
-    {"row_id": 7924515, "query_company": "Bond Events x Change Collective: National Change Lab 2026", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Top-1 is a related but non-identical name (heavy_token_overlap_non_equal) at 0.9603; rationale should justify suffix/token gaps. Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."},
-    {"row_id": 7925951, "query_company": "2026 Worldwide Sales Kick Off Meeting", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "GATE_A_TOP5_TIE_CLUSTER;NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7925965, "query_company": "Financial Services Incentive Program", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "GATE_A_TOP5_TIE_CLUSTER;NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3, 4, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7880589, "query_company": "Women of Power Conference", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7918807, "query_company": "Work N Roll", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7918811, "query_company": "Universidad de Georgetown", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7918827, "query_company": "Relaunch to Rich", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 3, 4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7918860, "query_company": "Rayna Properties", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;SUSPECT_GEO_RANK5_CITY_TOKEN_EQUALS_STATE_TOKEN", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3, 4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Rank 5 location fields look malformed (city_token_equals_state_token): city='Dubai' state='Dubai'."},
-    {"row_id": 7918916, "query_company": "Prosper Capital", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;SUSPECT_GEO_RANK1_CITY_TOKEN_EQUALS_STATE_TOKEN", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Rank 1 location fields look malformed (city_token_equals_state_token): city='Santo Domingo' state='Santo Domingo'."},
-    {"row_id": 7918921, "query_company": "NPB Technologies", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7919302, "query_company": "Portland Bottling Company", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7919314, "query_company": "Ontario Skate League Championships", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3, 4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7919453, "query_company": "SAS WIRE 2026", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7919688, "query_company": "2027 SCABB ANNUAL MEETING", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7919716, "query_company": "Cruise SCJ Feb 2026", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7919767, "query_company": "SWM/Pharma US/Southern USA", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 3, 4, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7919849, "query_company": "WPBF Media", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7919859, "query_company": "PANAMORL - RIO DE JANEIRO - JUN 2026 - NOVO GRO", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5;SUSPECT_GEO_RANK1_CITY_TOKEN_EQUALS_STATE_TOKEN", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 3, 4, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Rank 1 location fields look malformed (city_token_equals_state_token): city='Guatemala' state='Guatemala'."},
-    {"row_id": 7919861, "query_company": "RevOps & CTO 2026 Offsite (XQ7VA4)", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 3, 4, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7920014, "query_company": "Pro-ven/128971/Miami", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7920016, "query_company": "Pro-ven/128970/Miami", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7920037, "query_company": "Rizes Grupo Senosiain - Chicago", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7920043, "query_company": "Xylix Secure Group", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5;SUSPECT_GEO_RANK5_CITY_TOKEN_EQUALS_STATE_TOKEN", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Rank 5 location fields look malformed (city_token_equals_state_token): city='UT' state='UT'."},
-    {"row_id": 7920082, "query_company": "World Wide Express Group", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7920139, "query_company": "Oceandusk/World Cup 2026/3-4 Star/16 June/Miami", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7920148, "query_company": "Yo Planner/INFINIA 2026", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7920158, "query_company": "Reunião de Liderança JAN - SP", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;SUSPECT_GEO_RANK1_CITY_TOKEN_EQUALS_STATE_TOKEN", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Rank 1 location fields look malformed (city_token_equals_state_token): city='Sao Paulo' state='Sao Paulo'."},
-    {"row_id": 7920160, "query_company": "RENASE / EV 0037/26 Super Rodada -Somos Educação / Hilton São Paulo Morumbi", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5;SUSPECT_GEO_RANK2_CITY_TOKEN_EQUALS_STATE_TOKEN;SUSPECT_GEO_RANK3_CITY_TOKEN_EQUALS_STATE_TOKEN;SUSPECT_GEO_RANK5_CITY_TOKEN_EQUALS_STATE_TOKEN", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo. Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Multiple Sao Paulo city==state geo anomalies in ranks 2, 3, 5."},
-    {"row_id": 7920167, "query_company": "W2M/ICARION CT/NY/WA. Roadshow 40-50 PAX. OCTUBRE 2026/US", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3, 4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7920188, "query_company": "William Choy", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3, 4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7920355, "query_company": "Zhejiang Bonart Tourism & Event Co Ltd/Delegation Group/San Jose", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7920377, "query_company": "Solicitud grupo Loft // Conrad", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;SUSPECT_GEO_RANK3_NORMALIZED_CITY_EQUALS_STATE", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Rank 3 location fields look malformed (normalized_city_equals_state): city='Panama City' state='Panama'."},
-    {"row_id": 7920499, "query_company": "WNFC Utah at San Diego - Week 8- 2026", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7920520, "query_company": "TOVC", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7920531, "query_company": "Sofia Hernandez", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7920659, "query_company": "UIUC- GBatNet Big Bat Blowout Conference", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7920803, "query_company": "Platinum Dance Competition Baltimore", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 3, 4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7921330, "query_company": "Pluralis Research", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7921455, "query_company": "Xcelerate Growth Partners", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7921630, "query_company": "Wilde Brands", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7921667, "query_company": "VTR Biotech", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7922158, "query_company": "PRISMA ONG", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7922267, "query_company": "RIOCC Empresarial 2026", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5;SUSPECT_GEO_RANK1_CITY_TOKEN_EQUALS_STATE_TOKEN", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Rank 1 location fields look malformed (city_token_equals_state_token): city='Sao Paulo' state='Sao Paulo'."},
-    {"row_id": 7922271, "query_company": "Prison to Professsionals", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7922280, "query_company": "Orkin Pest Contral", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7922440, "query_company": "NYCD Boldest Football Team", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7922486, "query_company": "Relajate - Agencia", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 3, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7922617, "query_company": "Pferd Tools", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7922700, "query_company": "Singular Medicamentos", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7922749, "query_company": "Pacific Union Conference of  7th Day Adventist", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7922935, "query_company": "PepperStone", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7922948, "query_company": "Peter de Anda", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923090, "query_company": "Science of Skincare LLC, DBA Science of Skin Summit", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923103, "query_company": "The Woodlands High School", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923271, "query_company": "Members Cooperative Credit Union", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923282, "query_company": "Spotlight Staffing", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923288, "query_company": "VocalEssence", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923315, "query_company": "EKHO Infrastructure Solutions", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923362, "query_company": "Wizz Air Hungary Ltd.", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923408, "query_company": "Massacusetts Eye and Ear Infirmary", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7923427, "query_company": "Strike48", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923429, "query_company": "Take2Eton Events", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923502, "query_company": "LWML Mid South District", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 3, 4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923673, "query_company": "Xello", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923677, "query_company": "TravelFun LLC dba TravelFun.Biz", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7923716, "query_company": "NKL WEXMAC RTOP 2862 H5NKXH55PJT", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923752, "query_company": "2026 NJ Innovation Lab Visit FVN34577KN6", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923756, "query_company": "A&M 2027 MAS Year End Nov2027 PNN2CTYX6QF", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3, 4, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7923820, "query_company": "Skechers  Market Week HGNQXGGPHCB", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923822, "query_company": "Soham Experiences Pvt Ltd", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 3, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923827, "query_company": "Supernature", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923834, "query_company": "TRAVEL IDEA NYC CUSTOMERS GNNC94FYH9Q", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5;SUSPECT_GEO_RANK2_CITY_TOKEN_EQUALS_STATE_TOKEN", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Rank 2 location fields look malformed (city_token_equals_state_token): city='Sao Paulo' state='Sao Paulo'."},
-    {"row_id": 7923835, "query_company": "TRAVEL IDEA NYC PHIL MIA INFLUENCERS FIFA KZN5J4ZHKSQ", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7923843, "query_company": "305 Communications and Event Management", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923844, "query_company": "ARC Network, LLC", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923846, "query_company": "Horizon Meeting and Management Group, LLC", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7923848, "query_company": "SMCTG Tour Inc", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5;SUSPECT_GEO_RANK4_CITY_TOKEN_EQUALS_STATE_TOKEN", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Rank 4 location fields look malformed (city_token_equals_state_token): city='Sao Paulo' state='Sao Paulo'."},
-    {"row_id": 7923883, "query_company": "Belmont Primary School", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7924027, "query_company": "USJN National Championships 2026", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7924059, "query_company": "Schools of Illinois Public Cooperative", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7924061, "query_company": "Teenage Group - Galaxy Vacations", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7924094, "query_company": "Warrens Primary School", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5;SUSPECT_GEO_RANK2_CITY_TOKEN_EQUALS_STATE_TOKEN", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Rank 2 location fields look malformed (city_token_equals_state_token): city='Saint Michael' state='Saint Michael'."},
-    {"row_id": 7924097, "query_company": "Ballets Jazz Montreal", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7924101, "query_company": "Cheryl Hurst", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7924120, "query_company": "Boston Rhythm Riders Line Dancing Group", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7924138, "query_company": "Vida Fertility Institute", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7924150, "query_company": "United Partners/Bedrooms/Brazil", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5;SUSPECT_GEO_RANK1_CITY_TOKEN_EQUALS_STATE_TOKEN", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Rank 1 location fields look malformed (city_token_equals_state_token): city='Sao Paulo' state='Sao Paulo'."},
-    {"row_id": 7924256, "query_company": "Two Heads/RoomsOnly/New York", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7924266, "query_company": "INSS 2027 - Independent News Sustainability Summit", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7924294, "query_company": "AC Eventos MX", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7924295, "query_company": "AD /  Group 2026 - Boston", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7924303, "query_company": "Alchemy - Convención Zurich Santander Nov 2026", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;SUSPECT_GEO_RANK5_CITY_TOKEN_EQUALS_STATE_TOKEN", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Rank 5 location fields look malformed (city_token_equals_state_token): city='Sao Paulo' state='Sao Paulo'."},
-    {"row_id": 7924362, "query_company": "BCD Spain/Tour Guitarrica de la Fuente/Perú", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7924364, "query_company": "Barrella Viaggi", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7924407, "query_company": "Travel Technology Services Co Ltd-Thailand/Corporate group/New York", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7924425, "query_company": "StudioMDHR Company Offsite DJ7CWB", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3, 4, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7924444, "query_company": "Topical Products Conference 2026 (ev-1589)", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 3, 4, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7924467, "query_company": "247 TravelPro | Rio de Janeiro | jun 202", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5;SUSPECT_GEO_RANK1_CITY_TOKEN_EQUALS_STATE_TOKEN;SUSPECT_GEO_RANK4_CITY_TOKEN_EQUALS_STATE_TOKEN", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 3, 5] while rank-1 has geo. Two or more top-5 rows share the same score to 4 decimals. Multiple geo anomalies: Guatemala city==state (rank 1), Rio de Janeiro city==state (rank 4)."},
-    {"row_id": 7924482, "query_company": "Sherrol Nicholls", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7924505, "query_company": "BCD/241577/Miraclon Enquiry/US", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7924506, "query_company": "BCD/241678/TikTok Global Education Team Offsite/NYC", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7924510, "query_company": "Clark tours- GRUPO MEXICO - EMPRESA VIP", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;SUSPECT_GEO_RANK1_CITY_TOKEN_EQUALS_STATE_TOKEN", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Rank 1 location fields look malformed (city_token_equals_state_token): city='Guatemala' state='Guatemala'."},
-    {"row_id": 7924513, "query_company": "CANCUN OFICINA CENTRO Abril 2026", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 3, 4, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7924517, "query_company": "BioNTech AG -GERMANY/9 April/Condado", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5;SUSPECT_GEO_RANK5_CITY_TOKEN_EQUALS_STATE_TOKEN", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Rank 5 location fields look malformed (city_token_equals_state_token): city='Basel' state='Basel'."},
-    {"row_id": 7924519, "query_company": "Central de Eventos/SE 56938/OFICINA TERRITORIALIZAÇÃO  ESTRATIFICAÇÃO RISCO", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;SUSPECT_GEO_RANK2_CITY_TOKEN_EQUALS_STATE_TOKEN;SUSPECT_GEO_RANK5_CITY_TOKEN_EQUALS_STATE_TOKEN", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3, 4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Multiple Sao Paulo city==state geo anomalies in ranks 2 and 5."},
-    {"row_id": 7924522, "query_company": "CHD 03242026", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3, 4, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7924530, "query_company": "AMEX M&E Mexico/Summit Hematología 2026", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 4, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7924540, "query_company": "BCD / JJ - ID 186769 - JHNKN4W9QFV - Treinamento de Palestrantes 2026 - Ste", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7924546, "query_company": "Brook green - Missao Internacional - San Francisco", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7924549, "query_company": "Carenzi Vanues/CDM Media new enquiry/New York", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7924550, "query_company": "Cartago Travel / Toronto Mar 2026", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2, 3] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7924553, "query_company": "Calder/TVS713223/1/Americas", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7924560, "query_company": "Veeam Partner Program", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3, 4, 5] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break)."},
-    {"row_id": 7924569, "query_company": "Trans Orbit / Mitsubishi Chemical Engineering / Boston, MA", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [2] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."},
-    {"row_id": 7924571, "query_company": "Your Travel Center - Booking Agency", "query_city": "", "query_state": "", "severity": "high", "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;NO_QUERY_GEO_BARE_ROW_NOT_FIRST;DUPLICATE_ROUNDED_SCORES_IN_TOP5", "narrative": "Query omits city/state, but rank-1 has a city/state on file. SMEs often expect a bare (national) row first when scores tie. A candidate with no city/state appears at ranks [3, 4] while rank-1 has geo — ordering should prefer bare rows when the query verified no geography (matcher tie-break). Two or more top-5 rows share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."}
+    {
+      "row_id": 7918858,
+      "query_company": "Stout Real Estate",
+      "query_city": "",
+      "query_state": "",
+      "severity": "high",
+      "issue_codes": "GATE_A_TOP5_TIE_CLUSTER",
+      "narrative": "No automated issues flagged; still spot-check for domain edge cases."
+    },
+    {
+      "row_id": 7926161,
+      "query_company": "West Coast 2027",
+      "query_city": "",
+      "query_state": "",
+      "severity": "high",
+      "issue_codes": "GATE_A_TOP5_TIE_CLUSTER",
+      "narrative": "No automated issues flagged; still spot-check for domain edge cases."
+    },
+    {
+      "row_id": 7927825,
+      "query_company": "Sojourn Travel Advisors",
+      "query_city": "",
+      "query_state": "",
+      "severity": "high",
+      "issue_codes": "GATE_A_TOP5_TIE_CLUSTER",
+      "narrative": "No automated issues flagged; still spot-check for domain edge cases."
+    },
+    {
+      "row_id": 7879999,
+      "query_company": "meeting Source Prestige Global",
+      "query_city": "Arlington Heights",
+      "query_state": "IL",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9667; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7880640,
+      "query_company": "Corporation Of Hamilton",
+      "query_city": "Hamilton",
+      "query_state": "Bermuda",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9660; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7880904,
+      "query_company": "Corporation Of Hamilton",
+      "query_city": "Pembroke",
+      "query_state": "Bermuda",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9716; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7880905,
+      "query_company": "Corporation Of Hamilton",
+      "query_city": "Pembroke",
+      "query_state": "Bermuda",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9716; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7883989,
+      "query_company": "Sacred Heart School",
+      "query_city": "Saint Charles",
+      "query_state": "MO",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9663; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7904949,
+      "query_company": "FIRST Global Agency on behalf of Nick West",
+      "query_city": "New York",
+      "query_state": "NY",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9662; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7919312,
+      "query_company": "Shoppa",
+      "query_city": "Fort Worth",
+      "query_state": "TX",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9657; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7920499,
+      "query_company": "WNFC Utah at San Diego - Week 8- 2026",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7920521,
+      "query_company": "Winograd Group",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7920762,
+      "query_company": "Refuge Temple Church",
+      "query_city": "Martinsville",
+      "query_state": "VA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9666; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7920871,
+      "query_company": "Northeastern University Student Welcome",
+      "query_city": "Boston",
+      "query_state": "MA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9658; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7921024,
+      "query_company": "Private Meeting",
+      "query_city": "Houston",
+      "query_state": "TX",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9658; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7921391,
+      "query_company": "Pan Asian Repertory Theatre",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7921426,
+      "query_company": "Signal Management Services, LLC",
+      "query_city": "Rockwall",
+      "query_state": "TX",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (lexically_different) at 0.9666; rationale should justify suffix/token gaps. Top-5 score ties are all the same entity (multi-office); expected, not a ranking defect (info only). Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7921503,
+      "query_company": "Noble Estates",
+      "query_city": "Markham",
+      "query_state": "ON",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9657; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7922364,
+      "query_company": "Sandbox Group",
+      "query_city": "Boston",
+      "query_state": "MA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9715; rationale should justify suffix/token gaps. Top-5 score ties are all the same entity (multi-office); expected, not a ranking defect (info only). Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7922786,
+      "query_company": "California Counties Human Resources (formerly County Personnel Administrators Association of California)",
+      "query_city": "San Rafael",
+      "query_state": "CA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (heavy_token_overlap_non_equal) at 0.9667; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7922899,
+      "query_company": "The Travel Bug an ALTOUR company",
+      "query_city": "Valencia",
+      "query_state": "CA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9658; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7923120,
+      "query_company": "University of Houston Women's Basketball",
+      "query_city": "Houston",
+      "query_state": "TX",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9666; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7923225,
+      "query_company": "SJUCO",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7923285,
+      "query_company": "Universities of Wisconsin",
+      "query_city": "Madison",
+      "query_state": "WI",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9658; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7923346,
+      "query_company": "Prime Capital",
+      "query_city": "Lenexa",
+      "query_state": "KS",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9714; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7923441,
+      "query_company": "Viatris",
+      "query_city": "Tucsin",
+      "query_state": "AZ",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9514; rationale should justify suffix/token gaps. Top-5 score ties are all the same entity (multi-office); expected, not a ranking defect (info only). Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7923442,
+      "query_company": "Vision Event Co.",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7923638,
+      "query_company": "National Association of State Agencies for Surplus",
+      "query_city": "Rockville",
+      "query_state": "MD",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9665; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7923653,
+      "query_company": "SRG Inc.",
+      "query_city": "Dallas",
+      "query_state": "TX",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9651; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7923760,
+      "query_company": "Applecart",
+      "query_city": "New York",
+      "query_state": "NY",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9657; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7923821,
+      "query_company": "SMCTG Tour Inc",
+      "query_city": "Chantilly",
+      "query_state": "VA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9667; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7923841,
+      "query_company": "Visa",
+      "query_city": "Chicago",
+      "query_state": "IL",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9709; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7923842,
+      "query_company": "Wealthspire",
+      "query_city": "New York",
+      "query_state": "NY",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9662; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7923843,
+      "query_company": "305 Communications and Event Management",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7923874,
+      "query_company": "NICE Conference and Expo",
+      "query_city": "Clinton",
+      "query_state": "NJ",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9663; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7923882,
+      "query_company": "Universities of Wisconsin",
+      "query_city": "Madison",
+      "query_state": "WI",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9658; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7923886,
+      "query_company": "NICE Conference and Expo",
+      "query_city": "Miami",
+      "query_state": "FL",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9663; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7924239,
+      "query_company": "William Houde",
+      "query_city": "Saint-Simon-de-Bagot",
+      "query_state": "QC",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9506; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7924362,
+      "query_company": "BCD Spain/Tour Guitarrica de la Fuente/Perú",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7924459,
+      "query_company": "ACVR",
+      "query_city": "Mechanicsburg",
+      "query_state": "PA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9643; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7924461,
+      "query_company": "ARC",
+      "query_city": "CLINTON",
+      "query_state": "MO",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9711; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7924696,
+      "query_company": "The Ultimate Entrepreneur",
+      "query_city": "Atlanta",
+      "query_state": "GA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9657; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7924723,
+      "query_company": "WSP",
+      "query_city": "Orange",
+      "query_state": "CA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9729; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7924802,
+      "query_company": "Atlanta Department of Transportation",
+      "query_city": "Atlanta",
+      "query_state": "GA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9662; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7924838,
+      "query_company": "HSB Canada",
+      "query_city": "Toronto",
+      "query_state": "ON",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9662; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7924862,
+      "query_company": "Biron",
+      "query_city": "Montreal",
+      "query_state": "QC",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9662; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925025,
+      "query_company": "Circle K",
+      "query_city": "",
+      "query_state": "NC",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9659; rationale should justify suffix/token gaps. Top-5 score ties are all the same entity (multi-office); expected, not a ranking defect (info only). Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925131,
+      "query_company": "FIRST Global Agency on Behalf of Nikki Kelley",
+      "query_city": "New York",
+      "query_state": "NY",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (heavy_token_overlap_non_equal) at 0.9663; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925304,
+      "query_company": "SMCTG Tour Inc",
+      "query_city": "Annandale",
+      "query_state": "VA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9667; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925412,
+      "query_company": "The N2 Company",
+      "query_city": "Chicago",
+      "query_state": "IL",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9715; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925429,
+      "query_company": "Women Business Leaders",
+      "query_city": "Arlington",
+      "query_state": "VA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9661; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925497,
+      "query_company": "Russell Freedom Fry",
+      "query_city": "Surfside Beach",
+      "query_state": "SC",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9664; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925503,
+      "query_company": "Unity Christian Church",
+      "query_city": "Greenville",
+      "query_state": "SC",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9665; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925554,
+      "query_company": "CSGI",
+      "query_city": "Englewood",
+      "query_state": "CO",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9651; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925571,
+      "query_company": "FinFit Life",
+      "query_city": "Santa Clara",
+      "query_state": "CA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9656; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925589,
+      "query_company": "Institute of Scrap Recycling Industries d/b/a Recycled Materials Association",
+      "query_city": "Washington",
+      "query_state": "DC",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (heavy_token_overlap_non_equal) at 0.9667; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925606,
+      "query_company": "Madison James Group",
+      "query_city": "Chicago",
+      "query_state": "IL",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9664; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925644,
+      "query_company": "Pacific Health Group",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7925657,
+      "query_company": "PC Housing",
+      "query_city": "San Diego",
+      "query_state": "CA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9729; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925661,
+      "query_company": "Power Services Group",
+      "query_city": "Melrose Park",
+      "query_state": "IL",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9663; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925696,
+      "query_company": "Southwestern Finance Association",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7925771,
+      "query_company": "Meeting Sources, Inc.",
+      "query_city": "Phoenix",
+      "query_state": "AZ",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9650; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925843,
+      "query_company": "Texas High School",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7925858,
+      "query_company": "Asmar Schor McKenna",
+      "query_city": "Washington",
+      "query_state": "DC",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9659; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925870,
+      "query_company": "Loudoun United",
+      "query_city": "Leesburg",
+      "query_state": "VA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9733; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925871,
+      "query_company": "Loudoun United",
+      "query_city": "Naucalpan",
+      "query_state": "Estado de Mexico",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9652; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925888,
+      "query_company": "Visit Loudoun",
+      "query_city": "New Orleans",
+      "query_state": "LA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9656; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925932,
+      "query_company": "National Coalition for Dialogue &",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7925934,
+      "query_company": "National Affordable Housing",
+      "query_city": "Alexandria",
+      "query_state": "VA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9719; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7925937,
+      "query_company": "CSC Annual Conference 2028",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7925969,
+      "query_company": "Millman",
+      "query_city": "Chicago",
+      "query_state": "IL",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9648; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926100,
+      "query_company": "National Association of Corporate",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7926173,
+      "query_company": "Spotlight",
+      "query_city": "Kansas City",
+      "query_state": "MO",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9663; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926177,
+      "query_company": "Studio Consulting Corp",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7926208,
+      "query_company": "University of California Irvine \"Foundat",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7926223,
+      "query_company": "Resource Systems Association",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7926243,
+      "query_company": "Philadelphia Freedom Band",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7926248,
+      "query_company": "National Vas",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7926255,
+      "query_company": "Osteopathic Physicians & Surgeons of Cal",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7926306,
+      "query_company": "Alvarez & Marsal Healthcare Industry",
+      "query_city": "New York",
+      "query_state": "NY",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9664; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926365,
+      "query_company": "Bermuda Deposit Insurance Corporation",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7926387,
+      "query_company": "CIMAX Meeting",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7926407,
+      "query_company": "Henderson Room Block",
+      "query_city": "Chicago",
+      "query_state": "IL",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9658; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926437,
+      "query_company": "Fastest Labs",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7926480,
+      "query_company": "Corwin",
+      "query_city": "Camarillo",
+      "query_state": "CA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9660; rationale should justify suffix/token gaps. Top-5 score ties are all the same entity (multi-office); expected, not a ranking defect (info only). Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926498,
+      "query_company": "Event and The City, LLC",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7926508,
+      "query_company": "Key Events",
+      "query_city": "Denver",
+      "query_state": "CO",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9662; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926537,
+      "query_company": "DMC",
+      "query_city": "Addison",
+      "query_state": "TX",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9661; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926612,
+      "query_company": "Vee-Jay Cement",
+      "query_city": "Saint Louis",
+      "query_state": "MO",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9661; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926656,
+      "query_company": "Automotive Events [PRIMARY]",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7926657,
+      "query_company": "Avadel",
+      "query_city": "San Diego",
+      "query_state": "CA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9644; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926662,
+      "query_company": "Brain Corp",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7926668,
+      "query_company": "Chicago Stars",
+      "query_city": "Chicago",
+      "query_state": "IL",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9662; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926679,
+      "query_company": "Cranfield School of Management",
+      "query_city": "Cranfield",
+      "query_state": "Bedfordshire",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9668; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926697,
+      "query_company": "Federato",
+      "query_city": "San Francisco",
+      "query_state": "CA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9659; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926699,
+      "query_company": "FGI",
+      "query_city": "New York",
+      "query_state": "NY",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9723; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926800,
+      "query_company": "The Association for Bar Professionals",
+      "query_city": "Plymouth",
+      "query_state": "MN",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9720; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926807,
+      "query_company": "Triumph, Inc.",
+      "query_city": "San Francisco",
+      "query_state": "CA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9653; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926808,
+      "query_company": "Triumph, Inc.                                                                                           Triumph, Inc.",
+      "query_city": "Annapolis",
+      "query_state": "MD",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9728; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926857,
+      "query_company": "AGBU Armenian General Benevolent",
+      "query_city": "New York",
+      "query_state": "NY",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9666; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926864,
+      "query_company": "American Horticultural Society",
+      "query_city": "Columbus",
+      "query_state": "OH",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9664; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926869,
+      "query_company": "Aries Building Systems",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7926900,
+      "query_company": "Cengage Group",
+      "query_city": "Independence",
+      "query_state": "KY",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9710; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926932,
+      "query_company": "Figure",
+      "query_city": "New York",
+      "query_state": "NY",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9652; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926940,
+      "query_company": "Foundation Bruny Surin",
+      "query_city": "Montreal",
+      "query_state": "QC",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (lexically_different) at 0.9666; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926944,
+      "query_company": "Global-Watch",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7926960,
+      "query_company": "Intact",
+      "query_city": "Montreal",
+      "query_state": "QC",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9757; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7926976,
+      "query_company": "Kingdom Builders",
+      "query_city": "Orlando",
+      "query_state": "FL",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9718; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7927015,
+      "query_company": "Peak American",
+      "query_city": "Plano",
+      "query_state": "TX",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9661; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7927024,
+      "query_company": "RDB Enterprises, LLC",
+      "query_city": "Raleigh",
+      "query_state": "NY",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9655; rationale should justify suffix/token gaps. Top-5 score ties are all the same entity (multi-office); expected, not a ranking defect (info only). Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7927069,
+      "query_company": "The Church of Jesus Christ of Latter day Saints a Utah corporation",
+      "query_city": "Salt Lake City",
+      "query_state": "UT",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9737; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7927078,
+      "query_company": "Toronto Club",
+      "query_city": "Toronto",
+      "query_state": "ON",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9744; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7927099,
+      "query_company": "Wake County Democratic Party",
+      "query_city": "Raleigh",
+      "query_state": "NC",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9653; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7927179,
+      "query_company": "Adult & Teen Challenge Minnesota",
+      "query_city": "",
+      "query_state": "",
+      "severity": "med",
+      "issue_codes": "NO_QUERY_GEO_RANK1_HAS_LOCATION;DUPLICATE_ROUNDED_SCORES_IN_TOP5",
+      "narrative": "Query omits city/state and rank-1 carries an address, but no same-name bare row ties it — acceptable when rank-1 is the best/only-named match (info only). Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers."
+    },
+    {
+      "row_id": 7927392,
+      "query_company": "Baylor Athletics",
+      "query_city": "Waco",
+      "query_state": "TX",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (token_subset_mismatch) at 0.9669; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7927427,
+      "query_company": "Girls Inc",
+      "query_city": "Omaha",
+      "query_state": "NE",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9656; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7927468,
+      "query_company": "SHRM",
+      "query_city": "Jacksonville",
+      "query_state": "FL",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9651; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7927519,
+      "query_company": "Your Event Solutions",
+      "query_city": "Los Angeles",
+      "query_state": "CA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9718; rationale should justify suffix/token gaps. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7927532,
+      "query_company": "Oro Dance",
+      "query_city": "Boron",
+      "query_state": "CA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9721; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    },
+    {
+      "row_id": 7927541,
+      "query_company": "Retreat Group",
+      "query_city": "New Orleans",
+      "query_state": "LA",
+      "severity": "med",
+      "issue_codes": "STRONG_SCORE_NON_EXACT_NAME;DUPLICATE_ROUNDED_SCORES_IN_TOP5;HYBRID_SEMANTIC_LED_AT_CEILING",
+      "narrative": "Top-1 is a related but non-identical name (query_and_top1_names_related_non_equal) at 0.9654; rationale should justify suffix/token gaps. Two or more top-5 rows of DIFFERENT entities share the same score to 4 decimals; ordering looks arbitrary without exposed tie-breakers. Hybrid (semantic-led) at a ceiling score with non-exact name overlap — defensibility risk for SMEs."
+    }
   ]
 }

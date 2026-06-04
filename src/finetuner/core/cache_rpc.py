@@ -157,7 +157,48 @@ if HAS_PYRO:
             for query in queries:
                 results.append(self.search(query, cache_key, top_k))
             return results
-        
+
+        def batch_search_loc(self, items, cache_key: Optional[str] = None,
+                             top_k: int = 10) -> List[Dict[str, Any]]:
+            """
+            Batched location-aware search.
+
+            Uses CompanyMatcher.batch_match_with_location, which runs ONE FAISS search per
+            chunk of queries instead of one per query (the dominant per-query cost on the
+            flat index). Results are identical to calling search() per item, just much
+            faster for large batches like the plugging report.
+
+            Args:
+                items: list of [query, city, state] (city/state may be "" or None).
+                cache_key: specific cache (uses first loaded if None).
+                top_k: matches per query.
+
+            Returns:
+                list of {'query', 'cache_key', 'results'} dicts, aligned with items.
+            """
+            if cache_key:
+                matcher = self._server.get_matcher(cache_key)
+                if not matcher:
+                    return [{'error': f'Cache not loaded: {cache_key}'}]
+            else:
+                if not self._server.loaded_caches:
+                    return [{'error': 'No caches loaded'}]
+                cache_key = list(self._server.loaded_caches.keys())[0]
+                matcher = self._server.loaded_caches[cache_key]
+
+            tuples = []
+            for it in items:
+                q = it[0]
+                c = it[1] if len(it) > 1 else None
+                s = it[2] if len(it) > 2 else None
+                tuples.append((q, (c or None), (s or None)))
+
+            batched = matcher.batch_match_with_location(tuples, top_k=top_k)
+            return [
+                {'query': tuples[i][0], 'cache_key': cache_key, 'results': batched[i]}
+                for i in range(len(tuples))
+            ]
+
         def watch_source(self, source_path: str, cache_key: str) -> bool:
             """Start watching a source file for changes."""
             return self._server.watch_source(source_path, cache_key)

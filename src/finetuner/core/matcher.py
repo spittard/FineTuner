@@ -107,6 +107,24 @@ class CompanyMatcher:
     }
     
     @staticmethod
+    def _geoless_exact_cap(record_count: int) -> float:
+        """
+        Cap for an exact-name match on a query that supplied no geography.
+
+        ``count <= 1``: only one record carries this name, so missing geo cannot
+        disambiguate anything — keep the flat cap. ``count > 1``: multiple same-name
+        offices exist and the query gave no geo to pick between them, so decay the cap
+        as ambiguity grows. Very ambiguous names land in Medium, honestly signaling
+        "found the name, not the site." Constants are a tunable starting point.
+        """
+        import math
+        n = max(1, int(record_count or 1))
+        if n <= 1:
+            return CompanyMatcher.EXACT_WHEN_QUERY_HAS_NO_GEO_CAP
+        cap = CompanyMatcher.EXACT_WHEN_QUERY_HAS_NO_GEO_CAP - 0.075 * math.log1p(n - 1)
+        return max(0.72, cap)
+
+    @staticmethod
     def _rank_and_user_facing_score(
         name_score: float,
         location_score: float,
@@ -116,6 +134,7 @@ class CompanyMatcher:
         elw: float,
         exact_geo_full_match: bool = False,
         query_geo_complete: bool = False,
+        record_count: int = 1,
     ) -> tuple:
         """
         Unified single user-facing score in [0, 1].
@@ -187,7 +206,9 @@ class CompanyMatcher:
         if not use_location and not exact_geo_full_match:
             if is_this_exact or ns >= 0.998:
                 # Exact name, unverified office: sub-100 but must outrank non-exact lookalikes.
-                score = min(score, CompanyMatcher.EXACT_WHEN_QUERY_HAS_NO_GEO_CAP)
+                # Cap scales with how many records share this name — geo only matters when it
+                # actually disambiguates (count > 1), so a unique name stays at the flat cap.
+                score = min(score, CompanyMatcher._geoless_exact_cap(record_count))
             else:
                 # Non-exact on a geo-less query: hold strictly below the exact no-geo cap so an
                 # exact-name match is never buried by a variant. Rescale into [0.80, cap] rather
@@ -218,25 +239,34 @@ class CompanyMatcher:
         return floor + band * frac
 
     @staticmethod
-    def _sanitize_candidate_loc(city, state) -> tuple:
-        """Drop a bogus city that merely echoes the state (source-data defect).
+    def _is_us_state_token(s) -> bool:
+        """True only if ``s`` resolves to a real US state code (abbrev or full name)."""
+        n = TextPreprocessor.normalize_state(s)
+        return len(n) == 2 and n in TextPreprocessor.STATE_ABBREV
 
-        Many source rows carry ``city == state`` (e.g. city="UT" state="UT", or
-        city="Utah" state="UT") which is not a real locality. Treating such a city as
-        a verified locale lets it falsely satisfy city-level geo matching/display.
-        When the normalized (or raw, case-folded) city equals the normalized state we
-        blank the city and keep only the state, so scoring/display behave as state-only.
+    @staticmethod
+    def _sanitize_candidate_loc(city, state) -> tuple:
+        """Drop a bogus US city that merely echoes its US state (source-data defect).
+
+        Some US rows carry the state in the city field (e.g. city="UT" state="UT", or
+        city="Utah" state="UT"), which is not a real locality and would falsely satisfy
+        city-level geo matching/display. We blank the city ONLY when it itself resolves
+        to the SAME US state code as the state field.
+
+        Legitimate city==region echoes outside that rule are kept intact — e.g.
+        "Beijing, Beijing", "Dubai, Dubai", "Sao Paulo, Sao Paulo", "Guatemala, Guatemala",
+        "Saint Michael, Saint Michael" are real places and must continue to match/display.
         Returns the (possibly cleaned) ``(city, state)`` strings.
         """
         c = str(city or "").strip()
         st = str(state or "").strip()
         if not c or not st:
             return c, st
-        if c.upper() == st.upper():
-            return "", st
-        cn = TextPreprocessor.normalize_city(c)
-        sn = TextPreprocessor.normalize_state(st)
-        if cn and sn and cn == sn:
+        # Bogus only when the city LITERALLY echoes the state AND that token is a US state
+        # (e.g. city="UT" state="UT"). Requiring a literal echo excludes legit US pairs whose
+        # raw strings differ (New York / NY); requiring a US token excludes legit non-US
+        # city==region echoes (Beijing/Beijing, Dubai/Dubai, Sao Paulo/Sao Paulo).
+        if c.casefold() == st.casefold() and CompanyMatcher._is_us_state_token(c):
             return "", st
         return c, st
 
@@ -1618,7 +1648,7 @@ class CompanyMatcher:
     # State abbreviation mappings (both directions)
     # Location methods moved to TextPreprocessor
 
-    def match_with_location(self, query, city=None, state=None, top_k=10):
+    def match_with_location(self, query, city=None, state=None, top_k=10, _retrieval=None):
         """
         Match company name with optional location-based re-ranking.
         
@@ -1646,7 +1676,22 @@ class CompanyMatcher:
         
         candidates = []
         found_indices = set()
-        
+
+        # --- PHASE 1: RETRIEVAL (Semantic Search) ---
+        # Compute (or accept precomputed, for batch) the query embedding, concept
+        # signature, and FAISS neighbours BEFORE Phase 0, so the acronym path can reuse
+        # query_vec instead of re-encoding the query once per candidate (the redundant
+        # per-candidate encode made short/acronym queries pathologically slow).
+        # INCREASED retrieval limit (funnel) for higher precision on large datasets
+        candidate_k = min(1000, len(self.original_company_names))
+        if _retrieval is not None:
+            # Batch path: caller already encoded + searched (single-query-identical inputs).
+            query_vec, query_sig, semantic_scores, semantic_indices = _retrieval
+        else:
+            query_vec = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
+            query_sig = self._get_concept_signature(query_vec)
+            semantic_scores, semantic_indices = self.vector_store.search(query_vec, candidate_k)
+
         # --- PHASE 0: ACRONYM EXPANSION ---
         # 1. Query is potential Acronym (e.g. "ABA") -> Look for full names
         # We check if query is short-ish, upper case or query_lower not in stop words
@@ -1667,10 +1712,9 @@ class CompanyMatcher:
                          company_name = self.original_company_names[idx]
                          fidelity = TextPreprocessor.calculate_acronym_fidelity(query, company_name)
 
-                         query_vec_ac = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
                          target_vec_ac = self.vector_store.embeddings[idx].reshape(1, -1)
                          target_vec_ac = target_vec_ac / (np.linalg.norm(target_vec_ac) + 1e-10)
-                         sem_score_ac = float(np.dot(query_vec_ac, target_vec_ac.T)[0][0])
+                         sem_score_ac = float(np.dot(query_vec, target_vec_ac.T)[0][0])
 
                          # Fix 3 (deferred): require minimum evidence to surface an
                          # acronym expansion at all. Below threshold, drop the candidate
@@ -1750,19 +1794,6 @@ class CompanyMatcher:
                                 "city": "", "state": "", "id": None, "count": 0
                             })
                             found_indices.add(idx)
-        
-        # --- PHASE 1: RETRIEVAL (Semantic Search) ---
-        # INCREASED retrieval limit (funnel) for higher precision on large datasets
-        candidate_k = min(1000, len(self.original_company_names))
-        
-        # RETRIEVAL (Semantic Search)
-        # Location baking removed from query - we search by name only
-        query_vec = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
-        
-        # GENERATE CONCEPT SIGNATURE FOR QUERY
-        query_sig = self._get_concept_signature(query_vec)
-            
-        semantic_scores, semantic_indices = self.vector_store.search(query_vec, candidate_k)
         
         # candidates list already initialized in Phase 0
         max_sem_score = float(semantic_scores[0][0]) if len(semantic_scores[0]) > 0 else 1.0
@@ -1965,6 +1996,7 @@ class CompanyMatcher:
                 elw,
                 exact_geo_full_match=exact_geo_full_match,
                 query_geo_complete=query_geo_complete,
+                record_count=record_count,
             )
             
             # Get database ID if available
@@ -2088,6 +2120,7 @@ class CompanyMatcher:
                     elw,
                     exact_geo_full_match=exact_geo_full_match,
                     query_geo_complete=query_geo_complete,
+                    record_count=exact_count,
                 )
                 # Deduplicate fast using the pre-indexed candidates
                 key = (name, _to_loc_str(exact_city), _to_loc_str(exact_state))
@@ -2122,6 +2155,93 @@ class CompanyMatcher:
                 })
                 found_indices.add(i)
         
+        # Geo-less queries: a count-aware exact cap can push an ambiguous exact name below
+        # the non-exact no-geo cap (0.92). Guard the "exact stays #1" invariant by holding
+        # every non-exact candidate strictly below the lowest exact-name cap present, so a
+        # near-name lookalike can never bury the true exact-name row purely on score.
+        if not use_location:
+            def _is_exact_name(c):
+                return (
+                    c.get("match_type") == "exact"
+                    or float(c.get("name_score") or 0.0) >= 0.998
+                    or float(c.get("string_score") or 0.0) >= 0.999
+                )
+            exact_caps = [
+                CompanyMatcher._geoless_exact_cap(int(c.get("count") or 1))
+                for c in candidates
+                if _is_exact_name(c)
+            ]
+            if exact_caps:
+                min_exact_cap = min(exact_caps)
+                if min_exact_cap < CompanyMatcher.NONEXACT_WHEN_QUERY_HAS_NO_GEO_CAP:
+                    ceiling = min_exact_cap - 1e-3
+                    for c in candidates:
+                        if not _is_exact_name(c) and c.get("score", 0.0) > ceiling:
+                            c["score"] = ceiling
+
+        # Geo query, no exact-city hit: an exact-name match in the right STATE but wrong/blank
+        # city was clamped (e.g. to 0.53) below an unrelated different-name hybrid. Lift each
+        # exact-name same-state candidate just above the best COMPETING different-name row
+        # (relative margin), so exact-name evidence wins. Guards:
+        #   - candidates that actually match the queried city (location_score >= RIGHT_CITY_LS)
+        #     are EXEMPT from being "competing" and the lift is capped below them, so the
+        #     geographically-correct answer is never buried;
+        #   - the lift never trips the 100% gate.
+        if use_location and (state or city):
+            RIGHT_CITY_LS = 0.9
+            EPS = 0.01
+            q_state_norm = TextPreprocessor.normalize_state(state) if state else ""
+
+            def _is_exact_name_geo(c):
+                return (
+                    c.get("match_type") == "exact"
+                    or float(c.get("name_score") or 0.0) >= 0.998
+                    or float(c.get("string_score") or 0.0) >= 0.999
+                )
+
+            def _ls(c):
+                return float(c.get("location_score") or 0.0)
+
+            def _state_matches(c):
+                if not q_state_norm:
+                    return False
+                return TextPreprocessor.normalize_state(c.get("state", "") or "") == q_state_norm
+
+            right_city_scores = [
+                float(c.get("score") or 0.0) for c in candidates if _ls(c) >= RIGHT_CITY_LS
+            ]
+            competing_scores = [
+                float(c.get("score") or 0.0)
+                for c in candidates
+                if (not _is_exact_name_geo(c)) and _ls(c) < RIGHT_CITY_LS
+            ]
+            if competing_scores:
+                target = max(competing_scores) + EPS
+                if right_city_scores:
+                    # Stay strictly below any right-city candidate (the geographically
+                    # correct row keeps its lead).
+                    target = min(target, max(right_city_scores) - EPS)
+                target = min(target, 0.999)
+                liftable = [
+                    c for c in candidates
+                    if _is_exact_name_geo(c) and _state_matches(c)
+                    and _ls(c) < RIGHT_CITY_LS
+                    and float(c.get("score") or 0.0) < target
+                ]
+                # Highest current score first, so tiny decrements preserve internal order.
+                liftable.sort(
+                    key=lambda c: (
+                        float(c.get("score") or 0.0),
+                        _ls(c),
+                        int(c.get("count") or 0),
+                    ),
+                    reverse=True,
+                )
+                for _i, _c in enumerate(liftable):
+                    _new = target - _i * 1e-4
+                    if _new > float(_c.get("score") or 0.0):
+                        _c["score"] = _new
+
         # Sort by unified score; tie-break so exact rows with verifiable geography
         # outrank same-name rows missing city/state (SME-defensible when query is broad).
         def _candidate_has_geo(c):
@@ -2152,6 +2272,12 @@ class CompanyMatcher:
                     1 - _candidate_has_geo(x),
                     round(x.get("score", 0.0), 6),
                     1 if x.get("match_type") == "exact" else 0,
+                    # Prominence tie-breaker: among rows already tied on score (and bare/
+                    # exact status), order by record frequency so the more common office
+                    # leads. ORDERING ONLY — the score stays capped, so we never imply we
+                    # verified which same-name site was meant; we just stop surfacing a
+                    # rarer office above a dominant one purely by retrieval order.
+                    int(x.get("count") or 0),
                     round(x.get("concept_alignment", 0.0), 6),
                 ),
                 reverse=True,
@@ -2196,7 +2322,58 @@ class CompanyMatcher:
 
         # Store for explanation
         self._last_matches = results
-        
+
+        return results
+
+    def batch_match_with_location(self, items, top_k=10, faiss_batch=128):
+        """
+        Batched equivalent of match_with_location for many (query, city, state) tuples.
+
+        The speedup comes from doing ONE FAISS search per chunk of queries instead of one
+        per query. IndexFlatIP is memory-bandwidth bound, so a (B x d) search streams the
+        multi-GB index once for the whole chunk rather than once per query (~the dominant
+        per-query cost). Each query is still encoded individually so the query vectors are
+        bitwise-identical to the single-query path, and the re-rank reuses match_with_location
+        verbatim via _retrieval injection — so results are identical to calling
+        match_with_location()/match() per item.
+
+        Args:
+            items: list of (query, city, state) tuples. city/state may be None/"".
+            top_k: matches per query.
+            faiss_batch: number of queries per FAISS search.
+
+        Returns:
+            list of result lists, aligned 1:1 with items.
+        """
+        if not items:
+            return []
+
+        candidate_k = min(1000, len(self.original_company_names))
+        results = [None] * len(items)
+
+        for start in range(0, len(items), faiss_batch):
+            chunk = items[start:start + faiss_batch]
+            # Encode each query individually (identical to the single-query encode), then
+            # stack so the batched FAISS search sees the exact same vectors.
+            vecs = []
+            sigs = []
+            for (q, _c, _s) in chunk:
+                qv = self.model.encode([q], convert_to_numpy=True, normalize_embeddings=True)
+                vecs.append(qv)
+                sigs.append(self._get_concept_signature(qv))
+            query_matrix = np.vstack(vecs)
+            # ONE FAISS search for the whole chunk.
+            batch_scores, batch_indices = self.vector_store.search(query_matrix, candidate_k)
+            for li, (q, c, s) in enumerate(chunk):
+                retrieval = (
+                    vecs[li],
+                    sigs[li],
+                    batch_scores[li:li + 1],
+                    batch_indices[li:li + 1],
+                )
+                results[start + li] = self.match_with_location(
+                    q, city=c, state=s, top_k=top_k, _retrieval=retrieval
+                )
         return results
     
     def get_company_count(self, company_name):

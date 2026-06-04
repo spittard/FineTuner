@@ -48,19 +48,22 @@ def _has_q_geo(rec: dict) -> bool:
     return bool(str(rec.get("query_city") or "").strip() or str(rec.get("query_state") or "").strip())
 
 
+def _is_us_state_token(s: str) -> bool:
+    n = TextPreprocessor.normalize_state(s) if s else ""
+    return len(n) == 2 and n in TextPreprocessor.STATE_ABBREV
+
+
 def _suspect_geo_label(m: dict) -> str | None:
     c = str(m.get("city") or "").strip()
     st = str(m.get("state") or "").strip()
-    if not c and not st:
+    if not c or not st:
         return None
-    cn = TextPreprocessor.normalize_city(c) if c else ""
-    sn = TextPreprocessor.normalize_state(st) if st else ""
-    if c and st and c.upper() == st.upper():
-        return "city_token_equals_state_token"
-    if cn and sn and cn == sn:
-        return "normalized_city_equals_state"
-    if re.search(r"\bUT\b.*\bUT\b", f"{c}, {st}"):
-        return "possible_duplicate_UT"
+    # Genuine defect only when the city LITERALLY echoes the state AND that token is a US
+    # state (e.g. city="UT" state="UT"). A literal-echo gate keeps legit US pairs whose raw
+    # strings differ (New York / NY); the US-token gate keeps legit non-US city==region
+    # echoes (Beijing/Beijing, Dubai/Dubai, Sao Paulo/Sao Paulo, Saint Michael/Saint Michael).
+    if c.casefold() == st.casefold() and _is_us_state_token(c):
+        return "us_state_in_city_field"
     return None
 
 

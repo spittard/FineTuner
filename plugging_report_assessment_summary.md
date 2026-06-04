@@ -8,26 +8,19 @@ CSV: `plugging_report_assessment.csv` (one row per plugging record; use filters 
 
 | severity | count |
 |----------|------:|
-| high | 67 |
-| info | 2335 |
-| med | 815 |
+| high | 3 |
+| info | 2403 |
+| med | 811 |
 
 ## Issue code counts
 
 | code | count |
 |------|------:|
-| `DUPLICATE_ROUNDED_SCORES_IN_TOP5` | 1505 |
-| `NO_QUERY_GEO_RANK1_HAS_LOCATION` | 511 |
+| `DUPLICATE_ROUNDED_SCORES_IN_TOP5` | 1467 |
+| `NO_QUERY_GEO_RANK1_HAS_LOCATION` | 512 |
 | `STRONG_SCORE_NON_EXACT_NAME` | 96 |
 | `HYBRID_SEMANTIC_LED_AT_CEILING` | 96 |
-| `SUSPECT_GEO_RANK4_CITY_TOKEN_EQUALS_STATE_TOKEN` | 17 |
-| `SUSPECT_GEO_RANK2_CITY_TOKEN_EQUALS_STATE_TOKEN` | 16 |
-| `SUSPECT_GEO_RANK5_CITY_TOKEN_EQUALS_STATE_TOKEN` | 15 |
-| `SUSPECT_GEO_RANK1_CITY_TOKEN_EQUALS_STATE_TOKEN` | 15 |
-| `SUSPECT_GEO_RANK3_CITY_TOKEN_EQUALS_STATE_TOKEN` | 11 |
 | `GATE_A_TOP5_TIE_CLUSTER` | 3 |
-| `SUSPECT_GEO_RANK3_NORMALIZED_CITY_EQUALS_STATE` | 1 |
-| `SUSPECT_GEO_RANK1_NORMALIZED_CITY_EQUALS_STATE` | 1 |
 
 ## How to use with SMEs
 

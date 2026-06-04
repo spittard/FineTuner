@@ -238,6 +238,123 @@ class CreateDataSet:
             traceback.print_exc()
             return []
 
+    def extract_data_with_location_industry(self, table_name: str, company_column: str = "Original",
+                                              city_column: str = "City", state_column: str = "State",
+                                              row_column: str = "Row", sic_column: str = "SIC",
+                                              max_rows: Optional[int] = None,
+                                              exclude_plugging: bool = False,
+                                              plugging_column: str = "PluggingStatus") -> List[Dict[str, Any]]:
+        """
+        Extract company data with location, record counts, row ID, and SIC industry code.
+
+        Same as extract_data_with_location but adds MIN(SIC) per group.
+
+        Returns:
+            List of dicts: [{"ID": N, "Company Name": ..., "City": ..., "State": ..., "Count": N, "SIC": ...}, ...]
+        """
+        if not self.connection:
+            print("ERROR: No database connection. Call connect() first.")
+            return []
+
+        try:
+            cursor = self.connection.cursor()
+
+            table_parts = table_name.split('.')
+            if len(table_parts) == 2:
+                schema_name = table_parts[0]
+                actual_table_name = table_parts[1]
+                table_ref = f"[{schema_name}].[{actual_table_name}]"
+            else:
+                table_ref = f"[{table_name}]"
+
+            where_parts = [f"[{company_column}] IS NOT NULL", f"[{company_column}] != ''"]
+            if exclude_plugging:
+                where_parts.append(f"([{plugging_column}] IS NULL OR [{plugging_column}] != 'P')")
+            where_clause = " AND ".join(where_parts)
+
+            select_cols = (
+                f"MIN([{row_column}]) as RowID, [{company_column}], [{city_column}], [{state_column}], "
+                f"COUNT(*) as RecordCount, "
+                f"LTRIM(RTRIM(MIN(CAST([{sic_column}] AS NVARCHAR(100))))) as SICCode"
+            )
+            group_by = f"[{company_column}], [{city_column}], [{state_column}]"
+
+            if max_rows:
+                query = f"SELECT TOP {max_rows} {select_cols} FROM {table_ref} WHERE {where_clause} GROUP BY {group_by} ORDER BY [{company_column}]"
+            else:
+                query = f"SELECT {select_cols} FROM {table_ref} WHERE {where_clause} GROUP BY {group_by} ORDER BY [{company_column}]"
+
+            plug_info = " (excluding PluggingStatus='P')" if exclude_plugging else ""
+            print(f"   Executing query{plug_info}: {query[:120].strip()}...")
+            cursor.execute(query)
+            results = cursor.fetchall()
+            cursor.close()
+
+            print(f"   Query returned {len(results):,} rows")
+            print("   Formatting data with location + SIC...")
+            formatted_data = []
+            empty_labels = {"", "TBD", "tbd", "N/A", "NONE", "UNKNOWN"}
+            for i, row in enumerate(results):
+                company_name = row[1].strip() if row[1] else ""
+                if not company_name:
+                    continue
+                sic = (row[5] or "").strip()
+                if sic in empty_labels:
+                    sic = ""
+                formatted_data.append({
+                    "ID": row[0],
+                    "Company Name": company_name,
+                    "City": row[2].strip() if row[2] else "",
+                    "State": row[3].strip() if row[3] else "",
+                    "Count": row[4] if row[4] else 0,
+                    "SIC": sic,
+                })
+                if (i + 1) % 100000 == 0:
+                    print(f"   Processed {i + 1:,} rows...")
+
+            limit_info = f" (limited to {max_rows:,} rows)" if max_rows else ""
+            n_sic = sum(1 for r in formatted_data if r["SIC"])
+            print(f"   Extracted {len(formatted_data):,} records{limit_info}; {n_sic:,} have a SIC value")
+            return formatted_data
+
+        except Exception as e:
+            print(f"ERROR: Error extracting data with location+industry: {e}")
+            import traceback
+            traceback.print_exc()
+            return []
+
+    def create_dataset_with_location_industry(self, table_name: str, output_file: str,
+                                               company_column: str = "Original",
+                                               city_column: str = "City",
+                                               state_column: str = "State",
+                                               row_column: str = "Row",
+                                               sic_column: str = "SIC",
+                                               max_rows: Optional[int] = None,
+                                               exclude_plugging: bool = False,
+                                               plugging_column: str = "PluggingStatus") -> bool:
+        """Complete workflow: extract data with location + SIC and save to JSON."""
+        print(f"Starting dataset creation with location + industry data...")
+        print(f"   Table: {table_name}  |  Output: {output_file}")
+        print(f"   Exclude Plugging: {exclude_plugging}")
+        if max_rows:
+            print(f"   Max rows: {max_rows:,}")
+
+        data = self.extract_data_with_location_industry(
+            table_name, company_column, city_column, state_column,
+            row_column=row_column, sic_column=sic_column,
+            max_rows=max_rows, exclude_plugging=exclude_plugging,
+            plugging_column=plugging_column,
+        )
+        if not data:
+            return False
+
+        success = self.save_to_json(data, output_file)
+        if success:
+            print(f"Dataset creation completed successfully!")
+            print(f"   Total entries: {len(data):,}")
+            print(f"   File size: {os.path.getsize(output_file) / (1024*1024):.1f} MB")
+        return success
+
     def extract_plugging_records(self, table_name: str, company_column: str = "Original",
                                   city_column: str = "City", state_column: str = "State",
                                   row_column: str = "Row",
